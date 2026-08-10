@@ -1,0 +1,502 @@
+{
+  "agent": {
+    "id": "MNTM",
+    "name": "Monu",
+    "strategy": "Momentum",
+    "description": "Buys strength: breakouts confirmed by volume, riding the trend until momentum fades.",
+    "accent": "#c8974a"
+  },
+  "scan_date": "2026-08-10T14:00:51.245984",
+  "dimensions": [
+    {
+      "key": "trend_strength",
+      "label": "Trend",
+      "max": 25
+    },
+    {
+      "key": "volume",
+      "label": "Volume",
+      "max": 20
+    },
+    {
+      "key": "rsi",
+      "label": "RSI",
+      "max": 15
+    },
+    {
+      "key": "macd",
+      "label": "MACD",
+      "max": 15
+    },
+    {
+      "key": "relative",
+      "label": "Relative",
+      "max": 15
+    },
+    {
+      "key": "breakout",
+      "label": "Breakout",
+      "max": 10
+    }
+  ],
+  "context": [
+    {
+      "label": "Market Regime",
+      "value": "UPTREND"
+    },
+    {
+      "label": "Universe",
+      "value": "503 symbols"
+    },
+    {
+      "label": "Passed Filter",
+      "value": "20"
+    },
+    {
+      "label": "Model",
+      "value": "claude-haiku-4-5"
+    }
+  ],
+  "opportunities": [
+    {
+      "rank": 1,
+      "symbol": "BMY",
+      "price": 64.72000122070312,
+      "score": 100,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 10
+      },
+      "entry": 62.25,
+      "stop_loss": 59.4716561159087,
+      "take_profit": 66.41751582613695,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "PULLBACK",
+      "extension_pct": 3.967873446912651,
+      "market_regime": "UPTREND",
+      "reasoning": "BMY is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 2,
+      "symbol": "EMR",
+      "price": 158.25999450683594,
+      "score": 100,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 10
+      },
+      "entry": 158.25999450683594,
+      "stop_loss": 150.81087802650174,
+      "take_profit": 169.43366922733725,
+      "risk_reward_ratio": 1.500000000000002,
+      "setup_type": "EXTENDED",
+      "extension_pct": 7.980127843632655,
+      "market_regime": "UPTREND",
+      "reasoning": "EMR is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 3,
+      "symbol": "EXPD",
+      "price": 178.7100067138672,
+      "score": 100,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 10
+      },
+      "entry": 175.97999954223633,
+      "stop_loss": 168.68195037821874,
+      "take_profit": 186.9270732882627,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "PULLBACK",
+      "extension_pct": 1.5513167284533604,
+      "market_regime": "UPTREND",
+      "reasoning": "EXPD is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 4,
+      "symbol": "RVTY",
+      "price": 114.66000366210938,
+      "score": 100,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 10
+      },
+      "entry": 111.80999984741212,
+      "stop_loss": 105.76558089248805,
+      "take_profit": 120.87662827979821,
+      "risk_reward_ratio": 1.499999999999999,
+      "setup_type": "PULLBACK",
+      "extension_pct": 2.548970412831303,
+      "market_regime": "UPTREND",
+      "reasoning": "RVTY is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 5,
+      "symbol": "FERG",
+      "price": 256.69000244140625,
+      "score": 97,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 12,
+        "breakout": 10
+      },
+      "entry": 256.69000244140625,
+      "stop_loss": 245.44872994943324,
+      "take_profit": 273.55191117936573,
+      "risk_reward_ratio": 1.4999999999999976,
+      "setup_type": "EXTENDED",
+      "extension_pct": 8.470265192124424,
+      "market_regime": "UPTREND",
+      "reasoning": "FERG is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 6,
+      "symbol": "GEN",
+      "price": 29.170000076293945,
+      "score": 97,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 12,
+        "breakout": 10
+      },
+      "entry": 29.170000076293945,
+      "stop_loss": 27.71085264141711,
+      "take_profit": 31.3587212286092,
+      "risk_reward_ratio": 1.499999999999999,
+      "setup_type": "EXTENDED",
+      "extension_pct": 7.925114323154654,
+      "market_regime": "UPTREND",
+      "reasoning": "GEN is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 7,
+      "symbol": "NWSA",
+      "price": 28.520000457763672,
+      "score": 97,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 12,
+        "breakout": 10
+      },
+      "entry": 28.020000171661376,
+      "stop_loss": 26.613573376747517,
+      "take_profit": 30.129640364032163,
+      "risk_reward_ratio": 1.4999999999999987,
+      "setup_type": "PULLBACK",
+      "extension_pct": 1.7844406960710213,
+      "market_regime": "UPTREND",
+      "reasoning": "NWSA is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 8,
+      "symbol": "NWS",
+      "price": 32.45000076293945,
+      "score": 97,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 12,
+        "breakout": 10
+      },
+      "entry": 31.794499969482423,
+      "stop_loss": 30.171738512871745,
+      "take_profit": 34.22864215439844,
+      "risk_reward_ratio": 1.500000000000001,
+      "setup_type": "PULLBACK",
+      "extension_pct": 2.061679831688514,
+      "market_regime": "UPTREND",
+      "reasoning": "NWS is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 9,
+      "symbol": "AMZN",
+      "price": 274.4800109863281,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 274.4800109863281,
+      "stop_loss": 260.4807479766223,
+      "take_profit": 295.47890550088687,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "EXTENDED",
+      "extension_pct": 9.097055683713085,
+      "market_regime": "UPTREND",
+      "reasoning": "AMZN is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 10,
+      "symbol": "NUE",
+      "price": 272.6300048828125,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 272.6300048828125,
+      "stop_loss": 260.333011986826,
+      "take_profit": 291.0754942267922,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "EXTENDED",
+      "extension_pct": 8.978332826285751,
+      "market_regime": "UPTREND",
+      "reasoning": "NUE is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 11,
+      "symbol": "AME",
+      "price": 253.66000366210938,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 253.66000366210938,
+      "stop_loss": 245.05426912928627,
+      "take_profit": 266.568605461344,
+      "risk_reward_ratio": 1.4999999999999984,
+      "setup_type": "EXTENDED",
+      "extension_pct": 5.118117078608089,
+      "market_regime": "UPTREND",
+      "reasoning": "AME is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 12,
+      "symbol": "WAB",
+      "price": 291.80999755859375,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 284.05449829101565,
+      "stop_loss": 272.59496956039425,
+      "take_profit": 301.2437913869478,
+      "risk_reward_ratio": 1.5000000000000049,
+      "setup_type": "PULLBACK",
+      "extension_pct": 2.730285672023593,
+      "market_regime": "UPTREND",
+      "reasoning": "WAB is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 13,
+      "symbol": "WAT",
+      "price": 406.8599853515625,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 406.8599853515625,
+      "stop_loss": 387.50912646040223,
+      "take_profit": 435.88627368830294,
+      "risk_reward_ratio": 1.5000000000000016,
+      "setup_type": "EXTENDED",
+      "extension_pct": 7.149201781128029,
+      "market_regime": "UPTREND",
+      "reasoning": "WAT is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 14,
+      "symbol": "NTAP",
+      "price": 189.52000427246094,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 189.52000427246094,
+      "stop_loss": 177.90395459172453,
+      "take_profit": 206.94407879356555,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "EXTENDED",
+      "extension_pct": 9.517166224720041,
+      "market_regime": "UPTREND",
+      "reasoning": "NTAP is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 15,
+      "symbol": "DXCM",
+      "price": 84.75,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 84.75,
+      "stop_loss": 80.10794939163642,
+      "take_profit": 91.71307591254536,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "EXTENDED",
+      "extension_pct": 9.513809290228968,
+      "market_regime": "UPTREND",
+      "reasoning": "DXCM is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 16,
+      "symbol": "WSM",
+      "price": 251.77999877929688,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 251.77999877929688,
+      "stop_loss": 240.85559607751532,
+      "take_profit": 268.1666028319692,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "EXTENDED",
+      "extension_pct": 8.74005998318688,
+      "market_regime": "UPTREND",
+      "reasoning": "WSM is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 17,
+      "symbol": "CPAY",
+      "price": 392.94000244140625,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 392.94000244140625,
+      "stop_loss": 375.4907402341741,
+      "take_profit": 419.1138957522545,
+      "risk_reward_ratio": 1.5000000000000016,
+      "setup_type": "EXTENDED",
+      "extension_pct": 4.145933907336142,
+      "market_regime": "UPTREND",
+      "reasoning": "CPAY is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 18,
+      "symbol": "IFF",
+      "price": 85.88999938964844,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 85.88999938964844,
+      "stop_loss": 81.70388403122915,
+      "take_profit": 92.16917242727737,
+      "risk_reward_ratio": 1.5000000000000018,
+      "setup_type": "EXTENDED",
+      "extension_pct": 9.04728032119748,
+      "market_regime": "UPTREND",
+      "reasoning": "IFF is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 19,
+      "symbol": "INVH",
+      "price": 30.3700008392334,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 30.03650007247925,
+      "stop_loss": 29.16904842090384,
+      "take_profit": 31.337677549842358,
+      "risk_reward_ratio": 1.499999999999996,
+      "setup_type": "PULLBACK",
+      "extension_pct": 1.1103183325267543,
+      "market_regime": "UPTREND",
+      "reasoning": "INVH is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    },
+    {
+      "rank": 20,
+      "symbol": "AIZ",
+      "price": 289.54998779296875,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6
+      },
+      "entry": 280.60399932861327,
+      "stop_loss": 270.36759128880834,
+      "take_profit": 295.95861138832066,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "PULLBACK",
+      "extension_pct": 3.1881186603755065,
+      "market_regime": "UPTREND",
+      "reasoning": "AIZ is above its key moving averages with momentum intact; main risk is volume fading before the move extends."
+    }
+  ]
+}
