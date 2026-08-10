@@ -1,8 +1,27 @@
-# 🚀 MONU - MNTM (Momentum Trader Agent)
+# Harry Trading Desk
 
-An AI-powered momentum trading scanner that uses Claude to intelligently identify and explain momentum trading opportunities.
+A terminal-style research desk for AI trading agents. Each agent scans the market
+on its own strategy, scores what it finds, and publishes a ranked shortlist to a
+shared dashboard. **You execute every trade manually** — nothing here places orders.
 
-## 📊 What is MONU?
+> **Research signals, not investment advice.** Scores measure how well a setup
+> matches a strategy's criteria. They are not forecasts, and past matches do not
+> imply future returns. Nothing in this repository is a recommendation to buy or
+> sell any security.
+
+## Agents
+
+| Agent | Code | Strategy | Status |
+|-------|------|----------|--------|
+| **Monu** | `MNTM` | Momentum — buys strength on volume-confirmed breakouts | Live |
+
+The dashboard renders whatever score dimensions an agent declares, so adding an
+agent needs no changes to the page. See **Adding your second and third agents**
+below for the contract.
+
+---
+
+## 📊 Monu (MNTM) — the momentum agent
 
 **MONU** (Momentum Trader Agent) is a cloud-native momentum stock scanner that:
 
@@ -67,8 +86,8 @@ Commit to repository / Display on dashboard
 
 ```bash
 # Clone this repository
-git clone https://github.com/YOUR_USERNAME/monu-mntm.git
-cd monu-mntm
+git clone https://github.com/Retrogang05/harry-trading-desk.git
+cd harry-trading-desk
 
 # Install dependencies
 pip install -r requirements.txt
@@ -127,7 +146,7 @@ Key risk: If volume dries up, momentum could reverse quickly.
    git init
    git add .
    git commit -m "Initial MONU setup"
-   git remote add origin https://github.com/YOUR_USERNAME/monu-mntm.git
+   git remote add origin https://github.com/Retrogang05/harry-trading-desk.git
    git push -u origin main
    ```
 
@@ -145,7 +164,7 @@ Key risk: If volume dries up, momentum could reverse quickly.
 ## 📁 Project Structure
 
 ```
-monu-mntm/
+harry-trading-desk/
 ├── agent.py                 # Monu — the momentum agent
 ├── requirements.txt         # Python dependencies
 ├── README.md                # This file
