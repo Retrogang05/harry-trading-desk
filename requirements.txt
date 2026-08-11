@@ -1,7 +1,19 @@
-python-dotenv==1.0.0
-requests==2.31.0
-pandas==2.1.3
-numpy==1.24.3
-yfinance==0.2.32
-ta==0.10.2
-anthropic==0.7.1
+# Floors, not exact pins. Every version below is one the agent has actually been
+# run against end-to-end (503-symbol scan, all six score dimensions, publish).
+#
+# The original file in this repo pinned anthropic==0.7.1, yfinance==0.2.32 and
+# pandas==2.1.3 - versions nothing was ever tested on. anthropic 0.7.1 predates
+# both the claude-haiku-4-5 model id and the RateLimitError / APIStatusError /
+# APIConnectionError classes the agent catches, so CI installed a library the
+# code could not run against while local testing silently used latest.
+#
+# Verified on Python 3.14.3.
+
+anthropic>=0.121.0      # needs the modern client + typed exception classes
+yfinance>=1.5.2         # batched group_by="ticker" download path
+pandas>=3.0.5
+numpy>=2.5.2
+ta>=0.11.0              # RSI / MACD / ATR / moving averages
+requests>=2.34.2        # ships certifi; urllib has no CA bundle on macOS python.org builds
+
+# python-dotenv was listed here but never imported anywhere - removed.
