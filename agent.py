@@ -66,8 +66,20 @@ class MomentumAnalyzer:
     """Analyzes stocks for momentum trading opportunities."""
 
     def __init__(self):
-        self.client = Anthropic()
         self.model = CLAUDE_MODEL
+        # Reasoning is optional. Everything else in this agent - the universe
+        # fetch, all six score dimensions, the regime gate, entry/stop/target -
+        # is pure price maths and must still run without a Claude key. The SDK
+        # raises a bare TypeError at request time when no credential resolves,
+        # which is not an anthropic.* exception, so it cannot be caught by the
+        # handlers in generate_reasoning() - gate on the key up front instead.
+        self.reasoning_enabled = bool(os.environ.get("ANTHROPIC_API_KEY"))
+        self.client = Anthropic() if self.reasoning_enabled else None
+        if not self.reasoning_enabled:
+            logger.warning(
+                "ANTHROPIC_API_KEY not set - scanning and scoring will run, "
+                "but signals will publish without written reasoning"
+            )
 
     # MA200 and the 52-week high need ~252 trading days. Calendar days are
     # ~30% weekends/holidays, so ask for 400 to land comfortably above that.
@@ -388,6 +400,9 @@ Please explain:
 
 Format: Professional but conversational, suitable for a trader's quick decision."""
 
+        if not self.reasoning_enabled:
+            return "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+
         try:
             message = self.client.messages.create(
                 model=self.model,
@@ -405,6 +420,13 @@ Format: Professional but conversational, suitable for a trader's quick decision.
         except anthropic.APIConnectionError:
             logger.error(f"{symbol}: could not reach the Claude API")
             return "[reasoning unavailable: connection error]"
+        except Exception as e:
+            # Last resort. A scan is ~30s of network work across 500 symbols;
+            # losing all of it because one narration call raised something
+            # unanticipated is never the right trade. This is what a bare
+            # TypeError from an unresolved credential used to slip through.
+            logger.error(f"{symbol}: unexpected reasoning failure: {type(e).__name__}: {e}")
+            return f"[reasoning unavailable: {type(e).__name__}]"
 
         if message.stop_reason == "refusal":
             logger.warning(f"{symbol}: Claude declined to answer")
