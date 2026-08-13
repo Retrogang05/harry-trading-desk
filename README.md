@@ -14,6 +14,7 @@ shared dashboard. **You execute every trade manually** — nothing here places o
 | Agent | Code | Strategy | Status |
 |-------|------|----------|--------|
 | **Monu** | `MNTM` | Momentum — buys strength on volume-confirmed breakouts | Live |
+| **Opy** | `OPY` | Options — iron condors, credit spreads, LEAPS calls, RSI momentum context | Live |
 
 The dashboard renders whatever score dimensions an agent declares, so adding an
 agent needs no changes to the page. See **Adding your second and third agents**
@@ -254,6 +255,56 @@ skipped for that agent.
 **Score bands are shared across all agents** so the numbers stay comparable:
 80+ Strong · 70–79 Buy · 60–69 Watch. If a future agent uses a different
 scale, normalise it to 0–100 before publishing.
+
+#### When one agent runs several strategies at once
+
+Monu's contract above assumes every row scores on the same axes and has the
+same entry/stop/target shape. That's true for a single-strategy agent, but
+**Opy** screens four option strategies in one run — an iron condor's IV/HV
+richness has nothing in common with a LEAPS trade's delta and leverage, and a
+credit spread's numbers are credit/max-loss/ROC, not entry/stop/target.
+
+Two fields, both optional and both set **per opportunity** rather than once
+per agent, cover this:
+
+```jsonc
+{
+  "rank": 1, "symbol": "IWM", "price": 301.56, "score": 100,
+
+  // Overrides the agent-level "dimensions" for THIS row only. Omit it and
+  // the row falls back to the agent's declared dimensions (Monu's case).
+  "strategy": "Bull Put Spread",
+  "dimensions": [
+    { "key": "credit_width", "label": "Credit / Width", "max": 30 }
+  ],
+  "breakdown": { "credit_width": 24 },
+
+  // Replaces the fixed Entry/Stop/Target/R:R block with whatever fields
+  // actually describe this trade. Omit it (and "entry") entirely for a row
+  // that isn't a specific structure - Opy's RSI rows have neither, and the
+  // dashboard simply skips the Setup panel for those.
+  "setup": {
+    "label": "Bull Put 294/292 · 38 DTE",
+    "fields": [
+      { "label": "Credit", "value": "$0.47", "tone": "pos" },
+      { "label": "Max Loss", "value": "$1.53", "tone": "neg" }
+    ]
+  },
+  "reasoning": "Claude's read on this setup."
+}
+```
+
+`tone` on a setup field is `"pos"` (green), `"neg"` (red), or omitted
+(neutral). The grid also gains a **Strategy** column showing `o.strategy`,
+falling back to the agent's single `agent.strategy` when a row doesn't set
+its own — so Monu's rows need no changes and just show "Momentum" throughout.
+
+One consequence worth knowing if you build a multi-strategy agent: the
+dashboard's row-selection key is `symbol + agent.id + strategy`, not just
+`symbol + agent.id` — without the strategy segment, two rows for the same
+symbol under different strategies (a stock that's both an iron condor
+candidate and a LEAPS candidate) would be indistinguishable and only one
+would ever be selectable.
 
 **Resilience:** one agent's broken or missing file is logged to the console and
 skipped — the rest of the desk still renders. The filter bar only appears once

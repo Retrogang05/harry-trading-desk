@@ -259,6 +259,11 @@
     return { t: "Weak", c: "var(--faint)" };
   }
   function usd(n) { return typeof n === "number" ? n.toFixed(2) : "—"; }
+  // Selection key includes strategy: an agent that runs several strategies
+  // (Opy screens the same S&P 500 for iron condors, spreads, LEAPS and RSI)
+  // can publish more than one row for the same symbol. Keying on symbol+agent
+  // alone would make those rows indistinguishable and only one selectable.
+  function rowKey(o, agentId) { return o.symbol + "|" + agentId + "|" + (o.strategy || ""); }
   function ago(iso) {
     var t = new Date(iso); if (isNaN(t)) return "unknown";
     var m = Math.round((Date.now() - t) / 6e4);
@@ -391,7 +396,7 @@
     $("gridCount").textContent = rows.length + (rows.length === 1 ? " row" : " rows");
 
     var thead = el("thead"), hr = el("tr");
-    [["#","l"],["Symbol","l"],["Agent","l"],["Last",""],["Score",""],["Signal",""],
+    [["#","l"],["Symbol","l"],["Agent","l"],["Strategy","l"],["Last",""],["Score",""],["Signal",""],
      ["Entry",""],["Stop",""],["Target",""],["R:R",""],["Setup",""]].forEach(function (h) {
       hr.appendChild(el("th", h[1], h[0]));
     });
@@ -399,7 +404,7 @@
 
     var tb = el("tbody");
     if (!rows.length) {
-      var tr0 = el("tr"), td0 = el("td", "l"); td0.colSpan = 11;
+      var tr0 = el("tr"), td0 = el("td", "l"); td0.colSpan = 12;
       td0.appendChild(el("div", "empty", state.query
         ? "No signal matches “" + state.query + "”."
         : "No setups cleared the filter. That is a normal scan result."));
@@ -408,9 +413,10 @@
 
     rows.forEach(function (r, i) {
       var o = r.o, b = band(o.score), tr = el("tr");
-      tr.setAttribute("aria-selected", String(state.selected === o.symbol + "|" + r.agent.id));
+      var key = rowKey(o, r.agent.id);
+      tr.setAttribute("aria-selected", String(state.selected === key));
       tr.addEventListener("click", function () {
-        state.selected = o.symbol + "|" + r.agent.id; renderGrid(); renderRight();
+        state.selected = key; renderGrid(); renderRight();
       });
 
       tr.appendChild(el("td", "l muted", String(i + 1)));
@@ -421,16 +427,30 @@
       wrap.appendChild(dot); wrap.appendChild(document.createTextNode(r.agent.id || "—"));
       tdA.appendChild(wrap); tr.appendChild(tdA);
 
+      // Per-opportunity strategy label if the agent runs more than one
+      // (Opy); otherwise the agent's single declared strategy (Monu).
+      tr.appendChild(el("td", "l muted", o.strategy || r.agent.strategy || "—"));
+
       tr.appendChild(el("td", null, usd(o.price)));
       var tdSc = el("td", null, String(o.score)); tdSc.style.color = b.c; tdSc.style.fontWeight = "600";
       tr.appendChild(tdSc);
       var tdV = el("td", null, b.t); tdV.style.color = b.c; tr.appendChild(tdV);
 
-      tr.appendChild(el("td", null, usd(o.entry)));
-      var st = el("td", null, usd(o.stop_loss)); st.style.color = "var(--red)"; tr.appendChild(st);
-      var tp = el("td", null, usd(o.take_profit)); tp.style.color = "var(--green-b)"; tr.appendChild(tp);
-      tr.appendChild(el("td", null, typeof o.risk_reward_ratio === "number" ? o.risk_reward_ratio.toFixed(2) : "—"));
-      tr.appendChild(el("td", "muted", o.setup_type ? o.setup_type.toLowerCase() : "—"));
+      // Monu's fixed entry/stop/target columns don't generalise to Opy's
+      // per-strategy setup shapes (a credit spread's numbers are credit/max
+      // loss, not entry/stop). Show them only when present; otherwise the
+      // detail panel's declarative Setup block (below) is where that row's
+      // numbers live.
+      if (typeof o.entry === "number") {
+        tr.appendChild(el("td", null, usd(o.entry)));
+        var st = el("td", null, usd(o.stop_loss)); st.style.color = "var(--red)"; tr.appendChild(st);
+        var tp = el("td", null, usd(o.take_profit)); tp.style.color = "var(--green-b)"; tr.appendChild(tp);
+        tr.appendChild(el("td", null, typeof o.risk_reward_ratio === "number" ? o.risk_reward_ratio.toFixed(2) : "—"));
+        tr.appendChild(el("td", "muted", o.setup_type ? o.setup_type.toLowerCase() : "—"));
+      } else {
+        for (var c = 0; c < 4; c++) tr.appendChild(el("td", "muted", "—"));
+        tr.appendChild(el("td", "muted", o.setup ? "see detail" : "—"));
+      }
 
       tb.appendChild(tr);
     });
@@ -440,7 +460,7 @@
   function renderRight() {
     var col = $("colRight"); col.textContent = "";
     var rows = visibleRows();
-    var pick = rows.filter(function (r) { return state.selected === r.o.symbol + "|" + r.agent.id; })[0] || rows[0];
+    var pick = rows.filter(function (r) { return state.selected === rowKey(r.o, r.agent.id); })[0] || rows[0];
 
     if (!pick) {
       var p0 = el("div", "panel");
@@ -471,16 +491,20 @@
     vwrap.appendChild(d2);
     vwrap.appendChild(document.createTextNode(agent.name || "—"));
     mk.appendChild(vwrap); meta.appendChild(mk);
-    if (agent.strategy) {
+    var strategyLabel = o.strategy || agent.strategy;
+    if (strategyLabel) {
       var sk = el("div", "kv");
       sk.appendChild(el("div", "k", "Strategy"));
-      sk.appendChild(el("div", "v", agent.strategy));
+      sk.appendChild(el("div", "v", strategyLabel));
       meta.appendChild(sk);
     }
     p.appendChild(meta); col.appendChild(p);
 
-    // Score breakdown — driven by the agent's own declared dimensions.
-    var dims = pick.feed.dimensions || [];
+    // Score breakdown — an opportunity's own dimensions win when present
+    // (Opy: each strategy scores on different axes, so a single per-agent
+    // declaration can't describe all of them), else the agent-level
+    // dimensions every row shares (Monu).
+    var dims = o.dimensions || pick.feed.dimensions || [];
     if (dims.length && o.breakdown) {
       var pd = el("div", "panel");
       pd.appendChild(el("div", "ph", "Score breakdown"));
@@ -528,7 +552,31 @@
       risk.appendChild(el("div", "v neg", "$" + usd(Math.abs(o.entry - o.stop_loss))));
       lb.appendChild(risk);
       pl.appendChild(lb); col.appendChild(pl);
+    } else if (o.setup) {
+      // Declarative setup block: for strategies whose trade numbers aren't
+      // entry/stop/target (a credit spread's are credit/max-loss/ROC/POP, a
+      // LEAPS call's are premium/breakeven/leverage/%ITM), the agent
+      // supplies its own field list rather than the page assuming a shape
+      // that doesn't fit. Monu never sets this - the branch above always
+      // wins for its rows, so this is purely additive.
+      var pl2 = el("div", "panel");
+      var lh2 = el("div", "ph", "Setup");
+      if (o.setup.label) lh2.appendChild(el("span", "r", o.setup.label));
+      pl2.appendChild(lh2);
+      var lb2 = el("div", "pb"), g2 = el("div", "lv4");
+      (o.setup.fields || []).forEach(function (f) {
+        var box = el("div");
+        box.appendChild(el("div", "lk", f.label));
+        var v = el("div", "lv", f.value);
+        if (f.tone === "pos") v.style.color = "var(--green-b)";
+        else if (f.tone === "neg") v.style.color = "var(--red)";
+        box.appendChild(v); g2.appendChild(box);
+      });
+      lb2.appendChild(g2);
+      pl2.appendChild(lb2); col.appendChild(pl2);
     }
+    // Neither branch: a signal without a specific structure (Opy's RSI rows) -
+    // the reasoning panel below is where that row's explanation lives instead.
 
     // Bracketed reasoning is the agent's failure sentinel — shown plainly
     // rather than attributed to the agent as if it had spoken.

@@ -1,0 +1,933 @@
+{
+  "agent": {
+    "id": "OPY",
+    "name": "Opy",
+    "strategy": "Options",
+    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
+    "accent": "#8a7fa8"
+  },
+  "scan_date": "2026-08-14T09:43:24.474727",
+  "context": [
+    {
+      "label": "Universe",
+      "value": "503 symbols"
+    },
+    {
+      "label": "Passed Filters",
+      "value": "501"
+    },
+    {
+      "label": "Published",
+      "value": "19"
+    },
+    {
+      "label": "Data",
+      "value": "CBOE delayed (~15m)"
+    },
+    {
+      "label": "Model",
+      "value": "reasoning off"
+    }
+  ],
+  "opportunities": [
+    {
+      "symbol": "PLTR",
+      "price": 179.01,
+      "score": 87,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 28.0,
+        "quality": 15.5,
+        "liquidity": 18.2,
+        "open_interest": 11.6,
+        "spread_tightness": 14.3
+      },
+      "setup": {
+        "label": "135C \u00b7 \u03940.80 \u00b7 398d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$68.75",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$203.75"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.6x"
+          },
+          {
+            "label": "% ITM",
+            "value": "24.6%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 1
+    },
+    {
+      "symbol": "SMCI",
+      "price": 39.16,
+      "score": 86,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 58.8,
+        "liquidity": 27.2
+      },
+      "setup": null,
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 2
+    },
+    {
+      "symbol": "LIN",
+      "price": 478.2,
+      "score": 86,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 47.7,
+        "liquidity": 38.2
+      },
+      "setup": null,
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 3
+    },
+    {
+      "symbol": "CVS",
+      "price": 94.99,
+      "score": 82,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 47.7,
+        "liquidity": 34.5
+      },
+      "setup": null,
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 4
+    },
+    {
+      "symbol": "MSFT",
+      "price": 496.88,
+      "score": 80,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 25.9,
+        "quality": 18.2,
+        "liquidity": 20.0,
+        "open_interest": 2.0,
+        "spread_tightness": 13.6
+      },
+      "setup": {
+        "label": "410C \u00b7 \u03940.80 \u00b7 398d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$127.90",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$537.90"
+          },
+          {
+            "label": "Leverage",
+            "value": "3.9x"
+          },
+          {
+            "label": "% ITM",
+            "value": "17.5%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 5
+    },
+    {
+      "symbol": "ABNB",
+      "price": 185.13,
+      "score": 80,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.6,
+        "liquidity": 22.4
+      },
+      "setup": null,
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 6
+    },
+    {
+      "symbol": "CRWD",
+      "price": 225.53,
+      "score": 80,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 58.8,
+        "liquidity": 20.8
+      },
+      "setup": null,
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 7
+    },
+    {
+      "symbol": "NEE",
+      "price": 86.01,
+      "score": 79,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 40.0,
+        "range_centrality": 15.6,
+        "liquidity": 12.0,
+        "spread_tightness": 3.0,
+        "open_interest": 8.0
+      },
+      "setup": {
+        "label": "2026-09-18 \u00b7 34d \u00b7 IV/HV 1.34x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b14.5%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "20.6%"
+          },
+          {
+            "label": "HV30",
+            "value": "15.4%"
+          },
+          {
+            "label": "Spread",
+            "value": "9.0%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 8
+    },
+    {
+      "symbol": "WDAY",
+      "price": 206.45,
+      "score": 79,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 51.6,
+        "liquidity": 27.2
+      },
+      "setup": null,
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 9
+    },
+    {
+      "symbol": "MNST",
+      "price": 46.68,
+      "score": 75,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 45.0,
+        "liquidity": 30.0
+      },
+      "setup": null,
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 10
+    },
+    {
+      "symbol": "AMZN",
+      "price": 265.13,
+      "score": 74,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 24.5,
+        "quality": 7.3,
+        "liquidity": 19.1,
+        "open_interest": 10.9,
+        "spread_tightness": 12.3
+      },
+      "setup": {
+        "label": "220C \u00b7 \u03940.79 \u00b7 335d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$68.25",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$288.25"
+          },
+          {
+            "label": "Leverage",
+            "value": "3.9x"
+          },
+          {
+            "label": "% ITM",
+            "value": "17.0%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 11
+    },
+    {
+      "symbol": "F",
+      "price": 13.89,
+      "score": 71,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 24.0,
+        "range_centrality": 19.2,
+        "liquidity": 9.0,
+        "spread_tightness": 9.0,
+        "open_interest": 10.0
+      },
+      "setup": {
+        "label": "2026-09-18 \u00b7 34d \u00b7 IV/HV 1.07x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b16.3%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "29.0%"
+          },
+          {
+            "label": "HV30",
+            "value": "27.1%"
+          },
+          {
+            "label": "Spread",
+            "value": "6.5%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 12
+    },
+    {
+      "symbol": "RCL",
+      "price": 309.88,
+      "score": 65,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 32.0,
+        "range_centrality": 17.2,
+        "liquidity": 6.0,
+        "spread_tightness": 6.0,
+        "open_interest": 4.0
+      },
+      "setup": {
+        "label": "2026-09-18 \u00b7 34d \u00b7 IV/HV 1.09x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b18.0%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "37.8%"
+          },
+          {
+            "label": "HV30",
+            "value": "34.7%"
+          },
+          {
+            "label": "Spread",
+            "value": "7.4%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 13
+    },
+    {
+      "symbol": "PYPL",
+      "price": 60.59,
+      "score": 65,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 28.0,
+        "quality": 20.0,
+        "liquidity": 1.8,
+        "open_interest": 13.6,
+        "spread_tightness": 1.4
+      },
+      "setup": {
+        "label": "50C \u00b7 \u03940.80 \u00b7 489d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$16.00",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$66.00"
+          },
+          {
+            "label": "Leverage",
+            "value": "3.8x"
+          },
+          {
+            "label": "% ITM",
+            "value": "17.5%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 14
+    },
+    {
+      "symbol": "ANET",
+      "price": 203.62,
+      "score": 59,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 13.6,
+        "quality": 11.8,
+        "liquidity": 13.6,
+        "open_interest": 12.3,
+        "spread_tightness": 7.5
+      },
+      "setup": {
+        "label": "150C \u00b7 \u03940.81 \u00b7 524d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$89.00",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$239.00"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.3x"
+          },
+          {
+            "label": "% ITM",
+            "value": "26.3%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 15
+    },
+    {
+      "symbol": "KO",
+      "price": 87.42,
+      "score": 58,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 16.4,
+        "quality": 4.5,
+        "liquidity": 12.7,
+        "open_interest": 14.3,
+        "spread_tightness": 9.9
+      },
+      "setup": {
+        "label": "75C \u00b7 \u03940.81 \u00b7 524d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$17.55",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$92.55"
+          },
+          {
+            "label": "Leverage",
+            "value": "5.0x"
+          },
+          {
+            "label": "% ITM",
+            "value": "14.2%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 16
+    },
+    {
+      "symbol": "CCL",
+      "price": 28.42,
+      "score": 49,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 8.0,
+        "range_centrality": 19.6,
+        "liquidity": 3.0,
+        "spread_tightness": 12.0,
+        "open_interest": 6.0
+      },
+      "setup": {
+        "label": "2026-09-18 \u00b7 34d \u00b7 IV/HV 1.03x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b18.5%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "39.2%"
+          },
+          {
+            "label": "HV30",
+            "value": "38.2%"
+          },
+          {
+            "label": "Spread",
+            "value": "5.1%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 17
+    },
+    {
+      "symbol": "TXN",
+      "price": 273.43,
+      "score": 46,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 16.0,
+        "range_centrality": 12.8,
+        "liquidity": 15.0,
+        "spread_tightness": 0.0,
+        "open_interest": 2.0
+      },
+      "setup": {
+        "label": "2026-09-18 \u00b7 34d \u00b7 IV/HV 1.05x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b18.7%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "40.6%"
+          },
+          {
+            "label": "HV30",
+            "value": "38.5%"
+          },
+          {
+            "label": "Spread",
+            "value": "12.8%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 18
+    },
+    {
+      "symbol": "DVA",
+      "price": 179.17,
+      "score": 40,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 30.0,
+        "liquidity": 10.0
+      },
+      "setup": null,
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]",
+      "rank": 19
+    }
+  ]
+}
