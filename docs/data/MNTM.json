@@ -6,7 +6,7 @@
     "description": "Buys strength: breakouts confirmed by volume, riding the trend until momentum fades.",
     "accent": "#c8974a"
   },
-  "scan_date": "2026-08-13T15:04:54.292569",
+  "scan_date": "2026-08-13T23:02:27.718961",
   "dimensions": [
     {
       "key": "trend_strength",
@@ -60,30 +60,30 @@
   "opportunities": [
     {
       "rank": 1,
-      "symbol": "VRTX",
-      "price": 525.5499877929688,
-      "score": 96,
+      "symbol": "TTWO",
+      "price": 241.91000366210938,
+      "score": 97,
       "breakdown": {
         "trend_strength": 25,
         "volume": 20,
         "rsi": 15,
         "macd": 15,
-        "relative": 15,
-        "breakout": 6
+        "relative": 12,
+        "breakout": 10
       },
-      "entry": 525.5499877929688,
-      "stop_loss": 502.70611629796593,
-      "take_profit": 559.815795035473,
-      "risk_reward_ratio": 1.5000000000000013,
-      "setup_type": "EXTENDED",
-      "extension_pct": 7.234419133472253,
+      "entry": 241.1824981689453,
+      "stop_loss": 228.68048127266323,
+      "take_profit": 259.9355235133684,
+      "risk_reward_ratio": 1.500000000000001,
+      "setup_type": "PULLBACK",
+      "extension_pct": 0.30164108037991444,
       "market_regime": "UPTREND",
-      "reasoning": "# VRTX Momentum Setup\n\n**Why the momentum is hot:** VRTX is firing on all cylinders with perfect trend strength and volume backing\u2014this isn't just price movement, it's institutional conviction. The RSI and MACD are both confirming upside without showing overbought extremes, which is the sweet spot for continuation trades.\n\n**Best aligned signals:** Trend Strength (25/25) and Volume (20/20) are your confidence builders here; when price moves this cleanly on heavy volume, it typically has legs. The RSI and MACD alignment adds technical confirmation that buyers are in control.\n\n**Key risk to monitor:** That breakout quality score of 6/10 is the yellow flag\u2014it suggests this move may lack the structural robustness of a textbook breakout. Watch for volume to hold as you approach $559.82; if it drops off into resistance, you could see profit-taking stall the trade before target. Your 1.50:1 R/R gives you room to manage, so don't get stubborn if price rejects near $545-550."
+      "reasoning": "# TTWO Momentum Analysis\n\n**Why the momentum is hot:** TTWO is firing on all cylinders with perfect trend strength and volume confirmation\u2014this isn't a weak breakout, it's a sustained move with institutional backing. The stock is already near your entry and showing textbook momentum conditions across every major indicator.\n\n**Best-aligned signals:** RSI, MACD, and relative performance are your heaviest hitters here, all confirming upside momentum without overextension. The 20/20 volume score is particularly bullish; this breakout has real participation behind it.\n\n**Key risk to monitor:** With a 97/100 score, you're entering near peak momentum conditions, which means mean reversion risk is elevated. Watch for any volume drying up on pops toward $259.94\u2014that's your signal the move might be exhausting. The 1.50:1 R/R is solid, so your stop at $228.68 gives you room, but don't get greedy chasing if the setup starts to deteriorate."
     },
     {
       "rank": 2,
       "symbol": "CVX",
-      "price": 196.5500030517578,
+      "price": 197.6999969482422,
       "score": 93,
       "breakdown": {
         "trend_strength": 25,
@@ -93,19 +93,19 @@
         "relative": 12,
         "breakout": 6
       },
-      "entry": 191.97150039672852,
-      "stop_loss": 185.47222239107091,
-      "take_profit": 201.72041740521493,
+      "entry": 192.02900009155275,
+      "stop_loss": 185.38936520394876,
+      "take_profit": 201.98845242295874,
       "risk_reward_ratio": 1.5000000000000022,
       "setup_type": "PULLBACK",
-      "extension_pct": 2.3849908166406775,
+      "extension_pct": 2.953198138815339,
       "market_regime": "UPTREND",
-      "reasoning": "# CVX Momentum Setup Analysis\n\n**Why the Momentum?**\nCVX is displaying exceptional momentum with a 93/100 score driven by perfect trend strength and volume confirmation\u2014the stock is moving decisively in one direction with conviction behind it. The RSI and MACD are both firing on all cylinders, indicating strong directional bias without overbought extremes that would suggest a pullback.\n\n**Best Aligned Indicators:**\nYour core momentum drivers are locked in: perfect trend strength (25/25), volume support (20/20), and both oscillators aligned (RSI + MACD = 30/30). This trifecta is the holy grail for momentum traders\u2014you've got direction, participation, and velocity all confirming the move.\n\n**Key Risk to Monitor:**\nThe breakout quality score of only 6/10 is a yellow flag here. This suggests CVX may have entered this momentum phase without clean technical structure or may be getting extended from its breakout point. Watch for a retest of $191.97\u2014if volume dries up on a pullback, the momentum narrative weakens quickly. Given the strong setup, it's worth trading, but don't chase it if it fails to hold the entry cleanly."
+      "reasoning": "# CVX Momentum Setup Analysis\n\n**Why the momentum is real:** CVX is firing on all cylinders with perfect trend strength, volume, and oscillator alignment\u2014this is textbook strong uptrend behavior with conviction behind it. The stock has broken through resistance and is holding gains with institutional-grade volume support.\n\n**Best-aligned indicators:** Your RSI, MACD, and trend strength are in complete agreement (25/25 + 15/15 + 15/15), which is rare and reliable. Volume confirmation at 20/20 tells you this isn't a weak bounce\u2014money is actually rotating into the position.\n\n**Key risk to watch:** The breakout quality score of only 6/10 is your red flag. Despite the strong momentum, the breakout itself wasn't as clean as ideal, suggesting potential resistance or profit-taking overhead. Watch for rejection at $201.99; if it fails there, momentum could reverse quickly given how extended you already are from the $192 entry.\n\n**Verdict:** High-probability setup with solid risk/reward, but respect that 6/10 breakout score\u2014it suggests tighter stop discipline matters here more than usual."
     },
     {
       "rank": 3,
-      "symbol": "APO",
-      "price": 140.86000061035156,
+      "symbol": "VRTX",
+      "price": 516.4400024414062,
       "score": 93,
       "breakdown": {
         "trend_strength": 25,
@@ -115,19 +115,19 @@
         "relative": 12,
         "breakout": 6
       },
-      "entry": 140.86000061035156,
-      "stop_loss": 133.82758158243,
-      "take_profit": 151.40862915223389,
-      "risk_reward_ratio": 1.5,
+      "entry": 516.4400024414062,
+      "stop_loss": 493.06113683485603,
+      "take_profit": 551.5083008512315,
+      "risk_reward_ratio": 1.4999999999999976,
       "setup_type": "EXTENDED",
-      "extension_pct": 11.26997588839404,
+      "extension_pct": 5.3288527637296275,
       "market_regime": "UPTREND",
-      "reasoning": "# APO Momentum Setup Analysis\n\n**Why the momentum is strong:** APO is flashing a textbook momentum setup with a 93/100 score, driven by exceptional trend strength and volume confirmation\u2014the stock is moving decisively with institutional participation behind it. Perfect scores across Trend Strength, Volume, RSI, and MACD indicate buyers are in complete control with no overbought exhaustion signals yet.\n\n**Best-aligned indicators:** Your core momentum drivers are locked in\u2014the trend is clean, volume is validating the move, and both RSI (15/15) and MACD (15/15) confirm upward momentum without divergence warnings. This alignment is rare and suggests the move has room to run toward your $151.41 target.\n\n**Key risk to monitor:** The Breakout Quality score of only 6/10 is the red flag here\u2014while momentum is strong, the quality of the breakout setup itself is weaker than ideal. Watch for potential false breakouts or pullbacks that could trigger your $133.83 stop; consider taking partial profits at $145-147 if the move accelerates quickly, rather than holding the full position to target."
+      "reasoning": "# VRTX Momentum Analysis\n\n**Why the momentum is real:** VRTX is displaying exceptional trend strength with perfect volume and RSI confirmation\u2014the stock is moving decisively higher with conviction behind it, indicating genuine institutional accumulation rather than a weak rally.\n\n**Best-aligned signals:** Your trend strength (25/25) and volume (20/20) are firing on all cylinders, backed by RSI and MACD in full agreement. This combination suggests the move has legs and isn't just noise.\n\n**Key risk to watch:** The breakout quality score (6/10) is your red flag here\u2014despite the strong momentum, the entry setup itself is relatively weak, meaning you're chasing into strength. Watch for resistance near $551.51; if volume dries up there, you could see a sharp reversal. Consider taking partial profits early rather than holding the full position to the target."
     },
     {
       "rank": 4,
       "symbol": "IBKR",
-      "price": 92.2300033569336,
+      "price": 91.41999816894531,
       "score": 93,
       "breakdown": {
         "trend_strength": 25,
@@ -137,41 +137,41 @@
         "relative": 12,
         "breakout": 6
       },
-      "entry": 90.24200019836425,
-      "stop_loss": 85.3584073253169,
-      "take_profit": 97.56738950793527,
-      "risk_reward_ratio": 1.5,
+      "entry": 90.20149993896484,
+      "stop_loss": 85.310407098523,
+      "take_profit": 97.53813919962762,
+      "risk_reward_ratio": 1.5000000000000029,
       "setup_type": "PULLBACK",
-      "extension_pct": 2.2029688550779447,
+      "extension_pct": 1.35086249209267,
       "market_regime": "UPTREND",
-      "reasoning": "# IBKR Momentum Trade Setup\n\n**Why the momentum is real:** IBKR is firing on all cylinders with perfect trend strength and volume confirmation\u2014the stock is moving decisively in one direction with institutional backing. The RSI and MACD are both flashing green, meaning there's room to run before overbought territory becomes a concern.\n\n**Best-aligned signals:** Your trend strength (25/25) and volume (20/20) are the anchors here\u2014this isn't a thin, choppy move. Combined with clean RSI and MACD alignment, you've got confluence that rarely shows up this cleanly.\n\n**Key risk to monitor:** That 6/10 breakout quality score is your yellow flag. The stock is already $1.99 above your entry, which means you're chasing rather than leading. Watch for profit-taking on any intraday pullback\u2014if volume dries up on a dip toward $90.24, this momentum could stall fast.\n\n**Bottom line:** Solid 1.50:1 R/R with strong technicals, but enter tight and don't get fomo'd into a position that's already moved. The setup works *if* you respect the entry discipline."
+      "reasoning": "# IBKR Momentum Setup Analysis\n\n**Why momentum is firing:** IBKR is in a textbook strong uptrend with excellent volume confirmation and overbought RSI (15/15), signaling conviction behind the move. The MACD is in full agreement, creating a rare alignment where trend, velocity, and money flow are all pointing the same direction.\n\n**Most aligned signals:** Trend Strength and Volume are your anchors here\u2014both maxed out at 25/20\u2014while RSI and MACD provide clean confirmation that this isn't just price action noise. The 1.50:1 risk/reward also gives you solid margin for error on your stop.\n\n**Key risk to watch:** The Breakout Quality score of only 6/10 stands out against the rest of your setup. This suggests the initial impulse move may be losing some steam, so watch for volume drying up on any pullback toward $90.20\u2014that's where you'd want to see buyers step back in, or consider taking profit early if hesitation appears."
     },
     {
       "rank": 5,
-      "symbol": "FOXA",
-      "price": 64.57499694824219,
+      "symbol": "GEN",
+      "price": 29.56999969482422,
       "score": 93,
       "breakdown": {
         "trend_strength": 25,
         "volume": 20,
         "rsi": 15,
         "macd": 15,
-        "relative": 8,
-        "breakout": 10
+        "relative": 12,
+        "breakout": 6
       },
-      "entry": 64.57499694824219,
-      "stop_loss": 61.6072949310581,
-      "take_profit": 69.02654997401832,
-      "risk_reward_ratio": 1.500000000000001,
+      "entry": 29.56999969482422,
+      "stop_loss": 28.128047865213293,
+      "take_profit": 31.732927439240605,
+      "risk_reward_ratio": 1.4999999999999987,
       "setup_type": "EXTENDED",
-      "extension_pct": 9.447756141477852,
+      "extension_pct": 7.355502233183306,
       "market_regime": "UPTREND",
-      "reasoning": "# FOXA Momentum Setup Analysis\n\n**Why the momentum is strong:** FOXA is firing on all cylinders with perfect trend strength and volume confirmation\u2014the stock is moving decisively higher with conviction behind it. RSI and MACD are both at maximum scores, showing overbought conditions that are actually *sustaining* rather than reversing, which is the hallmark of genuine momentum.\n\n**Best-aligned indicators:** Your trend strength (25/25) and volume (20/20) are the real story here\u2014this isn't a weak breakout. The perfect RSI and MACD readings confirm the move is accelerating, not fading, giving you high-probability entry confirmation at current levels.\n\n**Key risk to watch:** That 8/15 relative performance score is your red flag. While FOXA is strong in absolute terms, it's lagging its peers, which could mean sector rotation is starting to work against you. If the broader market or media stocks lose momentum, this 1.50:1 R/R setup could get squeezed\u2014watch for volume decline as your early warning sign to tighten stops."
+      "reasoning": "# GEN Momentum Setup Analysis\n\n**Why the momentum is here:** GEN is firing on all cylinders with perfect trend strength and volume confirmation\u2014this isn't a weak rally. The RSI and MACD are both at peak alignment, signaling strong directional conviction with room to run before overbought conditions become a concern.\n\n**Strongest indicators:** Your trend strength (25/25) and volume (20/20) are doing the heavy lifting here, backed by pristine RSI and MACD readings. This combination tells you buyers are in control with institutional participation, not just retail chasing.\n\n**Key risk:** That breakout quality score of 6/10 is the red flag\u2014it suggests the recent move may lack the structural support you'd want in a perfect setup. Watch for volume deterioration on any pullback to your $28.13 stop; if volume dries up, conviction may be fading faster than the price action shows.\n\n**Bottom line:** Strong momentum with excellent technicals, but respect that 6/10 breakout quality by managing position size and staying tight on your stop."
     },
     {
       "rank": 6,
-      "symbol": "NWSA",
-      "price": 28.920000076293945,
+      "symbol": "NWS",
+      "price": 32.93000030517578,
       "score": 93,
       "breakdown": {
         "trend_strength": 25,
@@ -181,41 +181,19 @@
         "relative": 12,
         "breakout": 6
       },
-      "entry": 28.15850019454956,
-      "stop_loss": 26.88932398823397,
-      "take_profit": 30.06226450402295,
-      "risk_reward_ratio": 1.5,
+      "entry": 31.995499897003175,
+      "stop_loss": 30.561048259442245,
+      "take_profit": 34.14717735334457,
+      "risk_reward_ratio": 1.4999999999999987,
       "setup_type": "PULLBACK",
-      "extension_pct": 2.7043339541634497,
+      "extension_pct": 2.9207245118246634,
       "market_regime": "UPTREND",
-      "reasoning": "# NWSA Momentum Analysis\n\n**Why the momentum is real:** NWSA is displaying textbook bullish momentum with perfect trend strength and exceptional volume backing\u2014the stock is riding a clear directional wave with institutional participation. The RSI and MACD are both firing on all cylinders, confirming upside acceleration without overextension.\n\n**Your strongest confirmations:** Trend Strength and Volume are your heavyweights here, paired with perfectly aligned oscillators (RSI + MACD at 15/15 each). This isn't just price moving higher; it's *conviction* behind the move, which is what separates real momentum from noise.\n\n**Key risk:** Watch that Breakout Quality score (6/10)\u2014it's your yellow flag. While price is at $28.92 just above your $28.16 entry, the weaker breakout metric suggests resistance could be more formidable than the other indicators imply. If volume dries up around $29.50-$30.00, this could stall before your profit target.\n\n**Bottom line:** Strong setup with good risk management built in (1.5:1 R/R), but don't get complacent on position management\u2014volume confirmation on any breakout attempt above $29 is critical."
+      "reasoning": "# NWS Momentum Setup\n\n**Why the Momentum:** NWS is displaying exceptional momentum with a 93/100 score\u2014perfect trend strength, volume confirmation, and both RSI and MACD aligned, indicating strong directional conviction and buying pressure with institutional participation.\n\n**Best Aligned Indicators:** The standout signals are your trend strength (25/25) combined with healthy volume (20/20) and RSI/MACD both at maximum scores, creating a textbook bullish confluence that minimizes false signals.\n\n**Key Risk:** Watch the weaker breakout quality score (6/10)\u2014this suggests the move may lack the structural strength for a clean breakout, meaning the stock could stall before hitting your $34.15 target or pull back sharply below $32.00, so tight stop management is critical here."
     },
     {
       "rank": 7,
-      "symbol": "NWS",
-      "price": 32.9900016784668,
-      "score": 93,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 12,
-        "breakout": 6
-      },
-      "entry": 31.992000102996826,
-      "stop_loss": 30.518061877014137,
-      "take_profit": 34.20290744197086,
-      "risk_reward_ratio": 1.499999999999999,
-      "setup_type": "PULLBACK",
-      "extension_pct": 3.119534797002216,
-      "market_regime": "UPTREND",
-      "reasoning": "# NWS Momentum Setup Analysis\n\n**Why the Momentum:** NWS is firing on all cylinders with a 93/100 momentum score\u2014you've got a strong trending move with perfect volume confirmation and RSI/MACD alignment, suggesting real institutional interest behind this move. The stock is already extended above your entry level, so this is a chase setup requiring strict discipline.\n\n**Key Aligned Indicators:** Trend Strength, Volume, and momentum oscillators (RSI/MACD) are all maxed out at near-perfect scores, which is relatively rare and validates the directional conviction. However, note that the Breakout Quality score (6/10) is your weakest link\u2014this suggests the move may lack structural support or the breakout level wasn't as clean as ideal.\n\n**Key Risk to Watch:** With momentum this stretched and breakout quality lagging, you're vulnerable to a sharp pullback if volume dries up or sentiment shifts. Keep your stop tight at $30.52 (1.47% below entry) and be ready to exit early if you see volume declining on any pullback\u2014don't wait for a full stop-loss hit."
-    },
-    {
-      "rank": 8,
       "symbol": "ABNB",
-      "price": 182.16000366210938,
+      "price": 185.1300048828125,
       "score": 90,
       "breakdown": {
         "trend_strength": 25,
@@ -225,107 +203,129 @@
         "relative": 15,
         "breakout": 10
       },
-      "entry": 182.16000366210938,
-      "stop_loss": 172.91907902098777,
-      "take_profit": 196.02139062379177,
-      "risk_reward_ratio": 1.4999999999999984,
+      "entry": 185.1300048828125,
+      "stop_loss": 175.7551516699438,
+      "take_profit": 199.1922847021155,
+      "risk_reward_ratio": 1.499999999999997,
       "setup_type": "EXTENDED",
-      "extension_pct": 16.581841635185494,
+      "extension_pct": 18.370134793168056,
       "market_regime": "UPTREND",
-      "reasoning": "# ABNB Momentum Setup Analysis\n\n**Why the momentum is here:** ABNB is firing on nearly all cylinders\u2014perfect trend strength, exceptional volume, and a clean MACD crossover are creating textbook momentum conditions. The stock is outperforming its peers and just broke through key resistance with conviction, which is exactly what momentum traders live for.\n\n**Strongest signals:** Your volume and breakout quality (20/20 and 10/10) are the real anchors here. Combined with the 15/15 MACD signal, you've got institutional accumulation backing this move\u2014not just retail chasing. Trend strength at 25/25 confirms this isn't noise.\n\n**Key risk:** Watch that RSI at only 5/15\u2014it's a glaring yellow flag in an otherwise green setup. You're extended here, which means mean reversion could snap back fast. The 1.50:1 risk/reward is solid, but respect your $172.92 stop if momentum breaks; don't let a winning trade turn into a lesson on holding through reversals.\n\n*This is a strong setup with good risk management, but that low RSI suggests taking profits into strength rather than bag-holding.*"
+      "reasoning": "# ABNB Momentum Trading Setup\n\n**Why the momentum is firing:** ABNB is displaying exceptional trend strength with perfect volume confirmation and a clean breakout\u2014the stock is moving decisively higher with institutional backing. The MACD is in full bullish alignment and relative performance shows it's outpacing the broader market, creating a classic momentum setup.\n\n**Best-aligned indicators:** Your trend strength (25/25) and volume (20/20) are the real drivers here\u2014this isn't a weak rally. MACD confirmation (15/15) and breakout quality (10/10) validate that buyers are in control, giving this setup structural integrity.\n\n**Key risk to monitor:** Watch that RSI reading (5/15)\u2014it's surprisingly weak for a 90/100 score and suggests overbought conditions could snap this move. If price hits resistance near $199 without RSI climbing above 70, be ready to take profits early rather than chase further.\n\n*The 1.50:1 R/R is solid for momentum trading. This setup works best if you're nimble with exits.*"
+    },
+    {
+      "rank": 8,
+      "symbol": "LITE",
+      "price": 880.4099731445312,
+      "score": 89,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 8,
+        "breakout": 6
+      },
+      "entry": 880.4099731445312,
+      "stop_loss": 755.3760546625842,
+      "take_profit": 1067.9608508674519,
+      "risk_reward_ratio": 1.5000000000000009,
+      "setup_type": "EXTENDED",
+      "extension_pct": 11.681022116809379,
+      "market_regime": "UPTREND",
+      "reasoning": "# LITE Momentum Setup\n\n**Why the momentum is firing:** LITE is showing textbook momentum strength with perfect trend alignment and exceptional volume confirmation\u2014the kind of setup where price is decisively moving in one direction with conviction behind it. The RSI and MACD are both firing in sync, indicating the move has real legs and isn't just noise.\n\n**Best-aligned indicators:** Trend Strength (25/25) and Volume (20/20) are your powerhouses here, backed by a clean RSI/MACD agreement. This trio tells you the institutional money is likely already in the trade and retail is following\u2014that's where momentum traders win.\n\n**Key risk to watch:** The Relative Performance score (8/15) is notably soft, suggesting LITE might be outrunning broader market strength or its peer group. If the market corrects or sector rotation happens, this momentum could evaporate fast\u2014watch your stop loss at $755.38 religiously, and don't let a winner turn into a lesson."
     },
     {
       "rank": 9,
-      "symbol": "LITE",
-      "price": 936.0521240234375,
-      "score": 89,
+      "symbol": "MRK",
+      "price": 135.5500030517578,
+      "score": 88,
       "breakdown": {
         "trend_strength": 25,
-        "volume": 20,
+        "volume": 12,
         "rsi": 15,
         "macd": 15,
-        "relative": 8,
+        "relative": 15,
         "breakout": 6
       },
-      "entry": 936.0521240234375,
-      "stop_loss": 814.6085571916207,
-      "take_profit": 1118.2174742711627,
-      "risk_reward_ratio": 1.4999999999999996,
+      "entry": 135.5500030517578,
+      "stop_loss": 130.5204288524672,
+      "take_profit": 143.09436435069372,
+      "risk_reward_ratio": 1.5,
       "setup_type": "EXTENDED",
-      "extension_pct": 18.321719843225022,
+      "extension_pct": 4.632630549205077,
       "market_regime": "UPTREND",
-      "reasoning": "# LITE Momentum Setup Analysis\n\n**Why the momentum is strong:** LITE is displaying textbook momentum with a perfect trend structure and exceptional volume confirmation\u2014the stock is moving decisively higher with conviction behind every move. RSI and MACD are both firing on all cylinders, signaling sustained upside without overbought extremes yet.\n\n**Best-aligned indicators:** Trend Strength and Volume are your anchor points here (45/45 combined), meaning this isn't a weak rally\u2014it's backed by real participation. RSI and MACD alignment (30/30) confirms the move is still in its sweet spot with room to run before hitting exhaustion.\n\n**Key risk to monitor:** The Relative Performance score (8/15) is your caution flag\u2014LITE is outperforming, but not dramatically relative to its peers. If the broader market turns or sector rotation happens, this momentum could evaporate faster than the setup suggests, so honor that 13% stop-loss buffer at $814.61.\n\n**Bottom line:** This is a quality entry with solid R:R. The setup is technically clean, but stay nimble\u2014momentum setups are best when you're ready to exit quickly if the structure breaks."
+      "reasoning": "# MRK Momentum Analysis\n\n**Why the momentum:** MRK is displaying textbook upside momentum with perfect trend strength (25/25), maxed-out RSI (15/15), and clean MACD alignment (15/15)\u2014this is a stock in a genuine directional move, not a false signal.\n\n**Best-aligned indicators:** Your RSI and MACD are firing on all cylinders, and relative performance confirms MRK is outpacing its peers. The trend strength score is exceptional, suggesting institutional accumulation rather than retail noise.\n\n**Key risk to watch:** Volume is the weak link at 12/20\u2014you're getting a premium setup on lighter-than-ideal participation, which means conviction could fade on a pullback. Watch for volume confirmation on any continuation above $137; if volume drops further, this breakout becomes vulnerable to false breakout conditions.\n\n*The 1.50:1 risk/reward is solid, but size accordingly given the volume caveat.*"
     },
     {
       "rank": 10,
-      "symbol": "GEN",
-      "price": 28.899999618530273,
-      "score": 89,
+      "symbol": "PH",
+      "price": 1058.8699951171875,
+      "score": 88,
       "breakdown": {
         "trend_strength": 25,
-        "volume": 20,
+        "volume": 12,
         "rsi": 15,
         "macd": 15,
-        "relative": 8,
+        "relative": 15,
         "breakout": 6
       },
-      "entry": 28.899999618530273,
-      "stop_loss": 27.507333609465125,
-      "take_profit": 30.988998632127995,
-      "risk_reward_ratio": 1.4999999999999987,
+      "entry": 1058.8699951171875,
+      "stop_loss": 1016.7122590328644,
+      "take_profit": 1122.1065992436722,
+      "risk_reward_ratio": 1.5000000000000013,
       "setup_type": "EXTENDED",
-      "extension_pct": 5.0507968457506,
+      "extension_pct": 5.749788773517813,
       "market_regime": "UPTREND",
-      "reasoning": "# GEN Momentum Setup Analysis\n\n**Why the momentum is hot:** GEN is displaying textbook momentum with a 89/100 score driven by perfect trend strength and volume confirmation\u2014the stock is moving decisively in one direction with conviction behind it. RSI and MACD are both firing on all cylinders, indicating strong directional bias with room to run before overbought conditions take hold.\n\n**Best-aligned signals:** Your trend strength (25/25) and volume (20/20) are the real MVPs here, combined with technical confirmation from RSI and MACD (both 15/15). This trio of alignment tells you this isn't a weak pump\u2014there's institutional participation and structural support.\n\n**Key risk to monitor:** That Relative Performance score of only 8/15 is your yellow flag. While GEN has momentum internally, it's underperforming its peers, which means sector headwinds or rotation risk could kill this trade before your profit target. Watch for relative weakness breaking the momentum narrative.\n\n**Bottom line:** Strong technical setup with a 1.50:1 risk-reward, but validate that relative underperformance isn't a tell-tale sign of broader weakness before committing."
+      "reasoning": "# PH Momentum Trade Setup\n\n**Why PH Shows Strong Momentum:**\nPH is firing on all cylinders with perfect trend strength, RSI, and MACD alignment\u2014the trifecta of momentum confirmation. The stock is breaking out with relative outperformance, suggesting institutional accumulation is pushing it higher with conviction.\n\n**Best-Aligned Indicators:**\nYour RSI, MACD, and trend strength are flawless (25/25, 15/15, 15/15), creating a rare synchronized signal. This institutional-grade alignment is what elevates the momentum score to 88\u2014not just one indicator, but multiple confirming the same directional bias.\n\n**Key Risk to Monitor:**\nVolume is your weak link at 12/20, and breakout quality sits at 6/10\u2014meaning this move lacks the heavy participation and structural confirmation you'd ideally want at breakout. Watch for volume confirmation on the next candle, or be ready to exit if price stalls near resistance. With a $40.20 stop loss and 1.50:1 reward, you're well-positioned, but this setup would be significantly stronger with heavier volume behind it."
     },
     {
       "rank": 11,
-      "symbol": "COO",
-      "price": 77.20010375976562,
-      "score": 89,
+      "symbol": "DELL",
+      "price": 494.510009765625,
+      "score": 88,
       "breakdown": {
         "trend_strength": 25,
-        "volume": 20,
+        "volume": 12,
         "rsi": 15,
         "macd": 15,
-        "relative": 8,
+        "relative": 15,
         "breakout": 6
       },
-      "entry": 77.20010375976562,
-      "stop_loss": 74.60473389685149,
-      "take_profit": 81.09315855413683,
+      "entry": 494.510009765625,
+      "stop_loss": 443.1112974284031,
+      "take_profit": 571.6080782714579,
       "risk_reward_ratio": 1.5,
       "setup_type": "EXTENDED",
-      "extension_pct": 5.4566912261891165,
+      "extension_pct": 14.627655559602976,
       "market_regime": "UPTREND",
-      "reasoning": "# COO Momentum Setup\n\n**Why It's Moving:** COO is displaying textbook momentum with perfect trend strength and volume confirmation\u2014the stock is in a clean uptrend with institutional buying power backing it. The RSI and MACD are both firing on all cylinders, signaling strong directional conviction without overbought extremes.\n\n**Best Aligned Signals:** Your trend strength (25/25) and volume (20/20) are doing the heavy lifting here, with RSI and MACD providing clean technical confirmation. This is a high-probability setup where price action and volume are working together.\n\n**Key Risk:** The relative performance score (8/15) is lagging the overall momentum picture\u2014watch whether COO is outperforming its sector peers. If it's running on market-wide strength rather than stock-specific catalysts, a sector rotation could kill this trade quickly. Stick to your $74.60 stop loss religiously."
+      "reasoning": "# DELL Momentum Trading Setup\n\n**Why the momentum is real:** DELL is firing on all cylinders with maxed-out trend strength, RSI, and MACD\u2014this is a stock in a strong uptrend with genuine buying pressure behind it. The 88/100 score reflects a textbook momentum setup where price and momentum are aligned.\n\n**Your best confirmations:** The perfect scores on Trend Strength (25/25), RSI (15/15), and MACD (15/15) are your heavy hitters here\u2014these are telling you directional conviction is high and there's no overbought exhaustion yet. Relative Performance also confirms DELL is outpacing its peers.\n\n**One critical risk:** Watch that Volume score (12/20)\u2014it's the weak link in an otherwise stellar setup. If this momentum move runs without strong volume confirmation, you could see a sharp pullback or reversal. Size your position accordingly and respect that $443.11 stop; the 10.4% risk-to-reward is fair, but volume drying up would invalidate the setup faster than the other indicators."
     },
     {
       "rank": 12,
-      "symbol": "FOX",
-      "price": 57.290000915527344,
-      "score": 89,
+      "symbol": "EQIX",
+      "price": 1073.780029296875,
+      "score": 88,
       "breakdown": {
         "trend_strength": 25,
-        "volume": 20,
+        "volume": 12,
         "rsi": 15,
         "macd": 15,
-        "relative": 8,
+        "relative": 15,
         "breakout": 6
       },
-      "entry": 57.290000915527344,
-      "stop_loss": 54.77505510194804,
-      "take_profit": 61.0624196358963,
-      "risk_reward_ratio": 1.5,
-      "setup_type": "EXTENDED",
-      "extension_pct": 8.706584380319097,
+      "entry": 1041.0790069580078,
+      "stop_loss": 996.4096694700138,
+      "take_profit": 1108.0830131899986,
+      "risk_reward_ratio": 1.4999999999999976,
+      "setup_type": "PULLBACK",
+      "extension_pct": 3.1410701897081132,
       "market_regime": "UPTREND",
-      "reasoning": "# FOX Momentum Setup Analysis\n\n**Why the Momentum:** FOX is firing on all cylinders with perfect trend strength and volume confirmation\u2014the stock is moving decisively in one direction with conviction. RSI and MACD are aligned, indicating sustained upward pressure with no signs of exhaustion yet.\n\n**Best Aligned Indicators:** Your trend strength (25/25) and volume (20/20) are the real story here; they're validating that this isn't a weak pop but genuine institutional buying. The clean RSI and MACD scores confirm the move has legs and hasn't overextended into overbought territory.\n\n**Key Risk:** Watch that relative performance score (8/15)\u2014while FOX is strong in absolute terms, it's lagging its peers. If the broader market or media sector weakens, this momentum could evaporate quickly. Your 1.50:1 risk/reward gives you a reasonable margin, but position sizing is critical given this relative weakness."
+      "reasoning": "# EQIX Momentum Setup\n\n**Why the momentum is real:** EQIX is firing on all cylinders with maxed-out trend strength, RSI, and MACD signals\u2014this isn't just price movement, it's *conviction* behind it. The stock is already $32+ above your entry, showing the momentum is live and validated.\n\n**Best-aligned indicators:** Trend strength and RSI are your anchor here (25/25 and 15/15)\u2014meaning EQIX has genuine directional power without being overbought into dangerous territory. MACD confirmation adds confidence this isn't a false breakout.\n\n**Key risk:** Volume is only 12/20, which is the softest spot in this setup. If buyers step back, that thin volume could amplify a fast reversal, especially near resistance. Watch for volume confirmation on any pullback toward $1041\u2014if volume dries up further, consider tightening your stop or scaling down size.\n\n**Bottom line:** Strong technical alignment with a respectable 1.5:1 risk/reward, but don't ignore that volume weakness. It's tradeable, just manage position size accordingly."
     },
     {
       "rank": 13,
-      "symbol": "MRK",
-      "price": 134.61000061035156,
+      "symbol": "FDX",
+      "price": 339.3500061035156,
       "score": 88,
       "breakdown": {
         "trend_strength": 25,
@@ -335,19 +335,19 @@
         "relative": 15,
         "breakout": 6
       },
-      "entry": 129.50149955749512,
-      "stop_loss": 124.56406664555125,
-      "take_profit": 136.90764892541094,
-      "risk_reward_ratio": 1.5000000000000013,
-      "setup_type": "PULLBACK",
-      "extension_pct": 3.944742779282185,
+      "entry": 339.3500061035156,
+      "stop_loss": 327.61129909202117,
+      "take_profit": 356.95806662075734,
+      "risk_reward_ratio": 1.5000000000000024,
+      "setup_type": "EXTENDED",
+      "extension_pct": 7.46831420435005,
       "market_regime": "UPTREND",
-      "reasoning": "# MRK Momentum Setup Analysis\n\n**Why the momentum is firing:** MRK is displaying exceptional trend strength with a pristine RSI reading and MACD confirmation\u2014this is a clean uptrend with real directional conviction. The stock is already trading above your entry level ($134.61 vs. $129.50), suggesting the move is already in motion and you'd be catching the acceleration phase.\n\n**Best-aligned indicators:** Your RSI and MACD are firing on all cylinders (15/15 each), and the trend strength score of 25/25 is as good as it gets. The relative performance edge shows MRK outpacing peers, which adds conviction to the move.\n\n**Key risk to monitor:** Volume is your weak link at 12/20\u2014this momentum could lose steam if buyers step back. With only a 1.50:1 reward-to-risk ratio, you have limited margin for error, so strict stop discipline at $124.56 is critical. Watch for volume confirmation on any dips, or you risk getting shaken out before the move develops."
+      "reasoning": "# FDX Momentum Trading Setup\n\n**Why the Momentum is Strong:** FDX is firing on all cylinders with a perfect trend setup\u2014price is moving decisively higher with textbook RSI and MACD confirmations, showing genuine upside conviction rather than noise.\n\n**Key Aligned Indicators:** The real power here is the combination of maximum trend strength (25/25) paired with overbought but non-diverging momentum indicators (RSI 15/15, MACD 15/15), which suggests the move has legitimate legs rather than being stretched thin.\n\n**Primary Risk:** Volume is your concern at 12/20\u2014the breakout quality score of 6/10 reflects this weakness. You're getting strong directional momentum but on middling volume, which means conviction could fade quickly if buyers step back. Watch for volume drying up on any pullback toward your stop; that's your early warning signal.\n\n**Bottom Line:** This is a high-probability entry with a clean 1.50:1 risk/reward, but size accordingly given the volume cushion isn't as robust as the price action suggests."
     },
     {
       "rank": 14,
-      "symbol": "ANET",
-      "price": 208.71499633789062,
+      "symbol": "FAST",
+      "price": 51.34000015258789,
       "score": 88,
       "breakdown": {
         "trend_strength": 25,
@@ -357,19 +357,19 @@
         "relative": 15,
         "breakout": 6
       },
-      "entry": 208.71499633789062,
-      "stop_loss": 192.98562878625384,
-      "take_profit": 232.3090476653458,
-      "risk_reward_ratio": 1.4999999999999991,
+      "entry": 51.34000015258789,
+      "stop_loss": 49.43218583204295,
+      "take_profit": 54.20172163340531,
+      "risk_reward_ratio": 1.5000000000000038,
       "setup_type": "EXTENDED",
-      "extension_pct": 14.361090893100611,
+      "extension_pct": 5.834939596150955,
       "market_regime": "UPTREND",
-      "reasoning": "# ANET Momentum Analysis\n\n**Why momentum is firing:** ANET is showing exceptional trend strength with overbought RSI and bullish MACD confirmation\u2014this is textbook strong uptrend territory with the stock decisively above key moving averages.\n\n**Indicator alignment:** Your RSI, MACD, and trend strength are perfectly aligned (15/15 each), which is rare and powerful; however, volume is the weak link at just 12/20, suggesting this move lacks the institutional conviction needed for sustained follow-through.\n\n**Key risk:** Watch for volume confirmation on any pullback to your entry\u2014if the stock sells off toward $200 on thin volume, it could indicate profit-taking rather than consolidation, potentially invalidating the setup. The 1.50:1 R/R is solid, but only if volume accelerates into the breakout level."
+      "reasoning": "# FAST Momentum Setup Analysis\n\n**Why the momentum is here:** FAST is firing on all cylinders with exceptional trend strength and perfect RSI/MACD alignment\u2014both signaling strong upside without overbought extremes. The stock is breaking out decisively with solid relative outperformance, giving you a clean directional trade.\n\n**Best-aligned indicators:** Trend Strength (25/25) is your anchor here, backed by pristine RSI and MACD signals (15/15 each). These three form a powerful confluence that confirms the move is genuine, not just noise.\n\n**Key risk to monitor:** Volume is only 12/20\u2014that's the weak link. If this breakout doesn't attract buying volume to sustain it, you could see a quick fade toward your stop. Watch for volume confirmation on the first pullback; if it dries up, this setup becomes fragile despite the stellar technicals."
     },
     {
       "rank": 15,
-      "symbol": "PH",
-      "price": 1058.2249755859375,
+      "symbol": "NTRS",
+      "price": 190.47999572753906,
       "score": 88,
       "breakdown": {
         "trend_strength": 25,
@@ -379,19 +379,19 @@
         "relative": 15,
         "breakout": 6
       },
-      "entry": 1058.2249755859375,
-      "stop_loss": 1017.7196914955227,
-      "take_profit": 1118.9829017215595,
-      "risk_reward_ratio": 1.4999999999999971,
-      "setup_type": "EXTENDED",
-      "extension_pct": 5.525206181980756,
+      "entry": 183.5729995727539,
+      "stop_loss": 177.8532986676675,
+      "take_profit": 192.15255093038348,
+      "risk_reward_ratio": 1.4999999999999976,
+      "setup_type": "PULLBACK",
+      "extension_pct": 3.7625337990120773,
       "market_regime": "UPTREND",
-      "reasoning": "# PH Momentum Setup Analysis\n\n**Why the momentum is strong:** PH is displaying exceptional trend strength with RSI and MACD perfectly aligned in bullish territory, signaling sustained upward pressure rather than a quick spike. The stock has clearly broken through resistance levels with strong relative outperformance, indicating institutional accumulation.\n\n**Best-aligned indicators:** Your trend strength (25/25) and oscillators (RSI + MACD both maxed at 15/15 each) are firing on all cylinders\u2014this is a textbook continuation setup. The 1.50:1 risk/reward ratio provides solid asymmetry for position sizing.\n\n**Key risk to monitor:** Volume at 12/20 is the soft spot here; while the trend is pristine, the breakout lacks the conviction of high-volume confirmation. Watch for volume drying up into resistance at $1,118\u2014if it does, you could see quick profit-taking that triggers your stop loss without follow-through."
+      "reasoning": "# NTRS Momentum Setup Analysis\n\n**Why the momentum is real:** NTRS is firing on all cylinders with perfect trend strength, RSI, and MACD signals\u2014this is a stock with genuine directional conviction, not just noise. The current price of $190.48 is already above your entry at $183.57, suggesting the move has already begun with solid follow-through.\n\n**Best-aligned indicators:** Your RSI (15/15) and MACD (15/15) are locked in perfectly, confirming the uptrend without overbought conditions, while the strong trend strength (25/25) tells you this isn't a random spike. These three together create high-confidence confluency.\n\n**Key risk:** Volume is your weak link at only 12/20\u2014that's notably softer than the other metrics. Watch for volume to drop further on any pullback toward $183.57, as thin volume could turn a momentum pause into a sharp reversal. This is especially important since your breakout quality (6/10) isn't stellar, meaning the move could lack staying power without volume confirmation."
     },
     {
       "rank": 16,
-      "symbol": "FDX",
-      "price": 333.1449890136719,
+      "symbol": "LYV",
+      "price": 186.05999755859375,
       "score": 88,
       "breakdown": {
         "trend_strength": 25,
@@ -401,19 +401,19 @@
         "relative": 15,
         "breakout": 6
       },
-      "entry": 333.1449890136719,
-      "stop_loss": 322.14985369285125,
-      "take_profit": 349.6376919949028,
-      "risk_reward_ratio": 1.5,
-      "setup_type": "EXTENDED",
-      "extension_pct": 5.607017374512371,
+      "entry": 181.6595001220703,
+      "stop_loss": 175.1915633080792,
+      "take_profit": 191.36140534305702,
+      "risk_reward_ratio": 1.5000000000000044,
+      "setup_type": "PULLBACK",
+      "extension_pct": 2.4223877273505767,
       "market_regime": "UPTREND",
-      "reasoning": "# FDX Momentum Setup Analysis\n\n**Why the momentum is strong:** FDX is displaying exceptional trend strength with perfect RSI and MACD alignment\u2014both signaling bullish momentum without overbought conditions. The stock is breaking out cleanly with strong relative performance, giving you a textbook continuation setup.\n\n**Best-aligned indicators:** Your RSI (15/15) and MACD (15/15) are firing in sync, which is the holy grail for momentum trading. Combined with maxed-out trend strength (25/25), the directional bias is crystal clear\u2014this isn't a weak signal.\n\n**Key risk to monitor:** Volume is the softer link at 12/20, and your breakout quality (6/10) suggests the move lacks conviction depth. Watch for volume confirmation on the next candle\u2014if it doesn't materialize, you may see quick profit-taking that could quickly trigger your stop loss. Consider scaling in rather than going all-in if volume doesn't back this up.\n\n**Bottom line:** Strong directional setup with a 1.50:1 reward-to-risk, but validate volume on entry before committing full size."
+      "reasoning": "# LYV Momentum Setup\n\n**Why the momentum is real:** LYV is firing on all cylinders with a pristine trend, maxed-out RSI (15/15), and perfect MACD alignment\u2014this is textbook strong upside momentum with the stock already extended above your entry at $181.66.\n\n**Best-aligned signals:** Trend Strength (25/25) and momentum oscillators (RSI + MACD both at 15/15) are singing in harmony, suggesting conviction behind this move. However, Volume (12/20) is the weak link\u2014the rally lacks ideal buying pressure, which raises sustainability questions.\n\n**Key risk:** Watch for a volume cliff. With only moderate volume backing this 88-score move, a sudden pullback to $175.19 could accelerate fast if institutional buyers step aside. Consider this a \"strong but thin\" setup\u2014ideal for quick scalps, but risky on hard holds."
     },
     {
       "rank": 17,
-      "symbol": "NTRS",
-      "price": 190.5800018310547,
+      "symbol": "SW",
+      "price": 50.02000045776367,
       "score": 88,
       "breakdown": {
         "trend_strength": 25,
@@ -423,19 +423,19 @@
         "relative": 15,
         "breakout": 6
       },
-      "entry": 183.5779998779297,
-      "stop_loss": 177.98258507984033,
-      "take_profit": 191.97112207506376,
-      "risk_reward_ratio": 1.5000000000000024,
-      "setup_type": "PULLBACK",
-      "extension_pct": 3.814183593775384,
+      "entry": 50.02000045776367,
+      "stop_loss": 47.25265878510619,
+      "take_profit": 54.1710129667499,
+      "risk_reward_ratio": 1.5000000000000027,
+      "setup_type": "EXTENDED",
+      "extension_pct": 5.808690785593269,
       "market_regime": "UPTREND",
-      "reasoning": "# NTRS Momentum Setup Analysis\n\n**Why the momentum is strong:** NTRS is displaying textbook momentum with a perfect trend structure (25/25) and maxed-out technical signals\u2014RSI and MACD are both firing on all cylinders at 15/15 each, signaling strong directional conviction. The stock is already trading above your entry, which means the move is already validated.\n\n**Best-aligned indicators:** Your RSI and MACD perfection scores are the real drivers here, combined with stellar relative outperformance (15/15). Trend strength is the backbone, but here's the catch\u2014volume only scored 12/20, which is the weak link in an otherwise dominant setup.\n\n**Key risk to monitor:** That 6/10 breakout quality score is your red flag. It suggests the move lacks the institutional volume confirmation you'd want to see at these levels. With the stock already near your take profit ($191.97) and volume underperforming, you risk being late to the party or getting caught in a lower-liquidity reversal. Consider whether you're entering on strength or chasing momentum."
+      "reasoning": "# SW Momentum Analysis\n\n**Why it's moving:** SW is displaying exceptional momentum with perfect trend strength and overbought RSI (15/15), combined with bullish MACD crossover confirmation\u2014this is a textbook strong uptrend setup with the stock outperforming its peers.\n\n**Strongest signals:** Your RSI, MACD, and relative performance are all firing on all cylinders (15/15 each), and the 25/25 trend strength is the real story here\u2014this isn't a weak bounce, it's a sustained directional move.\n\n**Key risk:** Watch the volume (12/20)\u2014it's the weak link in your setup. If this rally is running on declining volume into resistance, you could see a sharp pullback before reaching your $54.17 target. Consider tightening your stop or reducing size if volume doesn't confirm the next leg up."
     },
     {
       "rank": 18,
       "symbol": "SWK",
-      "price": 103.13999938964844,
+      "price": 102.20999908447266,
       "score": 88,
       "breakdown": {
         "trend_strength": 25,
@@ -445,19 +445,19 @@
         "relative": 15,
         "breakout": 6
       },
-      "entry": 103.13999938964844,
-      "stop_loss": 98.29362608856428,
-      "take_profit": 110.40955934127467,
-      "risk_reward_ratio": 1.5,
+      "entry": 102.20999908447266,
+      "stop_loss": 97.32497061710045,
+      "take_profit": 109.53754178553098,
+      "risk_reward_ratio": 1.5000000000000016,
       "setup_type": "EXTENDED",
-      "extension_pct": 7.0633345151369165,
+      "extension_pct": 6.446572169546886,
       "market_regime": "UPTREND",
-      "reasoning": "# SWK Momentum Trade Setup\n\n**Why the momentum is there:** SWK is firing on all cylinders with perfect trend strength, maxed-out RSI, and positive MACD confirmation\u2014this is textbook uptrend acceleration with strong directional conviction at $103.14.\n\n**Best-aligned indicators:** Your RSI (15/15) and MACD (15/15) are perfectly aligned with the trend, while the 25/25 trend strength score confirms sustained buying pressure, creating a high-probability setup with a clean 1.50:1 risk-reward.\n\n**Key risk to monitor:** Volume is the weak link here at only 12/20\u2014watch for volume confirmation on the move toward $110.41, as thin volume could lead to a breakout fizzle or sudden reversals; use the $98.29 stop loss as your hard exit if momentum stalls."
+      "reasoning": "# SWK Momentum Setup Analysis\n\n**Why the momentum is there:** SWK is displaying textbook momentum with a dominant trend, maxed-out RSI (overbought territory), and MACD confirmation\u2014this is a stock in controlled upward acceleration, not a random spike.\n\n**Strongest aligned signals:** Trend Strength and RSI are perfectly aligned (25/25 and 15/15), meaning price structure is clean and momentum is genuinely extended without fading. MACD reinforcement adds conviction that this isn't just a technical squeeze.\n\n**Key risk to watch:** The Breakout Quality score (6/10) is your red flag\u2014while the momentum is strong, the quality of the actual breakout is questionable, suggesting volume didn't fully confirm this move. Watch for volume drying up on any pullback toward $102, which could trigger a rapid reversal below your stop at $97.32."
     },
     {
       "rank": 19,
       "symbol": "IVZ",
-      "price": 32.19900131225586,
+      "price": 32.36000061035156,
       "score": 88,
       "breakdown": {
         "trend_strength": 25,
@@ -467,19 +467,19 @@
         "relative": 15,
         "breakout": 6
       },
-      "entry": 32.19900131225586,
-      "stop_loss": 30.822597225124337,
-      "take_profit": 34.263607442953145,
-      "risk_reward_ratio": 1.5000000000000013,
+      "entry": 32.36000061035156,
+      "stop_loss": 30.96484660478314,
+      "take_profit": 34.4527316187042,
+      "risk_reward_ratio": 1.5000000000000024,
       "setup_type": "EXTENDED",
-      "extension_pct": 5.3496071258846065,
+      "extension_pct": 5.8484907172804075,
       "market_regime": "UPTREND",
-      "reasoning": "# IVZ Momentum Setup\n\n**Why the momentum?** IVZ is firing on all cylinders with a perfect trend (25/25) and maxed-out RSI and MACD signals (15/15 each), indicating strong directional conviction and overbought conditions that are *reinforcing* rather than warning. The stock is also outperforming its peers (15/15), giving you tailwinds from relative strength.\n\n**Best alignment?** Your trend strength, RSI, and MACD are in perfect sync\u2014this isn't a noisy setup. The 88/100 score is legitimately supported by technical alignment where it matters most.\n\n**Key risk:** Volume is only 12/20, which is your softest link. If this momentum push lacks buying power to sustain it, you could see a quick reversal, especially since RSI is already extended. Watch for volume confirmation on any further upside\u2014without it, the move becomes fragile despite the strong indicators.\n\nThe 1.50:1 R/R is reasonable for the risk profile here. This is a quality setup with one caveat: make sure volume picks up, or consider tightening your stop."
+      "reasoning": "# IVZ Momentum Setup\n\n**Why the momentum is here:** IVZ is firing on all cylinders with perfect trend strength, oversold RSI reversal, and a bullish MACD crossover\u2014this is textbook momentum alignment that suggests strong directional conviction.\n\n**Key indicators aligned:** Your RSI, MACD, and relative performance are all maxed out (15/15 each), indicating IVZ is catching a genuine wave rather than a false signal, while the trend strength at 25/25 confirms this isn't just noise.\n\n**Key risk to watch:** Volume is only scoring 12/20 and breakout quality sits at 6/10\u2014this means conviction is solid but participation is moderate, so watch for a potential volume fade that could stall this move before hitting your $34.45 target. The 1.50:1 R/R is favorable, but tighter volume suggests managing this trade actively rather than setting and forgetting."
     },
     {
       "rank": 20,
       "symbol": "MPC",
-      "price": 350.19000244140625,
+      "price": 356.3699951171875,
       "score": 86,
       "breakdown": {
         "trend_strength": 25,
@@ -489,14 +489,14 @@
         "relative": 15,
         "breakout": 6
       },
-      "entry": 350.19000244140625,
-      "stop_loss": 332.8549396697223,
-      "take_profit": 376.19259659893225,
-      "risk_reward_ratio": 1.5000000000000033,
+      "entry": 356.3699951171875,
+      "stop_loss": 338.46974134863655,
+      "take_profit": 383.22037577001396,
+      "risk_reward_ratio": 1.5000000000000016,
       "setup_type": "EXTENDED",
-      "extension_pct": 10.947948435919304,
+      "extension_pct": 12.79548254436857,
       "market_regime": "UPTREND",
-      "reasoning": "# MPC Momentum Setup Analysis\n\n**Why the momentum is real:** MPC is firing on all cylinders with maxed-out trend strength and volume\u2014this isn't weak-handed buying, it's institutional conviction. The MACD is in full bullish alignment and relative performance is outpacing peers, signaling this move has legs.\n\n**Strongest confirmations:** Your trend strength (25/25) and volume (20/20) are textbook momentum tells, backed by perfect MACD setup. The 1.50:1 risk/reward gives you solid asymmetry for a breakout trade at current levels.\n\n**Key risk to monitor:** That RSI score of only 5/15 is the yellow flag here\u2014while the stock is moving, it's showing overbought conditions that could trigger a sharp pullback or consolidation before it resumes. Watch for RSI divergence or a break below $332.85 as your first sign of momentum fade."
+      "reasoning": "# MPC Momentum Setup Analysis\n\n**Why MPC is showing momentum:** MPC is firing on all cylinders with maxed-out trend strength and volume\u2014this stock is moving decisively with heavy institutional participation backing the move. The perfect MACD and relative outperformance scores confirm we're catching a genuine market leader, not noise.\n\n**Your strongest confirmations:** Trend strength (25/25) and volume (20/20) are your bread and butter here\u2014the price action is clean and conviction is high. MACD's full score validates the directional bias, giving you multiple entry confirmations rather than a single signal.\n\n**Key risk to monitor:** That RSI of only 5/15 is a yellow flag\u2014the momentum indicators are screaming bullish, but the oscillator suggests limited overbought conditions aren't confirming the strength yet. Watch for RSI divergence as you approach the $383.22 target; if price keeps climbing while RSI fails to follow, that's your signal the move may be tiring. Your 1.50:1 risk/reward gives you enough cushion to let this play out, but don't ignore that divergence warning."
     }
   ]
 }
