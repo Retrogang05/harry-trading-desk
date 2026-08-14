@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-08-14T21:24:50.801952",
+  "scan_date": "2026-08-14T21:24:50.803765",
   "context": [
     {
       "label": "Universe",
@@ -30,310 +23,6 @@
     }
   ],
   "opportunities": [
-    {
-      "symbol": "APP",
-      "price": 315.44,
-      "score": 97,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 56.7,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "# APP Momentum Analysis\n\nAPP's RSI of 30.4 approaching oversold territory suggests momentum has deteriorated significantly, indicating potential exhaustion of selling pressure rather than continuation of downward movement. The substantial gap below both the 50- and 200-day SMAs reinforces that price has disconnected materially from intermediate and long-term trend anchors, creating conditions where mean reversion or capitulation may be imminent.",
-      "rank": 1
-    },
-    {
-      "symbol": "PLTR",
-      "price": 174.04,
-      "score": 89,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 50.4,
-        "liquidity": 38.4
-      },
-      "setup": null,
-      "reasoning": "PLTR's RSI of 68.1 indicates strong upward momentum approaching overbought territory, suggesting the recent rally may be nearing a potential consolidation or pullback phase. The stock's significant outperformance relative to both its 50-day and 200-day moving averages reinforces the strength of the current trend, though the elevated RSI warrants monitoring for signs of exhaustion or profit-taking.",
-      "rank": 2
-    },
-    {
-      "symbol": "CEG",
-      "price": 282.5,
-      "score": 88,
-      "strategy": "Bull Put Spread",
-      "dimensions": [
-        {
-          "key": "credit_width",
-          "label": "Credit / Width",
-          "max": 30
-        },
-        {
-          "key": "prob_profit",
-          "label": "Prob. of Profit",
-          "max": 25
-        },
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "credit_width": 30.0,
-        "prob_profit": 25.0,
-        "iv_hv_richness": 20.0,
-        "liquidity": 7.5,
-        "open_interest": 5.0
-      },
-      "setup": {
-        "label": "Bull Put 270/260 \u00b7 34d",
-        "fields": [
-          {
-            "label": "Credit",
-            "value": "$2.60",
-            "tone": "pos"
-          },
-          {
-            "label": "Max Loss",
-            "value": "$7.40",
-            "tone": "neg"
-          },
-          {
-            "label": "ROC",
-            "value": "35.1%"
-          },
-          {
-            "label": "Approx. POP",
-            "value": "68%"
-          }
-        ]
-      },
-      "reasoning": "CEG's uptrend and elevated IV multiple create an attractive risk/reward setup, with the short strike positioned safely above current price and a probability of profit that justifies the capital requirement. The primary risk is a sharp reversal lower through the short strike, which could occur if energy sector sentiment deteriorates or the broader market corrects materially before expiration.",
-      "rank": 3
-    },
-    {
-      "symbol": "AMZN",
-      "price": 262.65,
-      "score": 84,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 26.2,
-        "quality": 10.0,
-        "liquidity": 20.0,
-        "open_interest": 15.0,
-        "spread_tightness": 13.1
-      },
-      "setup": {
-        "label": "215C \u00b7 \u03940.80 \u00b7 335d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$69.30",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$284.30"
-          },
-          {
-            "label": "Leverage",
-            "value": "3.8x"
-          },
-          {
-            "label": "% ITM",
-            "value": "18.1%"
-          }
-        ]
-      },
-      "reasoning": "# AMZN LEAPS Call Analysis\n\nThis deep ITM call offers equity-like exposure (0.80 delta) with meaningful leverage at depressed volatility, making it an efficient substitute for outright stock ownership while requiring 74% less capital. The primary risk is duration: 335 days of time decay could erode gains if the trend stalls or reverses before conviction plays out, and you're implicitly paying a volatility premium that may compress further, leaving you underwater despite directional correctness.",
-      "rank": 4
-    },
-    {
-      "symbol": "MNST",
-      "price": 46.82,
-      "score": 80,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 40.0,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "# MNST Momentum Analysis\n\nThe RSI of 12.3 indicates severely oversold conditions, suggesting momentum has contracted sharply and a potential mean-reversion bounce could occur; however, the price trading substantially below both the 50- and 200-day SMAs reflects a pronounced downtrend, which typically requires confirmation of reversal before momentum shifts materially.",
-      "rank": 5
-    },
-    {
-      "symbol": "REGN",
-      "price": 803.48,
-      "score": 78,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 57.6,
-        "liquidity": 20.8
-      },
-      "setup": null,
-      "reasoning": "# REGN Momentum Analysis\n\nThe RSI(14) reading of 77.4 indicates overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and carries elevated risk of mean reversion or consolidation. Combined with the stock trading well above both its 50- and 200-day SMAs, the technical setup reflects strong uptrend strength but limited room for further appreciation without a pullback or period of digestion.",
-      "rank": 6
-    },
-    {
-      "symbol": "PYPL",
-      "price": 61.66,
-      "score": 78,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 55.2,
-        "liquidity": 22.4
-      },
-      "setup": null,
-      "reasoning": "PYPL's RSI of 77.2 indicates strong overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and the stock may be vulnerable to mean reversion or consolidation. The price remains well above both the 50- and 200-day SMAs, confirming an established uptrend, though the elevated RSI signals that continued gains may face headwinds in the near term.",
-      "rank": 7
-    },
-    {
-      "symbol": "BAC",
-      "price": 64.49,
-      "score": 77,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 52.8,
-        "liquidity": 24.0
-      },
-      "setup": null,
-      "reasoning": "# BAC Momentum Analysis\n\nBAC's RSI of 68.4 indicates strong upward momentum with limited room for further acceleration before potential pullback or consolidation, as the stock approaches overbought territory while trading well above both moving averages. This reading suggests the current rally may be nearing a natural pause point, warranting vigilance for momentum divergence or mean-reversion signals.",
-      "rank": 8
-    },
-    {
-      "symbol": "TPR",
-      "price": 128.98,
-      "score": 76,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 53.3,
-        "liquidity": 22.2
-      },
-      "setup": null,
-      "reasoning": "The RSI14 at 31.7 indicates weakening downside momentum as TPR approaches oversold conditions, suggesting potential loss of selling pressure rather than imminent reversal. With price trading below both the 50-day and 200-day SMAs, the technical backdrop remains bearish despite the momentum divergence.",
-      "rank": 9
-    },
     {
       "symbol": "NEE",
       "price": 86.19,
@@ -650,6 +339,134 @@
       "rank": 14
     },
     {
+      "symbol": "TXN",
+      "price": 279.58,
+      "score": 41,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 11.4,
+        "range_centrality": 11.2,
+        "liquidity": 15.0,
+        "spread_tightness": 2.1,
+        "open_interest": 1.4
+      },
+      "setup": {
+        "label": "2026-09-18 \u00b7 34d \u00b7 IV/HV 1.03x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b18.5%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "39.8%"
+          },
+          {
+            "label": "HV30",
+            "value": "38.8%"
+          },
+          {
+            "label": "Spread",
+            "value": "14.3%"
+          }
+        ]
+      },
+      "reasoning": "# TXN Iron Condor Analysis\n\nTXN presents a textbook premium-rich setup: elevated IV relative to realized volatility, mid-range positioning that leaves room on both wings, and tight spreads enabling efficient execution. The mild IV/HV premium (1.03x) combined with subdued realized vol suggests the market has already priced in meaningful moves, rewarding sellers of wings outside the \u00b18.5% expected move. However, this thesis breaks cleanly on a sharp directional breakout (especially above resistance given the mid-range seat), an unanticipated earnings beat/miss, or a volatility collapse that erodes premium faster than theta can capture it\u2014any of which would compress the margin of safety in short strikes.",
+      "rank": 21
+    },
+    {
+      "symbol": "CEG",
+      "price": 282.5,
+      "score": 88,
+      "strategy": "Bull Put Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 30.0,
+        "prob_profit": 25.0,
+        "iv_hv_richness": 20.0,
+        "liquidity": 7.5,
+        "open_interest": 5.0
+      },
+      "setup": {
+        "label": "Bull Put 270/260 \u00b7 34d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$2.60",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$7.40",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "35.1%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "68%"
+          }
+        ]
+      },
+      "reasoning": "CEG's uptrend and elevated IV multiple create an attractive risk/reward setup, with the short strike positioned safely above current price and a probability of profit that justifies the capital requirement. The primary risk is a sharp reversal lower through the short strike, which could occur if energy sector sentiment deteriorates or the broader market corrects materially before expiration.",
+      "rank": 3
+    },
+    {
       "symbol": "F",
       "price": 14.37,
       "score": 62,
@@ -713,6 +530,70 @@
       },
       "reasoning": "# Bull Put Spread Analysis: F\n\nFord's recent strength and moderately elevated volatility (IV/HV ratio near parity) provide decent premium for this near-the-money short strike, while the 34-day window offers reasonable time decay without extended event risk. The setup rewards a continuation of sideways-to-bullish price action, though the primary risk is a sharp downside reversal through the 14 strike\u2014a realistic threat given Ford's cyclical sensitivity to economic slowdowns and auto sector volatility. Additionally, any post-earnings IV compression (if an earnings date falls within this window) could limit profit potential and tighten exit flexibility if price movement forces an early adjustment.",
       "rank": 15
+    },
+    {
+      "symbol": "AMZN",
+      "price": 262.65,
+      "score": 84,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 26.2,
+        "quality": 10.0,
+        "liquidity": 20.0,
+        "open_interest": 15.0,
+        "spread_tightness": 13.1
+      },
+      "setup": {
+        "label": "215C \u00b7 \u03940.80 \u00b7 335d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$69.30",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$284.30"
+          },
+          {
+            "label": "Leverage",
+            "value": "3.8x"
+          },
+          {
+            "label": "% ITM",
+            "value": "18.1%"
+          }
+        ]
+      },
+      "reasoning": "# AMZN LEAPS Call Analysis\n\nThis deep ITM call offers equity-like exposure (0.80 delta) with meaningful leverage at depressed volatility, making it an efficient substitute for outright stock ownership while requiring 74% less capital. The primary risk is duration: 335 days of time decay could erode gains if the trend stalls or reverses before conviction plays out, and you're implicitly paying a volatility premium that may compress further, leaving you underwater despite directional correctness.",
+      "rank": 4
     },
     {
       "symbol": "T",
@@ -1035,67 +916,179 @@
       "rank": 20
     },
     {
-      "symbol": "TXN",
-      "price": 279.58,
-      "score": 41,
-      "strategy": "Iron Condor",
+      "symbol": "APP",
+      "price": 315.44,
+      "score": 97,
+      "strategy": "RSI Approaching Oversold",
       "dimensions": [
         {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 40
-        },
-        {
-          "key": "range_centrality",
-          "label": "Range Centrality",
-          "max": 20
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
         },
         {
           "key": "liquidity",
           "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
+          "max": 40
         }
       ],
       "breakdown": {
-        "iv_hv_richness": 11.4,
-        "range_centrality": 11.2,
-        "liquidity": 15.0,
-        "spread_tightness": 2.1,
-        "open_interest": 1.4
+        "extremity": 56.7,
+        "liquidity": 40.0
       },
-      "setup": {
-        "label": "2026-09-18 \u00b7 34d \u00b7 IV/HV 1.03x",
-        "fields": [
-          {
-            "label": "Exp. Move",
-            "value": "\u00b18.5%"
-          },
-          {
-            "label": "ATM IV",
-            "value": "39.8%"
-          },
-          {
-            "label": "HV30",
-            "value": "38.8%"
-          },
-          {
-            "label": "Spread",
-            "value": "14.3%"
-          }
-        ]
+      "setup": null,
+      "reasoning": "# APP Momentum Analysis\n\nAPP's RSI of 30.4 approaching oversold territory suggests momentum has deteriorated significantly, indicating potential exhaustion of selling pressure rather than continuation of downward movement. The substantial gap below both the 50- and 200-day SMAs reinforces that price has disconnected materially from intermediate and long-term trend anchors, creating conditions where mean reversion or capitulation may be imminent.",
+      "rank": 1
+    },
+    {
+      "symbol": "PLTR",
+      "price": 174.04,
+      "score": 89,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 50.4,
+        "liquidity": 38.4
       },
-      "reasoning": "# TXN Iron Condor Analysis\n\nTXN presents a textbook premium-rich setup: elevated IV relative to realized volatility, mid-range positioning that leaves room on both wings, and tight spreads enabling efficient execution. The mild IV/HV premium (1.03x) combined with subdued realized vol suggests the market has already priced in meaningful moves, rewarding sellers of wings outside the \u00b18.5% expected move. However, this thesis breaks cleanly on a sharp directional breakout (especially above resistance given the mid-range seat), an unanticipated earnings beat/miss, or a volatility collapse that erodes premium faster than theta can capture it\u2014any of which would compress the margin of safety in short strikes.",
-      "rank": 21
+      "setup": null,
+      "reasoning": "PLTR's RSI of 68.1 indicates strong upward momentum approaching overbought territory, suggesting the recent rally may be nearing a potential consolidation or pullback phase. The stock's significant outperformance relative to both its 50-day and 200-day moving averages reinforces the strength of the current trend, though the elevated RSI warrants monitoring for signs of exhaustion or profit-taking.",
+      "rank": 2
+    },
+    {
+      "symbol": "MNST",
+      "price": 46.82,
+      "score": 80,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 40.0,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "# MNST Momentum Analysis\n\nThe RSI of 12.3 indicates severely oversold conditions, suggesting momentum has contracted sharply and a potential mean-reversion bounce could occur; however, the price trading substantially below both the 50- and 200-day SMAs reflects a pronounced downtrend, which typically requires confirmation of reversal before momentum shifts materially.",
+      "rank": 5
+    },
+    {
+      "symbol": "REGN",
+      "price": 803.48,
+      "score": 78,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.6,
+        "liquidity": 20.8
+      },
+      "setup": null,
+      "reasoning": "# REGN Momentum Analysis\n\nThe RSI(14) reading of 77.4 indicates overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and carries elevated risk of mean reversion or consolidation. Combined with the stock trading well above both its 50- and 200-day SMAs, the technical setup reflects strong uptrend strength but limited room for further appreciation without a pullback or period of digestion.",
+      "rank": 6
+    },
+    {
+      "symbol": "PYPL",
+      "price": 61.66,
+      "score": 78,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 55.2,
+        "liquidity": 22.4
+      },
+      "setup": null,
+      "reasoning": "PYPL's RSI of 77.2 indicates strong overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and the stock may be vulnerable to mean reversion or consolidation. The price remains well above both the 50- and 200-day SMAs, confirming an established uptrend, though the elevated RSI signals that continued gains may face headwinds in the near term.",
+      "rank": 7
+    },
+    {
+      "symbol": "BAC",
+      "price": 64.49,
+      "score": 77,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 52.8,
+        "liquidity": 24.0
+      },
+      "setup": null,
+      "reasoning": "# BAC Momentum Analysis\n\nBAC's RSI of 68.4 indicates strong upward momentum with limited room for further acceleration before potential pullback or consolidation, as the stock approaches overbought territory while trading well above both moving averages. This reading suggests the current rally may be nearing a natural pause point, warranting vigilance for momentum divergence or mean-reversion signals.",
+      "rank": 8
+    },
+    {
+      "symbol": "TPR",
+      "price": 128.98,
+      "score": 76,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 53.3,
+        "liquidity": 22.2
+      },
+      "setup": null,
+      "reasoning": "The RSI14 at 31.7 indicates weakening downside momentum as TPR approaches oversold conditions, suggesting potential loss of selling pressure rather than imminent reversal. With price trading below both the 50-day and 200-day SMAs, the technical backdrop remains bearish despite the momentum divergence.",
+      "rank": 9
     },
     {
       "symbol": "DVA",
