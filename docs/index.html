@@ -395,16 +395,27 @@
     t.textContent = "";
     $("gridCount").textContent = rows.length + (rows.length === 1 ? " row" : " rows");
 
+    // Entry/Stop/Target/R:R are Monu's shape, not every agent's - Opy's
+    // strategies price in credit/max-loss/ROC or premium/breakeven/leverage
+    // instead (see the Setup column and detail panel). Rather than hardcode
+    // "hide these for OPY" - which the dashboard deliberately has no
+    // equivalent of anywhere else - show the four columns only when at
+    // least one currently visible row actually has them. On a mixed "All"
+    // view that includes Monu they still show (with Opy rows blank in
+    // them); switch to an Opy-only tab and they disappear entirely rather
+    // than sitting there as dead dashes.
+    var showLevels = rows.some(function (r) { return typeof r.o.entry === "number"; });
+
     var thead = el("thead"), hr = el("tr");
-    [["#","l"],["Symbol","l"],["Agent","l"],["Strategy","l"],["Last",""],["Score",""],["Signal",""],
-     ["Entry",""],["Stop",""],["Target",""],["R:R",""],["Setup",""]].forEach(function (h) {
-      hr.appendChild(el("th", h[1], h[0]));
-    });
+    var cols = [["#","l"],["Symbol","l"],["Agent","l"],["Strategy","l"],["Last",""],["Score",""],["Signal",""]];
+    if (showLevels) cols = cols.concat([["Entry",""],["Stop",""],["Target",""],["R:R",""]]);
+    cols.push(["Setup",""]);
+    cols.forEach(function (h) { hr.appendChild(el("th", h[1], h[0])); });
     thead.appendChild(hr); t.appendChild(thead);
 
     var tb = el("tbody");
     if (!rows.length) {
-      var tr0 = el("tr"), td0 = el("td", "l"); td0.colSpan = 12;
+      var tr0 = el("tr"), td0 = el("td", "l"); td0.colSpan = cols.length;
       td0.appendChild(el("div", "empty", state.query
         ? "No signal matches “" + state.query + "”."
         : "No setups cleared the filter. That is a normal scan result."));
@@ -436,20 +447,25 @@
       tr.appendChild(tdSc);
       var tdV = el("td", null, b.t); tdV.style.color = b.c; tr.appendChild(tdV);
 
-      // Monu's fixed entry/stop/target columns don't generalise to Opy's
-      // per-strategy setup shapes (a credit spread's numbers are credit/max
-      // loss, not entry/stop). Show them only when present; otherwise the
-      // detail panel's declarative Setup block (below) is where that row's
-      // numbers live.
+      if (showLevels) {
+        if (typeof o.entry === "number") {
+          tr.appendChild(el("td", null, usd(o.entry)));
+          var st = el("td", null, usd(o.stop_loss)); st.style.color = "var(--red)"; tr.appendChild(st);
+          var tp = el("td", null, usd(o.take_profit)); tp.style.color = "var(--green-b)"; tr.appendChild(tp);
+          tr.appendChild(el("td", null, typeof o.risk_reward_ratio === "number" ? o.risk_reward_ratio.toFixed(2) : "—"));
+        } else {
+          for (var c = 0; c < 4; c++) tr.appendChild(el("td", "muted", "—"));
+        }
+      }
+
+      // Setup column: Monu's setup_type ("pullback"/"extended") when this
+      // row has levels; otherwise the declarative setup's own label straight
+      // in the grid (e.g. "Bull Put 294/292 · 38d") rather than a vague
+      // "see detail" - full field breakdown is still one click away.
       if (typeof o.entry === "number") {
-        tr.appendChild(el("td", null, usd(o.entry)));
-        var st = el("td", null, usd(o.stop_loss)); st.style.color = "var(--red)"; tr.appendChild(st);
-        var tp = el("td", null, usd(o.take_profit)); tp.style.color = "var(--green-b)"; tr.appendChild(tp);
-        tr.appendChild(el("td", null, typeof o.risk_reward_ratio === "number" ? o.risk_reward_ratio.toFixed(2) : "—"));
         tr.appendChild(el("td", "muted", o.setup_type ? o.setup_type.toLowerCase() : "—"));
       } else {
-        for (var c = 0; c < 4; c++) tr.appendChild(el("td", "muted", "—"));
-        tr.appendChild(el("td", "muted", o.setup ? "see detail" : "—"));
+        tr.appendChild(el("td", "muted", o.setup && o.setup.label ? o.setup.label : "—"));
       }
 
       tb.appendChild(tr);
