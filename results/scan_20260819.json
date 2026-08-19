@@ -1,62 +1,6 @@
 {
-  "agent": {
-    "id": "MNTM",
-    "name": "Monu",
-    "strategy": "Momentum",
-    "description": "Buys strength: breakouts confirmed by volume, riding the trend until momentum fades.",
-    "accent": "#c8974a"
-  },
-  "scan_date": "2026-08-19T14:41:00.531054",
-  "dimensions": [
-    {
-      "key": "trend_strength",
-      "label": "Trend",
-      "max": 25
-    },
-    {
-      "key": "volume",
-      "label": "Volume",
-      "max": 20
-    },
-    {
-      "key": "rsi",
-      "label": "RSI",
-      "max": 15
-    },
-    {
-      "key": "macd",
-      "label": "MACD",
-      "max": 15
-    },
-    {
-      "key": "relative",
-      "label": "Relative",
-      "max": 15
-    },
-    {
-      "key": "breakout",
-      "label": "Breakout",
-      "max": 10
-    }
-  ],
-  "context": [
-    {
-      "label": "Market Regime",
-      "value": "UPTREND"
-    },
-    {
-      "label": "Universe",
-      "value": "503 symbols"
-    },
-    {
-      "label": "Passed Filter",
-      "value": "20"
-    },
-    {
-      "label": "Model",
-      "value": "claude-haiku-4-5"
-    }
-  ],
+  "scan_date": "2026-08-19T14:41:00.530222",
+  "market_regime": "UPTREND",
   "opportunities": [
     {
       "rank": 1,
