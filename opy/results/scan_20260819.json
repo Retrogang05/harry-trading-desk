@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-08-19T21:24:32.611553",
+  "scan_date": "2026-08-19T21:24:32.612925",
   "context": [
     {
       "label": "Universe",
@@ -30,181 +23,6 @@
     }
   ],
   "opportunities": [
-    {
-      "symbol": "MRNA",
-      "price": 174.38,
-      "score": 98,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 38.4
-      },
-      "setup": null,
-      "reasoning": "# RSI Momentum Analysis: MRNA\n\nAn RSI of 92.2 represents extreme overbought conditions, indicating that buying momentum has reached an unsustainable level and a pullback or consolidation is statistically probable in the near term. Combined with the stock trading 173% above its 200-day SMA, the extended price action suggests limited room for further gains without a corrective period to relieve the overbought condition.",
-      "rank": 1
-    },
-    {
-      "symbol": "MRK",
-      "price": 152.2,
-      "score": 94,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 57.6,
-        "liquidity": 36.8
-      },
-      "setup": null,
-      "reasoning": "MRK's RSI of 83.2 indicates strong overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and raises the probability of near-term consolidation or pullback. The stock's substantial separation from its 50-day and 200-day SMAs (20% and 34% above respectively) confirms an extended uptrend, though elevated RSI typically precedes a momentum shift rather than immediate reversal.",
-      "rank": 2
-    },
-    {
-      "symbol": "APP",
-      "price": 310.79,
-      "score": 92,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 55.2,
-        "liquidity": 36.8
-      },
-      "setup": null,
-      "reasoning": "The RSI of 30.5 indicates APP is approaching oversold territory, suggesting downward momentum is decelerating and a potential pullback or consolidation may be imminent. However, the stock's significant underperformance relative to both its 50-day and 200-day SMAs signals underlying weakness, warranting caution on mean-reversion assumptions without confirmation of support or trend reversal.",
-      "rank": 3
-    },
-    {
-      "symbol": "TJX",
-      "price": 144.5,
-      "score": 86,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 57.6,
-        "liquidity": 28.8
-      },
-      "setup": null,
-      "reasoning": "# TJX Momentum Analysis\n\nThe RSI reading of 30.3 indicates weakening downside momentum as the stock approaches oversold territory, suggesting that selling pressure may be losing intensity. Combined with the price trading below both major moving averages, this setup reflects a pullback within a deteriorating trend, warranting observation for potential stabilization signals before any directional conviction.",
-      "rank": 4
-    },
-    {
-      "symbol": "CVX",
-      "price": 205.76,
-      "score": 86,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 25.6
-      },
-      "setup": null,
-      "reasoning": "# CVX Momentum Analysis\n\nThe RSI of 69.8 indicates strong upward momentum approaching overbought territory, suggesting the rally has been sustained and potentially extended beyond typical mean reversion thresholds. With price trading well above both the 50 and 200-day SMAs, the stock exhibits structural strength, though the proximity to 70 RSI warrants monitoring for potential pullback or consolidation rather than fresh breakout continuation.",
-      "rank": 5
-    },
-    {
-      "symbol": "JNJ",
-      "price": 273.41,
-      "score": 84,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 55.2,
-        "liquidity": 28.8
-      },
-      "setup": null,
-      "reasoning": "JNJ's RSI of 68.6 indicates strong upward momentum with the stock approaching overbought territory, suggesting reduced room for further gains in the near term and increasing likelihood of a pullback or consolidation. The stock's position well above both its 50-day and 200-day moving averages confirms an established uptrend, though the elevated RSI warns of potential exhaustion in the current rally.",
-      "rank": 6
-    },
-    {
-      "symbol": "MNST",
-      "price": 47.43,
-      "score": 80,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 40.0,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "MNST's RSI of 15.5 indicates severely oversold conditions with potential for mean reversion, though the stock's significant underperformance relative to both its 50- and 200-day moving averages suggests underlying weakness that technical relief alone may not reverse. Traders should weigh the oversold bounce potential against the bearish price structure before acting on momentum signals.",
-      "rank": 7
-    },
     {
       "symbol": "UNH",
       "price": 388.61,
@@ -267,70 +85,6 @@
       },
       "reasoning": "UNH's elevated implied volatility relative to realized vol and mid-range positioning create an attractive premium-collection setup, especially with reasonable liquidity depth to manage exits. The thesis holds as long as the stock respects its recent consolidation band and macro healthcare sentiment remains stable\u2014but a sharp directional catalyst (earnings, sector rotation, or macro shock) could quickly erode the short wings faster than theta can compensate. IV compression poses a secondary risk; if uncertainty fades without a move, you're left defending a shrinking premium at unfavorable levels.",
       "rank": 8
-    },
-    {
-      "symbol": "MSFT",
-      "price": 484.31,
-      "score": 70,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 15.0,
-        "quality": 20.0,
-        "liquidity": 20.0,
-        "open_interest": 7.5,
-        "spread_tightness": 7.5
-      },
-      "setup": {
-        "label": "400C \u00b7 \u03940.80 \u00b7 393d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$123.45",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$523.45"
-          },
-          {
-            "label": "Leverage",
-            "value": "3.9x"
-          },
-          {
-            "label": "% ITM",
-            "value": "17.4%"
-          }
-        ]
-      },
-      "reasoning": "# MSFT LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage to capture sustained upside while paying a significant discount to realized volatility, making it an efficient substitute for outright stock ownership with defined risk. The primary drawback is substantial time decay drag over nearly a year\u2014requiring either appreciable further appreciation or volatility expansion to justify the premium, plus vulnerability to a mean reversion that erases gains before the long-dated thesis materializes.",
-      "rank": 9
     },
     {
       "symbol": "PCG",
@@ -648,6 +402,70 @@
       "rank": 14
     },
     {
+      "symbol": "MSFT",
+      "price": 484.31,
+      "score": 70,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 15.0,
+        "quality": 20.0,
+        "liquidity": 20.0,
+        "open_interest": 7.5,
+        "spread_tightness": 7.5
+      },
+      "setup": {
+        "label": "400C \u00b7 \u03940.80 \u00b7 393d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$123.45",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$523.45"
+          },
+          {
+            "label": "Leverage",
+            "value": "3.9x"
+          },
+          {
+            "label": "% ITM",
+            "value": "17.4%"
+          }
+        ]
+      },
+      "reasoning": "# MSFT LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage to capture sustained upside while paying a significant discount to realized volatility, making it an efficient substitute for outright stock ownership with defined risk. The primary drawback is substantial time decay drag over nearly a year\u2014requiring either appreciable further appreciation or volatility expansion to justify the premium, plus vulnerability to a mean reversion that erases gains before the long-dated thesis materializes.",
+      "rank": 9
+    },
+    {
       "symbol": "T",
       "price": 25.12,
       "score": 35,
@@ -710,6 +528,181 @@
       },
       "reasoning": "# T LEAPS Call Analysis\n\nThis deep ITM call offers equity-like exposure (0.77 delta) with meaningful leverage at modest premium cost relative to intrinsic value, while IV sitting near historical volatility suggests you're not overpaying for volatility expansion. The primary risk is time decay eroding your position if the telecommunications sector stalls or reverses before the long-dated thesis materializes, particularly problematic since you're paying for 421 days of carry on what is fundamentally a directional bet rather than a volatility play.",
       "rank": 15
+    },
+    {
+      "symbol": "MRNA",
+      "price": 174.38,
+      "score": 98,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 38.4
+      },
+      "setup": null,
+      "reasoning": "# RSI Momentum Analysis: MRNA\n\nAn RSI of 92.2 represents extreme overbought conditions, indicating that buying momentum has reached an unsustainable level and a pullback or consolidation is statistically probable in the near term. Combined with the stock trading 173% above its 200-day SMA, the extended price action suggests limited room for further gains without a corrective period to relieve the overbought condition.",
+      "rank": 1
+    },
+    {
+      "symbol": "MRK",
+      "price": 152.2,
+      "score": 94,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.6,
+        "liquidity": 36.8
+      },
+      "setup": null,
+      "reasoning": "MRK's RSI of 83.2 indicates strong overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and raises the probability of near-term consolidation or pullback. The stock's substantial separation from its 50-day and 200-day SMAs (20% and 34% above respectively) confirms an extended uptrend, though elevated RSI typically precedes a momentum shift rather than immediate reversal.",
+      "rank": 2
+    },
+    {
+      "symbol": "APP",
+      "price": 310.79,
+      "score": 92,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 55.2,
+        "liquidity": 36.8
+      },
+      "setup": null,
+      "reasoning": "The RSI of 30.5 indicates APP is approaching oversold territory, suggesting downward momentum is decelerating and a potential pullback or consolidation may be imminent. However, the stock's significant underperformance relative to both its 50-day and 200-day SMAs signals underlying weakness, warranting caution on mean-reversion assumptions without confirmation of support or trend reversal.",
+      "rank": 3
+    },
+    {
+      "symbol": "TJX",
+      "price": 144.5,
+      "score": 86,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.6,
+        "liquidity": 28.8
+      },
+      "setup": null,
+      "reasoning": "# TJX Momentum Analysis\n\nThe RSI reading of 30.3 indicates weakening downside momentum as the stock approaches oversold territory, suggesting that selling pressure may be losing intensity. Combined with the price trading below both major moving averages, this setup reflects a pullback within a deteriorating trend, warranting observation for potential stabilization signals before any directional conviction.",
+      "rank": 4
+    },
+    {
+      "symbol": "CVX",
+      "price": 205.76,
+      "score": 86,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 25.6
+      },
+      "setup": null,
+      "reasoning": "# CVX Momentum Analysis\n\nThe RSI of 69.8 indicates strong upward momentum approaching overbought territory, suggesting the rally has been sustained and potentially extended beyond typical mean reversion thresholds. With price trading well above both the 50 and 200-day SMAs, the stock exhibits structural strength, though the proximity to 70 RSI warrants monitoring for potential pullback or consolidation rather than fresh breakout continuation.",
+      "rank": 5
+    },
+    {
+      "symbol": "JNJ",
+      "price": 273.41,
+      "score": 84,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 55.2,
+        "liquidity": 28.8
+      },
+      "setup": null,
+      "reasoning": "JNJ's RSI of 68.6 indicates strong upward momentum with the stock approaching overbought territory, suggesting reduced room for further gains in the near term and increasing likelihood of a pullback or consolidation. The stock's position well above both its 50-day and 200-day moving averages confirms an established uptrend, though the elevated RSI warns of potential exhaustion in the current rally.",
+      "rank": 6
+    },
+    {
+      "symbol": "MNST",
+      "price": 47.43,
+      "score": 80,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 40.0,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "MNST's RSI of 15.5 indicates severely oversold conditions with potential for mean reversion, though the stock's significant underperformance relative to both its 50- and 200-day moving averages suggests underlying weakness that technical relief alone may not reverse. Traders should weigh the oversold bounce potential against the bearish price structure before acting on momentum signals.",
+      "rank": 7
     },
     {
       "symbol": "DVA",
