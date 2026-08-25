@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-08-25T21:26:41.985314",
+  "scan_date": "2026-08-25T21:26:41.986083",
   "context": [
     {
       "label": "Universe",
@@ -30,6 +23,70 @@
     }
   ],
   "opportunities": [
+    {
+      "symbol": "MSFT",
+      "price": 491.71,
+      "score": 55,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 0.0,
+        "quality": 20.0,
+        "liquidity": 20.0,
+        "open_interest": 15.0,
+        "spread_tightness": 0.0
+      },
+      "setup": {
+        "label": "405C \u00b7 \u03940.80 \u00b7 387d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$127.00",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$532.00"
+          },
+          {
+            "label": "Leverage",
+            "value": "3.9x"
+          },
+          {
+            "label": "% ITM",
+            "value": "17.6%"
+          }
+        ]
+      },
+      "reasoning": "# MSFT LEAPS Analysis\n\nThis deep ITM call offers equity-like upside (0.80 delta) with meaningful leverage at a substantial discount to intrinsic value, making it an efficient alternative to owning shares while volatility is historically cheap relative to realized movement. The primary risk is assignment or forced liquidation if MSFT's trend reverses before the extended timeframe allows the position to mature, combined with the drag of theta decay on the out-of-money component\u2014a real cost if the stock consolidates rather than advances.",
+      "rank": 8
+    },
     {
       "symbol": "MRK",
       "price": 156.45,
@@ -204,70 +261,6 @@
       "setup": null,
       "reasoning": "The RSI(14) at 78.0 indicates overbought conditions with strong upside momentum, suggesting price has moved substantially ahead of its moving averages (50d and 200d both well below current price). This extremal reading typically warns of potential pullback risk or consolidation, though overbought conditions can persist during strong trending moves.",
       "rank": 7
-    },
-    {
-      "symbol": "MSFT",
-      "price": 491.71,
-      "score": 55,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 0.0,
-        "quality": 20.0,
-        "liquidity": 20.0,
-        "open_interest": 15.0,
-        "spread_tightness": 0.0
-      },
-      "setup": {
-        "label": "405C \u00b7 \u03940.80 \u00b7 387d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$127.00",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$532.00"
-          },
-          {
-            "label": "Leverage",
-            "value": "3.9x"
-          },
-          {
-            "label": "% ITM",
-            "value": "17.6%"
-          }
-        ]
-      },
-      "reasoning": "# MSFT LEAPS Analysis\n\nThis deep ITM call offers equity-like upside (0.80 delta) with meaningful leverage at a substantial discount to intrinsic value, making it an efficient alternative to owning shares while volatility is historically cheap relative to realized movement. The primary risk is assignment or forced liquidation if MSFT's trend reverses before the extended timeframe allows the position to mature, combined with the drag of theta decay on the out-of-money component\u2014a real cost if the stock consolidates rather than advances.",
-      "rank": 8
     },
     {
       "symbol": "NI",
