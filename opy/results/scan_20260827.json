@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-08-27T00:27:54.507583",
+  "scan_date": "2026-08-27T00:27:54.508547",
   "context": [
     {
       "label": "Universe",
@@ -30,6 +23,134 @@
     }
   ],
   "opportunities": [
+    {
+      "symbol": "PLTR",
+      "price": 177.5,
+      "score": 68,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 15.0,
+        "quality": 20.0,
+        "liquidity": 10.0,
+        "open_interest": 15.0,
+        "spread_tightness": 7.5
+      },
+      "setup": {
+        "label": "135C \u00b7 \u03940.80 \u00b7 385d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$66.25",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$201.25"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.7x"
+          },
+          {
+            "label": "% ITM",
+            "value": "23.9%"
+          }
+        ]
+      },
+      "reasoning": "# PLTR LEAPS Analysis\n\nThis deep ITM call offers levered equity exposure at a meaningful discount to implied volatility relative to realized vol, making it an efficient substitute for outright stock ownership while preserving capital and reducing assignment risk over a 12+ month horizon. The primary risk is duration itself\u2014a sustained trend reversal could erode the position's theta advantage before the directional thesis materializes, and the substantial time value embedded in the premium leaves little margin for error if momentum stalls.",
+      "rank": 8
+    },
+    {
+      "symbol": "MSFT",
+      "price": 496.37,
+      "score": 38,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 0.0,
+        "quality": 10.0,
+        "liquidity": 20.0,
+        "open_interest": 7.5,
+        "spread_tightness": 0.0
+      },
+      "setup": {
+        "label": "410C \u00b7 \u03940.80 \u00b7 385d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$127.00",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$537.00"
+          },
+          {
+            "label": "Leverage",
+            "value": "3.9x"
+          },
+          {
+            "label": "% ITM",
+            "value": "17.4%"
+          }
+        ]
+      },
+      "reasoning": "# MSFT LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage to a sustained uptrend at a discount to realized volatility, making it an efficient capital substitute for conviction holders who want to reduce cash drag while maintaining directional exposure. The primary risk is mean reversion in the trend itself\u2014a market correction or momentum breakdown could trigger significant losses even though intrinsic value provides a floor, and the substantial time premium (despite the IV discount) means you're betting on continued strong performance to justify the entry price.",
+      "rank": 9
+    },
     {
       "symbol": "DASH",
       "price": 236.93,
@@ -204,134 +325,6 @@
       "setup": null,
       "reasoning": "TJX's RSI of 22.8 indicates severely oversold conditions with substantial downward momentum exhaustion, suggesting potential mean reversion pressure ahead. The 10% gap below both major moving averages reinforces that price has disconnected significantly from intermediate trend, creating a confluence of technical extremes that typically precedes consolidation or reversal.",
       "rank": 7
-    },
-    {
-      "symbol": "PLTR",
-      "price": 177.5,
-      "score": 68,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 15.0,
-        "quality": 20.0,
-        "liquidity": 10.0,
-        "open_interest": 15.0,
-        "spread_tightness": 7.5
-      },
-      "setup": {
-        "label": "135C \u00b7 \u03940.80 \u00b7 385d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$66.25",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$201.25"
-          },
-          {
-            "label": "Leverage",
-            "value": "2.7x"
-          },
-          {
-            "label": "% ITM",
-            "value": "23.9%"
-          }
-        ]
-      },
-      "reasoning": "# PLTR LEAPS Analysis\n\nThis deep ITM call offers levered equity exposure at a meaningful discount to implied volatility relative to realized vol, making it an efficient substitute for outright stock ownership while preserving capital and reducing assignment risk over a 12+ month horizon. The primary risk is duration itself\u2014a sustained trend reversal could erode the position's theta advantage before the directional thesis materializes, and the substantial time value embedded in the premium leaves little margin for error if momentum stalls.",
-      "rank": 8
-    },
-    {
-      "symbol": "MSFT",
-      "price": 496.37,
-      "score": 38,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 0.0,
-        "quality": 10.0,
-        "liquidity": 20.0,
-        "open_interest": 7.5,
-        "spread_tightness": 0.0
-      },
-      "setup": {
-        "label": "410C \u00b7 \u03940.80 \u00b7 385d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$127.00",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$537.00"
-          },
-          {
-            "label": "Leverage",
-            "value": "3.9x"
-          },
-          {
-            "label": "% ITM",
-            "value": "17.4%"
-          }
-        ]
-      },
-      "reasoning": "# MSFT LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage to a sustained uptrend at a discount to realized volatility, making it an efficient capital substitute for conviction holders who want to reduce cash drag while maintaining directional exposure. The primary risk is mean reversion in the trend itself\u2014a market correction or momentum breakdown could trigger significant losses even though intrinsic value provides a floor, and the substantial time premium (despite the IV discount) means you're betting on continued strong performance to justify the entry price.",
-      "rank": 9
     },
     {
       "symbol": "LII",
