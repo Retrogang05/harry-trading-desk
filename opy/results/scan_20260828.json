@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-08-28T05:07:37.845633",
+  "scan_date": "2026-08-28T05:07:37.846781",
   "context": [
     {
       "label": "Universe",
@@ -30,146 +23,6 @@
     }
   ],
   "opportunities": [
-    {
-      "symbol": "C",
-      "price": 132.68,
-      "score": 100,
-      "strategy": "Bear Call Spread",
-      "dimensions": [
-        {
-          "key": "credit_width",
-          "label": "Credit / Width",
-          "max": 30
-        },
-        {
-          "key": "prob_profit",
-          "label": "Prob. of Profit",
-          "max": 25
-        },
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "credit_width": 30.0,
-        "prob_profit": 25.0,
-        "iv_hv_richness": 20.0,
-        "liquidity": 15.0,
-        "open_interest": 10.0
-      },
-      "setup": {
-        "label": "Bear Call 140/145 \u00b7 48d",
-        "fields": [
-          {
-            "label": "Credit",
-            "value": "$1.14",
-            "tone": "pos"
-          },
-          {
-            "label": "Max Loss",
-            "value": "$3.86",
-            "tone": "neg"
-          },
-          {
-            "label": "ROC",
-            "value": "29.5%"
-          },
-          {
-            "label": "Approx. POP",
-            "value": "66%"
-          }
-        ]
-      },
-      "reasoning": "# Bear Call Analysis\n\nThe stock's established downtrend and moderately elevated IV provide attractive premium for a wide, short-delta spread positioned well out-of-the-money. The risk/reward setup is sound\u2014you're collecting meaningful income while IV normalization and continued weakness both work in your favor. The primary threat is a sharp reversal that punches through the short strike; given the stock's current momentum, this is less likely than the gradual decay scenario the position favors.",
-      "rank": 1
-    },
-    {
-      "symbol": "CRM",
-      "price": 252.05,
-      "score": 98,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 38.1
-      },
-      "setup": null,
-      "reasoning": "CRM's RSI of 80.0 indicates pronounced overbought conditions with exhausted momentum, suggesting the stock may be vulnerable to near-term pullback or consolidation. The steep separation from both moving averages (252.05 vs. 178.87/199.53 SMA) amplifies this concern, as price has extended significantly ahead of trend support.",
-      "rank": 2
-    },
-    {
-      "symbol": "WMT",
-      "price": 102.63,
-      "score": 93,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 52.8,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "WMT's RSI of 32.2 indicates weakening downside momentum as the stock approaches oversold conditions, suggesting selling pressure may be near exhaustion. Combined with price trading significantly below both the 50- and 200-day SMAs, this reading reflects a prolonged downtrend where a potential bounce could develop, though confirmation of trend reversal remains absent.",
-      "rank": 3
-    },
-    {
-      "symbol": "PLTR",
-      "price": 185.93,
-      "score": 91,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 52.8,
-        "liquidity": 38.4
-      },
-      "setup": null,
-      "reasoning": "# RSI Momentum Analysis: PLTR\n\nThe RSI14 reading of 69.1 indicates strong bullish momentum approaching overbought territory, suggesting the recent rally has sustained buying pressure but may face near-term consolidation or pullback risk. The significant distance above both moving averages (30-44 points) reinforces strength while leaving limited room for continued acceleration without a brief respite.",
-      "rank": 4
-    },
     {
       "symbol": "WFC",
       "price": 84.97,
@@ -232,106 +85,6 @@
       },
       "reasoning": "WFC presents an attractive iron condor setup: elevated IV relative to realized volatility offers genuine premium cushion, while the stock's mid-range positioning and modest expected move suggest low conviction directional pressure. The trade remains valid only if the name stays confined within its recent volatility envelope\u2014a sharp earnings miss, regulatory headline, or macro risk-off event could trigger the directional breakout that collapses your short strikes. Monitor realized vol closely; if it compresses faster than IV, you're fighting theta decay and may want to exit early rather than hold through earnings or FOMC.",
       "rank": 5
-    },
-    {
-      "symbol": "NOW",
-      "price": 138.43,
-      "score": 84,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 50.4,
-        "liquidity": 33.6
-      },
-      "setup": null,
-      "reasoning": "The RSI(14) reading of 69.0 indicates strong upward momentum approaching overbought territory, suggesting the stock has moved sharply higher with limited room for continued acceleration before potential pullback or consolidation. The price's significant distance above both the 50-day and 200-day SMAs reinforces the strength of the current uptrend, though the proximity to overbought conditions warrants monitoring for signs of momentum exhaustion.",
-      "rank": 6
-    },
-    {
-      "symbol": "VEEV",
-      "price": 282.13,
-      "score": 84,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 57.1,
-        "liquidity": 26.7
-      },
-      "setup": null,
-      "reasoning": "VEEV's RSI of 79.6 indicates strong overbought conditions with significant momentum exhaustion risk, suggesting the stock may be vulnerable to consolidation or pullback despite its substantial outperformance above both moving averages. The disconnect between extreme momentum readings and price strength above longer-term support levels warrants caution regarding sustainability of the current rally.",
-      "rank": 7
-    },
-    {
-      "symbol": "NEE",
-      "price": 83.47,
-      "score": 82,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 50.4,
-        "liquidity": 32.0
-      },
-      "setup": null,
-      "reasoning": "NEE's RSI of 32.9 indicates weakening momentum with oversold conditions approaching, suggesting selling pressure may be nearing exhaustion. Combined with price trading below both the 50- and 200-day SMAs, the technical setup reflects a downtrend that could be vulnerable to reversal if momentum indicators stabilize.",
-      "rank": 8
-    },
-    {
-      "symbol": "TJX",
-      "price": 134.22,
-      "score": 80,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 40.0,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "TJX's RSI of 20.6 indicates severe oversold conditions, suggesting momentum has contracted sharply and a potential mean-reversion bounce could materialize; however, the price trading 12-13% below both major moving averages signals underlying weakness and warrants confirmation of stabilization before assuming reversal strength.",
-      "rank": 9
     },
     {
       "symbol": "TXN",
@@ -458,70 +211,6 @@
       },
       "reasoning": "# PG Iron Condor Assessment\n\nPG offers an attractive risk/reward for range-bound traders: elevated IV relative to realized volatility provides meaningful premium collection, while the stock's positioning deep within its 52-week range suggests limited directional conviction. The wide bid-ask spreads and solid open interest afford reasonable exit liquidity, though the thesis breaks down decisively on any earnings catalyst, significant IV crush, or a sustained breakout beyond the expected move envelope\u2014particularly given consumer staples' sensitivity to macro sentiment shifts.",
       "rank": 11
-    },
-    {
-      "symbol": "T",
-      "price": 25.43,
-      "score": 55,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 0.0,
-        "quality": 20.0,
-        "liquidity": 20.0,
-        "open_interest": 15.0,
-        "spread_tightness": 0.0
-      },
-      "setup": {
-        "label": "22C \u00b7 \u03940.78 \u00b7 412d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$4.85",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$26.85"
-          },
-          {
-            "label": "Leverage",
-            "value": "5.2x"
-          },
-          {
-            "label": "% ITM",
-            "value": "13.5%"
-          }
-        ]
-      },
-      "reasoning": "# T LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage to a stable dividend stock with favorable vol pricing, delivering equity-like exposure at a fraction of the capital while benefiting from AT&T's steady uptrend. The primary risk is time decay eroding returns if the trend stalls or reverses before the 2027 maturity, since the substantial time premium (despite relative cheapness) leaves limited margin for error on directional conviction. The thesis works best for investors confident in sustained momentum and willing to accept that capital efficiency gains evaporate quickly if the thesis breaks.",
-      "rank": 12
     },
     {
       "symbol": "F",
@@ -711,6 +400,310 @@
       },
       "reasoning": "QCOM presents an attractive iron condor setup: it's trading near the lower quartile of its annual range with IV/HV nearly at parity, suggesting premium is fairly valued rather than inflated, while the 48-day window provides enough decay runway without excessive gamma risk into expiration. The strategy works if the stock remains range-bound and IV normalizes downward; it breaks down on a sharp directional move beyond the expected move envelope, a material earnings revision, or a structural shift in semiconductor demand that reprices the name higher. Decent liquidity (1300+ OI floor) supports tight execution, though the 8.7% spread warrants scaling into positions or using limit orders to avoid slippage.",
       "rank": 15
+    },
+    {
+      "symbol": "C",
+      "price": 132.68,
+      "score": 100,
+      "strategy": "Bear Call Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 30.0,
+        "prob_profit": 25.0,
+        "iv_hv_richness": 20.0,
+        "liquidity": 15.0,
+        "open_interest": 10.0
+      },
+      "setup": {
+        "label": "Bear Call 140/145 \u00b7 48d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$1.14",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$3.86",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "29.5%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "66%"
+          }
+        ]
+      },
+      "reasoning": "# Bear Call Analysis\n\nThe stock's established downtrend and moderately elevated IV provide attractive premium for a wide, short-delta spread positioned well out-of-the-money. The risk/reward setup is sound\u2014you're collecting meaningful income while IV normalization and continued weakness both work in your favor. The primary threat is a sharp reversal that punches through the short strike; given the stock's current momentum, this is less likely than the gradual decay scenario the position favors.",
+      "rank": 1
+    },
+    {
+      "symbol": "T",
+      "price": 25.43,
+      "score": 55,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 0.0,
+        "quality": 20.0,
+        "liquidity": 20.0,
+        "open_interest": 15.0,
+        "spread_tightness": 0.0
+      },
+      "setup": {
+        "label": "22C \u00b7 \u03940.78 \u00b7 412d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$4.85",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$26.85"
+          },
+          {
+            "label": "Leverage",
+            "value": "5.2x"
+          },
+          {
+            "label": "% ITM",
+            "value": "13.5%"
+          }
+        ]
+      },
+      "reasoning": "# T LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage to a stable dividend stock with favorable vol pricing, delivering equity-like exposure at a fraction of the capital while benefiting from AT&T's steady uptrend. The primary risk is time decay eroding returns if the trend stalls or reverses before the 2027 maturity, since the substantial time premium (despite relative cheapness) leaves limited margin for error on directional conviction. The thesis works best for investors confident in sustained momentum and willing to accept that capital efficiency gains evaporate quickly if the thesis breaks.",
+      "rank": 12
+    },
+    {
+      "symbol": "CRM",
+      "price": 252.05,
+      "score": 98,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 38.1
+      },
+      "setup": null,
+      "reasoning": "CRM's RSI of 80.0 indicates pronounced overbought conditions with exhausted momentum, suggesting the stock may be vulnerable to near-term pullback or consolidation. The steep separation from both moving averages (252.05 vs. 178.87/199.53 SMA) amplifies this concern, as price has extended significantly ahead of trend support.",
+      "rank": 2
+    },
+    {
+      "symbol": "WMT",
+      "price": 102.63,
+      "score": 93,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 52.8,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "WMT's RSI of 32.2 indicates weakening downside momentum as the stock approaches oversold conditions, suggesting selling pressure may be near exhaustion. Combined with price trading significantly below both the 50- and 200-day SMAs, this reading reflects a prolonged downtrend where a potential bounce could develop, though confirmation of trend reversal remains absent.",
+      "rank": 3
+    },
+    {
+      "symbol": "PLTR",
+      "price": 185.93,
+      "score": 91,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 52.8,
+        "liquidity": 38.4
+      },
+      "setup": null,
+      "reasoning": "# RSI Momentum Analysis: PLTR\n\nThe RSI14 reading of 69.1 indicates strong bullish momentum approaching overbought territory, suggesting the recent rally has sustained buying pressure but may face near-term consolidation or pullback risk. The significant distance above both moving averages (30-44 points) reinforces strength while leaving limited room for continued acceleration without a brief respite.",
+      "rank": 4
+    },
+    {
+      "symbol": "NOW",
+      "price": 138.43,
+      "score": 84,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 50.4,
+        "liquidity": 33.6
+      },
+      "setup": null,
+      "reasoning": "The RSI(14) reading of 69.0 indicates strong upward momentum approaching overbought territory, suggesting the stock has moved sharply higher with limited room for continued acceleration before potential pullback or consolidation. The price's significant distance above both the 50-day and 200-day SMAs reinforces the strength of the current uptrend, though the proximity to overbought conditions warrants monitoring for signs of momentum exhaustion.",
+      "rank": 6
+    },
+    {
+      "symbol": "VEEV",
+      "price": 282.13,
+      "score": 84,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.1,
+        "liquidity": 26.7
+      },
+      "setup": null,
+      "reasoning": "VEEV's RSI of 79.6 indicates strong overbought conditions with significant momentum exhaustion risk, suggesting the stock may be vulnerable to consolidation or pullback despite its substantial outperformance above both moving averages. The disconnect between extreme momentum readings and price strength above longer-term support levels warrants caution regarding sustainability of the current rally.",
+      "rank": 7
+    },
+    {
+      "symbol": "NEE",
+      "price": 83.47,
+      "score": 82,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 50.4,
+        "liquidity": 32.0
+      },
+      "setup": null,
+      "reasoning": "NEE's RSI of 32.9 indicates weakening momentum with oversold conditions approaching, suggesting selling pressure may be nearing exhaustion. Combined with price trading below both the 50- and 200-day SMAs, the technical setup reflects a downtrend that could be vulnerable to reversal if momentum indicators stabilize.",
+      "rank": 8
+    },
+    {
+      "symbol": "TJX",
+      "price": 134.22,
+      "score": 80,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 40.0,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "TJX's RSI of 20.6 indicates severe oversold conditions, suggesting momentum has contracted sharply and a potential mean-reversion bounce could materialize; however, the price trading 12-13% below both major moving averages signals underlying weakness and warrants confirmation of stabilization before assuming reversal strength.",
+      "rank": 9
     },
     {
       "symbol": "HRL",
