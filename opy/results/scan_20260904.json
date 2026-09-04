@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-09-04T22:48:52.908981",
+  "scan_date": "2026-09-04T22:48:52.910557",
   "context": [
     {
       "label": "Universe",
@@ -30,31 +23,6 @@
     }
   ],
   "opportunities": [
-    {
-      "symbol": "MPC",
-      "price": 388.9,
-      "score": 90,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 30.0
-      },
-      "setup": null,
-      "reasoning": "MPC's RSI of 78.2 indicates strong overbought conditions, suggesting momentum has extended significantly ahead of moving average support and may be vulnerable to consolidation or pullback. The wide separation from both the 50- and 200-day SMAs reinforces that the current rally has driven price well beyond typical mean-reversion levels, leaving limited room for continued acceleration without a momentum reset.",
-      "rank": 1
-    },
     {
       "symbol": "NEE",
       "price": 83.43,
@@ -182,181 +150,6 @@
       "rank": 3
     },
     {
-      "symbol": "CRM",
-      "price": 259.23,
-      "score": 85,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 45.0,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "CRM's RSI of 76.6 indicates strong overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and historically often precedes consolidation or pullback. The stock's substantial distance above both moving averages amplifies this signal, indicating that current momentum may be more vulnerable to mean reversion than continuation.",
-      "rank": 4
-    },
-    {
-      "symbol": "APH",
-      "price": 82.78,
-      "score": 83,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 50.0,
-        "liquidity": 33.3
-      },
-      "setup": null,
-      "reasoning": "APH's RSI14 of 16.7 indicates severely oversold conditions, suggesting downward momentum has been exhausted and a potential mean reversion bounce could occur; however, the price trading substantially below both the 50-day and 200-day SMAs signals a deteriorating trend structure that may constrain upside relief. The momentum divergence between the oversold RSI reading and the depressed technical setup warrants confirmation of reversal signals before positioning.",
-      "rank": 5
-    },
-    {
-      "symbol": "TJX",
-      "price": 132.08,
-      "score": 80,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 40.0,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "# TJX Momentum Analysis\n\nThe RSI14 of 22.8 indicates severely oversold conditions, suggesting momentum has contracted sharply and a potential mean-reversion bounce could be building. However, with price trading 8-14% below both major moving averages, the underlying downtrend remains intact, indicating oversold readings alone may not signal an imminent reversal without confirmation from price action or other indicators.",
-      "rank": 6
-    },
-    {
-      "symbol": "HOOD",
-      "price": 122.11,
-      "score": 80,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 52.8,
-        "liquidity": 27.2
-      },
-      "setup": null,
-      "reasoning": "HOOD's RSI of 65.9 indicates strong upward momentum with the stock approaching overbought conditions, suggesting potential pullback risk or consolidation in the near term. The price trading well above both the 50-day and 200-day SMAs confirms an established uptrend, though the elevated RSI warrants monitoring for either a continuation through resistance or a corrective phase.",
-      "rank": 7
-    },
-    {
-      "symbol": "CDNS",
-      "price": 292.7,
-      "score": 78,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 57.6,
-        "liquidity": 20.8
-      },
-      "setup": null,
-      "reasoning": "CDNS's RSI of 31.0 indicates momentum weakness with the stock approaching oversold territory, suggesting selling pressure has intensified but may be nearing exhaustion. Combined with price trading 14-15% below both key moving averages, the setup reflects a potential inflection point where mean reversion interest could emerge, though confirmation of stabilization would be needed.",
-      "rank": 8
-    },
-    {
-      "symbol": "DELL",
-      "price": 524.14,
-      "score": 75,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 43.2,
-        "liquidity": 32.0
-      },
-      "setup": null,
-      "reasoning": "DELL's RSI of 63.7 indicates strong upward momentum that is approaching overbought territory, suggesting the current rally may be encountering resistance to further near-term gains. The stock's substantial distance above both key moving averages (50d and 200d) reinforces robust intermediate-term strength, though the elevated RSI warrants monitoring for potential pullback or consolidation.",
-      "rank": 9
-    },
-    {
-      "symbol": "CIEN",
-      "price": 321.0,
-      "score": 75,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 43.2,
-        "liquidity": 32.0
-      },
-      "setup": null,
-      "reasoning": "# CIEN Momentum Analysis\n\nThe RSI at 33.9 indicates weakening downside momentum approaching oversold territory, suggesting the recent selloff may be losing conviction; however, with price significantly below both the 50- and 200-day SMAs, the intermediate trend remains decidedly bearish despite the potential for a technical bounce.",
-      "rank": 10
-    },
-    {
       "symbol": "ABT",
       "price": 108.33,
       "score": 73,
@@ -418,71 +211,6 @@
       },
       "reasoning": "ABT presents an attractive iron condor setup: moderately elevated IV relative to realized volatility provides solid premium cushion, while the stock's position near the midpoint of its annual range suggests equilibrium rather than directional momentum. The wide bid-ask spread and respectable open interest offer adequate liquidity to establish and manage the position. The thesis breaks down if the stock catalyzes a sharp directional move\u2014either a surprise earnings beat or a sector rotation\u2014that overwhelms the premium collected, or if IV mean-reverts sharply inward, eroding the wings' value before expiration.",
       "rank": 11
-    },
-    {
-      "symbol": "T",
-      "price": 25.68,
-      "score": 66,
-      "strategy": "Bull Put Spread",
-      "dimensions": [
-        {
-          "key": "credit_width",
-          "label": "Credit / Width",
-          "max": 30
-        },
-        {
-          "key": "prob_profit",
-          "label": "Prob. of Profit",
-          "max": 25
-        },
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "credit_width": 30.0,
-        "prob_profit": 3.6,
-        "iv_hv_richness": 11.4,
-        "liquidity": 12.9,
-        "open_interest": 8.6
-      },
-      "setup": {
-        "label": "Bull Put 25/24 \u00b7 41d",
-        "fields": [
-          {
-            "label": "Credit",
-            "value": "$0.27",
-            "tone": "pos"
-          },
-          {
-            "label": "Max Loss",
-            "value": "$0.73",
-            "tone": "neg"
-          },
-          {
-            "label": "ROC",
-            "value": "37.0%"
-          },
-          {
-            "label": "Approx. POP",
-            "value": "66%"
-          }
-        ]
-      },
-      "reasoning": "T's sustained downtrend and elevated IV provide attractive premium relative to the width, justifying the 27% credit capture on a moderately tight short strike (-0.34 delta). The setup benefits from both directional tailwinds and volatility expansion, though earnings uncertainty within the 41-day window presents meaningful tail risk\u2014a sharp reversal could quickly pressure the short strike despite the current bearish setup.",
-      "rank": 12
     },
     {
       "symbol": "CEG",
@@ -613,6 +341,134 @@
     {
       "symbol": "AXP",
       "price": 326.16,
+      "score": 58,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 17.1,
+        "range_centrality": 15.6,
+        "liquidity": 8.6,
+        "spread_tightness": 12.9,
+        "open_interest": 4.3
+      },
+      "setup": {
+        "label": "2026-10-16 \u00b7 41d \u00b7 IV/HV 1.11x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b15.3%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "22.8%"
+          },
+          {
+            "label": "HV30",
+            "value": "20.5%"
+          },
+          {
+            "label": "Spread",
+            "value": "4.3%"
+          }
+        ]
+      },
+      "reasoning": "# AXP Iron Condor Analysis\n\nAXP presents a textbook iron condor setup: modestly elevated IV relative to realized volatility combined with the stock trading in the lower-middle band of its annual range creates asymmetric risk/reward for a short strangle or condor structure, particularly if you're willing to accept modest width for liquidity. The core thesis breaks down on a directional catalyst\u2014earnings-driven surprise or macro shock that breaks the stock decisively outside its expected move envelope\u2014or a grinding IV compression that erodes premium faster than theta can collect it. Ensure your short strike selection accounts for that liquidity floor; the wider bid/ask on wings may limit your exit flexibility if you need to adjust.",
+      "rank": 18
+    },
+    {
+      "symbol": "T",
+      "price": 25.68,
+      "score": 66,
+      "strategy": "Bull Put Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 30.0,
+        "prob_profit": 3.6,
+        "iv_hv_richness": 11.4,
+        "liquidity": 12.9,
+        "open_interest": 8.6
+      },
+      "setup": {
+        "label": "Bull Put 25/24 \u00b7 41d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$0.27",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$0.73",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "37.0%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "66%"
+          }
+        ]
+      },
+      "reasoning": "T's sustained downtrend and elevated IV provide attractive premium relative to the width, justifying the 27% credit capture on a moderately tight short strike (-0.34 delta). The setup benefits from both directional tailwinds and volatility expansion, though earnings uncertainty within the 41-day window presents meaningful tail risk\u2014a sharp reversal could quickly pressure the short strike despite the current bearish setup.",
+      "rank": 12
+    },
+    {
+      "symbol": "AXP",
+      "price": 326.16,
       "score": 61,
       "strategy": "Bear Call Spread",
       "dimensions": [
@@ -739,133 +595,6 @@
       },
       "reasoning": "# MDT Bull Put Spread Analysis\n\nMDT's uptrend and elevated IV relative to realized volatility create a favorable setup for selling downside premium at a tight delta, while the 41-day window provides adequate time decay without overexposure to earnings volatility. The short strike's low delta and superior risk-reward ratio suggest the market is pricing in meaningful downside protection. The primary risk is a sharp reversal below 90 (whether catalyzed by earnings or macro deterioration), where negative gamma acceleration could force a difficult adjustment decision before the long strike provides meaningful relief.",
       "rank": 16
-    },
-    {
-      "symbol": "UBER",
-      "price": 75.76,
-      "score": 60,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 15.0,
-        "quality": 10.0,
-        "liquidity": 20.0,
-        "open_interest": 15.0,
-        "spread_tightness": 0.0
-      },
-      "setup": {
-        "label": "60C \u00b7 \u03940.80 \u00b7 377d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$24.00",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$84.00"
-          },
-          {
-            "label": "Leverage",
-            "value": "3.2x"
-          },
-          {
-            "label": "% ITM",
-            "value": "20.8%"
-          }
-        ]
-      },
-      "reasoning": "# UBER LEAPS Call Analysis\n\nThis deep ITM call offers near-stock-like delta exposure with meaningful leverage at a compressed volatility ratio, making it an efficient substitute for outright equity ownership while requiring significantly less capital. The primary risk is time decay eroding the substantial premium paid\u2014approximately one-third of the stock price\u2014if UBER enters a consolidation or reversal phase before the trend re-establishes, potentially locking in losses despite favorable directional bias.",
-      "rank": 17
-    },
-    {
-      "symbol": "AXP",
-      "price": 326.16,
-      "score": 58,
-      "strategy": "Iron Condor",
-      "dimensions": [
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 40
-        },
-        {
-          "key": "range_centrality",
-          "label": "Range Centrality",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "iv_hv_richness": 17.1,
-        "range_centrality": 15.6,
-        "liquidity": 8.6,
-        "spread_tightness": 12.9,
-        "open_interest": 4.3
-      },
-      "setup": {
-        "label": "2026-10-16 \u00b7 41d \u00b7 IV/HV 1.11x",
-        "fields": [
-          {
-            "label": "Exp. Move",
-            "value": "\u00b15.3%"
-          },
-          {
-            "label": "ATM IV",
-            "value": "22.8%"
-          },
-          {
-            "label": "HV30",
-            "value": "20.5%"
-          },
-          {
-            "label": "Spread",
-            "value": "4.3%"
-          }
-        ]
-      },
-      "reasoning": "# AXP Iron Condor Analysis\n\nAXP presents a textbook iron condor setup: modestly elevated IV relative to realized volatility combined with the stock trading in the lower-middle band of its annual range creates asymmetric risk/reward for a short strangle or condor structure, particularly if you're willing to accept modest width for liquidity. The core thesis breaks down on a directional catalyst\u2014earnings-driven surprise or macro shock that breaks the stock decisively outside its expected move envelope\u2014or a grinding IV compression that erodes premium faster than theta can collect it. Ensure your short strike selection accounts for that liquidity floor; the wider bid/ask on wings may limit your exit flexibility if you need to adjust.",
-      "rank": 18
     },
     {
       "symbol": "UNH",
@@ -1128,6 +857,70 @@
       "rank": 22
     },
     {
+      "symbol": "UBER",
+      "price": 75.76,
+      "score": 60,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 15.0,
+        "quality": 10.0,
+        "liquidity": 20.0,
+        "open_interest": 15.0,
+        "spread_tightness": 0.0
+      },
+      "setup": {
+        "label": "60C \u00b7 \u03940.80 \u00b7 377d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$24.00",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$84.00"
+          },
+          {
+            "label": "Leverage",
+            "value": "3.2x"
+          },
+          {
+            "label": "% ITM",
+            "value": "20.8%"
+          }
+        ]
+      },
+      "reasoning": "# UBER LEAPS Call Analysis\n\nThis deep ITM call offers near-stock-like delta exposure with meaningful leverage at a compressed volatility ratio, making it an efficient substitute for outright equity ownership while requiring significantly less capital. The primary risk is time decay eroding the substantial premium paid\u2014approximately one-third of the stock price\u2014if UBER enters a consolidation or reversal phase before the trend re-establishes, potentially locking in losses despite favorable directional bias.",
+      "rank": 17
+    },
+    {
       "symbol": "CVNA",
       "price": 74.59,
       "score": 45,
@@ -1190,6 +983,206 @@
       },
       "reasoning": "# CVNA LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage at a reasonable premium-to-price ratio, with implied volatility trading below realized levels providing a modest edge on entry timing for a trend-following thesis. The primary risk is duration-dependent: while 503 days provides substantial runway, a near-term reversal could erode the position's capital efficiency before the underlying thesis materializes, and the embedded time decay becomes an increasingly costly headwind if the trend stalls in the final year.",
       "rank": 23
+    },
+    {
+      "symbol": "MPC",
+      "price": 388.9,
+      "score": 90,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 30.0
+      },
+      "setup": null,
+      "reasoning": "MPC's RSI of 78.2 indicates strong overbought conditions, suggesting momentum has extended significantly ahead of moving average support and may be vulnerable to consolidation or pullback. The wide separation from both the 50- and 200-day SMAs reinforces that the current rally has driven price well beyond typical mean-reversion levels, leaving limited room for continued acceleration without a momentum reset.",
+      "rank": 1
+    },
+    {
+      "symbol": "CRM",
+      "price": 259.23,
+      "score": 85,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 45.0,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "CRM's RSI of 76.6 indicates strong overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and historically often precedes consolidation or pullback. The stock's substantial distance above both moving averages amplifies this signal, indicating that current momentum may be more vulnerable to mean reversion than continuation.",
+      "rank": 4
+    },
+    {
+      "symbol": "APH",
+      "price": 82.78,
+      "score": 83,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 50.0,
+        "liquidity": 33.3
+      },
+      "setup": null,
+      "reasoning": "APH's RSI14 of 16.7 indicates severely oversold conditions, suggesting downward momentum has been exhausted and a potential mean reversion bounce could occur; however, the price trading substantially below both the 50-day and 200-day SMAs signals a deteriorating trend structure that may constrain upside relief. The momentum divergence between the oversold RSI reading and the depressed technical setup warrants confirmation of reversal signals before positioning.",
+      "rank": 5
+    },
+    {
+      "symbol": "TJX",
+      "price": 132.08,
+      "score": 80,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 40.0,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "# TJX Momentum Analysis\n\nThe RSI14 of 22.8 indicates severely oversold conditions, suggesting momentum has contracted sharply and a potential mean-reversion bounce could be building. However, with price trading 8-14% below both major moving averages, the underlying downtrend remains intact, indicating oversold readings alone may not signal an imminent reversal without confirmation from price action or other indicators.",
+      "rank": 6
+    },
+    {
+      "symbol": "HOOD",
+      "price": 122.11,
+      "score": 80,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 52.8,
+        "liquidity": 27.2
+      },
+      "setup": null,
+      "reasoning": "HOOD's RSI of 65.9 indicates strong upward momentum with the stock approaching overbought conditions, suggesting potential pullback risk or consolidation in the near term. The price trading well above both the 50-day and 200-day SMAs confirms an established uptrend, though the elevated RSI warrants monitoring for either a continuation through resistance or a corrective phase.",
+      "rank": 7
+    },
+    {
+      "symbol": "CDNS",
+      "price": 292.7,
+      "score": 78,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.6,
+        "liquidity": 20.8
+      },
+      "setup": null,
+      "reasoning": "CDNS's RSI of 31.0 indicates momentum weakness with the stock approaching oversold territory, suggesting selling pressure has intensified but may be nearing exhaustion. Combined with price trading 14-15% below both key moving averages, the setup reflects a potential inflection point where mean reversion interest could emerge, though confirmation of stabilization would be needed.",
+      "rank": 8
+    },
+    {
+      "symbol": "DELL",
+      "price": 524.14,
+      "score": 75,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 43.2,
+        "liquidity": 32.0
+      },
+      "setup": null,
+      "reasoning": "DELL's RSI of 63.7 indicates strong upward momentum that is approaching overbought territory, suggesting the current rally may be encountering resistance to further near-term gains. The stock's substantial distance above both key moving averages (50d and 200d) reinforces robust intermediate-term strength, though the elevated RSI warrants monitoring for potential pullback or consolidation.",
+      "rank": 9
+    },
+    {
+      "symbol": "CIEN",
+      "price": 321.0,
+      "score": 75,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 43.2,
+        "liquidity": 32.0
+      },
+      "setup": null,
+      "reasoning": "# CIEN Momentum Analysis\n\nThe RSI at 33.9 indicates weakening downside momentum approaching oversold territory, suggesting the recent selloff may be losing conviction; however, with price significantly below both the 50- and 200-day SMAs, the intermediate trend remains decidedly bearish despite the potential for a technical bounce.",
+      "rank": 10
     }
   ]
 }
