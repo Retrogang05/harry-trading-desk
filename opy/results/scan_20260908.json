@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-09-08T23:12:28.627579",
+  "scan_date": "2026-09-08T23:12:28.628926",
   "context": [
     {
       "label": "Universe",
@@ -30,221 +23,6 @@
     }
   ],
   "opportunities": [
-    {
-      "symbol": "PG",
-      "price": 145.58,
-      "score": 100,
-      "strategy": "Bear Call Spread",
-      "dimensions": [
-        {
-          "key": "credit_width",
-          "label": "Credit / Width",
-          "max": 30
-        },
-        {
-          "key": "prob_profit",
-          "label": "Prob. of Profit",
-          "max": 25
-        },
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "credit_width": 30.0,
-        "prob_profit": 25.0,
-        "iv_hv_richness": 20.0,
-        "liquidity": 15.0,
-        "open_interest": 10.0
-      },
-      "setup": {
-        "label": "Bear Call 150/155 \u00b7 37d",
-        "fields": [
-          {
-            "label": "Credit",
-            "value": "$1.12",
-            "tone": "pos"
-          },
-          {
-            "label": "Max Loss",
-            "value": "$3.88",
-            "tone": "neg"
-          },
-          {
-            "label": "ROC",
-            "value": "28.9%"
-          },
-          {
-            "label": "Approx. POP",
-            "value": "65%"
-          }
-        ]
-      },
-      "reasoning": "# Bear Call Spread Analysis: PG\n\nPG's downtrend and elevated IV premium (1.33x ratio) support selling closer to current price, while the 65% probability of profit provides a reasonable margin of safety for the 37-day window. The primary risk is a sharp reversal above the short strike\u2014particularly vulnerable given the stock's proximity to support levels and potential for mean reversion in a consumer staples name. Monitor earnings timing; post-announcement volatility crush could significantly reduce your credit's real return despite achieving technical profit targets.",
-      "rank": 1
-    },
-    {
-      "symbol": "MPC",
-      "price": 397.77,
-      "score": 100,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "# MPC Momentum Analysis\n\nThe RSI14 reading of 80.8 indicates overbought conditions, suggesting momentum has extended significantly ahead of the underlying trend and may be vulnerable to mean reversion or consolidation. With price trading well above both the 50-day and 200-day SMAs, the stock exhibits strong uptrend strength, though the elevated RSI leaves limited room for further momentum acceleration without a pullback.",
-      "rank": 2
-    },
-    {
-      "symbol": "TJX",
-      "price": 128.92,
-      "score": 96,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 56.0,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "TJX's RSI14 of 19.7 indicates severely oversold conditions with substantial downward momentum exhaustion, suggesting a potential inflection point rather than continued weakness. However, the price trading 15-16% below both the 50- and 200-day SMAs indicates the underlying downtrend remains structurally intact, warranting caution on mean-reversion assumptions.",
-      "rank": 3
-    },
-    {
-      "symbol": "CRM",
-      "price": 249.12,
-      "score": 90,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 57.6,
-        "liquidity": 32.0
-      },
-      "setup": null,
-      "reasoning": "CRM's RSI of 67.6 indicates strong upward momentum approaching overbought territory, suggesting the recent rally has substantial conviction but limited room for acceleration before potential pullback or consolidation. The price well above both the 50-day and 200-day SMAs reinforces the strength of the uptrend, though the elevated RSI warrants monitoring for signs of momentum exhaustion.",
-      "rank": 4
-    },
-    {
-      "symbol": "SYK",
-      "price": 276.43,
-      "score": 87,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 52.0,
-        "liquidity": 34.7
-      },
-      "setup": null,
-      "reasoning": "SYK's RSI of 24.7 indicates severely oversold conditions with potential for mean reversion, though momentum remains decidedly bearish given the stock trades significantly below both its 50- and 200-day moving averages. The extreme RSI reading suggests selling pressure has been exhausted in the near term, but the underlying downtrend remains intact until price action recovers toward the 50-day SMA at $327.77.",
-      "rank": 5
-    },
-    {
-      "symbol": "BKNG",
-      "price": 180.3,
-      "score": 86,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 55.2,
-        "liquidity": 30.4
-      },
-      "setup": null,
-      "reasoning": "BKNG's RSI of 32.8 indicates approaching oversold conditions, suggesting momentum has deteriorated significantly and the stock may be nearing a potential reversal point. The price trading below both the 50-day and 200-day SMAs reinforces the bearish momentum, though oversold readings alone do not guarantee an immediate bounce.",
-      "rank": 6
-    },
-    {
-      "symbol": "DELL",
-      "price": 533.88,
-      "score": 84,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 50.4,
-        "liquidity": 33.6
-      },
-      "setup": null,
-      "reasoning": "DELL's RSI of 65.1 indicates strong upward momentum approaching overbought territory, suggesting the stock may be vulnerable to near-term pullback or consolidation. The significant distance above both the 50-day and 200-day SMAs confirms an established uptrend, though the elevated RSI reading warrants monitoring for potential exhaustion signals.",
-      "rank": 7
-    },
     {
       "symbol": "NEE",
       "price": 83.83,
@@ -309,31 +87,6 @@
       "rank": 8
     },
     {
-      "symbol": "HD",
-      "price": 313.7,
-      "score": 78,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 43.2,
-        "liquidity": 35.2
-      },
-      "setup": null,
-      "reasoning": "HD's RSI of 35.0 indicates moderating downside momentum as the stock approaches oversold conditions, suggesting selling pressure may be nearing exhaustion. The price sitting notably below both the 50- and 200-day SMAs reinforces a bearish intermediate trend, though the low RSI reading presents a potential inflection point where momentum could stabilize or reverse.",
-      "rank": 9
-    },
-    {
       "symbol": "PG",
       "price": 145.58,
       "score": 77,
@@ -395,31 +148,6 @@
       },
       "reasoning": "# PG Iron Condor Analysis\n\nPG presents an attractive setup for a range-bound premium sale: elevated implied volatility relative to realized vol creates favorable risk/reward for short premium strategies, while the stock's position in the lower-middle of its annual range suggests mean-reversion potential rather than directional momentum. The primary risks are a sharp earnings surprise or macro-driven equity move that overwhelms the IV cushion, or alternatively, a volatility crush that eliminates the premium advantage that makes the trade viable in the first place. Liquidity is solid enough for execution, though position sizing should respect the wider-than-ideal option spread.",
       "rank": 10
-    },
-    {
-      "symbol": "VLO",
-      "price": 382.85,
-      "score": 75,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 45.0,
-        "liquidity": 30.0
-      },
-      "setup": null,
-      "reasoning": "VLO's RSI of 79.3 indicates strongly overbought momentum with limited room for continued upside acceleration, suggesting a potential pullback or consolidation phase. The stock's substantial distance above both moving averages reinforces that the current rally has extended significantly, warranting caution regarding momentum sustainability.",
-      "rank": 11
     },
     {
       "symbol": "TXN",
@@ -672,6 +400,271 @@
       },
       "reasoning": "# SO Iron Condor Analysis\n\nSO presents an attractive iron condor setup: elevated implied volatility relative to realized vol provides premium cushion for short strikes, while its position in the middle of the 52-week range suggests consolidation rather than directional momentum. The modest expected move and low realized volatility support a thesis that price will remain range-bound through expiration. The trade breaks down if SO breaks its established trading bands on either side, if undisclosed catalysts (earnings surprises, regulatory shifts, dividend changes) trigger outsized moves, or if IV compression erodes the premium edge that makes the short strikes viable.",
       "rank": 15
+    },
+    {
+      "symbol": "PG",
+      "price": 145.58,
+      "score": 100,
+      "strategy": "Bear Call Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 30.0,
+        "prob_profit": 25.0,
+        "iv_hv_richness": 20.0,
+        "liquidity": 15.0,
+        "open_interest": 10.0
+      },
+      "setup": {
+        "label": "Bear Call 150/155 \u00b7 37d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$1.12",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$3.88",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "28.9%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "65%"
+          }
+        ]
+      },
+      "reasoning": "# Bear Call Spread Analysis: PG\n\nPG's downtrend and elevated IV premium (1.33x ratio) support selling closer to current price, while the 65% probability of profit provides a reasonable margin of safety for the 37-day window. The primary risk is a sharp reversal above the short strike\u2014particularly vulnerable given the stock's proximity to support levels and potential for mean reversion in a consumer staples name. Monitor earnings timing; post-announcement volatility crush could significantly reduce your credit's real return despite achieving technical profit targets.",
+      "rank": 1
+    },
+    {
+      "symbol": "MPC",
+      "price": 397.77,
+      "score": 100,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "# MPC Momentum Analysis\n\nThe RSI14 reading of 80.8 indicates overbought conditions, suggesting momentum has extended significantly ahead of the underlying trend and may be vulnerable to mean reversion or consolidation. With price trading well above both the 50-day and 200-day SMAs, the stock exhibits strong uptrend strength, though the elevated RSI leaves limited room for further momentum acceleration without a pullback.",
+      "rank": 2
+    },
+    {
+      "symbol": "TJX",
+      "price": 128.92,
+      "score": 96,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 56.0,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "TJX's RSI14 of 19.7 indicates severely oversold conditions with substantial downward momentum exhaustion, suggesting a potential inflection point rather than continued weakness. However, the price trading 15-16% below both the 50- and 200-day SMAs indicates the underlying downtrend remains structurally intact, warranting caution on mean-reversion assumptions.",
+      "rank": 3
+    },
+    {
+      "symbol": "CRM",
+      "price": 249.12,
+      "score": 90,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.6,
+        "liquidity": 32.0
+      },
+      "setup": null,
+      "reasoning": "CRM's RSI of 67.6 indicates strong upward momentum approaching overbought territory, suggesting the recent rally has substantial conviction but limited room for acceleration before potential pullback or consolidation. The price well above both the 50-day and 200-day SMAs reinforces the strength of the uptrend, though the elevated RSI warrants monitoring for signs of momentum exhaustion.",
+      "rank": 4
+    },
+    {
+      "symbol": "SYK",
+      "price": 276.43,
+      "score": 87,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 52.0,
+        "liquidity": 34.7
+      },
+      "setup": null,
+      "reasoning": "SYK's RSI of 24.7 indicates severely oversold conditions with potential for mean reversion, though momentum remains decidedly bearish given the stock trades significantly below both its 50- and 200-day moving averages. The extreme RSI reading suggests selling pressure has been exhausted in the near term, but the underlying downtrend remains intact until price action recovers toward the 50-day SMA at $327.77.",
+      "rank": 5
+    },
+    {
+      "symbol": "BKNG",
+      "price": 180.3,
+      "score": 86,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 55.2,
+        "liquidity": 30.4
+      },
+      "setup": null,
+      "reasoning": "BKNG's RSI of 32.8 indicates approaching oversold conditions, suggesting momentum has deteriorated significantly and the stock may be nearing a potential reversal point. The price trading below both the 50-day and 200-day SMAs reinforces the bearish momentum, though oversold readings alone do not guarantee an immediate bounce.",
+      "rank": 6
+    },
+    {
+      "symbol": "DELL",
+      "price": 533.88,
+      "score": 84,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 50.4,
+        "liquidity": 33.6
+      },
+      "setup": null,
+      "reasoning": "DELL's RSI of 65.1 indicates strong upward momentum approaching overbought territory, suggesting the stock may be vulnerable to near-term pullback or consolidation. The significant distance above both the 50-day and 200-day SMAs confirms an established uptrend, though the elevated RSI reading warrants monitoring for potential exhaustion signals.",
+      "rank": 7
+    },
+    {
+      "symbol": "HD",
+      "price": 313.7,
+      "score": 78,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 43.2,
+        "liquidity": 35.2
+      },
+      "setup": null,
+      "reasoning": "HD's RSI of 35.0 indicates moderating downside momentum as the stock approaches oversold conditions, suggesting selling pressure may be nearing exhaustion. The price sitting notably below both the 50- and 200-day SMAs reinforces a bearish intermediate trend, though the low RSI reading presents a potential inflection point where momentum could stabilize or reverse.",
+      "rank": 9
+    },
+    {
+      "symbol": "VLO",
+      "price": 382.85,
+      "score": 75,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 45.0,
+        "liquidity": 30.0
+      },
+      "setup": null,
+      "reasoning": "VLO's RSI of 79.3 indicates strongly overbought momentum with limited room for continued upside acceleration, suggesting a potential pullback or consolidation phase. The stock's substantial distance above both moving averages reinforces that the current rally has extended significantly, warranting caution regarding momentum sustainability.",
+      "rank": 11
     }
   ]
 }
