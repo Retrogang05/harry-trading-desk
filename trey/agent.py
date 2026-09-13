@@ -201,7 +201,76 @@ def current(qqq: pd.Series, tqqq: pd.Series) -> Dict:
         "mid_pct": (q / float(sma(MID_SMA)) - 1) * 100,
         "fast_ok": bool(sma(FAST_SMA) > sma(SLOW_SMA)),
         "mid_ok": bool(q > sma(MID_SMA)),
+        # Trey's actual sizing signal is the CONFIRMED one (3-day hold); the
+        # raw 10>20 in the book checklist can disagree with it for up to
+        # three days after a crossover. That's by design, not a bug.
+        "fast_confirmed": state == "FULL",
+        "book": book_criteria(qqq),
     }
+
+
+# ── The book's checklist (reference only) ────────────────────────────────
+# Masonson's framework wants several indicators aligned before entering,
+# with "three of six" cited as the bar. As a RULE that tested worst of every
+# variant (later entries, no drawdown benefit) so it does not touch the
+# state. As a READOUT it is genuinely useful: it shows how much of the
+# book's framework agrees with Trey's state, and exactly which parts don't.
+
+BOOK_SMA = 225            # the book's own gate; Trey uses GATE_SMA
+FAVORABLE_MONTHS = {10, 11, 12, 1, 2, 3, 4, 5, 6}   # book: Oct-Jun; Jul-Sep defensive
+
+
+def _rsi(close: pd.Series, n: int = 14) -> float:
+    d = close.diff()
+    gain = d.clip(lower=0).ewm(alpha=1 / n, min_periods=n, adjust=False).mean()
+    loss = (-d.clip(upper=0)).ewm(alpha=1 / n, min_periods=n, adjust=False).mean()
+    g, l = float(gain.iloc[-1]), float(loss.iloc[-1])
+    return 100.0 if l == 0 else 100 - 100 / (1 + g / l)
+
+
+def _macd(close: pd.Series):
+    line = close.ewm(span=12, adjust=False).mean() - close.ewm(span=26, adjust=False).mean()
+    signal = line.ewm(span=9, adjust=False).mean()
+    return float(line.iloc[-1]), float(signal.iloc[-1])
+
+
+def book_criteria(qqq: pd.Series) -> List[Dict]:
+    """Each of the book's criteria, evaluated on today's QQQ close. `met` is
+    the book's own yes/no; `detail` is what a reader needs to see to judge
+    how close it is. Order is display order."""
+    s = lambda n: float(qqq.rolling(n).mean().iloc[-1])
+    q = float(qqq.iloc[-1])
+    rsi = _rsi(qqq)
+    macd_line, macd_sig = _macd(qqq)
+    month = qqq.index[-1].month
+    stacked = s(20) > s(50) > s(200)
+    fast_raw = s(FAST_SMA) > s(SLOW_SMA) and q > s(MID_SMA)
+    macd_ok = macd_line > macd_sig and macd_line > 0
+
+    # Cells in the setup grid fit ~7 chars a line, so name only what fails.
+    if macd_ok:
+        macd_detail = ">sig >0"
+    else:
+        macd_detail = " ".join(x for x, bad in (("<sig", macd_line <= macd_sig), ("<0", macd_line <= 0)) if bad)
+    # bool() on every `met`: comparisons against pandas/numpy scalars yield
+    # numpy.bool_, which json.dump refuses. This crashed the first run.
+    items = [
+        {"key": "sma225",   "label": f"> {BOOK_SMA}d",       "met": q > s(BOOK_SMA),
+         "detail": f"{(q / s(BOOK_SMA) - 1) * 100:+.1f}%"},
+        {"key": "stack",    "label": "20>50>200",             "met": stacked,
+         "detail": "stacked" if stacked else "not stacked"},
+        {"key": "fast_raw", "label": f"{FAST_SMA}>{SLOW_SMA} · P>{MID_SMA}", "met": fast_raw,
+         "detail": "yes" if fast_raw else "no"},
+        {"key": "rsi",      "label": "RSI > 50",                  "met": rsi > 50,
+         "detail": f"{rsi:.0f}"},
+        {"key": "macd",     "label": "MACD",              "met": macd_ok,
+         "detail": macd_detail},
+        {"key": "seasonal", "label": "Season",                  "met": month in FAVORABLE_MONTHS,
+         "detail": qqq.index[-1].strftime("%b") + (" · fav" if month in FAVORABLE_MONTHS else " · def")},
+    ]
+    for it in items:
+        it["met"] = bool(it["met"])
+    return items
 
 
 # ── Reasoning ────────────────────────────────────────────────────────────
@@ -216,6 +285,9 @@ class Reasoner:
     def explain(self, c: Dict) -> str:
         if not self.enabled:
             return "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+        met = [b["label"] for b in c["book"] if b["met"]]
+        unmet = [f"{b['label']} ({b['detail']})" for b in c["book"] if not b["met"]]
+        met_n = len(met)
         prompt = (
             f"TQQQ position signal, computed on QQQ. Today's state: {c['state']}, held since "
             f"{c['since']}" + (f" (previously {c['prev_state']})" if c['prev_state'] else "") + ".\n"
@@ -223,9 +295,14 @@ class Reasoner:
             f"({c['gate_sma']:.2f}). Fast trend: {FAST_SMA}d {'above' if c['fast_ok'] else 'below'} "
             f"{SLOW_SMA}d; price {c['mid_pct']:+.1f}% vs {MID_SMA}d. {c['gate_changes_12m']} gate changes and "
             f"{c['size_changes_12m']} size changes in the last 12 months.\n\n"
-            "Rules: OUT below the gate average; HALF above it; FULL when the fast trend also "
-            "confirms. Write 2-3 sentences: what the current state means for a TQQQ holder, "
-            "how close the gate or fast trend is to flipping, and the risk of acting on it. "
+            f"Masonson's reference checklist (informational, does NOT drive the state): "
+            f"{met_n}/{len(c['book'])} met. "
+            + (f"Met: {', '.join(met)}. " if met else "")
+            + (f"NOT met: {', '.join(unmet)}. " if unmet else "All met. ")
+            + "\n\nRules: OUT below the gate average; HALF above it; FULL when the fast trend "
+            "also confirms. Write 2-3 sentences: what the current state means for a TQQQ "
+            "holder, and specifically which unmet criteria are holding it below FULL (or, if "
+            "OUT, what would need to happen for the gate to reopen). Name the criteria. "
             "Professional, concise, do not restate the numbers verbatim, do not recommend a trade."
         )
         try:
@@ -250,7 +327,28 @@ def build_row(c: Dict, reasoning: str) -> Dict:
     gate_pts = 60 if c["state"] != "OUT" else 0
     fast_pts = 40 if c["state"] == "FULL" else 0
     tone = {"FULL": "pos", "HALF": None, "OUT": "neg"}[c["state"]]
-    yn = lambda ok: "yes" if ok else "no"
+    book = c["book"]
+    met_n = sum(1 for b in book if b["met"])
+
+    # Row 1: Trey's own signal. Rows 2-3: the book's checklist, ✓/✗ per
+    # criterion, coloured by whether it's met. The setup grid is four wide,
+    # so this lays out as 4 + 4 + 2.
+    fields = [
+        {"label": "State", "value": c["state"], "tone": tone},
+        {"label": f"Gate {GATE_SMA}d", "value": f"{c['gate_pct']:+.1f}%",
+         "tone": "pos" if c["gate_pct"] > 0 else "neg"},
+        {"label": f"Fast ({CONFIRM_DAYS}d)", "value": "yes" if c["fast_confirmed"] else "no",
+         "tone": "pos" if c["fast_confirmed"] else "neg"},
+        {"label": "Book · ref", "value": f"{met_n} / {len(book)}",
+         "tone": "pos" if met_n >= 3 else "neg"},
+    ]
+    for b in book:
+        fields.append({
+            "label": b["label"],
+            "value": ("✓ " if b["met"] else "✗ ") + b["detail"],
+            "tone": "pos" if b["met"] else "neg",
+        })
+
     return {
         "rank": 1,
         "symbol": TRADED,
@@ -260,15 +358,13 @@ def build_row(c: Dict, reasoning: str) -> Dict:
         "dimensions": DIMENSIONS,
         "breakdown": {"gate": gate_pts, "fast": fast_pts},
         "setup": {
-            "label": f"{c['state']} since {c['since']} · QQQ {c['qqq']:.2f}",
-            "fields": [
-                {"label": "State", "value": c["state"], "tone": tone},
-                {"label": f"QQQ vs {GATE_SMA}d", "value": f"{c['gate_pct']:+.1f}%",
-                 "tone": "pos" if c["gate_pct"] > 0 else "neg"},
-                {"label": f"{FAST_SMA}d > {SLOW_SMA}d", "value": yn(c["fast_ok"])},
-                {"label": f"Price vs {MID_SMA}d", "value": f"{c['mid_pct']:+.1f}%"},
-            ],
+            "label": f"{c['state']} since {c['since']} · QQQ {c['qqq']:.2f} · book {met_n}/{len(book)} (reference, not used for state)",
+            "fields": fields,
         },
+        # Structured copy of the checklist. The dashboard ignores keys it
+        # doesn't know, so this is here for the archive and anything later.
+        "book_criteria": {"met": met_n, "of": len(book),
+                          "items": [{"key": b["key"], "label": b["label"], "met": b["met"], "detail": b["detail"]} for b in book]},
         "reasoning": reasoning,
     }
 
@@ -288,11 +384,16 @@ def publish(row: Dict, c: Dict) -> None:
             {"label": "Size changes 12m", "value": str(c["size_changes_12m"])},
             {"label": "Signal on", "value": SIGNAL},
             {"label": "Gate", "value": f"{GATE_SMA}-day SMA"},
+            {"label": "Book checklist", "value": f"{sum(1 for b in c['book'] if b['met'])} / {len(c['book'])} (ref)"},
         ],
         "opportunities": [row],
     }
+    # Serialize to a string first. json.dump streams into the file, so a
+    # non-serializable value halfway through leaves a truncated, invalid
+    # file behind - exactly what happened when a numpy bool got in.
+    text = json.dumps(payload, indent=2)
     with open(os.path.join(DOCS_DATA_DIR, f"{AGENT['id']}.json"), "w") as f:
-        json.dump(payload, f, indent=2)
+        f.write(text)
 
     manifest = os.path.join(DOCS_DATA_DIR, "agents.json")
     try:

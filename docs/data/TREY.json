@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-09-13T14:58:18.433405",
+  "scan_date": "2026-09-13T16:23:47.869915",
   "context": [
     {
       "label": "State",
@@ -31,6 +31,10 @@
     {
       "label": "Gate",
       "value": "200-day SMA"
+    },
+    {
+      "label": "Book checklist",
+      "value": "3 / 6 (ref)"
     }
   ],
   "opportunities": [
@@ -57,7 +61,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "HALF since 2026-08-26 \u00b7 QQQ 714.88",
+        "label": "HALF since 2026-08-26 \u00b7 QQQ 714.88 \u00b7 book 3/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -65,17 +69,91 @@
             "tone": null
           },
           {
-            "label": "QQQ vs 200d",
+            "label": "Gate 200d",
             "value": "+8.4%",
             "tone": "pos"
           },
           {
-            "label": "10d > 20d",
-            "value": "no"
+            "label": "Fast (3d)",
+            "value": "no",
+            "tone": "neg"
           },
           {
-            "label": "Price vs 50d",
-            "value": "+0.6%"
+            "label": "Book \u00b7 ref",
+            "value": "3 / 6",
+            "tone": "pos"
+          },
+          {
+            "label": "> 225d",
+            "value": "\u2713 +9.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "20>50>200",
+            "value": "\u2713 stacked",
+            "tone": "pos"
+          },
+          {
+            "label": "10>20 \u00b7 P>50",
+            "value": "\u2717 no",
+            "tone": "neg"
+          },
+          {
+            "label": "RSI > 50",
+            "value": "\u2713 51",
+            "tone": "pos"
+          },
+          {
+            "label": "MACD",
+            "value": "\u2717 <sig",
+            "tone": "neg"
+          },
+          {
+            "label": "Season",
+            "value": "\u2717 Sep \u00b7 def",
+            "tone": "neg"
+          }
+        ]
+      },
+      "book_criteria": {
+        "met": 3,
+        "of": 6,
+        "items": [
+          {
+            "key": "sma225",
+            "label": "> 225d",
+            "met": true,
+            "detail": "+9.3%"
+          },
+          {
+            "key": "stack",
+            "label": "20>50>200",
+            "met": true,
+            "detail": "stacked"
+          },
+          {
+            "key": "fast_raw",
+            "label": "10>20 \u00b7 P>50",
+            "met": false,
+            "detail": "no"
+          },
+          {
+            "key": "rsi",
+            "label": "RSI > 50",
+            "met": true,
+            "detail": "51"
+          },
+          {
+            "key": "macd",
+            "label": "MACD",
+            "met": false,
+            "detail": "<sig"
+          },
+          {
+            "key": "seasonal",
+            "label": "Season",
+            "met": false,
+            "detail": "Sep \u00b7 def"
           }
         ]
       },
