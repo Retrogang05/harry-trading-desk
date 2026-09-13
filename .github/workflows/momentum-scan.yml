@@ -20,6 +20,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
+    timeout-minutes: 20   # ~30s in practice; bound a hung fetch
     steps:
       # Actions pinned to commit SHAs, matching the convention in
       # Retrogang05/portfolio-tracker - a mutable tag can be force-pushed to
@@ -68,5 +69,9 @@ jobs:
             # Plain push with the built-in token. Deliberately not using a
             # third-party push action: the common one tracks @master, a mutable
             # ref, which defeats the SHA pinning above.
+            # Another agent may have pushed since checkout. Each agent stages
+            # only its own files, so a rebase never conflicts - but without it
+            # a bare push is rejected and the scan's data is silently dropped.
+            git pull --rebase origin main
             git push
           fi

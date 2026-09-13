@@ -196,6 +196,7 @@ def current(qqq: pd.Series, tqqq: pd.Series) -> Dict:
 
     sma = lambda n: qqq.rolling(n).mean().iloc[-1]
     q = float(qqq.iloc[-1])
+    rsi_now = _rsi(qqq)
     return {
         "date": today.date().isoformat(),
         "state": state,
@@ -218,8 +219,11 @@ def current(qqq: pd.Series, tqqq: pd.Series) -> Dict:
         # three days after a crossover. That's by design, not a bug.
         "fast_confirmed": state == "FULL",
         "book": book_criteria(qqq),
-        "rsi": _rsi(qqq),
-        "rsi_alert": _rsi(qqq) > RSI_ALERT,
+        "rsi": rsi_now,
+        "rsi_alert": rsi_now > RSI_ALERT,
+        # True when the current state already held on the first day the window
+        # can see, i.e. the real start is earlier than we can know.
+        "since_truncated": since == st.index[0],
     }
 
 
@@ -356,8 +360,11 @@ def build_row(c: Dict, reasoning: str) -> Dict:
         {"label": "State", "value": c["state"], "tone": tone},
         {"label": f"Gate {GATE_SMA}d", "value": f"{c['gate_pct']:+.1f}%",
          "tone": "pos" if c["gate_pct"] > 0 else "neg"},
-        {"label": f"Fast ({CONFIRM_DAYS}d)", "value": "yes" if c["fast_confirmed"] else "no",
-         "tone": "pos" if c["fast_confirmed"] else "neg"},
+        # Irrelevant while gated OUT - a red "no" there reads as a second
+        # failure when the only thing that matters is the gate.
+        {"label": f"Fast ({CONFIRM_DAYS}d)",
+         "value": "n/a" if c["state"] == "OUT" else ("yes" if c["fast_confirmed"] else "no"),
+         "tone": None if c["state"] == "OUT" else ("pos" if c["fast_confirmed"] else "neg")},
         {"label": "Book · ref", "value": f"{met_n} / {len(book)}",
          "tone": "pos" if met_n >= 3 else "neg"},
     ]
@@ -384,7 +391,7 @@ def build_row(c: Dict, reasoning: str) -> Dict:
         "dimensions": DIMENSIONS,
         "breakdown": {"gate": gate_pts, "fast": fast_pts},
         "setup": {
-            "label": f"{c['state']} since {c['since']} · QQQ {c['qqq']:.2f} · book {met_n}/{len(book)} (reference, not used for state)"
+            "label": f"{c['state']} since {'≥' if c['since_truncated'] else ''}{c['since']} · QQQ {c['qqq']:.2f} · book {met_n}/{len(book)} (reference, not used for state)"
                      + (f" · ⚠ RSI {c['rsi']:.0f} OVERBOUGHT - review the chart" if alert else ""),
             "fields": fields,
         },
@@ -408,7 +415,7 @@ def publish(row: Dict, c: Dict) -> None:
         "scan_date": datetime.now().isoformat(),
         "context": [
             {"label": "State", "value": c["state"]},
-            {"label": "Since", "value": c["since"]},
+            {"label": "Since", "value": ("≥ " if c["since_truncated"] else "") + c["since"]},
             {"label": "Gate changes 12m", "value": str(c["gate_changes_12m"])},
             {"label": "Size changes 12m", "value": str(c["size_changes_12m"])},
             {"label": "Signal on", "value": SIGNAL},

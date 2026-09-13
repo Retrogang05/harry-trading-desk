@@ -6,7 +6,11 @@ on:
   # on the next session, so an after-close run publishes tomorrow's
   # position. Weekdays only.
   schedule:
-    - cron: '0 21 * * 1-5'
+    # 21:15, not 21:00: Opy is scheduled at 21:00. Two workflows at the same
+    # minute run in parallel and both push to main; without staggering, the
+    # second push is rejected as non-fast-forward and that day's data is lost.
+    # (The pull --rebase below is the real fix; the stagger is belt-and-braces.)
+    - cron: '15 21 * * 1-5'
   workflow_dispatch:
 
 # NOT on push - same rule as the other two agents. Cheaper than either of
@@ -64,5 +68,9 @@ jobs:
             echo "No change in signal output - nothing to commit."
           else
             git commit -m "Trey signal $(date +%Y-%m-%d)"
+            # Another agent may have pushed since checkout. Each agent stages
+            # only its own files, so a rebase never conflicts - but without it
+            # a bare push is rejected and the scan's data is silently dropped.
+            git pull --rebase origin main
             git push
           fi

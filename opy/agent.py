@@ -173,7 +173,8 @@ class Reasoner:
                 model=self.model, max_tokens=220,
                 messages=[{"role": "user", "content": prompt}],
             )
-            return msg.content[0].text.strip()
+            text = "".join(b.text for b in msg.content if b.type == "text").strip()
+            return text or "[reasoning unavailable: empty response]"
         except anthropic.RateLimitError:
             logger.error(f"{row.get('ticker')}: rate limited")
             return "[reasoning unavailable: rate limited]"
@@ -298,7 +299,8 @@ def _pts(row, key: str) -> float:
 # ── Per-strategy setup blocks -------------------------------------------------
 
 def _fmt(v, spec="{:.2f}", default="—"):
-    return default if v is None or (isinstance(v, float) and v != v) else spec.format(v)
+    # pd.isna covers None, float NaN AND pd.NA - the last rendered as "<NA>".
+    return default if v is None or pd.isna(v) else spec.format(v)
 
 
 def _setup_condor(r) -> Dict:

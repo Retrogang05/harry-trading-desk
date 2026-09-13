@@ -70,5 +70,9 @@ jobs:
             echo "No change in scan output - nothing to commit."
           else
             git commit -m "Opy scan $(date +%Y-%m-%d)"
+            # Another agent may have pushed since checkout. Each agent stages
+            # only its own files, so a rebase never conflicts - but without it
+            # a bare push is rejected and the scan's data is silently dropped.
+            git pull --rebase origin main
             git push
           fi

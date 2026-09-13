@@ -298,15 +298,18 @@ class MomentumAnalyzer:
         scores['volume'] = volume_score
 
         # 3. RSI STRENGTH (15 points max)
-        rsi_score = 0
-        if 50 < current_rsi < 70:
-            rsi_score = 15  # Perfect momentum range
-        elif 40 < current_rsi <= 50:
-            rsi_score = 8   # Weak but positive
-        elif current_rsi > 70:
-            rsi_score = 5   # Overbought, risky
-        elif current_rsi < 30:
-            rsi_score = 0   # Oversold
+        # Bands are contiguous and closed on the low side so every value lands
+        # somewhere. The previous version used `50 < r < 70` and `r > 70`,
+        # which left exactly 70.0 (and exactly 40.0) scoring 0 - a value one
+        # tick either side scored 15 or 5.
+        if current_rsi >= 70:
+            rsi_score = 5   # overbought - momentum present but late
+        elif current_rsi >= 50:
+            rsi_score = 15  # the momentum sweet spot
+        elif current_rsi >= 40:
+            rsi_score = 8   # weak but positive
+        else:
+            rsi_score = 0   # below 40: no momentum case to make (30-40 deliberately 0)
         scores['rsi'] = rsi_score
 
         # 4. MACD ALIGNMENT (15 points max)
@@ -372,6 +375,9 @@ class MomentumAnalyzer:
                           entry: float, stop_loss: float, take_profit: float) -> str:
         """Generate Claude-powered reasoning for the trade setup."""
 
+        if not self.reasoning_enabled:
+            return "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+
         prompt = f"""You are a momentum trading expert. Given these indicators for {symbol},
 provide a concise (2-3 sentence) explanation of the momentum trading setup.
 
@@ -400,8 +406,6 @@ Please explain:
 
 Format: Professional but conversational, suitable for a trader's quick decision."""
 
-        if not self.reasoning_enabled:
-            return "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
 
         try:
             message = self.client.messages.create(
