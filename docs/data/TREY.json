@@ -1,0 +1,85 @@
+{
+  "agent": {
+    "id": "TREY",
+    "name": "Trey",
+    "strategy": "TQQQ trend gate",
+    "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
+    "accent": "#6f8fae"
+  },
+  "scan_date": "2026-09-13T14:58:18.433405",
+  "context": [
+    {
+      "label": "State",
+      "value": "HALF"
+    },
+    {
+      "label": "Since",
+      "value": "2026-08-26"
+    },
+    {
+      "label": "Gate changes 12m",
+      "value": "2"
+    },
+    {
+      "label": "Size changes 12m",
+      "value": "11"
+    },
+    {
+      "label": "Signal on",
+      "value": "QQQ"
+    },
+    {
+      "label": "Gate",
+      "value": "200-day SMA"
+    }
+  ],
+  "opportunities": [
+    {
+      "rank": 1,
+      "symbol": "TQQQ",
+      "price": 70.98,
+      "score": 60,
+      "strategy": "Trend gate \u00b7 HALF",
+      "dimensions": [
+        {
+          "key": "gate",
+          "label": "QQQ > 200d",
+          "max": 60
+        },
+        {
+          "key": "fast",
+          "label": "10>20 & P>50d",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "gate": 60,
+        "fast": 0
+      },
+      "setup": {
+        "label": "HALF since 2026-08-26 \u00b7 QQQ 714.88",
+        "fields": [
+          {
+            "label": "State",
+            "value": "HALF",
+            "tone": null
+          },
+          {
+            "label": "QQQ vs 200d",
+            "value": "+8.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "10d > 20d",
+            "value": "no"
+          },
+          {
+            "label": "Price vs 50d",
+            "value": "+0.6%"
+          }
+        ]
+      },
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    }
+  ]
+}

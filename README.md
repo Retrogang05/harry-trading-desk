@@ -15,6 +15,7 @@ shared dashboard. **You execute every trade manually** — nothing here places o
 |-------|------|----------|--------|
 | **Monu** | `MNTM` | Momentum — buys strength on volume-confirmed breakouts | Live |
 | **Opy** | `OPY` | Options — iron condors, credit spreads, LEAPS calls, RSI momentum context | Live |
+| **Trey** | `TREY` | TQQQ trend gate — OUT / HALF / FULL, signalled on QQQ's 200-day SMA | Live |
 
 The dashboard renders whatever score dimensions an agent declares, so adding an
 agent needs no changes to the page. See **Adding your second and third agents**
@@ -166,19 +167,90 @@ Key risk: If volume dries up, momentum could reverse quickly.
 
 ```
 harry-trading-desk/
-├── agent.py                 # Monu — the momentum agent
-├── requirements.txt         # Python dependencies
-├── README.md                # This file
+├── agent.py                 # Monu — momentum screener (S&P 500)
+├── opy/                     # Opy — options screener (vendored from Options Screener/)
+│   └── agent.py
+├── trey/                    # Trey — TQQQ trend gate (one row, three states)
+│   └── agent.py
+├── universe.txt             # 503 S&P 500 tickers, shared by Monu and Opy
+├── scripts/fetch_sp500.py   # regenerates universe.txt from SPY holdings
+├── requirements.txt
 ├── .github/workflows/
-│   └── momentum-scan.yml    # Daily 9am scan
+│   ├── momentum-scan.yml    # Monu  — 14:00 UTC weekdays (pre-open)
+│   ├── opy-scan.yml         # Opy   — 21:00 UTC weekdays (post-close)
+│   └── trey-scan.yml        # Trey  — 21:00 UTC weekdays (post-close)
 ├── docs/                    # ← the dashboard (GitHub Pages serves this)
-│   ├── index.html           #   Harry Trading Desk homepage
+│   ├── index.html
 │   └── data/
 │       ├── agents.json      #   manifest: which agents to render
-│       └── MNTM.json        #   Monu's latest results
-├── results/                 # Dated archive of past scans
-└── monu_results.json        # Latest raw scan output
+│       ├── MNTM.json  OPY.json  TREY.json
+├── results/  opy/results/  trey/results/    # dated archives per agent
 ```
+
+---
+
+## 📐 Trey (TREY) — the TQQQ trend gate
+
+Not a screener. Trey watches one instrument and publishes one row whose score
+is really a **state**. Every rule is evaluated on **QQQ** (unlevered) and the
+state applies to **TQQQ** — the 3× leverage would otherwise turn ordinary noise
+into false crossovers.
+
+| State | Condition on QQQ | Position | Score |
+|-------|------------------|----------|-------|
+| **OUT** | close below 200-day SMA | cash | 0 |
+| **HALF** | above 200-day; fast trend not confirmed | half | 60 |
+| **FULL** | above 200-day; 10d > 20d **and** close > 50d, held 3 days | full | 100 |
+
+Read at the close, acted on the next session. The scheduled run fires after
+the US close so the published state is tomorrow's position.
+
+### Where the rules came from — and what was thrown out
+
+Derived from Masonson's *QQQ and TQQQ Profit Machine*, then **backtested on
+real data before any of it was coded.** The script is in this session's
+history, not the repo; the numbers below are from it.
+
+**Kept:**
+
+- **The 200-day gate.** On real TQQQ over the last ten years it matched
+  buy-and-hold's return (2,889% vs 2,877%) while cutting max drawdown from
+  −82% to −56%. One 2022 save (−47% vs −79%) paid for every whipsaw around it.
+  Recovering from −79% needs +376%; from −47%, +89%. That asymmetry is the
+  whole strategy.
+- **Fast trend as a *size* modifier, not a gate.** Best Sharpe of every
+  variant tested (0.88 vs 0.61 buy-and-hold). It also caught the COVID crash
+  a 200-day system is too slow for (−42% vs −55%).
+- **3-day confirmation on the fast signal.** The raw 10>20 crossover flipped
+  size ~every two weeks, a quarter of those reversing next day. Three days of
+  confirmation improved *both* Sharpe and return and cut size trades by a
+  third. Five days was already too slow to catch a fast crash.
+
+**Thrown out:**
+
+- **Seasonal "flat Jul–Oct".** Worse in every single variant. Tech summers
+  were often strong in this decade; the 52-year stat behind it is a different
+  index and era.
+- **"All conditions must align"** as the entry rule. Worst configuration in
+  every test — more filters just meant later entries.
+- **225 vs 200 days.** Regime-dependent: 225 wins on 25 years of QQQ (one
+  dot-com-era event), 200 wins on TQQQ's whole life and on the last decade.
+  `GATE_SMA` is one constant in `trey/agent.py`; neither is a robust edge.
+
+### What it costs
+
+~2 gate changes a year (full round trips) and ~8 size changes (half-position
+trades) even after confirmation. Both are published separately in the agent's
+context panel — a blended number hid the size churn the first time.
+
+### The honest framing
+
+This is **drawdown insurance, not a return machine.** Over TQQQ's full life
+(2010–2026) every timing rule lost to buy-and-hold on total return; only in the
+last decade did the gate break even. Whether it's worth running comes down to
+one question: could you hold TQQQ through −82%? If yes, buy-and-hold won. If
+not — and almost nobody can — the gate is the price of staying in the game,
+and −46% to −56% is still brutal.
 
 ---
 
