@@ -354,22 +354,29 @@ class MomentumAnalyzer:
         return scores
 
     def check_market_regime(self, spy_data: pd.DataFrame) -> str:
-        """Detect market regime (UPTREND, DOWNTREND, CAUTION)."""
+        """Market regime from SPY's 50/200-day averages: UPTREND, DOWNTREND, or
+        UNKNOWN when SPY couldn't be fetched.
+
+        This is a GATE, not a label. Momentum breakouts are the strategy's
+        thesis and the research behind it is explicit that they fail in a
+        falling market - so in anything other than a confirmed UPTREND the
+        scan is skipped and nothing is published. For its first month this
+        function's result was attached to every row and displayed on the
+        dashboard while gating nothing; Monu would have published the same
+        twenty breakouts into a bear market.
+
+        UNKNOWN closes the gate too: if the regime can't be verified, the
+        safe default is to not put out momentum signals, not to assume an
+        uptrend. (The old CAUTION branch fired only when the two averages
+        were exactly equal to the tick - dead code - and is gone.)
+        """
         if spy_data is None or len(spy_data) < 200:
             return "UNKNOWN"
+        ma50 = ta.trend.sma_indicator(spy_data['Close'], window=50).iloc[-1]
+        ma200 = ta.trend.sma_indicator(spy_data['Close'], window=200).iloc[-1]
+        return "UPTREND" if ma50 > ma200 else "DOWNTREND"
 
-        ma50 = ta.trend.sma_indicator(spy_data['Close'], window=50)
-        ma200 = ta.trend.sma_indicator(spy_data['Close'], window=200)
-
-        current_ma50 = ma50.iloc[-1]
-        current_ma200 = ma200.iloc[-1]
-
-        if current_ma50 > current_ma200:
-            return "UPTREND"
-        elif current_ma50 < current_ma200:
-            return "DOWNTREND"
-        else:
-            return "CAUTION"
+    GATE_OPEN_REGIMES = {"UPTREND"}
 
     def generate_reasoning(self, symbol: str, score_breakdown: Dict, price: float,
                           entry: float, stop_loss: float, take_profit: float) -> str:
@@ -476,14 +483,25 @@ Format: Professional but conversational, suitable for a trader's quick decision.
             'extension_pct': extension * 100
         }
 
-    def scan_stocks(self, symbols: List[str], top_n: int = 20) -> List[Dict]:
-        """Scan multiple stocks for momentum opportunities."""
+    def scan_stocks(self, symbols: List[str], top_n: int = 20):
+        """Scan for momentum opportunities. Returns (opportunities, market_regime).
 
-        # Check market regime
+        The regime is returned explicitly rather than read back off the first
+        opportunity - the old approach reported UNKNOWN whenever the list was
+        empty, which is precisely when the regime matters most."""
+
         logger.info("Checking market regime...")
         spy_data = self.fetch_stock_data("SPY")
         market_regime = self.check_market_regime(spy_data)
         logger.info(f"Market Regime: {market_regime}")
+
+        if market_regime not in self.GATE_OPEN_REGIMES:
+            # Nothing to scan, nothing to reason about, nothing to pay for.
+            logger.warning(
+                f"Gate CLOSED ({market_regime}): momentum is not traded outside a confirmed "
+                f"uptrend. Skipping the {len(symbols)}-symbol scan; publishing an empty list."
+            )
+            return [], market_regime
 
         opportunities = []
 
@@ -554,7 +572,7 @@ Format: Professional but conversational, suitable for a trader's quick decision.
                 opp['entry'], opp['stop_loss'], opp['take_profit']
             )
 
-        return opportunities
+        return opportunities, market_regime
 
     def format_results(self, opportunities: List[Dict], market_regime: str) -> str:
         """Format results for display/output."""
@@ -565,7 +583,7 @@ Format: Professional but conversational, suitable for a trader's quick decision.
 ║                  Scan Date: {datetime.now().strftime('%Y-%m-%d %H:%M')}             ║
 ╚══════════════════════════════════════════════════════════════╝
 
-Market Regime: {opportunities[0]['market_regime'] if opportunities else 'UNKNOWN'}
+Market Regime: {market_regime}  ({'gate open' if market_regime in MomentumAnalyzer.GATE_OPEN_REGIMES else 'GATE CLOSED - no momentum signals published'})
 Stocks Scanned: {len(opportunities)}
 
 """
@@ -655,12 +673,23 @@ def publish_to_dashboard(opportunities: List[Dict], market_regime: str,
         "dimensions": DIMENSIONS,
         "context": [
             {"label": "Market Regime", "value": market_regime},
+            {"label": "Gate", "value": ("OPEN" if market_regime in MomentumAnalyzer.GATE_OPEN_REGIMES
+                                        else "CLOSED - no signals in a downtrend")},
             {"label": "Universe", "value": f"{universe_size} symbols"},
             {"label": "Passed Filter", "value": str(len(opportunities))},
             {"label": "Model", "value": CLAUDE_MODEL},
         ],
         "opportunities": opportunities,
     }
+    if not opportunities:
+        # The grid's default empty message says nothing cleared the filter.
+        # When the gate is closed nothing was even scanned - say that instead.
+        payload["empty_message"] = (
+            f"Gate closed - market regime is {market_regime}. Momentum breakouts are not "
+            f"traded outside a confirmed uptrend, so the scan was skipped."
+            if market_regime not in MomentumAnalyzer.GATE_OPEN_REGIMES
+            else "No setups cleared the filter. That is a normal scan result."
+        )
 
     agent_file = os.path.join(DOCS_DATA_DIR, f"{AGENT['id']}.json")
     with open(agent_file, "w") as f:
@@ -693,14 +722,11 @@ def main():
 
     # Run scan
     logger.info(f"Scanning {len(test_symbols)} stocks...")
-    opportunities = analyzer.scan_stocks(test_symbols, top_n=20)
+    opportunities, market_regime = analyzer.scan_stocks(test_symbols, top_n=20)
 
     # Format and print results
-    results = analyzer.format_results(opportunities,
-                                     opportunities[0]['market_regime'] if opportunities else 'UNKNOWN')
+    results = analyzer.format_results(opportunities, market_regime)
     print(results)
-
-    market_regime = opportunities[0]['market_regime'] if opportunities else 'UNKNOWN'
 
     # Save results to JSON
     output_file = 'monu_results.json'

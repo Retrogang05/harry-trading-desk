@@ -416,9 +416,12 @@
     var tb = el("tbody");
     if (!rows.length) {
       var tr0 = el("tr"), td0 = el("td", "l"); td0.colSpan = cols.length;
+      // An agent can explain its own empty list (Monu: "gate closed, regime
+      // is DOWNTREND"). Only meaningful on a single-agent tab.
+      var own = state.active !== "all" && (state.feeds.filter(function (f) { return f.agent.id === state.active; })[0] || {}).empty_message;
       td0.appendChild(el("div", "empty", state.query
         ? "No signal matches “" + state.query + "”."
-        : "No setups cleared the filter. That is a normal scan result."));
+        : (own || "No setups cleared the filter. That is a normal scan result.")));
       tr0.appendChild(td0); tb.appendChild(tr0);
     }
 

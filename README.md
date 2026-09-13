@@ -29,7 +29,7 @@ below for the contract.
 
 - ✅ Scans 500+ stocks daily for momentum setups
 - ✅ Scores each stock across 6 momentum dimensions
-- ✅ Detects market regime (uptrend/downtrend)
+- ✅ Gates on market regime: in a downtrend the scan is skipped and nothing is published
 - ✅ Uses Claude AI to explain WHY each stock shows momentum
 - ✅ Provides specific entry/stop/target levels
 - ✅ Runs automatically on GitHub Actions (free tier)
@@ -64,7 +64,7 @@ Python Agent (agent.py)
     ↓
 ├─ Fetch market data (yfinance)
 ├─ Calculate 6 momentum dimensions
-├─ Detect market regime
+├─ Market regime gate (SPY 50d vs 200d) — DOWNTREND: stop here, publish empty
 ├─ Score & rank top 20 stocks
     ↓
 Claude API (claude-haiku-4-5)
