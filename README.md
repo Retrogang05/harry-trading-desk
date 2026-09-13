@@ -237,6 +237,18 @@ history, not the repo; the numbers below are from it.
   dot-com-era event), 200 wins on TQQQ's whole life and on the last decade.
   `GATE_SMA` is one constant in `trey/agent.py`; neither is a robust edge.
 
+### The one alert: RSI > 80
+
+Not a rule — a flag to go look at the chart. Tested before adding: after
+QQQ's RSI(14) crosses **70**, TQQQ is still higher 65% of the time a month
+later, and 70 fires on 13% of all days — useless as an alert, wrong as a sell
+signal. At **80** the forward return turns negative at every horizon and it
+fires ~1.5×/year. As a hard "step out" rule it added +6 pts CAGR and lifted
+Sharpe 0.88 → 1.05 over the last decade — but on 23 episodes with the edge
+concentrated in ~5 big drops. Too thin to move the position on; it's
+surfaced in red on the row, the header, the setup panel and the rail when it
+fires, and left quiet otherwise. `RSI_ALERT` in `trey/agent.py`.
+
 ### What it costs
 
 ~2 gate changes a year (full round trips) and ~8 size changes (half-position

@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-09-13T16:23:47.869915",
+  "scan_date": "2026-09-13T16:57:11.265307",
   "context": [
     {
       "label": "State",
@@ -35,6 +35,10 @@
     {
       "label": "Book checklist",
       "value": "3 / 6 (ref)"
+    },
+    {
+      "label": "RSI alert (>80)",
+      "value": "quiet \u00b7 51"
     }
   ],
   "opportunities": [
@@ -112,9 +116,22 @@
             "label": "Season",
             "value": "\u2717 Sep \u00b7 def",
             "tone": "neg"
+          },
+          {
+            "label": "RSI > 80 alert",
+            "value": "quiet \u00b7 51",
+            "tone": null
           }
         ]
       },
+      "alerts": [
+        {
+          "key": "rsi_overbought",
+          "label": "RSI > 80",
+          "value": 50.8,
+          "active": false
+        }
+      ],
       "book_criteria": {
         "met": 3,
         "of": 6,

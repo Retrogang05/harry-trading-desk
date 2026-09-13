@@ -81,6 +81,18 @@ FAST_SMA, SLOW_SMA, MID_SMA = 10, 20, 50
 # trend only - the 200-day gate is slow enough to not need it.
 CONFIRM_DAYS = 3
 
+# Overbought ALERT - not a rule. Tested on real TQQQ 2010-2026: after QQQ's
+# RSI(14) crosses 70, TQQQ is still higher 65% of the time a month later
+# (+2.9% avg) - overbought is the normal state of a bull run, and 70 fires on
+# 13% of all days. At 80 the forward return flips negative at every horizon
+# (-1% 20d, -6% 40d) and it fires ~1.5x a year. Used as a hard "step out"
+# rule it added +6pts CAGR and lifted Sharpe 0.88->1.05 over the last decade
+# - but on 23 episodes, with the edge concentrated in ~5 big drops (Jul 2024
+# -37%, Sep 2020 -22%). Too thin to move the position on; solid enough to
+# flag for a manual look at the chart. Left as an alert until it survives a
+# longer history.
+RSI_ALERT = 80
+
 # 200 trading days of warm-up plus a year of history so the published
 # "since" date and change-count are real rather than truncated by the fetch.
 CALENDAR_DAYS = 730
@@ -206,6 +218,8 @@ def current(qqq: pd.Series, tqqq: pd.Series) -> Dict:
         # three days after a crossover. That's by design, not a bug.
         "fast_confirmed": state == "FULL",
         "book": book_criteria(qqq),
+        "rsi": _rsi(qqq),
+        "rsi_alert": _rsi(qqq) > RSI_ALERT,
     }
 
 
@@ -299,6 +313,9 @@ class Reasoner:
             f"{met_n}/{len(c['book'])} met. "
             + (f"Met: {', '.join(met)}. " if met else "")
             + (f"NOT met: {', '.join(unmet)}. " if unmet else "All met. ")
+            + (f"\nALERT: RSI is {c['rsi']:.0f}, above {RSI_ALERT} - overbought. Historically TQQQ's "
+               f"forward return turns negative from here and the downside is skewed; say so plainly. "
+               if c["rsi_alert"] else "")
             + "\n\nRules: OUT below the gate average; HALF above it; FULL when the fast trend "
             "also confirms. Write 2-3 sentences: what the current state means for a TQQQ "
             "holder, and specifically which unmet criteria are holding it below FULL (or, if "
@@ -329,6 +346,8 @@ def build_row(c: Dict, reasoning: str) -> Dict:
     tone = {"FULL": "pos", "HALF": None, "OUT": "neg"}[c["state"]]
     book = c["book"]
     met_n = sum(1 for b in book if b["met"])
+    alert = c["rsi_alert"]
+    alert_tag = f" · ⚠ RSI {c['rsi']:.0f}" if alert else ""
 
     # Row 1: Trey's own signal. Rows 2-3: the book's checklist, ✓/✗ per
     # criterion, coloured by whether it's met. The setup grid is four wide,
@@ -348,21 +367,31 @@ def build_row(c: Dict, reasoning: str) -> Dict:
             "value": ("✓ " if b["met"] else "✗ ") + b["detail"],
             "tone": "pos" if b["met"] else "neg",
         })
+    # The one alert. Neutral when quiet so it doesn't read as a criterion;
+    # red and unmistakable when it fires.
+    fields.append({
+        "label": f"RSI > {RSI_ALERT} alert",
+        "value": (f"⚠ {c['rsi']:.0f} · review chart" if alert else f"quiet · {c['rsi']:.0f}"),
+        "tone": "neg" if alert else None,
+    })
 
     return {
         "rank": 1,
         "symbol": TRADED,
         "price": round(c["tqqq"], 2),
         "score": gate_pts + fast_pts,
-        "strategy": f"Trend gate · {c['state']}",
+        "strategy": f"Trend gate · {c['state']}{alert_tag}",
         "dimensions": DIMENSIONS,
         "breakdown": {"gate": gate_pts, "fast": fast_pts},
         "setup": {
-            "label": f"{c['state']} since {c['since']} · QQQ {c['qqq']:.2f} · book {met_n}/{len(book)} (reference, not used for state)",
+            "label": f"{c['state']} since {c['since']} · QQQ {c['qqq']:.2f} · book {met_n}/{len(book)} (reference, not used for state)"
+                     + (f" · ⚠ RSI {c['rsi']:.0f} OVERBOUGHT - review the chart" if alert else ""),
             "fields": fields,
         },
         # Structured copy of the checklist. The dashboard ignores keys it
         # doesn't know, so this is here for the archive and anything later.
+        "alerts": [{"key": "rsi_overbought", "label": f"RSI > {RSI_ALERT}", "value": round(c["rsi"], 1),
+                    "active": alert}],
         "book_criteria": {"met": met_n, "of": len(book),
                           "items": [{"key": b["key"], "label": b["label"], "met": b["met"], "detail": b["detail"]} for b in book]},
         "reasoning": reasoning,
@@ -385,6 +414,7 @@ def publish(row: Dict, c: Dict) -> None:
             {"label": "Signal on", "value": SIGNAL},
             {"label": "Gate", "value": f"{GATE_SMA}-day SMA"},
             {"label": "Book checklist", "value": f"{sum(1 for b in c['book'] if b['met'])} / {len(c['book'])} (ref)"},
+            {"label": f"RSI alert (>{RSI_ALERT})", "value": (f"⚠ ACTIVE · {c['rsi']:.0f}" if c["rsi_alert"] else f"quiet · {c['rsi']:.0f}")},
         ],
         "opportunities": [row],
     }
@@ -416,7 +446,8 @@ def main():
     logger.info(
         f"{c['date']}: {c['state']} (since {c['since']}) - QQQ {c['qqq']:.2f} "
         f"{c['gate_pct']:+.1f}% vs {GATE_SMA}d, fast={'ok' if c['fast_ok'] else 'no'}, "
-        f"P>{MID_SMA}={'ok' if c['mid_ok'] else 'no'}, {c['gate_changes_12m']} gate / {c['size_changes_12m']} size changes 12m"
+        f"P>{MID_SMA}={'ok' if c['mid_ok'] else 'no'}, RSI {c['rsi']:.0f}{' ALERT' if c['rsi_alert'] else ''}, "
+        f"{c['gate_changes_12m']} gate / {c['size_changes_12m']} size changes 12m"
     )
     row = build_row(c, reasoner.explain(c))
     publish(row, c)
