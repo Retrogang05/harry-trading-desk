@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-09-14T23:43:52.718291",
+  "scan_date": "2026-09-14T23:43:52.719475",
   "context": [
     {
       "label": "Universe",
@@ -30,246 +23,6 @@
     }
   ],
   "opportunities": [
-    {
-      "symbol": "VST",
-      "price": 140.73,
-      "score": 100,
-      "strategy": "Bear Call Spread",
-      "dimensions": [
-        {
-          "key": "credit_width",
-          "label": "Credit / Width",
-          "max": 30
-        },
-        {
-          "key": "prob_profit",
-          "label": "Prob. of Profit",
-          "max": 25
-        },
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "credit_width": 30.0,
-        "prob_profit": 25.0,
-        "iv_hv_richness": 20.0,
-        "liquidity": 15.0,
-        "open_interest": 10.0
-      },
-      "setup": {
-        "label": "Bear Call 150/155 \u00b7 31d",
-        "fields": [
-          {
-            "label": "Credit",
-            "value": "$1.12",
-            "tone": "pos"
-          },
-          {
-            "label": "Max Loss",
-            "value": "$3.88",
-            "tone": "neg"
-          },
-          {
-            "label": "ROC",
-            "value": "28.9%"
-          },
-          {
-            "label": "Approx. POP",
-            "value": "66%"
-          }
-        ]
-      },
-      "reasoning": "VST's downtrend and elevated IV create an attractive risk-reward setup, with the short strike capturing two standard deviations of move room while collecting meaningful premium relative to the spread width. The primary risk is a sharp reversal above the short strike\u2014particularly concerning given the IV/HV parity, which leaves little cushion if sentiment suddenly shifts and implied volatility fails to contract as expected.",
-      "rank": 1
-    },
-    {
-      "symbol": "CRM",
-      "price": 259.43,
-      "score": 95,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 35.2
-      },
-      "setup": null,
-      "reasoning": "# CRM RSI Momentum Analysis\n\nThe RSI at 69.8 indicates strong upside momentum approaching overbought territory, suggesting the recent rally may be encountering resistance to further gains. With price significantly above both the 50-day and 200-day moving averages, the uptrend remains intact, though the elevated RSI warns that near-term pullback or consolidation becomes a higher probability scenario.",
-      "rank": 2
-    },
-    {
-      "symbol": "TJX",
-      "price": 125.99,
-      "score": 95,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 55.0,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "TJX's RSI of 18.2 indicates severely oversold conditions with substantial momentum exhaustion on the downside, suggesting the stock may be approaching a potential reversal point. The pronounced gap between current price and both major moving averages reinforces that selling pressure has become extreme, though confirmation of momentum shift would be needed before considering any directional bias.",
-      "rank": 3
-    },
-    {
-      "symbol": "AVGO",
-      "price": 344.72,
-      "score": 83,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 43.2,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "AVGO's RSI of 34.3 indicates weakening momentum with the stock approaching oversold territory, suggesting sellers have driven price action lower but extreme capitulation has not yet occurred. The significant gap below both the 50-day and 200-day moving averages reinforces downside pressure, though the RSI reading leaves room for further depreciation before a potential mean-reversion bounce becomes statistically probable.",
-      "rank": 4
-    },
-    {
-      "symbol": "RCL",
-      "price": 255.34,
-      "score": 82,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 50.0,
-        "liquidity": 31.7
-      },
-      "setup": null,
-      "reasoning": "RCL's RSI of 21.9 indicates severely oversold conditions, suggesting momentum has been sharply depleted and the stock may be nearing a potential reversal point. Combined with the price trading 12-13% below both major moving averages, this setup reflects extreme weakness that historically has attracted contrarian interest, though confirmation of stabilization would be required before momentum shifts.",
-      "rank": 5
-    },
-    {
-      "symbol": "GE",
-      "price": 317.56,
-      "score": 82,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 57.6,
-        "liquidity": 24.0
-      },
-      "setup": null,
-      "reasoning": "# GE Momentum Analysis\n\nThe RSI of 31.7 indicates weakening downside momentum approaching oversold conditions, suggesting the selling pressure may be exhausting; however, with price trading below the 50-day SMA, the intermediate trend remains bearish despite this potential inflection point.",
-      "rank": 6
-    },
-    {
-      "symbol": "VZ",
-      "price": 51.29,
-      "score": 80,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 57.6,
-        "liquidity": 22.4
-      },
-      "setup": null,
-      "reasoning": "# VZ Momentum Analysis\n\nThe RSI of 67.4 indicates strong upward momentum with the stock approaching overbought conditions, suggesting diminishing room for continued gains in the near term. With price trading well above both moving averages, the rally remains intact, but the elevated RSI reading signals caution regarding potential pullback or consolidation.",
-      "rank": 7
-    },
-    {
-      "symbol": "MPC",
-      "price": 396.45,
-      "score": 80,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 20.0
-      },
-      "setup": null,
-      "reasoning": "MPC's RSI of 74.9 indicates strongly overbought conditions, suggesting momentum has extended significantly ahead of its longer-term moving averages and potential pullback risk has increased. The wide separation from both the 50-day and 200-day SMAs amplifies this concern, as the stock has rallied substantially and may face consolidation or mean reversion pressure.",
-      "rank": 8
-    },
     {
       "symbol": "UNH",
       "price": 383.55,
@@ -332,31 +85,6 @@
       },
       "reasoning": "# UNH Iron Condor Setup\n\nUNH presents a textbook premium-selling opportunity: elevated IV relative to realized volatility creates favorable risk/reward for short strangles, while the stock's mid-range positioning (70% of yearly span) suggests reluctance to break decisively in either direction. The invalidation scenario is binary\u2014a sharp breakout beyond the expected move window or an earnings catalyst that reprices volatility would quickly turn a profitable theta decay into realized losses, so position sizing and defined stop levels are critical given the name's institutional liquidity and sensitivity to healthcare policy shifts.",
       "rank": 9
-    },
-    {
-      "symbol": "VLO",
-      "price": 382.95,
-      "score": 75,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 45.0,
-        "liquidity": 30.0
-      },
-      "setup": null,
-      "reasoning": "VLO's RSI of 70.9 indicates overbought conditions with strong upward momentum, though the reading suggests limited room for continued appreciation without a pullback or consolidation. The stock's significant distance above both moving averages reinforces that the current rally is extended, warranting caution regarding momentum sustainability.",
-      "rank": 10
     },
     {
       "symbol": "AXP",
@@ -674,6 +402,71 @@
       "rank": 15
     },
     {
+      "symbol": "VST",
+      "price": 140.73,
+      "score": 100,
+      "strategy": "Bear Call Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 30.0,
+        "prob_profit": 25.0,
+        "iv_hv_richness": 20.0,
+        "liquidity": 15.0,
+        "open_interest": 10.0
+      },
+      "setup": {
+        "label": "Bear Call 150/155 \u00b7 31d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$1.12",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$3.88",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "28.9%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "66%"
+          }
+        ]
+      },
+      "reasoning": "VST's downtrend and elevated IV create an attractive risk-reward setup, with the short strike capturing two standard deviations of move room while collecting meaningful premium relative to the spread width. The primary risk is a sharp reversal above the short strike\u2014particularly concerning given the IV/HV parity, which leaves little cushion if sentiment suddenly shifts and implied volatility fails to contract as expected.",
+      "rank": 1
+    },
+    {
       "symbol": "TSLA",
       "price": 358.97,
       "score": 55,
@@ -736,6 +529,206 @@
       },
       "reasoning": "# TSLA LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage at a reasonable cost relative to implied volatility, effectively providing 3x exposure to TSLA's upside while capping downside risk below the strike\u2014ideal for trend followers confident in multi-year momentum continuation. The primary risk is time decay eroding the position if the trend stalls or reverses before the thesis materializes, and any sharp drawdown will still inflict losses despite the protective strike, making entry timing and conviction in the secular trend critical.",
       "rank": 16
+    },
+    {
+      "symbol": "CRM",
+      "price": 259.43,
+      "score": 95,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 35.2
+      },
+      "setup": null,
+      "reasoning": "# CRM RSI Momentum Analysis\n\nThe RSI at 69.8 indicates strong upside momentum approaching overbought territory, suggesting the recent rally may be encountering resistance to further gains. With price significantly above both the 50-day and 200-day moving averages, the uptrend remains intact, though the elevated RSI warns that near-term pullback or consolidation becomes a higher probability scenario.",
+      "rank": 2
+    },
+    {
+      "symbol": "TJX",
+      "price": 125.99,
+      "score": 95,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 55.0,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "TJX's RSI of 18.2 indicates severely oversold conditions with substantial momentum exhaustion on the downside, suggesting the stock may be approaching a potential reversal point. The pronounced gap between current price and both major moving averages reinforces that selling pressure has become extreme, though confirmation of momentum shift would be needed before considering any directional bias.",
+      "rank": 3
+    },
+    {
+      "symbol": "AVGO",
+      "price": 344.72,
+      "score": 83,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 43.2,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "AVGO's RSI of 34.3 indicates weakening momentum with the stock approaching oversold territory, suggesting sellers have driven price action lower but extreme capitulation has not yet occurred. The significant gap below both the 50-day and 200-day moving averages reinforces downside pressure, though the RSI reading leaves room for further depreciation before a potential mean-reversion bounce becomes statistically probable.",
+      "rank": 4
+    },
+    {
+      "symbol": "RCL",
+      "price": 255.34,
+      "score": 82,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 50.0,
+        "liquidity": 31.7
+      },
+      "setup": null,
+      "reasoning": "RCL's RSI of 21.9 indicates severely oversold conditions, suggesting momentum has been sharply depleted and the stock may be nearing a potential reversal point. Combined with the price trading 12-13% below both major moving averages, this setup reflects extreme weakness that historically has attracted contrarian interest, though confirmation of stabilization would be required before momentum shifts.",
+      "rank": 5
+    },
+    {
+      "symbol": "GE",
+      "price": 317.56,
+      "score": 82,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.6,
+        "liquidity": 24.0
+      },
+      "setup": null,
+      "reasoning": "# GE Momentum Analysis\n\nThe RSI of 31.7 indicates weakening downside momentum approaching oversold conditions, suggesting the selling pressure may be exhausting; however, with price trading below the 50-day SMA, the intermediate trend remains bearish despite this potential inflection point.",
+      "rank": 6
+    },
+    {
+      "symbol": "VZ",
+      "price": 51.29,
+      "score": 80,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.6,
+        "liquidity": 22.4
+      },
+      "setup": null,
+      "reasoning": "# VZ Momentum Analysis\n\nThe RSI of 67.4 indicates strong upward momentum with the stock approaching overbought conditions, suggesting diminishing room for continued gains in the near term. With price trading well above both moving averages, the rally remains intact, but the elevated RSI reading signals caution regarding potential pullback or consolidation.",
+      "rank": 7
+    },
+    {
+      "symbol": "MPC",
+      "price": 396.45,
+      "score": 80,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 20.0
+      },
+      "setup": null,
+      "reasoning": "MPC's RSI of 74.9 indicates strongly overbought conditions, suggesting momentum has extended significantly ahead of its longer-term moving averages and potential pullback risk has increased. The wide separation from both the 50-day and 200-day SMAs amplifies this concern, as the stock has rallied substantially and may face consolidation or mean reversion pressure.",
+      "rank": 8
+    },
+    {
+      "symbol": "VLO",
+      "price": 382.95,
+      "score": 75,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 45.0,
+        "liquidity": 30.0
+      },
+      "setup": null,
+      "reasoning": "VLO's RSI of 70.9 indicates overbought conditions with strong upward momentum, though the reading suggests limited room for continued appreciation without a pullback or consolidation. The stock's significant distance above both moving averages reinforces that the current rally is extended, warranting caution regarding momentum sustainability.",
+      "rank": 10
     }
   ]
 }
