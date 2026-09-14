@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-09-13T16:57:11.265307",
+  "scan_date": "2026-09-14T23:51:34.186968",
   "context": [
     {
       "label": "State",
@@ -34,18 +34,18 @@
     },
     {
       "label": "Book checklist",
-      "value": "3 / 6 (ref)"
+      "value": "2 / 6 (ref)"
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 51"
+      "value": "quiet \u00b7 47"
     }
   ],
   "opportunities": [
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 70.98,
+      "price": 69.27,
       "score": 60,
       "strategy": "Trend gate \u00b7 HALF",
       "dimensions": [
@@ -65,7 +65,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "HALF since 2026-08-26 \u00b7 QQQ 714.88 \u00b7 book 3/6 (reference, not used for state)",
+        "label": "HALF since 2026-08-26 \u00b7 QQQ 709.18 \u00b7 book 2/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -74,7 +74,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+8.4%",
+            "value": "+7.5%",
             "tone": "pos"
           },
           {
@@ -84,12 +84,12 @@
           },
           {
             "label": "Book \u00b7 ref",
-            "value": "3 / 6",
-            "tone": "pos"
+            "value": "2 / 6",
+            "tone": "neg"
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +9.3%",
+            "value": "\u2713 +8.4%",
             "tone": "pos"
           },
           {
@@ -104,8 +104,8 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2713 51",
-            "tone": "pos"
+            "value": "\u2717 47",
+            "tone": "neg"
           },
           {
             "label": "MACD",
@@ -119,7 +119,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 51",
+            "value": "quiet \u00b7 47",
             "tone": null
           }
         ]
@@ -128,19 +128,19 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 50.8,
+          "value": 46.9,
           "active": false
         }
       ],
       "book_criteria": {
-        "met": 3,
+        "met": 2,
         "of": 6,
         "items": [
           {
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+9.3%"
+            "detail": "+8.4%"
           },
           {
             "key": "stack",
@@ -157,8 +157,8 @@
           {
             "key": "rsi",
             "label": "RSI > 50",
-            "met": true,
-            "detail": "51"
+            "met": false,
+            "detail": "47"
           },
           {
             "key": "macd",
@@ -174,7 +174,7 @@
           }
         ]
       },
-      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects a cautious stance: while QQQ trades meaningfully above its structural average, the fast trend remains unconvincing with the 10-day below the 20-day and price lagging the 50-day, preventing a full commitment. To upgrade to FULL, the position requires the 10-day to cross above the 20-day AND price to reclaim above the 50-day\u2014both momentum confirmations are currently absent. Additionally, RSI and MACD remain below their bullish thresholds, suggesting the recent rally lacks the internal conviction needed to sustain a leveraged full exposure."
     }
   ]
 }

@@ -1,0 +1,197 @@
+{
+  "scan_date": "2026-09-14T23:51:34.187386",
+  "signal": {
+    "date": "2026-09-14",
+    "state": "HALF",
+    "since": "2026-08-26",
+    "prev_state": "FULL",
+    "gate_changes_12m": 2,
+    "size_changes_12m": 11,
+    "qqq": 709.1799926757812,
+    "tqqq": 69.2699966430664,
+    "gate_sma": 659.7879525756836,
+    "gate_pct": 7.486047586543654,
+    "fast_sma": 713.7690002441407,
+    "slow_sma": 714.5734985351562,
+    "mid_sma": 710.3379992675781,
+    "mid_pct": -0.1630219125248633,
+    "fast_ok": false,
+    "mid_ok": false,
+    "fast_confirmed": false,
+    "book": [
+      {
+        "key": "sma225",
+        "label": "> 225d",
+        "met": true,
+        "detail": "+8.4%"
+      },
+      {
+        "key": "stack",
+        "label": "20>50>200",
+        "met": true,
+        "detail": "stacked"
+      },
+      {
+        "key": "fast_raw",
+        "label": "10>20 \u00b7 P>50",
+        "met": false,
+        "detail": "no"
+      },
+      {
+        "key": "rsi",
+        "label": "RSI > 50",
+        "met": false,
+        "detail": "47"
+      },
+      {
+        "key": "macd",
+        "label": "MACD",
+        "met": false,
+        "detail": "<sig"
+      },
+      {
+        "key": "seasonal",
+        "label": "Season",
+        "met": false,
+        "detail": "Sep \u00b7 def"
+      }
+    ],
+    "rsi": 46.9147668040842,
+    "rsi_alert": false,
+    "since_truncated": false
+  },
+  "row": {
+    "rank": 1,
+    "symbol": "TQQQ",
+    "price": 69.27,
+    "score": 60,
+    "strategy": "Trend gate \u00b7 HALF",
+    "dimensions": [
+      {
+        "key": "gate",
+        "label": "QQQ > 200d",
+        "max": 60
+      },
+      {
+        "key": "fast",
+        "label": "10>20 & P>50d",
+        "max": 40
+      }
+    ],
+    "breakdown": {
+      "gate": 60,
+      "fast": 0
+    },
+    "setup": {
+      "label": "HALF since 2026-08-26 \u00b7 QQQ 709.18 \u00b7 book 2/6 (reference, not used for state)",
+      "fields": [
+        {
+          "label": "State",
+          "value": "HALF",
+          "tone": null
+        },
+        {
+          "label": "Gate 200d",
+          "value": "+7.5%",
+          "tone": "pos"
+        },
+        {
+          "label": "Fast (3d)",
+          "value": "no",
+          "tone": "neg"
+        },
+        {
+          "label": "Book \u00b7 ref",
+          "value": "2 / 6",
+          "tone": "neg"
+        },
+        {
+          "label": "> 225d",
+          "value": "\u2713 +8.4%",
+          "tone": "pos"
+        },
+        {
+          "label": "20>50>200",
+          "value": "\u2713 stacked",
+          "tone": "pos"
+        },
+        {
+          "label": "10>20 \u00b7 P>50",
+          "value": "\u2717 no",
+          "tone": "neg"
+        },
+        {
+          "label": "RSI > 50",
+          "value": "\u2717 47",
+          "tone": "neg"
+        },
+        {
+          "label": "MACD",
+          "value": "\u2717 <sig",
+          "tone": "neg"
+        },
+        {
+          "label": "Season",
+          "value": "\u2717 Sep \u00b7 def",
+          "tone": "neg"
+        },
+        {
+          "label": "RSI > 80 alert",
+          "value": "quiet \u00b7 47",
+          "tone": null
+        }
+      ]
+    },
+    "alerts": [
+      {
+        "key": "rsi_overbought",
+        "label": "RSI > 80",
+        "value": 46.9,
+        "active": false
+      }
+    ],
+    "book_criteria": {
+      "met": 2,
+      "of": 6,
+      "items": [
+        {
+          "key": "sma225",
+          "label": "> 225d",
+          "met": true,
+          "detail": "+8.4%"
+        },
+        {
+          "key": "stack",
+          "label": "20>50>200",
+          "met": true,
+          "detail": "stacked"
+        },
+        {
+          "key": "fast_raw",
+          "label": "10>20 \u00b7 P>50",
+          "met": false,
+          "detail": "no"
+        },
+        {
+          "key": "rsi",
+          "label": "RSI > 50",
+          "met": false,
+          "detail": "47"
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "met": false,
+          "detail": "<sig"
+        },
+        {
+          "key": "seasonal",
+          "label": "Season",
+          "met": false,
+          "detail": "Sep \u00b7 def"
+        }
+      ]
+    },
+    "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects a cautious stance: while QQQ trades meaningfully above its structural average, the fast trend remains unconvincing with the 10-day below the 20-day and price lagging the 50-day, preventing a full commitment. To upgrade to FULL, the position requires the 10-day to cross above the 20-day AND price to reclaim above the 50-day\u2014both momentum confirmations are currently absent. Additionally, RSI and MACD remain below their bullish thresholds, suggesting the recent rally lacks the internal conviction needed to sustain a leveraged full exposure."
+  }
+}
