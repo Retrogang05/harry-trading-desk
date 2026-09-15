@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-09-15T23:26:33.009111",
+  "scan_date": "2026-09-15T23:26:33.011175",
   "context": [
     {
       "label": "Universe",
@@ -30,106 +23,6 @@
     }
   ],
   "opportunities": [
-    {
-      "symbol": "AVGO",
-      "price": 339.27,
-      "score": 95,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 55.2,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "# AVGO Momentum Analysis\n\nThe RSI14 of 32.3 indicates weakening downside momentum as the stock approaches oversold territory, suggesting selling pressure may be losing conviction; however, the price remains significantly below both the 50-day and 200-day SMAs, confirming the intermediate-term downtrend is still intact without clear reversal signals yet.",
-      "rank": 1
-    },
-    {
-      "symbol": "TJX",
-      "price": 124.6,
-      "score": 92,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 55.2,
-        "liquidity": 36.8
-      },
-      "setup": null,
-      "reasoning": "TJX's RSI of 16.9 indicates severely oversold conditions with momentum heavily favoring sellers, suggesting potential exhaustion of the downtrend but requiring confirmation before reversal consideration. The stock's 15-20% discount to both major moving averages reflects significant weakness, though extreme RSI readings historically precede bounces when other reversal signals align.",
-      "rank": 2
-    },
-    {
-      "symbol": "MPC",
-      "price": 410.84,
-      "score": 85,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 25.5
-      },
-      "setup": null,
-      "reasoning": "# MPC Momentum Analysis\n\nThe RSI14 reading of 79.7 indicates MPC is significantly overbought and has extended well beyond typical mean-reversion thresholds, suggesting momentum has peaked and pullback risk is elevated. Combined with price trading 21.5% above the 50-day SMA, the stock exhibits extended upside momentum that has limited room to run without a consolidation or correction.",
-      "rank": 3
-    },
-    {
-      "symbol": "VLO",
-      "price": 397.04,
-      "score": 84,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 54.5,
-        "liquidity": 29.1
-      },
-      "setup": null,
-      "reasoning": "# VLO Momentum Analysis\n\nThe RSI of 75.7 indicates overbought conditions, suggesting momentum has extended significantly ahead of longer-term trend support\u2014typical of a mature rally that may be vulnerable to pullback or consolidation. With price well above both the 50-day and 200-day SMAs, the stock exhibits strong directional bias, though the elevated RSI warns that near-term exhaustion is a consideration for timing entries or exits.",
-      "rank": 4
-    },
     {
       "symbol": "AMZN",
       "price": 248.42,
@@ -192,170 +85,6 @@
       },
       "reasoning": "AMZN's elevated IV premium relative to realized volatility, combined with its middling position within the annual range and modest expected move, creates an attractive risk/reward for selling strangles or iron condors\u2014particularly if you believe mean reversion will contain price action. The setup breaks down on a directional breakout beyond the statistical move, a surprise earnings catalyst, or a structural IV crush that erodes your sold premium faster than theta can collect it. Solid liquidity and tight spreads make entry/exit manageable, but size your wings accordingly given the binary risk of a gap move.",
       "rank": 5
-    },
-    {
-      "symbol": "CRM",
-      "price": 255.65,
-      "score": 83,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 48.0,
-        "liquidity": 35.2
-      },
-      "setup": null,
-      "reasoning": "# CRM Momentum Analysis\n\nThe RSI of 66.6 indicates strong bullish momentum with limited room before overbought conditions (70), suggesting the current uptrend may be approaching a consolidation or pullback zone. Price trading well above both major moving averages reinforces uptrend strength, but the proximity to overbought territory warrants monitoring for potential mean-reversion signals or profit-taking pressure.",
-      "rank": 6
-    },
-    {
-      "symbol": "VZ",
-      "price": 51.45,
-      "score": 79,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 55.2,
-        "liquidity": 24.0
-      },
-      "setup": null,
-      "reasoning": "# VZ Momentum Assessment\n\nThe RSI reading of 68.3 indicates strong bullish momentum approaching overbought territory, suggesting the recent uptrend has built considerable buying pressure with limited room for further acceleration before potential pullback or consolidation. The price's position well above both moving averages reinforces the strength of this momentum, though the proximity to overbought levels warrants attention to momentum divergence or reversal signals.",
-      "rank": 7
-    },
-    {
-      "symbol": "AMAT",
-      "price": 421.17,
-      "score": 79,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 40.8,
-        "liquidity": 38.4
-      },
-      "setup": null,
-      "reasoning": "# AMAT Momentum Analysis\n\nThe RSI of 34.2 indicates weakening momentum with the stock approaching oversold conditions, suggesting selling pressure may be nearing exhaustion. However, the price trading below the 50-day SMA while above the 200-day SMA reflects a downtrend within a longer-term uptrend, warranting confirmation of reversal signals before assuming a momentum shift.",
-      "rank": 8
-    },
-    {
-      "symbol": "RCL",
-      "price": 249.3,
-      "score": 79,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 50.4,
-        "liquidity": 28.8
-      },
-      "setup": null,
-      "reasoning": "RCL's RSI of 19.2 indicates severely oversold conditions, suggesting momentum has contracted significantly and the stock may be approaching a potential reversal point. However, the price remains substantially below both the 50- and 200-day moving averages, signaling that downtrend momentum still dominates the intermediate timeframe despite the extreme short-term momentum reading.",
-      "rank": 9
-    },
-    {
-      "symbol": "MRNA",
-      "price": 143.77,
-      "score": 76,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 26.2,
-        "quality": 20.0,
-        "liquidity": 15.0,
-        "open_interest": 13.1,
-        "spread_tightness": 1.9
-      },
-      "setup": {
-        "label": "105C \u00b7 \u03940.80 \u00b7 457d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$65.50",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$170.50"
-          },
-          {
-            "label": "Leverage",
-            "value": "2.2x"
-          },
-          {
-            "label": "% ITM",
-            "value": "27.0%"
-          }
-        ]
-      },
-      "reasoning": "# MRNA LEAPS Call Analysis\n\nThe deep ITM call offers equity-like directional exposure at a significant capital discount while capturing a historically cheap volatility regime, making it an efficient leveraged substitute for outright stock ownership. The primary risk is that mean reversion in implied volatility could erode gains if momentum stalls, or a trend reversal could materialize before the extended time horizon allows the thesis to compound\u2014leaving you with depreciating time value despite directional conviction.",
-      "rank": 10
     },
     {
       "symbol": "BA",
@@ -673,70 +402,6 @@
       "rank": 15
     },
     {
-      "symbol": "PLTR",
-      "price": 172.56,
-      "score": 68,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 22.5,
-        "quality": 12.5,
-        "liquidity": 12.5,
-        "open_interest": 11.2,
-        "spread_tightness": 9.4
-      },
-      "setup": {
-        "label": "130C \u00b7 \u03940.80 \u00b7 366d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$64.90",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$194.90"
-          },
-          {
-            "label": "Leverage",
-            "value": "2.7x"
-          },
-          {
-            "label": "% ITM",
-            "value": "24.7%"
-          }
-        ]
-      },
-      "reasoning": "# PLTR LEAPS Call Analysis\n\n**Attractiveness:** This deep ITM call offers compelling leverage at a reasonable cost\u2014the subpar IV/HV ratio signals volatility is genuinely underpriced relative to realized moves, while the high delta (0.80) makes it function nearly like owning stock with 2.7x capital efficiency for trend-following exposure.\n\n**Main Risk:** The substantial time premium embedded in the 366-day structure means you're betting the trend sustains long enough to overcome theta decay; a meaningful reversal or consolidation before late 2027 could leave you underwater despite directional correctness, as time value erodes regardless of spot price.",
-      "rank": 16
-    },
-    {
       "symbol": "IBM",
       "price": 248.37,
       "score": 67,
@@ -997,70 +662,6 @@
       "rank": 20
     },
     {
-      "symbol": "CRM",
-      "price": 255.65,
-      "score": 58,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 18.8,
-        "quality": 17.5,
-        "liquidity": 7.5,
-        "open_interest": 7.5,
-        "spread_tightness": 6.6
-      },
-      "setup": {
-        "label": "200C \u00b7 \u03940.80 \u00b7 366d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$81.45",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$281.45"
-          },
-          {
-            "label": "Leverage",
-            "value": "3.1x"
-          },
-          {
-            "label": "% ITM",
-            "value": "21.8%"
-          }
-        ]
-      },
-      "reasoning": "# CRM LEAPS Analysis\n\nThis deep ITM call offers compelling leverage on a strong uptrend at a significant volatility discount, making it an efficient substitute for outright ownership with reduced capital requirement and defined risk. The primary tension is execution risk\u2014while you're capturing directional exposure cheaply relative to realized volatility, a meaningful trend break before the long-dated premium decays could leave you underwater despite being right on the ultimate direction, and the 31.9% premium still embeds meaningful time decay drag if momentum falters.",
-      "rank": 21
-    },
-    {
       "symbol": "AMAT",
       "price": 421.17,
       "score": 57,
@@ -1126,70 +727,6 @@
       "rank": 22
     },
     {
-      "symbol": "DELL",
-      "price": 543.51,
-      "score": 51,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 11.2,
-        "quality": 7.5,
-        "liquidity": 10.0,
-        "open_interest": 9.4,
-        "spread_tightness": 13.1
-      },
-      "setup": {
-        "label": "400C \u00b7 \u03940.80 \u00b7 366d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$223.00",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$623.00"
-          },
-          {
-            "label": "Leverage",
-            "value": "2.4x"
-          },
-          {
-            "label": "% ITM",
-            "value": "26.4%"
-          }
-        ]
-      },
-      "reasoning": "# DELL LEAPS Call Analysis\n\nThis deep ITM call offers meaningful leverage at a reasonable cost relative to intrinsic value, with implied volatility trading below realized\u2014providing a margin of safety on the premium paid while preserving upside exposure to a continued secular trend. The primary risk is duration: holding a leveraged position for over a year requires conviction that the uptrend sustains, as any significant reversal or period consolidation could erode time value faster than the stock recovers, trapping capital in a deprecating wasting asset.",
-      "rank": 23
-    },
-    {
       "symbol": "GE",
       "price": 307.05,
       "score": 49,
@@ -1253,6 +790,262 @@
       },
       "reasoning": "# GE Bear Call Analysis\n\nGE's uptrend and elevated IV create favorable conditions for this spread, with the short strike positioned at a reasonable delta buffer and premium collection sufficient to offset assignment risk. The primary concern is a sharp reversal above the short strike, which would require active management or assignment absorption\u2014particularly risky given the stock's recent momentum. IV crush post-earnings would actually work in your favor here, making the timing and earnings calendar the decisive factors rather than volatility direction alone.",
       "rank": 24
+    },
+    {
+      "symbol": "MRNA",
+      "price": 143.77,
+      "score": 76,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 26.2,
+        "quality": 20.0,
+        "liquidity": 15.0,
+        "open_interest": 13.1,
+        "spread_tightness": 1.9
+      },
+      "setup": {
+        "label": "105C \u00b7 \u03940.80 \u00b7 457d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$65.50",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$170.50"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.2x"
+          },
+          {
+            "label": "% ITM",
+            "value": "27.0%"
+          }
+        ]
+      },
+      "reasoning": "# MRNA LEAPS Call Analysis\n\nThe deep ITM call offers equity-like directional exposure at a significant capital discount while capturing a historically cheap volatility regime, making it an efficient leveraged substitute for outright stock ownership. The primary risk is that mean reversion in implied volatility could erode gains if momentum stalls, or a trend reversal could materialize before the extended time horizon allows the thesis to compound\u2014leaving you with depreciating time value despite directional conviction.",
+      "rank": 10
+    },
+    {
+      "symbol": "PLTR",
+      "price": 172.56,
+      "score": 68,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 22.5,
+        "quality": 12.5,
+        "liquidity": 12.5,
+        "open_interest": 11.2,
+        "spread_tightness": 9.4
+      },
+      "setup": {
+        "label": "130C \u00b7 \u03940.80 \u00b7 366d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$64.90",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$194.90"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.7x"
+          },
+          {
+            "label": "% ITM",
+            "value": "24.7%"
+          }
+        ]
+      },
+      "reasoning": "# PLTR LEAPS Call Analysis\n\n**Attractiveness:** This deep ITM call offers compelling leverage at a reasonable cost\u2014the subpar IV/HV ratio signals volatility is genuinely underpriced relative to realized moves, while the high delta (0.80) makes it function nearly like owning stock with 2.7x capital efficiency for trend-following exposure.\n\n**Main Risk:** The substantial time premium embedded in the 366-day structure means you're betting the trend sustains long enough to overcome theta decay; a meaningful reversal or consolidation before late 2027 could leave you underwater despite directional correctness, as time value erodes regardless of spot price.",
+      "rank": 16
+    },
+    {
+      "symbol": "CRM",
+      "price": 255.65,
+      "score": 58,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 18.8,
+        "quality": 17.5,
+        "liquidity": 7.5,
+        "open_interest": 7.5,
+        "spread_tightness": 6.6
+      },
+      "setup": {
+        "label": "200C \u00b7 \u03940.80 \u00b7 366d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$81.45",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$281.45"
+          },
+          {
+            "label": "Leverage",
+            "value": "3.1x"
+          },
+          {
+            "label": "% ITM",
+            "value": "21.8%"
+          }
+        ]
+      },
+      "reasoning": "# CRM LEAPS Analysis\n\nThis deep ITM call offers compelling leverage on a strong uptrend at a significant volatility discount, making it an efficient substitute for outright ownership with reduced capital requirement and defined risk. The primary tension is execution risk\u2014while you're capturing directional exposure cheaply relative to realized volatility, a meaningful trend break before the long-dated premium decays could leave you underwater despite being right on the ultimate direction, and the 31.9% premium still embeds meaningful time decay drag if momentum falters.",
+      "rank": 21
+    },
+    {
+      "symbol": "DELL",
+      "price": 543.51,
+      "score": 51,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 11.2,
+        "quality": 7.5,
+        "liquidity": 10.0,
+        "open_interest": 9.4,
+        "spread_tightness": 13.1
+      },
+      "setup": {
+        "label": "400C \u00b7 \u03940.80 \u00b7 366d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$223.00",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$623.00"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.4x"
+          },
+          {
+            "label": "% ITM",
+            "value": "26.4%"
+          }
+        ]
+      },
+      "reasoning": "# DELL LEAPS Call Analysis\n\nThis deep ITM call offers meaningful leverage at a reasonable cost relative to intrinsic value, with implied volatility trading below realized\u2014providing a margin of safety on the premium paid while preserving upside exposure to a continued secular trend. The primary risk is duration: holding a leveraged position for over a year requires conviction that the uptrend sustains, as any significant reversal or period consolidation could erode time value faster than the stock recovers, trapping capital in a deprecating wasting asset.",
+      "rank": 23
     },
     {
       "symbol": "MU",
@@ -1381,6 +1174,206 @@
       },
       "reasoning": "# TSLA LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage on a high-delta position while capturing a favorable volatility regime, allowing you to control substantial equity exposure with reduced capital at risk and meaningful upside participation. The primary risk lies in time decay eroding your premium over the 12-month hold if momentum stalls\u2014you're effectively paying for carry that only pays off if the trend sustains, making this a conviction bet rather than a capital-efficient substitute if TSLA consolidates or reverses.",
       "rank": 26
+    },
+    {
+      "symbol": "AVGO",
+      "price": 339.27,
+      "score": 95,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 55.2,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "# AVGO Momentum Analysis\n\nThe RSI14 of 32.3 indicates weakening downside momentum as the stock approaches oversold territory, suggesting selling pressure may be losing conviction; however, the price remains significantly below both the 50-day and 200-day SMAs, confirming the intermediate-term downtrend is still intact without clear reversal signals yet.",
+      "rank": 1
+    },
+    {
+      "symbol": "TJX",
+      "price": 124.6,
+      "score": 92,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 55.2,
+        "liquidity": 36.8
+      },
+      "setup": null,
+      "reasoning": "TJX's RSI of 16.9 indicates severely oversold conditions with momentum heavily favoring sellers, suggesting potential exhaustion of the downtrend but requiring confirmation before reversal consideration. The stock's 15-20% discount to both major moving averages reflects significant weakness, though extreme RSI readings historically precede bounces when other reversal signals align.",
+      "rank": 2
+    },
+    {
+      "symbol": "MPC",
+      "price": 410.84,
+      "score": 85,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 25.5
+      },
+      "setup": null,
+      "reasoning": "# MPC Momentum Analysis\n\nThe RSI14 reading of 79.7 indicates MPC is significantly overbought and has extended well beyond typical mean-reversion thresholds, suggesting momentum has peaked and pullback risk is elevated. Combined with price trading 21.5% above the 50-day SMA, the stock exhibits extended upside momentum that has limited room to run without a consolidation or correction.",
+      "rank": 3
+    },
+    {
+      "symbol": "VLO",
+      "price": 397.04,
+      "score": 84,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 54.5,
+        "liquidity": 29.1
+      },
+      "setup": null,
+      "reasoning": "# VLO Momentum Analysis\n\nThe RSI of 75.7 indicates overbought conditions, suggesting momentum has extended significantly ahead of longer-term trend support\u2014typical of a mature rally that may be vulnerable to pullback or consolidation. With price well above both the 50-day and 200-day SMAs, the stock exhibits strong directional bias, though the elevated RSI warns that near-term exhaustion is a consideration for timing entries or exits.",
+      "rank": 4
+    },
+    {
+      "symbol": "CRM",
+      "price": 255.65,
+      "score": 83,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 48.0,
+        "liquidity": 35.2
+      },
+      "setup": null,
+      "reasoning": "# CRM Momentum Analysis\n\nThe RSI of 66.6 indicates strong bullish momentum with limited room before overbought conditions (70), suggesting the current uptrend may be approaching a consolidation or pullback zone. Price trading well above both major moving averages reinforces uptrend strength, but the proximity to overbought territory warrants monitoring for potential mean-reversion signals or profit-taking pressure.",
+      "rank": 6
+    },
+    {
+      "symbol": "VZ",
+      "price": 51.45,
+      "score": 79,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 55.2,
+        "liquidity": 24.0
+      },
+      "setup": null,
+      "reasoning": "# VZ Momentum Assessment\n\nThe RSI reading of 68.3 indicates strong bullish momentum approaching overbought territory, suggesting the recent uptrend has built considerable buying pressure with limited room for further acceleration before potential pullback or consolidation. The price's position well above both moving averages reinforces the strength of this momentum, though the proximity to overbought levels warrants attention to momentum divergence or reversal signals.",
+      "rank": 7
+    },
+    {
+      "symbol": "AMAT",
+      "price": 421.17,
+      "score": 79,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 40.8,
+        "liquidity": 38.4
+      },
+      "setup": null,
+      "reasoning": "# AMAT Momentum Analysis\n\nThe RSI of 34.2 indicates weakening momentum with the stock approaching oversold conditions, suggesting selling pressure may be nearing exhaustion. However, the price trading below the 50-day SMA while above the 200-day SMA reflects a downtrend within a longer-term uptrend, warranting confirmation of reversal signals before assuming a momentum shift.",
+      "rank": 8
+    },
+    {
+      "symbol": "RCL",
+      "price": 249.3,
+      "score": 79,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 50.4,
+        "liquidity": 28.8
+      },
+      "setup": null,
+      "reasoning": "RCL's RSI of 19.2 indicates severely oversold conditions, suggesting momentum has contracted significantly and the stock may be approaching a potential reversal point. However, the price remains substantially below both the 50- and 200-day moving averages, signaling that downtrend momentum still dominates the intermediate timeframe despite the extreme short-term momentum reading.",
+      "rank": 9
     }
   ]
 }
