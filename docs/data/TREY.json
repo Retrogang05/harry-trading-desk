@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-09-15T23:31:29.310970",
+  "scan_date": "2026-09-16T23:38:53.046322",
   "context": [
     {
       "label": "State",
@@ -45,7 +45,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 67.9,
+      "price": 67.93,
       "score": 60,
       "strategy": "Trend gate \u00b7 HALF",
       "dimensions": [
@@ -65,7 +65,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "HALF since 2026-08-26 \u00b7 QQQ 704.54 \u00b7 book 2/6 (reference, not used for state)",
+        "label": "HALF since 2026-08-26 \u00b7 QQQ 704.72 \u00b7 book 2/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -89,7 +89,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +7.6%",
+            "value": "\u2713 +7.5%",
             "tone": "pos"
           },
           {
@@ -128,7 +128,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 44.0,
+          "value": 44.1,
           "active": false
         }
       ],
@@ -140,7 +140,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+7.6%"
+            "detail": "+7.5%"
           },
           {
             "key": "stack",
@@ -174,7 +174,7 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nYour HALF position reflects a conflicted technical setup: while QQQ trades meaningfully above its gate average and long-term structure remains intact, the fast trend deterioration\u2014with the 10-day below the 20-day and price lagging the 50-day\u2014prevents a FULL commitment. To advance to FULL, the 10-day would need to recross above the 20-day (Fast Trend) while price reclaims its 50-day level (Price >50d), both currently absent; additionally, RSI confirmation above 50 and MACD alignment would solidify conviction."
+      "reasoning": "# TQQQ Position Analysis\n\nYour HALF position reflects a cautious stance: QQQ has recovered meaningfully above its long-term average, but the fast trend is conflicted\u2014the 10/20-day crossover remains inverted and momentum lags the intermediate trend. To escalate to FULL, you would need confirmation from the **10>20 crossover, price strength above the 50-day, and RSI expansion above 50**; the seasonal headwind in September compounds these technical gaps."
     }
   ]
 }
