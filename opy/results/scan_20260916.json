@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-09-16T23:33:53.538455",
+  "scan_date": "2026-09-16T23:33:53.540140",
   "context": [
     {
       "label": "Universe",
@@ -30,131 +23,6 @@
     }
   ],
   "opportunities": [
-    {
-      "symbol": "TJX",
-      "price": 122.84,
-      "score": 94,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 57.6,
-        "liquidity": 36.8
-      },
-      "setup": null,
-      "reasoning": "TJX's RSI of 15.5 indicates severely oversold conditions with minimal remaining downside momentum, suggesting potential exhaustion of selling pressure. The stock's significant discount to both its 50- and 200-day moving averages reflects a pronounced downtrend, though the extreme RSI reading historically precedes mean-reversion bounces rather than further declines.",
-      "rank": 1
-    },
-    {
-      "symbol": "GS",
-      "price": 937.98,
-      "score": 90,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 57.6,
-        "liquidity": 32.0
-      },
-      "setup": null,
-      "reasoning": "The RSI14 of 30.7 indicates GS is approaching oversold conditions, suggesting downward momentum has been pronounced but may be nearing a potential exhaustion point where mean reversion or stabilization becomes more probable. The price sitting below the 50-day SMA (1036.26) while holding above the 200-day SMA (947.22) reflects intermediate weakness within a longer-term uptrend, adding context to the momentum signal.",
-      "rank": 2
-    },
-    {
-      "symbol": "BRK-B",
-      "price": 519.8,
-      "score": 89,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 57.4,
-        "liquidity": 31.3
-      },
-      "setup": null,
-      "reasoning": "BRK-B's RSI of 67.3 indicates strong upward momentum with limited room before overbought conditions (70+), suggesting the current rally may be approaching a natural consolidation or pullback point. The price's position above both moving averages confirms the uptrend is intact, but the elevated RSI warrants caution regarding further near-term acceleration.",
-      "rank": 3
-    },
-    {
-      "symbol": "TMO",
-      "price": 648.43,
-      "score": 88,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 27.8
-      },
-      "setup": null,
-      "reasoning": "TMO's RSI of 69.4 indicates strong upward momentum with diminishing buying pressure as it approaches overbought territory, suggesting potential consolidation or pullback risk in the near term. The stock's sustained position above both its 50- and 200-day moving averages confirms the underlying uptrend, though the elevated RSI reading warrants caution against chasing further gains at current levels.",
-      "rank": 4
-    },
-    {
-      "symbol": "AVGO",
-      "price": 339.51,
-      "score": 87,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 46.8,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "# AVGO Momentum Analysis\n\nThe RSI reading of 32.5 indicates weakening downside momentum as the stock approaches oversold territory, suggesting selling pressure may be nearing exhaustion. However, with price trading 5-11% below both major moving averages, the underlying downtrend remains intact, warranting confirmation of momentum reversal before considering any directional bias shift.",
-      "rank": 5
-    },
     {
       "symbol": "AMZN",
       "price": 245.96,
@@ -217,81 +85,6 @@
       },
       "reasoning": "# AMZN Iron Condor Candidate\n\nAMZN presents a textbook iron condor setup: elevated IV relative to realized volatility creates profitable short premium decay, while its mid-range positioning and modest expected move suggest limited directional conviction. The thesis breaks down on any meaningful directional thrust\u2014a breakout beyond the ~$240\u2013$252 zone, an earnings surprise, or a sharp IV crush that eliminates risk premium faster than theta can capture it. Solid liquidity and open interest provide execution cushion, making this a clean risk/reward trade if conviction in range-bound consolidation holds.",
       "rank": 6
-    },
-    {
-      "symbol": "MPC",
-      "price": 413.92,
-      "score": 84,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 24.0
-      },
-      "setup": null,
-      "reasoning": "An RSI of 80.5 indicates strong upward momentum with the stock significantly overbought, suggesting potential exhaustion in the near term and elevated risk of pullback or consolidation. The wide separation from both moving averages (21.5% above 50d SMA, 67% above 200d SMA) reinforces the extended rally, though overbought readings alone do not confirm reversal without additional confirmation signals.",
-      "rank": 7
-    },
-    {
-      "symbol": "CASY",
-      "price": 589.0,
-      "score": 82,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 55.2,
-        "liquidity": 27.2
-      },
-      "setup": null,
-      "reasoning": "CASY's RSI of 18.9 indicates severely oversold momentum conditions, suggesting selling pressure has been exhausted and a potential mean-reversion bounce could be imminent. However, the stock's significant disconnect from both its 50-day and 200-day moving averages signals deeper structural weakness, warranting caution before assuming any reversal is sustainable.",
-      "rank": 8
-    },
-    {
-      "symbol": "VLO",
-      "price": 403.28,
-      "score": 80,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 48.0,
-        "liquidity": 32.0
-      },
-      "setup": null,
-      "reasoning": "VLO's RSI of 77.5 indicates strongly overbought momentum with limited room for continued upside acceleration, suggesting potential consolidation or pullback risk in the near term. The stock's significant distance above both moving averages (21% above the 50-day, 64% above the 200-day) reinforces that current momentum is extended and vulnerable to mean reversion pressure.",
-      "rank": 9
     },
     {
       "symbol": "PG",
@@ -607,70 +400,6 @@
       },
       "reasoning": "GOOGL presents an attractive iron condor setup: elevated IV relative to realized volatility offers premium cushion, while its position in the lower-middle of its annual range suggests consolidation rather than directional conviction. The trade remains sound as long as the stock respects its recent trading band and IV holds sticky, but would face compression risk if either a catalyst (earnings, macro event) sparks a breakout beyond the wings or realized vol drops sharply toward current IV levels, eroding the premium advantage that makes the structure profitable.",
       "rank": 14
-    },
-    {
-      "symbol": "NVDA",
-      "price": 213.9,
-      "score": 70,
-      "strategy": "LEAPS (Trend Following)",
-      "dimensions": [
-        {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
-        },
-        {
-          "key": "quality",
-          "label": "Trend / Reversal",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        }
-      ],
-      "breakdown": {
-        "iv_cheapness": 15.0,
-        "quality": 20.0,
-        "liquidity": 20.0,
-        "open_interest": 15.0,
-        "spread_tightness": 0.0
-      },
-      "setup": {
-        "label": "170C \u00b7 \u03940.81 \u00b7 365d",
-        "fields": [
-          {
-            "label": "Premium",
-            "value": "$64.10",
-            "tone": "neg"
-          },
-          {
-            "label": "Breakeven",
-            "value": "$234.10"
-          },
-          {
-            "label": "Leverage",
-            "value": "3.3x"
-          },
-          {
-            "label": "% ITM",
-            "value": "20.5%"
-          }
-        ]
-      },
-      "reasoning": "# NVDA LEAPS Analysis\n\nThis call offers compelling leverage on a deeply ITM position with delta near parity to stock ownership, while the IV/HV ratio signals you're capturing volatility at fair value rather than a premium\u2014ideal for a trend-following thesis where the underlying momentum has legs. The primary risk is that the substantial time value embedded in the premium becomes a drag if NVDA consolidates or reverses before the one-year horizon, turning what appears to be a capital-efficient substitute into an underwater leveraged bet that decays faster than the stock itself would in a drawdown.",
-      "rank": 15
     },
     {
       "symbol": "LOW",
@@ -998,6 +727,70 @@
       "rank": 20
     },
     {
+      "symbol": "NVDA",
+      "price": 213.9,
+      "score": 70,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 15.0,
+        "quality": 20.0,
+        "liquidity": 20.0,
+        "open_interest": 15.0,
+        "spread_tightness": 0.0
+      },
+      "setup": {
+        "label": "170C \u00b7 \u03940.81 \u00b7 365d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$64.10",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$234.10"
+          },
+          {
+            "label": "Leverage",
+            "value": "3.3x"
+          },
+          {
+            "label": "% ITM",
+            "value": "20.5%"
+          }
+        ]
+      },
+      "reasoning": "# NVDA LEAPS Analysis\n\nThis call offers compelling leverage on a deeply ITM position with delta near parity to stock ownership, while the IV/HV ratio signals you're capturing volatility at fair value rather than a premium\u2014ideal for a trend-following thesis where the underlying momentum has legs. The primary risk is that the substantial time value embedded in the premium becomes a drag if NVDA consolidates or reverses before the one-year horizon, turning what appears to be a capital-efficient substitute into an underwater leveraged bet that decays faster than the stock itself would in a drawdown.",
+      "rank": 15
+    },
+    {
       "symbol": "TSLA",
       "price": 358.08,
       "score": 35,
@@ -1060,6 +853,206 @@
       },
       "reasoning": "# TSLA LEAPS Analysis\n\nThis deep ITM call offers compelling leverage with a delta approaching equity-like behavior while costing roughly one-third the stock price, effectively providing 3x+ directional exposure at a reasonable volatility premium that's actually discounted relative to realized moves. The primary risk is time decay eroding the position if TSLA consolidates or reverses before the trend resumes\u2014the one-year duration provides runway, but paying elevated absolute premium ($117) means the stock must sustain upward momentum to avoid loss through mean reversion in IV or stalled price action.",
       "rank": 21
+    },
+    {
+      "symbol": "TJX",
+      "price": 122.84,
+      "score": 94,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.6,
+        "liquidity": 36.8
+      },
+      "setup": null,
+      "reasoning": "TJX's RSI of 15.5 indicates severely oversold conditions with minimal remaining downside momentum, suggesting potential exhaustion of selling pressure. The stock's significant discount to both its 50- and 200-day moving averages reflects a pronounced downtrend, though the extreme RSI reading historically precedes mean-reversion bounces rather than further declines.",
+      "rank": 1
+    },
+    {
+      "symbol": "GS",
+      "price": 937.98,
+      "score": 90,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.6,
+        "liquidity": 32.0
+      },
+      "setup": null,
+      "reasoning": "The RSI14 of 30.7 indicates GS is approaching oversold conditions, suggesting downward momentum has been pronounced but may be nearing a potential exhaustion point where mean reversion or stabilization becomes more probable. The price sitting below the 50-day SMA (1036.26) while holding above the 200-day SMA (947.22) reflects intermediate weakness within a longer-term uptrend, adding context to the momentum signal.",
+      "rank": 2
+    },
+    {
+      "symbol": "BRK-B",
+      "price": 519.8,
+      "score": 89,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.4,
+        "liquidity": 31.3
+      },
+      "setup": null,
+      "reasoning": "BRK-B's RSI of 67.3 indicates strong upward momentum with limited room before overbought conditions (70+), suggesting the current rally may be approaching a natural consolidation or pullback point. The price's position above both moving averages confirms the uptrend is intact, but the elevated RSI warrants caution regarding further near-term acceleration.",
+      "rank": 3
+    },
+    {
+      "symbol": "TMO",
+      "price": 648.43,
+      "score": 88,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 27.8
+      },
+      "setup": null,
+      "reasoning": "TMO's RSI of 69.4 indicates strong upward momentum with diminishing buying pressure as it approaches overbought territory, suggesting potential consolidation or pullback risk in the near term. The stock's sustained position above both its 50- and 200-day moving averages confirms the underlying uptrend, though the elevated RSI reading warrants caution against chasing further gains at current levels.",
+      "rank": 4
+    },
+    {
+      "symbol": "AVGO",
+      "price": 339.51,
+      "score": 87,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 46.8,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "# AVGO Momentum Analysis\n\nThe RSI reading of 32.5 indicates weakening downside momentum as the stock approaches oversold territory, suggesting selling pressure may be nearing exhaustion. However, with price trading 5-11% below both major moving averages, the underlying downtrend remains intact, warranting confirmation of momentum reversal before considering any directional bias shift.",
+      "rank": 5
+    },
+    {
+      "symbol": "MPC",
+      "price": 413.92,
+      "score": 84,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 24.0
+      },
+      "setup": null,
+      "reasoning": "An RSI of 80.5 indicates strong upward momentum with the stock significantly overbought, suggesting potential exhaustion in the near term and elevated risk of pullback or consolidation. The wide separation from both moving averages (21.5% above 50d SMA, 67% above 200d SMA) reinforces the extended rally, though overbought readings alone do not confirm reversal without additional confirmation signals.",
+      "rank": 7
+    },
+    {
+      "symbol": "CASY",
+      "price": 589.0,
+      "score": 82,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 55.2,
+        "liquidity": 27.2
+      },
+      "setup": null,
+      "reasoning": "CASY's RSI of 18.9 indicates severely oversold momentum conditions, suggesting selling pressure has been exhausted and a potential mean-reversion bounce could be imminent. However, the stock's significant disconnect from both its 50-day and 200-day moving averages signals deeper structural weakness, warranting caution before assuming any reversal is sustainable.",
+      "rank": 8
+    },
+    {
+      "symbol": "VLO",
+      "price": 403.28,
+      "score": 80,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 48.0,
+        "liquidity": 32.0
+      },
+      "setup": null,
+      "reasoning": "VLO's RSI of 77.5 indicates strongly overbought momentum with limited room for continued upside acceleration, suggesting potential consolidation or pullback risk in the near term. The stock's significant distance above both moving averages (21% above the 50-day, 64% above the 200-day) reinforces that current momentum is extended and vulnerable to mean reversion pressure.",
+      "rank": 9
     }
   ]
 }
