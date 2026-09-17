@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-09-16T23:38:53.046322",
+  "scan_date": "2026-09-17T23:32:50.969998",
   "context": [
     {
       "label": "State",
@@ -34,18 +34,18 @@
     },
     {
       "label": "Book checklist",
-      "value": "2 / 6 (ref)"
+      "value": "4 / 6 (ref)"
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 44"
+      "value": "quiet \u00b7 53"
     }
   ],
   "opportunities": [
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 67.93,
+      "price": 71.38,
       "score": 60,
       "strategy": "Trend gate \u00b7 HALF",
       "dimensions": [
@@ -65,7 +65,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "HALF since 2026-08-26 \u00b7 QQQ 704.72 \u00b7 book 2/6 (reference, not used for state)",
+        "label": "HALF since 2026-08-26 \u00b7 QQQ 716.92 \u00b7 book 4/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -74,7 +74,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+6.7%",
+            "value": "+8.4%",
             "tone": "pos"
           },
           {
@@ -84,12 +84,12 @@
           },
           {
             "label": "Book \u00b7 ref",
-            "value": "2 / 6",
-            "tone": "neg"
+            "value": "4 / 6",
+            "tone": "pos"
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +7.5%",
+            "value": "\u2713 +9.3%",
             "tone": "pos"
           },
           {
@@ -99,13 +99,13 @@
           },
           {
             "label": "10>20 \u00b7 P>50",
-            "value": "\u2717 no",
-            "tone": "neg"
+            "value": "\u2713 yes",
+            "tone": "pos"
           },
           {
             "label": "RSI > 50",
-            "value": "\u2717 44",
-            "tone": "neg"
+            "value": "\u2713 53",
+            "tone": "pos"
           },
           {
             "label": "MACD",
@@ -119,7 +119,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 44",
+            "value": "quiet \u00b7 53",
             "tone": null
           }
         ]
@@ -128,19 +128,19 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 44.1,
+          "value": 53.1,
           "active": false
         }
       ],
       "book_criteria": {
-        "met": 2,
+        "met": 4,
         "of": 6,
         "items": [
           {
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+7.5%"
+            "detail": "+9.3%"
           },
           {
             "key": "stack",
@@ -151,14 +151,14 @@
           {
             "key": "fast_raw",
             "label": "10>20 \u00b7 P>50",
-            "met": false,
-            "detail": "no"
+            "met": true,
+            "detail": "yes"
           },
           {
             "key": "rsi",
             "label": "RSI > 50",
-            "met": false,
-            "detail": "44"
+            "met": true,
+            "detail": "53"
           },
           {
             "key": "macd",
@@ -174,7 +174,7 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nYour HALF position reflects a cautious stance: QQQ has recovered meaningfully above its long-term average, but the fast trend is conflicted\u2014the 10/20-day crossover remains inverted and momentum lags the intermediate trend. To escalate to FULL, you would need confirmation from the **10>20 crossover, price strength above the 50-day, and RSI expansion above 50**; the seasonal headwind in September compounds these technical gaps."
+      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects solid intermediate strength in QQQ with price well above its gate, but two technical headwinds are preventing a full commitment. **MACD remains below signal and in negative territory**, and **seasonal weakness (September) persists**, both of which would need to resolve\u2014particularly the MACD crossing above its signal line\u2014to justify upgrading to FULL despite the bullish price structure and trend alignment."
     }
   ]
 }
