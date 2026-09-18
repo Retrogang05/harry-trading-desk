@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-09-17T23:32:50.969998",
+  "scan_date": "2026-09-18T23:17:04.026815",
   "context": [
     {
       "label": "State",
@@ -34,18 +34,18 @@
     },
     {
       "label": "Book checklist",
-      "value": "4 / 6 (ref)"
+      "value": "5 / 6 (ref)"
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 53"
+      "value": "quiet \u00b7 56"
     }
   ],
   "opportunities": [
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 71.38,
+      "price": 72.64,
       "score": 60,
       "strategy": "Trend gate \u00b7 HALF",
       "dimensions": [
@@ -65,7 +65,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "HALF since 2026-08-26 \u00b7 QQQ 716.92 \u00b7 book 4/6 (reference, not used for state)",
+        "label": "HALF since 2026-08-26 \u00b7 QQQ 721.45 \u00b7 book 5/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -74,7 +74,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+8.4%",
+            "value": "+9.0%",
             "tone": "pos"
           },
           {
@@ -84,12 +84,12 @@
           },
           {
             "label": "Book \u00b7 ref",
-            "value": "4 / 6",
+            "value": "5 / 6",
             "tone": "pos"
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +9.3%",
+            "value": "\u2713 +9.9%",
             "tone": "pos"
           },
           {
@@ -104,13 +104,13 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2713 53",
+            "value": "\u2713 56",
             "tone": "pos"
           },
           {
             "label": "MACD",
-            "value": "\u2717 <sig <0",
-            "tone": "neg"
+            "value": "\u2713 >sig >0",
+            "tone": "pos"
           },
           {
             "label": "Season",
@@ -119,7 +119,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 53",
+            "value": "quiet \u00b7 56",
             "tone": null
           }
         ]
@@ -128,19 +128,19 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 53.1,
+          "value": 55.9,
           "active": false
         }
       ],
       "book_criteria": {
-        "met": 4,
+        "met": 5,
         "of": 6,
         "items": [
           {
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+9.3%"
+            "detail": "+9.9%"
           },
           {
             "key": "stack",
@@ -158,13 +158,13 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": true,
-            "detail": "53"
+            "detail": "56"
           },
           {
             "key": "macd",
             "label": "MACD",
-            "met": false,
-            "detail": "<sig <0"
+            "met": true,
+            "detail": ">sig >0"
           },
           {
             "key": "seasonal",
@@ -174,7 +174,7 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects solid intermediate strength in QQQ with price well above its gate, but two technical headwinds are preventing a full commitment. **MACD remains below signal and in negative territory**, and **seasonal weakness (September) persists**, both of which would need to resolve\u2014particularly the MACD crossing above its signal line\u2014to justify upgrading to FULL despite the bullish price structure and trend alignment."
+      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects a technically strong setup\u2014price well above the gate threshold with aligned intermediate trends\u2014but seasonal headwinds are constraining the allocation. To escalate to FULL, the position requires either a seasonal tailwind reversal (September typically poses challenges for tech) or sustained confirmation that momentum can persist despite seasonal weakness; currently, the seasonal criterion remains the sole brake on a fuller commitment."
     }
   ]
 }
