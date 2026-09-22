@@ -1,29 +1,29 @@
 {
-  "scan_date": "2026-09-22T00:04:16.873451",
+  "scan_date": "2026-09-22T23:35:44.485416",
   "signal": {
-    "date": "2026-09-18",
-    "state": "HALF",
-    "since": "2026-08-26",
-    "prev_state": "FULL",
+    "date": "2026-09-22",
+    "state": "FULL",
+    "since": "2026-09-21",
+    "prev_state": "HALF",
     "gate_changes_12m": 2,
-    "size_changes_12m": 11,
-    "qqq": 721.4500122070312,
-    "tqqq": 72.63999938964844,
-    "gate_sma": 661.7729553222656,
-    "gate_pct": 9.017753959997442,
-    "fast_sma": 713.4009948730469,
-    "slow_sma": 713.2354949951172,
-    "mid_sma": 709.9511975097656,
-    "mid_pct": 1.6196626947879045,
+    "size_changes_12m": 12,
+    "qqq": 747.4600219726562,
+    "tqqq": 80.83000183105469,
+    "gate_sma": 662.3302703857422,
+    "gate_pct": 12.853066724148722,
+    "fast_sma": 717.9690063476562,
+    "slow_sma": 716.0254577636719,
+    "mid_sma": 710.2757080078125,
+    "mid_pct": 5.235194382353114,
     "fast_ok": true,
     "mid_ok": true,
-    "fast_confirmed": false,
+    "fast_confirmed": true,
     "book": [
       {
         "key": "sma225",
         "label": "> 225d",
         "met": true,
-        "detail": "+9.9%"
+        "detail": "+13.8%"
       },
       {
         "key": "stack",
@@ -41,7 +41,7 @@
         "key": "rsi",
         "label": "RSI > 50",
         "met": true,
-        "detail": "56"
+        "detail": "68"
       },
       {
         "key": "macd",
@@ -56,16 +56,16 @@
         "detail": "Sep \u00b7 def"
       }
     ],
-    "rsi": 55.86940141832839,
+    "rsi": 68.22501425548312,
     "rsi_alert": false,
     "since_truncated": false
   },
   "row": {
     "rank": 1,
     "symbol": "TQQQ",
-    "price": 72.64,
-    "score": 60,
-    "strategy": "Trend gate \u00b7 HALF",
+    "price": 80.83,
+    "score": 100,
+    "strategy": "Trend gate \u00b7 FULL",
     "dimensions": [
       {
         "key": "gate",
@@ -80,25 +80,25 @@
     ],
     "breakdown": {
       "gate": 60,
-      "fast": 0
+      "fast": 40
     },
     "setup": {
-      "label": "HALF since 2026-08-26 \u00b7 QQQ 721.45 \u00b7 book 5/6 (reference, not used for state)",
+      "label": "FULL since 2026-09-21 \u00b7 QQQ 747.46 \u00b7 book 5/6 (reference, not used for state)",
       "fields": [
         {
           "label": "State",
-          "value": "HALF",
-          "tone": null
+          "value": "FULL",
+          "tone": "pos"
         },
         {
           "label": "Gate 200d",
-          "value": "+9.0%",
+          "value": "+12.9%",
           "tone": "pos"
         },
         {
           "label": "Fast (3d)",
-          "value": "no",
-          "tone": "neg"
+          "value": "yes",
+          "tone": "pos"
         },
         {
           "label": "Book \u00b7 ref",
@@ -107,7 +107,7 @@
         },
         {
           "label": "> 225d",
-          "value": "\u2713 +9.9%",
+          "value": "\u2713 +13.8%",
           "tone": "pos"
         },
         {
@@ -122,7 +122,7 @@
         },
         {
           "label": "RSI > 50",
-          "value": "\u2713 56",
+          "value": "\u2713 68",
           "tone": "pos"
         },
         {
@@ -137,7 +137,7 @@
         },
         {
           "label": "RSI > 80 alert",
-          "value": "quiet \u00b7 56",
+          "value": "quiet \u00b7 68",
           "tone": null
         }
       ]
@@ -146,7 +146,7 @@
       {
         "key": "rsi_overbought",
         "label": "RSI > 80",
-        "value": 55.9,
+        "value": 68.2,
         "active": false
       }
     ],
@@ -158,7 +158,7 @@
           "key": "sma225",
           "label": "> 225d",
           "met": true,
-          "detail": "+9.9%"
+          "detail": "+13.8%"
         },
         {
           "key": "stack",
@@ -176,7 +176,7 @@
           "key": "rsi",
           "label": "RSI > 50",
           "met": true,
-          "detail": "56"
+          "detail": "68"
         },
         {
           "key": "macd",
@@ -192,6 +192,6 @@
         }
       ]
     },
-    "reasoning": "# TQQQ Position Analysis\n\nYour HALF position reflects strength in the intermediate trend\u2014QQQ sits well above its gate average with solid momentum alignment across moving averages and indicators\u2014but the position remains capped because the seasonal headwind (September weakness) is NOT supporting a full allocation. To escalate to FULL, you would need either a seasonal reversal or sustained price confirmation that overcomes the historical September pattern; currently, the fast-trend uptrend alone isn't sufficient without seasonal tailwinds."
+    "reasoning": "# TQQQ Position Analysis\n\nYour FULL position is well-supported by strong technical alignment: QQQ trades significantly above its long-term average with confirmed uptrend momentum across multiple timeframes, satisfying the core gate requirements. The single unmet criterion is **seasonal positioning** (September historically underperforms), which explains why the checklist flags 5/6 rather than a clean sweep\u2014this is a minor headwind that the current technical strength has already overcome. Sustained performance above the 200-day moving average and continuation of short-term momentum above the 50-day are what keep this state intact."
   }
 }
