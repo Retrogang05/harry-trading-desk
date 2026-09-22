@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-09-22T23:30:16.260323",
+  "scan_date": "2026-09-22T23:30:16.261942",
   "context": [
     {
       "label": "Universe",
@@ -30,131 +23,6 @@
     }
   ],
   "opportunities": [
-    {
-      "symbol": "META",
-      "price": 736.59,
-      "score": 100,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "META's RSI of 76.1 indicates overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and heightens the probability of a pullback or consolidation in the near term. Combined with price trading substantially above both the 50- and 200-day SMAs, the stock exhibits strong uptrend strength but is currently vulnerable to mean reversion pressure.",
-      "rank": 1
-    },
-    {
-      "symbol": "AAPL",
-      "price": 339.75,
-      "score": 92,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 55.2,
-        "liquidity": 36.8
-      },
-      "setup": null,
-      "reasoning": "# AAPL Momentum Assessment\n\nThe RSI of 66.9 indicates strong upward momentum approaching overbought conditions, suggesting the current rally has limited room to extend before potential pullback or consolidation. Combined with price trading well above both major moving averages, the stock exhibits bullish structure but diminishing marginal momentum\u2014a point where traders typically monitor for reversal signals or profit-taking opportunities.",
-      "rank": 2
-    },
-    {
-      "symbol": "MU",
-      "price": 1096.16,
-      "score": 88,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 48.0,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "MU's RSI of 66.1 indicates strong upward momentum that is approaching overbought territory, suggesting the recent rally has built considerable strength but may face near-term consolidation or pullback pressure. The stock's significant outperformance relative to both the 50-day and 200-day moving averages reinforces this momentum, though elevated RSI readings historically tend to precede corrective moves.",
-      "rank": 3
-    },
-    {
-      "symbol": "BAC",
-      "price": 56.2,
-      "score": 86,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 45.6,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "BAC's RSI of 25.7 indicates severely oversold conditions with momentum heavily depressed, suggesting potential exhaustion of selling pressure. The price sitting below the 50-day SMA but above the 200-day SMA reflects intermediate weakness within a longer-term uptrend, creating tension between short-term oversold extremes and structural support levels.",
-      "rank": 4
-    },
-    {
-      "symbol": "BKNG",
-      "price": 164.22,
-      "score": 82,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 43.2,
-        "liquidity": 38.4
-      },
-      "setup": null,
-      "reasoning": "# BKNG Momentum Analysis\n\nThe RSI14 of 25.8 indicates severely oversold conditions, suggesting selling pressure has been exhausted and momentum may be primed for mean reversion; however, the price's significant discount to both the 50-day and 200-day SMAs signals underlying weakness that could persist despite the technical bounce signal.",
-      "rank": 5
-    },
     {
       "symbol": "GOOGL",
       "price": 351.16,
@@ -219,143 +87,67 @@
       "rank": 6
     },
     {
-      "symbol": "HOOD",
-      "price": 124.25,
-      "score": 79,
-      "strategy": "LEAPS (Trend Following)",
+      "symbol": "NXPI",
+      "price": 237.57,
+      "score": 53,
+      "strategy": "Iron Condor",
       "dimensions": [
         {
-          "key": "iv_cheapness",
-          "label": "IV Cheapness",
-          "max": 30
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
         },
         {
-          "key": "quality",
-          "label": "Trend / Reversal",
+          "key": "range_centrality",
+          "label": "Range Centrality",
           "max": 20
         },
         {
           "key": "liquidity",
           "label": "Liquidity",
-          "max": 20
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
           "max": 15
         },
         {
           "key": "spread_tightness",
           "label": "Spread Tightness",
           "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
         }
       ],
       "breakdown": {
-        "iv_cheapness": 24.0,
-        "quality": 16.0,
-        "liquidity": 12.0,
-        "open_interest": 15.0,
-        "spread_tightness": 12.0
+        "iv_hv_richness": 20.0,
+        "range_centrality": 15.2,
+        "liquidity": 7.5,
+        "spread_tightness": 0.0,
+        "open_interest": 10.0
       },
       "setup": {
-        "label": "90C \u00b7 \u03940.81 \u00b7 450d",
+        "label": "2026-10-16 \u00b7 23d \u00b7 IV/HV 1.33x",
         "fields": [
           {
-            "label": "Premium",
-            "value": "$54.80",
-            "tone": "neg"
+            "label": "Exp. Move",
+            "value": "\u00b17.8%"
           },
           {
-            "label": "Breakeven",
-            "value": "$144.80"
+            "label": "ATM IV",
+            "value": "42.8%"
           },
           {
-            "label": "Leverage",
-            "value": "2.3x"
+            "label": "HV30",
+            "value": "32.1%"
           },
           {
-            "label": "% ITM",
-            "value": "27.6%"
+            "label": "Spread",
+            "value": "14.3%"
           }
         ]
       },
-      "reasoning": "# HOOD LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage at a modest volatility discount, allowing you to control substantial upside exposure while deferring capital deployment\u2014ideal if you're confident in the trend but want to preserve dry powder. The critical risk is theta decay eroding your position if HOOD consolidates or reverses before the thesis materializes, since you're still paying meaningful time value despite the low IV skew, leaving little margin for error on directional timing.",
-      "rank": 7
-    },
-    {
-      "symbol": "JPM",
-      "price": 340.0,
-      "score": 74,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 33.6,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "JPM's RSI of 35.4 indicates weakening downside momentum approaching oversold conditions, suggesting selling pressure may be exhausting near-term. The stock's position below the 50-day SMA but above the 200-day SMA reflects intermediate weakness within a longer-term uptrend, warranting observation for potential stabilization signals.",
-      "rank": 8
-    },
-    {
-      "symbol": "AMD",
-      "price": 623.77,
-      "score": 73,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 40.0,
-        "liquidity": 33.3
-      },
-      "setup": null,
-      "reasoning": "AMD's RSI of 73.9 indicates overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and may face near-term consolidation or pullback pressure. However, the substantial price separation from both moving averages (25% above the 50-day, 74% above the 200-day) reflects a strong uptrend, so overbought readings in such environments often precede continuation rather than immediate reversal.",
-      "rank": 9
-    },
-    {
-      "symbol": "INTU",
-      "price": 292.35,
-      "score": 70,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 40.8,
-        "liquidity": 28.8
-      },
-      "setup": null,
-      "reasoning": "INTU's RSI of 34.5 indicates weakening momentum with the stock approaching oversold territory, suggesting selling pressure may be exhausting though not yet reversing. The significant gap below both the 50-day and 200-day SMAs reinforces that the stock remains in a downtrend despite the potential for a localized bounce as oversold conditions mature.",
-      "rank": 10
+      "reasoning": "# NXPI Iron Condor Setup\n\nNXPI presents an attractive iron condor candidate given elevated implied volatility trading at a significant premium to realized volatility, coupled with the stock's positioning in the lower-middle band of its annual range\u2014suggesting defined risk boundaries and low probability of directional conviction. The setup's core thesis hinges on mean reversion in IV and price consolidation; invalidation risks include a sharp directional breakout (particularly in semiconductor cyclicals), an unexpected earnings catalyst, or a rapid IV compression that erodes short premium faster than theta can offset. Adequate open interest and tight bid-ask spreads provide reasonable execution quality, though the premium richness that makes this attractive also implies markets are pricing elevated uncertainty that may ultimately materialize.",
+      "rank": 16
     },
     {
       "symbol": "AAPL",
@@ -553,6 +345,135 @@
       "rank": 13
     },
     {
+      "symbol": "AMZN",
+      "price": 254.98,
+      "score": 51,
+      "strategy": "Bear Call Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 11.2,
+        "prob_profit": 15.6,
+        "iv_hv_richness": 10.0,
+        "liquidity": 11.2,
+        "open_interest": 2.5
+      },
+      "setup": {
+        "label": "Bear Call 267.5/270 \u00b7 23d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$0.50",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$2.00",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "25.0%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "71%"
+          }
+        ]
+      },
+      "reasoning": "# AMZN Bear Call Analysis\n\nAMZN's sustained uptrend and elevated IV (1.16x HV) have compressed the risk/reward favorably, offering meaningful premium at a relatively low delta short strike that captures most of the probability distribution. The 23-day window provides sufficient time decay acceleration without excessive earnings-driven volatility risk through mid-October. Primary risk centers on a sharp reversal or gap through the short strike during a positive earnings surprise, which would quickly erode the spread's profitable zone despite the healthy probability of profit.",
+      "rank": 19
+    },
+    {
+      "symbol": "HOOD",
+      "price": 124.25,
+      "score": 79,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 24.0,
+        "quality": 16.0,
+        "liquidity": 12.0,
+        "open_interest": 15.0,
+        "spread_tightness": 12.0
+      },
+      "setup": {
+        "label": "90C \u00b7 \u03940.81 \u00b7 450d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$54.80",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$144.80"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.3x"
+          },
+          {
+            "label": "% ITM",
+            "value": "27.6%"
+          }
+        ]
+      },
+      "reasoning": "# HOOD LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage at a modest volatility discount, allowing you to control substantial upside exposure while deferring capital deployment\u2014ideal if you're confident in the trend but want to preserve dry powder. The critical risk is theta decay eroding your position if HOOD consolidates or reverses before the thesis materializes, since you're still paying meaningful time value despite the low IV skew, leaving little margin for error on directional timing.",
+      "rank": 7
+    },
+    {
       "symbol": "CRWD",
       "price": 250.06,
       "score": 63,
@@ -679,69 +600,6 @@
       },
       "reasoning": "# SMCI LEAPS Call Analysis\n\nThis call offers meaningful leverage on a deeply ITM position at a reasonable volatility discount, making it an efficient substitute for outright stock ownership while requiring only half the capital. The 450-day runway provides substantial time for the trend to mature before decay accelerates, though the primary risk is overpaying for time value if the uptrend stalls or reverses before the trade compounds\u2014a particular concern in momentum names where vol compression can evaporate premium gains regardless of underlying direction.",
       "rank": 15
-    },
-    {
-      "symbol": "NXPI",
-      "price": 237.57,
-      "score": 53,
-      "strategy": "Iron Condor",
-      "dimensions": [
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 40
-        },
-        {
-          "key": "range_centrality",
-          "label": "Range Centrality",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "iv_hv_richness": 20.0,
-        "range_centrality": 15.2,
-        "liquidity": 7.5,
-        "spread_tightness": 0.0,
-        "open_interest": 10.0
-      },
-      "setup": {
-        "label": "2026-10-16 \u00b7 23d \u00b7 IV/HV 1.33x",
-        "fields": [
-          {
-            "label": "Exp. Move",
-            "value": "\u00b17.8%"
-          },
-          {
-            "label": "ATM IV",
-            "value": "42.8%"
-          },
-          {
-            "label": "HV30",
-            "value": "32.1%"
-          },
-          {
-            "label": "Spread",
-            "value": "14.3%"
-          }
-        ]
-      },
-      "reasoning": "# NXPI Iron Condor Setup\n\nNXPI presents an attractive iron condor candidate given elevated implied volatility trading at a significant premium to realized volatility, coupled with the stock's positioning in the lower-middle band of its annual range\u2014suggesting defined risk boundaries and low probability of directional conviction. The setup's core thesis hinges on mean reversion in IV and price consolidation; invalidation risks include a sharp directional breakout (particularly in semiconductor cyclicals), an unexpected earnings catalyst, or a rapid IV compression that erodes short premium faster than theta can offset. Adequate open interest and tight bid-ask spreads provide reasonable execution quality, though the premium richness that makes this attractive also implies markets are pricing elevated uncertainty that may ultimately materialize.",
-      "rank": 16
     },
     {
       "symbol": "NVDA",
@@ -872,71 +730,6 @@
       "rank": 18
     },
     {
-      "symbol": "AMZN",
-      "price": 254.98,
-      "score": 51,
-      "strategy": "Bear Call Spread",
-      "dimensions": [
-        {
-          "key": "credit_width",
-          "label": "Credit / Width",
-          "max": 30
-        },
-        {
-          "key": "prob_profit",
-          "label": "Prob. of Profit",
-          "max": 25
-        },
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "credit_width": 11.2,
-        "prob_profit": 15.6,
-        "iv_hv_richness": 10.0,
-        "liquidity": 11.2,
-        "open_interest": 2.5
-      },
-      "setup": {
-        "label": "Bear Call 267.5/270 \u00b7 23d",
-        "fields": [
-          {
-            "label": "Credit",
-            "value": "$0.50",
-            "tone": "pos"
-          },
-          {
-            "label": "Max Loss",
-            "value": "$2.00",
-            "tone": "neg"
-          },
-          {
-            "label": "ROC",
-            "value": "25.0%"
-          },
-          {
-            "label": "Approx. POP",
-            "value": "71%"
-          }
-        ]
-      },
-      "reasoning": "# AMZN Bear Call Analysis\n\nAMZN's sustained uptrend and elevated IV (1.16x HV) have compressed the risk/reward favorably, offering meaningful premium at a relatively low delta short strike that captures most of the probability distribution. The 23-day window provides sufficient time decay acceleration without excessive earnings-driven volatility risk through mid-October. Primary risk centers on a sharp reversal or gap through the short strike during a positive earnings surprise, which would quickly erode the spread's profitable zone despite the healthy probability of profit.",
-      "rank": 19
-    },
-    {
       "symbol": "MRK",
       "price": 150.91,
       "score": 46,
@@ -999,6 +792,206 @@
       },
       "reasoning": "# MRK LEAPS Analysis\n\nThis deep ITM call offers meaningful leverage at a reasonable cost relative to intrinsic value, with implied volatility discounted to realized, making it an efficient substitute for outright stock ownership on a trend-following basis. The primary risk is duration: with substantial time value embedded in the premium, a meaningful reversal or consolidation could erode gains before the bullish thesis has room to develop, particularly given the already-high delta leaves limited cushion for adverse price action.",
       "rank": 20
+    },
+    {
+      "symbol": "META",
+      "price": 736.59,
+      "score": 100,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "META's RSI of 76.1 indicates overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and heightens the probability of a pullback or consolidation in the near term. Combined with price trading substantially above both the 50- and 200-day SMAs, the stock exhibits strong uptrend strength but is currently vulnerable to mean reversion pressure.",
+      "rank": 1
+    },
+    {
+      "symbol": "AAPL",
+      "price": 339.75,
+      "score": 92,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 55.2,
+        "liquidity": 36.8
+      },
+      "setup": null,
+      "reasoning": "# AAPL Momentum Assessment\n\nThe RSI of 66.9 indicates strong upward momentum approaching overbought conditions, suggesting the current rally has limited room to extend before potential pullback or consolidation. Combined with price trading well above both major moving averages, the stock exhibits bullish structure but diminishing marginal momentum\u2014a point where traders typically monitor for reversal signals or profit-taking opportunities.",
+      "rank": 2
+    },
+    {
+      "symbol": "MU",
+      "price": 1096.16,
+      "score": 88,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 48.0,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "MU's RSI of 66.1 indicates strong upward momentum that is approaching overbought territory, suggesting the recent rally has built considerable strength but may face near-term consolidation or pullback pressure. The stock's significant outperformance relative to both the 50-day and 200-day moving averages reinforces this momentum, though elevated RSI readings historically tend to precede corrective moves.",
+      "rank": 3
+    },
+    {
+      "symbol": "BAC",
+      "price": 56.2,
+      "score": 86,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 45.6,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "BAC's RSI of 25.7 indicates severely oversold conditions with momentum heavily depressed, suggesting potential exhaustion of selling pressure. The price sitting below the 50-day SMA but above the 200-day SMA reflects intermediate weakness within a longer-term uptrend, creating tension between short-term oversold extremes and structural support levels.",
+      "rank": 4
+    },
+    {
+      "symbol": "BKNG",
+      "price": 164.22,
+      "score": 82,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 43.2,
+        "liquidity": 38.4
+      },
+      "setup": null,
+      "reasoning": "# BKNG Momentum Analysis\n\nThe RSI14 of 25.8 indicates severely oversold conditions, suggesting selling pressure has been exhausted and momentum may be primed for mean reversion; however, the price's significant discount to both the 50-day and 200-day SMAs signals underlying weakness that could persist despite the technical bounce signal.",
+      "rank": 5
+    },
+    {
+      "symbol": "JPM",
+      "price": 340.0,
+      "score": 74,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 33.6,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "JPM's RSI of 35.4 indicates weakening downside momentum approaching oversold conditions, suggesting selling pressure may be exhausting near-term. The stock's position below the 50-day SMA but above the 200-day SMA reflects intermediate weakness within a longer-term uptrend, warranting observation for potential stabilization signals.",
+      "rank": 8
+    },
+    {
+      "symbol": "AMD",
+      "price": 623.77,
+      "score": 73,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 40.0,
+        "liquidity": 33.3
+      },
+      "setup": null,
+      "reasoning": "AMD's RSI of 73.9 indicates overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium and may face near-term consolidation or pullback pressure. However, the substantial price separation from both moving averages (25% above the 50-day, 74% above the 200-day) reflects a strong uptrend, so overbought readings in such environments often precede continuation rather than immediate reversal.",
+      "rank": 9
+    },
+    {
+      "symbol": "INTU",
+      "price": 292.35,
+      "score": 70,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 40.8,
+        "liquidity": 28.8
+      },
+      "setup": null,
+      "reasoning": "INTU's RSI of 34.5 indicates weakening momentum with the stock approaching oversold territory, suggesting selling pressure may be exhausting though not yet reversing. The significant gap below both the 50-day and 200-day SMAs reinforces that the stock remains in a downtrend despite the potential for a localized bounce as oversold conditions mature.",
+      "rank": 10
     }
   ]
 }
