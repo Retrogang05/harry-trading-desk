@@ -1,12 +1,5 @@
 {
-  "agent": {
-    "id": "OPY",
-    "name": "Opy",
-    "strategy": "Options",
-    "description": "Screens iron condors, credit spreads and LEAPS calls for liquidity and IV pricing, plus an RSI momentum context list.",
-    "accent": "#8a7fa8"
-  },
-  "scan_date": "2026-09-23T23:28:00.477095",
+  "scan_date": "2026-09-23T23:28:00.478960",
   "context": [
     {
       "label": "Universe",
@@ -31,104 +24,67 @@
   ],
   "opportunities": [
     {
-      "symbol": "META",
-      "price": 744.1,
-      "score": 100,
-      "strategy": "RSI Overbought",
+      "symbol": "NXPI",
+      "price": 235.44,
+      "score": 80,
+      "strategy": "Iron Condor",
       "dimensions": [
         {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
         },
         {
           "key": "liquidity",
           "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "META's RSI of 77.0 indicates strong overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium levels and carries elevated risk of pullback or consolidation. The substantial separation from both moving averages (20% above the 50-day, 19% above the 200-day) reinforces that the uptrend is mature, leaving limited room for continuation before a corrective move becomes probable.",
-      "rank": 1
-    },
-    {
-      "symbol": "BKNG",
-      "price": 155.9,
-      "score": 91,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
+          "max": 15
         },
         {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 52.8,
-        "liquidity": 38.4
-      },
-      "setup": null,
-      "reasoning": "BKNG's RSI of 21.5 indicates severely oversold conditions with momentum substantially weakened, suggesting potential exhaustion of selling pressure. However, the price trading 19% below the 50-day SMA and 15% below the 200-day SMA reflects a sustained downtrend that technical oversold readings alone do not confirm has reversed.",
-      "rank": 2
-    },
-    {
-      "symbol": "CRWD",
-      "price": 262.49,
-      "score": 89,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
         },
         {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
         }
       ],
       "breakdown": {
-        "extremity": 60.0,
-        "liquidity": 28.8
+        "iv_hv_richness": 40.0,
+        "range_centrality": 14.8,
+        "liquidity": 15.0,
+        "spread_tightness": 0.0,
+        "open_interest": 10.0
       },
-      "setup": null,
-      "reasoning": "# CRWD Momentum Analysis\n\nThe RSI of 68.7 indicates strong bullish momentum with limited room for further upside before reaching overbought conditions (70+), suggesting the stock may be vulnerable to a near-term pullback or consolidation. The substantial distance from both moving averages confirms an established uptrend, though the elevated RSI warrants caution regarding the sustainability of further gains at current price levels.",
-      "rank": 3
-    },
-    {
-      "symbol": "PLTR",
-      "price": 191.79,
-      "score": 86,
-      "strategy": "RSI Approaching Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 54.0,
-        "liquidity": 32.0
+      "setup": {
+        "label": "2026-10-16 \u00b7 22d \u00b7 IV/HV 1.35x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b17.9%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "42.8%"
+          },
+          {
+            "label": "HV30",
+            "value": "31.7%"
+          },
+          {
+            "label": "Spread",
+            "value": "14.3%"
+          }
+        ]
       },
-      "setup": null,
-      "reasoning": "PLTR's RSI of 66.9 indicates strong upward momentum approaching overbought conditions, suggesting the rally may be losing steam or face near-term consolidation. The significant distance above both the 50-day and 200-day SMAs reinforces that the stock is in an extended trend, leaving it vulnerable to pullback or profit-taking.",
-      "rank": 4
+      "reasoning": "# NXPI Iron Condor Assessment\n\nNXPI presents a textbook premium-selling setup: elevated IV relative to realized volatility creates asymmetric theta decay, while the stock's position deep within its annual range suggests mean-reversion behavior rather than directional conviction. The wide bid-ask spreads and modest open interest do present execution friction, but the inflated volatility premium compensates for liquidity drag on a 22-day window. The thesis breaks if a catalyst\u2014earnings surprise, semiconductor cycle inflection, or geopolitical supply shock\u2014triggers a directional breakout beyond the expected move, or if IV compression erodes the premium faster than theta can capture it.",
+      "rank": 8
     },
     {
       "symbol": "GOOG",
@@ -196,144 +152,6 @@
       "rank": 5
     },
     {
-      "symbol": "NEE",
-      "price": 77.02,
-      "score": 82,
-      "strategy": "RSI Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 50.4,
-        "liquidity": 32.0
-      },
-      "setup": null,
-      "reasoning": "NEE's RSI of 22.9 indicates severely oversold conditions, suggesting momentum has contracted sharply and may be approaching a potential reversal point, though the stock remains meaningfully below both intermediate and long-term moving averages, reflecting sustained downtrend pressure. The combination of extreme RSI divergence from price weakness warrants monitoring for signs of capitulation or stabilization before assuming momentum recovery.",
-      "rank": 6
-    },
-    {
-      "symbol": "JPM",
-      "price": 337.53,
-      "score": 81,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 40.8,
-        "liquidity": 40.0
-      },
-      "setup": null,
-      "reasoning": "JPM's RSI of 33.4 indicates weakening downside momentum with the stock approaching oversold territory, suggesting selling pressure may be exhausting. The price sitting below the 50-day SMA but above the 200-day SMA reflects intermediate-term weakness within a longer-term uptrend, warranting observation for potential reversal signals.",
-      "rank": 7
-    },
-    {
-      "symbol": "NXPI",
-      "price": 235.44,
-      "score": 80,
-      "strategy": "Iron Condor",
-      "dimensions": [
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 40
-        },
-        {
-          "key": "range_centrality",
-          "label": "Range Centrality",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "spread_tightness",
-          "label": "Spread Tightness",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "iv_hv_richness": 40.0,
-        "range_centrality": 14.8,
-        "liquidity": 15.0,
-        "spread_tightness": 0.0,
-        "open_interest": 10.0
-      },
-      "setup": {
-        "label": "2026-10-16 \u00b7 22d \u00b7 IV/HV 1.35x",
-        "fields": [
-          {
-            "label": "Exp. Move",
-            "value": "\u00b17.9%"
-          },
-          {
-            "label": "ATM IV",
-            "value": "42.8%"
-          },
-          {
-            "label": "HV30",
-            "value": "31.7%"
-          },
-          {
-            "label": "Spread",
-            "value": "14.3%"
-          }
-        ]
-      },
-      "reasoning": "# NXPI Iron Condor Assessment\n\nNXPI presents a textbook premium-selling setup: elevated IV relative to realized volatility creates asymmetric theta decay, while the stock's position deep within its annual range suggests mean-reversion behavior rather than directional conviction. The wide bid-ask spreads and modest open interest do present execution friction, but the inflated volatility premium compensates for liquidity drag on a 22-day window. The thesis breaks if a catalyst\u2014earnings surprise, semiconductor cycle inflection, or geopolitical supply shock\u2014triggers a directional breakout beyond the expected move, or if IV compression erodes the premium faster than theta can capture it.",
-      "rank": 8
-    },
-    {
-      "symbol": "INTU",
-      "price": 286.8,
-      "score": 76,
-      "strategy": "RSI Approaching Oversold",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 44.4,
-        "liquidity": 32.0
-      },
-      "setup": null,
-      "reasoning": "# INTU Momentum Analysis\n\nThe RSI of 32.9 indicates weakening downside momentum as the stock approaches oversold territory, suggesting selling pressure may be nearing exhaustion. However, with price trading significantly below both the 50-day and 200-day SMAs, the broader trend remains decisively bearish, and oversold conditions alone do not confirm a reversal without additional confirmation.",
-      "rank": 9
-    },
-    {
       "symbol": "AMZN",
       "price": 249.27,
       "score": 72,
@@ -397,6 +215,201 @@
       },
       "reasoning": "# AMZN Bear Call Spread Analysis\n\nAMZN's sustained uptrend and elevated IV environment (1.17x ratio) have inflated call premiums attractively, while the 31-delta short strike sits comfortably above current price with meaningful cushion. The 22-day timeframe captures IV premium decay without major event risk, making this a solid premium-harvesting setup. The primary risk is a decisive breakout through the short strike on positive tech sector momentum or company-specific catalysts, which could quickly erode the spread's profit zone\u2014though the wide bid-ask should allow tactical adjustments if that thesis breaks.",
       "rank": 10
+    },
+    {
+      "symbol": "GOOGL",
+      "price": 337.83,
+      "score": 55,
+      "strategy": "Bear Call Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 18.0,
+        "prob_profit": 5.0,
+        "iv_hv_richness": 16.0,
+        "liquidity": 12.0,
+        "open_interest": 4.0
+      },
+      "setup": {
+        "label": "Bear Call 352.5/355 \u00b7 22d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$0.70",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$1.80",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "38.9%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "69%"
+          }
+        ]
+      },
+      "reasoning": "# Bear Call Spread Analysis: GOOGL\n\n**Thesis:** GOOGL's downtrend and elevated IV (1.34x HV) provide attractive risk/reward, with the short strike positioned well below current price to capture mean-reversion premium while maintaining a reasonable cushion. The 22-day timeframe allows volatility decay to work in your favor before the earnings event.\n\n**Primary Risk:** A sharp reversal could quickly erode the cushion below your short strike, while post-earnings IV compression would simultaneously reduce the long strike's hedge value if you need to manage early\u2014creating compounded losses in a bullish breakout scenario.",
+      "rank": 16
+    },
+    {
+      "symbol": "CVX",
+      "price": 205.51,
+      "score": 47,
+      "strategy": "Bull Put Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 12.0,
+        "prob_profit": 10.0,
+        "iv_hv_richness": 12.0,
+        "liquidity": 3.0,
+        "open_interest": 10.0
+      },
+      "setup": {
+        "label": "Bull Put 200/195 \u00b7 22d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$1.30",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$3.70",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "35.1%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "69%"
+          }
+        ]
+      },
+      "reasoning": "# CVX Bull Put Spread Analysis\n\nCVX's strong uptrend and elevated IV environment support selling downside premium at a reasonable delta, offering attractive risk-adjusted returns with nearly 3:1 width-to-credit efficiency. The IV premium (1.22x HV ratio) provides a cushion against volatility crush, though the primary risk remains a sharp reversal below the short strike if energy sector sentiment deteriorates or macro headwinds accelerate, which could quickly erode the spread's profitability despite the favorable probability of profit.",
+      "rank": 19
+    },
+    {
+      "symbol": "MSFT",
+      "price": 500.59,
+      "score": 42,
+      "strategy": "Bull Put Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 6.0,
+        "prob_profit": 15.0,
+        "iv_hv_richness": 4.0,
+        "liquidity": 15.0,
+        "open_interest": 2.0
+      },
+      "setup": {
+        "label": "Bull Put 487.5/480 \u00b7 22d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$1.50",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$6.00",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "25.0%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "69%"
+          }
+        ]
+      },
+      "reasoning": "MSFT's uptrend and elevated IV (1.11x HV) support selling premium at the 487.5 strike, which sits well below current price with comfortable delta cushion. The 22-day timeframe captures theta decay while avoiding near-term event risk, and the risk/reward aligns well with the probability of profit. Primary risk is a sharp reversal below the short strike in a broad market correction, which could eliminate the cushion faster than theta can protect it.",
+      "rank": 20
     },
     {
       "symbol": "HOOD",
@@ -591,31 +604,6 @@
       "rank": 13
     },
     {
-      "symbol": "WBD",
-      "price": 30.76,
-      "score": 63,
-      "strategy": "RSI Overbought",
-      "dimensions": [
-        {
-          "key": "extremity",
-          "label": "RSI Extremity",
-          "max": 60
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "extremity": 51.4,
-        "liquidity": 11.4
-      },
-      "setup": null,
-      "reasoning": "WBD's RSI of 75.2 indicates strong upward momentum with overbought conditions, suggesting the stock has moved significantly above its moving averages and may face near-term pullback risk or consolidation. The elevated reading warrants attention to potential reversal signals or resistance levels, though overbought does not preclude further strength in a sustained uptrend.",
-      "rank": 14
-    },
-    {
       "symbol": "SMCI",
       "price": 41.44,
       "score": 57,
@@ -678,71 +666,6 @@
       },
       "reasoning": "# SMCI LEAPS Call Analysis\n\nThe deep ITM strike and sub-unity IV/HV ratio offer a capital-efficient proxy to trend-following exposure with minimal time decay drag relative to owning stock outright\u2014ideal for conviction plays on sustained momentum. The primary risk is overpaying for time value if the rally stalls before expiration, forcing you to hold through a mean-reversion drawdown that could exceed typical stock volatility given the leveraged sensitivity.",
       "rank": 15
-    },
-    {
-      "symbol": "GOOGL",
-      "price": 337.83,
-      "score": 55,
-      "strategy": "Bear Call Spread",
-      "dimensions": [
-        {
-          "key": "credit_width",
-          "label": "Credit / Width",
-          "max": 30
-        },
-        {
-          "key": "prob_profit",
-          "label": "Prob. of Profit",
-          "max": 25
-        },
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 20
-        },
-        {
-          "key": "liquidity",
-          "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "credit_width": 18.0,
-        "prob_profit": 5.0,
-        "iv_hv_richness": 16.0,
-        "liquidity": 12.0,
-        "open_interest": 4.0
-      },
-      "setup": {
-        "label": "Bear Call 352.5/355 \u00b7 22d",
-        "fields": [
-          {
-            "label": "Credit",
-            "value": "$0.70",
-            "tone": "pos"
-          },
-          {
-            "label": "Max Loss",
-            "value": "$1.80",
-            "tone": "neg"
-          },
-          {
-            "label": "ROC",
-            "value": "38.9%"
-          },
-          {
-            "label": "Approx. POP",
-            "value": "69%"
-          }
-        ]
-      },
-      "reasoning": "# Bear Call Spread Analysis: GOOGL\n\n**Thesis:** GOOGL's downtrend and elevated IV (1.34x HV) provide attractive risk/reward, with the short strike positioned well below current price to capture mean-reversion premium while maintaining a reasonable cushion. The 22-day timeframe allows volatility decay to work in your favor before the earnings event.\n\n**Primary Risk:** A sharp reversal could quickly erode the cushion below your short strike, while post-earnings IV compression would simultaneously reduce the long strike's hedge value if you need to manage early\u2014creating compounded losses in a bullish breakout scenario.",
-      "rank": 16
     },
     {
       "symbol": "CRWD",
@@ -873,134 +796,204 @@
       "rank": 18
     },
     {
-      "symbol": "CVX",
-      "price": 205.51,
-      "score": 47,
-      "strategy": "Bull Put Spread",
+      "symbol": "META",
+      "price": 744.1,
+      "score": 100,
+      "strategy": "RSI Overbought",
       "dimensions": [
         {
-          "key": "credit_width",
-          "label": "Credit / Width",
-          "max": 30
-        },
-        {
-          "key": "prob_profit",
-          "label": "Prob. of Profit",
-          "max": 25
-        },
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 20
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
         },
         {
           "key": "liquidity",
           "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
+          "max": 40
         }
       ],
       "breakdown": {
-        "credit_width": 12.0,
-        "prob_profit": 10.0,
-        "iv_hv_richness": 12.0,
-        "liquidity": 3.0,
-        "open_interest": 10.0
+        "extremity": 60.0,
+        "liquidity": 40.0
       },
-      "setup": {
-        "label": "Bull Put 200/195 \u00b7 22d",
-        "fields": [
-          {
-            "label": "Credit",
-            "value": "$1.30",
-            "tone": "pos"
-          },
-          {
-            "label": "Max Loss",
-            "value": "$3.70",
-            "tone": "neg"
-          },
-          {
-            "label": "ROC",
-            "value": "35.1%"
-          },
-          {
-            "label": "Approx. POP",
-            "value": "69%"
-          }
-        ]
-      },
-      "reasoning": "# CVX Bull Put Spread Analysis\n\nCVX's strong uptrend and elevated IV environment support selling downside premium at a reasonable delta, offering attractive risk-adjusted returns with nearly 3:1 width-to-credit efficiency. The IV premium (1.22x HV ratio) provides a cushion against volatility crush, though the primary risk remains a sharp reversal below the short strike if energy sector sentiment deteriorates or macro headwinds accelerate, which could quickly erode the spread's profitability despite the favorable probability of profit.",
-      "rank": 19
+      "setup": null,
+      "reasoning": "META's RSI of 77.0 indicates strong overbought conditions, suggesting momentum has extended significantly beyond typical equilibrium levels and carries elevated risk of pullback or consolidation. The substantial separation from both moving averages (20% above the 50-day, 19% above the 200-day) reinforces that the uptrend is mature, leaving limited room for continuation before a corrective move becomes probable.",
+      "rank": 1
     },
     {
-      "symbol": "MSFT",
-      "price": 500.59,
-      "score": 42,
-      "strategy": "Bull Put Spread",
+      "symbol": "BKNG",
+      "price": 155.9,
+      "score": 91,
+      "strategy": "RSI Oversold",
       "dimensions": [
         {
-          "key": "credit_width",
-          "label": "Credit / Width",
-          "max": 30
-        },
-        {
-          "key": "prob_profit",
-          "label": "Prob. of Profit",
-          "max": 25
-        },
-        {
-          "key": "iv_hv_richness",
-          "label": "IV/HV Richness",
-          "max": 20
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
         },
         {
           "key": "liquidity",
           "label": "Liquidity",
-          "max": 15
-        },
-        {
-          "key": "open_interest",
-          "label": "Open Interest",
-          "max": 10
+          "max": 40
         }
       ],
       "breakdown": {
-        "credit_width": 6.0,
-        "prob_profit": 15.0,
-        "iv_hv_richness": 4.0,
-        "liquidity": 15.0,
-        "open_interest": 2.0
+        "extremity": 52.8,
+        "liquidity": 38.4
       },
-      "setup": {
-        "label": "Bull Put 487.5/480 \u00b7 22d",
-        "fields": [
-          {
-            "label": "Credit",
-            "value": "$1.50",
-            "tone": "pos"
-          },
-          {
-            "label": "Max Loss",
-            "value": "$6.00",
-            "tone": "neg"
-          },
-          {
-            "label": "ROC",
-            "value": "25.0%"
-          },
-          {
-            "label": "Approx. POP",
-            "value": "69%"
-          }
-        ]
+      "setup": null,
+      "reasoning": "BKNG's RSI of 21.5 indicates severely oversold conditions with momentum substantially weakened, suggesting potential exhaustion of selling pressure. However, the price trading 19% below the 50-day SMA and 15% below the 200-day SMA reflects a sustained downtrend that technical oversold readings alone do not confirm has reversed.",
+      "rank": 2
+    },
+    {
+      "symbol": "CRWD",
+      "price": 262.49,
+      "score": 89,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 28.8
       },
-      "reasoning": "MSFT's uptrend and elevated IV (1.11x HV) support selling premium at the 487.5 strike, which sits well below current price with comfortable delta cushion. The 22-day timeframe captures theta decay while avoiding near-term event risk, and the risk/reward aligns well with the probability of profit. Primary risk is a sharp reversal below the short strike in a broad market correction, which could eliminate the cushion faster than theta can protect it.",
-      "rank": 20
+      "setup": null,
+      "reasoning": "# CRWD Momentum Analysis\n\nThe RSI of 68.7 indicates strong bullish momentum with limited room for further upside before reaching overbought conditions (70+), suggesting the stock may be vulnerable to a near-term pullback or consolidation. The substantial distance from both moving averages confirms an established uptrend, though the elevated RSI warrants caution regarding the sustainability of further gains at current price levels.",
+      "rank": 3
+    },
+    {
+      "symbol": "PLTR",
+      "price": 191.79,
+      "score": 86,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 54.0,
+        "liquidity": 32.0
+      },
+      "setup": null,
+      "reasoning": "PLTR's RSI of 66.9 indicates strong upward momentum approaching overbought conditions, suggesting the rally may be losing steam or face near-term consolidation. The significant distance above both the 50-day and 200-day SMAs reinforces that the stock is in an extended trend, leaving it vulnerable to pullback or profit-taking.",
+      "rank": 4
+    },
+    {
+      "symbol": "NEE",
+      "price": 77.02,
+      "score": 82,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 50.4,
+        "liquidity": 32.0
+      },
+      "setup": null,
+      "reasoning": "NEE's RSI of 22.9 indicates severely oversold conditions, suggesting momentum has contracted sharply and may be approaching a potential reversal point, though the stock remains meaningfully below both intermediate and long-term moving averages, reflecting sustained downtrend pressure. The combination of extreme RSI divergence from price weakness warrants monitoring for signs of capitulation or stabilization before assuming momentum recovery.",
+      "rank": 6
+    },
+    {
+      "symbol": "JPM",
+      "price": 337.53,
+      "score": 81,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 40.8,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "JPM's RSI of 33.4 indicates weakening downside momentum with the stock approaching oversold territory, suggesting selling pressure may be exhausting. The price sitting below the 50-day SMA but above the 200-day SMA reflects intermediate-term weakness within a longer-term uptrend, warranting observation for potential reversal signals.",
+      "rank": 7
+    },
+    {
+      "symbol": "INTU",
+      "price": 286.8,
+      "score": 76,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 44.4,
+        "liquidity": 32.0
+      },
+      "setup": null,
+      "reasoning": "# INTU Momentum Analysis\n\nThe RSI of 32.9 indicates weakening downside momentum as the stock approaches oversold territory, suggesting selling pressure may be nearing exhaustion. However, with price trading significantly below both the 50-day and 200-day SMAs, the broader trend remains decisively bearish, and oversold conditions alone do not confirm a reversal without additional confirmation.",
+      "rank": 9
+    },
+    {
+      "symbol": "WBD",
+      "price": 30.76,
+      "score": 63,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 51.4,
+        "liquidity": 11.4
+      },
+      "setup": null,
+      "reasoning": "WBD's RSI of 75.2 indicates strong upward momentum with overbought conditions, suggesting the stock has moved significantly above its moving averages and may face near-term pullback risk or consolidation. The elevated reading warrants attention to potential reversal signals or resistance levels, though overbought does not preclude further strength in a sustained uptrend.",
+      "rank": 14
     }
   ]
 }
