@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-09-22T23:35:44.484919",
+  "scan_date": "2026-09-23T23:39:50.051238",
   "context": [
     {
       "label": "State",
@@ -38,14 +38,14 @@
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 68"
+      "value": "quiet \u00b7 63"
     }
   ],
   "opportunities": [
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 80.83,
+      "price": 78.66,
       "score": 100,
       "strategy": "Trend gate \u00b7 FULL",
       "dimensions": [
@@ -65,7 +65,7 @@
         "fast": 40
       },
       "setup": {
-        "label": "FULL since 2026-09-21 \u00b7 QQQ 747.46 \u00b7 book 5/6 (reference, not used for state)",
+        "label": "FULL since 2026-09-21 \u00b7 QQQ 741.21 \u00b7 book 5/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -74,7 +74,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+12.9%",
+            "value": "+11.8%",
             "tone": "pos"
           },
           {
@@ -89,7 +89,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +13.8%",
+            "value": "\u2713 +12.8%",
             "tone": "pos"
           },
           {
@@ -104,7 +104,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2713 68",
+            "value": "\u2713 63",
             "tone": "pos"
           },
           {
@@ -119,7 +119,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 68",
+            "value": "quiet \u00b7 63",
             "tone": null
           }
         ]
@@ -128,7 +128,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 68.2,
+          "value": 63.5,
           "active": false
         }
       ],
@@ -140,7 +140,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+13.8%"
+            "detail": "+12.8%"
           },
           {
             "key": "stack",
@@ -158,7 +158,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": true,
-            "detail": "68"
+            "detail": "63"
           },
           {
             "key": "macd",
@@ -174,7 +174,7 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nYour FULL position is well-supported by strong technical alignment: QQQ trades significantly above its long-term average with confirmed uptrend momentum across multiple timeframes, satisfying the core gate requirements. The single unmet criterion is **seasonal positioning** (September historically underperforms), which explains why the checklist flags 5/6 rather than a clean sweep\u2014this is a minor headwind that the current technical strength has already overcome. Sustained performance above the 200-day moving average and continuation of short-term momentum above the 50-day are what keep this state intact."
+      "reasoning": "# TQQQ Position Assessment\n\nYour FULL position reflects strong confirmation across multiple momentum indicators\u2014the 10/20-day crossover, price strength relative to intermediate moving averages, and MACD alignment all support the elevated exposure. The sole unmet criterion is **seasonality** (September weakness), which is a headwind but insufficient to override the technical confirmation; note that this seasonal factor will naturally expire within days as the calendar turns to October."
     }
   ]
 }
