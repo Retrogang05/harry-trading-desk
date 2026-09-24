@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-09-23T23:39:50.051238",
+  "scan_date": "2026-09-24T23:52:37.316422",
   "context": [
     {
       "label": "State",
@@ -45,7 +45,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 78.66,
+      "price": 78.58,
       "score": 100,
       "strategy": "Trend gate \u00b7 FULL",
       "dimensions": [
@@ -65,7 +65,7 @@
         "fast": 40
       },
       "setup": {
-        "label": "FULL since 2026-09-21 \u00b7 QQQ 741.21 \u00b7 book 5/6 (reference, not used for state)",
+        "label": "FULL since 2026-09-21 \u00b7 QQQ 741.10 \u00b7 book 5/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -74,7 +74,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+11.8%",
+            "value": "+11.7%",
             "tone": "pos"
           },
           {
@@ -89,7 +89,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +12.8%",
+            "value": "\u2713 +12.7%",
             "tone": "pos"
           },
           {
@@ -128,7 +128,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 63.5,
+          "value": 63.4,
           "active": false
         }
       ],
@@ -140,7 +140,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+12.8%"
+            "detail": "+12.7%"
           },
           {
             "key": "stack",
@@ -174,7 +174,7 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Assessment\n\nYour FULL position reflects strong confirmation across multiple momentum indicators\u2014the 10/20-day crossover, price strength relative to intermediate moving averages, and MACD alignment all support the elevated exposure. The sole unmet criterion is **seasonality** (September weakness), which is a headwind but insufficient to override the technical confirmation; note that this seasonal factor will naturally expire within days as the calendar turns to October."
+      "reasoning": "# TQQQ Position Analysis\n\nThe FULL position reflects strong momentum confirmation, with the fast trend (10d>20d, price above 50d) supporting the elevated gate level. The single unmet criterion\u2014seasonal timing in September\u2014represents a structural headwind typical of this calendar period; a sustained breakout above resistance or improvement in seasonal tailwinds would further validate the conviction, but near-term consolidation around current levels is a reasonable holding pattern given the broader uptrend alignment."
     }
   ]
 }
