@@ -1,0 +1,1509 @@
+{
+  "scan_date": "2026-09-30T00:05:13.994177",
+  "context": [
+    {
+      "label": "Universe",
+      "value": "503 symbols"
+    },
+    {
+      "label": "Passed Filters",
+      "value": "501"
+    },
+    {
+      "label": "Published",
+      "value": "28"
+    },
+    {
+      "label": "Data",
+      "value": "CBOE delayed (~15m)"
+    },
+    {
+      "label": "Model",
+      "value": "claude-haiku-4-5"
+    }
+  ],
+  "opportunities": [
+    {
+      "symbol": "CSCO",
+      "price": 106.74,
+      "score": 81,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 40.0,
+        "range_centrality": 14.4,
+        "liquidity": 9.4,
+        "spread_tightness": 11.2,
+        "open_interest": 6.2
+      },
+      "setup": {
+        "label": "2026-11-20 \u00b7 50d \u00b7 IV/HV 1.58x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b110.2%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "39.7%"
+          },
+          {
+            "label": "HV30",
+            "value": "25.2%"
+          },
+          {
+            "label": "Spread",
+            "value": "5.3%"
+          }
+        ]
+      },
+      "reasoning": "# CSCO Iron Condor Thesis\n\nCSCO presents a textbook premium-rich setup: elevated IV relative to realized volatility creates favorable short-wing economics, while the stock's position near the midpoint of its annual range suggests institutional consolidation rather than directional conviction. The wide bid-ask spread and modest open interest floor warrant careful execution, but the IV premium cushion compensates\u2014invalidation scenarios include a sharp earnings beat/miss, a sector-wide IT infrastructure rally, or a sustained break beyond the expected move that forces IV compression to lag underlying momentum.",
+      "rank": 10
+    },
+    {
+      "symbol": "AMAT",
+      "price": 486.76,
+      "score": 79,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 35.0,
+        "range_centrality": 18.0,
+        "liquidity": 13.1,
+        "spread_tightness": 9.4,
+        "open_interest": 3.8
+      },
+      "setup": {
+        "label": "2026-11-20 \u00b7 50d \u00b7 IV/HV 1.26x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b116.3%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "60.3%"
+          },
+          {
+            "label": "HV30",
+            "value": "47.9%"
+          },
+          {
+            "label": "Spread",
+            "value": "7.0%"
+          }
+        ]
+      },
+      "reasoning": "# AMAT Iron Condor Analysis\n\nAMAT presents a compelling setup: elevated IV relative to realized volatility suggests premium is rich for selling, while its positioning near the midpoint of its annual range and moderate expected move imply mean-reversion potential rather than directional conviction. The thesis breaks down if the stock catalyzes a sharp directional move\u2014either through earnings surprise, sector rotation in semis, or macro pivot\u2014or if IV compression accelerates faster than theta decay can offset, particularly given the wide spreads that will eat into P&L on adjustments.",
+      "rank": 11
+    },
+    {
+      "symbol": "DIS",
+      "price": 105.59,
+      "score": 67,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 30.0,
+        "range_centrality": 16.0,
+        "liquidity": 5.6,
+        "spread_tightness": 7.5,
+        "open_interest": 7.5
+      },
+      "setup": {
+        "label": "2026-11-20 \u00b7 50d \u00b7 IV/HV 1.24x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b18.1%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "31.1%"
+          },
+          {
+            "label": "HV30",
+            "value": "25.0%"
+          },
+          {
+            "label": "Spread",
+            "value": "7.4%"
+          }
+        ]
+      },
+      "reasoning": "# DIS Iron Condor Setup\n\nDIS presents a textbook range-bound premium environment: elevated IV skew relative to realized volatility provides attractive short-premium decay, while the stock's positioning well within its annual range and modest expected move suggest low breakout probability over the 50-day window. The setup breaks down if a catalyst (earnings, macro shift, or Disney+ subscription miss) triggers a volatility spike and directional conviction, or if realized vol expands materially\u2014compressing your credit cushion and forcing unfavorable adjustments. Adequate liquidity at the ATM level mitigates execution risk, but the 7%+ spread on wings demands careful order entry to preserve edge.",
+      "rank": 13
+    },
+    {
+      "symbol": "AVGO",
+      "price": 349.57,
+      "score": 65,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 15.0,
+        "range_centrality": 12.0,
+        "liquidity": 15.0,
+        "spread_tightness": 13.1,
+        "open_interest": 10.0
+      },
+      "setup": {
+        "label": "2026-11-20 \u00b7 50d \u00b7 IV/HV 1.12x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b19.7%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "37.3%"
+          },
+          {
+            "label": "HV30",
+            "value": "33.4%"
+          },
+          {
+            "label": "Spread",
+            "value": "2.6%"
+          }
+        ]
+      },
+      "reasoning": "# AVGO Iron Condor Analysis\n\nAVGO presents an attractive iron condor setup: elevated IV relative to realized volatility offers meaningful premium collection, the stock's position near the lower quartile of its annual range suggests mean-reversion bias, and deep liquidity supports tight execution. The trade invalidates if the semiconductor cycle turns sharply (triggering a breakout above the upper wing), earnings surprise catalyzes a directional move beyond the expected move envelope, or IV compression erodes premium faster than theta decay can offset it\u2014all material risks in a cyclical, earnings-sensitive name.",
+      "rank": 14
+    },
+    {
+      "symbol": "WMB",
+      "price": 68.98,
+      "score": 49,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 25.0,
+        "range_centrality": 16.0,
+        "liquidity": 3.8,
+        "spread_tightness": 1.9,
+        "open_interest": 2.5
+      },
+      "setup": {
+        "label": "2026-11-20 \u00b7 50d \u00b7 IV/HV 1.17x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b17.9%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "30.2%"
+          },
+          {
+            "label": "HV30",
+            "value": "25.8%"
+          },
+          {
+            "label": "Spread",
+            "value": "10.5%"
+          }
+        ]
+      },
+      "reasoning": "# WMB Iron Condor Assessment\n\nWMB presents a textbook iron condor setup: elevated IV relative to realized volatility creates premium-rich short strikes, while its mid-range positioning (60% of 52-week span) suggests mean-reversion bias rather than directional conviction. The modest liquidity floor and tight spreads support execution, making it suitable for defined-risk short premium strategies that profit from range containment.\n\n**Invalidation risk centers on a fundamental catalyst**\u2014earnings surprise, dividend/capital allocation announcement, or energy sector rotation\u2014that could trigger a breakout beyond the \u00b17.9% expected move, while IV compression alone (all else equal) would erode short vega but remain profitable if the underlying stays pinned.",
+      "rank": 27
+    },
+    {
+      "symbol": "OXY",
+      "price": 56.1,
+      "score": 48,
+      "strategy": "Iron Condor",
+      "dimensions": [
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 40
+        },
+        {
+          "key": "range_centrality",
+          "label": "Range Centrality",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "iv_hv_richness": 20.0,
+        "range_centrality": 14.0,
+        "liquidity": 1.9,
+        "spread_tightness": 3.8,
+        "open_interest": 8.8
+      },
+      "setup": {
+        "label": "2026-11-20 \u00b7 50d \u00b7 IV/HV 1.16x",
+        "fields": [
+          {
+            "label": "Exp. Move",
+            "value": "\u00b18.8%"
+          },
+          {
+            "label": "ATM IV",
+            "value": "34.7%"
+          },
+          {
+            "label": "HV30",
+            "value": "29.9%"
+          },
+          {
+            "label": "Spread",
+            "value": "7.8%"
+          }
+        ]
+      },
+      "reasoning": "OXY presents a textbook iron condor setup: modest IV premium relative to realized volatility, mid-range positioning that leaves room on both wings, and sufficient liquidity to enter and exit cleanly. The trade thrives in a consolidation environment where the stock respects its recent trading band, but breaks down if energy prices spike (invalidating the upside collar) or if a geopolitical shock or earnings surprise triggers a directional thrust beyond the expected move envelope.",
+      "rank": 28
+    },
+    {
+      "symbol": "MDT",
+      "price": 89.5,
+      "score": 83,
+      "strategy": "Bull Put Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 30.0,
+        "prob_profit": 22.9,
+        "iv_hv_richness": 16.7,
+        "liquidity": 7.5,
+        "open_interest": 5.8
+      },
+      "setup": {
+        "label": "Bull Put 85/80 \u00b7 50d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$1.45",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$3.55",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "40.8%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "72%"
+          }
+        ]
+      },
+      "reasoning": "MDT's established uptrend and elevated IV multiple (1.39x) provide attractive premium compensation for a moderately OTM short strike, while the 72% probability offers a comfortable margin of safety. The 50-day duration to expiration allows time decay to work in your favor without excessive gamma risk from proximity to expiration. Primary risk is a sector-wide or company-specific reversal that pushes price decisively below the short strike, though the delta cushion and wide spread width ($5) provide meaningful protection against minor downside moves.",
+      "rank": 7
+    },
+    {
+      "symbol": "AVGO",
+      "price": 349.57,
+      "score": 62,
+      "strategy": "Bear Call Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 18.8,
+        "prob_profit": 14.6,
+        "iv_hv_richness": 3.3,
+        "liquidity": 15.0,
+        "open_interest": 10.0
+      },
+      "setup": {
+        "label": "Bear Call 380/390 \u00b7 50d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$2.40",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$7.60",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "31.6%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "69%"
+          }
+        ]
+      },
+      "reasoning": "AVGO's established downtrend and elevated IV relative to realized volatility suggest mean reversion risk is skewed toward the upside, making this moderately rich premium attractive for a credit spread with manageable delta exposure. The 50-day timeframe provides adequate cushion for theta decay while the wide bid-ask typically seen in AVGO options supports exit flexibility. The primary risk is a sharp reversal through the short strike\u2014particularly if market sentiment shifts or the stock finds technical support, which would require active management rather than a passive hold-to-expiration approach.",
+      "rank": 17
+    },
+    {
+      "symbol": "UBER",
+      "price": 68.16,
+      "score": 61,
+      "strategy": "Bear Call Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 11.2,
+        "prob_profit": 18.8,
+        "iv_hv_richness": 14.2,
+        "liquidity": 10.0,
+        "open_interest": 6.7
+      },
+      "setup": {
+        "label": "Bear Call 75/77.5 \u00b7 50d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$0.56",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$1.94",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "28.9%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "70%"
+          }
+        ]
+      },
+      "reasoning": "# UBER Bear Call Analysis\n\nUBER's sustained downtrend and elevated IV (1.38x HV) have created an attractive risk/reward for this tight spread, with solid directional conviction supporting the 70% probability of profit. The short strike sits well above current price with a low delta, giving you cushion while collecting meaningful premium relative to risk. Primary risk is a sharp reversal\u2014a catalyst-driven rally through the short strike would require assignment management, though the wide bid-ask on UBER options provides exit flexibility.",
+      "rank": 18
+    },
+    {
+      "symbol": "TJX",
+      "price": 130.25,
+      "score": 60,
+      "strategy": "Bear Call Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 18.8,
+        "prob_profit": 25.0,
+        "iv_hv_richness": 6.7,
+        "liquidity": 8.8,
+        "open_interest": 0.8
+      },
+      "setup": {
+        "label": "Bear Call 140/145 \u00b7 50d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$1.20",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$3.80",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "31.6%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "73%"
+          }
+        ]
+      },
+      "reasoning": "# TJX Bear Call Analysis\n\nTJX's sustained uptrend and elevated IV multiple support selling premium at the 140 short strike, where delta positioning offers a comfortable cushion for mean reversion. The setup captures attractive risk-adjusted returns with solid win probability, making it an efficient use of capital allocation. Primary risk is a sharp reversal above the short strike\u2014particularly given retail sector sensitivity to consumer sentiment shifts\u2014which would require active management or assignment acceptance.",
+      "rank": 20
+    },
+    {
+      "symbol": "CSCO",
+      "price": 106.74,
+      "score": 60,
+      "strategy": "Bear Call Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 11.2,
+        "prob_profit": 6.2,
+        "iv_hv_richness": 20.0,
+        "liquidity": 13.8,
+        "open_interest": 8.3
+      },
+      "setup": {
+        "label": "Bear Call 115/120 \u00b7 50d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$1.12",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$3.88",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "28.9%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "66%"
+          }
+        ]
+      },
+      "reasoning": "# CSCO Bear Call Analysis\n\nThe elevated IV regime (1.56x HV) is compensating for meaningful premium, while Cisco's established downtrend and consolidation below the short strike provide technical tailwinds for mean reversion lower. However, the compressed 50-day timeframe to expiration concentrates risk around potential earnings volatility and binary gaps that could reverse the current bearish setup above your short strike before theta decay accelerates.",
+      "rank": 21
+    },
+    {
+      "symbol": "PFE",
+      "price": 28.72,
+      "score": 54,
+      "strategy": "Bull Put Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 25.0,
+        "prob_profit": 2.1,
+        "iv_hv_richness": 14.2,
+        "liquidity": 5.0,
+        "open_interest": 7.5
+      },
+      "setup": {
+        "label": "Bull Put 28/27 \u00b7 50d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$0.28",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$0.72",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "38.9%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "64%"
+          }
+        ]
+      },
+      "reasoning": "# PFE Bull Put Spread Analysis\n\nPFE's sustained uptrend and elevated IV relative to realized volatility provide attractive premium for this near-the-money short strike, while the 50-day timeframe offers reasonable duration to profit from theta decay. The primary risk is a sharp downside reversal that penetrates the short strike, particularly given pharma sector sensitivity to regulatory headlines or broader market corrections\u2014a scenario made more costly by the current IV expansion that could paradoxically contract if such a move materializes, limiting your ability to close profitably.",
+      "rank": 23
+    },
+    {
+      "symbol": "ANET",
+      "price": 204.92,
+      "score": 52,
+      "strategy": "Bull Put Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 15.0,
+        "prob_profit": 16.7,
+        "iv_hv_richness": 10.8,
+        "liquidity": 6.2,
+        "open_interest": 3.3
+      },
+      "setup": {
+        "label": "Bull Put 190/185 \u00b7 50d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$1.15",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$3.85",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "29.9%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "69%"
+          }
+        ]
+      },
+      "reasoning": "# ANET Bull Put Spread Analysis\n\nANET's uptrend and elevated IV environment (1.27x ratio) justify selling premium at the 190 strike, which sits ~7% below current price with a modest delta cushion. The 50-day timeframe provides reasonable theta decay benefit while the wide bid-ask environment typically seen in this name offers decent credit capture. Primary risk is a sharp downside reversal breaking through the short strike\u2014monitor for any negative earnings guidance or sector rotation that could challenge the bullish setup.",
+      "rank": 25
+    },
+    {
+      "symbol": "DIS",
+      "price": 105.59,
+      "score": 50,
+      "strategy": "Bull Put Spread",
+      "dimensions": [
+        {
+          "key": "credit_width",
+          "label": "Credit / Width",
+          "max": 30
+        },
+        {
+          "key": "prob_profit",
+          "label": "Prob. of Profit",
+          "max": 25
+        },
+        {
+          "key": "iv_hv_richness",
+          "label": "IV/HV Richness",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 15
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "credit_width": 5.0,
+        "prob_profit": 20.8,
+        "iv_hv_richness": 10.8,
+        "liquidity": 3.8,
+        "open_interest": 9.2
+      },
+      "setup": {
+        "label": "Bull Put 100/95 \u00b7 50d",
+        "fields": [
+          {
+            "label": "Credit",
+            "value": "$1.04",
+            "tone": "pos"
+          },
+          {
+            "label": "Max Loss",
+            "value": "$3.96",
+            "tone": "neg"
+          },
+          {
+            "label": "ROC",
+            "value": "26.3%"
+          },
+          {
+            "label": "Approx. POP",
+            "value": "72%"
+          }
+        ]
+      },
+      "reasoning": "# DIS Bull Put Spread Analysis\n\nDIS maintains a constructive intermediate trend with elevated implied volatility providing attractive premium compensation for the risk taken. The -0.29 delta short strike offers meaningful cushion while capturing nearly 21% of maximum profit, appropriate for the 50-day window and current volatility regime. Primary risk is a sharp reversal below the short strike\u2014monitor for deteriorating technicals or negative catalyst that could rapidly erode the cushion, particularly given the 27% IV premium to realized volatility.",
+      "rank": 26
+    },
+    {
+      "symbol": "MRNA",
+      "price": 197.28,
+      "score": 72,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 28.0,
+        "quality": 20.0,
+        "liquidity": 5.3,
+        "open_interest": 10.0,
+        "spread_tightness": 8.5
+      },
+      "setup": {
+        "label": "145C \u00b7 \u03940.80 \u00b7 442d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$96.50",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$241.50"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.0x"
+          },
+          {
+            "label": "% ITM",
+            "value": "26.5%"
+          }
+        ]
+      },
+      "reasoning": "# MRNA LEAPS Call Analysis\n\nThis deep ITM call offers efficient leverage with a delta approaching 1.0 while capturing volatility significantly below historical levels\u2014providing stock-like upside exposure at roughly half the capital outlay. The primary risk is temporal: with breakeven ~22% above current price and substantial time value embedded, a meaningful trend reversal or consolidation could erode gains before the thesis materializes, particularly if implied vol contracts further.",
+      "rank": 12
+    },
+    {
+      "symbol": "META",
+      "price": 715.62,
+      "score": 65,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 12.0,
+        "quality": 13.3,
+        "liquidity": 18.7,
+        "open_interest": 7.0,
+        "spread_tightness": 14.0
+      },
+      "setup": {
+        "label": "560C \u00b7 \u03940.80 \u00b7 442d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$253.55",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$813.55"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.8x"
+          },
+          {
+            "label": "% ITM",
+            "value": "21.7%"
+          }
+        ]
+      },
+      "reasoning": "# META LEAPS Call Analysis\n\nThis deep ITM call offers equity-like delta exposure at a significant capital discount, with implied volatility trading below realized levels\u2014providing favorable risk-adjusted leverage for a trend-following position in a sustained uptrend. The primary risk lies in time decay eroding the position's value if META consolidates or reverses before meaningful further appreciation can offset the premium paid, particularly given the substantial time value embedded in the 442-day structure.",
+      "rank": 15
+    },
+    {
+      "symbol": "DELL",
+      "price": 543.43,
+      "score": 65,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 14.0,
+        "quality": 17.3,
+        "liquidity": 13.3,
+        "open_interest": 8.0,
+        "spread_tightness": 12.0
+      },
+      "setup": {
+        "label": "400C \u00b7 \u03940.80 \u00b7 442d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$229.00",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$629.00"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.4x"
+          },
+          {
+            "label": "% ITM",
+            "value": "26.4%"
+          }
+        ]
+      },
+      "reasoning": "# DELL LEAPS Call Analysis\n\nThis deep ITM call offers compelling leverage with subdued implied volatility relative to historical vol, making it an efficient way to gain ~2.4x exposure while reducing capital deployment and hedging downside below $400\u2014ideal for conviction trend followers. The primary risk is the substantial time value embedded in the premium; a reversal in Dell's uptrend before the nearly 15-month thesis horizon could render that decay costly, even if the stock stabilizes above your breakeven.",
+      "rank": 16
+    },
+    {
+      "symbol": "CRM",
+      "price": 227.27,
+      "score": 61,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 26.0,
+        "quality": 18.7,
+        "liquidity": 10.7,
+        "open_interest": 4.0,
+        "spread_tightness": 2.0
+      },
+      "setup": {
+        "label": "175C \u00b7 \u03940.81 \u00b7 442d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$78.00",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$253.00"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.9x"
+          },
+          {
+            "label": "% ITM",
+            "value": "23.0%"
+          }
+        ]
+      },
+      "reasoning": "# CRM LEAPS Analysis\n\nThis deep ITM call offers compelling leverage at a reasonable cost\u2014you're capturing delta exposure with ~3x effective leverage while paying only one-third of the stock's price, and the depressed IV regime means you're buying volatility at a discount to realized moves. The primary risk is that even with 442 days of runway, a significant trend reversal before the call gains further appreciation could leave substantial time value stranded, particularly if the stock stalls in the $225-$245 range where theta decay accelerates relative to directional gains.",
+      "rank": 19
+    },
+    {
+      "symbol": "HOOD",
+      "price": 116.46,
+      "score": 60,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 22.0,
+        "quality": 16.0,
+        "liquidity": 8.0,
+        "open_interest": 13.0,
+        "spread_tightness": 1.0
+      },
+      "setup": {
+        "label": "85C \u00b7 \u03940.81 \u00b7 442d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$50.45",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$135.45"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.3x"
+          },
+          {
+            "label": "% ITM",
+            "value": "27.0%"
+          }
+        ]
+      },
+      "reasoning": "# HOOD LEAPS Analysis\n\nThis deep ITM call offers compelling leverage with subdued implied volatility relative to realized moves, providing economical exposure to a momentum-driven name while deferring capital deployment versus outright ownership. The primary risk lies in mean reversion or trend exhaustion before the 14+ month window materializes, which could compress both delta and underlying price simultaneously, effectively paying significant time decay on a thesis that fails to persist.",
+      "rank": 22
+    },
+    {
+      "symbol": "INTC",
+      "price": 116.03,
+      "score": 54,
+      "strategy": "LEAPS (Trend Following)",
+      "dimensions": [
+        {
+          "key": "iv_cheapness",
+          "label": "IV Cheapness",
+          "max": 30
+        },
+        {
+          "key": "quality",
+          "label": "Trend / Reversal",
+          "max": 20
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 20
+        },
+        {
+          "key": "open_interest",
+          "label": "Open Interest",
+          "max": 15
+        },
+        {
+          "key": "spread_tightness",
+          "label": "Spread Tightness",
+          "max": 15
+        }
+      ],
+      "breakdown": {
+        "iv_cheapness": 10.0,
+        "quality": 9.3,
+        "liquidity": 14.7,
+        "open_interest": 12.0,
+        "spread_tightness": 8.5
+      },
+      "setup": {
+        "label": "85C \u00b7 \u03940.81 \u00b7 442d",
+        "fields": [
+          {
+            "label": "Premium",
+            "value": "$50.05",
+            "tone": "neg"
+          },
+          {
+            "label": "Breakeven",
+            "value": "$135.05"
+          },
+          {
+            "label": "Leverage",
+            "value": "2.3x"
+          },
+          {
+            "label": "% ITM",
+            "value": "26.7%"
+          }
+        ]
+      },
+      "reasoning": "# INTC LEAPS Call Analysis\n\nThe deep ITM strike with high delta (0.81) provides near-stock-like exposure at a significant capital discount, while sub-par IV/HV suggests volatility is underpriced relative to realized moves\u2014attractive for trend followers betting on sustained upside. The primary risk is anchoring to current momentum: a reversal before meaningful appreciation could leave you holding depreciating time value despite the long duration, particularly if IV compression follows any pullback.",
+      "rank": 24
+    },
+    {
+      "symbol": "HD",
+      "price": 289.89,
+      "score": 88,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 57.6,
+        "liquidity": 30.4
+      },
+      "setup": null,
+      "reasoning": "HD's RSI of 30.0 indicates strongly diminished momentum with the stock approaching oversold territory, suggesting selling pressure has been acute but potentially nearing exhaustion. However, with price trading significantly below both the 50- and 200-day SMAs, the downtrend remains structurally intact, leaving room for further weakness before any reversal signals gain credibility.",
+      "rank": 1
+    },
+    {
+      "symbol": "GS",
+      "price": 916.28,
+      "score": 88,
+      "strategy": "RSI Approaching Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 52.8,
+        "liquidity": 35.2
+      },
+      "setup": null,
+      "reasoning": "GS's RSI of 33.1 indicates momentum is weakening significantly and approaching oversold territory, suggesting selling pressure has been intense but may be nearing exhaustion. The stock trading below its 50-day SMA while RSI approaches oversold levels presents a potential inflection point where momentum could stabilize or reverse, though confirmation would be needed before acting on such signals.",
+      "rank": 2
+    },
+    {
+      "symbol": "MRNA",
+      "price": 197.28,
+      "score": 85,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 45.0,
+        "liquidity": 40.0
+      },
+      "setup": null,
+      "reasoning": "MRNA's RSI of 74.9 indicates strongly overbought conditions with price significantly extended above both its 50-day and 200-day moving averages, suggesting momentum has reached an extreme that historically precedes consolidation or pullback. The confluence of stretched technicals and overbought momentum signals elevated risk of near-term mean reversion, though sustained uptrends can persist in overbought territory without immediate reversal.",
+      "rank": 3
+    },
+    {
+      "symbol": "AMD",
+      "price": 607.87,
+      "score": 85,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 48.0,
+        "liquidity": 36.8
+      },
+      "setup": null,
+      "reasoning": "AMD's RSI of 65.6 indicates strong upward momentum with limited room for further appreciation before potential pullback or consolidation, as the indicator approaches overbought territory without yet reaching extremes. The stock's substantial distance above both major moving averages reinforces the strength of the current trend but also suggests elevated risk of mean reversion.",
+      "rank": 4
+    },
+    {
+      "symbol": "ISRG",
+      "price": 414.79,
+      "score": 84,
+      "strategy": "RSI Approaching Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 60.0,
+        "liquidity": 24.0
+      },
+      "setup": null,
+      "reasoning": "# RSI Momentum Analysis: ISRG\n\nThe RSI of 69.6 indicates strong bullish momentum approaching overbought territory, suggesting sustained buying pressure with limited near-term upside before potential consolidation or pullback. However, the price trading above the 50-day SMA but significantly below the 200-day SMA ($450.18) signals the uptrend remains within an intermediate resistance zone, warranting caution regarding momentum sustainability at current levels.",
+      "rank": 5
+    },
+    {
+      "symbol": "MCD",
+      "price": 233.6,
+      "score": 84,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 45.6,
+        "liquidity": 38.4
+      },
+      "setup": null,
+      "reasoning": "# MCD Momentum Analysis\n\nThe RSI14 reading of 23.0 indicates severely oversold conditions, suggesting momentum has contracted sharply and the stock may be approaching a potential reversal point; however, with price significantly below both the 50-day and 200-day SMAs, the underlying downtrend remains intact, indicating any bounce would require confirmation from price structure and volume before interpreting it as a sustainable reversal.",
+      "rank": 6
+    },
+    {
+      "symbol": "NEE",
+      "price": 75.49,
+      "score": 83,
+      "strategy": "RSI Oversold",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 52.8,
+        "liquidity": 30.4
+      },
+      "setup": null,
+      "reasoning": "NEE's RSI14 of 21.8 indicates severely oversold conditions with momentum heavily depleted, suggesting potential exhaustion of selling pressure. However, the stock trading 12-14% below both major moving averages reflects a significant downtrend, so oversold readings alone may continue lower absent a confirming reversal signal.",
+      "rank": 8
+    },
+    {
+      "symbol": "WBD",
+      "price": 30.9,
+      "score": 82,
+      "strategy": "RSI Overbought",
+      "dimensions": [
+        {
+          "key": "extremity",
+          "label": "RSI Extremity",
+          "max": 60
+        },
+        {
+          "key": "liquidity",
+          "label": "Liquidity",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "extremity": 52.5,
+        "liquidity": 30.0
+      },
+      "setup": null,
+      "reasoning": "WBD's RSI of 75.7 indicates strong overbought conditions, suggesting momentum has extended significantly ahead of trend support (price ~11% above both the 50- and 200-day SMAs). This reading typically precedes either consolidation/pullback or potential exhaustion, warranting caution on continuation moves without confirmation of underlying strength.",
+      "rank": 9
+    }
+  ]
+}
