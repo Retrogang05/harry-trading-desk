@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-10-02T00:45:00.042057",
+  "scan_date": "2026-10-03T00:27:42.238409",
   "context": [
     {
       "label": "State",
@@ -34,18 +34,18 @@
     },
     {
       "label": "Book checklist",
-      "value": "5 / 6 (ref)"
+      "value": "6 / 6 (ref)"
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 60"
+      "value": "quiet \u00b7 62"
     }
   ],
   "opportunities": [
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 78.03,
+      "price": 78.73,
       "score": 100,
       "strategy": "Trend gate \u00b7 FULL",
       "dimensions": [
@@ -65,7 +65,7 @@
         "fast": 40
       },
       "setup": {
-        "label": "FULL since 2026-09-21 \u00b7 QQQ 739.77 \u00b7 book 5/6 (reference, not used for state)",
+        "label": "FULL since 2026-09-21 \u00b7 QQQ 742.03 \u00b7 book 6/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -74,7 +74,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+11.1%",
+            "value": "+11.3%",
             "tone": "pos"
           },
           {
@@ -84,12 +84,12 @@
           },
           {
             "label": "Book \u00b7 ref",
-            "value": "5 / 6",
+            "value": "6 / 6",
             "tone": "pos"
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +12.1%",
+            "value": "\u2713 +12.4%",
             "tone": "pos"
           },
           {
@@ -104,7 +104,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2713 60",
+            "value": "\u2713 62",
             "tone": "pos"
           },
           {
@@ -114,12 +114,12 @@
           },
           {
             "label": "Season",
-            "value": "\u2717 Sep \u00b7 def",
-            "tone": "neg"
+            "value": "\u2713 Oct \u00b7 fav",
+            "tone": "pos"
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 60",
+            "value": "quiet \u00b7 62",
             "tone": null
           }
         ]
@@ -128,19 +128,19 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 60.5,
+          "value": 61.7,
           "active": false
         }
       ],
       "book_criteria": {
-        "met": 5,
+        "met": 6,
         "of": 6,
         "items": [
           {
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+12.1%"
+            "detail": "+12.4%"
           },
           {
             "key": "stack",
@@ -158,7 +158,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": true,
-            "detail": "60"
+            "detail": "62"
           },
           {
             "key": "macd",
@@ -169,12 +169,12 @@
           {
             "key": "seasonal",
             "label": "Season",
-            "met": false,
-            "detail": "Sep \u00b7 def"
+            "met": true,
+            "detail": "Oct \u00b7 fav"
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nYour FULL position is supported by strong technical alignment: QQQ is trading well above its long-term average with the fast trend (10d/20d) confirming upside momentum. The only unmet criterion from the checklist is **Seasonality**\u2014September is historically a weak month for equities, which is why the system hasn't triggered a stronger confirmation signal despite otherwise robust price action. To sustain the FULL allocation, monitor whether the fast trend remains intact; any break below the 20-day moving average would signal a loss of near-term momentum."
+      "reasoning": "# TQQQ Position Analysis\n\nYour FULL position is supported by both the gate (QQQ well above its 200-day average) and fast trend confirmation (10d > 20d with near-term momentum). All of Masonson's reference criteria are currently met, indicating alignment across timeframes and technical indicators. There are no unmet criteria holding the position below FULL\u2014this state reflects the strength of the underlying setup across multiple dimensions."
     }
   ]
 }
