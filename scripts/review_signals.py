@@ -25,7 +25,10 @@ def load_signals(results_dir):
         day = pd.Timestamp(os.path.basename(f)[5:13])
         for o in json.load(open(f))["opportunities"]:
             sig.append({"date": day, "sym": o["symbol"], "rank": o["rank"], "score": o["score"], "px": o["price"],
-                        "stop": o["stop_loss"], "target": o["take_profit"], "setup": o["setup_type"], "ext_pct": o["extension_pct"]})
+                        "stop": o["stop_loss"], "target": o["take_profit"], "setup": o["setup_type"], "ext_pct": o["extension_pct"],
+                        # present only on scans from 2026-10-05 onward
+                        "structure": o.get("structure"), "blockers": o.get("blockers"),
+                        "own_trend_pct": o.get("own_trend_pct")})
     return pd.DataFrame(sig)
 
 def score(S, horizon=20):
@@ -74,6 +77,13 @@ def summarize(R):
         g20 = g.dropna(subset=["ret20"])
         print(f"  {b:6} n={len(g):>4}  ret10 {pct(g.ret10.mean()):>8}  ret20 {pct(g20.ret20.mean()):>8}  win20 {(g20.ret20>0).mean()*100:3.0f}%"
               f"  stopped {(g.outcome=='stop').mean()*100:3.0f}%  target {(g.outcome=='target').mean()*100:3.0f}%")
+    if R.structure.notna().any():
+        print("\nby structure tier (A = clear room to target AND own 50d EMA rising):")
+        for t, g in R.dropna(subset=["structure"]).groupby("structure"):
+            g20 = g.dropna(subset=["ret20"])
+            print(f"  {t}  n={len(g):>4}  ret10 {pct(g.ret10.mean()):>8}  ret20 {pct(g20.ret20.mean()) if len(g20) else 'n/a':>8}"
+                  f"  win20 {((g20.ret20>0).mean()*100 if len(g20) else float('nan')):3.0f}%  stopped {(g.outcome=='stop').mean()*100:3.0f}%")
+
     print("\nby setup:")
     for st, g in R.groupby("setup"):
         g20 = g.dropna(subset=["ret20"])

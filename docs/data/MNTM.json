@@ -6,7 +6,7 @@
     "description": "Buys strength: breakouts confirmed by volume, riding the trend until momentum fades.",
     "accent": "#c8974a"
   },
-  "scan_date": "2026-10-02T19:06:47.878694",
+  "scan_date": "2026-10-05T10:45:55.938676",
   "dimensions": [
     {
       "key": "trend_strength",
@@ -64,8 +64,8 @@
   "opportunities": [
     {
       "rank": 1,
-      "symbol": "EMR",
-      "price": 162.0,
+      "symbol": "RVTY",
+      "price": 151.52999877929688,
       "score": 96,
       "breakdown": {
         "trend_strength": 25,
@@ -73,329 +73,141 @@
         "rsi": 15,
         "macd": 15,
         "relative": 15,
-        "breakout": 6
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
       },
-      "entry": 162.0,
-      "stop_loss": 156.05890385121762,
-      "take_profit": 170.91164422317354,
-      "risk_reward_ratio": 1.4999999999999951,
+      "entry": 151.52999877929688,
+      "stop_loss": 144.16005153776678,
+      "take_profit": 162.584919641592,
+      "risk_reward_ratio": 1.4999999999999962,
       "setup_type": "EXTENDED",
-      "extension_pct": 5.830820750240557,
+      "extension_pct": 7.503919264309483,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 12.6,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
       "market_regime": "UPTREND",
-      "reasoning": "# EMR Momentum Setup Analysis\n\n**Why the momentum is there:** EMR is firing on all cylinders\u2014you've got perfect trend strength, volume backing the move, and both RSI and MACD in full agreement that this is a genuine uptrend, not just noise. The stock is also outperforming its peers, which signals relative strength in a competitive landscape.\n\n**Best-aligned indicators:** Trend Strength, Volume, and RSI are your holy trinity here\u2014all maxed out. This tells you the move has institutional conviction behind it and retail participation, which is the sweet spot for momentum trades.\n\n**Key risk to watch:** The Breakout Quality score of 6/10 is the red flag. While everything else screams \"go,\" that lower breakout score suggests the initial impulse might not have the cleanest structure. Watch for any pullback through $162 on lower volume\u2014that could signal weak hands bailing and trigger your stop loss faster than expected. Tighter position sizing might be warranted."
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
       "rank": 2,
-      "symbol": "LITE",
-      "price": 1086.31005859375,
-      "score": 96,
+      "symbol": "HPE",
+      "price": 69.33000183105469,
+      "score": 88,
       "breakdown": {
         "trend_strength": 25,
-        "volume": 20,
+        "volume": 12,
         "rsi": 15,
         "macd": 15,
         "relative": 15,
-        "breakout": 6
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
       },
-      "entry": 1086.31005859375,
-      "stop_loss": 986.9601862627509,
-      "take_profit": 1235.3348670902487,
-      "risk_reward_ratio": 1.5000000000000007,
+      "entry": 69.33000183105469,
+      "stop_loss": 63.685291467501045,
+      "take_profit": 77.79706737638514,
+      "risk_reward_ratio": 1.4999999999999987,
       "setup_type": "EXTENDED",
-      "extension_pct": 15.34757945818341,
+      "extension_pct": 14.83230044389934,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 12.2,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
       "market_regime": "UPTREND",
-      "reasoning": "# LITE Momentum Trading Setup\n\n**Why the momentum is strong:** LITE is firing on all cylinders with a 96/100 momentum score\u2014perfect trend strength, explosive volume, and oversold RSI combined with bullish MACD confirmation. The stock is outperforming its peers and just broke through a key resistance level, creating textbook momentum conditions.\n\n**Key aligned indicators:** Your three heavyweights are locked in\u2014Trend Strength (25/25) shows a clean directional move, Volume (20/20) confirms institutional conviction, and RSI/MACD both validate the uptrend without overextension yet. This alignment is rare and powerful.\n\n**One key risk:** Watch that Breakout Quality score (6/10)\u2014it's your yellow flag. While the momentum is real, the quality of this particular breakout is weaker than your other signals, suggesting some traders may lack conviction on sustaining higher prices. Keep your stop-loss tight at the $986.96 level and consider taking partial profits near your target."
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
       "rank": 3,
-      "symbol": "FAST",
-      "price": 50.69499969482422,
-      "score": 96,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6
-      },
-      "entry": 49.74774990081787,
-      "stop_loss": 48.29412257949059,
-      "take_profit": 51.92819088280879,
-      "risk_reward_ratio": 1.4999999999999976,
-      "setup_type": "PULLBACK",
-      "extension_pct": 1.9041058055789033,
-      "market_regime": "UPTREND",
-      "reasoning": "# FAST Momentum Analysis\n\n**Why It's Moving:** FAST is displaying textbook momentum with perfect trend strength, volume conviction, and RSI confirmation\u2014this stock is in a clean uptrend with institutional buying behind it. All the core momentum drivers are firing simultaneously, creating a high-probability setup.\n\n**Best Aligned Indicators:** Trend strength and volume are doing the heavy lifting here (perfect 25/20 scores), while RSI and MACD are in lockstep agreement\u2014no divergences or warning signs. The stock is also outperforming relative peers, adding another confirmation layer.\n\n**Key Risk:** The Breakout Quality score (6/10) is the outlier that tempers this otherwise pristine setup. This suggests the recent price action may lack the structural strength of a classic breakout, meaning profit-taking could arrive faster than expected. Watch for volume drying up on any consolidation, which would signal weakening conviction.\n\n**Bottom Line:** Strong risk/reward (1.5:1) with a defined stop makes this tradeable, but don't get greedy\u2014take profits near your target given the breakout quality concern."
-    },
-    {
-      "rank": 4,
-      "symbol": "VTRS",
-      "price": 17.59000015258789,
-      "score": 96,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6
-      },
-      "entry": 17.155000019073487,
-      "stop_loss": 16.479202268183062,
-      "take_profit": 18.168696645409124,
-      "risk_reward_ratio": 1.5,
-      "setup_type": "PULLBACK",
-      "extension_pct": 2.535704651884327,
-      "market_regime": "UPTREND",
-      "reasoning": "# VTRS Momentum Setup Analysis\n\n**Why the momentum is strong:** VTRS is firing on nearly all cylinders with a 96/100 momentum score\u2014perfect trend strength, volume confirmation, and oversold RSI recovery all pointing the same direction. The stock is riding genuine institutional interest, not just retail noise.\n\n**Best-aligned indicators:** Your RSI, MACD, and relative performance are in lockstep, which is the holy grail for momentum traders. Combined with maxed-out volume and trend scores, this tells you the move has real conviction behind it. The 1.50:1 risk/reward keeps your position tight and professional.\n\n**Key risk to monitor:** That 6/10 breakout quality is your yellow flag\u2014it suggests the initial breakout lacked the explosive volume confirmation you'd ideally want. If volume dries up on the next rally attempt or price stalls near $17.80-$18.00, this could lose steam fast. Watch the volume bar on your next candle; if it's weak, that's your exit signal even if price hasn't hit your stop."
-    },
-    {
-      "rank": 5,
-      "symbol": "RVTY",
-      "price": 151.2949981689453,
-      "score": 96,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6
-      },
-      "entry": 151.2949981689453,
-      "stop_loss": 143.9255871656592,
-      "take_profit": 162.34911467387448,
-      "risk_reward_ratio": 1.500000000000002,
-      "setup_type": "EXTENDED",
-      "extension_pct": 7.346145108146539,
-      "market_regime": "UPTREND",
-      "reasoning": "# RVTY Momentum Trading Setup\n\n**Why the momentum is here:** RVTY is firing on all cylinders with a perfect 96/100 score\u2014the stock has strong uptrend conviction, healthy volume backing the move, and both RSI and MACD are in ideal overbought/bullish territory, signaling sustained buying pressure rather than exhaustion.\n\n**Best aligned indicators:** Your trend strength and volume scores are maxed out, which is the foundation of any quality momentum trade; RSI and MACD are perfectly synchronized, confirming the move is real and not a false breakout.\n\n**Key risk to watch:** The breakout quality score of only 6/10 is your yellow flag here\u2014this suggests the recent price action may lack the structural integrity you'd want in a textbook setup, so consider tighter position sizing or waiting for confirmation that this breakout holds above $151.29 before committing full size."
-    },
-    {
-      "rank": 6,
-      "symbol": "TT",
-      "price": 463.82000732421875,
-      "score": 93,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 12,
-        "breakout": 6
-      },
-      "entry": 463.82000732421875,
-      "stop_loss": 447.6103636223931,
-      "take_profit": 488.13447287695726,
-      "risk_reward_ratio": 1.5000000000000018,
-      "setup_type": "EXTENDED",
-      "extension_pct": 5.092627761484233,
-      "market_regime": "UPTREND",
-      "reasoning": "# TT Momentum Setup\n\n**Why the momentum is firing:** TT is displaying textbook momentum conditions with a perfect 25/25 trend strength score, maxed-out volume and RSI metrics, and aligned MACD signals\u2014this is a rare confluence suggesting institutional accumulation and strong directional conviction.\n\n**Key aligned indicators:** The trio of perfect scores in trend strength, volume, and RSI tells you this isn't a weak bounce; buyers are in control with meaningful participation. MACD confirmation adds conviction that momentum has genuine staying power rather than fading on the next pullback.\n\n**Key risk to monitor:** The weaker breakout quality score (6/10) is your red flag\u2014despite strong momentum, the actual breakout structure is somewhat questionable, meaning you could see profit-taking before reaching the $488 target. Treat your $447.61 stop loss as non-negotiable and consider taking partial profits near $475 to lock in gains if momentum stalls."
-    },
-    {
-      "rank": 7,
-      "symbol": "MU",
-      "price": 1076.260009765625,
-      "score": 89,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 8,
-        "breakout": 6
-      },
-      "entry": 1076.260009765625,
-      "stop_loss": 1006.5486027717412,
-      "take_profit": 1180.8271202564506,
-      "risk_reward_ratio": 1.4999999999999991,
-      "setup_type": "EXTENDED",
-      "extension_pct": 4.993806128748517,
-      "market_regime": "UPTREND",
-      "reasoning": "# MU Momentum Setup Analysis\n\n**Why the momentum is real:** MU is displaying exceptional trend strength with perfect volume confirmation and overbought RSI/MACD alignment\u2014this is textbook momentum territory. The stock is in a clean uptrend with institutional-grade volume backing the move.\n\n**Best-aligned signals:** Your trend strength (25/25) and volume (20/20) are firing perfectly, while RSI and MACD are synchronized bullish, giving you three independent confirmations. This clustering of signals is what separates high-probability setups from noise.\n\n**Key risk to monitor:** Watch that relative performance score (8/15)\u2014MU is outperforming on momentum but lagging on relative strength metrics. If the broader semiconductor sector or market rolls over, this momentum could evaporate quickly. Your 1.50:1 R/R is solid, but position size accordingly given this divergence.\n\n**Trader's edge:** Entry at current price with a tight 6.9% stop gives you clean risk definition. The setup rewards patience if you see volume dry up at higher levels\u2014consider scaling in rather than going all-in at once."
-    },
-    {
-      "rank": 8,
-      "symbol": "AES",
-      "price": 14.914999961853027,
-      "score": 89,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 8,
-        "breakout": 6
-      },
-      "entry": 14.838250017166137,
-      "stop_loss": 14.76819523965648,
-      "take_profit": 14.943332183430623,
-      "risk_reward_ratio": 1.5,
-      "setup_type": "PULLBACK",
-      "extension_pct": 0.5172439108257322,
-      "market_regime": "UPTREND",
-      "reasoning": "# AES Momentum Setup Analysis\n\n**Why the momentum right now:** AES is firing on all cylinders with a pristine trend structure, exceptional volume backing the move, and both RSI and MACD confirming upside acceleration\u2014this is textbook momentum alignment at 89/100.\n\n**Most aligned indicators:** Your trend strength (25/25) and volume (20/20) are the real story here; paired with clean RSI and MACD signals (30/30 combined), you have institutional-grade confirmation that this move has legs, not just retail noise.\n\n**Key risk to watch:** The relative performance score (8/15) and modest breakout quality (6/10) suggest AES is underperforming its peers and may lack the conviction to sustain a sharp move\u2014watch for volume to fade on any pullback, which could signal the momentum is overextended relative to sector strength.\n\n**Bottom line:** Strong technical setup with good 1.50:1 risk/reward, but respect the stop at $14.77 if relative performance breaks down further."
-    },
-    {
-      "rank": 9,
-      "symbol": "NVDA",
-      "price": 234.5260009765625,
-      "score": 88,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 12,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6
-      },
-      "entry": 234.5260009765625,
-      "stop_loss": 225.6619492206026,
-      "take_profit": 247.82207861050236,
-      "risk_reward_ratio": 1.5,
-      "setup_type": "EXTENDED",
-      "extension_pct": 4.785742811266766,
-      "market_regime": "UPTREND",
-      "reasoning": "# NVDA Momentum Setup Analysis\n\n**Why the momentum is strong:** NVDA is firing on all cylinders with maxed-out trend strength, RSI, and MACD\u2014this is a textbook uptrend with genuine buying pressure. The stock is outperforming its peers (strong relative performance), giving you confirmation that this isn't sector-wide strength but NVDA-specific momentum.\n\n**Best-aligned indicators:** Your RSI and MACD are perfectly aligned at peak scores, while trend strength confirms the directional bias. These three working together significantly increase the probability of follow-through on this setup.\n\n**Key risk to watch:** Volume is lagging at only 12/20\u2014this is your red flag. Without sustained volume backing the move, you could see this momentum evaporate quickly, especially at resistance. Tighten your stop or scale position size if volume doesn't pick up on the breakout above $247.82.\n\n**Bottom line:** Strong technical setup with a 1.50:1 RR ratio, but volume concerns mean position sizing discipline is critical here."
-    },
-    {
-      "rank": 10,
-      "symbol": "APH",
-      "price": 87.13999938964844,
-      "score": 88,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 12,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6
-      },
-      "entry": 87.13999938964844,
-      "stop_loss": 82.9822670507672,
-      "take_profit": 93.3765978979703,
-      "risk_reward_ratio": 1.5000000000000033,
-      "setup_type": "EXTENDED",
-      "extension_pct": 6.370770719670782,
-      "market_regime": "UPTREND",
-      "reasoning": "# APH Momentum Setup Analysis\n\n**Why the momentum is strong:** APH is displaying exceptional trend strength with perfectly aligned technical indicators\u2014RSI and MACD are both firing bullish signals at maximum scores, while the stock is outperforming its peers. You're looking at a textbook momentum setup with a 1.50:1 risk/reward, giving you room to work with if price touches your stop at $82.98.\n\n**Best-aligned indicators:** The RSI (15/15) and MACD (15/15) are your primary confirmation here, showing zero overbought concern and clean directional momentum. The trend strength at 25/25 validates that this isn't a false breakout\u2014the move has real structural support.\n\n**Key risk to monitor:** Volume is your weak link at 12/20, which means conviction behind this move could evaporate quickly. Watch for volume drying up on any pullbacks toward your entry\u2014that's often where momentum trades break down. If you don't see volume supporting a push toward $93.38, consider scaling out early rather than holding the full position."
-    },
-    {
-      "rank": 11,
-      "symbol": "AME",
-      "price": 253.22500610351562,
-      "score": 88,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 12,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6
-      },
-      "entry": 253.22500610351562,
-      "stop_loss": 245.60012718477248,
-      "take_profit": 264.6623244816304,
-      "risk_reward_ratio": 1.5000000000000038,
-      "setup_type": "EXTENDED",
-      "extension_pct": 4.548248543451734,
-      "market_regime": "UPTREND",
-      "reasoning": "# AME Momentum Setup Analysis\n\n**Why the momentum is strong:** AME is firing on all cylinders with perfect trend strength (25/25) and maxed-out RSI and MACD readings (15/15 each), signaling a clean uptrend with strong directional conviction and no overbought exhaustion yet. The stock is outperforming its peers (15/15 relative strength), giving you tailwinds from both technicals and relative momentum.\n\n**Most aligned indicators:** Your trend strength, RSI, and MACD are all screaming the same message\u2014this is a high-conviction setup. Combined with solid relative outperformance, you've got multi-timeframe confirmation that reduces false signal risk.\n\n**Key risk to monitor:** Volume is lagging at only 12/20, and breakout quality scores just 6/10\u2014this means the momentum, while real, may lack the fuel to sustain a bigger move. Watch for volume drying up on any pullback toward your stop; that could signal the move is losing steam faster than expected.\n\n**Bottom line:** Strong risk/reward (1.50:1) with excellent technical alignment, but validate this trade with volume confirmation into your entry."
-    },
-    {
-      "rank": 12,
-      "symbol": "FFIV",
-      "price": 453.94000244140625,
-      "score": 88,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 12,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6
-      },
-      "entry": 453.94000244140625,
-      "stop_loss": 433.43529518463373,
-      "take_profit": 484.697063326565,
-      "risk_reward_ratio": 1.4999999999999987,
-      "setup_type": "EXTENDED",
-      "extension_pct": 5.65368593557249,
-      "market_regime": "UPTREND",
-      "reasoning": "# FFIV Momentum Setup Analysis\n\n**Why the Momentum?** FFIV is firing on all cylinders with perfect trend strength and maxed-out RSI/MACD readings\u2014this is a stock in strong uptrend with genuine buying pressure, not a false breakout. The stock is also outperforming its peers, which confirms this isn't just sector rotation.\n\n**Key Aligned Signals:** Your strongest edges here are the trend structure (25/25) and oscillator confluence\u2014both RSI and MACD are at extremes with alignment. These typically precede sustained moves when combined with strong relative performance, giving you high conviction on direction.\n\n**One Risk to Watch:** Volume is your weak link at 12/20, and that mediocre breakout quality (6/10) suggests the move may lack the institutional follow-through to reach that $484.70 target. Watch for volume drying up into resistance\u2014if it does, expect a faster pullback to your stop.\n\n**Bottom Line:** Strong directional setup with good risk/reward, but don't ignore position sizing on the volume concern. This is a quality trend trade, just be prepared for choppier execution than the indicators suggest."
-    },
-    {
-      "rank": 13,
-      "symbol": "IEX",
-      "price": 233.7100067138672,
-      "score": 88,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 12,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6
-      },
-      "entry": 226.09250106811524,
-      "stop_loss": 219.21713397769722,
-      "take_profit": 236.40555170374228,
-      "risk_reward_ratio": 1.5,
-      "setup_type": "PULLBACK",
-      "extension_pct": 3.3691987172352125,
-      "market_regime": "UPTREND",
-      "reasoning": "# IEX Momentum Trade Setup\n\n**Why It's Showing Momentum:**\nIEX is displaying exceptional momentum with a perfect 25/25 trend strength score and maxed-out RSI (15/15) and MACD (15/15) readings\u2014this indicates a clean, sustained uptrend with strong directional conviction. The stock is already trading above your entry at $233.71, suggesting the move is already underway with solid participation.\n\n**Best-Aligned Indicators:**\nYour trend strength, RSI, and MACD are all firing in unison, which is the holy grail for momentum trades. However, note that volume is trailing at only 12/20\u2014this is your only soft spot in an otherwise textbook setup.\n\n**Key Risk to Watch:**\nThe breakout quality score of 6/10 is the red flag here. With price already extended and volume not fully confirming the move, there's elevated risk of a false breakout or pullback toward your $226.09 entry. Position size conservatively and respect that stop at $219.22 if the volume doesn't pick up to validate the breakout."
-    },
-    {
-      "rank": 14,
-      "symbol": "SNPS",
-      "price": 488.0249938964844,
-      "score": 87,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 5,
-        "macd": 15,
-        "relative": 12,
-        "breakout": 10
-      },
-      "entry": 488.0249938964844,
-      "stop_loss": 459.47855217926224,
-      "take_profit": 530.8446564723176,
-      "risk_reward_ratio": 1.500000000000002,
-      "setup_type": "EXTENDED",
-      "extension_pct": 19.199036234872292,
-      "market_regime": "UPTREND",
-      "reasoning": "# SNPS Momentum Trade Setup\n\n**Why the momentum is real:** SNPS is firing on all cylinders with perfect trend strength and volume\u2014the stock is moving decisively higher with conviction behind it. The strong MACD and flawless breakout quality confirm this isn't just noise; it's a legitimate directional move.\n\n**Best-aligned indicators:** Your trend strength (25/25) and volume (20/20) are the stars here\u2014this tells you the move has institutional backing and staying power. MACD's 15/15 score reinforces the upside momentum, giving you high-probability directional confluence.\n\n**Key risk to watch:** That RSI of only 5/15 is your yellow flag. Despite the strong momentum, the indicator setup suggests the stock could be extended, making it vulnerable to a sharp pullback or shakeout before potentially resuming higher. Consider tightening stops or scaling position size if RSI pushes into overbought territory without a pullback first.\n\n**Bottom line:** Solid risk/reward (1.50:1) with clean technicals, but respect the extended RSI\u2014this is a momentum trade that could hit your take profit, but don't be surprised by intra-trade volatility."
-    },
-    {
-      "rank": 15,
-      "symbol": "URI",
-      "price": 1074.219970703125,
-      "score": 87,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 12,
-        "breakout": 0
-      },
-      "entry": 1074.219970703125,
-      "stop_loss": 1023.681000285327,
-      "take_profit": 1150.0284263298222,
-      "risk_reward_ratio": 1.5000000000000022,
-      "setup_type": "EXTENDED",
-      "extension_pct": 5.4248802338781195,
-      "market_regime": "UPTREND",
-      "reasoning": "# URI Momentum Setup Analysis\n\n**Why the momentum is real:** URI is displaying textbook momentum with maxed-out scores across trend strength, volume, and oscillators (RSI/MACD), indicating strong directional conviction with institutional participation backing the move. The stock is riding a well-established uptrend with healthy confirmation across multiple timeframes.\n\n**Best-aligned indicators:** Trend strength and volume are your primary allies here\u2014this isn't a weak breakout but a sustained move with real buying pressure. RSI and MACD are in perfect sync, both signaling upside without divergence red flags, which is a clean setup.\n\n**Key risk to monitor:** The 0/10 breakout quality score is a yellow flag\u2014despite the strong momentum, the recent price action may lack a clean, defined breakout catalyst. Watch for a potential pullback to $1,050-1,060 that could shake out momentum traders; if support holds there on strong volume, you've got confirmation. If it breaks cleanly through, the 1:50 risk/reward justifies the trade."
-    },
-    {
-      "rank": 16,
       "symbol": "WBD",
-      "price": 30.950000762939453,
+      "price": 30.940000534057617,
       "score": 86,
       "breakdown": {
         "trend_strength": 25,
@@ -403,21 +215,1064 @@
         "rsi": 5,
         "macd": 15,
         "relative": 15,
-        "breakout": 6
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
       },
-      "entry": 30.950000762939453,
-      "stop_loss": 30.451258027820284,
-      "take_profit": 31.69811486561821,
-      "risk_reward_ratio": 1.5000000000000036,
+      "entry": 30.940000534057617,
+      "stop_loss": 30.43911509645858,
+      "take_profit": 31.691328690456174,
+      "risk_reward_ratio": 1.5,
       "setup_type": "EXTENDED",
-      "extension_pct": 5.013149622812554,
+      "extension_pct": 4.980999951782362,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 4.6,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
       "market_regime": "UPTREND",
-      "reasoning": "# WBD Momentum Setup Analysis\n\n**Why the momentum is strong:** WBD is displaying textbook momentum with perfect trend strength and volume confirmation\u2014the stock is moving decisively with conviction behind it. The MACD and relative performance indicators are firing in sync, showing both internal strength and outperformance versus the broader market.\n\n**Best-aligned signals:** Your trend strength (25/25) and volume (20/20) are pristine, and MACD's 15/15 score confirms the directional move is genuine, not noise. These three form a solid foundation for the trade.\n\n**Key risk to monitor:** The RSI reading at only 5/15 is a red flag\u2014despite strong momentum, the oscillator isn't confirming the move, which could signal either overbought conditions or a weak setup. Watch for RSI to either validate the trend or diverge sharply; that's your early warning signal. Also note the modest 6/10 breakout quality, suggesting this isn't a clean breakout scenario, so position sizing accordingly."
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 4,
+      "symbol": "NTAP",
+      "price": 226.27000427246094,
+      "score": 86,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 5,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 226.27000427246094,
+      "stop_loss": 213.6705572748936,
+      "take_profit": 245.16917476881193,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "EXTENDED",
+      "extension_pct": 14.349392563112387,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 6.7,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 5,
+      "symbol": "A",
+      "price": 167.77999877929688,
+      "score": 79,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 6,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 12,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 167.77999877929688,
+      "stop_loss": 160.44578737339933,
+      "take_profit": 178.7813158881432,
+      "risk_reward_ratio": 1.500000000000002,
+      "setup_type": "EXTENDED",
+      "extension_pct": 5.084490544027212,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 7.1,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 6,
+      "symbol": "KEYS",
+      "price": 384.6400146484375,
+      "score": 78,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 12,
+        "rsi": 5,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 384.6400146484375,
+      "stop_loss": 368.0922178537194,
+      "take_profit": 409.4617098405147,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "EXTENDED",
+      "extension_pct": 11.845170074418801,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 3.3,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 7,
+      "symbol": "PANW",
+      "price": 403.239990234375,
+      "score": 76,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 0,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 403.239990234375,
+      "stop_loss": 377.3617341929,
+      "take_profit": 442.0573742965875,
+      "risk_reward_ratio": 1.499999999999999,
+      "setup_type": "EXTENDED",
+      "extension_pct": 8.698960722338231,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 6.0,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 8,
+      "symbol": "CRWD",
+      "price": 270.0400085449219,
+      "score": 76,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 0,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 270.0400085449219,
+      "stop_loss": 252.87547588332612,
+      "take_profit": 295.78680753731555,
+      "risk_reward_ratio": 1.5000000000000024,
+      "setup_type": "EXTENDED",
+      "extension_pct": 11.45621016135076,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 13.9,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 9,
+      "symbol": "MRNA",
+      "price": 190.00999450683594,
+      "score": 70,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 12,
+        "rsi": 15,
+        "macd": 0,
+        "relative": 12,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 190.00999450683594,
+      "stop_loss": 169.88332203636554,
+      "take_profit": 220.2000032125415,
+      "risk_reward_ratio": 1.4999999999999987,
+      "setup_type": "EXTENDED",
+      "extension_pct": 13.308919319558395,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 47.0,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 10,
+      "symbol": "AMD",
+      "price": 633.9099731445312,
+      "score": 66,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 0,
+        "rsi": 5,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 633.9099731445312,
+      "stop_loss": 597.5980282530072,
+      "take_profit": 688.3778904818174,
+      "risk_reward_ratio": 1.500000000000003,
+      "setup_type": "EXTENDED",
+      "extension_pct": 11.901451122916846,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 11.2,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 11,
+      "symbol": "EMR",
+      "price": 161.61000061035156,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 0,
+        "own_trend": 50
+      },
+      "entry": 161.61000061035156,
+      "stop_loss": 155.66676114608336,
+      "take_profit": 170.52485980675385,
+      "risk_reward_ratio": 1.4999999999999976,
+      "setup_type": "EXTENDED",
+      "extension_pct": 5.58949416099964,
+      "blockers": 3,
+      "room_clear": false,
+      "own_trend_pct": 1.0,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "B",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 12,
+      "symbol": "LITE",
+      "price": 1085.4200439453125,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 0,
+        "own_trend": 50
+      },
+      "entry": 1085.4200439453125,
+      "stop_loss": 986.0701323776822,
+      "take_profit": 1234.444911296758,
+      "risk_reward_ratio": 1.4999999999999993,
+      "setup_type": "EXTENDED",
+      "extension_pct": 15.258521315853834,
+      "blockers": 1,
+      "room_clear": false,
+      "own_trend_pct": 6.8,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "B",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 13,
+      "symbol": "VTRS",
+      "price": 17.600000381469727,
+      "score": 96,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 0,
+        "own_trend": 50
+      },
+      "entry": 17.15550003051758,
+      "stop_loss": 16.47970227958391,
+      "take_profit": 18.169196656918082,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "PULLBACK",
+      "extension_pct": 2.5910078409923005,
+      "blockers": 6,
+      "room_clear": false,
+      "own_trend_pct": 2.3,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "B",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 14,
+      "symbol": "MU",
+      "price": 1074.8900146484375,
+      "score": 89,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 8,
+        "breakout": 6,
+        "room": 0,
+        "own_trend": 50
+      },
+      "entry": 1074.8900146484375,
+      "stop_loss": 1005.1630698462736,
+      "take_profit": 1179.4804318516833,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "EXTENDED",
+      "extension_pct": 4.867164888275509,
+      "blockers": 1,
+      "room_clear": false,
+      "own_trend_pct": 7.0,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "B",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 15,
+      "symbol": "NVDA",
+      "price": 233.9499969482422,
+      "score": 88,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 12,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 0,
+        "own_trend": 50
+      },
+      "entry": 233.9499969482422,
+      "stop_loss": 225.08487272033844,
+      "take_profit": 247.2476832900978,
+      "risk_reward_ratio": 1.4999999999999984,
+      "setup_type": "EXTENDED",
+      "extension_pct": 4.5418376861979315,
+      "blockers": 2,
+      "room_clear": false,
+      "own_trend_pct": 3.0,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "B",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 16,
+      "symbol": "APH",
+      "price": 86.95999908447266,
+      "score": 88,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 12,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 0,
+        "own_trend": 50
+      },
+      "entry": 86.95999908447266,
+      "stop_loss": 82.80226674570714,
+      "take_profit": 93.19659759262093,
+      "risk_reward_ratio": 1.5000000000000018,
+      "setup_type": "EXTENDED",
+      "extension_pct": 6.16270972859663,
+      "blockers": 2,
+      "room_clear": false,
+      "own_trend_pct": 2.0,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "B",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
       "rank": 17,
+      "symbol": "FAST",
+      "price": 50.75,
+      "score": 88,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 12,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 0,
+        "own_trend": 50
+      },
+      "entry": 49.75049991607666,
+      "stop_loss": 48.296872594544595,
+      "take_profit": 51.930940898374764,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "PULLBACK",
+      "extension_pct": 2.0090252070016943,
+      "blockers": 4,
+      "room_clear": false,
+      "own_trend_pct": 1.1,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "B",
+      "market_regime": "UPTREND",
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "rank": 18,
       "symbol": "MSFT",
-      "price": 514.8599853515625,
+      "price": 517.530029296875,
       "score": 85,
       "breakdown": {
         "trend_strength": 25,
@@ -425,21 +1280,70 @@
         "rsi": 15,
         "macd": 15,
         "relative": 12,
-        "breakout": 6
+        "breakout": 6,
+        "room": 0,
+        "own_trend": 50
       },
-      "entry": 501.5384979248047,
-      "stop_loss": 484.1599200778583,
-      "take_profit": 527.6063646952243,
-      "risk_reward_ratio": 1.5000000000000049,
+      "entry": 501.6720001220703,
+      "stop_loss": 484.29342227341164,
+      "take_profit": 527.7398668950583,
+      "risk_reward_ratio": 1.5,
       "setup_type": "PULLBACK",
-      "extension_pct": 2.656124600978307,
+      "extension_pct": 3.161035332038865,
+      "blockers": 7,
+      "room_clear": false,
+      "own_trend_pct": 5.3,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "B",
       "market_regime": "UPTREND",
-      "reasoning": "# MSFT Momentum Setup Analysis\n\n**Why the momentum is strong:** MSFT is displaying textbook bullish momentum with a perfect trend\u2014price is already $13+ above your entry, RSI and MACD are firing on all cylinders (30/30 combined), and relative performance shows it's outpacing the broader market. You're essentially catching a stock mid-stride in a confirmed uptrend.\n\n**Best-aligned indicators:** Trend Strength (25/25) and technical oscillators (RSI + MACD at 15/15 each) are your core conviction drivers here\u2014this isn't noise, it's a genuine directional move. The 1.50:1 risk/reward keeps you disciplined while the strong trend gives you room to run.\n\n**Key risk to monitor:** Volume is your softer spot at 12/20, which means this momentum could lose steam faster than the pure price action suggests if buying interest dries up. Watch for volume confirmation on any move toward your $527.61 target\u2014if volume fades into the profit zone, consider taking partial profits early rather than waiting for the full target."
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
-      "rank": 18,
+      "rank": 19,
       "symbol": "ACN",
-      "price": 199.69500732421875,
+      "price": 198.89999389648438,
       "score": 85,
       "breakdown": {
         "trend_strength": 25,
@@ -447,21 +1351,70 @@
         "rsi": 15,
         "macd": 15,
         "relative": 0,
-        "breakout": 10
+        "breakout": 10,
+        "room": 0,
+        "own_trend": 50
       },
-      "entry": 199.69500732421875,
-      "stop_loss": 184.75009942328487,
-      "take_profit": 222.1123691756196,
-      "risk_reward_ratio": 1.5000000000000009,
+      "entry": 198.89999389648438,
+      "stop_loss": 183.95347891622157,
+      "take_profit": 221.31976636687858,
+      "risk_reward_ratio": 1.5,
       "setup_type": "EXTENDED",
-      "extension_pct": 7.745083822209713,
+      "extension_pct": 7.3391572123296775,
+      "blockers": 4,
+      "room_clear": false,
+      "own_trend_pct": 4.5,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "B",
       "market_regime": "UPTREND",
-      "reasoning": "# ACN Momentum Setup Analysis\n\n**Why ACN is Moving:** ACN is showing exceptional momentum with a perfect trend setup\u2014price is in a strong uptrend with excellent volume confirmation, and both RSI and MACD are firing bullish signals simultaneously. This is textbook momentum territory where all the mechanical pieces are aligned.\n\n**Key Aligned Indicators:** Trend strength and volume are doing the heavy lifting here (45/45 combined), meaning institutional money is backing this move with conviction. The perfect RSI and MACD scores confirm you're not chasing exhausted momentum\u2014this has structural support underneath.\n\n**Key Risk to Watch:** The 0/15 on Relative Performance is a red flag worth monitoring. ACN isn't outperforming its sector, which means this could be a market-wide tech rally rather than stock-specific strength. If the broader market stalls, this momentum can evaporate quickly despite the setup looking clean on isolated technicals.\n\n**Bottom Line:** Strong entry with defined risk, but watch for sector rotation as your early warning system."
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
-      "rank": 19,
-      "symbol": "ROK",
-      "price": 453.30499267578125,
+      "rank": 20,
+      "symbol": "TER",
+      "price": 449.0400085449219,
       "score": 85,
       "breakdown": {
         "trend_strength": 25,
@@ -469,38 +1422,65 @@
         "rsi": 15,
         "macd": 15,
         "relative": 12,
-        "breakout": 6
+        "breakout": 6,
+        "room": 0,
+        "own_trend": 50
       },
-      "entry": 453.30499267578125,
-      "stop_loss": 438.2308353509362,
-      "take_profit": 475.91622866304874,
-      "risk_reward_ratio": 1.4999999999999962,
-      "setup_type": "EXTENDED",
-      "extension_pct": 5.898710994448096,
-      "market_regime": "UPTREND",
-      "reasoning": "# ROK Momentum Setup Analysis\n\n**Why the momentum is there:** ROK is firing on all cylinders with a pristine trend structure (25/25), maxed-out RSI and MACD readings (both 15/15), and strong relative outperformance\u2014this is a textbook uptrend with conviction. You're seeing institutional-grade momentum across multiple timeframes, not just price action.\n\n**Best aligned signals:** The RSI and MACD combo is your green light here; both are at peak levels without being overbought in a dangerous way, suggesting the move has more runway. Trend strength is the backbone\u2014this isn't a choppy reversal setup, it's a directional freight train.\n\n**Key risk:** Volume is your weak link at 12/20\u2014you've got strong price action but moderate participation, which means liquidity could dry up on a reversal or profit-taking. If this unwinds, you might not get filled at your stop as cleanly. Watch for volume confirmation above $460 to validate the breakout; without it, that 1.5:1 R/R becomes less reliable."
-    },
-    {
-      "rank": 20,
-      "symbol": "ANET",
-      "price": 206.75,
-      "score": 82,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 6,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6
-      },
-      "entry": 199.81499938964845,
-      "stop_loss": 189.5248925856157,
-      "take_profit": 215.25015959569757,
+      "entry": 449.0400085449219,
+      "stop_loss": 418.3394651557644,
+      "take_profit": 495.0908236286581,
       "risk_reward_ratio": 1.5,
-      "setup_type": "PULLBACK",
-      "extension_pct": 3.4707107231864915,
+      "setup_type": "EXTENDED",
+      "extension_pct": 17.92016936614598,
+      "blockers": 1,
+      "room_clear": false,
+      "own_trend_pct": 2.2,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "B",
       "market_regime": "UPTREND",
-      "reasoning": "# ANET Momentum Setup Analysis\n\n**Why the Momentum:** ANET is displaying exceptional trend strength with overbought RSI and bullish MACD confirmation, indicating strong upside conviction. The stock has already broken above your entry, suggesting the momentum wave is already in motion and may offer a chase-entry opportunity if price pulls back to $199.81.\n\n**Best-Aligned Indicators:** Trend strength (25/25) is your primary driver here, backed by perfect RSI (15/15) and MACD (15/15) alignment\u2014this trifecta is rare and powerful. Strong relative outperformance (15/15) confirms ANET is leading its peers, not just riding market-wide momentum.\n\n**Key Risk:** Volume is notably weak (6/20) and breakout quality is middling (6/10), which means conviction behind this move could fade quickly. Watch for volume confirmation on any sustained move toward $215.25\u2014without it, this high-momentum setup could reverse sharply into your stop loss.\n\n**Bottom Line:** Solid risk/reward on a strong trend, but don't ignore that volume gap. This is a quality setup that requires disciplined position management."
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     }
   ]
 }

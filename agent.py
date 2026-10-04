@@ -51,6 +51,15 @@ DIMENSIONS = [
     {"key": "breakout", "label": "Breakout", "max": 10},
 ]
 
+# Published alongside DIMENSIONS so the dashboard renders the two filters that
+# actually validated. Deliberately NOT folded into the 0-100 score: the score's
+# own weights tested as noise, and mixing a measured signal into an unmeasured
+# one would hide which part is working.
+STRUCTURE_DIMENSIONS = [
+    {"key": "room", "label": "Room to target", "max": 50},
+    {"key": "own_trend", "label": "Own trend", "max": 50},
+]
+
 # Where the dashboard reads its data from.
 DOCS_DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "docs", "data")
 
@@ -448,6 +457,52 @@ Format: Professional but conversational, suitable for a trader's quick decision.
         text = "".join(b.text for b in message.content if b.type == "text").strip()
         return text or "[reasoning unavailable: empty response]"
 
+    # ── Structure filters ────────────────────────────────────────────────
+    # Two rules kept from the chart-setup-analysis skill, after validating its
+    # 6-point checklist against all 759 signals Monu had published to date.
+    # The checklist's own score did NOT predict outcome (corr -0.07; the
+    # 5-of-6 signals were the worst group). Four of its six points were noise
+    # or inverted as a screen. These two were not:
+    #
+    #   room to target   0 swing highs between entry and target -> +2.73% / 53% win
+    #                    1-2 -> -3.83%,  3-4 -> -5.31%,  5+ -> -5.86%
+    #   own trend up     stock's own 50d EMA rising -> -3.49% vs -8.08% when not
+    #
+    # Together they kept 9% of signals (~2/scan day) and were the only subset
+    # that was positive in an 8-week window where the full list lost 4.2% and
+    # SPY lost 0.6%. Small sample (32 signals, 17 days) - these are published
+    # as fields and used to rank, not as a hard gate, so the effect stays
+    # measurable in results/ rather than silently removing the counterfactual.
+
+    # A swing high is a bar whose high is the max of the 3 bars each side -
+    # the same pivot definition the skill uses.
+    PIVOT_BARS = 3
+
+    def swing_highs(self, data: pd.DataFrame) -> pd.Series:
+        h = data['High']
+        w = self.PIVOT_BARS * 2 + 1
+        return h[h == h.rolling(w, center=True).max()].dropna()
+
+    def structure_check(self, data: pd.DataFrame, entry: float, target: float) -> Dict:
+        """Swing highs standing between entry and target, and whether the
+        stock's own 50-day EMA is rising. Monu's regime gate only ever looked
+        at SPY - a stock can be in its own downtrend inside a market uptrend,
+        and those were the worst performers in the review."""
+        # Only pivots confirmed before today: the centred window means the last
+        # PIVOT_BARS bars cannot yet be known to be pivots, and using them
+        # would be lookahead.
+        confirmed = self.swing_highs(data.iloc[:-self.PIVOT_BARS]) if len(data) > self.PIVOT_BARS else pd.Series(dtype=float)
+        blockers = int(((confirmed > entry) & (confirmed < target)).sum())
+
+        ema50 = data['Close'].ewm(span=50, adjust=False).mean()
+        slope = float(ema50.iloc[-1] / ema50.iloc[-21] - 1) if len(ema50) > 21 else 0.0
+        return {
+            "blockers": blockers,
+            "room_clear": blockers == 0,
+            "own_trend_pct": slope * 100,
+            "own_trend_up": slope > 0.01,          # >1% over ~1 month
+        }
+
     def calculate_entry_exit(self, data: pd.DataFrame, indicators: Dict,
                             score_breakdown: Dict) -> Dict[str, float]:
         """Calculate entry, stop-loss, and take-profit levels."""
@@ -532,6 +587,7 @@ Format: Professional but conversational, suitable for a trader's quick decision.
 
             # Calculate entry/exit
             levels = self.calculate_entry_exit(data, indicators, scores)
+            structure = self.structure_check(data, levels['entry'], levels['take_profit'])
 
             opportunity = {
                 'rank': 0,  # Will be assigned after sorting
@@ -544,7 +600,9 @@ Format: Professional but conversational, suitable for a trader's quick decision.
                     'rsi': scores['rsi'],
                     'macd': scores['macd'],
                     'relative': scores['relative'],
-                    'breakout': scores['breakout']
+                    'breakout': scores['breakout'],
+                    'room': 50 if structure['room_clear'] else 0,
+                    'own_trend': 50 if structure['own_trend_up'] else 0,
                 },
                 'entry': levels['entry'],
                 'stop_loss': levels['stop_loss'],
@@ -552,6 +610,19 @@ Format: Professional but conversational, suitable for a trader's quick decision.
                 'risk_reward_ratio': (levels['take_profit'] - levels['entry']) / (levels['entry'] - levels['stop_loss']),
                 'setup_type': levels['setup_type'],
                 'extension_pct': levels['extension_pct'],
+                'blockers': structure['blockers'],
+                'room_clear': structure['room_clear'],
+                'own_trend_pct': round(structure['own_trend_pct'], 1),
+                'own_trend_up': structure['own_trend_up'],
+                # Validated-structure tier, published so the dashboard can show
+                # it and results/ can keep measuring it:
+                #   A = clear room AND the stock's own trend is up
+                #   B = one of the two
+                #   C = neither
+                'dimensions': DIMENSIONS + STRUCTURE_DIMENSIONS,
+                'structure': ("A" if structure['room_clear'] and structure['own_trend_up']
+                              else "B" if structure['room_clear'] or structure['own_trend_up']
+                              else "C"),
                 'scores': scores,           # kept for the reasoning pass, stripped below
                 'market_regime': market_regime
             }
@@ -562,7 +633,17 @@ Format: Professional but conversational, suitable for a trader's quick decision.
         # inside the scan loop bills a Claude call for every candidate over 60
         # even though most never get published - on a 165-symbol universe that
         # was 90 calls to publish 20.
-        opportunities = sorted(opportunities, key=lambda x: x['score'], reverse=True)[:top_n]
+        # Rank by the two VALIDATED structure filters first, momentum score only
+        # as a tiebreak. The six-dimension score did not order outcomes in the
+        # review (score 100 signals averaged -7.8% over 20 days), while clear
+        # room to target did (+2.73% vs -4.2% for the rest). Tier A floats to
+        # the top; nothing is dropped, so results/ still records what B and C
+        # would have done.
+        tier_rank = {"A": 0, "B": 1, "C": 2}
+        opportunities = sorted(
+            opportunities,
+            key=lambda x: (tier_rank[x['structure']], -x['score'])
+        )[:top_n]
         logger.info(f"{len(opportunities)} opportunities ranked; generating reasoning for each")
 
         for i, opp in enumerate(opportunities, 1):
