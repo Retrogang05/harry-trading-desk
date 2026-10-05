@@ -389,6 +389,12 @@ def build_row(c: Dict, reasoning: str) -> Dict:
         "score": gate_pts + fast_pts,
         "strategy": f"Trend gate · {c['state']}{alert_tag}",
         "dimensions": DIMENSIONS,
+        # Index tag for the dashboard's filter. TQQQ is not itself a Nasdaq-100
+        # constituent - it is a 3x fund on the index - but every rule here is
+        # evaluated on QQQ, so this row belongs with the Nasdaq-100 signals and
+        # nowhere else. Tagged rather than left blank so an index filter does
+        # not silently drop the one position the desk actually sizes.
+        "indexes": ["QQQ"],
         "breakdown": {"gate": gate_pts, "fast": fast_pts},
         "setup": {
             "label": f"{c['state']} since {'≥' if c['since_truncated'] else ''}{c['since']} · QQQ {c['qqq']:.2f} · book {met_n}/{len(book)} (reference, not used for state)"
@@ -423,6 +429,7 @@ def publish(row: Dict, c: Dict) -> None:
             {"label": "Book checklist", "value": f"{sum(1 for b in c['book'] if b['met'])} / {len(c['book'])} (ref)"},
             {"label": f"RSI alert (>{RSI_ALERT})", "value": (f"⚠ ACTIVE · {c['rsi']:.0f}" if c["rsi_alert"] else f"quiet · {c['rsi']:.0f}")},
         ],
+        "groups": {"key": "indexes", "label": "Index", "values": ["QQQ"]},
         "opportunities": [row],
     }
     # Serialize to a string first. json.dump streams into the file, so a

@@ -20,7 +20,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 20   # ~30s in practice; bound a hung fetch
+    timeout-minutes: 20   # ~75s in practice for 1,521 symbols; bound a hung fetch
     steps:
       # Actions pinned to commit SHAs, matching the convention in
       # Retrogang05/portfolio-tracker - a mutable tag can be force-pushed to

@@ -28,7 +28,12 @@ def load_signals(results_dir):
                         "stop": o["stop_loss"], "target": o["take_profit"], "setup": o["setup_type"], "ext_pct": o["extension_pct"],
                         # present only on scans from 2026-10-05 onward
                         "structure": o.get("structure"), "blockers": o.get("blockers"),
-                        "own_trend_pct": o.get("own_trend_pct")})
+                        "own_trend_pct": o.get("own_trend_pct"),
+                        # Index membership, also 2026-10-05 onward. Joined into
+                        # one string so a name in both the S&P 500 and the
+                        # Nasdaq-100 groups as "SPX,QQQ" rather than being
+                        # double-counted across two buckets.
+                        "indexes": ",".join(o["indexes"]) if o.get("indexes") else None})
     return pd.DataFrame(sig)
 
 def score(S, horizon=20):
@@ -83,6 +88,21 @@ def summarize(R):
             g20 = g.dropna(subset=["ret20"])
             print(f"  {t}  n={len(g):>4}  ret10 {pct(g.ret10.mean()):>8}  ret20 {pct(g20.ret20.mean()) if len(g20) else 'n/a':>8}"
                   f"  win20 {((g20.ret20>0).mean()*100 if len(g20) else float('nan')):3.0f}%  stopped {(g.outcome=='stop').mean()*100:3.0f}%")
+
+    # The question the wider universe was built to answer: does a Russell 2000
+    # signal behave like an S&P 500 one? They are scored on the same six
+    # dimensions but are not the same kind of stock - higher ADR, thinner book,
+    # and the research that motivated the structure filters was done on small
+    # caps. Needs a few weeks of scans before the n is worth reading.
+    if R.indexes.notna().any():
+        print("\nby index:")
+        for ix, g in R.dropna(subset=["indexes"]).groupby("indexes"):
+            g20 = g.dropna(subset=["ret20"])
+            print(f"  {ix:8} n={len(g):>4}  ret10 {pct(g.ret10.mean()):>8}  "
+                  f"ret20 {pct(g20.ret20.mean()) if len(g20) else 'n/a':>8}  "
+                  f"win20 {((g20.ret20>0).mean()*100 if len(g20) else float('nan')):3.0f}%  "
+                  f"stopped {(g.outcome=='stop').mean()*100:3.0f}%  "
+                  f"target {(g.outcome=='target').mean()*100:3.0f}%")
 
     print("\nby setup:")
     for st, g in R.groupby("setup"):

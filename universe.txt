@@ -1,516 +1,1544 @@
-# S&P 500 scan universe for Monu.
+# Scan universe for Harry Trading Desk. Tagged by index membership.
 #
-# Source : SPDR S&P 500 ETF Trust (SPY) daily holdings, State Street
-#          https://www.ssga.com/us/en/intermediary/library-content/products/fund-data/etfs/us/holdings-daily-us-en-spy.xlsx
-# As of 06-Aug-2026   (holdings date from the file, not the download date)
-# Count  : 503 tickers  (>500 because of dual share classes: GOOGL/GOOG, FOX/FOXA, NWS/NWSA)
+# Sources: each fund's own daily holdings export (the fund, not a scraped index)
+#   SPX  SPDR S&P 500 ETF Trust (SPY), State Street   As of 01-Oct-2026
+#   QQQ  Invesco QQQ Trust Series 1, Invesco          Saved 05-Oct-2026
+#   IWM  iShares Russell 2000 ETF, BlackRock          As of Oct 01, 2026
 #
-# Class shares use Yahoo notation: BRK-B, BF-B  (SSGA writes BRK.B, BF.B)
-# Cash and contra rows from the ETF file are excluded.
+# Built  : 2026-10-05 by scripts/build_universe.py
+# Count  : 1521 tickers  (SPX 503, QQQ 98, IWM 1006; SPX and QQQ overlap heavily)
 #
-# Regenerate with: python scripts/fetch_sp500.py
+# Filtered:
+#          cash, money market, futures and unlisted private positions removed
+#          price >= $5 and median 3-month dollar volume >= $10M
+#          963 too thin to trade, 6 did not price
 #
-# One ticker per line. Blank lines and # comments are ignored.
-NVDA
-AAPL
-MSFT
-AMZN
-GOOGL
-AVGO
-GOOG
-META
-MU
-BRK-B
-JPM
-LLY
-TSLA
-AMD
-XOM
-JNJ
-V
-WMT
-CSCO
-INTC
-MA
-ABBV
-COST
-AMAT
-BAC
-CAT
-GE
-LRCX
-UNH
-PLTR
-CVX
-HD
-PG
-KO
-MRK
-NFLX
-GS
-RTX
-PM
-PANW
-GEV
-WFC
-MS
-TXN
-KLAC
-ORCL
-C
-LIN
-IBM
-AMGN
-TMO
-CRWD
-APH
-ANET
-MCD
-VZ
-STX
-PEP
-ABT
-SNDK
-MRVL
-ADI
-BA
-AXP
-DIS
-TJX
-NEE
-SCHW
-UNP
-ETN
-QCOM
-WELL
-T
-BLK
-GILD
-BKNG
-WDC
-DE
-CRM
-PFE
-UBER
-COP
-COF
-PH
-ISRG
-PLD
-BMY
-CB
-DELL
-DHR
-PGR
-GLW
-SPGI
-VRTX
-CVS
-LOW
-NOW
-SBUX
-LMT
-SYK
-HWM
-MO
-NEM
-MDT
-ADP
-BNY
-TT
-VRT
-ADBE
-ACN
-MCK
-SO
-EQIX
-PNC
-PWR
-FTNT
-BX
-USB
-GD
-FCX
-DUK
-CME
-JCI
-MMM
-CSX
-CDNS
-MRSH
-APP
-VLO
-CMCSA
-INTU
-CMI
-EMR
-WMB
-MPC
-ELV
-ICE
-WM
-TMUS
-CEG
-SHW
-PSX
-TRV
-ROST
-DASH
-MDLZ
-RCL
-AMT
-MAR
-MSI
-GM
-SNPS
-ORLY
-ITW
-REGN
-SLB
-AON
-UPS
-NSC
-HON
-DDOG
-NOC
-CL
-HLT
-BSX
-URI
-CI
-EOG
-SPG
-HOOD
-ECL
-KKR
-MCO
-ALL
-TDG
-HPE
-PCAR
-FDX
-CTAS
-AEP
-MNST
-DLR
-APD
-MPWR
-TGT
-TFC
-WBD
-COHR
-CRH
-LITE
-AJG
-HCA
-ABNB
-COR
-TEL
-BKR
-NUE
-KMI
-TER
-FIX
-DAL
-APO
-D
-NXPI
-FAST
-O
-AFL
-KEYS
-AME
-TRGP
-CIEN
-GWW
-CAH
-OKE
-SRE
-PSA
-MET
-F
-LHX
-PYPL
-FITB
-EW
-CTVA
-ADSK
-STT
-AZO
-NKE
-AMP
-WAB
-CARR
-HONA
-DVN
-GRMN
-ROK
-CVNA
-EBAY
-FERG
-BDX
-ETR
-XEL
-IDXX
-EXC
-FLEX
-VTR
-VST
-HUM
-CMG
-CBRE
-AIG
-NDAQ
-XYZ
-PRU
-AXON
-YUM
-RSG
-UAL
-KDP
-MSCI
-OXY
-TTWO
-SYY
-MCHP
-ED
-ROP
-A
-HIG
-WAT
-IQV
-PAYX
-ODFL
-DHI
-IBKR
-NTAP
-PCG
-PEG
-ADM
-KVUE
-FANG
-CCL
-MTB
-VMC
-JBL
-IRM
-KMB
-EME
-STLD
-HBAN
-WEC
-EXPE
-WDAY
-ACGL
-NTRS
-TPR
-CCI
-VEEV
-KR
-ZTS
-RMD
-COIN
-MLM
-EQT
-WTW
-GEHC
-DXCM
-TDY
-EXR
-IR
-RJF
-CASY
-ON
-CFG
-BIIB
-CBOE
-CNC
-AEE
-ARES
-DTE
-WSM
-VICI
-FISV
-LYV
-XYL
-MTD
-ATO
-DOV
-OTIS
-DG
-Q
-CINF
-HSY
-HAL
-ES
-CTSH
-HUBB
-RF
-CNP
-SYF
-DGX
-AWK
-FSLR
-PPG
-PPL
-CPAY
-LH
-AVB
-EIX
-HPQ
-CPRT
-NRG
-VRSK
-PHM
-SW
-WST
-CHD
-FE
-TROW
-DRI
-VLTO
-VRSN
-FICO
-OMC
-DLTR
-ULTA
-EXPD
-FFIV
-LUV
-EQR
-STE
-PFG
-PKG
-FIS
-EXE
-DOW
-CMS
-IFF
-AMCR
-SNA
-IP
-KHC
-WRB
-EL
-EFX
-KEY
-BRO
-NI
-TPL
-GPN
-JBHT
-DD
-INCY
-L
-SBAC
-GIS
-EVRG
-BR
-MRNA
-VTRS
-ZBH
-FTV
-STZ
-ESS
-GPC
-LEN
-WY
-CDW
-CF
-TSCO
-LNT
-ZBRA
-IEX
-CHRW
-AKAM
-PTC
-LDOS
-J
-NVR
-BALL
-INVH
-SMCI
-TSN
-KIM
-NDSN
-LYB
-FDXF
-BBY
-SWK
-MAA
-GEN
-RL
-MAS
-TXT
-HST
-BG
-ALB
-AIZ
-EG
-DOC
-GL
-ALLE
-COO
-IVZ
-BAX
-DECK
-LII
-LVS
-TRMB
-MKC
-AVY
-CHTR
-LULU
-APA
-TYL
-CLX
-CRL
-RVTY
-REG
-SJM
-HII
-IT
-FOXA
-GNRC
-HAS
-PNW
-SOLV
-CSGP
-GDDY
-TKO
-ECHO
-PNR
-TECH
-UDR
-JKHY
-ALGN
-CPT
-DPZ
-NWSA
-ROL
-AES
-BEN
-BXP
-SWKS
-FDS
-APTV
-PODD
-FRT
-UHS
-NCLH
-HSIC
-WYNN
-MGM
-BLDR
-FOX
-ARE
-TTD
-MOS
-HRL
-AOS
-TAP
-ERIE
-DVA
-BF-B
-NWS
-PSKY
+# Class shares use Yahoo notation: BRK-B, MOG-A  (funds write BRK.B, "MOG A")
+#
+# One ticker per line; the trailing comment is the index membership.
+# Blank lines and # comments are ignored by the loaders, so an agent that
+# does not care about membership reads this file unchanged.
+#
+# Regenerate: refresh data/holdings/, then python scripts/build_universe.py
+
+A      # SPX
+AADX   # IWM
+AAMI   # IWM
+AAP    # IWM
+AAPL   # SPX,QQQ
+ABBV   # SPX
+ABCB   # IWM
+ABG    # IWM
+ABM    # IWM
+ABNB   # SPX,QQQ
+ABSI   # IWM
+ABT    # SPX
+ACA    # IWM
+ACAD   # IWM
+ACGL   # SPX
+ACHC   # IWM
+ACIW   # IWM
+ACLS   # IWM
+ACMR   # IWM
+ACN    # SPX
+ACT    # IWM
+ACVA   # IWM
+ADBE   # SPX,QQQ
+ADEA   # IWM
+ADI    # SPX,QQQ
+ADIG   # IWM
+ADM    # SPX
+ADMA   # IWM
+ADNT   # IWM
+ADP    # SPX,QQQ
+ADPT   # IWM
+ADSK   # SPX,QQQ
+ADTN   # IWM
+ADUS   # IWM
+AEE    # SPX
+AEHR   # IWM
+AEO    # IWM
+AEP    # SPX,QQQ
+AES    # SPX
+AESI   # IWM
+AEVA   # IWM
+AFL    # SPX
+AGIO   # IWM
+AGL    # IWM
+AGM    # IWM
+AGX    # IWM
+AGYS   # IWM
+AHCO   # IWM
+AI     # IWM
+AIG    # SPX
+AIN    # IWM
+AIP    # IWM
+AIR    # IWM
+AIZ    # SPX
+AJG    # SPX
+AKAM   # SPX
+AKR    # IWM
+ALAB   # QQQ
+ALB    # SPX
+ALG    # IWM
+ALGN   # SPX
+ALGT   # IWM
+ALH    # IWM
+ALHC   # IWM
+ALKS   # IWM
+ALKT   # IWM
+ALL    # SPX
+ALLE   # SPX
+ALMS   # IWM
+ALNT   # IWM
+ALNY   # QQQ
+ALOY   # IWM
+ALRM   # IWM
+AMAT   # SPX,QQQ
+AMBA   # IWM
+AMBQ   # IWM
+AMCR   # SPX
+AMD    # SPX,QQQ
+AME    # SPX
+AMGN   # SPX,QQQ
+AMLX   # IWM
+AMN    # IWM
+AMP    # SPX
+AMPL   # IWM
+AMPX   # IWM
+AMR    # IWM
+AMRC   # IWM
+AMRX   # IWM
+AMSC   # IWM
+AMT    # SPX
+AMZN   # SPX,QQQ
+ANAB   # IWM
+ANDE   # IWM
+ANET   # SPX
+ANF    # IWM
+ANIP   # IWM
+ANRO   # IWM
+AON    # SPX
+AORT   # IWM
+AOS    # SPX
+AOSL   # IWM
+APA    # SPX
+APAM   # IWM
+APD    # SPX
+APEI   # IWM
+APH    # SPX
+APLE   # IWM
+APMD   # IWM
+APO    # SPX
+APP    # SPX,QQQ
+APPN   # IWM
+APPS   # IWM
+APTV   # SPX
+ARCB   # IWM
+ARE    # SPX
+ARES   # SPX
+ARLO   # IWM
+AROC   # IWM
+ARQT   # IWM
+ARR    # IWM
+ARX    # IWM
+ASAN   # IWM
+ASB    # IWM
+ASH    # IWM
+ASO    # IWM
+ASST   # IWM
+ASTH   # IWM
+ATEC   # IWM
+ATEN   # IWM
+ATEX   # IWM
+ATKR   # IWM
+ATLC   # IWM
+ATMU   # IWM
+ATO    # SPX
+ATRC   # IWM
+ATRO   # IWM
+AUB    # IWM
+AUPH   # IWM
+AVA    # IWM
+AVAH   # IWM
+AVBP   # IWM
+AVEX   # IWM
+AVGO   # SPX,QQQ
+AVNT   # IWM
+AVPT   # IWM
+AVTX   # IWM
+AVY    # SPX
+AWK    # SPX
+AWR    # IWM
+AX     # IWM
+AXGN   # IWM
+AXON   # SPX,QQQ
+AXP    # SPX
+AXTI   # IWM
+AZO    # SPX
+AZTA   # IWM
+AZZ    # IWM
+BA     # SPX
+BAC    # SPX
+BALL   # SPX
+BANC   # IWM
+BAND   # IWM
+BANF   # IWM
+BANR   # IWM
+BATRK  # IWM
+BAX    # SPX
+BBNX   # IWM
+BBT    # IWM
+BBW    # IWM
+BBY    # SPX
+BCAX   # IWM
+BCC    # IWM
+BCO    # IWM
+BCPC   # IWM
+BCRX   # IWM
+BDC    # IWM
+BDX    # SPX
+BE     # SPX
+BEAM   # IWM
+BELFA  # IWM
+BELFB  # IWM
+BEN    # SPX
+BETA   # IWM
+BF-B   # SPX
+BFC    # IWM
+BFH    # IWM
+BFLY   # IWM
+BG     # SPX
+BGC    # IWM
+BH     # IWM
+BH-A   # IWM
+BHE    # IWM
+BHVN   # IWM
+BIIB   # SPX
+BIPC   # IWM
+BJRI   # IWM
+BKD    # IWM
+BKE    # IWM
+BKH    # IWM
+BKNG   # SPX,QQQ
+BKR    # SPX,QQQ
+BKSY   # IWM
+BKU    # IWM
+BKV    # IWM
+BL     # IWM
+BLBD   # IWM
+BLFS   # IWM
+BLK    # SPX
+BLKB   # IWM
+BLMN   # IWM
+BLZE   # IWM
+BMI    # IWM
+BMY    # SPX
+BNL    # IWM
+BNY    # SPX
+BOBS   # IWM
+BOH    # IWM
+BOOT   # IWM
+BOX    # IWM
+BR     # SPX
+BRBR   # IWM
+BRK-B  # SPX
+BRO    # SPX
+BRSL   # IWM
+BRUN   # IWM
+BRZE   # IWM
+BSX    # SPX
+BTDR   # IWM
+BTSG   # IWM
+BTU    # IWM
+BULL   # IWM
+BUSE   # IWM
+BW     # IWM
+BWIN   # IWM
+BWMN   # IWM
+BX     # SPX
+BXC    # IWM
+BXDC   # IWM
+BXMT   # IWM
+BXP    # SPX
+BZH    # IWM
+C      # SPX
+CADL   # IWM
+CAH    # SPX
+CAKE   # IWM
+CALM   # IWM
+CALX   # IWM
+CALY   # IWM
+CAPR   # IWM
+CARG   # IWM
+CARR   # SPX
+CASH   # IWM
+CASY   # SPX
+CAT    # SPX
+CATY   # IWM
+CB     # SPX
+CBL    # IWM
+CBOE   # SPX
+CBRE   # SPX
+CBRL   # IWM
+CBT    # IWM
+CBU    # IWM
+CBZ    # IWM
+CC     # IWM
+CCEP   # QQQ
+CCI    # SPX
+CCL    # SPX
+CCOI   # IWM
+CCS    # IWM
+CDNA   # IWM
+CDNL   # IWM
+CDNS   # SPX,QQQ
+CDP    # IWM
+CDRE   # IWM
+CDW    # SPX
+CECO   # IWM
+CEG    # SPX,QQQ
+CELC   # IWM
+CENTA  # IWM
+CENX   # IWM
+CERT   # IWM
+CEVA   # IWM
+CF     # SPX
+CFG    # SPX
+CGEM   # IWM
+CGON   # IWM
+CHCO   # IWM
+CHD    # SPX
+CHEF   # IWM
+CHRW   # SPX
+CHTR   # SPX
+CI     # SPX
+CIEN   # SPX
+CIFR   # IWM
+CINF   # SPX
+CL     # SPX
+CLBK   # IWM
+CLDX   # IWM
+CLMT   # IWM
+CLSK   # IWM
+CLX    # SPX
+CLYM   # IWM
+CMC    # IWM
+CMCSA  # SPX,QQQ
+CME    # SPX
+CMG    # SPX
+CMI    # SPX
+CMP    # IWM
+CMPR   # IWM
+CMS    # SPX
+CNC    # SPX
+CNK    # IWM
+CNMD   # IWM
+CNO    # IWM
+CNOB   # IWM
+CNP    # SPX
+CNR    # IWM
+CNS    # IWM
+CNX    # IWM
+CNXC   # IWM
+CNXN   # IWM
+COAG   # IWM
+COCO   # IWM
+COF    # SPX
+COGT   # IWM
+COHR   # SPX
+COHU   # IWM
+COIN   # SPX
+COLL   # IWM
+COMP   # IWM
+CON    # IWM
+COO    # SPX
+COP    # SPX
+COR    # SPX
+CORZ   # IWM
+COST   # SPX,QQQ
+COUR   # IWM
+CPAY   # SPX
+CPK    # IWM
+CPRI   # IWM
+CPRT   # SPX,QQQ
+CPT    # SPX
+CRAI   # IWM
+CRC    # IWM
+CRGY   # IWM
+CRH    # SPX
+CRI    # IWM
+CRK    # IWM
+CRL    # SPX
+CRM    # SPX
+CRML   # IWM
+CRSP   # IWM
+CRSR   # IWM
+CRVL   # IWM
+CRVS   # IWM
+CRWD   # SPX,QQQ
+CRWV   # QQQ
+CSCO   # SPX,QQQ
+CSGP   # SPX
+CSIQ   # IWM
+CSQR   # IWM
+CSTL   # IWM
+CSTM   # IWM
+CSW    # IWM
+CSX    # SPX,QQQ
+CTAS   # SPX,QQQ
+CTRE   # IWM
+CTRI   # IWM
+CTS    # IWM
+CTSH   # SPX
+CTVA   # SPX
+CUBI   # IWM
+CURB   # IWM
+CVBF   # IWM
+CVCO   # IWM
+CVI    # IWM
+CVLT   # IWM
+CVNA   # SPX
+CVS    # SPX
+CVSA   # IWM
+CVX    # SPX
+CWH    # IWM
+CWK    # IWM
+CWST   # IWM
+CWT    # IWM
+CXM    # IWM
+CXT    # IWM
+CXW    # IWM
+CYTK   # IWM
+D      # SPX
+DAL    # SPX
+DAN    # IWM
+DASH   # SPX,QQQ
+DAVE   # IWM
+DBD    # IWM
+DCH    # IWM
+DCO    # IWM
+DCOM   # IWM
+DD     # SPX
+DDOG   # SPX,QQQ
+DE     # SPX
+DEC    # IWM
+DECK   # SPX
+DEI    # IWM
+DELL   # SPX
+DFTX   # IWM
+DG     # SPX
+DGII   # IWM
+DGX    # SPX
+DHC    # IWM
+DHI    # SPX
+DHR    # SPX
+DHT    # IWM
+DIOD   # IWM
+DIS    # SPX
+DJCO   # IWM
+DJT    # IWM
+DK     # IWM
+DLO    # IWM
+DLR    # SPX
+DLTR   # SPX
+DMC    # IWM
+DMRA   # IWM
+DNLI   # IWM
+DNOW   # IWM
+DNTH   # IWM
+DOC    # SPX
+DOLE   # IWM
+DORM   # IWM
+DOV    # SPX
+DOW    # SPX
+DPZ    # SPX
+DRH    # IWM
+DRI    # SPX
+DRVN   # IWM
+DTE    # SPX
+DUK    # SPX
+DV     # IWM
+DVA    # SPX
+DVN    # SPX
+DX     # IWM
+DXC    # IWM
+DXCM   # SPX,QQQ
+DXPE   # IWM
+DYN    # IWM
+EAT    # IWM
+EBAY   # SPX
+EBC    # IWM
+ECHO   # SPX
+ECL    # SPX
+ECPG   # IWM
+ECVT   # IWM
+ED     # SPX
+EE     # IWM
+EFC    # IWM
+EFOR   # IWM
+EFSC   # IWM
+EFX    # SPX
+EG     # SPX
+EIX    # SPX
+EL     # SPX
+ELV    # SPX
+ELVN   # IWM
+EME    # SPX
+EMR    # SPX
+ENOV   # IWM
+ENR    # IWM
+ENS    # IWM
+ENVA   # IWM
+EOG    # SPX
+EPAC   # IWM
+EPC    # IWM
+EPRT   # IWM
+EQIX   # SPX
+EQT    # SPX
+ERAS   # IWM
+ERIE   # SPX
+EROC   # IWM
+ES     # SPX
+ESE    # IWM
+ESNT   # IWM
+ESQ    # IWM
+ESS    # SPX
+ESTA   # IWM
+ETN    # SPX
+ETON   # IWM
+ETR    # SPX
+EVC    # IWM
+EVER   # IWM
+EVRG   # SPX
+EVTC   # IWM
+EW     # SPX
+EWTX   # IWM
+EXC    # SPX,QQQ
+EXE    # SPX
+EXPD   # SPX
+EXPE   # SPX
+EXPO   # IWM
+EXR    # SPX
+EXTR   # IWM
+EYE    # IWM
+F      # SPX
+FA     # IWM
+FANG   # SPX,QQQ
+FAST   # SPX,QQQ
+FBK    # IWM
+FBNC   # IWM
+FBP    # IWM
+FBRT   # IWM
+FCEL   # IWM
+FCF    # IWM
+FCFS   # IWM
+FCPT   # IWM
+FCX    # SPX
+FDS    # SPX
+FDX    # SPX
+FDXF   # SPX
+FE     # SPX
+FEIM   # IWM
+FELE   # IWM
+FER    # QQQ
+FERG   # SPX
+FET    # IWM
+FFBC   # IWM
+FFIN   # IWM
+FFIV   # SPX
+FG     # IWM
+FIBK   # IWM
+FICO   # SPX
+FIGS   # IWM
+FIS    # SPX
+FISV   # SPX
+FITB   # SPX
+FIVN   # IWM
+FIX    # SPX
+FIZZ   # IWM
+FLEX   # SPX
+FLG    # IWM
+FLNC   # IWM
+FLNG   # IWM
+FLO    # IWM
+FLR    # IWM
+FLY    # IWM
+FLYW   # IWM
+FMC    # IWM
+FOX    # SPX
+FOXA   # SPX
+FRME   # IWM
+FROG   # IWM
+FRSH   # IWM
+FRT    # SPX
+FSLR   # SPX
+FSLY   # IWM
+FSS    # IWM
+FSUN   # IWM
+FTDR   # IWM
+FTK    # IWM
+FTNT   # SPX,QQQ
+FTRE   # IWM
+FTV    # SPX
+FUBO   # IWM
+FUL    # IWM
+FULT   # IWM
+FUN    # IWM
+FWRG   # IWM
+GATX   # IWM
+GBCI   # IWM
+GBX    # IWM
+GCT    # IWM
+GD     # SPX
+GDDY   # SPX
+GE     # SPX
+GEF    # IWM
+GEHC   # SPX,QQQ
+GEN    # SPX
+GENB   # IWM
+GENI   # IWM
+GEO    # IWM
+GEV    # SPX
+GFF    # IWM
+GHC    # IWM
+GHM    # IWM
+GIII   # IWM
+GILD   # SPX,QQQ
+GIS    # SPX
+GKOS   # IWM
+GL     # SPX
+GLNG   # IWM
+GLOB   # IWM
+GLUE   # IWM
+GLW    # SPX
+GM     # SPX
+GNK    # IWM
+GNL    # IWM
+GNRC   # SPX
+GNW    # IWM
+GO     # IWM
+GOLD   # IWM
+GOLF   # IWM
+GOOG   # SPX,QQQ
+GOOGL  # SPX,QQQ
+GPC    # SPX
+GPGI   # IWM
+GPI    # IWM
+GPN    # SPX
+GPOR   # IWM
+GPRE   # IWM
+GRAL   # IWM
+GRBK   # IWM
+GRC    # IWM
+GRDN   # IWM
+GRMN   # SPX
+GRND   # IWM
+GRPN   # IWM
+GS     # SPX
+GSHD   # IWM
+GTX    # IWM
+GTY    # IWM
+GVA    # IWM
+GWW    # SPX
+HAE    # IWM
+HAL    # SPX
+HAPN   # IWM
+HAS    # SPX
+HASI   # IWM
+HAWK   # IWM
+HBAN   # SPX
+HCA    # SPX
+HCC    # IWM
+HCI    # IWM
+HCSG   # IWM
+HD     # SPX
+HE     # IWM
+HELE   # IWM
+HFWA   # IWM
+HG     # IWM
+HGV    # IWM
+HIFS   # IWM
+HIG    # SPX
+HII    # SPX
+HIMS   # IWM
+HIW    # IWM
+HLF    # IWM
+HLIO   # IWM
+HLIT   # IWM
+HLT    # SPX
+HMN    # IWM
+HNGE   # IWM
+HNI    # IWM
+HNRG   # IWM
+HOG    # IWM
+HOMB   # IWM
+HON    # SPX,QQQ
+HONA   # SPX,QQQ
+HOOD   # SPX
+HOPE   # IWM
+HOS    # IWM
+HOV    # IWM
+HP     # IWM
+HPE    # SPX
+HPQ    # SPX
+HQY    # IWM
+HRI    # IWM
+HRL    # SPX
+HRMY   # IWM
+HROW   # IWM
+HSIC   # SPX
+HST    # SPX
+HSY    # SPX
+HTFL   # IWM
+HTO    # IWM
+HUBB   # SPX
+HUBG   # IWM
+HUM    # SPX
+HUN    # IWM
+HURN   # IWM
+HUT    # IWM
+HWC    # IWM
+HWKN   # IWM
+HWM    # SPX
+HYMC   # IWM
+HZO    # IWM
+IART   # IWM
+IBKR   # SPX
+IBM    # SPX
+IBOC   # IWM
+IBP    # IWM
+IBRX   # IWM
+ICE    # SPX
+ICFI   # IWM
+ICHR   # IWM
+ICUI   # IWM
+IDCC   # IWM
+IDT    # IWM
+IDXX   # SPX,QQQ
+IDYA   # IWM
+IE     # IWM
+IEX    # SPX
+IFF    # SPX
+IIPR   # IWM
+ILMN   # SPX
+IMAX   # IWM
+IMMX   # IWM
+IMNM   # IWM
+IMVT   # IWM
+INBX   # IWM
+INCY   # SPX
+INDB   # IWM
+INDV   # IWM
+INFQ   # IWM
+INOD   # IWM
+INSP   # IWM
+INSW   # IWM
+INTA   # IWM
+INTC   # SPX,QQQ
+INTU   # SPX,QQQ
+INVA   # IWM
+INVH   # SPX
+INVX   # IWM
+IOSP   # IWM
+IOVA   # IWM
+IP     # SPX
+IPAR   # IWM
+IQV    # SPX
+IR     # SPX
+IRM    # SPX
+IRMD   # IWM
+IRON   # IWM
+IRT    # IWM
+IRTC   # IWM
+ISRG   # SPX,QQQ
+IT     # SPX
+ITGR   # IWM
+ITIC   # IWM
+ITRI   # IWM
+ITW    # SPX
+IVR    # IWM
+IVT    # IWM
+IVZ    # SPX
+J      # SPX
+JANX   # IWM
+JBHT   # SPX
+JBIO   # IWM
+JBL    # SPX
+JBTM   # IWM
+JCI    # SPX
+JJSF   # IWM
+JKHY   # SPX
+JNJ    # SPX
+JOBY   # IWM
+JOE    # IWM
+JPM    # SPX
+JXN    # IWM
+KAI    # IWM
+KALU   # IWM
+KBH    # IWM
+KDP    # SPX,QQQ
+KEY    # SPX
+KEYS   # SPX
+KFRC   # IWM
+KFY    # IWM
+KGS    # IWM
+KHC    # SPX
+KIM    # SPX
+KKR    # SPX
+KLAC   # SPX,QQQ
+KLIC   # IWM
+KLRA   # IWM
+KMB    # SPX
+KMI    # SPX
+KMPR   # IWM
+KMT    # IWM
+KN     # IWM
+KNF    # IWM
+KNSA   # IWM
+KNTK   # IWM
+KO     # SPX
+KOD    # IWM
+KR     # SPX
+KRG    # IWM
+KRYS   # IWM
+KSS    # IWM
+KTB    # IWM
+KURA   # IWM
+KVUE   # SPX
+KWR    # IWM
+KYMR   # IWM
+L      # SPX
+LADR   # IWM
+LASR   # IWM
+LAUR   # IWM
+LBRT   # IWM
+LBRX   # IWM
+LCII   # IWM
+LCLN   # IWM
+LDOS   # SPX
+LEN    # SPX
+LEU    # IWM
+LFST   # IWM
+LFTO   # IWM
+LGIH   # IWM
+LGN    # IWM
+LGND   # IWM
+LH     # SPX
+LHX    # SPX
+LIF    # IWM
+LII    # SPX
+LIME   # IWM
+LIN    # SPX,QQQ
+LINC   # IWM
+LIND   # IWM
+LION   # IWM
+LITE   # SPX,QQQ
+LIVN   # IWM
+LLY    # SPX
+LMAT   # IWM
+LMB    # IWM
+LMND   # IWM
+LMT    # SPX
+LNN    # IWM
+LNT    # SPX
+LNTH   # IWM
+LOW    # SPX
+LPG    # IWM
+LPTH   # IWM
+LQDA   # IWM
+LRCX   # SPX,QQQ
+LRN    # IWM
+LTC    # IWM
+LTH    # IWM
+LULU   # SPX
+LUMN   # IWM
+LUNR   # IWM
+LUV    # SPX
+LVS    # SPX
+LWLG   # IWM
+LXP    # IWM
+LYB    # SPX
+LYV    # SPX
+LZ     # IWM
+LZB    # IWM
+MA     # SPX
+MAA    # SPX
+MAC    # IWM
+MAN    # IWM
+MANE   # IWM
+MAR    # SPX,QQQ
+MARA   # IWM
+MAS    # SPX
+MATW   # IWM
+MATX   # IWM
+MAZE   # IWM
+MBC    # IWM
+MBX    # IWM
+MC     # IWM
+MCB    # IWM
+MCD    # SPX
+MCHP   # SPX,QQQ
+MCK    # SPX
+MCO    # SPX
+MCRI   # IWM
+MCY    # IWM
+MD     # IWM
+MDLZ   # SPX,QQQ
+MDT    # SPX
+MEC    # IWM
+MELI   # QQQ
+MET    # SPX
+META   # SPX,QQQ
+METC   # IWM
+MFA    # IWM
+MGEE   # IWM
+MGM    # SPX
+MGNI   # IWM
+MGRC   # IWM
+MGY    # IWM
+MHO    # IWM
+MIAX   # IWM
+MIR    # IWM
+MIRM   # IWM
+MITK   # IWM
+MKC    # SPX
+MLAB   # IWM
+MLKN   # IWM
+MLM    # SPX
+MLYS   # IWM
+MMED   # IWM
+MMM    # SPX
+MMS    # IWM
+MMSI   # IWM
+MNPR   # IWM
+MNRO   # IWM
+MNST   # SPX,QQQ
+MO     # SPX
+MOG-A  # IWM
+MOS    # SPX
+MPC    # SPX
+MPWR   # SPX,QQQ
+MQ     # IWM
+MRAM   # IWM
+MRCY   # IWM
+MRK    # SPX
+MRNA   # SPX
+MRSH   # SPX
+MRVI   # IWM
+MRVL   # SPX,QQQ
+MRX    # IWM
+MS     # SPX
+MSCI   # SPX
+MSFT   # SPX,QQQ
+MSGE   # IWM
+MSI    # SPX
+MSTR   # QQQ
+MTB    # SPX
+MTD    # SPX
+MTH    # IWM
+MTRN   # IWM
+MTX    # IWM
+MU     # SPX,QQQ
+MUR    # IWM
+MUX    # IWM
+MWA    # IWM
+MXL    # IWM
+MYE    # IWM
+MYRG   # IWM
+MZTI   # IWM
+NAT    # IWM
+NATL   # IWM
+NAVN   # IWM
+NBHC   # IWM
+NBIS   # QQQ
+NBN    # IWM
+NBR    # IWM
+NBTB   # IWM
+NCLH   # SPX
+NCNO   # IWM
+NDAQ   # SPX
+NDSN   # SPX
+NE     # IWM
+NEE    # SPX
+NEM    # SPX
+NEO    # IWM
+NEOG   # IWM
+NESR   # IWM
+NEXT   # IWM
+NFLX   # SPX,QQQ
+NG     # IWM
+NGVT   # IWM
+NHC    # IWM
+NHI    # IWM
+NI     # SPX
+NIC    # IWM
+NJR    # IWM
+NKE    # SPX
+NKTR   # IWM
+NMIH   # IWM
+NMRK   # IWM
+NN     # IWM
+NNE    # IWM
+NNI    # IWM
+NOC    # SPX
+NOG    # IWM
+NOVT   # IWM
+NOW    # SPX
+NP     # IWM
+NPK    # IWM
+NPKI   # IWM
+NPO    # IWM
+NRG    # SPX
+NRIX   # IWM
+NSC    # SPX
+NSIT   # IWM
+NSP    # IWM
+NSSC   # IWM
+NTAP   # SPX
+NTCT   # IWM
+NTLA   # IWM
+NTRS   # SPX
+NTST   # IWM
+NUAI   # IWM
+NUE    # SPX
+NUTX   # IWM
+NUVB   # IWM
+NVAX   # IWM
+NVCR   # IWM
+NVDA   # SPX,QQQ
+NVEC   # IWM
+NVR    # SPX
+NVTS   # IWM
+NWBI   # IWM
+NWE    # IWM
+NWL    # IWM
+NWN    # IWM
+NWPX   # IWM
+NWS    # SPX
+NWSA   # SPX
+NXPI   # SPX,QQQ
+O      # SPX
+OCFC   # IWM
+OCUL   # IWM
+ODC    # IWM
+ODD    # IWM
+ODFL   # SPX,QQQ
+OFG    # IWM
+OGS    # IWM
+OI     # IWM
+OII    # IWM
+OKE    # SPX
+OLMA   # IWM
+OMC    # SPX
+OMCL   # IWM
+OMDA   # IWM
+OMER   # IWM
+ON     # SPX
+ONB    # IWM
+ONDS   # IWM
+OPCH   # IWM
+OPLN   # IWM
+ORA    # IWM
+ORC    # IWM
+ORCL   # SPX
+ORIC   # IWM
+ORKA   # IWM
+ORLY   # SPX,QQQ
+OSBC   # IWM
+OSCR   # IWM
+OSIS   # IWM
+OSW    # IWM
+OTIS   # SPX
+OTTR   # IWM
+OUST   # IWM
+OUT    # IWM
+OXM    # IWM
+OXY    # SPX
+P      # SPX
+PACS   # IWM
+PAGS   # IWM
+PANW   # SPX,QQQ
+PAR    # IWM
+PARR   # IWM
+PATK   # IWM
+PAX    # IWM
+PAY    # IWM
+PAYO   # IWM
+PAYX   # SPX,QQQ
+PBF    # IWM
+PBH    # IWM
+PBI    # IWM
+PBLS   # IWM
+PCAR   # SPX,QQQ
+PCG    # SPX
+PCRX   # IWM
+PCVX   # IWM
+PD     # IWM
+PDFS   # IWM
+PEB    # IWM
+PEBO   # IWM
+PECO   # IWM
+PEG    # SPX
+PENG   # IWM
+PENN   # IWM
+PEP    # SPX,QQQ
+PFBC   # IWM
+PFE    # SPX
+PFG    # SPX
+PFS    # IWM
+PFSI   # IWM
+PG     # SPX
+PGEN   # IWM
+PGNY   # IWM
+PGR    # SPX
+PH     # SPX
+PHAT   # IWM
+PHIN   # IWM
+PHM    # SPX
+PI     # IWM
+PII    # IWM
+PIPR   # IWM
+PJT    # IWM
+PK     # IWM
+PKG    # SPX
+PLAB   # IWM
+PLAY   # IWM
+PLD    # SPX
+PLMR   # IWM
+PLPC   # IWM
+PLSE   # IWM
+PLTR   # SPX,QQQ
+PLUS   # IWM
+PLXS   # IWM
+PM     # SPX
+PMT    # IWM
+PNC    # SPX
+PNR    # SPX
+PNRG   # IWM
+PNTG   # IWM
+PNW    # SPX
+PODD   # SPX
+POR    # IWM
+POWI   # IWM
+PPG    # SPX
+PPL    # SPX
+PPTA   # IWM
+PRAX   # IWM
+PRCH   # IWM
+PRCT   # IWM
+PRDO   # IWM
+PRG    # IWM
+PRGO   # IWM
+PRGS   # IWM
+PRK    # IWM
+PRKS   # IWM
+PRLB   # IWM
+PRM    # IWM
+PRSU   # IWM
+PRU    # SPX
+PRVA   # IWM
+PSA    # SPX
+PSIX   # IWM
+PSKY   # SPX
+PSMT   # IWM
+PSNL   # IWM
+PSX    # SPX
+PTC    # SPX
+PTCT   # IWM
+PTEN   # IWM
+PTGX   # IWM
+PTRN   # IWM
+PUMP   # IWM
+PURR   # IWM
+PVLA   # IWM
+PWP    # IWM
+PWR    # SPX
+PYPL   # SPX,QQQ
+PZZA   # IWM
+Q      # SPX
+QBTS   # IWM
+QCOM   # SPX,QQQ
+QCRH   # IWM
+QDEL   # IWM
+QLYS   # IWM
+QNST   # IWM
+QTWO   # IWM
+QUBT   # IWM
+RAMP   # IWM
+RAPP   # IWM
+RARE   # IWM
+RCAT   # IWM
+RCL    # SPX
+RCUS   # IWM
+RDDT   # SPX
+RDN    # IWM
+RDNT   # IWM
+RDVT   # IWM
+RDW    # IWM
+REAL   # IWM
+REAX   # IWM
+REG    # SPX
+REGN   # SPX,QQQ
+RELY   # IWM
+REPL   # IWM
+REZI   # IWM
+RF     # SPX
+RGNX   # IWM
+RGTI   # IWM
+RH     # IWM
+RHLD   # IWM
+RHP    # IWM
+RIG    # IWM
+RIGL   # IWM
+RIOT   # IWM
+RJF    # SPX
+RKLB   # QQQ
+RL     # SPX
+RLAY   # IWM
+RLJ    # IWM
+RMD    # SPX
+RNST   # IWM
+ROAD   # IWM
+ROCK   # IWM
+ROG    # IWM
+ROK    # SPX
+ROL    # SPX
+ROOT   # IWM
+ROP    # SPX,QQQ
+ROST   # SPX,QQQ
+RPD    # IWM
+RRR    # IWM
+RSG    # SPX
+RSI    # IWM
+RTX    # SPX
+RUM    # IWM
+RUN    # IWM
+RUSHA  # IWM
+RVLV   # IWM
+RVTY   # SPX
+RXO    # IWM
+RYTM   # IWM
+RYZ    # IWM
+SAFT   # IWM
+SAH    # IWM
+SAM    # IWM
+SATL   # IWM
+SBAC   # SPX
+SBCF   # IWM
+SBET   # IWM
+SBH    # IWM
+SBRA   # IWM
+SBUX   # SPX,QQQ
+SCHL   # IWM
+SCHW   # SPX
+SCSC   # IWM
+SDGR   # IWM
+SDRL   # IWM
+SEI    # IWM
+SENEA  # IWM
+SEPN   # IWM
+SEZL   # IWM
+SFBS   # IWM
+SFL    # IWM
+SFNC   # IWM
+SG     # IWM
+SGHC   # IWM
+SGMT   # IWM
+SGRY   # IWM
+SHAK   # IWM
+SHAZ   # IWM
+SHLS   # IWM
+SHO    # IWM
+SHOE   # IWM
+SHOO   # IWM
+SHOP   # QQQ
+SHW    # SPX
+SIG    # IWM
+SIGI   # IWM
+SJM    # SPX
+SKT    # IWM
+SKWD   # IWM
+SKY    # IWM
+SKYW   # IWM
+SLAB   # IWM
+SLB    # SPX
+SLDE   # IWM
+SLG    # IWM
+SLS    # IWM
+SM     # IWM
+SMA    # IWM
+SMCI   # SPX
+SMPL   # IWM
+SMR    # IWM
+SNA    # SPX
+SNDA   # IWM
+SNDK   # SPX,QQQ
+SNDX   # IWM
+SNEX   # IWM
+SNPS   # SPX,QQQ
+SO     # SPX
+SOLV   # SPX
+SONO   # IWM
+SOUN   # IWM
+SPB    # IWM
+SPCX   # QQQ
+SPG    # SPX
+SPGI   # SPX
+SPHR   # IWM
+SPNT   # IWM
+SPSC   # IWM
+SR     # IWM
+SRE    # SPX
+SRPT   # IWM
+SRRK   # IWM
+SSRM   # IWM
+STAA   # IWM
+STBA   # IWM
+STC    # IWM
+STE    # SPX
+STEP   # IWM
+STLD   # SPX
+STNE   # IWM
+STNG   # IWM
+STOK   # IWM
+STRA   # IWM
+STT    # SPX
+STUB   # IWM
+STX    # SPX,QQQ
+STZ    # SPX
+SUPN   # IWM
+SVC    # IWM
+SVV    # IWM
+SW     # SPX
+SWK    # SPX
+SWKS   # SPX
+SWMR   # IWM
+SWX    # IWM
+SXI    # IWM
+SXT    # IWM
+SYBT   # IWM
+SYF    # SPX
+SYK    # SPX
+SYNA   # IWM
+SYRE   # IWM
+SYY    # SPX
+T      # SPX
+TALO   # IWM
+TARS   # IWM
+TBBK   # IWM
+TCBI   # IWM
+TCBK   # IWM
+TDAY   # IWM
+TDC    # IWM
+TDG    # SPX
+TDOC   # IWM
+TDS    # IWM
+TDW    # IWM
+TDY    # SPX
+TECH   # SPX
+TEL    # SPX
+TENB   # IWM
+TER    # SPX,QQQ
+TEX    # IWM
+TFC    # SPX
+TFIN   # IWM
+TGT    # SPX
+TGTX   # IWM
+TH     # IWM
+THRM   # IWM
+TIC    # IWM
+TILE   # IWM
+TJX    # SPX
+TKO    # SPX
+TMDX   # IWM
+TMO    # SPX
+TMUS   # SPX,QQQ
+TNC    # IWM
+TNDM   # IWM
+TNET   # IWM
+TNGX   # IWM
+TNK    # IWM
+TOWN   # IWM
+TPB    # IWM
+TPC    # IWM
+TPL    # SPX
+TPR    # SPX
+TRAX   # IWM
+TRGP   # SPX
+TRI    # QQQ
+TRIP   # IWM
+TRMB   # SPX
+TRMK   # IWM
+TRN    # IWM
+TRNO   # IWM
+TROW   # SPX
+TRS    # IWM
+TRUP   # IWM
+TRV    # SPX
+TRVI   # IWM
+TSCO   # SPX
+TSLA   # SPX,QQQ
+TSN    # SPX
+TT     # SPX
+TTAN   # IWM
+TTI    # IWM
+TTWO   # SPX,QQQ
+TVTX   # IWM
+TWST   # IWM
+TXG    # IWM
+TXN    # SPX,QQQ
+TXNM   # IWM
+TXT    # SPX
+TYL    # SPX
+TYRA   # IWM
+UAL    # SPX
+UBER   # SPX
+UBSI   # IWM
+UCB    # IWM
+UCTT   # IWM
+UDR    # SPX
+UE     # IWM
+UEC    # IWM
+UFPI   # IWM
+UFPT   # IWM
+UHS    # SPX
+ULCC   # IWM
+ULTA   # SPX
+UMAC   # IWM
+UMBF   # IWM
+UNF    # IWM
+UNFI   # IWM
+UNH    # SPX
+UNIT   # IWM
+UNP    # SPX
+UPBD   # IWM
+UPS    # SPX
+UPST   # IWM
+UPWK   # IWM
+URBN   # IWM
+URGN   # IWM
+URI    # SPX
+USAR   # IWM
+USB    # SPX
+USLM   # IWM
+USPH   # IWM
+UTI    # IWM
+UTZ    # IWM
+UUUU   # IWM
+UVV    # IWM
+V      # SPX
+VAC    # IWM
+VAL    # IWM
+VC     # IWM
+VCEL   # IWM
+VCTR   # IWM
+VCYT   # IWM
+VECO   # IWM
+VEEV   # SPX
+VELO   # IWM
+VERA   # IWM
+VERX   # IWM
+VGNT   # IWM
+VIA    # IWM
+VICI   # SPX
+VIR    # IWM
+VISN   # IWM
+VITL   # IWM
+VLO    # SPX
+VLTO   # SPX
+VLY    # IWM
+VMC    # SPX
+VMRK   # SPX
+VOR    # IWM
+VOYG   # IWM
+VPG    # IWM
+VRDN   # IWM
+VRNS   # IWM
+VRSK   # SPX
+VRSN   # SPX
+VRT    # SPX
+VRTS   # IWM
+VRTX   # SPX,QQQ
+VSAT   # IWM
+VSEC   # IWM
+VSH    # IWM
+VST    # SPX
+VSTM   # IWM
+VSTS   # IWM
+VSXY   # IWM
+VTR    # SPX
+VTRS   # SPX
+VVX    # IWM
+VYX    # IWM
+VZ     # SPX
+WAB    # SPX
+WAFD   # IWM
+WAT    # SPX
+WAY    # IWM
+WBD    # SPX,QQQ
+WD     # IWM
+WDAY   # SPX,QQQ
+WDC    # SPX,QQQ
+WDFC   # IWM
+WEC    # SPX
+WELL   # SPX
+WEN    # IWM
+WERN   # IWM
+WFC    # SPX
+WGO    # IWM
+WGS    # IWM
+WHD    # IWM
+WINA   # IWM
+WK     # IWM
+WKC    # IWM
+WLDN   # IWM
+WLFC   # IWM
+WLTH   # IWM
+WLY    # IWM
+WM     # SPX
+WMB    # SPX
+WMK    # IWM
+WMT    # SPX,QQQ
+WNC    # IWM
+WOLF   # IWM
+WOR    # IWM
+WRB    # SPX
+WRBY   # IWM
+WRLD   # IWM
+WSBC   # IWM
+WSFS   # IWM
+WSM    # SPX
+WST    # SPX
+WT     # IWM
+WTTR   # IWM
+WTW    # SPX
+WWW    # IWM
+WY     # SPX
+WYFI   # IWM
+WYNN   # SPX
+XEL    # SPX,QQQ
+XENE   # IWM
+XERS   # IWM
+XHR    # IWM
+XMTR   # IWM
+XNCR   # IWM
+XOM    # SPX
+XPRO   # IWM
+XRAY   # IWM
+XYL    # SPX
+XYZ    # SPX
+YELP   # IWM
+YOU    # IWM
+YSS    # IWM
+YUM    # SPX
+ZBH    # SPX
+ZBIO   # IWM
+ZBRA   # SPX
+ZD     # IWM
+ZETA   # IWM
+ZGN    # IWM
+ZTS    # SPX
+ZVRA   # IWM
+ZWS    # IWM
+ZYME   # IWM

@@ -10,7 +10,7 @@ Date: 2026
 import json
 import os
 from datetime import datetime, timedelta
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Tuple
 import logging
 
 import anthropic
@@ -103,6 +103,28 @@ class MomentumAnalyzer:
     # setup. Beyond this the stock is extended and chasing it is the "late
     # entry" the strategy warns about. Tune with your paper-trading results.
     MAX_EXTENSION = 0.04
+
+    # Tradability floor, matched to scripts/build_universe.py. Only bites once
+    # the universe includes the Russell 2000: every S&P 500 name clears this by
+    # two orders of magnitude, while a third of IWM does not clear it at all.
+    MIN_PRICE = 5.0
+    MIN_DOLLAR_VOLUME = 10_000_000
+    LIQUIDITY_WINDOW = 60      # ~3 months, same basis as the build-time screen
+
+    def liquid_enough(self, data: pd.DataFrame) -> bool:
+        """Can a position be entered and, more importantly, stopped out of?
+
+        Median rather than mean dollar volume: one earnings-day print on an
+        otherwise untraded small cap would carry a mean over the floor.
+        """
+        try:
+            window = data.tail(self.LIQUIDITY_WINDOW)
+            if float(data['Close'].iloc[-1]) < self.MIN_PRICE:
+                return False
+            dollar_volume = (window['Close'] * window['Volume']).median()
+            return float(dollar_volume) >= self.MIN_DOLLAR_VOLUME
+        except (KeyError, IndexError, ValueError, TypeError):
+            return False  # malformed frame: treat as untradable, not as a pass
 
     def _usable(self, data: pd.DataFrame, symbol: str) -> pd.DataFrame:
         """Normalise a raw yfinance frame, or return None if it can't be scored."""
@@ -538,12 +560,24 @@ Format: Professional but conversational, suitable for a trader's quick decision.
             'extension_pct': extension * 100
         }
 
-    def scan_stocks(self, symbols: List[str], top_n: int = 20):
+    def scan_stocks(self, symbols: List[str], membership: Dict[str, List[str]] = None,
+                    per_index: int = 8):
         """Scan for momentum opportunities. Returns (opportunities, market_regime).
+
+        `membership` maps symbol -> index tags (SPX/QQQ/IWM). Publishing takes
+        the best `per_index` from each index independently rather than the best
+        N overall: the Russell 2000 contributes two thirds of the universe, and
+        a single global ranking would hand it most of the list on volume of
+        candidates alone. Quotas keep each index's own best setups visible and
+        make the three groups comparable to each other over time.
+
+        The union is deduplicated, so a name in both the S&P 500 and the
+        Nasdaq-100 takes one row and carries both tags.
 
         The regime is returned explicitly rather than read back off the first
         opportunity - the old approach reported UNKNOWN whenever the list was
         empty, which is precisely when the regime matters most."""
+        membership = membership or {}
 
         logger.info("Checking market regime...")
         spy_data = self.fetch_stock_data("SPY")
@@ -566,6 +600,14 @@ Format: Professional but conversational, suitable for a trader's quick decision.
         for symbol in symbols:
             data = frames.get(symbol)
             if data is None:
+                continue
+
+            # Liquidity backstop. build_universe.py already screens on this,
+            # but it screens on the day it runs and universe.txt then sits for
+            # weeks - a name can thin out or gap below $5 in between. Checked
+            # here because the data is already in hand, and because a signal
+            # that cannot be exited on its stop is worse than no signal.
+            if not self.liquid_enough(data):
                 continue
 
             # Calculate indicators
@@ -623,6 +665,10 @@ Format: Professional but conversational, suitable for a trader's quick decision.
                 'structure': ("A" if structure['room_clear'] and structure['own_trend_up']
                               else "B" if structure['room_clear'] or structure['own_trend_up']
                               else "C"),
+                # Index membership, published so the dashboard can group and
+                # filter by it. A list, not a string: names in both the S&P 500
+                # and the Nasdaq-100 belong to both.
+                'indexes': membership.get(symbol, [UNTAGGED]),
                 'scores': scores,           # kept for the reasoning pass, stripped below
                 'market_regime': market_regime
             }
@@ -632,7 +678,9 @@ Format: Professional but conversational, suitable for a trader's quick decision.
         # Rank first, truncate, and only then pay for reasoning. Writing it
         # inside the scan loop bills a Claude call for every candidate over 60
         # even though most never get published - on a 165-symbol universe that
-        # was 90 calls to publish 20.
+        # was 90 calls to publish 20. The bill is set by the published row
+        # count, so widening the universe costs scan time, not API spend.
+        #
         # Rank by the two VALIDATED structure filters first, momentum score only
         # as a tiebreak. The six-dimension score did not order outcomes in the
         # review (score 100 signals averaged -7.8% over 20 days), while clear
@@ -640,11 +688,33 @@ Format: Professional but conversational, suitable for a trader's quick decision.
         # the top; nothing is dropped, so results/ still records what B and C
         # would have done.
         tier_rank = {"A": 0, "B": 1, "C": 2}
-        opportunities = sorted(
-            opportunities,
-            key=lambda x: (tier_rank[x['structure']], -x['score'])
-        )[:top_n]
-        logger.info(f"{len(opportunities)} opportunities ranked; generating reasoning for each")
+
+        def rank_key(o):
+            return (tier_rank[o['structure']], -o['score'])
+
+        logger.info(f"{len(opportunities)} candidates cleared the filter")
+
+        # Quota per index, then dedupe. Insertion order of `picked` preserves
+        # the INDEX_TAGS order for the groups themselves while each group is
+        # internally ranked, so the final list reads SPX best-first, then the
+        # QQQ names SPX did not already claim, then IWM.
+        buckets = {t: [] for t in INDEX_TAGS + [UNTAGGED]}
+        for o in opportunities:
+            for tag in o['indexes']:
+                if tag in buckets:
+                    buckets[tag].append(o)
+
+        picked, selected = {}, []
+        for tag in INDEX_TAGS + [UNTAGGED]:
+            group = sorted(buckets[tag], key=rank_key)[:per_index]
+            logger.info(f"  {tag}: {len(buckets[tag])} candidates -> {len(group)} published")
+            for o in group:
+                if o['symbol'] not in picked:
+                    picked[o['symbol']] = o
+                    selected.append(o)
+
+        opportunities = selected
+        logger.info(f"{len(opportunities)} opportunities published; generating reasoning for each")
 
         for i, opp in enumerate(opportunities, 1):
             opp['rank'] = i
@@ -710,35 +780,66 @@ DEFAULT_UNIVERSE = [
 
 UNIVERSE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "universe.txt")
 
+# Index buckets, in display order. A symbol can belong to more than one - the
+# whole of QQQ except a handful of names is also in the S&P 500 - so these are
+# tags, not a partition, and the per-bucket quota in scan_stocks() is applied
+# to each tag independently.
+INDEX_TAGS = ["SPX", "QQQ", "IWM"]
+UNTAGGED = "OTHER"   # universe.txt predating the tags, or a hand-added ticker
 
-def load_universe() -> List[str]:
-    """Symbols to scan: universe.txt if it exists, else the built-in list.
+# Published rows per index. Three indexes at 8, minus the S&P 500 / Nasdaq-100
+# overlap, lands around 20 - the same list length as before the universe grew,
+# so the reasoning bill does not move. Raise it to see deeper into each group.
+PER_INDEX = 8
 
-    universe.txt is one ticker per line; blank lines and #-comments ignored.
-    Batched fetching means a few hundred symbols is a normal-sized scan.
+
+def load_universe() -> Tuple[List[str], Dict[str, List[str]]]:
+    """Symbols to scan plus their index membership.
+
+    Returns (symbols, membership) where membership maps each symbol to the
+    index tags it carries.
+
+    universe.txt is one ticker per line, with the membership in a trailing
+    comment that older loaders simply strip:
+
+        AAPL    # SPX,QQQ
+        TWST    # IWM
+
+    So the file stays readable by anything that only wants the ticker list,
+    and a file written before the tags existed still loads - those symbols
+    just come back tagged OTHER.
     """
     if not os.path.exists(UNIVERSE_FILE):
         logger.info(f"No universe.txt - using built-in list of {len(DEFAULT_UNIVERSE)} symbols")
-        return list(DEFAULT_UNIVERSE)
+        return list(DEFAULT_UNIVERSE), {s: [UNTAGGED] for s in DEFAULT_UNIVERSE}
 
-    symbols, seen = [], set()
+    symbols, membership = [], {}
     with open(UNIVERSE_FILE) as f:
         for line in f:
-            sym = line.split("#", 1)[0].strip().upper()
-            if sym and sym not in seen:
-                seen.add(sym)
-                symbols.append(sym)
+            ticker, _, comment = line.partition("#")
+            sym = ticker.strip().upper()
+            if not sym or sym in membership:
+                continue
+            tags = [t.strip().upper() for t in comment.split(",") if t.strip()]
+            tags = [t for t in tags if t in INDEX_TAGS]
+            symbols.append(sym)
+            membership[sym] = tags or [UNTAGGED]
 
     if not symbols:
         logger.warning("universe.txt is empty - falling back to built-in list")
-        return list(DEFAULT_UNIVERSE)
+        return list(DEFAULT_UNIVERSE), {s: [UNTAGGED] for s in DEFAULT_UNIVERSE}
 
-    logger.info(f"Loaded {len(symbols)} symbols from universe.txt")
-    return symbols
+    counts = {t: sum(1 for tags in membership.values() if t in tags)
+              for t in INDEX_TAGS + [UNTAGGED]}
+    logger.info(
+        f"Loaded {len(symbols)} symbols from universe.txt  ("
+        + ", ".join(f"{t} {n}" for t, n in counts.items() if n) + ")"
+    )
+    return symbols, membership
 
 
 def publish_to_dashboard(opportunities: List[Dict], market_regime: str,
-                         universe_size: int) -> None:
+                         membership: Dict[str, List[str]]) -> None:
     """Write this agent's results where the dashboard can read them.
 
     Each agent owns exactly one file, docs/data/<AGENT_ID>.json, and registers
@@ -748,15 +849,31 @@ def publish_to_dashboard(opportunities: List[Dict], market_regime: str,
     """
     os.makedirs(DOCS_DATA_DIR, exist_ok=True)
 
+    universe_counts = {t: sum(1 for tags in membership.values() if t in tags)
+                       for t in INDEX_TAGS + [UNTAGGED]}
+    universe_label = (
+        f"{len(membership)} symbols  ("
+        + " / ".join(f"{t} {n}" for t, n in universe_counts.items() if n) + ")"
+    )
+
     payload = {
         "agent": AGENT,
         "scan_date": datetime.now().isoformat(),
         "dimensions": DIMENSIONS,
+        # Groups the dashboard offers as filters. Published rather than
+        # hardcoded in the page, so changing the universe's index mix here is
+        # the only edit needed.
+        "groups": {
+            "key": "indexes",
+            "label": "Index",
+            "values": [t for t in INDEX_TAGS + [UNTAGGED]
+                       if any(t in o.get("indexes", []) for o in opportunities)],
+        },
         "context": [
             {"label": "Market Regime", "value": market_regime},
             {"label": "Gate", "value": ("OPEN" if market_regime in MomentumAnalyzer.GATE_OPEN_REGIMES
                                         else "CLOSED - no signals in a downtrend")},
-            {"label": "Universe", "value": f"{universe_size} symbols"},
+            {"label": "Universe", "value": universe_label},
             {"label": "Passed Filter", "value": str(len(opportunities))},
             {"label": "Model", "value": CLAUDE_MODEL},
         ],
@@ -799,11 +916,13 @@ def main():
     # Initialize analyzer
     analyzer = MomentumAnalyzer()
 
-    test_symbols = load_universe()
+    test_symbols, membership = load_universe()
 
     # Run scan
     logger.info(f"Scanning {len(test_symbols)} stocks...")
-    opportunities, market_regime = analyzer.scan_stocks(test_symbols, top_n=20)
+    opportunities, market_regime = analyzer.scan_stocks(
+        test_symbols, membership, per_index=PER_INDEX
+    )
 
     # Format and print results
     results = analyzer.format_results(opportunities, market_regime)
@@ -820,7 +939,7 @@ def main():
 
     logger.info(f"Results saved to {output_file}")
 
-    publish_to_dashboard(opportunities, market_regime, len(test_symbols))
+    publish_to_dashboard(opportunities, market_regime, membership)
 
     return opportunities
 

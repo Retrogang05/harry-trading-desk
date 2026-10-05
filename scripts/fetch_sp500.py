@@ -1,14 +1,24 @@
 #!/usr/bin/env python3
-"""Regenerate universe.txt from the live SPY holdings file.
-
-Source of truth is State Street's daily holdings export for the SPDR S&P 500
-ETF Trust - the actual fund, not a scraped index page. Run this occasionally
-(the index rebalances quarterly, plus ad-hoc adds/removes):
+"""Download State Street's daily SPY holdings export into data/holdings/.
 
     python scripts/fetch_sp500.py
 
+The S&P 500 is only one of the three indexes in the scan universe now, so this
+no longer writes universe.txt - it refreshes the SPY input and leaves the
+building to scripts/build_universe.py, which combines all three and applies
+the liquidity screen. The full refresh is:
+
+    python scripts/fetch_sp500.py      # SPY, automated
+    # download QQQ and IWM by hand into data/holdings/ (see build_universe.py)
+    python scripts/build_universe.py
+
+Only Invesco and BlackRock are manual: neither serves its holdings file at a
+stable URL that survives without a browser session, while SSGA's does.
+
 Uses only the standard library: an .xlsx is a zip of XML, so there is no need
 to add openpyxl to requirements.txt for a file we parse a few times a year.
+The parse here is a sanity check on the download, not the thing that produces
+the universe.
 """
 
 import os
@@ -27,7 +37,8 @@ SPY_HOLDINGS_URL = (
 )
 NS = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-UNIVERSE = os.path.join(ROOT, "universe.txt")
+HOLDINGS = os.path.join(ROOT, "data", "holdings")
+SPY_FILE = os.path.join(HOLDINGS, "spy.xlsx")
 
 
 def ssl_context():
@@ -136,35 +147,25 @@ def parse(blob):
 
 def main():
     print(f"Downloading {SPY_HOLDINGS_URL}")
-    symbols, as_of, dropped = parse(download())
+    blob = download()
 
+    # Parse before writing. A 403 page or a truncated transfer is still bytes;
+    # only a file that yields ~500 tickers is worth putting on disk, since
+    # build_universe.py would otherwise fail on a file that looks downloaded.
+    symbols, as_of, dropped = parse(blob)
     if len(symbols) < 400:
         sys.exit(f"ERROR: only parsed {len(symbols)} tickers - refusing to overwrite "
-                 f"universe.txt with what looks like a broken download")
+                 f"{os.path.basename(SPY_FILE)} with what looks like a broken download")
 
-    header = (
-        "# S&P 500 scan universe for Monu.\n"
-        "#\n"
-        "# Source : SPDR S&P 500 ETF Trust (SPY) daily holdings, State Street\n"
-        f"#          {SPY_HOLDINGS_URL}\n"
-        f"# {as_of or 'As of : unknown'}   (holdings date from the file, not the download date)\n"
-        f"# Count  : {len(symbols)} tickers  (>500 because of dual share classes:"
-        " GOOGL/GOOG, FOX/FOXA, NWS/NWSA)\n"
-        "#\n"
-        "# Class shares use Yahoo notation: BRK-B, BF-B  (SSGA writes BRK.B, BF.B)\n"
-        "# Cash and contra rows from the ETF file are excluded.\n"
-        "#\n"
-        "# Regenerate with: python scripts/fetch_sp500.py\n"
-        "#\n"
-        "# One ticker per line. Blank lines and # comments are ignored.\n"
-    )
-    with open(UNIVERSE, "w") as f:
-        f.write(header + "\n".join(symbols) + "\n")
+    os.makedirs(HOLDINGS, exist_ok=True)
+    with open(SPY_FILE, "wb") as f:
+        f.write(blob)
 
-    print(f"Wrote {UNIVERSE}")
-    print(f"  {len(symbols)} tickers  ({as_of})")
+    print(f"Wrote {SPY_FILE}")
+    print(f"  {len(symbols)} tickers  ({as_of or 'date unknown'})")
     print(f"  dropped {len(dropped)} non-equity rows: {[d[0] for d in dropped][:5]}")
-    print(f"  class shares: {[s for s in symbols if '-' in s]}")
+    print("\nNext: refresh data/holdings/qqq.csv and iwm.csv by hand, then")
+    print("      python scripts/build_universe.py")
 
 
 if __name__ == "__main__":

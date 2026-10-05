@@ -27,7 +27,7 @@ import logging
 import os
 import sys
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
 from anthropic import Anthropic
@@ -128,26 +128,58 @@ RSI_DIMENSIONS = [
 ]
 
 
-def load_universe() -> List[str]:
+# Index tags Opy will trade, out of the SPX/QQQ/IWM mix in universe.txt.
+#
+# Deliberately NOT the whole file. Monu's universe includes the Russell 2000,
+# which is right for an equity momentum scan, but most of those names either
+# have no listed options or quote them at spreads that eat the entire credit:
+# a condor collecting $0.80 is not a trade when each of its four legs crosses
+# a $0.15 spread. Index membership is a poor proxy for options liquidity, but
+# it is a free one, and the real per-contract liquidity checks downstream
+# (MAX_SPREAD_PCT, MIN_OPEN_INTEREST) are expensive to run on 1,500 names.
+#
+# Add "IWM" here if you want to pay for that scan and let the spread filters
+# do the work.
+TRADED_INDEXES = ("SPX", "QQQ")
+
+
+def load_universe() -> Tuple[List[str], Dict[str, List[str]]]:
     """Reuses Monu's universe.txt rather than fetching S&P 500 constituents a
-    second time (core.get_universe() would do its own SSGA/Wikipedia fetch).
-    Keeps the two agents scanning the identical list, and halves the SSGA
-    dependency surface. Falls back to core.get_universe() if the file is
-    missing, so Opy still works if ever run standalone.
+    second time (core.get_universe() would do its own SSGA/Wikipedia fetch),
+    narrowed to the large-cap tags in TRADED_INDEXES.
+
+    Returns (symbols, membership), where membership maps each symbol to the
+    index tags it carries, so published rows can be filtered by index on the
+    dashboard exactly as Monu's are.
+
+    Each line is "TICKER  # SPX,QQQ" - the index membership is in the comment.
+    A file written before the tags existed has no comments, in which case
+    every symbol loads untagged: that is the old whole-file behaviour, which
+    was an S&P 500 list anyway.
     """
     if not os.path.exists(UNIVERSE_FILE):
         logger.warning("universe.txt not found - falling back to core.get_universe()")
-        return core.get_universe(cache_dir=os.path.join(REPO_ROOT, "opy", "data"))
+        return core.get_universe(cache_dir=os.path.join(REPO_ROOT, "opy", "data")), {}
 
-    symbols, seen = [], set()
+    symbols, membership, skipped = [], {}, 0
     with open(UNIVERSE_FILE) as f:
         for line in f:
-            sym = line.split("#", 1)[0].strip().upper()
-            if sym and sym not in seen:
-                seen.add(sym)
-                symbols.append(sym)
-    logger.info(f"Loaded {len(symbols)} symbols from universe.txt (shared with Monu)")
-    return symbols
+            ticker, _, comment = line.partition("#")
+            sym = ticker.strip().upper()
+            if not sym or sym in membership:
+                continue
+            tags = [t.strip().upper() for t in comment.split(",") if t.strip()]
+            if tags and not any(t in TRADED_INDEXES for t in tags):
+                skipped += 1
+                continue
+            symbols.append(sym)
+            membership[sym] = [t for t in tags if t in TRADED_INDEXES]
+
+    logger.info(
+        f"Loaded {len(symbols)} symbols from universe.txt "
+        f"({'/'.join(TRADED_INDEXES)}; skipped {skipped} outside those indexes)"
+    )
+    return symbols, membership
 
 
 # ── Reasoning -----------------------------------------------------------------
@@ -547,6 +579,12 @@ def publish_to_dashboard(opportunities: List[Dict], context: List[Dict]) -> None
         "agent": AGENT,
         "scan_date": datetime.now().isoformat(),
         "context": context,
+        "groups": {
+            "key": "indexes",
+            "label": "Index",
+            "values": [t for t in TRADED_INDEXES
+                       if any(t in o.get("indexes", []) for o in opportunities)],
+        },
         "opportunities": sorted(opportunities, key=lambda o: o["rank"]),
     }
 
@@ -572,7 +610,7 @@ def main():
     logger.info("Starting Opy - options screener agent...")
     reasoner = Reasoner()
 
-    universe = load_universe()
+    universe, membership = load_universe()
     logger.info(f"Computing price/trend metrics for {len(universe)} symbols...")
     metrics = core.compute_price_metrics(universe)
     logger.info(f"{len(metrics)} symbols have sufficient price history")
@@ -585,6 +623,16 @@ def main():
     opportunities += scan_spreads(metrics, reasoner)
     opportunities += scan_leaps(metrics, reasoner)
     opportunities += scan_rsi(metrics, reasoner)
+
+    # Index membership, so the dashboard's index filter applies to Opy's rows
+    # too. The ETFs Opy adds on top of universe.txt (SPY, QQQ, IWM, the sector
+    # funds) are not index constituents, so they stay untagged rather than
+    # being filed under the index they track - IWM the ETF is not an IWM
+    # holding, and pretending otherwise would misread as a small-cap signal.
+    for o in opportunities:
+        tags = membership.get(o["symbol"])
+        if tags:
+            o["indexes"] = tags
 
     by_strategy = {}
     for o in opportunities:

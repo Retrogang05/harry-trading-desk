@@ -167,13 +167,16 @@ Key risk: If volume dries up, momentum could reverse quickly.
 
 ```
 harry-trading-desk/
-├── agent.py                 # Monu — momentum screener (S&P 500)
+├── agent.py                 # Monu — momentum screener (SPX + QQQ + IWM)
 ├── opy/                     # Opy — options screener (vendored from Options Screener/)
 │   └── agent.py
 ├── trey/                    # Trey — TQQQ trend gate (one row, three states)
 │   └── agent.py
-├── universe.txt             # 503 S&P 500 tickers, shared by Monu and Opy
-├── scripts/fetch_sp500.py   # regenerates universe.txt from SPY holdings
+├── universe.txt             # 1,521 tickers tagged by index, shared by Monu and Opy
+├── data/holdings/           # the three ETF holdings exports universe.txt is built from
+│   ├── spy.xlsx  qqq.csv  iwm.csv
+├── scripts/build_universe.py # rebuilds universe.txt from data/holdings/
+├── scripts/fetch_sp500.py   # downloads a fresh spy.xlsx (QQQ and IWM are manual)
 ├── requirements.txt
 ├── .github/workflows/
 │   ├── momentum-scan.yml    # Monu  — 14:00 UTC weekdays (pre-open)
@@ -186,6 +189,62 @@ harry-trading-desk/
 │       ├── MNTM.json  OPY.json  TREY.json
 ├── results/  opy/results/  trey/results/    # dated archives per agent
 ```
+
+---
+
+## 🌐 The scan universe
+
+`universe.txt` is built from three ETF holdings exports — the funds themselves,
+not a scraped index page:
+
+| Tag | Fund | Source | In universe |
+|-----|------|--------|-------------|
+| `SPX` | SPDR S&P 500 ETF Trust (SPY) | State Street | 503 |
+| `QQQ` | Invesco QQQ Trust, Series 1 | Invesco | 98 |
+| `IWM` | iShares Russell 2000 ETF | BlackRock | 1,006 |
+
+**1,521 unique tickers.** The tags overlap — 86 names are in both the S&P 500
+and the Nasdaq-100 — so they are membership labels, not a partition.
+
+The file format keeps the index in a trailing comment, which means anything
+that only wants a ticker list reads it unchanged:
+
+```
+AAPL    # SPX,QQQ
+TWST    # IWM
+```
+
+**Who scans what**
+
+- **Monu** scans all 1,521 and publishes the best **8 per index**, deduplicated
+  — around 20 rows, the same as before the universe grew. Quotas rather than
+  one global ranking, because the Russell 2000 supplies two thirds of the
+  universe and would otherwise take most of the list on candidate count alone.
+- **Opy** scans `SPX` + `QQQ` only (515). Most Russell names either have no
+  listed options or quote spreads that eat the entire credit on a four-leg
+  condor.
+- **Trey** scans nothing — it reads QQQ and trades TQQQ.
+
+**Liquidity**
+
+The Russell 2000 export runs to ~1,950 rows, of which several hundred are cash
+sweeps, index futures and unlisted private positions, and ~960 more are too
+thin to trade. `build_universe.py` prices every candidate and keeps only
+**price ≥ $5 and median 3-month dollar volume ≥ $10M**. Monu re-checks the same
+floor at scan time, because the file goes stale between rebuilds and a signal
+that cannot be exited on its stop is worse than no signal.
+
+**Rebuilding**
+
+```bash
+python scripts/fetch_sp500.py      # downloads a fresh spy.xlsx
+# download QQQ and IWM holdings by hand into data/holdings/
+python scripts/build_universe.py   # ~3 min, mostly the pricing pass
+```
+
+Only SSGA serves a holdings file at a URL that works without a browser session,
+so QQQ and IWM are manual. The index rebalances quarterly plus ad-hoc changes,
+so quarterly is a reasonable cadence.
 
 ---
 
@@ -317,12 +376,20 @@ into the new agent and change the `AGENT` and `DIMENSIONS` constants at the top.
   ],
 
   // Free-form key/value pairs shown in the agent header.
-  "context": [ { "label": "Universe", "value": "503 symbols" } ],
+  "context": [ { "label": "Universe", "value": "1521 symbols" } ],
+
+  // Optional. Turns a per-opportunity field into filter chips above the grid
+  // and a column in it. `key` names the field, `values` is the display order.
+  // Omit the block and the chips never appear; the field may be a string or
+  // an array, since membership can be many-to-one (a name in both the S&P 500
+  // and the Nasdaq-100 carries both tags and matches either chip).
+  "groups": { "key": "indexes", "label": "Index", "values": ["SPX", "QQQ", "IWM"] },
 
   "opportunities": [
     {
       "rank": 1, "symbol": "ABC", "price": 88.10, "score": 77,
       "breakdown": { "fcf_yield": 26 },   // keys match dimensions[].key
+      "indexes": ["SPX", "QQQ"],          // the field groups.key points at
       "entry": 88.10, "stop_loss": 79.29, "take_profit": 101.32,
       "risk_reward_ratio": 1.5,
       "setup_type": "PULLBACK", "extension_pct": -1.2,

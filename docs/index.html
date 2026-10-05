@@ -74,6 +74,24 @@
   .tab .ct { color: var(--faint); margin-left: 7px; font-family: var(--mono); font-size: 11px; }
   .tab[aria-pressed="true"] .ct { color: var(--dim); }
 
+  /* ── group chips (index membership) ── */
+  .groups { display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+            padding: 8px 18px; border-bottom: 1px solid var(--bd); background: var(--bg); }
+  .groups .gl { color: var(--faint); font-size: 10.5px; letter-spacing: .09em;
+                text-transform: uppercase; margin-right: 4px; }
+  .chip {
+    font: inherit; font-size: 11.5px; cursor: pointer; white-space: nowrap;
+    background: none; border: 1px solid var(--bd); border-radius: 999px;
+    color: var(--dim); padding: 3px 11px;
+  }
+  .chip:hover { color: var(--label); border-color: var(--bd-strong, var(--bd)); }
+  .chip[aria-pressed="true"] { color: var(--bg); background: var(--text); border-color: var(--text); }
+  .chip .ct { font-family: var(--mono); font-size: 10.5px; margin-left: 6px; opacity: .65; }
+  /* Index tag shown inside a grid row. */
+  .ix { font-family: var(--mono); font-size: 10px; letter-spacing: .04em;
+        color: var(--faint); border: 1px solid var(--bd); border-radius: 3px;
+        padding: 1px 4px; margin-right: 3px; }
+
   /* ── tape ── */
   .tape { border-bottom: 1px solid var(--bd); overflow: hidden; height: 30px; background: var(--bg); }
   .tape-tr { display: flex; gap: 26px; align-items: center; height: 100%; white-space: nowrap;
@@ -213,6 +231,9 @@
 </div>
 
 <nav class="tabs" id="tabs"></nav>
+<!-- Index membership filter. Hidden unless a visible agent publishes groups,
+     so an agent that does not classify its universe costs the page nothing. -->
+<div class="groups" id="groups" hidden></div>
 <div class="tape" id="tape" hidden><div class="tape-tr" id="tapeTrack"></div></div>
 
 <div class="work" id="work" hidden>
@@ -247,7 +268,7 @@
 
   var DATA = "data/";
   var $ = function (id) { return document.getElementById(id); };
-  var state = { feeds: [], rows: [], active: "all", selected: null, query: "" };
+  var state = { feeds: [], rows: [], active: "all", selected: null, query: "", group: "all" };
 
   function el(t, c, x) { var n = document.createElement(t); if (c) n.className = c; if (x != null) n.textContent = x; return n; }
 
@@ -290,10 +311,42 @@
     return rows;
   }
 
+  // The group a row belongs to is whatever its agent's `groups.key` points at
+  // (Monu: "indexes" -> ["SPX","QQQ"]). Returned as an array even when the
+  // agent publishes a single string, because membership is genuinely many-to-
+  // one: the same name can sit in the S&P 500 and the Nasdaq-100.
+  function groupsOf(r) {
+    var key = (r.feed.groups || {}).key;
+    if (!key) return [];
+    var v = r.o[key];
+    if (v == null) return [];
+    return Array.isArray(v) ? v : [v];
+  }
+
+  // Every group value currently on the desk, in the order its agent declared
+  // them. Agents contribute independently, so the chips on a single-agent tab
+  // show only what that agent publishes - Monu offers all three indexes, Opy
+  // two (it does not screen the Russell 2000), Trey one. An agent with no
+  // `groups` block contributes nothing and the chip row hides entirely.
+  function groupValues() {
+    var seen = {}, out = [];
+    state.rows.forEach(function (r) {
+      if (state.active !== "all" && r.agent.id !== state.active) return;
+      var declared = (r.feed.groups || {}).values || groupsOf(r);
+      declared.forEach(function (g) { if (!seen[g]) { seen[g] = 1; out.push(g); } });
+    });
+    return out;
+  }
+
   function visibleRows() {
     return state.rows.filter(function (r) {
       if (state.active !== "all" && r.agent.id !== state.active) return false;
       if (state.query && r.o.symbol.toUpperCase().indexOf(state.query) === -1) return false;
+      // Picking an index means "show me what is in it". A row carrying no
+      // membership at all is not in it, so it is hidden too - the alternative
+      // (pass untagged rows through every filter) makes the chip counts read
+      // as index sizes when they are not, which is worse than a short list.
+      if (state.group !== "all" && groupsOf(r).indexOf(state.group) === -1) return false;
       return true;
     });
   }
@@ -327,6 +380,49 @@
     state.feeds.forEach(function (f) {
       nav.appendChild(tab(f.agent.id, f.agent.name || f.agent.id, (f.opportunities || []).length));
     });
+  }
+
+  function renderGroups() {
+    var bar = $("groups"), values = groupValues();
+    bar.textContent = "";
+    if (!values.length) { bar.hidden = true; return; }
+
+    // Switching agent tabs can strip the active group out of the desk: IWM is
+    // selected, the user clicks Opy, and Opy screens no Russell names. Fall
+    // back to "all" rather than leaving a filter active that nothing on the
+    // current tab can satisfy and no visible chip explains.
+    if (state.group !== "all" && values.indexOf(state.group) === -1) state.group = "all";
+
+    // Label comes from the agent so a future agent can group by sector or
+    // market cap with no change here.
+    var label = "Index";
+    state.feeds.some(function (f) {
+      if (f.groups && f.groups.label) { label = f.groups.label; return true; }
+      return false;
+    });
+    bar.appendChild(el("span", "gl", label));
+
+    function chip(value, text) {
+      var b = el("button", "chip"); b.type = "button";
+      b.setAttribute("aria-pressed", String(state.group === value));
+      b.appendChild(document.createTextNode(text));
+      // Counts are computed against the agent tab and search box, not the
+      // whole desk, so they always add up to what the grid will show.
+      var n = state.rows.filter(function (r) {
+        if (state.active !== "all" && r.agent.id !== state.active) return false;
+        if (state.query && r.o.symbol.toUpperCase().indexOf(state.query) === -1) return false;
+        return value === "all" || groupsOf(r).indexOf(value) !== -1;
+      }).length;
+      b.appendChild(el("span", "ct", String(n)));
+      b.addEventListener("click", function () {
+        state.group = value; state.selected = null; renderAll();
+      });
+      return b;
+    }
+
+    bar.appendChild(chip("all", "All"));
+    values.forEach(function (v) { bar.appendChild(chip(v, v)); });
+    bar.hidden = false;
   }
 
   function renderLeft() {
@@ -405,9 +501,14 @@
     // them); switch to an Opy-only tab and they disappear entirely rather
     // than sitting there as dead dashes.
     var showLevels = rows.some(function (r) { return typeof r.o.entry === "number"; });
+    // Same rule as the levels columns: only show Index when something visible
+    // actually carries one.
+    var showIndex = rows.some(function (r) { return groupsOf(r).length > 0; });
 
     var thead = el("thead"), hr = el("tr");
-    var cols = [["#","l"],["Symbol","l"],["Agent","l"],["Strategy","l"],["Last",""],["Score",""],["Signal",""]];
+    var cols = [["#","l"],["Symbol","l"]];
+    if (showIndex) cols.push(["Index","l"]);
+    cols = cols.concat([["Agent","l"],["Strategy","l"],["Last",""],["Score",""],["Signal",""]]);
     if (showLevels) cols = cols.concat([["Entry",""],["Stop",""],["Target",""],["R:R",""]]);
     cols.push(["Setup",""]);
     cols.forEach(function (h) { hr.appendChild(el("th", h[1], h[0])); });
@@ -435,6 +536,13 @@
 
       tr.appendChild(el("td", "l muted", String(i + 1)));
       var tdS = el("td", "l"); tdS.appendChild(el("span", "sym", o.symbol)); tr.appendChild(tdS);
+
+      if (showIndex) {
+        var tdI = el("td", "l"), gs = groupsOf(r);
+        if (gs.length) gs.forEach(function (g) { tdI.appendChild(el("span", "ix", g)); });
+        else tdI.appendChild(el("span", "muted", "—"));
+        tr.appendChild(tdI);
+      }
 
       var tdA = el("td", "l"), wrap = el("span", "agt");
       var dot = el("span", "dot"); dot.style.background = r.agent.accent || "var(--slate)";
@@ -618,12 +726,16 @@
     $("stReady").textContent = "Ready";
   }
 
-  function renderAll() { renderTabs(); renderLeft(); renderGrid(); renderRight(); renderStatus(); }
+  // renderGroups runs before the grid: it can reset state.group when the
+  // active tab no longer offers it, and the grid must see that reset.
+  function renderAll() {
+    renderTabs(); renderGroups(); renderLeft(); renderGrid(); renderRight(); renderStatus();
+  }
 
   $("cmd").addEventListener("input", function (e) {
     state.query = e.target.value.trim().toUpperCase();
     state.selected = null;
-    renderLeft(); renderGrid(); renderRight();
+    renderGroups(); renderLeft(); renderGrid(); renderRight();
   });
 
   function fail(err) {
