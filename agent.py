@@ -21,7 +21,8 @@ import yfinance as yf
 from anthropic import Anthropic
 import ta  # Technical Analysis library
 
-import sectors  # shared sector-ETF regime, also used by Opy
+import sectors   # shared sector-ETF regime, also used by Opy
+import universe  # shared universe.txt parser, also used by Opy and Goldy
 
 # Which Claude model writes the reasoning. Haiku is the cheapest tier
 # ($1/$5 per Mtok) and is what the cost estimate in the README assumes.
@@ -448,7 +449,7 @@ class MomentumAnalyzer:
             'dimensions': DIMENSIONS,
             'breakdown': {k: bear[k] for k in
                           ('trend_strength', 'volume', 'rsi', 'macd', 'relative', 'breakout')},
-            'indexes': index_tags(membership.get(symbol)),
+            'indexes': membership.get(symbol, [UNTAGGED]),
             'sector': sector,
             'entry': price,
             'stop_loss': stop,
@@ -803,10 +804,12 @@ Format: Professional but conversational, suitable for a trader's quick decision.
         }
 
     def scan_stocks(self, symbols: List[str], membership: Dict[str, List[str]] = None,
-                    per_index: int = 8):
+                    sector_map: Dict[str, str] = None, per_index: int = 8):
         """Scan for momentum opportunities. Returns (opportunities, market_regime).
 
-        `membership` maps symbol -> index tags (SPX/QQQ/IWM). Publishing takes
+        `membership` maps symbol -> index tags (SPX/QQQ/IWM), `sector_map`
+        symbol -> its sector SPDR, which is what the bearish half gates on.
+        Publishing takes
         the best `per_index` from each index independently rather than the best
         N overall: the Russell 2000 contributes two thirds of the universe, and
         a single global ranking would hand it most of the list on volume of
@@ -820,6 +823,7 @@ Format: Professional but conversational, suitable for a trader's quick decision.
         opportunity - the old approach reported UNKNOWN whenever the list was
         empty, which is precisely when the regime matters most."""
         membership = membership or {}
+        sector_map = sector_map or {}
 
         logger.info("Checking market regime...")
         spy_data = self.fetch_stock_data("SPY")
@@ -885,7 +889,7 @@ Format: Professional but conversational, suitable for a trader's quick decision.
             # average. The sector gate is the whole premise: a breakdown in
             # a sector that is still working is far more likely to be noise
             # than one happening alongside its peers.
-            sector = sectors.sector_of(membership.get(symbol, []))
+            sector = sector_map.get(symbol)
             if sector in weak_sectors:
                 bear = self.score_breakdown_dimensions(data, indicators)
                 if bear and bear['total'] >= self.BEARISH_MIN_SCORE:
@@ -950,7 +954,7 @@ Format: Professional but conversational, suitable for a trader's quick decision.
                 # Index membership, published so the dashboard can group and
                 # filter by it. A list, not a string: names in both the S&P 500
                 # and the Nasdaq-100 belong to both.
-                'indexes': index_tags(membership.get(symbol)),
+                'indexes': membership.get(symbol, [UNTAGGED]),
                 'scores': scores,           # kept for the reasoning pass, stripped below
                 'market_regime': market_regime
             }
@@ -1088,14 +1092,15 @@ DEFAULT_UNIVERSE = [
     'ADBE', 'CRM', 'INTC', 'QCOM', 'CSCO', 'CRWD', 'NET', 'DDOG', 'MU', 'ORCL',
 ]
 
-UNIVERSE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "universe.txt")
 
 # Index buckets, in display order. A symbol can belong to more than one - the
 # whole of QQQ except a handful of names is also in the S&P 500 - so these are
 # tags, not a partition, and the per-bucket quota in scan_stocks() is applied
 # to each tag independently.
-INDEX_TAGS = ["SPX", "QQQ", "IWM"]
-UNTAGGED = "OTHER"   # universe.txt predating the tags, or a hand-added ticker
+# Re-exported from universe.py so this file reads naturally; that module is
+# the single definition, shared with Opy and Goldy.
+INDEX_TAGS = universe.INDEX_TAGS
+UNTAGGED = universe.UNTAGGED
 
 # Published rows per index. Three indexes at 8, minus the S&P 500 / Nasdaq-100
 # overlap, lands around 20 - the same list length as before the universe grew,
@@ -1108,69 +1113,25 @@ PER_INDEX = 8
 PER_INDEX_BEARISH = 3
 
 
-def load_universe() -> Tuple[List[str], Dict[str, List[str]]]:
-    """Symbols to scan plus their index membership.
+def load_universe() -> Tuple[List[str], Dict[str, List[str]], Dict[str, str]]:
+    """Symbols to scan, their index membership, and their sector ETF.
 
-    Returns (symbols, membership) where membership maps each symbol to the
-    index tags it carries.
-
-    universe.txt is one ticker per line, with the membership in a trailing
-    comment that older loaders simply strip:
-
-        AAPL    # SPX,QQQ
-        TWST    # IWM
-
-    So the file stays readable by anything that only wants the ticker list,
-    and a file written before the tags existed still loads - those symbols
-    just come back tagged OTHER.
+    Parsing lives in universe.py, shared with Opy and Goldy. Only the
+    fallback is Monu's own: a missing or empty file means the built-in list,
+    so a fresh clone runs in seconds without a universe.
     """
-    if not os.path.exists(UNIVERSE_FILE):
+    try:
+        symbols, membership, sector_map = universe.load()
+    except FileNotFoundError:
         logger.info(f"No universe.txt - using built-in list of {len(DEFAULT_UNIVERSE)} symbols")
-        return list(DEFAULT_UNIVERSE), {s: [UNTAGGED] for s in DEFAULT_UNIVERSE}
-
-    symbols, membership = [], {}
-    with open(UNIVERSE_FILE) as f:
-        for line in f:
-            ticker, _, comment = line.partition("#")
-            sym = ticker.strip().upper()
-            if not sym or sym in membership:
-                continue
-            # Keep the sector tag alongside the index tags. Filtering to
-            # INDEX_TAGS here is what silently disabled the whole bearish half
-            # on its first run: the sector lookup reads membership, so dropping
-            # XLV/XLF/... before it ever got there meant every symbol looked
-            # sectorless and no breakdown could ever be in a weak sector.
-            # index_tags() narrows them again at publish time.
-            tags = [t.strip().upper() for t in comment.split(",") if t.strip()]
-            tags = [t for t in tags if t in INDEX_TAGS or t in sectors.SECTOR_ETFS]
-            symbols.append(sym)
-            membership[sym] = tags or [UNTAGGED]
+        return list(DEFAULT_UNIVERSE), {s: [UNTAGGED] for s in DEFAULT_UNIVERSE}, {}
 
     if not symbols:
         logger.warning("universe.txt is empty - falling back to built-in list")
-        return list(DEFAULT_UNIVERSE), {s: [UNTAGGED] for s in DEFAULT_UNIVERSE}
+        return list(DEFAULT_UNIVERSE), {s: [UNTAGGED] for s in DEFAULT_UNIVERSE}, {}
 
-    counts = {t: sum(1 for tags in membership.values() if t in tags)
-              for t in INDEX_TAGS + [UNTAGGED]}
-    sectored = sum(1 for tags in membership.values()
-                   if any(t in sectors.SECTOR_ETFS for t in tags))
-    logger.info(
-        f"Loaded {len(symbols)} symbols from universe.txt  ("
-        + ", ".join(f"{t} {n}" for t, n in counts.items() if n)
-        + f"; {sectored} with a sector tag)"
-    )
-    return symbols, membership
-
-
-def index_tags(tags: List[str]) -> List[str]:
-    """Just the index tags out of a symbol's universe.txt tags.
-
-    Published as `indexes` so the dashboard's Index column and filter chips
-    never show a sector ETF, which is carried in the same list but belongs to
-    a different axis.
-    """
-    out = [t for t in (tags or ()) if t in INDEX_TAGS]
-    return out or [UNTAGGED]
+    logger.info(universe.describe(symbols, membership, sector_map))
+    return symbols, membership, sector_map
 
 
 def publish_to_dashboard(opportunities: List[Dict], market_regime: str,
@@ -1256,12 +1217,12 @@ def main():
     # Initialize analyzer
     analyzer = MomentumAnalyzer()
 
-    test_symbols, membership = load_universe()
+    test_symbols, membership, sector_map = load_universe()
 
     # Run scan
     logger.info(f"Scanning {len(test_symbols)} stocks...")
     opportunities, market_regime, sector_state = analyzer.scan_stocks(
-        test_symbols, membership, per_index=PER_INDEX
+        test_symbols, membership, sector_map, per_index=PER_INDEX
     )
 
     # Format and print results

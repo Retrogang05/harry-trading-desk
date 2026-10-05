@@ -175,6 +175,7 @@ harry-trading-desk/
 │   └── agent.py
 ├── goldy/                   # Goldy — 20/50 and 50/200 MA cross scanner
 │   └── agent.py
+├── universe.py              # universe.txt parser, shared by all three scanners
 ├── sectors.py               # sector-ETF regime, shared by Monu and Opy
 ├── universe.txt             # 1,521 tickers tagged by index and sector
 ├── data/holdings/           # the ETF holdings exports universe.txt is built from
@@ -266,13 +267,20 @@ not a scraped index page:
 **1,521 unique tickers.** The tags overlap — 86 names are in both the S&P 500
 and the Nasdaq-100 — so they are membership labels, not a partition.
 
-The file format keeps the index in a trailing comment, which means anything
+The file format keeps the tags in a trailing comment, which means anything
 that only wants a ticker list reads it unchanged:
 
 ```
-AAPL    # SPX,QQQ
-TWST    # IWM
+AAPL    # SPX,QQQ,XLK
+TWST    # IWM,XLV
 ```
+
+`universe.py` is the single parser, shared by all three scanners. It returns
+index membership and sector separately rather than as one mixed list — they
+are different axes, and carrying them together is what let a too-early filter
+silently disable Monu's entire bearish half. Each agent keeps only its own
+fallback for a missing file: Monu's built-in list, Opy's live fetch, Goldy's
+hard exit.
 
 **Who scans what**
 

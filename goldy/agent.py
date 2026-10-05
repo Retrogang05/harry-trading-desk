@@ -57,6 +57,10 @@ import yfinance as yf
 import anthropic
 from anthropic import Anthropic
 
+# Repo root, for the universe.txt parser shared with Monu and Opy.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import universe
+
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -75,7 +79,6 @@ AGENT = {
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS_DATA_DIR = os.path.join(REPO_ROOT, "docs", "data")
-UNIVERSE_FILE = os.path.join(REPO_ROOT, "universe.txt")
 
 # ── Parameters ───────────────────────────────────────────────────────────
 
@@ -111,8 +114,10 @@ PER_INDEX = 6
 # overlap, lands near twenty rows, the same length as Monu's list.
 PER_INDEX_APPROACH = 3
 
-INDEX_TAGS = ["SPX", "QQQ", "IWM"]
-UNTAGGED = "OTHER"
+# Re-exported from universe.py so this file reads naturally; that module is
+# the single definition, shared with Monu and Opy.
+INDEX_TAGS = universe.INDEX_TAGS
+UNTAGGED = universe.UNTAGGED
 
 # A pair's two directions get their own names because the bearish 50/200 has
 # one in common usage and the bullish 20/50 does not.
@@ -183,26 +188,19 @@ DIMENSIONS = CROSS_DIMENSIONS   # the feed-level default the dashboard falls bac
 def load_universe() -> Tuple[List[str], Dict[str, List[str]]]:
     """Symbols plus index membership, from the shared universe.txt.
 
-    Same format as Monu reads: "TICKER  # SPX,QQQ", membership in a trailing
-    comment. A file written before the tags existed loads untagged.
+    Parsing lives in universe.py, shared with Monu and Opy. Only the fallback
+    is Goldy's own: unlike the other two it has no built-in list and no live
+    fetch to fall back on, so a missing file is fatal.
+
+    The sector map is discarded - Goldy reports crosses in both directions on
+    their own merits and has nothing to gate on a sector for.
     """
-    if not os.path.exists(UNIVERSE_FILE):
-        sys.exit(f"ERROR: {UNIVERSE_FILE} not found - run scripts/build_universe.py")
+    try:
+        symbols, membership, sector_map = universe.load()
+    except FileNotFoundError:
+        sys.exit(f"ERROR: {universe.UNIVERSE_FILE} not found - run scripts/build_universe.py")
 
-    symbols, membership = [], {}
-    with open(UNIVERSE_FILE) as f:
-        for line in f:
-            ticker, _, comment = line.partition("#")
-            sym = ticker.strip().upper()
-            if not sym or sym in membership:
-                continue
-            tags = [t.strip().upper() for t in comment.split(",") if t.strip()]
-            symbols.append(sym)
-            membership[sym] = [t for t in tags if t in INDEX_TAGS] or [UNTAGGED]
-
-    counts = {t: sum(1 for v in membership.values() if t in v) for t in INDEX_TAGS + [UNTAGGED]}
-    logger.info(f"Loaded {len(symbols)} symbols  ("
-                + ", ".join(f"{t} {n}" for t, n in counts.items() if n) + ")")
+    logger.info(universe.describe(symbols, membership, sector_map))
     return symbols, membership
 
 

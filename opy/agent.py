@@ -40,10 +40,12 @@ import spreads
 import leaps
 import rsi
 
-# Repo root, for the sector module Monu also uses - both agents must read
-# "weak sector" the same way or the two bearish lists disagree about why.
+# Repo root, for the two modules shared with Monu and Goldy: the sector regime
+# (both agents must read "weak sector" the same way or their bearish lists
+# disagree about why) and the universe.txt parser.
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import sectors
+import universe
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -62,7 +64,6 @@ AGENT = {
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS_DATA_DIR = os.path.join(REPO_ROOT, "docs", "data")
-UNIVERSE_FILE = os.path.join(REPO_ROOT, "universe.txt")
 
 # ── Screener parameters -----------------------------------------------------
 # Hardcoded rather than argparse: this runs unattended in CI. Values are
@@ -162,45 +163,18 @@ def load_universe() -> Tuple[List[str], Dict[str, List[str]], Dict[str, str]]:
     second time (core.get_universe() would do its own SSGA/Wikipedia fetch),
     narrowed to the large-cap tags in TRADED_INDEXES.
 
-    Returns (symbols, membership, sector_map): membership maps each symbol to
-    the index tags it carries, so published rows can be filtered by index on
-    the dashboard exactly as Monu's are, and sector_map gives the sector SPDR
-    that holds it, which is what the bearish gating reads.
-
-    Each line is "TICKER  # SPX,QQQ" - the index membership is in the comment.
-    A file written before the tags existed has no comments, in which case
-    every symbol loads untagged: that is the old whole-file behaviour, which
-    was an S&P 500 list anyway.
+    Parsing lives in universe.py, shared with Monu and Goldy. Only the
+    fallback is Opy's own: a missing file means the live fetch, so Opy still
+    works if ever run standalone.
     """
-    if not os.path.exists(UNIVERSE_FILE):
+    try:
+        symbols, membership, sector_map = universe.load(keep=TRADED_INDEXES)
+    except FileNotFoundError:
         logger.warning("universe.txt not found - falling back to core.get_universe()")
         return core.get_universe(cache_dir=os.path.join(REPO_ROOT, "opy", "data")), {}, {}
 
-    symbols, membership, sector_map, skipped = [], {}, {}, 0
-    with open(UNIVERSE_FILE) as f:
-        for line in f:
-            ticker, _, comment = line.partition("#")
-            sym = ticker.strip().upper()
-            if not sym or sym in membership:
-                continue
-            tags = [t.strip().upper() for t in comment.split(",") if t.strip()]
-            if tags and not any(t in TRADED_INDEXES for t in tags):
-                skipped += 1
-                continue
-            symbols.append(sym)
-            # Index tags for the dashboard's chips; the sector tag is kept
-            # separately because it belongs to a different axis and must not
-            # show up in the Index column.
-            membership[sym] = [t for t in tags if t in TRADED_INDEXES]
-            sec = sectors.sector_of(tags)
-            if sec:
-                sector_map[sym] = sec
-
-    logger.info(
-        f"Loaded {len(symbols)} symbols from universe.txt "
-        f"({'/'.join(TRADED_INDEXES)}; skipped {skipped} outside those indexes; "
-        f"{len(sector_map)} with a sector tag)"
-    )
+    logger.info(universe.describe(symbols, membership, sector_map,
+                                  extra=f"   [{'/'.join(TRADED_INDEXES)} only]"))
     return symbols, membership, sector_map
 
 
