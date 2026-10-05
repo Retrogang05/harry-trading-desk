@@ -16,6 +16,7 @@ shared dashboard. **You execute every trade manually** — nothing here places o
 | **Monu** | `MNTM` | Momentum — buys strength on volume-confirmed breakouts | Live |
 | **Opy** | `OPY` | Options — iron condors, credit spreads, LEAPS calls, RSI momentum context | Live |
 | **Trey** | `TREY` | TQQQ trend gate — OUT / HALF / FULL, signalled on QQQ's 200-day SMA | Live |
+| **Goldy** | `GOLD` | MA crosses — 20/50 and 50/200, as a discovery list (see the caveat below) | Live |
 
 The dashboard renders whatever score dimensions an agent declares, so adding an
 agent needs no changes to the page. See **Adding your second and third agents**
@@ -172,6 +173,8 @@ harry-trading-desk/
 │   └── agent.py
 ├── trey/                    # Trey — TQQQ trend gate (one row, three states)
 │   └── agent.py
+├── goldy/                   # Goldy — 20/50 and 50/200 MA cross scanner
+│   └── agent.py
 ├── universe.txt             # 1,521 tickers tagged by index, shared by Monu and Opy
 ├── data/holdings/           # the three ETF holdings exports universe.txt is built from
 │   ├── spy.xlsx  qqq.csv  iwm.csv
@@ -181,13 +184,14 @@ harry-trading-desk/
 ├── .github/workflows/
 │   ├── momentum-scan.yml    # Monu  — 14:00 UTC weekdays (pre-open)
 │   ├── opy-scan.yml         # Opy   — 21:00 UTC weekdays (post-close)
-│   └── trey-scan.yml        # Trey  — 21:00 UTC weekdays (post-close)
+│   ├── trey-scan.yml        # Trey  — 21:15 UTC weekdays (post-close)
+│   └── goldy-scan.yml       # Goldy — 21:30 UTC weekdays (post-close)
 ├── docs/                    # ← the dashboard (GitHub Pages serves this)
 │   ├── index.html
 │   └── data/
 │       ├── agents.json      #   manifest: which agents to render
-│       ├── MNTM.json  OPY.json  TREY.json
-├── results/  opy/results/  trey/results/    # dated archives per agent
+│       ├── MNTM.json  OPY.json  TREY.json  GOLD.json
+├── results/  opy/results/  trey/results/  goldy/results/   # dated archives
 ```
 
 ---
@@ -245,6 +249,58 @@ python scripts/build_universe.py   # ~3 min, mostly the pricing pass
 Only SSGA serves a holdings file at a URL that works without a browser session,
 so QQQ and IWM are manual. The index rebalances quarterly plus ad-hoc changes,
 so quarterly is a reasonable cadence.
+
+---
+
+## ✚ Goldy (GOLD) — the moving-average cross scanner
+
+Finds two upward crosses across the shared universe, inside a **10-session**
+lookback so the list stays actionable:
+
+| Cross | Meaning |
+|---|---|
+| **20/50** | 20-day SMA crosses above the 50-day — a short-term trend change |
+| **50/200** | 50-day crosses above the 200-day — the classic golden cross |
+
+A name that threw both inside the window is flagged `stacked`. Published with
+per-index quotas, same as Monu, so the SPX/QQQ/IWM chips mean the same thing
+on both agents.
+
+### Read this before trading the list
+
+Goldy was backtested before it was built: **13,173 crosses across 580 names,
+2019–2026**, forward returns measured against SPY over 60 sessions.
+
+**Neither cross beats a random day in the same stocks.**
+
+| | n | 60-day alpha | vs random |
+|---|---|---|---|
+| Random days in this universe | 3,480 | **+1.91%** | — |
+| 20/50 cross | 10,276 | +1.62% | t = −0.47 |
+| 50/200 golden cross | 2,897 | +2.28% | t = +0.44 |
+
+Both differences are indistinguishable from zero. The "+1.6% / +2.3% after a
+cross" headline is the universe's own drift, not the signal.
+
+Three more findings worth knowing:
+
+- **Wide separation between the averages is a volatility proxy, not quality.**
+  Split on it alone and the golden cross looks superb (+7.11% widest quartile
+  vs −0.02% narrowest). Hold volatility constant and it collapses, with the
+  sign flipping between buckets. Normalising by ATR doesn't rescue it.
+- **Volatility is what actually orders outcomes**, monotonically: calmest ADR
+  quartile −1.16%, wildest +9.03%. That's why **ADR is on every row** rather
+  than buried in the score. It's a risk measure, not a buy signal.
+- **Two obvious filters actively hurt.** Requiring price above the 200-day:
+  +1.23% vs +2.23% below it. Requiring a rising 200-day: +0.88% vs +2.22%
+  flat-or-falling. A cross is worth more marking a turn than confirming a
+  trend already running — so neither filter is applied, and **Goldy has no
+  regime gate** (unlike Monu, which refuses to publish outside an uptrend).
+
+So Goldy's score describes the cross — how fresh, how decisive, how clean, how
+confirmed — and is **deliberately not a forecast**. Nothing in it was shown to
+rank forward returns. It's a discovery tool: it tells you what just crossed so
+you can look. Monu is the agent whose filters survived validation.
 
 ---
 

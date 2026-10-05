@@ -679,15 +679,24 @@
       risk.appendChild(el("div", "v neg", "$" + usd(Math.abs(o.entry - o.stop_loss))));
       lb.appendChild(risk);
       pl.appendChild(lb); col.appendChild(pl);
-    } else if (o.setup) {
+    }
+
+    if (o.setup) {
       // Declarative setup block: for strategies whose trade numbers aren't
       // entry/stop/target (a credit spread's are credit/max-loss/ROC/POP, a
       // LEAPS call's are premium/breakeven/leverage/%ITM), the agent
       // supplies its own field list rather than the page assuming a shape
-      // that doesn't fit. Monu never sets this - the branch above always
-      // wins for its rows, so this is purely additive.
+      // that doesn't fit.
+      //
+      // Independent of the levels panel above, not an else-branch: Goldy
+      // publishes both, because a cross has ordinary entry/stop/target AND
+      // facts that do not fit them (when it crossed, how often the pair has
+      // flipped, how far price has run past the average). Monu sets no
+      // setup and Opy sets no entry, so both still render exactly one panel.
       var pl2 = el("div", "panel");
-      var lh2 = el("div", "ph", "Setup");
+      // "Setup" unless the agent names the panel itself - Goldy's rows show
+      // a levels panel already called Setup, so its block needs its own name.
+      var lh2 = el("div", "ph", o.setup.title || "Setup");
       if (o.setup.label) lh2.appendChild(el("span", "r", o.setup.label));
       pl2.appendChild(lh2);
       var lb2 = el("div", "pb"), g2 = el("div", "lv4");
