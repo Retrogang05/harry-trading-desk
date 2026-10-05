@@ -9,6 +9,7 @@ Date: 2026
 
 import json
 import os
+import time
 from datetime import datetime, timedelta
 from typing import Dict, List, Any, Tuple
 import logging
@@ -190,6 +191,14 @@ class MomentumAnalyzer:
         logger.info(f"{len(out)}/{len(symbols)} symbols have enough history to score")
         return out
 
+    # Yahoo answers the odd request with an empty frame and recovers within
+    # seconds. This matters more here than anywhere else in the scan: the one
+    # symbol this function fetches is SPY, and SPY decides the regime, so a
+    # blip closes the gate and costs the whole day's scan. Trey hit the same
+    # transient on 2026-09-30 and 10-01 and ran clean on the 2nd.
+    FETCH_ATTEMPTS = 3
+    FETCH_BACKOFF = 5     # seconds, multiplied by the attempt number
+
     def fetch_stock_data(self, symbol: str, days: int = CALENDAR_DAYS) -> pd.DataFrame:
         """Fetch historical stock data for a single symbol (used for the index)."""
         logger.info(f"Fetching data for {symbol}...")
@@ -197,15 +206,28 @@ class MomentumAnalyzer:
             end_date = datetime.now()
             start_date = end_date - timedelta(days=days)
 
-            data = yf.download(
-                symbol,
-                start=start_date,
-                end=end_date,
-                progress=False
-            )
+            data = None
+            for attempt in range(1, self.FETCH_ATTEMPTS + 1):
+                data = yf.download(
+                    symbol,
+                    start=start_date,
+                    end=end_date,
+                    progress=False
+                )
+                if data is not None and len(data):
+                    break
+                if attempt < self.FETCH_ATTEMPTS:
+                    wait = self.FETCH_BACKOFF * attempt
+                    logger.warning(
+                        f"{symbol}: empty response on attempt {attempt}/{self.FETCH_ATTEMPTS}"
+                        f" - retrying in {wait}s"
+                    )
+                    time.sleep(wait)
 
-            if len(data) == 0:
-                logger.warning(f"No data found for {symbol}")
+            if data is None or len(data) == 0:
+                logger.warning(
+                    f"No data found for {symbol} after {self.FETCH_ATTEMPTS} attempts"
+                )
                 return None
 
             # yfinance returns MultiIndex columns ('Close', 'AAPL'). The ta

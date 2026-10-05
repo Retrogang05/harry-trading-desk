@@ -41,6 +41,7 @@ import json
 import logging
 import os
 import sys
+import time
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional
 
@@ -116,19 +117,73 @@ DIMENSIONS = [
 
 # ── Data ─────────────────────────────────────────────────────────────────
 
+# Yahoo occasionally answers a request with an empty frame, or with one ticker
+# of the two, and recovers within seconds - this agent failed on 2026-09-30 and
+# 2026-10-01 and ran clean on the 2nd. Two symbols is a cheap request, so retry
+# rather than send an email about a blip. Deliberately a handful of seconds:
+# the point is to ride out a transient, and a real outage should still fail the
+# run loudly rather than publish a stale position as if it were confirmed.
+FETCH_ATTEMPTS = 3
+FETCH_BACKOFF = 5     # seconds, multiplied by the attempt number
+
+
+def _extract(raw: pd.DataFrame) -> Dict[str, pd.Series]:
+    """Pull both close series out of a yfinance response, or say what is wrong.
+
+    Every failure here raises with the shape of what actually came back. The
+    old version indexed straight into the frame, so a partial response surfaced
+    as a bare KeyError naming only the ticker - which reads like a bad symbol
+    rather than a short answer from Yahoo.
+    """
+    if raw is None or raw.empty:
+        raise RuntimeError("yfinance returned an empty frame")
+
+    out = {}
+    for sym in (SIGNAL, TRADED):
+        if isinstance(raw.columns, pd.MultiIndex):
+            available = set(raw.columns.get_level_values(0))
+            if sym not in available:
+                raise RuntimeError(
+                    f"{sym} missing from the response (got {sorted(available)})")
+            frame = raw[sym]
+        else:
+            # Single-level columns mean yfinance collapsed the request to one
+            # ticker. Which one is not recoverable from the frame, so treat it
+            # as a partial response rather than silently scoring the wrong one.
+            raise RuntimeError(
+                f"expected both {SIGNAL} and {TRADED}, got a single unlabelled frame")
+
+        close = frame["Close"].dropna() if "Close" in frame else pd.Series(dtype=float)
+        if len(close) < GATE_SMA + 5:
+            raise RuntimeError(
+                f"{sym}: only {len(close)} closes, need > {GATE_SMA} for the gate")
+        out[sym] = close
+    return out
+
+
 def fetch() -> Dict[str, pd.Series]:
     end = datetime.now()
     start = end - timedelta(days=CALENDAR_DAYS)
-    raw = yf.download([SIGNAL, TRADED], start=start, end=end, auto_adjust=True,
-                      progress=False, group_by="ticker", threads=True)
-    out = {}
-    for sym in (SIGNAL, TRADED):
-        frame = raw[sym] if isinstance(raw.columns, pd.MultiIndex) else raw
-        close = frame["Close"].dropna()
-        if len(close) < GATE_SMA + 5:
-            raise RuntimeError(f"{sym}: only {len(close)} closes, need > {GATE_SMA} for the gate")
-        out[sym] = close
-    return out
+
+    last = None
+    for attempt in range(1, FETCH_ATTEMPTS + 1):
+        try:
+            raw = yf.download([SIGNAL, TRADED], start=start, end=end, auto_adjust=True,
+                              progress=False, group_by="ticker", threads=True)
+            return _extract(raw)
+        except Exception as e:                      # network, parse, or short data
+            last = e
+            if attempt < FETCH_ATTEMPTS:
+                wait = FETCH_BACKOFF * attempt
+                logger.warning(
+                    f"fetch attempt {attempt}/{FETCH_ATTEMPTS} failed ({type(e).__name__}: {e})"
+                    f" - retrying in {wait}s"
+                )
+                time.sleep(wait)
+
+    raise RuntimeError(
+        f"could not fetch {SIGNAL}/{TRADED} after {FETCH_ATTEMPTS} attempts - {last}"
+    )
 
 
 # ── Signal ───────────────────────────────────────────────────────────────
