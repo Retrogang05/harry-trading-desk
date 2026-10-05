@@ -20,13 +20,24 @@
     --dim:     #63636d;
     --faint:   #3d3d45;
 
-    --green:   #46a758;
-    --green-b: #5ec26e;
-    --red:     #e05561;
+    /* TradingView's own signal colours, read off their design tokens rather
+       than eyeballed: --color-minty-green-500 and --color-ripe-red-500 are the
+       up/down candle colours, with the 400/300 steps as the lighter variants
+       they use for text on dark surfaces (the 500s are slightly too dense to
+       read at 12px). --tv-blue is --color-tv-blue-500. */
+    --green:   #089981;   /* minty-green-500  - TradingView up    */
+    --green-b: #22ab94;   /* minty-green-400  - up, on dark       */
+    --green-t: #42bda8;   /* minty-green-300  - up, small text    */
+    --red:     #f23645;   /* ripe-red-500     - TradingView down  */
+    --red-b:   #f7525f;   /* ripe-red-400     - down, on dark     */
+    --tv-blue: #2962ff;   /* tv-blue-500                          */
     --amber:   #c8974a;
     --slate:   #7b8794;
 
-    --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* TradingView's UI stack, verbatim. Trebuchet MS is what gives their
+       chrome its look on anything without -apple-system; the humanist shapes
+       and tight numerals are the reason the watchlist reads the way it does. */
+    --sans: -apple-system, system-ui, "Trebuchet MS", Roboto, Ubuntu, sans-serif;
     --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   }
 
@@ -273,10 +284,27 @@
   function el(t, c, x) { var n = document.createElement(t); if (c) n.className = c; if (x != null) n.textContent = x; return n; }
 
   // Shared bands so every agent's score reads on the same scale.
-  function band(s) {
-    if (s >= 80) return { t: "Strong", c: "var(--green-b)" };
-    if (s >= 70) return { t: "Buy",    c: "var(--amber)" };
-    if (s >= 60) return { t: "Watch",  c: "var(--slate)" };
+  //
+  // An agent can override the label and its colour with signal_label /
+  // signal_tone, and one MUST when a high score does not mean "buy". Goldy
+  // publishes bearish crosses: those score well on exactly the same axes as
+  // a bullish one - a death cross can be fresh, decisive and clean - so the
+  // score alone would print "Strong" in green on a signal to get out. The
+  // band still sets the strength word; the agent decides the direction.
+  function band(s, o) {
+    var tone = o && o.signal_tone;
+    var c = tone === "neg" ? "var(--red)"
+          : tone === "pos" ? "var(--green-b)"
+          : s >= 80 ? "var(--green-b)" : s >= 70 ? "var(--amber)"
+          : s >= 60 ? "var(--slate)" : "var(--faint)";
+    if (o && o.signal_label) {
+      // Dim the override when the score is weak, so a 40-point bearish row
+      // does not shout as loudly as an 85-point one.
+      return { t: o.signal_label, c: s >= 60 ? c : "var(--faint)" };
+    }
+    if (s >= 80) return { t: "Strong", c: c };
+    if (s >= 70) return { t: "Buy",    c: c };
+    if (s >= 60) return { t: "Watch",  c: c };
     return { t: "Weak", c: "var(--faint)" };
   }
   function usd(n) { return typeof n === "number" ? n.toFixed(2) : "—"; }
@@ -356,7 +384,7 @@
     if (!state.rows.length) { $("tape").hidden = true; return; }
     for (var pass = 0; pass < 2; pass++) {          // duplicated for a seamless -50% loop
       state.rows.forEach(function (r) {
-        var b = band(r.o.score), s = el("span", "tk");
+        var b = band(r.o.score, r.o), s = el("span", "tk");
         s.appendChild(el("span", "s", r.o.symbol));
         s.appendChild(el("span", "p", usd(r.o.price)));
         var v = el("span", "v", String(r.o.score)); v.style.color = b.c;
@@ -527,7 +555,7 @@
     }
 
     rows.forEach(function (r, i) {
-      var o = r.o, b = band(o.score), tr = el("tr");
+      var o = r.o, b = band(o.score, o), tr = el("tr");
       var key = rowKey(o, r.agent.id);
       tr.setAttribute("aria-selected", String(state.selected === key));
       tr.addEventListener("click", function () {
@@ -596,7 +624,7 @@
       col.appendChild(p0); return;
     }
 
-    var o = pick.o, agent = pick.agent, b = band(o.score);
+    var o = pick.o, agent = pick.agent, b = band(o.score, o);
 
     var p = el("div", "panel");
     p.appendChild(el("div", "ph", "Detail"));

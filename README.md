@@ -16,7 +16,7 @@ shared dashboard. **You execute every trade manually** — nothing here places o
 | **Monu** | `MNTM` | Momentum — buys strength on volume-confirmed breakouts | Live |
 | **Opy** | `OPY` | Options — iron condors, credit spreads, LEAPS calls, RSI momentum context | Live |
 | **Trey** | `TREY` | TQQQ trend gate — OUT / HALF / FULL, signalled on QQQ's 200-day SMA | Live |
-| **Goldy** | `GOLD` | MA crosses — 20/50 and 50/200, as a discovery list (see the caveat below) | Live |
+| **Goldy** | `GOLD` | MA crosses — 20/50 and 50/200, both directions, plus crosses about to happen | Live |
 
 The dashboard renders whatever score dimensions an agent declares, so adding an
 agent needs no changes to the page. See **Adding your second and third agents**
@@ -254,17 +254,36 @@ so quarterly is a reasonable cadence.
 
 ## ✚ Goldy (GOLD) — the moving-average cross scanner
 
-Finds two upward crosses across the shared universe, inside a **10-session**
-lookback so the list stays actionable:
+Finds both pairs crossing in **either direction**, inside a **10-session**
+lookback, and also flags crosses that have not happened yet:
 
-| Cross | Meaning |
-|---|---|
-| **20/50** | 20-day SMA crosses above the 50-day — a short-term trend change |
-| **50/200** | 50-day crosses above the 200-day — the classic golden cross |
+| Pair | Bullish | Bearish |
+|---|---|---|
+| **20/50** | 20/50 Cross | 20/50 Breakdown |
+| **50/200** | Golden Cross | Death Cross |
 
-A name that threw both inside the window is flagged `stacked`. Published with
-per-index quotas, same as Monu, so the SPX/QQQ/IWM chips mean the same thing
-on both agents.
+**Approaching crosses.** The lead time is the point: by the time two averages
+actually touch, the move that dragged them together has largely happened. Goldy
+projects the gap forward — `gap = fast − slow`, its average daily change over 5
+sessions, solved for zero — and publishes anything crossing inside 10 sessions
+as `Nearing …`.
+
+Two guards make that useful rather than noisy. The gap must be **between 0.25
+and 2.0 ATR**: wider and the projection is extrapolating across a chasm;
+*narrower and the averages are simply entangled*, running along each other and
+touching repeatedly, which is chop rather than an imminent cross. The first run
+without that floor published 21 rows of exactly that, every one scoring 93–100
+because "crosses in 0.1 days" and "gap of 0.01 ATR" max out both axes together.
+
+**Confirmed and projected get separate quotas** (6 + 3 per index) and separate
+score ceilings — approach axes sum to **75**, not 100. A cross happened; an
+approach might not, so the weaker claim cannot outrank the stronger one on a
+dashboard that sorts everything by score.
+
+**Long levels are published only for confirmed bullish crosses.** A death cross
+with an entry and a target under it reads as a buy, and an approaching cross
+has not happened — any entry quoted for it is a guess at a price that may never
+trade. Both still publish full cross detail, which is the actionable part.
 
 ### Read this before trading the list
 

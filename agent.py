@@ -112,6 +112,32 @@ class MomentumAnalyzer:
     MIN_DOLLAR_VOLUME = 10_000_000
     LIQUIDITY_WINDOW = 60      # ~3 months, same basis as the build-time screen
 
+    # A single session cannot legitimately move this far. Beyond it the series
+    # has an unadjusted corporate action in it - a split, a spin-off, a reverse
+    # split - and every average spanning the gap is arithmetic on two different
+    # securities. Found via Goldy: CTVA came back with 2026-09-30 at $77.65 and
+    # 2026-10-01 at $14.44, an unadjusted spin-off, which makes its MA50, MA200,
+    # ATR and 52-week high all meaningless - and Monu scores on every one of
+    # them. Real stocks do gap 40% on news, but nothing here can say anything
+    # useful about one that has, so skipping is right either way.
+    MAX_SESSION_MOVE = 0.40
+
+    def continuous(self, data: pd.DataFrame) -> bool:
+        """Reject a price series with an unadjusted corporate action in it.
+
+        Checked across the whole MIN_ROWS window the indicators are computed
+        over, not just recent bars: a gap 100 sessions back still poisons a
+        200-day mean.
+        """
+        try:
+            close = data['Close'].tail(self.MIN_ROWS + 1)
+            if len(close) < 2:
+                return False
+            step = (close / close.shift(1)).dropna()
+            return bool(((step - 1).abs() < self.MAX_SESSION_MOVE).all())
+        except (KeyError, IndexError, ValueError, TypeError):
+            return False
+
     def liquid_enough(self, data: pd.DataFrame) -> bool:
         """Can a position be entered and, more importantly, stopped out of?
 
@@ -640,6 +666,12 @@ Format: Professional but conversational, suitable for a trader's quick decision.
             # here because the data is already in hand, and because a signal
             # that cannot be exited on its stop is worse than no signal.
             if not self.liquid_enough(data):
+                continue
+
+            # Unadjusted split or spin-off: every indicator below would be
+            # computed across two different securities. See continuous().
+            if not self.continuous(data):
+                logger.warning(f"{symbol}: price discontinuity in the window - skipping")
                 continue
 
             # Calculate indicators

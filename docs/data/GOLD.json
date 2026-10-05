@@ -6,7 +6,7 @@
     "description": "Finds 20/50 and 50/200 moving-average crosses as they happen. A discovery list, not a ranked forecast - see the README.",
     "accent": "#7fa88a"
   },
-  "scan_date": "2026-10-05T14:12:08.246396",
+  "scan_date": "2026-10-05T14:38:49.628108",
   "dimensions": [
     {
       "key": "freshness",
@@ -48,16 +48,20 @@
       "value": "1490 with history"
     },
     {
+      "label": "Skipped",
+      "value": "6 illiquid, 64 price gaps"
+    },
+    {
       "label": "Lookback",
       "value": "10 sessions"
     },
     {
       "label": "Crosses found",
-      "value": "20/50 Cross 72, Golden Cross 28"
+      "value": "Nearing 20/50 Breakdown 81, Death Cross 87, 20/50 Breakdown 302, Nearing 20/50 Cross 60, Nearing Golden Cross 9, 20/50 Cross 60, Nearing Death Cross 76, Golden Cross 27"
     },
     {
       "label": "Published",
-      "value": "18"
+      "value": "25"
     },
     {
       "label": "Model",
@@ -71,6 +75,10 @@
       "score": 77,
       "strategy": "Golden Cross",
       "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
       "dimensions": [
         {
           "key": "freshness",
@@ -105,21 +113,22 @@
       ],
       "cross_date": "2026-09-24",
       "bars_ago": 6,
+      "days_to_cross": null,
       "flips_6m": 2,
       "separation_pct": 1.97,
       "adr_pct": 0.84,
       "fast_ma": 28.22,
       "slow_ma": 27.68,
       "stacked": false,
+      "above_slow_ma_pct": 11.8,
       "entry": 30.940000534057617,
       "stop_loss": 30.421000289916993,
       "take_profit": 31.978001022338866,
       "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 11.8,
       "stop_basis": "volatility",
       "setup": {
         "title": "Cross detail",
-        "label": "Golden Cross on 2026-09-24 \u00b7 6d ago \u00b7 2 flips/6m \u00b7 ADR 0.8%",
+        "label": "Golden Cross \u00b7 2 flips/6m \u00b7 ADR 0.8% \u00b7 2026-09-24, 6d ago",
         "fields": [
           {
             "label": "Cross date",
@@ -128,6 +137,11 @@
           {
             "label": "Sessions ago",
             "value": "6"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
           },
           {
             "label": "Fast MA",
@@ -142,13 +156,9 @@
             "value": "+1.97%"
           },
           {
-            "label": "Above slow MA",
+            "label": "Price vs slow MA",
             "value": "+11.8%",
             "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
           },
           {
             "label": "Flips (6m)",
@@ -160,7 +170,7 @@
             "value": "0.8%"
           },
           {
-            "label": "Both crosses",
+            "label": "Both pairs",
             "value": "no",
             "tone": null
           }
@@ -169,113 +179,15 @@
       "rank": 1
     },
     {
-      "symbol": "KOD",
-      "price": 94.44999694824219,
+      "symbol": "NESR",
+      "price": 24.670000076293945,
       "score": 77,
-      "strategy": "20/50 Cross",
+      "strategy": "20/50 Breakdown",
       "cross_type": "20_50",
-      "dimensions": [
-        {
-          "key": "freshness",
-          "label": "Freshness",
-          "max": 30
-        },
-        {
-          "key": "decisiveness",
-          "label": "Decisiveness",
-          "max": 25
-        },
-        {
-          "key": "cleanliness",
-          "label": "Cleanliness",
-          "max": 25
-        },
-        {
-          "key": "confirmation",
-          "label": "Confirmation",
-          "max": 20
-        }
-      ],
-      "breakdown": {
-        "freshness": 24,
-        "decisiveness": 16,
-        "cleanliness": 17,
-        "confirmation": 20
-      },
-      "indexes": [
-        "IWM"
-      ],
-      "cross_date": "2026-09-30",
-      "bars_ago": 2,
-      "flips_6m": 4,
-      "separation_pct": 10.71,
-      "adr_pct": 5.43,
-      "fast_ma": 48.32,
-      "slow_ma": 43.65,
-      "stacked": false,
-      "entry": 94.44999694824219,
-      "stop_loss": 84.1839973449707,
-      "take_profit": 114.98199615478515,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 116.4,
-      "stop_basis": "volatility",
-      "setup": {
-        "title": "Cross detail",
-        "label": "20/50 Cross on 2026-09-30 \u00b7 2d ago \u00b7 4 flips/6m \u00b7 ADR 5.4%",
-        "fields": [
-          {
-            "label": "Cross date",
-            "value": "2026-09-30"
-          },
-          {
-            "label": "Sessions ago",
-            "value": "2"
-          },
-          {
-            "label": "Fast MA",
-            "value": "$48.32"
-          },
-          {
-            "label": "Slow MA",
-            "value": "$43.65"
-          },
-          {
-            "label": "Separation",
-            "value": "+10.71%"
-          },
-          {
-            "label": "Above slow MA",
-            "value": "+116.4%",
-            "tone": "neg"
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
-          },
-          {
-            "label": "Flips (6m)",
-            "value": "4",
-            "tone": null
-          },
-          {
-            "label": "ADR",
-            "value": "5.4%"
-          },
-          {
-            "label": "Both crosses",
-            "value": "no",
-            "tone": null
-          }
-        ]
-      },
-      "rank": 2
-    },
-    {
-      "symbol": "PDFS",
-      "price": 55.5,
-      "score": 77,
-      "strategy": "20/50 Cross",
-      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
       "dimensions": [
         {
           "key": "freshness",
@@ -309,21 +221,17 @@
       ],
       "cross_date": "2026-10-02",
       "bars_ago": 0,
+      "days_to_cross": null,
       "flips_6m": 2,
-      "separation_pct": 0.96,
-      "adr_pct": 3.77,
-      "fast_ma": 47.51,
-      "slow_ma": 47.06,
+      "separation_pct": -1.15,
+      "adr_pct": 5.96,
+      "fast_ma": 31.35,
+      "slow_ma": 31.71,
       "stacked": false,
-      "entry": 55.5,
-      "stop_loss": 51.316999435424805,
-      "take_profit": 63.86600112915039,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 17.9,
-      "stop_basis": "volatility",
+      "above_slow_ma_pct": -22.2,
       "setup": {
         "title": "Cross detail",
-        "label": "20/50 Cross on 2026-10-02 \u00b7 0d ago \u00b7 2 flips/6m \u00b7 ADR 3.8%",
+        "label": "20/50 Breakdown \u00b7 2 flips/6m \u00b7 ADR 6.0% \u00b7 2026-10-02, 0d ago",
         "fields": [
           {
             "label": "Cross date",
@@ -332,6 +240,119 @@
           {
             "label": "Sessions ago",
             "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$31.35"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$31.71"
+          },
+          {
+            "label": "Separation",
+            "value": "-1.15%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-22.2%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "6.0%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 2
+    },
+    {
+      "symbol": "PDFS",
+      "price": 55.5,
+      "score": 77,
+      "strategy": "20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 2,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": "2026-10-02",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 2,
+      "separation_pct": 0.96,
+      "adr_pct": 3.77,
+      "fast_ma": 47.51,
+      "slow_ma": 47.06,
+      "stacked": false,
+      "above_slow_ma_pct": 17.9,
+      "entry": 55.5,
+      "stop_loss": 51.316999435424805,
+      "take_profit": 63.86600112915039,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "volatility",
+      "setup": {
+        "title": "Cross detail",
+        "label": "20/50 Cross \u00b7 2 flips/6m \u00b7 ADR 3.8% \u00b7 2026-10-02, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-02"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
           },
           {
             "label": "Fast MA",
@@ -346,13 +367,9 @@
             "value": "+0.96%"
           },
           {
-            "label": "Above slow MA",
+            "label": "Price vs slow MA",
             "value": "+17.9%",
             "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
           },
           {
             "label": "Flips (6m)",
@@ -364,7 +381,7 @@
             "value": "3.8%"
           },
           {
-            "label": "Both crosses",
+            "label": "Both pairs",
             "value": "no",
             "tone": null
           }
@@ -378,6 +395,10 @@
       "score": 76,
       "strategy": "20/50 Cross",
       "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
       "dimensions": [
         {
           "key": "freshness",
@@ -411,21 +432,22 @@
       ],
       "cross_date": "2026-10-02",
       "bars_ago": 0,
+      "days_to_cross": null,
       "flips_6m": 2,
       "separation_pct": 0.4,
       "adr_pct": 5.62,
       "fast_ma": 298.22,
       "slow_ma": 297.03,
       "stacked": false,
+      "above_slow_ma_pct": 13.5,
       "entry": 337.0400085449219,
       "stop_loss": 299.17401428222655,
       "take_profit": 412.7719970703125,
       "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 13.5,
       "stop_basis": "volatility",
       "setup": {
         "title": "Cross detail",
-        "label": "20/50 Cross on 2026-10-02 \u00b7 0d ago \u00b7 2 flips/6m \u00b7 ADR 5.6%",
+        "label": "20/50 Cross \u00b7 2 flips/6m \u00b7 ADR 5.6% \u00b7 2026-10-02, 0d ago",
         "fields": [
           {
             "label": "Cross date",
@@ -434,6 +456,11 @@
           {
             "label": "Sessions ago",
             "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
           },
           {
             "label": "Fast MA",
@@ -448,13 +475,9 @@
             "value": "+0.40%"
           },
           {
-            "label": "Above slow MA",
+            "label": "Price vs slow MA",
             "value": "+13.5%",
             "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
           },
           {
             "label": "Flips (6m)",
@@ -466,7 +489,7 @@
             "value": "5.6%"
           },
           {
-            "label": "Both crosses",
+            "label": "Both pairs",
             "value": "no",
             "tone": null
           }
@@ -475,11 +498,325 @@
       "rank": 4
     },
     {
-      "symbol": "PLXS",
-      "price": 273.1300048828125,
+      "symbol": "CPAY",
+      "price": 394.6000061035156,
       "score": 76,
-      "strategy": "20/50 Cross",
+      "strategy": "20/50 Breakdown",
       "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 1,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": "2026-10-02",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 2,
+      "separation_pct": -0.22,
+      "adr_pct": 1.82,
+      "fast_ma": 400.82,
+      "slow_ma": 401.69,
+      "stacked": false,
+      "above_slow_ma_pct": -1.8,
+      "setup": {
+        "title": "Cross detail",
+        "label": "20/50 Breakdown \u00b7 2 flips/6m \u00b7 ADR 1.8% \u00b7 2026-10-02, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-02"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$400.82"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$401.69"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.22%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-1.8%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "1.8%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 5
+    },
+    {
+      "symbol": "REGN",
+      "price": 735.2000122070312,
+      "score": 76,
+      "strategy": "20/50 Breakdown",
+      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 1,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": "2026-10-02",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 2,
+      "separation_pct": -0.22,
+      "adr_pct": 2.65,
+      "fast_ma": 782.81,
+      "slow_ma": 784.56,
+      "stacked": false,
+      "above_slow_ma_pct": -6.3,
+      "setup": {
+        "title": "Cross detail",
+        "label": "20/50 Breakdown \u00b7 2 flips/6m \u00b7 ADR 2.7% \u00b7 2026-10-02, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-02"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$782.81"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$784.56"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.22%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-6.3%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "2.7%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 6
+    },
+    {
+      "symbol": "UDR",
+      "price": 33.27000045776367,
+      "score": 76,
+      "strategy": "Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 1,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": "2026-10-02",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 2,
+      "separation_pct": -0.19,
+      "adr_pct": 1.72,
+      "fast_ma": 36.35,
+      "slow_ma": 36.42,
+      "stacked": false,
+      "above_slow_ma_pct": -8.7,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Death Cross \u00b7 2 flips/6m \u00b7 ADR 1.7% \u00b7 2026-10-02, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-02"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$36.35"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$36.42"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.19%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-8.7%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "1.7%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 7
+    },
+    {
+      "symbol": "ASAN",
+      "price": 8.619999885559082,
+      "score": 76,
+      "strategy": "20/50 Breakdown",
+      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
       "dimensions": [
         {
           "key": "freshness",
@@ -513,21 +850,17 @@
       ],
       "cross_date": "2026-10-02",
       "bars_ago": 0,
+      "days_to_cross": null,
       "flips_6m": 2,
-      "separation_pct": 0.33,
-      "adr_pct": 2.44,
-      "fast_ma": 254.95,
-      "slow_ma": 254.12,
+      "separation_pct": -0.6,
+      "adr_pct": 6.57,
+      "fast_ma": 9.04,
+      "slow_ma": 9.09,
       "stacked": false,
-      "entry": 273.1300048828125,
-      "stop_loss": 259.7740020751953,
-      "take_profit": 299.8420104980469,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 7.5,
-      "stop_basis": "volatility",
+      "above_slow_ma_pct": -5.2,
       "setup": {
         "title": "Cross detail",
-        "label": "20/50 Cross on 2026-10-02 \u00b7 0d ago \u00b7 2 flips/6m \u00b7 ADR 2.4%",
+        "label": "20/50 Breakdown \u00b7 2 flips/6m \u00b7 ADR 6.6% \u00b7 2026-10-02, 0d ago",
         "fields": [
           {
             "label": "Cross date",
@@ -536,6 +869,119 @@
           {
             "label": "Sessions ago",
             "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$9.04"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$9.09"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.60%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-5.2%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "6.6%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 8
+    },
+    {
+      "symbol": "PLXS",
+      "price": 273.1300048828125,
+      "score": 76,
+      "strategy": "20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 1,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": "2026-10-02",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 2,
+      "separation_pct": 0.33,
+      "adr_pct": 2.44,
+      "fast_ma": 254.95,
+      "slow_ma": 254.12,
+      "stacked": false,
+      "above_slow_ma_pct": 7.5,
+      "entry": 273.1300048828125,
+      "stop_loss": 259.7740020751953,
+      "take_profit": 299.8420104980469,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "volatility",
+      "setup": {
+        "title": "Cross detail",
+        "label": "20/50 Cross \u00b7 2 flips/6m \u00b7 ADR 2.4% \u00b7 2026-10-02, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-02"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
           },
           {
             "label": "Fast MA",
@@ -550,13 +996,9 @@
             "value": "+0.33%"
           },
           {
-            "label": "Above slow MA",
+            "label": "Price vs slow MA",
             "value": "+7.5%",
             "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
           },
           {
             "label": "Flips (6m)",
@@ -568,20 +1010,127 @@
             "value": "2.4%"
           },
           {
-            "label": "Both crosses",
+            "label": "Both pairs",
             "value": "no",
             "tone": null
           }
         ]
       },
-      "rank": 5
+      "rank": 9
     },
     {
-      "symbol": "CAPR",
-      "price": 8.949999809265137,
-      "score": 74,
-      "strategy": "20/50 Cross",
+      "symbol": "CPT",
+      "price": 95.95999908447266,
+      "score": 75,
+      "strategy": "Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 0,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": "2026-10-02",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 2,
+      "separation_pct": -0.01,
+      "adr_pct": 1.81,
+      "fast_ma": 104.72,
+      "slow_ma": 104.73,
+      "stacked": false,
+      "above_slow_ma_pct": -8.4,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Death Cross \u00b7 2 flips/6m \u00b7 ADR 1.8% \u00b7 2026-10-02, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-02"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$104.72"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$104.73"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.01%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-8.4%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "1.8%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 10
+    },
+    {
+      "symbol": "PAYX",
+      "price": 98.94000244140625,
+      "score": 75,
+      "strategy": "20/50 Breakdown",
       "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
       "dimensions": [
         {
           "key": "freshness",
@@ -606,30 +1155,27 @@
       ],
       "breakdown": {
         "freshness": 12,
-        "decisiveness": 17,
+        "decisiveness": 18,
         "cleanliness": 25,
         "confirmation": 20
       },
       "indexes": [
-        "IWM"
+        "SPX",
+        "QQQ"
       ],
       "cross_date": "2026-09-24",
       "bars_ago": 6,
+      "days_to_cross": null,
       "flips_6m": 2,
-      "separation_pct": 14.19,
-      "adr_pct": 6.85,
-      "fast_ma": 8.83,
-      "slow_ma": 7.74,
+      "separation_pct": -5.8,
+      "adr_pct": 2.66,
+      "fast_ma": 110.22,
+      "slow_ma": 117.0,
       "stacked": false,
-      "entry": 8.949999809265137,
-      "stop_loss": 7.72400016784668,
-      "take_profit": 11.40199909210205,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 15.7,
-      "stop_basis": "volatility",
+      "above_slow_ma_pct": -15.4,
       "setup": {
         "title": "Cross detail",
-        "label": "20/50 Cross on 2026-09-24 \u00b7 6d ago \u00b7 2 flips/6m \u00b7 ADR 6.8%",
+        "label": "20/50 Breakdown \u00b7 2 flips/6m \u00b7 ADR 2.7% \u00b7 2026-09-24, 6d ago",
         "fields": [
           {
             "label": "Cross date",
@@ -640,25 +1186,26 @@
             "value": "6"
           },
           {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
             "label": "Fast MA",
-            "value": "$8.83"
+            "value": "$110.22"
           },
           {
             "label": "Slow MA",
-            "value": "$7.74"
+            "value": "$117.00"
           },
           {
             "label": "Separation",
-            "value": "+14.19%"
+            "value": "-5.80%"
           },
           {
-            "label": "Above slow MA",
-            "value": "+15.7%",
+            "label": "Price vs slow MA",
+            "value": "-15.4%",
             "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
           },
           {
             "label": "Flips (6m)",
@@ -667,16 +1214,119 @@
           },
           {
             "label": "ADR",
-            "value": "6.8%"
+            "value": "2.7%"
           },
           {
-            "label": "Both crosses",
+            "label": "Both pairs",
             "value": "no",
             "tone": null
           }
         ]
       },
-      "rank": 6
+      "rank": 11
+    },
+    {
+      "symbol": "MIRM",
+      "price": 82.93000030517578,
+      "score": 75,
+      "strategy": "Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 0,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": "2026-10-02",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 1,
+      "separation_pct": -0.06,
+      "adr_pct": 4.71,
+      "fast_ma": 98.2,
+      "slow_ma": 98.25,
+      "stacked": false,
+      "above_slow_ma_pct": -15.6,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Death Cross \u00b7 1 flips/6m \u00b7 ADR 4.7% \u00b7 2026-10-02, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-02"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$98.20"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$98.25"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.06%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-15.6%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "4.7%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 12
     },
     {
       "symbol": "CEVA",
@@ -684,6 +1334,10 @@
       "score": 74,
       "strategy": "20/50 Cross",
       "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
       "dimensions": [
         {
           "key": "freshness",
@@ -717,21 +1371,22 @@
       ],
       "cross_date": "2026-10-02",
       "bars_ago": 0,
+      "days_to_cross": null,
       "flips_6m": 3,
       "separation_pct": 1.39,
       "adr_pct": 3.85,
       "fast_ma": 31.54,
       "slow_ma": 31.11,
       "stacked": false,
+      "above_slow_ma_pct": 19.2,
       "entry": 37.099998474121094,
       "stop_loss": 34.24099826812744,
       "take_profit": 42.8179988861084,
       "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 19.2,
       "stop_basis": "volatility",
       "setup": {
         "title": "Cross detail",
-        "label": "20/50 Cross on 2026-10-02 \u00b7 0d ago \u00b7 3 flips/6m \u00b7 ADR 3.9%",
+        "label": "20/50 Cross \u00b7 3 flips/6m \u00b7 ADR 3.9% \u00b7 2026-10-02, 0d ago",
         "fields": [
           {
             "label": "Cross date",
@@ -740,6 +1395,11 @@
           {
             "label": "Sessions ago",
             "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
           },
           {
             "label": "Fast MA",
@@ -754,13 +1414,9 @@
             "value": "+1.39%"
           },
           {
-            "label": "Above slow MA",
+            "label": "Price vs slow MA",
             "value": "+19.2%",
             "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
           },
           {
             "label": "Flips (6m)",
@@ -772,20 +1428,24 @@
             "value": "3.9%"
           },
           {
-            "label": "Both crosses",
+            "label": "Both pairs",
             "value": "no",
             "tone": null
           }
         ]
       },
-      "rank": 7
+      "rank": 13
     },
     {
-      "symbol": "INSP",
-      "price": 69.97000122070312,
-      "score": 74,
-      "strategy": "Golden Cross",
+      "symbol": "ODFL",
+      "price": 180.47999572753906,
+      "score": 71,
+      "strategy": "Death Cross",
       "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
       "dimensions": [
         {
           "key": "freshness",
@@ -812,28 +1472,25 @@
         "freshness": 24,
         "decisiveness": 5,
         "cleanliness": 25,
-        "confirmation": 20
+        "confirmation": 17
       },
       "indexes": [
-        "IWM"
+        "SPX",
+        "QQQ"
       ],
       "cross_date": "2026-09-30",
       "bars_ago": 2,
+      "days_to_cross": null,
       "flips_6m": 1,
-      "separation_pct": 3.08,
-      "adr_pct": 5.45,
-      "fast_ma": 63.21,
-      "slow_ma": 61.32,
+      "separation_pct": -1.47,
+      "adr_pct": 2.55,
+      "fast_ma": 196.4,
+      "slow_ma": 199.32,
       "stacked": false,
-      "entry": 69.97000122070312,
-      "stop_loss": 62.348301315307616,
-      "take_profit": 85.21340103149414,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 14.1,
-      "stop_basis": "volatility",
+      "above_slow_ma_pct": -9.5,
       "setup": {
         "title": "Cross detail",
-        "label": "Golden Cross on 2026-09-30 \u00b7 2d ago \u00b7 1 flips/6m \u00b7 ADR 5.4%",
+        "label": "Death Cross \u00b7 1 flips/6m \u00b7 ADR 2.5% \u00b7 2026-09-30, 2d ago",
         "fields": [
           {
             "label": "Cross date",
@@ -844,25 +1501,26 @@
             "value": "2"
           },
           {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
             "label": "Fast MA",
-            "value": "$63.21"
+            "value": "$196.40"
           },
           {
             "label": "Slow MA",
-            "value": "$61.32"
+            "value": "$199.32"
           },
           {
             "label": "Separation",
-            "value": "+3.08%"
+            "value": "-1.47%"
           },
           {
-            "label": "Above slow MA",
-            "value": "+14.1%",
+            "label": "Price vs slow MA",
+            "value": "-9.5%",
             "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
           },
           {
             "label": "Flips (6m)",
@@ -871,23 +1529,27 @@
           },
           {
             "label": "ADR",
-            "value": "5.4%"
+            "value": "2.5%"
           },
           {
-            "label": "Both crosses",
+            "label": "Both pairs",
             "value": "no",
             "tone": null
           }
         ]
       },
-      "rank": 8
+      "rank": 14
     },
     {
-      "symbol": "MXL",
-      "price": 105.93000030517578,
-      "score": 72,
-      "strategy": "20/50 Cross",
+      "symbol": "ABNB",
+      "price": 162.42999267578125,
+      "score": 70,
+      "strategy": "20/50 Breakdown",
       "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
       "dimensions": [
         {
           "key": "freshness",
@@ -911,60 +1573,58 @@
         }
       ],
       "breakdown": {
-        "freshness": 15,
-        "decisiveness": 16,
+        "freshness": 21,
+        "decisiveness": 8,
         "cleanliness": 21,
         "confirmation": 20
       },
       "indexes": [
-        "IWM"
+        "SPX",
+        "QQQ"
       ],
-      "cross_date": "2026-09-25",
-      "bars_ago": 5,
+      "cross_date": "2026-09-29",
+      "bars_ago": 3,
+      "days_to_cross": null,
       "flips_6m": 3,
-      "separation_pct": 10.82,
-      "adr_pct": 5.73,
-      "fast_ma": 80.51,
-      "slow_ma": 72.65,
+      "separation_pct": -3.16,
+      "adr_pct": 3.14,
+      "fast_ma": 164.31,
+      "slow_ma": 169.68,
       "stacked": false,
-      "entry": 105.93000030517578,
-      "stop_loss": 93.78299827575684,
-      "take_profit": 130.22400436401367,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 45.8,
-      "stop_basis": "volatility",
+      "above_slow_ma_pct": -4.3,
       "setup": {
         "title": "Cross detail",
-        "label": "20/50 Cross on 2026-09-25 \u00b7 5d ago \u00b7 3 flips/6m \u00b7 ADR 5.7%",
+        "label": "20/50 Breakdown \u00b7 3 flips/6m \u00b7 ADR 3.1% \u00b7 2026-09-29, 3d ago",
         "fields": [
           {
             "label": "Cross date",
-            "value": "2026-09-25"
+            "value": "2026-09-29"
           },
           {
             "label": "Sessions ago",
-            "value": "5"
+            "value": "3"
           },
           {
-            "label": "Fast MA",
-            "value": "$80.51"
-          },
-          {
-            "label": "Slow MA",
-            "value": "$72.65"
-          },
-          {
-            "label": "Separation",
-            "value": "+10.82%"
-          },
-          {
-            "label": "Above slow MA",
-            "value": "+45.8%",
+            "label": "Direction",
+            "value": "Bearish",
             "tone": "neg"
           },
           {
-            "label": "Stop basis",
-            "value": "volatility"
+            "label": "Fast MA",
+            "value": "$164.31"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$169.68"
+          },
+          {
+            "label": "Separation",
+            "value": "-3.16%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-4.3%",
+            "tone": null
           },
           {
             "label": "Flips (6m)",
@@ -973,118 +1633,16 @@
           },
           {
             "label": "ADR",
-            "value": "5.7%"
+            "value": "3.1%"
           },
           {
-            "label": "Both crosses",
+            "label": "Both pairs",
             "value": "no",
             "tone": null
           }
         ]
       },
-      "rank": 9
-    },
-    {
-      "symbol": "NHC",
-      "price": 227.66000366210938,
-      "score": 72,
-      "strategy": "20/50 Cross",
-      "cross_type": "20_50",
-      "dimensions": [
-        {
-          "key": "freshness",
-          "label": "Freshness",
-          "max": 30
-        },
-        {
-          "key": "decisiveness",
-          "label": "Decisiveness",
-          "max": 25
-        },
-        {
-          "key": "cleanliness",
-          "label": "Cleanliness",
-          "max": 25
-        },
-        {
-          "key": "confirmation",
-          "label": "Confirmation",
-          "max": 20
-        }
-      ],
-      "breakdown": {
-        "freshness": 30,
-        "decisiveness": 0,
-        "cleanliness": 25,
-        "confirmation": 17
-      },
-      "indexes": [
-        "IWM"
-      ],
-      "cross_date": "2026-10-02",
-      "bars_ago": 0,
-      "flips_6m": 2,
-      "separation_pct": 0.07,
-      "adr_pct": 2.62,
-      "fast_ma": 223.61,
-      "slow_ma": 223.46,
-      "stacked": false,
-      "entry": 227.66000366210938,
-      "stop_loss": 218.98932736816406,
-      "take_profit": 245.00135625000001,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 1.9,
-      "stop_basis": "structure",
-      "setup": {
-        "title": "Cross detail",
-        "label": "20/50 Cross on 2026-10-02 \u00b7 0d ago \u00b7 2 flips/6m \u00b7 ADR 2.6%",
-        "fields": [
-          {
-            "label": "Cross date",
-            "value": "2026-10-02"
-          },
-          {
-            "label": "Sessions ago",
-            "value": "0"
-          },
-          {
-            "label": "Fast MA",
-            "value": "$223.61"
-          },
-          {
-            "label": "Slow MA",
-            "value": "$223.46"
-          },
-          {
-            "label": "Separation",
-            "value": "+0.07%"
-          },
-          {
-            "label": "Above slow MA",
-            "value": "+1.9%",
-            "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "structure"
-          },
-          {
-            "label": "Flips (6m)",
-            "value": "2",
-            "tone": "pos"
-          },
-          {
-            "label": "ADR",
-            "value": "2.6%"
-          },
-          {
-            "label": "Both crosses",
-            "value": "no",
-            "tone": null
-          }
-        ]
-      },
-      "rank": 10
+      "rank": 15
     },
     {
       "symbol": "AMD",
@@ -1092,6 +1650,10 @@
       "score": 69,
       "strategy": "20/50 Cross",
       "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
       "dimensions": [
         {
           "key": "freshness",
@@ -1126,21 +1688,22 @@
       ],
       "cross_date": "2026-09-21",
       "bars_ago": 9,
+      "days_to_cross": null,
       "flips_6m": 3,
       "separation_pct": 10.31,
       "adr_pct": 3.27,
       "fast_ma": 566.49,
       "slow_ma": 513.53,
       "stacked": false,
+      "above_slow_ma_pct": 23.4,
       "entry": 633.9099731445312,
       "stop_loss": 592.4579803466797,
       "take_profit": 716.8139587402343,
       "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 23.4,
       "stop_basis": "volatility",
       "setup": {
         "title": "Cross detail",
-        "label": "20/50 Cross on 2026-09-21 \u00b7 9d ago \u00b7 3 flips/6m \u00b7 ADR 3.3%",
+        "label": "20/50 Cross \u00b7 3 flips/6m \u00b7 ADR 3.3% \u00b7 2026-09-21, 9d ago",
         "fields": [
           {
             "label": "Cross date",
@@ -1149,6 +1712,11 @@
           {
             "label": "Sessions ago",
             "value": "9"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
           },
           {
             "label": "Fast MA",
@@ -1163,13 +1731,9 @@
             "value": "+10.31%"
           },
           {
-            "label": "Above slow MA",
+            "label": "Price vs slow MA",
             "value": "+23.4%",
             "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
           },
           {
             "label": "Flips (6m)",
@@ -1181,520 +1745,7 @@
             "value": "3.3%"
           },
           {
-            "label": "Both crosses",
-            "value": "no",
-            "tone": null
-          }
-        ]
-      },
-      "rank": 11
-    },
-    {
-      "symbol": "ADI",
-      "price": 417.1499938964844,
-      "score": 64,
-      "strategy": "20/50 Cross",
-      "cross_type": "20_50",
-      "dimensions": [
-        {
-          "key": "freshness",
-          "label": "Freshness",
-          "max": 30
-        },
-        {
-          "key": "decisiveness",
-          "label": "Decisiveness",
-          "max": 25
-        },
-        {
-          "key": "cleanliness",
-          "label": "Cleanliness",
-          "max": 25
-        },
-        {
-          "key": "confirmation",
-          "label": "Confirmation",
-          "max": 20
-        }
-      ],
-      "breakdown": {
-        "freshness": 24,
-        "decisiveness": 5,
-        "cleanliness": 21,
-        "confirmation": 14
-      },
-      "indexes": [
-        "SPX",
-        "QQQ"
-      ],
-      "cross_date": "2026-09-30",
-      "bars_ago": 2,
-      "flips_6m": 3,
-      "separation_pct": 1.37,
-      "adr_pct": 2.27,
-      "fast_ma": 380.01,
-      "slow_ma": 374.86,
-      "stacked": false,
-      "entry": 417.1499938964844,
-      "stop_loss": 398.243994140625,
-      "take_profit": 454.96199340820317,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 11.3,
-      "stop_basis": "volatility",
-      "setup": {
-        "title": "Cross detail",
-        "label": "20/50 Cross on 2026-09-30 \u00b7 2d ago \u00b7 3 flips/6m \u00b7 ADR 2.3%",
-        "fields": [
-          {
-            "label": "Cross date",
-            "value": "2026-09-30"
-          },
-          {
-            "label": "Sessions ago",
-            "value": "2"
-          },
-          {
-            "label": "Fast MA",
-            "value": "$380.01"
-          },
-          {
-            "label": "Slow MA",
-            "value": "$374.86"
-          },
-          {
-            "label": "Separation",
-            "value": "+1.37%"
-          },
-          {
-            "label": "Above slow MA",
-            "value": "+11.3%",
-            "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
-          },
-          {
-            "label": "Flips (6m)",
-            "value": "3",
-            "tone": null
-          },
-          {
-            "label": "ADR",
-            "value": "2.3%"
-          },
-          {
-            "label": "Both crosses",
-            "value": "no",
-            "tone": null
-          }
-        ]
-      },
-      "rank": 12
-    },
-    {
-      "symbol": "INTC",
-      "price": 119.33000183105469,
-      "score": 64,
-      "strategy": "20/50 Cross",
-      "cross_type": "20_50",
-      "dimensions": [
-        {
-          "key": "freshness",
-          "label": "Freshness",
-          "max": 30
-        },
-        {
-          "key": "decisiveness",
-          "label": "Decisiveness",
-          "max": 25
-        },
-        {
-          "key": "cleanliness",
-          "label": "Cleanliness",
-          "max": 25
-        },
-        {
-          "key": "confirmation",
-          "label": "Confirmation",
-          "max": 20
-        }
-      ],
-      "breakdown": {
-        "freshness": 3,
-        "decisiveness": 20,
-        "cleanliness": 21,
-        "confirmation": 20
-      },
-      "indexes": [
-        "SPX",
-        "QQQ"
-      ],
-      "cross_date": "2026-09-21",
-      "bars_ago": 9,
-      "flips_6m": 3,
-      "separation_pct": 10.67,
-      "adr_pct": 4.38,
-      "fast_ma": 111.64,
-      "slow_ma": 100.87,
-      "stacked": false,
-      "entry": 119.33000183105469,
-      "stop_loss": 108.88199920654297,
-      "take_profit": 140.22600708007812,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 18.3,
-      "stop_basis": "volatility",
-      "setup": {
-        "title": "Cross detail",
-        "label": "20/50 Cross on 2026-09-21 \u00b7 9d ago \u00b7 3 flips/6m \u00b7 ADR 4.4%",
-        "fields": [
-          {
-            "label": "Cross date",
-            "value": "2026-09-21"
-          },
-          {
-            "label": "Sessions ago",
-            "value": "9"
-          },
-          {
-            "label": "Fast MA",
-            "value": "$111.64"
-          },
-          {
-            "label": "Slow MA",
-            "value": "$100.87"
-          },
-          {
-            "label": "Separation",
-            "value": "+10.67%"
-          },
-          {
-            "label": "Above slow MA",
-            "value": "+18.3%",
-            "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
-          },
-          {
-            "label": "Flips (6m)",
-            "value": "3",
-            "tone": null
-          },
-          {
-            "label": "ADR",
-            "value": "4.4%"
-          },
-          {
-            "label": "Both crosses",
-            "value": "no",
-            "tone": null
-          }
-        ]
-      },
-      "rank": 13
-    },
-    {
-      "symbol": "TER",
-      "price": 449.0400085449219,
-      "score": 62,
-      "strategy": "20/50 Cross",
-      "cross_type": "20_50",
-      "dimensions": [
-        {
-          "key": "freshness",
-          "label": "Freshness",
-          "max": 30
-        },
-        {
-          "key": "decisiveness",
-          "label": "Decisiveness",
-          "max": 25
-        },
-        {
-          "key": "cleanliness",
-          "label": "Cleanliness",
-          "max": 25
-        },
-        {
-          "key": "confirmation",
-          "label": "Confirmation",
-          "max": 20
-        }
-      ],
-      "breakdown": {
-        "freshness": 27,
-        "decisiveness": 4,
-        "cleanliness": 17,
-        "confirmation": 14
-      },
-      "indexes": [
-        "SPX",
-        "QQQ"
-      ],
-      "cross_date": "2026-10-01",
-      "bars_ago": 1,
-      "flips_6m": 4,
-      "separation_pct": 1.59,
-      "adr_pct": 3.47,
-      "fast_ma": 380.8,
-      "slow_ma": 374.84,
-      "stacked": false,
-      "entry": 449.0400085449219,
-      "stop_loss": 417.8940185546875,
-      "take_profit": 511.33198852539067,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 19.8,
-      "stop_basis": "volatility",
-      "setup": {
-        "title": "Cross detail",
-        "label": "20/50 Cross on 2026-10-01 \u00b7 1d ago \u00b7 4 flips/6m \u00b7 ADR 3.5%",
-        "fields": [
-          {
-            "label": "Cross date",
-            "value": "2026-10-01"
-          },
-          {
-            "label": "Sessions ago",
-            "value": "1"
-          },
-          {
-            "label": "Fast MA",
-            "value": "$380.80"
-          },
-          {
-            "label": "Slow MA",
-            "value": "$374.84"
-          },
-          {
-            "label": "Separation",
-            "value": "+1.59%"
-          },
-          {
-            "label": "Above slow MA",
-            "value": "+19.8%",
-            "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
-          },
-          {
-            "label": "Flips (6m)",
-            "value": "4",
-            "tone": null
-          },
-          {
-            "label": "ADR",
-            "value": "3.5%"
-          },
-          {
-            "label": "Both crosses",
-            "value": "no",
-            "tone": null
-          }
-        ]
-      },
-      "rank": 14
-    },
-    {
-      "symbol": "ALAB",
-      "price": 350.3299865722656,
-      "score": 62,
-      "strategy": "20/50 Cross",
-      "cross_type": "20_50",
-      "dimensions": [
-        {
-          "key": "freshness",
-          "label": "Freshness",
-          "max": 30
-        },
-        {
-          "key": "decisiveness",
-          "label": "Decisiveness",
-          "max": 25
-        },
-        {
-          "key": "cleanliness",
-          "label": "Cleanliness",
-          "max": 25
-        },
-        {
-          "key": "confirmation",
-          "label": "Confirmation",
-          "max": 20
-        }
-      ],
-      "breakdown": {
-        "freshness": 18,
-        "decisiveness": 6,
-        "cleanliness": 21,
-        "confirmation": 17
-      },
-      "indexes": [
-        "QQQ"
-      ],
-      "cross_date": "2026-09-28",
-      "bars_ago": 4,
-      "flips_6m": 3,
-      "separation_pct": 3.88,
-      "adr_pct": 5.77,
-      "fast_ma": 320.64,
-      "slow_ma": 308.66,
-      "stacked": false,
-      "entry": 350.3299865722656,
-      "stop_loss": 309.91078796386716,
-      "take_profit": 431.16838378906255,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 13.5,
-      "stop_basis": "volatility",
-      "setup": {
-        "title": "Cross detail",
-        "label": "20/50 Cross on 2026-09-28 \u00b7 4d ago \u00b7 3 flips/6m \u00b7 ADR 5.8%",
-        "fields": [
-          {
-            "label": "Cross date",
-            "value": "2026-09-28"
-          },
-          {
-            "label": "Sessions ago",
-            "value": "4"
-          },
-          {
-            "label": "Fast MA",
-            "value": "$320.64"
-          },
-          {
-            "label": "Slow MA",
-            "value": "$308.66"
-          },
-          {
-            "label": "Separation",
-            "value": "+3.88%"
-          },
-          {
-            "label": "Above slow MA",
-            "value": "+13.5%",
-            "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
-          },
-          {
-            "label": "Flips (6m)",
-            "value": "3",
-            "tone": null
-          },
-          {
-            "label": "ADR",
-            "value": "5.8%"
-          },
-          {
-            "label": "Both crosses",
-            "value": "no",
-            "tone": null
-          }
-        ]
-      },
-      "rank": 15
-    },
-    {
-      "symbol": "CHRW",
-      "price": 157.72000122070312,
-      "score": 60,
-      "strategy": "20/50 Cross",
-      "cross_type": "20_50",
-      "dimensions": [
-        {
-          "key": "freshness",
-          "label": "Freshness",
-          "max": 30
-        },
-        {
-          "key": "decisiveness",
-          "label": "Decisiveness",
-          "max": 25
-        },
-        {
-          "key": "cleanliness",
-          "label": "Cleanliness",
-          "max": 25
-        },
-        {
-          "key": "confirmation",
-          "label": "Confirmation",
-          "max": 20
-        }
-      ],
-      "breakdown": {
-        "freshness": 30,
-        "decisiveness": 1,
-        "cleanliness": 12,
-        "confirmation": 17
-      },
-      "indexes": [
-        "SPX"
-      ],
-      "cross_date": "2026-10-02",
-      "bars_ago": 0,
-      "flips_6m": 5,
-      "separation_pct": 0.38,
-      "adr_pct": 2.48,
-      "fast_ma": 151.54,
-      "slow_ma": 150.96,
-      "stacked": false,
-      "entry": 157.72000122070312,
-      "stop_loss": 149.9080017089844,
-      "take_profit": 173.3440002441406,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 4.5,
-      "stop_basis": "volatility",
-      "setup": {
-        "title": "Cross detail",
-        "label": "20/50 Cross on 2026-10-02 \u00b7 0d ago \u00b7 5 flips/6m \u00b7 ADR 2.5%",
-        "fields": [
-          {
-            "label": "Cross date",
-            "value": "2026-10-02"
-          },
-          {
-            "label": "Sessions ago",
-            "value": "0"
-          },
-          {
-            "label": "Fast MA",
-            "value": "$151.54"
-          },
-          {
-            "label": "Slow MA",
-            "value": "$150.96"
-          },
-          {
-            "label": "Separation",
-            "value": "+0.38%"
-          },
-          {
-            "label": "Above slow MA",
-            "value": "+4.5%",
-            "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
-          },
-          {
-            "label": "Flips (6m)",
-            "value": "5",
-            "tone": null
-          },
-          {
-            "label": "ADR",
-            "value": "2.5%"
-          },
-          {
-            "label": "Both crosses",
+            "label": "Both pairs",
             "value": "no",
             "tone": null
           }
@@ -1703,101 +1754,102 @@
       "rank": 16
     },
     {
-      "symbol": "SNPS",
-      "price": 489.8999938964844,
-      "score": 60,
-      "strategy": "20/50 Cross",
+      "symbol": "CF",
+      "price": 115.01000213623047,
+      "score": 71,
+      "strategy": "Nearing 20/50 Breakdown",
       "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bearish",
+      "signal_label": "Nearing Bearish",
+      "signal_tone": "neg",
       "dimensions": [
         {
-          "key": "freshness",
-          "label": "Freshness",
-          "max": 30
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
         },
         {
-          "key": "decisiveness",
-          "label": "Decisiveness",
-          "max": 25
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
         },
         {
           "key": "cleanliness",
           "label": "Cleanliness",
-          "max": 25
+          "max": 18
         },
         {
           "key": "confirmation",
           "label": "Confirmation",
-          "max": 20
+          "max": 10
         }
       ],
       "breakdown": {
-        "freshness": 27,
-        "decisiveness": 1,
-        "cleanliness": 12,
-        "confirmation": 20
+        "imminence": 24,
+        "convergence": 19,
+        "cleanliness": 18,
+        "confirmation": 10
       },
       "indexes": [
-        "SPX",
-        "QQQ"
+        "SPX"
       ],
-      "cross_date": "2026-10-01",
-      "bars_ago": 1,
-      "flips_6m": 5,
-      "separation_pct": 0.47,
-      "adr_pct": 3.38,
-      "fast_ma": 409.51,
-      "slow_ma": 407.61,
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.5,
+      "flips_6m": 2,
+      "separation_pct": 0.93,
+      "adr_pct": 3.81,
+      "fast_ma": 125.39,
+      "slow_ma": 124.23,
       "stacked": false,
-      "entry": 489.8999938964844,
-      "stop_loss": 456.758984375,
-      "take_profit": 556.1820129394531,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 20.2,
-      "stop_basis": "volatility",
+      "above_slow_ma_pct": -7.4,
       "setup": {
         "title": "Cross detail",
-        "label": "20/50 Cross on 2026-10-01 \u00b7 1d ago \u00b7 5 flips/6m \u00b7 ADR 3.4%",
+        "label": "Nearing 20/50 Breakdown \u00b7 2 flips/6m \u00b7 ADR 3.8% \u00b7 ~1.5d out",
         "fields": [
           {
-            "label": "Cross date",
-            "value": "2026-10-01"
+            "label": "Projected",
+            "value": "~1.5 sessions",
+            "tone": "pos"
           },
           {
-            "label": "Sessions ago",
-            "value": "1"
+            "label": "Gap",
+            "value": "0.26 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
           },
           {
             "label": "Fast MA",
-            "value": "$409.51"
+            "value": "$125.39"
           },
           {
             "label": "Slow MA",
-            "value": "$407.61"
+            "value": "$124.23"
           },
           {
             "label": "Separation",
-            "value": "+0.47%"
+            "value": "+0.93%"
           },
           {
-            "label": "Above slow MA",
-            "value": "+20.2%",
+            "label": "Price vs slow MA",
+            "value": "-7.4%",
             "tone": null
-          },
-          {
-            "label": "Stop basis",
-            "value": "volatility"
           },
           {
             "label": "Flips (6m)",
-            "value": "5",
-            "tone": null
+            "value": "2",
+            "tone": "pos"
           },
           {
             "label": "ADR",
-            "value": "3.4%"
+            "value": "3.8%"
           },
           {
-            "label": "Both crosses",
+            "label": "Both pairs",
             "value": "no",
             "tone": null
           }
@@ -1806,89 +1858,506 @@
       "rank": 17
     },
     {
-      "symbol": "ISRG",
-      "price": 391.95001220703125,
-      "score": 47,
-      "strategy": "20/50 Cross",
+      "symbol": "KLIC",
+      "price": 100.7699966430664,
+      "score": 71,
+      "strategy": "Nearing 20/50 Cross",
       "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bullish",
+      "signal_label": "Nearing Bullish",
+      "signal_tone": "pos",
       "dimensions": [
         {
-          "key": "freshness",
-          "label": "Freshness",
-          "max": 30
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
         },
         {
-          "key": "decisiveness",
-          "label": "Decisiveness",
-          "max": 25
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
         },
         {
           "key": "cleanliness",
           "label": "Cleanliness",
-          "max": 25
+          "max": 18
         },
         {
           "key": "confirmation",
           "label": "Confirmation",
-          "max": 20
+          "max": 10
         }
       ],
       "breakdown": {
-        "freshness": 6,
-        "decisiveness": 6,
-        "cleanliness": 21,
-        "confirmation": 14
+        "imminence": 25,
+        "convergence": 18,
+        "cleanliness": 18,
+        "confirmation": 10
       },
       "indexes": [
-        "SPX",
-        "QQQ"
+        "IWM"
       ],
-      "cross_date": "2026-09-22",
-      "bars_ago": 8,
-      "flips_6m": 3,
-      "separation_pct": 1.93,
-      "adr_pct": 2.71,
-      "fast_ma": 387.37,
-      "slow_ma": 380.04,
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.0,
+      "flips_6m": 2,
+      "separation_pct": -1.09,
+      "adr_pct": 3.02,
+      "fast_ma": 86.97,
+      "slow_ma": 87.92,
       "stacked": false,
-      "entry": 391.95001220703125,
-      "stop_loss": 372.43782666015625,
-      "take_profit": 430.97438330078126,
-      "risk_reward_ratio": 2.0,
-      "above_slow_ma_pct": 3.1,
-      "stop_basis": "structure",
+      "above_slow_ma_pct": 14.6,
       "setup": {
         "title": "Cross detail",
-        "label": "20/50 Cross on 2026-09-22 \u00b7 8d ago \u00b7 3 flips/6m \u00b7 ADR 2.7%",
+        "label": "Nearing 20/50 Cross \u00b7 2 flips/6m \u00b7 ADR 3.0% \u00b7 ~1d out",
         "fields": [
           {
-            "label": "Cross date",
-            "value": "2026-09-22"
+            "label": "Projected",
+            "value": "~1 sessions",
+            "tone": "pos"
           },
           {
-            "label": "Sessions ago",
-            "value": "8"
+            "label": "Gap",
+            "value": "0.31 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
           },
           {
             "label": "Fast MA",
-            "value": "$387.37"
+            "value": "$86.97"
           },
           {
             "label": "Slow MA",
-            "value": "$380.04"
+            "value": "$87.92"
           },
           {
             "label": "Separation",
-            "value": "+1.93%"
+            "value": "-1.09%"
           },
           {
-            "label": "Above slow MA",
-            "value": "+3.1%",
+            "label": "Price vs slow MA",
+            "value": "+14.6%",
             "tone": null
           },
           {
-            "label": "Stop basis",
-            "value": "structure"
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.0%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 18
+    },
+    {
+      "symbol": "CTSH",
+      "price": 58.5099983215332,
+      "score": 69,
+      "strategy": "Nearing 20/50 Breakdown",
+      "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bearish",
+      "signal_label": "Nearing Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 24,
+        "convergence": 17,
+        "cleanliness": 18,
+        "confirmation": 10
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.4,
+      "flips_6m": 1,
+      "separation_pct": 1.4,
+      "adr_pct": 3.56,
+      "fast_ma": 59.59,
+      "slow_ma": 58.77,
+      "stacked": true,
+      "above_slow_ma_pct": -0.4,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing 20/50 Breakdown \u00b7 1 flips/6m \u00b7 ADR 3.6% \u00b7 ~1.4d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~1.4 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.39 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$59.59"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$58.77"
+          },
+          {
+            "label": "Separation",
+            "value": "+1.40%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-0.4%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.6%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "yes",
+            "tone": "pos"
+          }
+        ]
+      },
+      "rank": 19
+    },
+    {
+      "symbol": "FCPT",
+      "price": 21.549999237060547,
+      "score": 69,
+      "strategy": "Nearing Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "approaching",
+      "bias": "bearish",
+      "signal_label": "Nearing Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 23,
+        "convergence": 18,
+        "cleanliness": 18,
+        "confirmation": 10
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.9,
+      "flips_6m": 0,
+      "separation_pct": 0.65,
+      "adr_pct": 2.0,
+      "fast_ma": 24.11,
+      "slow_ma": 23.96,
+      "stacked": false,
+      "above_slow_ma_pct": -10.0,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing Death Cross \u00b7 0 flips/6m \u00b7 ADR 2.0% \u00b7 ~1.9d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~1.9 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.36 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$24.11"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$23.96"
+          },
+          {
+            "label": "Separation",
+            "value": "+0.65%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-10.0%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "0",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "2.0%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 20
+    },
+    {
+      "symbol": "HP",
+      "price": 38.560001373291016,
+      "score": 69,
+      "strategy": "Nearing 20/50 Breakdown",
+      "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bearish",
+      "signal_label": "Nearing Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 25,
+        "convergence": 18,
+        "cleanliness": 18,
+        "confirmation": 8
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.0,
+      "flips_6m": 2,
+      "separation_pct": 1.02,
+      "adr_pct": 3.62,
+      "fast_ma": 40.85,
+      "slow_ma": 40.44,
+      "stacked": false,
+      "above_slow_ma_pct": -4.6,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing 20/50 Breakdown \u00b7 2 flips/6m \u00b7 ADR 3.6% \u00b7 ~1d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~1 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.30 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$40.85"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$40.44"
+          },
+          {
+            "label": "Separation",
+            "value": "+1.02%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-4.6%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.6%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 21
+    },
+    {
+      "symbol": "FOX",
+      "price": 55.88999938964844,
+      "score": 67,
+      "strategy": "Nearing 20/50 Breakdown",
+      "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bearish",
+      "signal_label": "Nearing Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 25,
+        "convergence": 19,
+        "cleanliness": 15,
+        "confirmation": 8
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.1,
+      "flips_6m": 3,
+      "separation_pct": 0.62,
+      "adr_pct": 2.49,
+      "fast_ma": 57.62,
+      "slow_ma": 57.27,
+      "stacked": true,
+      "above_slow_ma_pct": -2.4,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing 20/50 Breakdown \u00b7 3 flips/6m \u00b7 ADR 2.5% \u00b7 ~1.1d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~1.1 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.25 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$57.62"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$57.27"
+          },
+          {
+            "label": "Separation",
+            "value": "+0.62%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-2.4%",
+            "tone": null
           },
           {
             "label": "Flips (6m)",
@@ -1897,16 +2366,331 @@
           },
           {
             "label": "ADR",
-            "value": "2.7%"
+            "value": "2.5%"
           },
           {
-            "label": "Both crosses",
+            "label": "Both pairs",
+            "value": "yes",
+            "tone": "pos"
+          }
+        ]
+      },
+      "rank": 22
+    },
+    {
+      "symbol": "KLAC",
+      "price": 206.88999938964844,
+      "score": 65,
+      "strategy": "Nearing 20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bullish",
+      "signal_label": "Nearing Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 23,
+        "convergence": 17,
+        "cleanliness": 18,
+        "confirmation": 7
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.8,
+      "flips_6m": 2,
+      "separation_pct": -1.45,
+      "adr_pct": 3.21,
+      "fast_ma": 184.44,
+      "slow_ma": 187.15,
+      "stacked": false,
+      "above_slow_ma_pct": 10.5,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing 20/50 Cross \u00b7 2 flips/6m \u00b7 ADR 3.2% \u00b7 ~1.8d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~1.8 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.41 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$184.44"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$187.15"
+          },
+          {
+            "label": "Separation",
+            "value": "-1.45%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+10.5%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.2%"
+          },
+          {
+            "label": "Both pairs",
             "value": "no",
             "tone": null
           }
         ]
       },
-      "rank": 18
+      "rank": 23
+    },
+    {
+      "symbol": "MCHP",
+      "price": 81.31999969482422,
+      "score": 65,
+      "strategy": "Nearing 20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bullish",
+      "signal_label": "Nearing Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 22,
+        "convergence": 18,
+        "cleanliness": 18,
+        "confirmation": 7
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 2.1,
+      "flips_6m": 2,
+      "separation_pct": -1.0,
+      "adr_pct": 2.77,
+      "fast_ma": 74.84,
+      "slow_ma": 75.6,
+      "stacked": false,
+      "above_slow_ma_pct": 7.6,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing 20/50 Cross \u00b7 2 flips/6m \u00b7 ADR 2.8% \u00b7 ~2.1d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~2.1 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.34 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$74.84"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$75.60"
+          },
+          {
+            "label": "Separation",
+            "value": "-1.00%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+7.6%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "2.8%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 24
+    },
+    {
+      "symbol": "TTWO",
+      "price": 202.72999572753906,
+      "score": 62,
+      "strategy": "Nearing Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "approaching",
+      "bias": "bearish",
+      "signal_label": "Nearing Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 17,
+        "convergence": 19,
+        "cleanliness": 18,
+        "confirmation": 8
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 3.9,
+      "flips_6m": 1,
+      "separation_pct": 0.73,
+      "adr_pct": 3.01,
+      "fast_ma": 226.21,
+      "slow_ma": 224.57,
+      "stacked": false,
+      "above_slow_ma_pct": -9.7,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing Death Cross \u00b7 1 flips/6m \u00b7 ADR 3.0% \u00b7 ~3.9d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~3.9 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.27 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$226.21"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$224.57"
+          },
+          {
+            "label": "Separation",
+            "value": "+0.73%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-9.7%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.0%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 25
     }
   ]
 }
