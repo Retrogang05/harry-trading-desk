@@ -163,6 +163,16 @@ class MomentumAnalyzer:
 
         # Chunked so one bad ticker can't poison the whole universe, and to
         # stay within yfinance's per-request URL limits.
+        #
+        # threads=True is safe HERE only because scan_stocks() fetches SPY on
+        # its own first, and that single unthreaded request creates yfinance's
+        # SQLite timezone cache (~/.cache/py-yfinance, cold on every CI run)
+        # before any thread pool touches it. Without that warm-up the first
+        # batch has 100 workers racing to create one database and the losers
+        # return OperationalError('database is locked') as empty frames -
+        # silently, since the per-symbol loop below swallows it. Trey died of
+        # exactly this race on runs #12 and #13. Keep the SPY fetch ahead of
+        # this call, or warm the cache some other way before reordering.
         CHUNK = 100
         for i in range(0, len(symbols), CHUNK):
             chunk = symbols[i:i + CHUNK]

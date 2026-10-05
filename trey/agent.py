@@ -117,12 +117,12 @@ DIMENSIONS = [
 
 # ── Data ─────────────────────────────────────────────────────────────────
 
-# Yahoo occasionally answers a request with an empty frame, or with one ticker
-# of the two, and recovers within seconds - this agent failed on 2026-09-30 and
-# 2026-10-01 and ran clean on the 2nd. Two symbols is a cheap request, so retry
-# rather than send an email about a blip. Deliberately a handful of seconds:
-# the point is to ride out a transient, and a real outage should still fail the
-# run loudly rather than publish a stale position as if it were confirmed.
+# Retry is the backstop, not the fix - see the threads=False note in fetch().
+# Kept because the failure it guards against (a short or partial response)
+# cannot be ruled out upstream, and two symbols is a cheap request to repeat.
+# Deliberately a handful of seconds: the point is to ride out a transient, and
+# a real outage should still fail the run loudly rather than publish a stale
+# position as if it were confirmed.
 FETCH_ATTEMPTS = 3
 FETCH_BACKOFF = 5     # seconds, multiplied by the attempt number
 
@@ -132,8 +132,8 @@ def _extract(raw: pd.DataFrame) -> Dict[str, pd.Series]:
 
     Every failure here raises with the shape of what actually came back. The
     old version indexed straight into the frame, so a partial response surfaced
-    as a bare KeyError naming only the ticker - which reads like a bad symbol
-    rather than a short answer from Yahoo.
+    as a bare KeyError naming only the ticker - which reads like a delisting
+    rather than a half-empty answer.
     """
     if raw is None or raw.empty:
         raise RuntimeError("yfinance returned an empty frame")
@@ -168,8 +168,22 @@ def fetch() -> Dict[str, pd.Series]:
     last = None
     for attempt in range(1, FETCH_ATTEMPTS + 1):
         try:
+            # threads=False is load-bearing, not a style choice.
+            #
+            # yfinance keeps a SQLite cache of exchange timezones under
+            # ~/.cache/py-yfinance, created lazily on first use. A CI runner
+            # starts with that cache cold, and this is the first yfinance call
+            # the agent makes - so with threads=True both workers race to
+            # create the same database and one loses:
+            #
+            #   ['TQQQ']: OperationalError('database is locked')
+            #   RuntimeError: TQQQ: only 0 closes, need > 200 for the gate
+            #
+            # which is exactly how runs #12 and #13 died. Reproduced on the
+            # first cold-cache attempt with threads=True; 5/5 clean with it
+            # off. Two tickers gain nothing from a thread pool anyway.
             raw = yf.download([SIGNAL, TRADED], start=start, end=end, auto_adjust=True,
-                              progress=False, group_by="ticker", threads=True)
+                              progress=False, group_by="ticker", threads=False)
             return _extract(raw)
         except Exception as e:                      # network, parse, or short data
             last = e

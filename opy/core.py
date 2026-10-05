@@ -154,6 +154,22 @@ def compute_price_metrics(tickers, batch_size=100):
     the one (slow) network round-trip both the iron condor and credit spread screeners
     read from -- strategy-specific filtering happens afterward on this shared table, so
     running both strategies in one session doesn't pay for the download twice."""
+    # Warm yfinance's timezone cache before any threaded download touches it.
+    #
+    # That cache is a SQLite database under ~/.cache/py-yfinance, created
+    # lazily on first use. A CI runner starts cold, so the first threaded
+    # batch has every worker racing to create the same file and the losers
+    # come back as OperationalError('database is locked') - a silently empty
+    # frame for those tickers, since the per-ticker loop below swallows it.
+    # One unthreaded request creates the database first, after which the
+    # threads only read. This is what killed Trey's runs #12 and #13, where
+    # the same race was fatal rather than silent.
+    try:
+        yf.download(tickers[:1], period="5d", threads=False,
+                    auto_adjust=True, progress=False)
+    except Exception as e:
+        print(f"  tz cache warm-up failed ({e}) - continuing", file=sys.stderr)
+
     results = []
     for i in range(0, len(tickers), batch_size):
         batch = tickers[i:i + batch_size]
