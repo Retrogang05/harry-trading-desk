@@ -21,6 +21,8 @@ import yfinance as yf
 from anthropic import Anthropic
 import ta  # Technical Analysis library
 
+import sectors  # shared sector-ETF regime, also used by Opy
+
 # Which Claude model writes the reasoning. Haiku is the cheapest tier
 # ($1/$5 per Mtok) and is what the cost estimate in the README assumes.
 # Swap to "claude-opus-4-8" ($5/$25) for stronger analysis at ~5x the cost.
@@ -327,6 +329,149 @@ class MomentumAnalyzer:
             logger.error(f"Error calculating indicators: {str(e)}")
             return None
 
+    def score_breakdown_dimensions(self, data: pd.DataFrame, indicators: Dict) -> Dict:
+        """Mirror image of the momentum score, for a stock breaking DOWN.
+
+        Not a negated momentum score. Several axes do not simply invert: a
+        falling stock's RSI band of interest is the one just under 50 rather
+        than the mirror of 50-70, and "distance from the 52-week high" becomes
+        "distance from the 52-week LOW", which is a different measurement on a
+        different reference point.
+
+        Scored on the same 0-100 scale as the long side so the two lists read
+        against each other, and gated to weak sectors by the caller - this
+        function describes a breakdown, it does not decide whether to look.
+        """
+        close = data['Close']
+        price = float(close.iloc[-1])
+        ma20 = float(indicators['ma20'].iloc[-1])
+        ma50 = float(indicators['ma50'].iloc[-1])
+        ma200 = float(indicators['ma200'].iloc[-1])
+        rsi = float(indicators['rsi'].iloc[-1])
+        macd = float(indicators['macd'].iloc[-1])
+        avg_vol = float(indicators['volume_avg'].iloc[-1])
+
+        if any(np.isnan(x) for x in (price, ma20, ma50, ma200, rsi, macd, avg_vol)):
+            return None
+
+        scores = {}
+
+        # Trend, 25: stacked downward, price under each average in turn.
+        t = 0
+        if price < ma20: t += 8
+        if price < ma50: t += 9
+        if price < ma200: t += 8
+        scores['trend_strength'] = t
+
+        # Volume, 20: distribution. The heaviest day of the last week relative
+        # to normal - selling on volume is the part that distinguishes a
+        # breakdown from a drift.
+        try:
+            vol_ratio = float((data['Volume'].tail(self.BREAKOUT_WINDOW) / avg_vol).max())
+        except (ZeroDivisionError, ValueError):
+            vol_ratio = 0.0
+        scores['volume'] = 20 if vol_ratio > 1.5 else 12 if vol_ratio > 1.2 else 6 if vol_ratio > 1.0 else 0
+
+        # RSI, 15: the mirror of the long side's bands, and contiguous for the
+        # same reason - weak but not yet washed out is the tradable zone, and
+        # sub-30 is where short squeezes start.
+        scores['rsi'] = 5 if rsi <= 30 else 15 if rsi <= 50 else 8 if rsi <= 60 else 0
+
+        # MACD, 15: histogram below zero and still falling.
+        hist = indicators['macd']
+        falling = len(hist) > 3 and float(hist.iloc[-1]) < float(hist.iloc[-4])
+        scores['macd'] = 15 if macd < 0 and falling else 9 if macd < 0 else 0
+
+        # Relative, 15: nearness to the 52-week LOW. The long side measures
+        # distance from the high; this is its own reference point, not a sign
+        # flip of that one.
+        try:
+            low52 = float(close.tail(252).min())
+            high52 = float(close.tail(252).max())
+            span = high52 - low52
+            frac = (price - low52) / span if span else 1.0   # 0 = at the low
+        except (ValueError, ZeroDivisionError):
+            frac = 1.0
+        scores['relative'] = 15 if frac < 0.10 else 11 if frac < 0.25 else 6 if frac < 0.40 else 0
+
+        # Breakout, 10: a fresh break of the 20-day low.
+        try:
+            low20 = float(data['Low'].iloc[-21:-1].min())
+            scores['breakout'] = 10 if float(data['Low'].iloc[-1]) < low20 else 0
+        except (ValueError, IndexError):
+            scores['breakout'] = 0
+
+        scores['total'] = sum(scores.values())
+        scores['vol_ratio'] = vol_ratio
+        scores['pct_off_low'] = round(frac * 100, 1)
+        return scores
+
+    # Floor for the bearish half. Higher than the long side's 60 on purpose:
+    # the long list is the one with validated structure filters behind it,
+    # while this half is new and unmeasured, so it publishes only its clearest
+    # cases rather than filling the dashboard with marginal breakdowns.
+    BEARISH_MIN_SCORE = 70
+
+    def _bearish_row(self, symbol, data, indicators, bear, membership,
+                     sector, sector_state, market_regime) -> Dict:
+        """One published breakdown, with levels quoted for a SHORT.
+
+        Entry/stop/target are the short-side mirror: the stop sits ABOVE
+        entry, so risk is stop - entry, and the target sits below. They are
+        labelled bearish on the row so the dashboard never colours or words
+        them as a buy.
+        """
+        price = float(data['Close'].iloc[-1])
+        atr = float(indicators['atr'].iloc[-1])
+        if np.isnan(atr) or atr <= 0:
+            atr = price * 0.02
+
+        # Stop above the lower of the 20-day average and a 2-ATR band: a
+        # reclaim of the average kills the premise, but on a name that has
+        # already fallen far below it, the volatility stop is the usable one.
+        structural = float(indicators['ma20'].iloc[-1])
+        volatility = price + atr * 2
+        stop = min(structural, volatility) if not np.isnan(structural) else volatility
+        stop = min(stop, price * 1.15)          # cap risk at 15%, as the long side does
+        risk = max(stop - price, atr * 0.5)
+
+        sec = sector_state.get(sector, {})
+        return {
+            'rank': 0,
+            'symbol': symbol,
+            'price': price,
+            'score': bear['total'],
+            'strategy': 'Breakdown',
+            'bias': 'bearish',
+            'signal_label': 'Bearish',
+            'signal_tone': 'neg',
+            'dimensions': DIMENSIONS,
+            'breakdown': {k: bear[k] for k in
+                          ('trend_strength', 'volume', 'rsi', 'macd', 'relative', 'breakout')},
+            'indexes': index_tags(membership.get(symbol)),
+            'sector': sector,
+            'entry': price,
+            'stop_loss': stop,
+            'take_profit': price - risk * 1.5,
+            'risk_reward_ratio': 1.5,
+            'pct_off_low': bear['pct_off_low'],
+            'market_regime': market_regime,
+            'setup': {
+                'title': 'Breakdown detail',
+                'label': (f"{sec.get('name', sector)} weak: {sector} "
+                          f"{sec.get('pct', 0):+.2f}% vs its 20-day"),
+                'fields': [
+                    {'label': 'Direction', 'value': 'Short', 'tone': 'neg'},
+                    {'label': 'Sector', 'value': f"{sector} {sec.get('pct', 0):+.2f}%",
+                     'tone': 'neg'},
+                    {'label': 'Off 52w low', 'value': f"{bear['pct_off_low']}%",
+                     'tone': 'neg' if bear['pct_off_low'] < 15 else None},
+                    {'label': 'Vol vs avg', 'value': f"{bear['vol_ratio']:.2f}x",
+                     'tone': 'neg' if bear['vol_ratio'] > 1.5 else None},
+                ],
+            },
+        }
+
     def score_momentum_dimensions(self, symbol: str, data: pd.DataFrame, indicators: Dict) -> Dict[str, float]:
         """Score stock across 6 momentum dimensions (0-100 scale)."""
 
@@ -466,6 +611,45 @@ class MomentumAnalyzer:
         return "UPTREND" if ma50 > ma200 else "DOWNTREND"
 
     GATE_OPEN_REGIMES = {"UPTREND"}
+
+    def generate_bearish_reasoning(self, o: Dict) -> str:
+        """Narrate a breakdown. Its own prompt rather than the long one with
+        the words swapped: the question that matters on a short is what makes
+        it squeeze, which has no equivalent on the long side."""
+        if not self.reasoning_enabled:
+            return "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+
+        b = o['breakdown']
+        prompt = f"""{o['symbol']} at ${o['price']:.2f} is breaking down, and its sector
+ETF {o['sector']} is below its own 20-day average.
+
+Breakdown score: {o['score']}/100
+- Trend (below the averages): {b['trend_strength']}/25
+- Volume (distribution): {b['volume']}/20
+- RSI: {b['rsi']}/15
+- MACD: {b['macd']}/15
+- Position vs 52-week range: {b['relative']}/15  ({o['pct_off_low']}% off the low)
+- Fresh 20-day low: {b['breakout']}/10
+
+Short setup: entry ${o['entry']:.2f}, stop ${o['stop_loss']:.2f} (above),
+target ${o['take_profit']:.2f}.
+
+In 2-3 sentences: is this a genuine distribution or an oversold stock about to
+bounce, and what would squeeze it? Be concrete and sceptical. Name the level
+that would invalidate it. Do not recommend a trade."""
+        try:
+            message = self.client.messages.create(
+                model=self.model, max_tokens=300,
+                messages=[{"role": "user", "content": prompt}])
+            return message.content[0].text.strip()
+        except anthropic.RateLimitError:
+            return "[reasoning unavailable: rate limited]"
+        except anthropic.APIStatusError as e:
+            return f"[reasoning unavailable: API error {e.status_code}]"
+        except anthropic.APIConnectionError:
+            return "[reasoning unavailable: connection error]"
+        except Exception as e:
+            return f"[reasoning unavailable: {type(e).__name__}]"
 
     def generate_reasoning(self, symbol: str, score_breakdown: Dict, price: float,
                           entry: float, stop_loss: float, take_profit: float) -> str:
@@ -642,13 +826,30 @@ Format: Professional but conversational, suitable for a trader's quick decision.
         market_regime = self.check_market_regime(spy_data)
         logger.info(f"Market Regime: {market_regime}")
 
-        if market_regime not in self.GATE_OPEN_REGIMES:
-            # Nothing to scan, nothing to reason about, nothing to pay for.
+        # Sector breadth, read before anything else because it decides whether
+        # the bearish half of this scan runs at all. Independent of the SPY
+        # gate above, and deliberately so: on 2026-10-05 ten of eleven sector
+        # SPDRs were below their 20-day average while SPY's 50-day was still
+        # over its 200-day, so the long gate read UPTREND through a market
+        # where almost everything outside technology was rolling over. One
+        # cap-weighted index trend is not breadth.
+        sector_state = sectors.read()
+        weak_sectors = set(sectors.weak_tags(sector_state))
+
+        bullish_open = market_regime in self.GATE_OPEN_REGIMES
+        if not bullish_open:
             logger.warning(
-                f"Gate CLOSED ({market_regime}): momentum is not traded outside a confirmed "
-                f"uptrend. Skipping the {len(symbols)}-symbol scan; publishing an empty list."
+                f"Long gate CLOSED ({market_regime}): momentum breakouts are not traded "
+                f"outside a confirmed uptrend."
             )
-            return [], market_regime
+        if not weak_sectors:
+            logger.info("No sector below its 20-day SMA - no bearish scan this run.")
+
+        if not bullish_open and not weak_sectors:
+            # Neither half has anything to do: nothing to fetch, nothing to
+            # reason about, nothing to pay for.
+            logger.warning(f"Both halves gated off; skipping the {len(symbols)}-symbol scan.")
+            return [], market_regime, sector_state
 
         opportunities = []
 
@@ -677,6 +878,23 @@ Format: Professional but conversational, suitable for a trader's quick decision.
             # Calculate indicators
             indicators = self.calculate_indicators(data)
             if indicators is None:
+                continue
+
+            # ── Bearish half ────────────────────────────────────────────
+            # Only for names whose own sector ETF is below its 20-day
+            # average. The sector gate is the whole premise: a breakdown in
+            # a sector that is still working is far more likely to be noise
+            # than one happening alongside its peers.
+            sector = sectors.sector_of(membership.get(symbol, []))
+            if sector in weak_sectors:
+                bear = self.score_breakdown_dimensions(data, indicators)
+                if bear and bear['total'] >= self.BEARISH_MIN_SCORE:
+                    opportunities.append(
+                        self._bearish_row(symbol, data, indicators, bear,
+                                          membership, sector, sector_state,
+                                          market_regime))
+
+            if not bullish_open:
                 continue
 
             # Score momentum
@@ -732,7 +950,7 @@ Format: Professional but conversational, suitable for a trader's quick decision.
                 # Index membership, published so the dashboard can group and
                 # filter by it. A list, not a string: names in both the S&P 500
                 # and the Nasdaq-100 belong to both.
-                'indexes': membership.get(symbol, [UNTAGGED]),
+                'indexes': index_tags(membership.get(symbol)),
                 'scores': scores,           # kept for the reasoning pass, stripped below
                 'market_regime': market_regime
             }
@@ -754,40 +972,68 @@ Format: Professional but conversational, suitable for a trader's quick decision.
         tier_rank = {"A": 0, "B": 1, "C": 2}
 
         def rank_key(o):
+            # Bearish rows carry no structure tier - those filters were
+            # validated on long setups and mean nothing on a short - so they
+            # rank on score alone within their own quota.
+            if o.get('bias') == 'bearish':
+                return (0, -o['score'])
             return (tier_rank[o['structure']], -o['score'])
 
-        logger.info(f"{len(opportunities)} candidates cleared the filter")
+        bull = [o for o in opportunities if o.get('bias') != 'bearish']
+        bear = [o for o in opportunities if o.get('bias') == 'bearish']
+        logger.info(f"{len(bull)} long candidates, {len(bear)} breakdown candidates")
 
         # Quota per index, then dedupe. Insertion order of `picked` preserves
         # the INDEX_TAGS order for the groups themselves while each group is
         # internally ranked, so the final list reads SPX best-first, then the
         # QQQ names SPX did not already claim, then IWM.
+        #
+        # Long and short get SEPARATE quotas. Their scores are on the same
+        # 0-100 scale but measure different things, and the whole point of the
+        # bearish half is to be there when the long half is thin - letting one
+        # ranking decide would hand every slot to whichever side the market
+        # happens to favour, which is exactly the failure being fixed.
         buckets = {t: [] for t in INDEX_TAGS + [UNTAGGED]}
-        for o in opportunities:
+        bear_buckets = {t: [] for t in INDEX_TAGS + [UNTAGGED]}
+        for o in bull:
             for tag in o['indexes']:
                 if tag in buckets:
                     buckets[tag].append(o)
+        for o in bear:
+            for tag in o['indexes']:
+                if tag in bear_buckets:
+                    bear_buckets[tag].append(o)
 
         picked, selected = {}, []
         for tag in INDEX_TAGS + [UNTAGGED]:
-            group = sorted(buckets[tag], key=rank_key)[:per_index]
-            logger.info(f"  {tag}: {len(buckets[tag])} candidates -> {len(group)} published")
+            group = (sorted(buckets[tag], key=rank_key)[:per_index]
+                     + sorted(bear_buckets[tag], key=rank_key)[:PER_INDEX_BEARISH])
+            if buckets[tag] or bear_buckets[tag]:
+                logger.info(f"  {tag}: {len(buckets[tag])} long / "
+                            f"{len(bear_buckets[tag])} breakdown -> {len(group)} published")
             for o in group:
                 if o['symbol'] not in picked:
                     picked[o['symbol']] = o
                     selected.append(o)
 
+        # Longs first, then breakdowns, each by score. The dashboard sorts the
+        # whole desk by score anyway, but this keeps the agent's own archive
+        # in results/ grouped by direction.
+        selected.sort(key=lambda o: (o.get('bias') == 'bearish', -o['score']))
         opportunities = selected
         logger.info(f"{len(opportunities)} opportunities published; generating reasoning for each")
 
         for i, opp in enumerate(opportunities, 1):
             opp['rank'] = i
-            opp['reasoning'] = self.generate_reasoning(
-                opp['symbol'], opp.pop('scores'), opp['price'],
-                opp['entry'], opp['stop_loss'], opp['take_profit']
-            )
+            if opp.get('bias') == 'bearish':
+                opp['reasoning'] = self.generate_bearish_reasoning(opp)
+            else:
+                opp['reasoning'] = self.generate_reasoning(
+                    opp['symbol'], opp.pop('scores'), opp['price'],
+                    opp['entry'], opp['stop_loss'], opp['take_profit']
+                )
 
-        return opportunities, market_regime
+        return opportunities, market_regime, sector_state
 
     def format_results(self, opportunities: List[Dict], market_regime: str) -> str:
         """Format results for display/output."""
@@ -856,6 +1102,11 @@ UNTAGGED = "OTHER"   # universe.txt predating the tags, or a hand-added ticker
 # so the reasoning bill does not move. Raise it to see deeper into each group.
 PER_INDEX = 8
 
+# Breakdowns get their own smaller allocation on top of the long quota, so the
+# bearish half is present whenever sectors are weak without taking the list
+# over. See the quota comment in scan_stocks().
+PER_INDEX_BEARISH = 3
+
 
 def load_universe() -> Tuple[List[str], Dict[str, List[str]]]:
     """Symbols to scan plus their index membership.
@@ -884,8 +1135,14 @@ def load_universe() -> Tuple[List[str], Dict[str, List[str]]]:
             sym = ticker.strip().upper()
             if not sym or sym in membership:
                 continue
+            # Keep the sector tag alongside the index tags. Filtering to
+            # INDEX_TAGS here is what silently disabled the whole bearish half
+            # on its first run: the sector lookup reads membership, so dropping
+            # XLV/XLF/... before it ever got there meant every symbol looked
+            # sectorless and no breakdown could ever be in a weak sector.
+            # index_tags() narrows them again at publish time.
             tags = [t.strip().upper() for t in comment.split(",") if t.strip()]
-            tags = [t for t in tags if t in INDEX_TAGS]
+            tags = [t for t in tags if t in INDEX_TAGS or t in sectors.SECTOR_ETFS]
             symbols.append(sym)
             membership[sym] = tags or [UNTAGGED]
 
@@ -895,15 +1152,30 @@ def load_universe() -> Tuple[List[str], Dict[str, List[str]]]:
 
     counts = {t: sum(1 for tags in membership.values() if t in tags)
               for t in INDEX_TAGS + [UNTAGGED]}
+    sectored = sum(1 for tags in membership.values()
+                   if any(t in sectors.SECTOR_ETFS for t in tags))
     logger.info(
         f"Loaded {len(symbols)} symbols from universe.txt  ("
-        + ", ".join(f"{t} {n}" for t, n in counts.items() if n) + ")"
+        + ", ".join(f"{t} {n}" for t, n in counts.items() if n)
+        + f"; {sectored} with a sector tag)"
     )
     return symbols, membership
 
 
+def index_tags(tags: List[str]) -> List[str]:
+    """Just the index tags out of a symbol's universe.txt tags.
+
+    Published as `indexes` so the dashboard's Index column and filter chips
+    never show a sector ETF, which is carried in the same list but belongs to
+    a different axis.
+    """
+    out = [t for t in (tags or ()) if t in INDEX_TAGS]
+    return out or [UNTAGGED]
+
+
 def publish_to_dashboard(opportunities: List[Dict], market_regime: str,
-                         membership: Dict[str, List[str]]) -> None:
+                         membership: Dict[str, List[str]],
+                         sector_state: Dict = None) -> None:
     """Write this agent's results where the dashboard can read them.
 
     Each agent owns exactly one file, docs/data/<AGENT_ID>.json, and registers
@@ -919,6 +1191,9 @@ def publish_to_dashboard(opportunities: List[Dict], market_regime: str,
         f"{len(membership)} symbols  ("
         + " / ".join(f"{t} {n}" for t, n in universe_counts.items() if n) + ")"
     )
+    sector_summary = sectors.summary_line(sector_state or {})
+    n_short = sum(1 for o in opportunities if o.get("bias") == "bearish")
+    n_long = len(opportunities) - n_short
 
     payload = {
         "agent": AGENT,
@@ -938,7 +1213,8 @@ def publish_to_dashboard(opportunities: List[Dict], market_regime: str,
             {"label": "Gate", "value": ("OPEN" if market_regime in MomentumAnalyzer.GATE_OPEN_REGIMES
                                         else "CLOSED - no signals in a downtrend")},
             {"label": "Universe", "value": universe_label},
-            {"label": "Passed Filter", "value": str(len(opportunities))},
+            {"label": "Sector breadth", "value": sector_summary},
+            {"label": "Passed Filter", "value": f"{n_long} long, {n_short} breakdown"},
             {"label": "Model", "value": CLAUDE_MODEL},
         ],
         "opportunities": opportunities,
@@ -984,7 +1260,7 @@ def main():
 
     # Run scan
     logger.info(f"Scanning {len(test_symbols)} stocks...")
-    opportunities, market_regime = analyzer.scan_stocks(
+    opportunities, market_regime, sector_state = analyzer.scan_stocks(
         test_symbols, membership, per_index=PER_INDEX
     )
 
@@ -1003,7 +1279,7 @@ def main():
 
     logger.info(f"Results saved to {output_file}")
 
-    publish_to_dashboard(opportunities, market_regime, membership)
+    publish_to_dashboard(opportunities, market_regime, membership, sector_state)
 
     return opportunities
 

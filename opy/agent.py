@@ -40,6 +40,11 @@ import spreads
 import leaps
 import rsi
 
+# Repo root, for the sector module Monu also uses - both agents must read
+# "weak sector" the same way or the two bearish lists disagree about why.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import sectors
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -94,6 +99,15 @@ RSI_STAGE1_LIMIT = 25
 # fix, applied from the start here instead of discovered the hard way.
 TOP_N_CONDOR = 6
 TOP_N_SPREADS = 8    # bull put + bear call combined
+# ...of which at least this many must be bear calls, when that many qualify.
+#
+# Opy has always screened both directions, but ranked them in one pool and
+# took the top 8 - so on 2026-10-05, with ten of eleven sectors below their
+# 20-day average, it still published 6 bull puts and 2 bear calls. A combined
+# ranking reflects which direction scores better on credit and liquidity, not
+# which direction the market is in, so the bearish side needs a floor to be
+# reliably present when it is most wanted.
+MIN_BEAR_CALLS = 4
 TOP_N_LEAPS = 6       # trend + reversal combined
 TOP_N_RSI = 8          # 2 per band x 4 bands
 
@@ -143,14 +157,15 @@ RSI_DIMENSIONS = [
 TRADED_INDEXES = ("SPX", "QQQ")
 
 
-def load_universe() -> Tuple[List[str], Dict[str, List[str]]]:
+def load_universe() -> Tuple[List[str], Dict[str, List[str]], Dict[str, str]]:
     """Reuses Monu's universe.txt rather than fetching S&P 500 constituents a
     second time (core.get_universe() would do its own SSGA/Wikipedia fetch),
     narrowed to the large-cap tags in TRADED_INDEXES.
 
-    Returns (symbols, membership), where membership maps each symbol to the
-    index tags it carries, so published rows can be filtered by index on the
-    dashboard exactly as Monu's are.
+    Returns (symbols, membership, sector_map): membership maps each symbol to
+    the index tags it carries, so published rows can be filtered by index on
+    the dashboard exactly as Monu's are, and sector_map gives the sector SPDR
+    that holds it, which is what the bearish gating reads.
 
     Each line is "TICKER  # SPX,QQQ" - the index membership is in the comment.
     A file written before the tags existed has no comments, in which case
@@ -159,9 +174,9 @@ def load_universe() -> Tuple[List[str], Dict[str, List[str]]]:
     """
     if not os.path.exists(UNIVERSE_FILE):
         logger.warning("universe.txt not found - falling back to core.get_universe()")
-        return core.get_universe(cache_dir=os.path.join(REPO_ROOT, "opy", "data")), {}
+        return core.get_universe(cache_dir=os.path.join(REPO_ROOT, "opy", "data")), {}, {}
 
-    symbols, membership, skipped = [], {}, 0
+    symbols, membership, sector_map, skipped = [], {}, {}, 0
     with open(UNIVERSE_FILE) as f:
         for line in f:
             ticker, _, comment = line.partition("#")
@@ -173,13 +188,20 @@ def load_universe() -> Tuple[List[str], Dict[str, List[str]]]:
                 skipped += 1
                 continue
             symbols.append(sym)
+            # Index tags for the dashboard's chips; the sector tag is kept
+            # separately because it belongs to a different axis and must not
+            # show up in the Index column.
             membership[sym] = [t for t in tags if t in TRADED_INDEXES]
+            sec = sectors.sector_of(tags)
+            if sec:
+                sector_map[sym] = sec
 
     logger.info(
         f"Loaded {len(symbols)} symbols from universe.txt "
-        f"({'/'.join(TRADED_INDEXES)}; skipped {skipped} outside those indexes)"
+        f"({'/'.join(TRADED_INDEXES)}; skipped {skipped} outside those indexes; "
+        f"{len(sector_map)} with a sector tag)"
     )
-    return symbols, membership
+    return symbols, membership, sector_map
 
 
 # ── Reasoning -----------------------------------------------------------------
@@ -410,7 +432,13 @@ def scan_condor(metrics: pd.DataFrame, reasoner: Reasoner) -> List[Dict]:
     return out
 
 
-def scan_spreads(metrics: pd.DataFrame, reasoner: Reasoner) -> List[Dict]:
+def scan_spreads(metrics: pd.DataFrame, reasoner: Reasoner,
+                 sector_map: Dict[str, str] = None,
+                 weak_sectors: set = None) -> List[Dict]:
+    sector_map = sector_map or {}
+    weak_sectors = weak_sectors or set()
+    sector_of_symbol = lambda t: sector_map.get(t)
+
     bp1 = spreads.filter_bull_put_stage1(
         metrics, MIN_DOLLAR_VOLUME, MIN_DAILY_RANGE, MAX_DAILY_RANGE,
     ).sort_values("avg_dollar_volume_m", ascending=False).head(STAGE1_LIMIT)
@@ -435,14 +463,42 @@ def scan_spreads(metrics: pd.DataFrame, reasoner: Reasoner) -> List[Dict]:
     ranked = _breakdown_spreads(ranked)
     logger.info(f"[Spreads] stage 2: {len(bp2)} bull put + {len(bc2)} bear call passed")
 
-    top = ranked.head(TOP_N_SPREADS)
+    # Floor the bear calls, then fill the rest on the combined ranking. A
+    # weak-sector name wins the tiebreak inside the bearish slice: selling
+    # calls above a stock whose whole sector is under its 20-day average is
+    # the setup this floor exists to surface.
+    if not ranked.empty and "direction" in ranked:
+        bears = ranked[ranked["direction"] == "Bear Call"].copy()
+        if not bears.empty and weak_sectors:
+            bears["_weak"] = bears["ticker"].map(
+                lambda t: sector_of_symbol(t) in weak_sectors).astype(int)
+            bears = bears.sort_values(["_weak", "score"], ascending=[False, False])
+            bears = bears.drop(columns=["_weak"])
+        keep_bear = bears.head(MIN_BEAR_CALLS)
+        rest = ranked[~ranked.index.isin(keep_bear.index)].head(
+            max(0, TOP_N_SPREADS - len(keep_bear)))
+        top = pd.concat([keep_bear, rest]).sort_values("score", ascending=False)
+        n_bear = int((top["direction"] == "Bear Call").sum())
+        logger.info(f"[Spreads] publishing {len(top)}: {n_bear} bear call, "
+                    f"{len(top) - n_bear} bull put")
+    else:
+        top = ranked.head(TOP_N_SPREADS)
+
     out = []
     for _, r in top.iterrows():
         r = r.to_dict()
+        bearish = r.get("direction") == "Bear Call"
+        sec = sector_of_symbol(r["ticker"])
         out.append({
             "symbol": r["ticker"], "price": round(float(r["last_price"]), 2),
             "score": round(float(r["score"])),
             "strategy": f"{r['direction']} Spread",
+            # Direction, so the dashboard words and colours the row instead of
+            # printing "Strong" in green on a bearish credit spread.
+            "bias": "bearish" if bearish else "bullish",
+            "signal_label": "Bearish" if bearish else "Bullish",
+            "signal_tone": "neg" if bearish else "pos",
+            "sector": sec,
             "dimensions": SPREADS_DIMENSIONS,
             "breakdown": {
                 "credit_width": _pts(r, "credit_width"), "prob_profit": _pts(r, "prob_profit"),
@@ -610,7 +666,15 @@ def main():
     logger.info("Starting Opy - options screener agent...")
     reasoner = Reasoner()
 
-    universe, membership = load_universe()
+    universe, membership, sector_map = load_universe()
+
+    # Sector breadth, read the same way Monu reads it. Used here only to break
+    # ties inside the bear-call floor: Opy always screens both directions, so
+    # a weak tape does not switch anything on, it just decides which bearish
+    # candidates are worth the slots.
+    sector_state = sectors.read()
+    weak_sectors = set(sectors.weak_tags(sector_state))
+
     logger.info(f"Computing price/trend metrics for {len(universe)} symbols...")
     metrics = core.compute_price_metrics(universe)
     logger.info(f"{len(metrics)} symbols have sufficient price history")
@@ -620,7 +684,7 @@ def main():
 
     opportunities: List[Dict] = []
     opportunities += scan_condor(metrics, reasoner)
-    opportunities += scan_spreads(metrics, reasoner)
+    opportunities += scan_spreads(metrics, reasoner, sector_map, weak_sectors)
     opportunities += scan_leaps(metrics, reasoner)
     opportunities += scan_rsi(metrics, reasoner)
 
@@ -640,6 +704,7 @@ def main():
 
     context = [
         {"label": "Universe", "value": f"{len(universe)} symbols"},
+        {"label": "Sector breadth", "value": sectors.summary_line(sector_state)},
         {"label": "Passed Filters", "value": f"{len(metrics)}"},
         {"label": "Published", "value": str(len(opportunities))},
         {"label": "Data", "value": "CBOE delayed (~15m)"},

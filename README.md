@@ -13,8 +13,8 @@ shared dashboard. **You execute every trade manually** — nothing here places o
 
 | Agent | Code | Strategy | Status |
 |-------|------|----------|--------|
-| **Monu** | `MNTM` | Momentum — buys strength on volume-confirmed breakouts | Live |
-| **Opy** | `OPY` | Options — iron condors, credit spreads, LEAPS calls, RSI momentum context | Live |
+| **Monu** | `MNTM` | Momentum — buys strength on volume-confirmed breakouts, plus sector-gated breakdowns | Live |
+| **Opy** | `OPY` | Options — iron condors, credit spreads (bear calls floored), LEAPS calls, RSI context | Live |
 | **Trey** | `TREY` | TQQQ trend gate — OUT / HALF / FULL, signalled on QQQ's 200-day SMA | Live |
 | **Goldy** | `GOLD` | MA crosses — 20/50 and 50/200, both directions, plus crosses about to happen | Live |
 
@@ -175,9 +175,11 @@ harry-trading-desk/
 │   └── agent.py
 ├── goldy/                   # Goldy — 20/50 and 50/200 MA cross scanner
 │   └── agent.py
-├── universe.txt             # 1,521 tickers tagged by index, shared by Monu and Opy
-├── data/holdings/           # the three ETF holdings exports universe.txt is built from
+├── sectors.py               # sector-ETF regime, shared by Monu and Opy
+├── universe.txt             # 1,521 tickers tagged by index and sector
+├── data/holdings/           # the ETF holdings exports universe.txt is built from
 │   ├── spy.xlsx  qqq.csv  iwm.csv
+│   └── sectors/             # the eleven sector SPDRs, downloaded at build time
 ├── scripts/build_universe.py # rebuilds universe.txt from data/holdings/
 ├── scripts/fetch_sp500.py   # downloads a fresh spy.xlsx (QQQ and IWM are manual)
 ├── requirements.txt
@@ -192,6 +194,60 @@ harry-trading-desk/
 │       ├── agents.json      #   manifest: which agents to render
 │       ├── MNTM.json  OPY.json  TREY.json  GOLD.json
 ├── results/  opy/results/  trey/results/  goldy/results/   # dated archives
+```
+
+---
+
+## 📉 Bearish ideas and sector breadth
+
+Both Monu and Opy now publish bearish ideas, gated on **sector breadth** rather
+than the index.
+
+The problem it solves: a desk whose only gate is SPY's 50/200 keeps publishing
+long setups through exactly the periods when the index is held up by one or two
+sectors and everything else is rolling over. On **2026-10-05, ten of the eleven
+sector SPDRs were below their 20-day average** — only XLK was above — while
+SPY's 50-day was still over its 200-day and Monu's gate read UPTREND. One
+cap-weighted index trend is not breadth.
+
+`sectors.py` reads all eleven sector ETFs and reports which are under their
+20-day SMA. Both agents use it, so "weak" means the same thing on both lists.
+
+**Monu** gains a `Breakdown` half. It only scores a name whose *own* sector ETF
+is weak — a breakdown in a sector that is still working is far more likely to be
+noise than one happening alongside its peers. Scored on the mirror of the six
+momentum dimensions, not a sign flip of them: the RSI band of interest is the
+one just under 50, and "distance from the 52-week high" becomes distance from
+the 52-week **low**, a different measurement on a different reference point.
+
+Levels are quoted for a short — **stop above entry**, target below — and the row
+is labelled bearish so the dashboard never colours it as a buy. The two halves
+get separate quotas (8 long + 3 breakdown per index) and separate gates: the
+long half still needs SPY in an uptrend, the bearish half needs only a weak
+sector, so a downtrend publishes breakdowns alone instead of an empty list.
+
+The bearish floor is **70**, higher than the long side's 60. The long list has
+validated structure filters behind it; this half is new and unmeasured, so it
+publishes only its clearest cases.
+
+**Opy** already screened bear call spreads — it just ranked them against bull
+puts and took the top 8 combined, which on a 10-of-11-weak day still published
+6 bull puts and 2 bear calls. A combined ranking reflects which direction scores
+better on credit and liquidity, not which direction the market is in, so bear
+calls now have a floor of 4 slots, with weak-sector names winning the tiebreak
+inside it.
+
+Sector membership comes from the eleven sector SPDRs' own holdings, downloaded
+at build time (SSGA serves them at a stable URL, unlike Invesco and BlackRock),
+with Russell names taking their sector from BlackRock's own column. The tag in
+`universe.txt` is the **ETF symbol**, not a sector name, because the agents gate
+on whether that ETF is below its average — the tag has to be something they can
+price:
+
+```
+AAPL   # SPX,QQQ,XLK
+JPM    # SPX,XLF
+UNH    # SPX,XLV
 ```
 
 ---

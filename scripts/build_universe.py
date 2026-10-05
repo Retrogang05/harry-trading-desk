@@ -36,10 +36,54 @@ import sys
 import xml.etree.ElementTree as ET
 import zipfile
 from datetime import datetime
+from typing import Dict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HOLDINGS = os.path.join(ROOT, "data", "holdings")
+SECTORS_DIR = os.path.join(HOLDINGS, "sectors")
 UNIVERSE = os.path.join(ROOT, "universe.txt")
+
+# The eleven sector SPDRs, which between them hold every S&P 500 constituent
+# exactly once. Tagging a ticker with its sector ETF rather than a sector NAME
+# is the point: the agents gate on whether that ETF is below its 20-day
+# average, so the tag has to be the thing they can actually price.
+SSGA_URL = ("https://www.ssga.com/us/en/intermediary/library-content/products/"
+            "fund-data/etfs/us/holdings-daily-us-en-{}.xlsx")
+SECTOR_ETFS = {
+    "XLB":  "Materials",
+    "XLC":  "Communication Services",
+    "XLE":  "Energy",
+    "XLF":  "Financials",
+    "XLI":  "Industrials",
+    "XLK":  "Technology",
+    "XLP":  "Consumer Staples",
+    "XLRE": "Real Estate",
+    "XLU":  "Utilities",
+    "XLV":  "Health Care",
+    "XLY":  "Consumer Discretionary",
+}
+
+# BlackRock's own sector names in iwm.csv, mapped onto the same tags. Russell
+# 2000 names are not in any sector SPDR, so this is the only sector source for
+# two thirds of the universe. The GICS names line up one-for-one except that
+# BlackRock still writes "Information Technology" for what SSGA calls
+# Technology, and splits nothing else differently.
+IWM_SECTOR_MAP = {
+    "materials": "XLB",
+    "communication": "XLC",
+    "energy": "XLE",
+    "financials": "XLF",
+    "financial services": "XLF",
+    "industrials": "XLI",
+    "information technology": "XLK",
+    "technology": "XLK",
+    "consumer staples": "XLP",
+    "real estate": "XLRE",
+    "utilities": "XLU",
+    "health care": "XLV",
+    "healthcare": "XLV",
+    "consumer discretionary": "XLY",
+}
 
 # Liquidity floor. A momentum signal is only worth publishing if the position
 # can actually be entered and, more to the point, exited on the stop. $5 keeps
@@ -158,6 +202,53 @@ def parse_qqq(path: str):
     return symbols, ""
 
 
+def fetch_sectors(refresh: bool = True) -> Dict[str, str]:
+    """symbol -> sector ETF tag, from the eleven sector SPDRs' own holdings.
+
+    Downloaded rather than hand-saved because SSGA, unlike Invesco and
+    BlackRock, serves these at a stable URL that works without a browser
+    session - the same one fetch_sp500.py already uses for SPY. Cached under
+    data/holdings/sectors/ so a later build works offline and so the file that
+    produced a given universe.txt is in the repo.
+    """
+    os.makedirs(SECTORS_DIR, exist_ok=True)
+    headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                             "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Safari/537.36"}
+    sector_of = {}
+
+    for etf in SECTOR_ETFS:
+        path = os.path.join(SECTORS_DIR, f"{etf.lower()}.xlsx")
+        if refresh or not os.path.exists(path):
+            try:
+                import requests
+                r = requests.get(SSGA_URL.format(etf.lower()), headers=headers, timeout=60)
+                # An SSGA error page is still bytes; only a real xlsx starts PK.
+                if r.status_code == 200 and r.content[:2] == b"PK":
+                    with open(path, "wb") as f:
+                        f.write(r.content)
+                else:
+                    print(f"  {etf}: HTTP {r.status_code}, not an xlsx - using cache if present")
+            except Exception as e:
+                print(f"  {etf}: download failed ({e}) - using cache if present")
+
+        if not os.path.exists(path):
+            print(f"  {etf}: no file, sector will be missing for its holdings")
+            continue
+        try:
+            symbols, _ = parse_spy(path)       # identical SSGA layout
+        except Exception as e:
+            print(f"  {etf}: parse failed ({e})")
+            continue
+        for s in symbols:
+            # First fund wins. The sector SPDRs do not overlap by design, so a
+            # collision means SSGA reclassified something mid-rebalance; taking
+            # the first keeps the build deterministic either way.
+            sector_of.setdefault(s, etf)
+        print(f"  {etf}: {len(symbols)} holdings ({SECTOR_ETFS[etf]})")
+
+    return sector_of
+
+
 def parse_iwm(path: str):
     """iShares CSV: ~9 preamble lines, then a header row, then holdings, then
     a trailing disclaimer block. Find the header by its labels rather than by
@@ -194,6 +285,36 @@ def parse_iwm(path: str):
         seen.add(sym)
         symbols.append(sym)
     return symbols, as_of
+
+
+def iwm_sectors(path: str) -> Dict[str, str]:
+    """symbol -> sector ETF tag, from BlackRock's own Sector column.
+
+    The only sector source for the Russell 2000 names, which are in none of
+    the sector SPDRs. Unmapped sectors (BlackRock occasionally emits blanks
+    and one-off labels) are simply left untagged rather than guessed at.
+    """
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        lines = f.read().splitlines()
+    header_at = next((i for i, l in enumerate(lines)
+                      if l.startswith("Ticker,") and "Asset Class" in l), None)
+    if header_at is None:
+        return {}
+
+    out, unmapped = {}, set()
+    for row in csv.DictReader(lines[header_at:]):
+        sym = norm(row.get("Ticker") or "")
+        sec = (row.get("Sector") or "").strip().lower()
+        if not sym or not sec or (row.get("Asset Class") or "").strip().lower() != "equity":
+            continue
+        tag = next((v for k, v in IWM_SECTOR_MAP.items() if sec.startswith(k)), None)
+        if tag:
+            out[sym] = tag
+        else:
+            unmapped.add(sec)
+    if unmapped:
+        print(f"  IWM sectors not mapped to an ETF: {sorted(unmapped)}")
+    return out
 
 
 FUNDS = [
@@ -258,6 +379,10 @@ def main():
     ap.add_argument("--min-dollar-volume", type=float, default=MIN_DOLLAR_VOLUME)
     ap.add_argument("--no-liquidity", action="store_true",
                     help="skip the pricing pass (writes raw index membership)")
+    ap.add_argument("--no-sectors", action="store_true",
+                    help="skip sector ETF tagging entirely")
+    ap.add_argument("--cached-sectors", action="store_true",
+                    help="use the sector files already in data/holdings/sectors/")
     ap.add_argument("--out", default=UNIVERSE)
     args = ap.parse_args()
 
@@ -283,8 +408,25 @@ def main():
             membership.setdefault(s, []).append(tag)
         print(f"{tag}: {len(symbols)} tickers  ({as_of or 'date unknown'})")
 
+    # Sector ETF per symbol. The eleven sector SPDRs cover the S&P 500
+    # exactly; BlackRock's own Sector column covers the Russell names, which
+    # are in none of them.
+    sector_of = {}
+    if not args.no_sectors:
+        print("\nSector SPDR holdings:")
+        sector_of = fetch_sectors(refresh=not args.cached_sectors)
+    iwm_path = os.path.join(HOLDINGS, "iwm.csv")
+    if os.path.exists(iwm_path):
+        for s, tag in iwm_sectors(iwm_path).items():
+            sector_of.setdefault(s, tag)      # SPDR membership wins where both exist
+
+    for s, tag in sector_of.items():
+        if s in membership and tag not in membership[s]:
+            membership[s].append(tag)
+
     candidates = sorted(membership)
-    print(f"\nUnion: {len(candidates)} unique tickers")
+    tagged = sum(1 for s in candidates if any(t in SECTOR_ETFS for t in membership[s]))
+    print(f"\nUnion: {len(candidates)} unique tickers, {tagged} with a sector tag")
 
     stats = {"failed": [], "thin": []}
     if args.no_liquidity:
@@ -307,13 +449,18 @@ def main():
                    f"#          price >= ${args.min_price:g} and median 3-month dollar volume "
                    f">= ${args.min_dollar_volume / 1e6:g}M\n")
 
+    sector_counts = {e: sum(1 for s in kept if e in membership[s]) for e in SECTOR_ETFS}
+    sector_tagged = sum(1 for s in kept if any(t in SECTOR_ETFS for t in membership[s]))
+
     header = (
-        "# Scan universe for Harry Trading Desk. Tagged by index membership.\n"
+        "# Scan universe for Harry Trading Desk. Tagged by index and sector.\n"
         "#\n"
         "# Sources: each fund's own daily holdings export (the fund, not a scraped index)\n"
         f"#   SPX  SPDR S&P 500 ETF Trust (SPY), State Street   {as_ofs.get('SPX') or 'date unknown'}\n"
         f"#   QQQ  Invesco QQQ Trust Series 1, Invesco          {as_ofs.get('QQQ') or 'date unknown'}\n"
         f"#   IWM  iShares Russell 2000 ETF, BlackRock          {as_ofs.get('IWM') or 'date unknown'}\n"
+        "#   XL*  the eleven sector SPDRs, State Street        downloaded at build time\n"
+        "#        (Russell names take their sector from BlackRock's own column)\n"
         "#\n"
         f"# Built  : {datetime.now().strftime('%Y-%m-%d')} by scripts/build_universe.py\n"
         f"# Count  : {len(kept)} tickers  "
@@ -327,7 +474,13 @@ def main():
         "#\n"
         "# Class shares use Yahoo notation: BRK-B, MOG-A  (funds write BRK.B, \"MOG A\")\n"
         "#\n"
-        "# One ticker per line; the trailing comment is the index membership.\n"
+        f"# Sector : {sector_tagged} of {len(kept)} tagged  ("
+        + ", ".join(f"{e} {n}" for e, n in sorted(sector_counts.items()) if n) + ")\n"
+        "#\n"
+        "# One ticker per line; the trailing comment is the index membership plus\n"
+        "# the sector SPDR that holds it. Sector tags are ETF symbols, not sector\n"
+        "# names, because the agents gate on whether that ETF is below its 20-day\n"
+        "# average - the tag has to be something they can price.\n"
         "# Blank lines and # comments are ignored by the loaders, so an agent that\n"
         "# does not care about membership reads this file unchanged.\n"
         "#\n"
