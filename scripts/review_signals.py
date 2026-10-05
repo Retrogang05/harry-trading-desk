@@ -24,8 +24,19 @@ def load_signals(results_dir):
     for f in sorted(glob.glob(os.path.join(results_dir, "scan_*.json"))):
         day = pd.Timestamp(os.path.basename(f)[5:13])
         for o in json.load(open(f))["opportunities"]:
+            # Bearish rows carry no setup_type or extension_pct - those describe
+            # a pullback/extended long entry and mean nothing on a breakdown -
+            # so every field an agent may omit is read with .get(). Reading
+            # setup_type directly crashed the whole review on the first archive
+            # containing a breakdown.
             sig.append({"date": day, "sym": o["symbol"], "rank": o["rank"], "score": o["score"], "px": o["price"],
-                        "stop": o["stop_loss"], "target": o["take_profit"], "setup": o["setup_type"], "ext_pct": o["extension_pct"],
+                        "stop": o["stop_loss"], "target": o["take_profit"],
+                        "setup": o.get("setup_type") or o.get("strategy") or "—",
+                        "ext_pct": o.get("extension_pct"),
+                        # +1 long, -1 short. Everything downstream is measured in
+                        # the signal's own direction, so a breakdown that falls
+                        # scores as a win rather than as a 20% loss.
+                        "dir": -1 if o.get("bias") == "bearish" else 1,
                         # present only on scans from 2026-10-05 onward
                         "structure": o.get("structure"), "blockers": o.get("blockers"),
                         "own_trend_pct": o.get("own_trend_pct"),
@@ -49,15 +60,31 @@ def score(S, horizon=20):
         base = r.px
         out = r._asdict(); out.pop("Index", None)
         out["sessions_since"] = len(fut)
-        out["open_gap"] = fut.Open.iloc[0] / base - 1
+        d = getattr(r, "dir", 1) or 1        # +1 long, -1 short
+        out["open_gap"] = (fut.Open.iloc[0] / base - 1) * d
+
+        # Returns in the SIGNAL'S direction, not the price's. A breakdown that
+        # falls 8% is a +8% result for that signal; scoring it as -8% would
+        # make the bearish half look catastrophic purely for working.
         s_fut = spy[spy.index > r.date]; s_base = spy.loc[:r.date].Close.iloc[-1]
         for h in (5, 10, 20):
-            out[f"ret{h}"] = fut.Close.iloc[h-1] / base - 1 if len(fut) >= h else np.nan
-            out[f"spy{h}"] = s_fut.Close.iloc[h-1] / s_base - 1 if len(s_fut) >= h else np.nan
+            out[f"ret{h}"] = (fut.Close.iloc[h-1] / base - 1) * d if len(fut) >= h else np.nan
+            out[f"spy{h}"] = (s_fut.Close.iloc[h-1] / s_base - 1) * d if len(s_fut) >= h else np.nan
+
         w = fut.iloc[:horizon]
-        out["max_dd"] = w.Low.min() / base - 1
-        out["max_up"] = w.High.max() / base - 1
-        hs = w.index[w.Low <= r.stop]; ht = w.index[w.High >= r.target]
+        # Adverse and favourable excursion, also in the signal's direction: a
+        # short is hurt by highs and helped by lows.
+        if d > 0:
+            out["max_dd"] = w.Low.min() / base - 1
+            out["max_up"] = w.High.max() / base - 1
+            hs = w.index[w.Low <= r.stop]          # long stop sits BELOW entry
+            ht = w.index[w.High >= r.target]
+        else:
+            out["max_dd"] = -(w.High.max() / base - 1)
+            out["max_up"] = -(w.Low.min() / base - 1)
+            hs = w.index[w.High >= r.stop]         # short stop sits ABOVE entry
+            ht = w.index[w.Low <= r.target]
+
         fs = hs.min() if len(hs) else None; ft = ht.min() if len(ht) else None
         out["outcome"] = "target" if ft is not None and (fs is None or ft <= fs) else ("stop" if fs is not None else "open")
         out["days_to_outcome"] = (len(w.loc[:ft]) if out["outcome"] == "target" else len(w.loc[:fs]) if out["outcome"] == "stop" else None)
@@ -94,6 +121,21 @@ def summarize(R):
     # dimensions but are not the same kind of stock - higher ADR, thinner book,
     # and the research that motivated the structure filters was done on small
     # caps. Needs a few weeks of scans before the n is worth reading.
+    # Long and short reported separately. Their returns are both measured in
+    # their own direction, so the numbers are comparable - but they are
+    # different strategies with different gates, and averaging them together
+    # would hide whichever one is not working.
+    if "dir" in R and R.dir.nunique() > 1:
+        print("\nby direction:")
+        for d, g in R.groupby("dir"):
+            g20 = g.dropna(subset=["ret20"])
+            print(f"  {'long ' if d > 0 else 'short':<6} n={len(g):>4}  "
+                  f"ret10 {pct(g.ret10.mean()):>8}  "
+                  f"ret20 {pct(g20.ret20.mean()) if len(g20) else 'n/a':>8}  "
+                  f"win20 {((g20.ret20>0).mean()*100 if len(g20) else float('nan')):3.0f}%  "
+                  f"stopped {(g.outcome=='stop').mean()*100:3.0f}%  "
+                  f"target {(g.outcome=='target').mean()*100:3.0f}%")
+
     if R.indexes.notna().any():
         print("\nby index:")
         for ix, g in R.dropna(subset=["indexes"]).groupby("indexes"):

@@ -65,16 +65,31 @@ def read() -> Dict[str, Dict]:
         logger.error(f"sector fetch failed ({e}) - no sector gating this run")
         return {}
 
+    # A flat frame means yfinance collapsed an 11-ticker request to one
+    # unlabelled series, and nothing in it says WHICH ticker survived. The
+    # previous version fell through to raw["Close"] inside the per-tag loop,
+    # which handed every one of the eleven sectors the same price and SMA -
+    # so one surviving ETF could mark all eleven weak, or all eleven fine,
+    # and that reading drives Monu's whole bearish half and Opy's bear-call
+    # tiebreak. Refuse to interpret it instead; an absent sector publishes
+    # nothing, which is the honest answer to "we could not tell".
+    if not isinstance(raw.columns, pd.MultiIndex):
+        logger.error(
+            f"sector fetch returned a single unlabelled frame for {len(tags)} tickers "
+            f"- cannot tell which ETF it is, so no sector gating this run"
+        )
+        return {}
+
+    available = set(raw.columns.get_level_values(0))
     out = {}
     for tag in tags:
         try:
-            if isinstance(raw.columns, pd.MultiIndex):
-                if tag not in raw.columns.get_level_values(0):
-                    continue
-                close = raw[tag]["Close"].dropna()
-            else:
-                close = raw["Close"].dropna()
+            if tag not in available:
+                logger.warning(f"{tag}: missing from the sector response")
+                continue
+            close = raw[tag]["Close"].dropna()
             if len(close) < SMA:
+                logger.warning(f"{tag}: only {len(close)} closes, need {SMA}")
                 continue
             price = float(close.iloc[-1])
             sma = float(close.rolling(SMA).mean().iloc[-1])
