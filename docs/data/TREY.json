@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-10-03T00:27:42.238409",
+  "scan_date": "2026-10-06T01:45:16.437989",
   "context": [
     {
       "label": "State",
@@ -38,14 +38,21 @@
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 62"
+      "value": "quiet \u00b7 69"
     }
   ],
+  "groups": {
+    "key": "indexes",
+    "label": "Index",
+    "values": [
+      "QQQ"
+    ]
+  },
   "opportunities": [
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 78.73,
+      "price": 83.12,
       "score": 100,
       "strategy": "Trend gate \u00b7 FULL",
       "dimensions": [
@@ -60,12 +67,15 @@
           "max": 40
         }
       ],
+      "indexes": [
+        "QQQ"
+      ],
       "breakdown": {
         "gate": 60,
         "fast": 40
       },
       "setup": {
-        "label": "FULL since 2026-09-21 \u00b7 QQQ 742.03 \u00b7 book 6/6 (reference, not used for state)",
+        "label": "FULL since 2026-09-21 \u00b7 QQQ 756.20 \u00b7 book 6/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -74,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+11.3%",
+            "value": "+13.2%",
             "tone": "pos"
           },
           {
@@ -89,7 +99,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +12.4%",
+            "value": "\u2713 +14.3%",
             "tone": "pos"
           },
           {
@@ -104,7 +114,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2713 62",
+            "value": "\u2713 69",
             "tone": "pos"
           },
           {
@@ -119,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 62",
+            "value": "quiet \u00b7 69",
             "tone": null
           }
         ]
@@ -128,7 +138,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 61.7,
+          "value": 68.6,
           "active": false
         }
       ],
@@ -140,7 +150,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+12.4%"
+            "detail": "+14.3%"
           },
           {
             "key": "stack",
@@ -158,7 +168,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": true,
-            "detail": "62"
+            "detail": "69"
           },
           {
             "key": "macd",
@@ -174,7 +184,7 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nYour FULL position is supported by both the gate (QQQ well above its 200-day average) and fast trend confirmation (10d > 20d with near-term momentum). All of Masonson's reference criteria are currently met, indicating alignment across timeframes and technical indicators. There are no unmet criteria holding the position below FULL\u2014this state reflects the strength of the underlying setup across multiple dimensions."
+      "reasoning": "# TQQQ Position Analysis\n\nYour FULL position reflects robust confirmation across both gate and fast-trend criteria, with QQQ substantially above its intermediate average and momentum consistently aligned across the 10/20/50-day structure. Since all six reference checklist conditions are currently met, the position remains mechanically supported with no unmet criteria constraining the state\u2014the gate is open and fast-trend confirmation sustains the FULL allocation."
     }
   ]
 }
