@@ -1058,9 +1058,26 @@ Stocks Scanned: {len(opportunities)}
             return output
 
         for opp in opportunities:
+            # Breakdown rows carry no setup_type or extension_pct - those
+            # describe a pullback/extended LONG entry and say nothing about a
+            # short - so this line is built per direction rather than read
+            # straight out of the row. Doing the latter is what failed Monu's
+            # CI run #44: scan and publish both succeeded, then this printer
+            # raised KeyError on the first bearish row and took the whole run
+            # down after the work was already done.
+            bearish = opp.get('bias') == 'bearish'
+            if bearish:
+                head = f"SHORT · {opp.get('sector', '?')} weak"
+                if opp.get('pct_off_low') is not None:
+                    head += f", {opp['pct_off_low']}% off the 52w low"
+            else:
+                head = opp.get('setup_type', 'setup')
+                if isinstance(opp.get('extension_pct'), (int, float)):
+                    head += f", {opp['extension_pct']:+.1f}% vs MA20"
+
             output += f"""
 {"=" * 60}
-#{opp['rank']} | {opp['symbol']} | Score: {opp['score']}/100
+#{opp['rank']} | {opp['symbol']} | Score: {opp['score']}/100 | {'BEARISH' if bearish else 'LONG'}
 Price: ${opp['price']:.2f}
 
 Dimensions:
@@ -1071,9 +1088,9 @@ Dimensions:
   Relative:     {opp['breakdown']['relative']}/15
   Breakout:     {opp['breakdown']['breakout']}/10
 
-Setup ({opp['setup_type']}, {opp['extension_pct']:+.1f}% vs MA20):
+Setup ({head}):
   Entry:        ${opp['entry']:.2f}
-  Stop Loss:    ${opp['stop_loss']:.2f}
+  Stop Loss:    ${opp['stop_loss']:.2f}{'  (above entry)' if bearish else ''}
   Take Profit:  ${opp['take_profit']:.2f}
   Risk/Reward:  {opp['risk_reward_ratio']:.2f}:1
 

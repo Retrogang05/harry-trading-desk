@@ -204,6 +204,77 @@ for fn in ("MNTM","OPY","TREY","GOLD"):
 man = json.load(open(os.path.join(ROOT,"docs","data","agents.json")))["agents"]
 check("manifest lists every data file", set(man) == {"MNTM","OPY","TREY","GOLD"}, str(man))
 
+# ─────────────────────────────────────────────────────────────────────
+section("Every consumer of an opportunity row, in BOTH directions")
+
+# The gap that let Monu's CI run #44 fail: the scan and the publish were both
+# tested with bearish rows, but format_results - which main() calls between
+# them - was not, and it read setup_type straight off the row. Anything that
+# takes an opportunity dict gets exercised here with a mixed list.
+mixed = json.load(open(os.path.join(ROOT, "docs", "data", "MNTM.json")))["opportunities"]
+has_bear = any(o.get("bias") == "bearish" for o in mixed)
+has_long = any(o.get("bias") != "bearish" for o in mixed)
+check("fixture has both directions", has_bear and has_long,
+      "published MNTM.json has no bearish rows - this section proves little")
+
+_a = monu.MomentumAnalyzer.__new__(monu.MomentumAnalyzer)
+try:
+    txt = monu.MomentumAnalyzer.format_results(_a, mixed, "UPTREND")
+    check("format_results survives bearish rows", True)
+    check("format_results labels direction", "BEARISH" in txt and "LONG" in txt)
+except Exception as e:
+    check("format_results survives bearish rows", False, f"{type(e).__name__}: {e}")
+
+try:
+    tmpdir = tempfile.mkdtemp()
+    _real_dir = monu.DOCS_DATA_DIR
+    monu.DOCS_DATA_DIR = tmpdir
+    monu.publish_to_dashboard(mixed, "UPTREND", {o["symbol"]: ["SPX"] for o in mixed}, {})
+    written = json.load(open(os.path.join(tmpdir, "MNTM.json")))
+    check("publish_to_dashboard survives bearish rows", len(written["opportunities"]) == len(mixed))
+    monu.DOCS_DATA_DIR = _real_dir
+except Exception as e:
+    check("publish_to_dashboard survives bearish rows", False, f"{type(e).__name__}: {e}")
+
+# Reasoning prompts: both branches must format against a real row without a
+# live API call. A stub client returns canned text so the f-strings run.
+class _StubMsg:
+    # Faithful to what the SDK returns and to what both reasoning paths read:
+    # content blocks carrying .type and .text, plus stop_reason, which the
+    # long path checks for a refusal.
+    def __init__(self):
+        self.content = [type("C", (), {"text": "ok", "type": "text"})()]
+        self.stop_reason = "end_turn"
+class _StubClient:
+    class messages:
+        @staticmethod
+        def create(**k):
+            assert k["messages"][0]["content"], "empty prompt"
+            return _StubMsg()
+_a.reasoning_enabled, _a.client, _a.model = True, _StubClient(), "stub"
+for o in mixed:
+    try:
+        if o.get("bias") == "bearish":
+            monu.MomentumAnalyzer.generate_bearish_reasoning(_a, o)
+        else:
+            monu.MomentumAnalyzer.generate_reasoning(
+                _a, o["symbol"], {**o["breakdown"], "total": o["score"]}, o["price"],
+                o["entry"], o["stop_loss"], o["take_profit"])
+    except Exception as e:
+        check(f"reasoning prompt formats for {o['symbol']}", False, f"{type(e).__name__}: {e}")
+        break
+else:
+    check("reasoning prompts format for every row, both directions", True)
+
+# Goldy's printer takes the same shape of row.
+gold = json.load(open(os.path.join(ROOT, "docs", "data", "GOLD.json")))["opportunities"]
+try:
+    for o in gold:
+        f"{o['rank']:>2} {o['symbol']} {o['strategy']} {o['score']} {o.get('cross_date')}"
+    check("Goldy rows format without KeyError", True)
+except Exception as e:
+    check("Goldy rows format without KeyError", False, f"{type(e).__name__}: {e}")
+
 print(f"\n{'='*60}\n{len(PASSES)} passed, {len(FAILS)} failed")
 if FAILS:
     print("FAILURES:")
