@@ -1,73 +1,21 @@
 {
-  "agent": {
-    "id": "GOLD",
-    "name": "Goldy",
-    "strategy": "MA crosses",
-    "description": "Finds 20/50 and 50/200 moving-average crosses as they happen. A discovery list, not a ranked forecast - see the README.",
-    "accent": "#7fa88a"
+  "scan_date": "2026-10-08T01:11:59.799003",
+  "stats": {
+    "scanned": 1488,
+    "illiquid": 7,
+    "discontinuous": 65,
+    "by_type": {
+      "Death Cross": 85,
+      "20/50 Breakdown": 289,
+      "Nearing 20/50 Cross": 67,
+      "Nearing 20/50 Breakdown": 63,
+      "Nearing Golden Cross": 8,
+      "Golden Cross": 26,
+      "20/50 Cross": 57,
+      "Nearing Death Cross": 70
+    },
+    "published": 24
   },
-  "scan_date": "2026-10-08T01:11:59.797723",
-  "dimensions": [
-    {
-      "key": "freshness",
-      "label": "Freshness",
-      "max": 30
-    },
-    {
-      "key": "decisiveness",
-      "label": "Decisiveness",
-      "max": 25
-    },
-    {
-      "key": "cleanliness",
-      "label": "Cleanliness",
-      "max": 25
-    },
-    {
-      "key": "confirmation",
-      "label": "Confirmation",
-      "max": 20
-    }
-  ],
-  "groups": {
-    "key": "indexes",
-    "label": "Index",
-    "values": [
-      "SPX",
-      "QQQ",
-      "IWM"
-    ]
-  },
-  "context": [
-    {
-      "label": "Universe",
-      "value": "1521 symbols  (SPX 503 / QQQ 98 / IWM 1006)"
-    },
-    {
-      "label": "Scanned",
-      "value": "1488 with history"
-    },
-    {
-      "label": "Skipped",
-      "value": "7 illiquid, 65 price gaps"
-    },
-    {
-      "label": "Lookback",
-      "value": "10 sessions"
-    },
-    {
-      "label": "Crosses found",
-      "value": "Death Cross 85, 20/50 Breakdown 289, Nearing 20/50 Cross 67, Nearing 20/50 Breakdown 63, Nearing Golden Cross 8, Golden Cross 26, 20/50 Cross 57, Nearing Death Cross 70"
-    },
-    {
-      "label": "Published",
-      "value": "24"
-    },
-    {
-      "label": "Model",
-      "value": "claude-haiku-4-5"
-    }
-  ],
   "opportunities": [
     {
       "symbol": "META",
