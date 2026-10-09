@@ -1,73 +1,21 @@
 {
-  "agent": {
-    "id": "GOLD",
-    "name": "Goldy",
-    "strategy": "MA crosses",
-    "description": "Finds 20/50 and 50/200 moving-average crosses as they happen. A discovery list, not a ranked forecast - see the README.",
-    "accent": "#7fa88a"
+  "scan_date": "2026-10-09T01:21:28.830061",
+  "stats": {
+    "scanned": 1491,
+    "illiquid": 7,
+    "discontinuous": 63,
+    "by_type": {
+      "Death Cross": 89,
+      "20/50 Breakdown": 267,
+      "Nearing Death Cross": 70,
+      "Nearing 20/50 Cross": 70,
+      "Nearing Golden Cross": 9,
+      "Golden Cross": 26,
+      "20/50 Cross": 66,
+      "Nearing 20/50 Breakdown": 51
+    },
+    "published": 24
   },
-  "scan_date": "2026-10-09T01:21:28.829023",
-  "dimensions": [
-    {
-      "key": "freshness",
-      "label": "Freshness",
-      "max": 30
-    },
-    {
-      "key": "decisiveness",
-      "label": "Decisiveness",
-      "max": 25
-    },
-    {
-      "key": "cleanliness",
-      "label": "Cleanliness",
-      "max": 25
-    },
-    {
-      "key": "confirmation",
-      "label": "Confirmation",
-      "max": 20
-    }
-  ],
-  "groups": {
-    "key": "indexes",
-    "label": "Index",
-    "values": [
-      "SPX",
-      "QQQ",
-      "IWM"
-    ]
-  },
-  "context": [
-    {
-      "label": "Universe",
-      "value": "1521 symbols  (SPX 503 / QQQ 98 / IWM 1006)"
-    },
-    {
-      "label": "Scanned",
-      "value": "1491 with history"
-    },
-    {
-      "label": "Skipped",
-      "value": "7 illiquid, 63 price gaps"
-    },
-    {
-      "label": "Lookback",
-      "value": "10 sessions"
-    },
-    {
-      "label": "Crosses found",
-      "value": "Death Cross 89, 20/50 Breakdown 267, Nearing Death Cross 70, Nearing 20/50 Cross 70, Nearing Golden Cross 9, Golden Cross 26, 20/50 Cross 66, Nearing 20/50 Breakdown 51"
-    },
-    {
-      "label": "Published",
-      "value": "24"
-    },
-    {
-      "label": "Model",
-      "value": "claude-haiku-4-5"
-    }
-  ],
   "opportunities": [
     {
       "symbol": "PTC",
