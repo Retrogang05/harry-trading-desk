@@ -1,0 +1,200 @@
+{
+  "scan_date": "2026-10-09T01:11:59.146208",
+  "signal": {
+    "date": "2026-10-07",
+    "state": "FULL",
+    "since": "2026-09-21",
+    "prev_state": "HALF",
+    "gate_changes_12m": 2,
+    "size_changes_12m": 12,
+    "qqq": 757.72998046875,
+    "tqqq": 83.62000274658203,
+    "gate_sma": 669.538537902832,
+    "gate_pct": 13.1719740647277,
+    "fast_sma": 746.5030029296875,
+    "slow_sma": 733.5182861328125,
+    "mid_sma": 720.9028576660156,
+    "mid_pct": 5.108472301242539,
+    "fast_ok": true,
+    "mid_ok": true,
+    "fast_confirmed": true,
+    "book": [
+      {
+        "key": "sma225",
+        "label": "> 225d",
+        "met": true,
+        "detail": "+14.3%"
+      },
+      {
+        "key": "stack",
+        "label": "20>50>200",
+        "met": true,
+        "detail": "stacked"
+      },
+      {
+        "key": "fast_raw",
+        "label": "10>20 \u00b7 P>50",
+        "met": true,
+        "detail": "yes"
+      },
+      {
+        "key": "rsi",
+        "label": "RSI > 50",
+        "met": true,
+        "detail": "68"
+      },
+      {
+        "key": "macd",
+        "label": "MACD",
+        "met": true,
+        "detail": ">sig >0"
+      },
+      {
+        "key": "seasonal",
+        "label": "Season",
+        "met": true,
+        "detail": "Oct \u00b7 fav"
+      }
+    ],
+    "rsi": 68.1553404972982,
+    "rsi_alert": false,
+    "since_truncated": false
+  },
+  "row": {
+    "rank": 1,
+    "symbol": "TQQQ",
+    "price": 83.62,
+    "score": 100,
+    "strategy": "Trend gate \u00b7 FULL",
+    "dimensions": [
+      {
+        "key": "gate",
+        "label": "QQQ > 200d",
+        "max": 60
+      },
+      {
+        "key": "fast",
+        "label": "10>20 & P>50d",
+        "max": 40
+      }
+    ],
+    "indexes": [
+      "QQQ"
+    ],
+    "breakdown": {
+      "gate": 60,
+      "fast": 40
+    },
+    "setup": {
+      "label": "FULL since 2026-09-21 \u00b7 QQQ 757.73 \u00b7 book 6/6 (reference, not used for state)",
+      "fields": [
+        {
+          "label": "State",
+          "value": "FULL",
+          "tone": "pos"
+        },
+        {
+          "label": "Gate 200d",
+          "value": "+13.2%",
+          "tone": "pos"
+        },
+        {
+          "label": "Fast (3d)",
+          "value": "yes",
+          "tone": "pos"
+        },
+        {
+          "label": "Book \u00b7 ref",
+          "value": "6 / 6",
+          "tone": "pos"
+        },
+        {
+          "label": "> 225d",
+          "value": "\u2713 +14.3%",
+          "tone": "pos"
+        },
+        {
+          "label": "20>50>200",
+          "value": "\u2713 stacked",
+          "tone": "pos"
+        },
+        {
+          "label": "10>20 \u00b7 P>50",
+          "value": "\u2713 yes",
+          "tone": "pos"
+        },
+        {
+          "label": "RSI > 50",
+          "value": "\u2713 68",
+          "tone": "pos"
+        },
+        {
+          "label": "MACD",
+          "value": "\u2713 >sig >0",
+          "tone": "pos"
+        },
+        {
+          "label": "Season",
+          "value": "\u2713 Oct \u00b7 fav",
+          "tone": "pos"
+        },
+        {
+          "label": "RSI > 80 alert",
+          "value": "quiet \u00b7 68",
+          "tone": null
+        }
+      ]
+    },
+    "alerts": [
+      {
+        "key": "rsi_overbought",
+        "label": "RSI > 80",
+        "value": 68.2,
+        "active": false
+      }
+    ],
+    "book_criteria": {
+      "met": 6,
+      "of": 6,
+      "items": [
+        {
+          "key": "sma225",
+          "label": "> 225d",
+          "met": true,
+          "detail": "+14.3%"
+        },
+        {
+          "key": "stack",
+          "label": "20>50>200",
+          "met": true,
+          "detail": "stacked"
+        },
+        {
+          "key": "fast_raw",
+          "label": "10>20 \u00b7 P>50",
+          "met": true,
+          "detail": "yes"
+        },
+        {
+          "key": "rsi",
+          "label": "RSI > 50",
+          "met": true,
+          "detail": "68"
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "met": true,
+          "detail": ">sig >0"
+        },
+        {
+          "key": "seasonal",
+          "label": "Season",
+          "met": true,
+          "detail": "Oct \u00b7 fav"
+        }
+      ]
+    },
+    "reasoning": "# TQQQ Position Analysis\n\nThe FULL position reflects strong momentum confirmation across both gate and fast-trend criteria, positioning the holder to benefit from sustained upside in the leveraged QQQ exposure. All six reference checklist criteria are currently met, so the position remains structurally sound with no unmet gates preventing the FULL state\u2014the signal is simply executing as designed given the confluence of technical strength."
+  }
+}
