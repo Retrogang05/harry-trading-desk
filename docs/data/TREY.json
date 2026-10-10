@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-10-09T01:11:59.145811",
+  "scan_date": "2026-10-10T00:47:24.607175",
   "context": [
     {
       "label": "State",
@@ -38,7 +38,7 @@
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 68"
+      "value": "quiet \u00b7 59"
     }
   ],
   "groups": {
@@ -52,7 +52,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 83.62,
+      "price": 80.23,
       "score": 100,
       "strategy": "Trend gate \u00b7 FULL",
       "dimensions": [
@@ -75,7 +75,7 @@
         "fast": 40
       },
       "setup": {
-        "label": "FULL since 2026-09-21 \u00b7 QQQ 757.73 \u00b7 book 6/6 (reference, not used for state)",
+        "label": "FULL since 2026-09-21 \u00b7 QQQ 747.58 \u00b7 book 6/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -84,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+13.2%",
+            "value": "+11.5%",
             "tone": "pos"
           },
           {
@@ -99,7 +99,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +14.3%",
+            "value": "\u2713 +12.7%",
             "tone": "pos"
           },
           {
@@ -114,7 +114,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2713 68",
+            "value": "\u2713 59",
             "tone": "pos"
           },
           {
@@ -129,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 68",
+            "value": "quiet \u00b7 59",
             "tone": null
           }
         ]
@@ -138,7 +138,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 68.2,
+          "value": 59.0,
           "active": false
         }
       ],
@@ -150,7 +150,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+14.3%"
+            "detail": "+12.7%"
           },
           {
             "key": "stack",
@@ -168,7 +168,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": true,
-            "detail": "68"
+            "detail": "59"
           },
           {
             "key": "macd",
@@ -184,7 +184,7 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nThe FULL position reflects strong momentum confirmation across both gate and fast-trend criteria, positioning the holder to benefit from sustained upside in the leveraged QQQ exposure. All six reference checklist criteria are currently met, so the position remains structurally sound with no unmet gates preventing the FULL state\u2014the signal is simply executing as designed given the confluence of technical strength."
+      "reasoning": "# TQQQ Position Analysis\n\nThe FULL position reflects strong momentum confirmation across both trend structure and technical indicators, with QQQ trading well above its long-term average and all primary momentum criteria aligned. Since all six checklist criteria are currently met, the position sits at its intended maximum exposure with no unmet technical gatekeepers. This stance will persist until either the fast trend (10d/20d crossover or price reversion vs the 50d) or the foundational gate (price relative to 200d average) deteriorates."
     }
   ]
 }
