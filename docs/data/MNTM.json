@@ -6,7 +6,7 @@
     "description": "Buys strength: breakouts confirmed by volume, riding the trend until momentum fades.",
     "accent": "#c8974a"
   },
-  "scan_date": "2026-10-12T22:05:11.888598",
+  "scan_date": "2026-10-13T20:12:52.100608",
   "dimensions": [
     {
       "key": "trend_strength",
@@ -63,11 +63,11 @@
     },
     {
       "label": "Sector breadth",
-      "value": "3/11 weak (XLB, XLC, XLI)"
+      "value": "1/11 weak (XLI)"
     },
     {
       "label": "Passed Filter",
-      "value": "22 long, 8 breakdown"
+      "value": "22 long, 6 breakdown"
     },
     {
       "label": "Model",
@@ -77,230 +77,8 @@
   "opportunities": [
     {
       "rank": 1,
-      "symbol": "HUM",
-      "price": 433.5,
-      "score": 97,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 12,
-        "breakout": 10,
-        "room": 50,
-        "own_trend": 50
-      },
-      "entry": 433.5,
-      "stop_loss": 405.97010441742276,
-      "take_profit": 474.79484337386583,
-      "risk_reward_ratio": 1.499999999999999,
-      "setup_type": "EXTENDED",
-      "extension_pct": 10.598867366869138,
-      "blockers": 0,
-      "room_clear": true,
-      "own_trend_pct": 1.8,
-      "own_trend_up": true,
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        },
-        {
-          "key": "room",
-          "label": "Room to target",
-          "max": 50
-        },
-        {
-          "key": "own_trend",
-          "label": "Own trend",
-          "max": 50
-        }
-      ],
-      "structure": "A",
-      "indexes": [
-        "SPX"
-      ],
-      "market_regime": "UPTREND",
-      "reasoning": "# HUM Momentum Setup Analysis\n\n**Why HUM is showing strong momentum:** HUM is firing on all cylinders with a near-perfect 97/100 score\u2014it's got textbook trend strength, exceptional volume backing the move, and both RSI and MACD are aligned in bullish territory. This is a stock that's not just moving, it's got conviction behind it.\n\n**Best-aligned indicators:** The real strength here is the holy trinity of trend strength, volume, and oscillator confirmation (RSI + MACD both maxed). The clean 10/10 breakout quality tells you this isn't a false start\u2014institutional money is likely already positioned.\n\n**Key risk to watch:** With a 1.50:1 R/R ratio and a relatively tight stop at $405.97 (~6.3% below entry), you're risking a decent chunk if this reverses. Given the extremely overbought readings, watch for any volume divergence or MACD histogram rollover\u2014those are your early warning signs that momentum could fade quickly."
-    },
-    {
-      "rank": 2,
-      "symbol": "NVAX",
-      "price": 12.65999984741211,
-      "score": 97,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 12,
-        "breakout": 10,
-        "room": 50,
-        "own_trend": 50
-      },
-      "entry": 12.65999984741211,
-      "stop_loss": 11.290762183029223,
-      "take_profit": 14.71385634398644,
-      "risk_reward_ratio": 1.5,
-      "setup_type": "EXTENDED",
-      "extension_pct": 16.832777557244754,
-      "blockers": 0,
-      "room_clear": true,
-      "own_trend_pct": 12.7,
-      "own_trend_up": true,
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        },
-        {
-          "key": "room",
-          "label": "Room to target",
-          "max": 50
-        },
-        {
-          "key": "own_trend",
-          "label": "Own trend",
-          "max": 50
-        }
-      ],
-      "structure": "A",
-      "indexes": [
-        "IWM"
-      ],
-      "market_regime": "UPTREND",
-      "reasoning": "# NVAX Momentum Setup Analysis\n\n**Why the momentum is firing:** NVAX is hitting on all cylinders with a perfect 97/100 score\u2014you've got pristine trend strength, exceptional volume backing the move, and both RSI and MACD firing in unison, signaling strong directional conviction with real participation behind it.\n\n**Best-aligned indicators:** The standout here is the perfect scoring on Trend Strength (25/25), Volume (20/20), and RSI/MACD (both 15/15)\u2014this trifecta tells you the move is institutional-grade, not just retail noise. The clean breakout quality (10/10) further confirms this isn't a false flag.\n\n**Key risk to monitor:** Watch for volume persistence above current levels; if volume dries up into the $13.50-$14.00 zone before hitting your $14.71 target, you could see momentum fade and get caught in a pullback. The 1.50:1 R/R is solid, but the real money comes from riding this past the first target\u2014just make sure volume doesn't abandon the setup."
-    },
-    {
-      "rank": 3,
-      "symbol": "KEYS",
-      "price": 377.70001220703125,
-      "score": 96,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6,
-        "room": 50,
-        "own_trend": 50
-      },
-      "entry": 377.70001220703125,
-      "stop_loss": 362.2735566685897,
-      "take_profit": 400.8396955146936,
-      "risk_reward_ratio": 1.5000000000000018,
-      "setup_type": "EXTENDED",
-      "extension_pct": 4.976009879988069,
-      "blockers": 0,
-      "room_clear": true,
-      "own_trend_pct": 6.0,
-      "own_trend_up": true,
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        },
-        {
-          "key": "room",
-          "label": "Room to target",
-          "max": 50
-        },
-        {
-          "key": "own_trend",
-          "label": "Own trend",
-          "max": 50
-        }
-      ],
-      "structure": "A",
-      "indexes": [
-        "SPX"
-      ],
-      "market_regime": "UPTREND",
-      "reasoning": "# KEYS Momentum Setup Analysis\n\n**Why It's Moving:** KEYS is displaying textbook momentum with perfect trend strength, volume confirmation, and technical alignment\u2014RSI, MACD, and relative performance are all firing on all cylinders, suggesting genuine institutional buying, not just retail noise.\n\n**Indicator Alignment:** The 96/100 score is driven by near-perfect marks across trend (25/25), volume (20/20), and oscillators (RSI + MACD both 15/15), which means you're seeing synchronized strength across timeframes and order flow\u2014this is the kind of setup where multiple money flows are pointing the same direction.\n\n**Key Risk:** The Breakout Quality score of just 6/10 is the red flag here\u2014while momentum is strong, the entry is right at current price with limited historical breakout confirmation above this level, so watch for rejection at $380-382 resistance and don't add if price stalls there."
-    },
-    {
-      "rank": 4,
       "symbol": "PLTR",
-      "price": 209.0,
+      "price": 208.6699981689453,
       "score": 90,
       "breakdown": {
         "trend_strength": 25,
@@ -312,15 +90,15 @@
         "room": 50,
         "own_trend": 50
       },
-      "entry": 209.0,
-      "stop_loss": 198.97505038297402,
-      "take_profit": 224.03742442553897,
-      "risk_reward_ratio": 1.5,
+      "entry": 208.6699981689453,
+      "stop_loss": 198.83504537704806,
+      "take_profit": 223.42242735679122,
+      "risk_reward_ratio": 1.5000000000000029,
       "setup_type": "EXTENDED",
-      "extension_pct": 10.710294529079361,
+      "extension_pct": 9.488342163882223,
       "blockers": 0,
       "room_clear": true,
-      "own_trend_pct": 10.5,
+      "own_trend_pct": 10.9,
       "own_trend_up": true,
       "dimensions": [
         {
@@ -370,86 +148,12 @@
         "QQQ"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# PLTR Momentum Setup Analysis\n\n**Why the momentum is real:** PLTR is firing on all cylinders with perfect trend strength, exceptional volume confirmation, and clean MACD/breakout signals\u2014this isn't noise, it's institutional accumulation with conviction. The 90/100 score is driven by multiple confirmations rather than a single indicator, which significantly reduces false signals.\n\n**Best-aligned indicators:** Your trend strength (25/25) and volume (20/20) are the heavy lifters here, backed by strong MACD and breakout quality\u2014this combination suggests a genuine directional move rather than a dead-cat bounce. The relative performance edge adds credibility that PLTR is outpacing its peers.\n\n**Key risk to monitor:** That RSI reading of only 5/15 is your yellow flag\u2014while it doesn't invalidate the setup, it signals the momentum *score* isn't yet showing overbought exhaustion, meaning there's still room to run, BUT a sharp reversal could happen without the typical RSI warning sign you'd normally expect. Watch for volume deterioration on any pullback toward your $203-205 zone as an early exit signal.\n\n**Bottom line:** Strong risk/reward at 1.50:1 with solid fundamentals backing the trade\u2014this is a quality setup worth taking with proper position sizing."
+      "reasoning": "# PLTR Momentum Setup Analysis\n\n**Why the momentum is hot:** PLTR is firing on all cylinders with perfect trend strength, exceptional volume backing, and clean breakout quality\u2014this is textbook sustained upside momentum, not a false signal. The MACD and relative performance scores confirm institutional buying is rotating into this name.\n\n**Best-aligned indicators:** Your trend strength (25/25) and volume (20/20) are the real story here\u2014price is moving decisively with conviction behind it. The breakout quality (10/10) tells you this isn't just noise; it's a clean technical break with follow-through.\n\n**Key risk to watch:** That RSI of only 5/15 is your yellow flag\u2014despite the bullish setup, momentum indicators suggest you're not deeply overbought yet, but watch for exhaustion if it spikes toward 70+ without higher highs. The 1.50:1 R/R is solid, but don't ignore profit-taking around $223.42 resistance given the recent move.\n\n**Bottom line:** Strong setup for momentum traders, but use your stops tight\u2014this is a trend-following trade, not a value play."
     },
     {
-      "rank": 5,
-      "symbol": "FIGS",
-      "price": 17.739999771118164,
-      "score": 90,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 5,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 10,
-        "room": 50,
-        "own_trend": 50
-      },
-      "entry": 17.739999771118164,
-      "stop_loss": 16.49996210009904,
-      "take_profit": 19.60005627764685,
-      "risk_reward_ratio": 1.5,
-      "setup_type": "EXTENDED",
-      "extension_pct": 28.695271767222742,
-      "blockers": 0,
-      "room_clear": true,
-      "own_trend_pct": 3.2,
-      "own_trend_up": true,
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        },
-        {
-          "key": "room",
-          "label": "Room to target",
-          "max": 50
-        },
-        {
-          "key": "own_trend",
-          "label": "Own trend",
-          "max": 50
-        }
-      ],
-      "structure": "A",
-      "indexes": [
-        "IWM"
-      ],
-      "market_regime": "UPTREND",
-      "reasoning": "# FIGS Momentum Setup Analysis\n\n**Why It's Moving:** FIGS is displaying exceptional momentum with a 90/100 score driven by perfect trend strength and volume confirmation\u2014the stock is moving decisively with conviction behind it. The strong MACD and Relative Performance signals indicate this isn't isolated strength but part of a broader positive narrative.\n\n**Best Aligned Indicators:** Your trend strength (25/25) and volume (20/20) are firing on all cylinders, giving you high-quality price action. MACD confirmation (15/15) validates the directional move, making this a textbook strong-trend setup rather than a risky momentum fade.\n\n**Key Risk to Watch:** The RSI reading of only 5/15 is your red flag\u2014it suggests momentum metrics aren't fully confirming yet, which means there's potential for a sharp pullback before $19.60 if volume suddenly dries up. Watch for any volume divergence on the next candles; a clean breakout through $18.20 would lock in the setup."
-    },
-    {
-      "rank": 6,
+      "rank": 2,
       "symbol": "HAE",
-      "price": 122.05999755859375,
+      "price": 121.63200378417969,
       "score": 90,
       "breakdown": {
         "trend_strength": 25,
@@ -461,15 +165,15 @@
         "room": 50,
         "own_trend": 50
       },
-      "entry": 122.05999755859375,
-      "stop_loss": 116.24096125582517,
-      "take_profit": 130.7885520127466,
-      "risk_reward_ratio": 1.4999999999999976,
+      "entry": 121.63200378417969,
+      "stop_loss": 115.92819226768268,
+      "take_profit": 130.1877210589252,
+      "risk_reward_ratio": 1.5,
       "setup_type": "EXTENDED",
-      "extension_pct": 13.024795157744236,
+      "extension_pct": 11.82947837269213,
       "blockers": 0,
       "room_clear": true,
-      "own_trend_pct": 9.4,
+      "own_trend_pct": 9.6,
       "own_trend_up": true,
       "dimensions": [
         {
@@ -518,12 +222,12 @@
         "IWM"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# HAE Momentum Setup Analysis\n\n**Why the momentum is strong:** HAE is displaying exceptional trend strength with perfect volume confirmation, suggesting institutional accumulation is driving this move. The MACD and relative performance indicators are firing in unison, showing both internal momentum and outperformance versus peers.\n\n**Best-aligned signals:** Your trend and volume scores are maxed out\u2014this is the foundation of the setup. MACD's clean alignment and strong breakout quality (10/10) confirm this isn't a false move, giving you high conviction on direction.\n\n**Key risk to monitor:** The RSI reading of only 5/15 is your yellow flag here. With such weak RSI despite the 90/100 score, there's limited room for extension before hitting overbought conditions, which could trigger a sharp pullback. Watch for RSI rejection at resistance\u2014it may hit profit targets faster than expected or reverse prematurely.\n\n**Bottom line:** This is a quality momentum setup with a favorable 1.50:1 risk/reward, but keep your stop tight and don't chase higher if RSI fails to confirm the next leg up."
+      "reasoning": "# HAE Momentum Trading Setup\n\n**Why HAE is Showing Momentum:**\nHAE is displaying exceptional trend strength with perfect volume confirmation\u2014the stock is moving decisively higher on increasing participation, which is the hallmark of genuine momentum. The pristine MACD and relative performance scores indicate this move is both technically sound and outperforming its peers.\n\n**Best-Aligned Indicators:**\nYour trend strength (25/25) and volume (20/20) are firing on all cylinders, backed by a perfect MACD signal. These three indicators create a high-conviction setup\u2014strong directional move + institutional buying + positive momentum acceleration.\n\n**Key Risk to Monitor:**\nThe RSI reading of only 5/15 is a notable disconnect in an otherwise bullish picture. While this *could* suggest room to run before overbought conditions kick in, it's worth watching for RSI divergence; if price continues higher but RSI stalls, that's a warning sign the momentum could fade. Your 1.50:1 risk-reward gives you solid buffer room on your stop at $115.93."
     },
     {
-      "rank": 7,
-      "symbol": "HPE",
-      "price": 70.33000183105469,
+      "rank": 3,
+      "symbol": "APA",
+      "price": 48.0099983215332,
       "score": 88,
       "breakdown": {
         "trend_strength": 25,
@@ -535,15 +239,15 @@
         "room": 50,
         "own_trend": 50
       },
-      "entry": 70.33000183105469,
-      "stop_loss": 65.03822895596792,
-      "take_profit": 78.26766114368483,
+      "entry": 48.0099983215332,
+      "stop_loss": 45.69490817808554,
+      "take_profit": 51.4826335367047,
       "risk_reward_ratio": 1.5,
       "setup_type": "EXTENDED",
-      "extension_pct": 8.737836271473263,
+      "extension_pct": 8.81809210709054,
       "blockers": 0,
       "room_clear": true,
-      "own_trend_pct": 15.2,
+      "own_trend_pct": 4.9,
       "own_trend_up": true,
       "dimensions": [
         {
@@ -592,86 +296,12 @@
         "SPX"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# HPE Momentum Setup Analysis\n\n**Why the momentum is real:** HPE is firing on all cylinders with maxed-out trend strength, RSI, and MACD signals\u2014this is a textbook bullish continuation setup with strong directional conviction. The stock is extended but not yet overbought, giving room to run higher.\n\n**Best-aligned signals:** Your trend, RSI, and MACD are perfectly synchronized (15/15 each), which is exactly what you want to see before committing capital. This alignment suggests institutional buying is driving price, not retail chop.\n\n**Key risk to monitor:** Volume is only scoring 12/20, which is your weakest link. If this rally pushes toward $78 on declining volume, that's a warning sign the move could fade fast\u2014consider tightening your stop or taking partial profits if volume dries up near resistance.\n\n*The 1.50:1 R/R is solid for a momentum trade; the setup rewards you for being right and doesn't punish you too hard if you're wrong.*"
+      "reasoning": "# APA Momentum Analysis\n\n**Why it's moving:** APA is displaying textbook momentum with perfect trend strength (25/25) and maxed-out RSI/MACD signals, indicating strong directional conviction and oversold conditions being decisively reversed. The stock is outperforming its peers with excellent relative strength, creating a classic momentum play setup.\n\n**Best-aligned signals:** Your RSI (15/15) and MACD (15/15) are perfectly aligned\u2014this isn't noise, it's confirmation. Combined with pristine trend strength, you've got synchronized technical agreement that APA has real upside legs left to run.\n\n**Key risk to watch:** Volume is your red flag at only 12/20\u2014while the setup is clean, thin volume means your exit could be slippery if momentum reverses quickly. Watch that volume spike on any pullback to $47; if volume doesn't confirm support, this can unwind fast despite the great setup. The 1.50:1 reward gives you buffer, but position sizing accordingly is critical."
     },
     {
-      "rank": 8,
-      "symbol": "ZBRA",
-      "price": 388.1199951171875,
-      "score": 88,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 12,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6,
-        "room": 50,
-        "own_trend": 50
-      },
-      "entry": 388.1199951171875,
-      "stop_loss": 373.2877509797805,
-      "take_profit": 410.3683613232979,
-      "risk_reward_ratio": 1.4999999999999962,
-      "setup_type": "EXTENDED",
-      "extension_pct": 5.262157722952111,
-      "blockers": 0,
-      "room_clear": true,
-      "own_trend_pct": 7.4,
-      "own_trend_up": true,
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        },
-        {
-          "key": "room",
-          "label": "Room to target",
-          "max": 50
-        },
-        {
-          "key": "own_trend",
-          "label": "Own trend",
-          "max": 50
-        }
-      ],
-      "structure": "A",
-      "indexes": [
-        "SPX"
-      ],
-      "market_regime": "UPTREND",
-      "reasoning": "# ZBRA Momentum Setup Analysis\n\n**Why the momentum?** ZBRA is displaying textbook momentum with perfect trend strength and RSI/MACD alignment\u2014the stock is riding a strong directional move with healthy confirmation from oscillators. The strong relative performance against peers adds conviction that this isn't just market-wide strength.\n\n**Best aligned signals:** Your RSI and MACD are firing on all cylinders (30/30 combined), and the trend structure is pristine (25/25), making this a high-confidence directional play with a solid 1.50:1 risk/reward setup.\n\n**Key risk to monitor:** Volume is your weak link at only 12/20\u2014if buying interest dries up on any pullback toward your $373.29 stop, this momentum could evaporate quickly. Watch for declining volume into resistance at $410; it could signal the move is running out of steam before your profit target."
-    },
-    {
-      "rank": 9,
-      "symbol": "DDOG",
-      "price": 287.2900085449219,
+      "rank": 4,
+      "symbol": "FAST",
+      "price": 51.43000030517578,
       "score": 88,
       "breakdown": {
         "trend_strength": 25,
@@ -683,15 +313,15 @@
         "room": 0,
         "own_trend": 50
       },
-      "entry": 287.2900085449219,
-      "stop_loss": 269.3382095092665,
-      "take_profit": 314.2177070984049,
-      "risk_reward_ratio": 1.4999999999999984,
-      "setup_type": "EXTENDED",
-      "extension_pct": 9.627986994228804,
-      "blockers": 1,
+      "entry": 50.27750034332276,
+      "stop_loss": 48.7644853229362,
+      "take_profit": 52.547022873902584,
+      "risk_reward_ratio": 1.4999999999999976,
+      "setup_type": "PULLBACK",
+      "extension_pct": 2.2922777663629126,
+      "blockers": 4,
       "room_clear": false,
-      "own_trend_pct": 7.6,
+      "own_trend_pct": 1.6,
       "own_trend_up": true,
       "dimensions": [
         {
@@ -741,12 +371,12 @@
         "QQQ"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# DDOG Momentum Setup Analysis\n\n**Why This Setup Works:**\nDDOG is firing on all cylinders with perfect trend strength, RSI, and MACD alignment\u2014all scoring 15/15\u2014which tells you this uptrend has genuine conviction and isn't overbought despite the high momentum score. The stock is breaking out with relative strength outperformance, creating a textbook continuation setup at $287.29.\n\n**Strongest Signals:**\nYour trend, oscillator, and relative performance metrics are locked in perfectly, giving you three independent confirmations that money is flowing into this name. The 1.50:1 risk/reward on a 6% breakout target is solid asymmetry.\n\n**Key Risk to Monitor:**\nVolume is only scoring 12/20, which is your weak link here\u2014if this move loses participation on a pullback toward your stop, you could see momentum evaporate quickly without the volume backing to sustain the breakout. Watch for volume confirmation on any dip toward $280."
+      "reasoning": "# FAST Momentum Setup Analysis\n\n**Why the momentum is real:** FAST is firing on all cylinders with maxed-out trend strength, RSI, and MACD signals\u2014this is textbook strong uptrend momentum with the stock already above your entry level at $51.43. The relative outperformance confirms this isn't just market-wide strength; FAST is doing the heavy lifting itself.\n\n**Best aligned indicators:** Your RSI and MACD are perfectly synchronized (both 15/15), which is the cleanest confirmation you can get\u2014they're not fighting each other. Combined with pristine trend strength, you've got genuine directional conviction, not just noise.\n\n**Key risk:** Volume is your weak spot at 12/20, and breakout quality only scores 6/10\u2014this means the move lacks institutional backing and could fizzle faster than it started. Watch for volume drying up on any pull-back to your stop; that's often where momentum trades fail. Your 1.50:1 R/R is solid, but you'll need tight risk management if volume doesn't show up."
     },
     {
-      "rank": 10,
+      "rank": 5,
       "symbol": "GCT",
-      "price": 57.7400016784668,
+      "price": 57.029998779296875,
       "score": 88,
       "breakdown": {
         "trend_strength": 25,
@@ -758,12 +388,12 @@
         "room": 50,
         "own_trend": 50
       },
-      "entry": 57.7400016784668,
-      "stop_loss": 54.14900523665038,
-      "take_profit": 63.12649634119142,
-      "risk_reward_ratio": 1.5,
+      "entry": 57.029998779296875,
+      "stop_loss": 53.45751606356182,
+      "take_profit": 62.388722852899456,
+      "risk_reward_ratio": 1.4999999999999991,
       "setup_type": "EXTENDED",
-      "extension_pct": 7.387796416758893,
+      "extension_pct": 5.6404540927750135,
       "blockers": 0,
       "room_clear": true,
       "own_trend_pct": 8.5,
@@ -815,32 +445,328 @@
         "IWM"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# GCT Momentum Setup Analysis\n\n**Why the momentum right now:** GCT is firing on all cylinders with perfect trend strength, RSI, and MACD alignment\u2014this is a textbook bullish continuation setup with strong directional conviction. The stock is outperforming its peers while maintaining clean technical structure, suggesting institutional participation rather than retail-driven noise.\n\n**Best-aligned indicators:** Your RSI, MACD, and trend strength are maxed out (15/15 each), which is rare and powerful. These three working together confirm the move is legitimate and has room to run\u2014this isn't a dead-cat bounce.\n\n**Key risk to monitor:** Volume is the weak link at 12/20, and breakout quality sits at just 6/10. This means while momentum is strong, the underlying participation isn't robust enough to guarantee follow-through. Watch for volume confirmation on the next move; if it doesn't materialize, this momentum can evaporate quickly despite the pretty indicators.\n\n**Bottom line:** Strong setup with a solid 1.5:1 risk/reward, but don't get complacent\u2014volume confirmation is your tell for whether this runs to $63.13 or stalls."
+      "reasoning": "# GCT Momentum Setup Analysis\n\n**Why the momentum is real:** GCT is displaying textbook momentum with perfect trend strength and overbought RSI (15/15), confirming sustained directional conviction. The MACD alignment (15/15) validates that buyer momentum is accelerating, not just price moving in isolation.\n\n**Strongest signals:** Your trend and oscillator indicators are locked in\u2014this is the sweet spot for momentum plays. RSI and MACD firing on all cylinders tells you this isn't a false breakout; there's genuine follow-through buying pressure behind the move.\n\n**Key risk to monitor:** Volume is the weak link at 12/20, and breakout quality at 6/10 is concerning. This means you're riding momentum on thinner participation than ideal\u2014watch for volume confirmation on the next move up, or consider this could be a momentum fade if institutional buyers don't step in. Your 1.50:1 R/R gives you cushion, but lower volume makes stops more vulnerable to false touches.\n\n**Bottom line:** Strong setup to trade, but position sizing down slightly due to volume weakness is prudent risk management."
     },
     {
-      "rank": 11,
-      "symbol": "ZETA",
-      "price": 33.5099983215332,
-      "score": 88,
+      "rank": 6,
+      "symbol": "FIGS",
+      "price": 17.977800369262695,
+      "score": 87,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 5,
+        "macd": 15,
+        "relative": 12,
+        "breakout": 10,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 17.977800369262695,
+      "stop_loss": 16.654908205288915,
+      "take_profit": 19.962138615223367,
+      "risk_reward_ratio": 1.5000000000000013,
+      "setup_type": "EXTENDED",
+      "extension_pct": 28.235253418463202,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 4.5,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "indexes": [
+        "IWM"
+      ],
+      "market_regime": "UPTREND",
+      "reasoning": "# FIGS Momentum Setup Analysis\n\n**Why the Momentum:**\nFIGS is displaying exceptional trend strength with perfect volume confirmation\u2014the stock is moving decisively higher on heavy participation, which is the gold standard for momentum plays. The MACD is in full bullish alignment, and it's breaking out cleanly with quality price action, suggesting institutional buying is driving this move.\n\n**Best Aligned Indicators:**\nYour Trend Strength (25/25) and Volume (20/20) are firing on all cylinders, backed by flawless MACD confirmation (15/15) and a clean breakout (10/10). This confluence is what separates a real momentum trade from noise.\n\n**Key Risk to Watch:**\nThe RSI reading is suspiciously weak at just 5/15\u2014this is your yellow flag. While the trend looks solid, low RSI suggests momentum may not have full market participation behind it yet, or you could see profit-taking if the stock runs too hard too fast. Watch for volume to sustain above 17.98; if it doesn't, this could be a fast fade rather than a sustained move."
+    },
+    {
+      "rank": 7,
+      "symbol": "AMPL",
+      "price": 15.609999656677246,
+      "score": 86,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 5,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 15.609999656677246,
+      "stop_loss": 14.656667603713123,
+      "take_profit": 17.039997736123432,
+      "risk_reward_ratio": 1.5000000000000009,
+      "setup_type": "EXTENDED",
+      "extension_pct": 9.954739843603734,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 13.7,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "indexes": [
+        "IWM"
+      ],
+      "market_regime": "UPTREND",
+      "reasoning": "# AMPL Momentum Setup\n\n**Why It's Moving:** AMPL is showing exceptional momentum with a 86/100 score driven by perfect trend strength and volume confirmation\u2014the price is trending decisively with real buying pressure backing it. The MACD is firing on all cylinders and relative outperformance is strong, suggesting this isn't just market-wide movement.\n\n**Strongest Signals:** Your setup is anchored by three perfectly-aligned indicators: pristine trend strength (25/25), authentic volume (20/20), and MACD confirmation (15/15). This trifecta tells a coherent story of institutional accumulation, not retail noise.\n\n**Key Risk:** Watch that RSI (5/15)\u2014it's the weak link here and signals you're entering from an overbought extreme. With such a thin stop loss (only $0.95 buffer), mean reversion could trigger a quick stop-out if momentum falters. Consider whether your position size reflects this elevated risk, despite the attractive 1.50:1 reward ratio."
+    },
+    {
+      "rank": 8,
+      "symbol": "DHT",
+      "price": 26.56999969482422,
+      "score": 86,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 20,
+        "rsi": 5,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 26.56999969482422,
+      "stop_loss": 25.14809135336125,
+      "take_profit": 28.702862207018672,
+      "risk_reward_ratio": 1.4999999999999987,
+      "setup_type": "EXTENDED",
+      "extension_pct": 14.218160966466284,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 11.6,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "indexes": [
+        "IWM"
+      ],
+      "market_regime": "UPTREND",
+      "reasoning": "# DHT Momentum Setup Analysis\n\n**Why the momentum is real:** DHT is firing on all cylinders with pristine trend strength, exceptional volume confirmation, and perfectly aligned MACD/relative performance signals\u2014this is textbook institutional accumulation. The only soft spot is the RSI at 5/15, which actually suggests room to run before hitting overbought territory.\n\n**Best aligned indicators:** Your volume and trend strength scores (20/20 and 25/25) are the real story here; combined with clean MACD confirmation, you've got institutional money moving in the same direction. The 1.50:1 risk/reward on a $1.42 move gives you solid asymmetry for position sizing.\n\n**Key risk to monitor:** Watch that RSI\u2014while low readings can mean \"room to run,\" they can also indicate a whippy move prone to profit-taking shakeouts. If volume suddenly drops or you see a failed breakout above $28.70, that breakout quality score of 6/10 could prove prescient, so consider trailing your stop or scaling into this rather than going all-in at market."
+    },
+    {
+      "rank": 9,
+      "symbol": "HPE",
+      "price": 68.80500030517578,
+      "score": 85,
       "breakdown": {
         "trend_strength": 25,
         "volume": 12,
         "rsi": 15,
         "macd": 15,
-        "relative": 15,
+        "relative": 12,
         "breakout": 6,
         "room": 50,
         "own_trend": 50
       },
-      "entry": 33.5099983215332,
-      "stop_loss": 31.34227007750971,
-      "take_profit": 36.76159068756844,
+      "entry": 68.80500030517578,
+      "stop_loss": 63.448711501208564,
+      "take_profit": 76.83943351112661,
+      "risk_reward_ratio": 1.5000000000000013,
+      "setup_type": "EXTENDED",
+      "extension_pct": 5.327613132287275,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 15.6,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "indexes": [
+        "SPX"
+      ],
+      "market_regime": "UPTREND",
+      "reasoning": "# HPE Momentum Setup\n\n**Why the momentum?** HPE is firing on all cylinders with exceptional trend strength and perfect RSI/MACD alignment\u2014the stock has clean directional conviction with no overbought extremes, suggesting room to run higher. The strong uptrend combined with maxed-out technical indicators creates a textbook momentum play.\n\n**Best aligned signals:** Trend Strength (25/25) and your oscillators (RSI + MACD both at 15/15) are in lockstep, which is the holy grail for momentum confirmation. The 1.50:1 risk/reward ratio gives you solid edge.\n\n**Key risk:** Volume is only scoring 12/20\u2014that's your weak link. If buying interest dries up on the move toward $76.84, you could see momentum fade quickly and get caught in a reversal. Watch for volume confirmation on any breakout moves; without it, this setup loses its edge."
+    },
+    {
+      "rank": 10,
+      "symbol": "ADI",
+      "price": 414.70001220703125,
+      "score": 85,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 12,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 12,
+        "breakout": 6,
+        "room": 0,
+        "own_trend": 50
+      },
+      "entry": 414.70001220703125,
+      "stop_loss": 397.7676663754114,
+      "take_profit": 440.098530954461,
       "risk_reward_ratio": 1.5,
       "setup_type": "EXTENDED",
-      "extension_pct": 7.004288862167256,
-      "blockers": 0,
-      "room_clear": true,
-      "own_trend_pct": 9.9,
+      "extension_pct": 4.588452786418762,
+      "blockers": 3,
+      "room_clear": false,
+      "own_trend_pct": 3.7,
       "own_trend_up": true,
       "dimensions": [
         {
@@ -884,184 +810,37 @@
           "max": 50
         }
       ],
-      "structure": "A",
+      "structure": "B",
       "indexes": [
-        "IWM"
+        "SPX",
+        "QQQ"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# ZETA Momentum Setup Analysis\n\n**Why the momentum is real:** ZETA is firing on all cylinders with maxed-out trend strength, RSI, and MACD\u2014classic signs of sustained directional conviction. The stock is outperforming relative peers, which suggests institutional accumulation rather than retail noise.\n\n**Best-aligned signals:** Your RSI (15/15) and MACD (15/15) are in perfect agreement on upside momentum, while the strong trend (25/25) confirms this isn't a false signal. Together, these three indicators create a high-conviction setup worth trading.\n\n**Key risk to monitor:** Volume is your soft spot at 12/20\u2014participation is adequate but not exceptional. This means the breakout quality scores only 6/10, so watch for volume confirmation above $34.50 or you could see momentum fade quickly on a pullback. If volume doesn't follow price higher, exit near your stop.\n\n**Bottom line:** Strong technical alignment with a reasonable 1.50:1 R/R, but don't chase\u2014wait for volume confirmation on the breakout before adding to positions."
+      "reasoning": "# ADI Momentum Trading Setup\n\n**Why the momentum is strong:** ADI is displaying exceptional trend strength with perfectly aligned RSI and MACD signals\u2014both hitting their maximum scores\u2014indicating robust upside momentum without overbought concerns at these levels. The stock is riding a strong directional wave with solid technical confirmation.\n\n**Best-aligned indicators:** Your RSI (15/15) and MACD (15/15) are firing on all cylinders, supported by excellent trend strength (25/25), which together create a high-conviction setup. The relative outperformance (12/15) confirms ADI is leading its peers, validating the momentum.\n\n**Key risk to watch:** Volume is your weakest link at 12/20\u2014if buying interest dries up on the move toward $440, you could see momentum fade quickly and the trade unwind. Watch for volume confirmation on any spike higher; lower volume on an up day would be a red flag to tighten stops.\n\n**Bottom line:** Strong technical setup with 1.5:1 risk/reward, but volume sustainability will determine if this run continues to profit target or stalls earlier."
     },
     {
-      "rank": 12,
-      "symbol": "AMPL",
-      "price": 15.529999732971191,
-      "score": 86,
+      "rank": 11,
+      "symbol": "DDOG",
+      "price": 283.3399963378906,
+      "score": 85,
       "breakdown": {
         "trend_strength": 25,
-        "volume": 20,
-        "rsi": 5,
+        "volume": 12,
+        "rsi": 15,
         "macd": 15,
-        "relative": 15,
+        "relative": 12,
         "breakout": 6,
-        "room": 50,
+        "room": 0,
         "own_trend": 50
       },
-      "entry": 15.529999732971191,
-      "stop_loss": 14.55674516125286,
-      "take_profit": 16.98988159054869,
-      "risk_reward_ratio": 1.5000000000000018,
+      "entry": 283.3399963378906,
+      "stop_loss": 265.4843768295386,
+      "take_profit": 310.1234256004187,
+      "risk_reward_ratio": 1.5000000000000016,
       "setup_type": "EXTENDED",
-      "extension_pct": 10.261095099777691,
-      "blockers": 0,
-      "room_clear": true,
-      "own_trend_pct": 13.5,
-      "own_trend_up": true,
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        },
-        {
-          "key": "room",
-          "label": "Room to target",
-          "max": 50
-        },
-        {
-          "key": "own_trend",
-          "label": "Own trend",
-          "max": 50
-        }
-      ],
-      "structure": "A",
-      "indexes": [
-        "IWM"
-      ],
-      "market_regime": "UPTREND",
-      "reasoning": "# AMPL Momentum Setup Analysis\n\n**Why momentum is strong:** AMPL is firing on all cylinders with perfect trend strength and volume confirmation\u2014this isn't a weak breakout. The MACD and relative performance are aligned, showing both internal momentum and outperformance versus peers, while the stock is pushing into fresh territory at $15.53.\n\n**Best-aligned indicators:** Your volume and trend strength scores (20/20 and 25/25) are the real story here\u2014they're giving you high-conviction confirmation that this move has institutional backing and staying power. The MACD at 15/15 adds mechanical confirmation that momentum is genuinely accelerating.\n\n**Key risk to watch:** That RSI of only 5/15 is your red flag. Despite the bullish setup, the momentum *quality* looks thin, suggesting you're potentially chasing into overbought territory. If volume dries up on the next push higher, this could roll over quickly\u2014tighten your stop loss mentally and watch for volume confirmation at $16.50+.\n\n**Bottom line:** Strong setup with a 1.50:1 R/R, but manage position size given the RSI weakness. This works best if volume stays robust."
-    },
-    {
-      "rank": 13,
-      "symbol": "DHT",
-      "price": 26.219999313354492,
-      "score": 86,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 5,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6,
-        "room": 50,
-        "own_trend": 50
-      },
-      "entry": 26.219999313354492,
-      "stop_loss": 24.791900271215916,
-      "take_profit": 28.36214787656236,
-      "risk_reward_ratio": 1.5000000000000024,
-      "setup_type": "EXTENDED",
-      "extension_pct": 13.797141316429654,
-      "blockers": 0,
-      "room_clear": true,
-      "own_trend_pct": 11.2,
-      "own_trend_up": true,
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        },
-        {
-          "key": "room",
-          "label": "Room to target",
-          "max": 50
-        },
-        {
-          "key": "own_trend",
-          "label": "Own trend",
-          "max": 50
-        }
-      ],
-      "structure": "A",
-      "indexes": [
-        "IWM"
-      ],
-      "market_regime": "UPTREND",
-      "reasoning": "# DHT Momentum Trading Setup\n\n**Why the momentum is there:** DHT is displaying textbook strong-trend conditions with maxed-out Trend Strength and Volume scores, backed by perfect MACD alignment and relative outperformance\u2014this is a stock with genuine institutional buying pressure behind it.\n\n**Strongest aligned signals:** Your Volume (20/20) and MACD (15/15) are firing together with excellent Trend Strength (25/25), which is the holy trinity for momentum trades. The relative performance piece confirms DHT is outpacing its peers, not just riding a market rally.\n\n**Key risk to watch:** That RSI of only 5/15 is your yellow flag\u2014despite the strong momentum setup, the oscillator isn't confirming overbought conditions yet, which could mean either deeper upside is coming or this move needs a breather/retest before continuation. With a 1.50:1 risk-reward, your stop at $24.79 gives you room, but monitor for RSI divergence on any near-term pullback."
-    },
-    {
-      "rank": 14,
-      "symbol": "HNGE",
-      "price": 104.81999969482422,
-      "score": 86,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 5,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 6,
-        "room": 50,
-        "own_trend": 50
-      },
-      "entry": 104.81999969482422,
-      "stop_loss": 98.95693816536401,
-      "take_profit": 113.61459198901454,
-      "risk_reward_ratio": 1.500000000000001,
-      "setup_type": "EXTENDED",
-      "extension_pct": 8.906158823744395,
-      "blockers": 0,
-      "room_clear": true,
+      "extension_pct": 7.036877633144445,
+      "blockers": 1,
+      "room_clear": false,
       "own_trend_pct": 8.2,
       "own_trend_up": true,
       "dimensions": [
@@ -1106,17 +885,18 @@
           "max": 50
         }
       ],
-      "structure": "A",
+      "structure": "B",
       "indexes": [
-        "IWM"
+        "SPX",
+        "QQQ"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# HNGE Momentum Setup Analysis\n\n**Why the momentum is strong:** HNGE is firing on all cylinders with maxed-out Trend Strength (25/25) and Volume (20/20), combined with perfect MACD alignment (15/15)\u2014this tells you there's genuine institutional conviction behind the move, not just retail chasing.\n\n**Best-aligned indicators:** The trifecta of perfect trend, volume, and MACD is your green light here; these three moving in sync create high-probability setups. Relative Performance (15/15) also confirms it's outperforming its peers, so you're riding a sector tailwind.\n\n**Key risk to watch:** That weak RSI (5/15) is a red flag\u2014despite the bullish structure, the stock is showing overbought conditions, which means you could see a mean-reversion pullback before your take profit. This is why your stop loss at $98.96 is critical; respect it if momentum breaks.\n\n**Bottom line:** Strong entry setup with a solid 1.50:1 risk/reward, but don't get greedy\u2014the overbought RSI suggests this move may need to cool off first, so consider scaling in or tightening stops."
+      "reasoning": "# DDOG Momentum Setup Analysis\n\n**Why the momentum is strong:** DDOG is firing on all cylinders with perfect trend strength and maxed-out RSI/MACD signals\u2014this is a stock decisively moving higher with real conviction behind it. The relative outperformance confirms it's leading its peers, giving you confidence this isn't just a broad market move.\n\n**Your aligned indicators:** Trend Strength and momentum oscillators (RSI/MACD) are your core strength here\u2014these are typically the most predictive for short-term entries. The 1.50:1 risk/reward ratio is solid, giving you favorable odds if the setup plays out.\n\n**Key risk to monitor:** Volume is only 12/20 and breakout quality is your weakest component at 6/10\u2014this suggests the move might lack the institutional backing needed to sustain a push toward $310. Watch for volume confirmation on any pullback to your entry; if volume dries up during a dip toward support, this could be a fading rally rather than a true breakout."
     },
     {
-      "rank": 15,
-      "symbol": "ADI",
-      "price": 406.2449951171875,
+      "rank": 12,
+      "symbol": "SNPS",
+      "price": 494.510009765625,
       "score": 85,
       "breakdown": {
         "trend_strength": 25,
@@ -1128,15 +908,15 @@
         "room": 0,
         "own_trend": 50
       },
-      "entry": 393.8387481689453,
-      "stop_loss": 377.2956422231608,
-      "take_profit": 418.653407087622,
-      "risk_reward_ratio": 1.4999999999999982,
-      "setup_type": "PULLBACK",
-      "extension_pct": 3.1500828717138525,
-      "blockers": 3,
+      "entry": 494.510009765625,
+      "stop_loss": 467.910234603225,
+      "take_profit": 534.409672509225,
+      "risk_reward_ratio": 1.499999999999997,
+      "setup_type": "EXTENDED",
+      "extension_pct": 10.276098811772789,
+      "blockers": 6,
       "room_clear": false,
-      "own_trend_pct": 3.3,
+      "own_trend_pct": 6.1,
       "own_trend_up": true,
       "dimensions": [
         {
@@ -1186,12 +966,235 @@
         "QQQ"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# ADI Momentum Setup Analysis\n\n**Why ADI Has Momentum:**\nADI is displaying exceptional trend strength with a perfect RSI/MACD alignment\u2014both indicators are firing at maximum efficiency (15/15), signaling strong directional conviction. The stock is trading just $12.40 above your entry, having already broken through key resistance with solid upside potential to $418.65.\n\n**Best Aligned Indicators:**\nYour RSI and MACD are the stars here\u2014they're in textbook agreement on upward momentum, and combined with perfect trend strength (25/25), you've got a high-conviction directional setup. Volume is the outlier at 12/20, which is workable but not ideal confirmation.\n\n**Key Risk to Monitor:**\nWatch that volume closely\u2014at 12/20, it's lagging the price action, which means if momentum fades, this move could reverse quickly. The breakout quality score of 6/10 also suggests this isn't a textbook breakout, so position accordingly and don't chase aggressively above resistance.\n\n*The 1.50:1 R/R is respectable with tight risk management, making this worth a tactical entry if volume confirms the next move up.*"
+      "reasoning": "# SNPS Momentum Setup Analysis\n\n**Why the momentum is real:** SNPS is firing on all cylinders with maxed-out trend strength, RSI, and MACD signals\u2014this is a textbook strong uptrend with clean directional conviction. The stock is outperforming peers and has broken out cleanly, suggesting institutional accumulation behind it.\n\n**Best-aligned signals:** Your RSI and MACD are perfectly aligned (30/30 combined), confirming the upside momentum without overbought divergence concerns, while the 25/25 trend strength tells you this isn't a random spike\u2014it's a structural move.\n\n**Key risk:** Volume is your weak link at 12/20\u2014this momentum could evaporate quickly if buying dries up at resistance, so watch for volume confirmation on any moves toward your $534 target, and don't ignore the 5.4% stop-loss cushion if the tape rolls over."
+    },
+    {
+      "rank": 13,
+      "symbol": "FFIV",
+      "price": 476.239990234375,
+      "score": 82,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 6,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 476.239990234375,
+      "stop_loss": 456.1836325737446,
+      "take_profit": 506.3245267253206,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "EXTENDED",
+      "extension_pct": 5.3396418185464585,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 7.8,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "indexes": [
+        "SPX"
+      ],
+      "market_regime": "UPTREND",
+      "reasoning": "# FFIV Momentum Setup Analysis\n\n**Why the momentum is strong:** FFIV is firing on all cylinders with maxed-out trend strength, RSI, and MACD\u2014this is a textbook trending setup with strong directional conviction. The stock is breaking out cleanly with solid relative outperformance, suggesting institutional participation.\n\n**Best aligned signals:** Your RSI (15/15) and MACD (15/15) are perfectly aligned with the trend, and the 25/25 trend strength confirms this isn't a false move. This trifecta gives you high-conviction entries.\n\n**Key risk to watch:** Volume is your Achilles heel at only 6/20\u2014if this breakout thins out on the way to your $506 target, you could face liquidity issues that stop you out prematurely. Watch volume bars closely; any drop-off suggests the move may lack staying power.\n\n**Bottom line:** Strong setup with a tight 1.50:1 risk/reward, but confirm volume follows through before scaling into a full position."
+    },
+    {
+      "rank": 14,
+      "symbol": "FTNT",
+      "price": 190.75999450683594,
+      "score": 82,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 6,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 190.75999450683594,
+      "stop_loss": 181.70360239815716,
+      "take_profit": 204.3445826698541,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "EXTENDED",
+      "extension_pct": 5.465096725473997,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 9.3,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "market_regime": "UPTREND",
+      "reasoning": "# FTNT Momentum Setup Analysis\n\n**Why the momentum is real:** FTNT is displaying textbook momentum with maxed-out trend strength, RSI, and MACD\u2014all confirming strong directional conviction and oversold conditions resolved. The stock is moving decisively higher with solid relative outperformance, creating a clean breakout setup at current levels.\n\n**Best-aligned indicators:** Your RSI, MACD, and trend strength are firing on all cylinders (45/45 combined), giving you high-confidence directional bias. The relative performance strength adds conviction that this isn't just market-wide enthusiasm.\n\n**Key risk to watch:** Volume is your Achilles heel here at only 6/20\u2014this momentum could evaporate quickly on a pullback if sellers step in without sufficient buying pressure to support the move. Consider scaling in rather than going all-in, and watch for volume confirmation on any dips toward your entry.\n\n**Takeaway:** Strong setup with solid 1.50:1 risk/reward, but don't ignore that volume gap. It's a good trade, just respect position sizing."
+    },
+    {
+      "rank": 15,
+      "symbol": "ZBRA",
+      "price": 386.57000732421875,
+      "score": 82,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 6,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 15,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 386.57000732421875,
+      "stop_loss": 371.75979877159295,
+      "take_profit": 408.78532015315744,
+      "risk_reward_ratio": 1.5,
+      "setup_type": "EXTENDED",
+      "extension_pct": 4.2221913397469875,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 7.6,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "indexes": [
+        "SPX"
+      ],
+      "market_regime": "UPTREND",
+      "reasoning": "# ZBRA Momentum Setup Analysis\n\n**Why the momentum is real:** ZBRA is firing on all cylinders with maxed-out trend strength, RSI, and MACD\u2014this is a textbook strong uptrend with genuine directional conviction, not a false breakout. The stock has broken through resistance cleanly and is riding solid relative outperformance.\n\n**Best aligned signals:** Your strongest edge here is the trio of trend strength (25/25), RSI (15/15), and MACD (15/15)\u2014these three confirm each other, which is exactly what you want before entering. The 1.50:1 risk/reward also gives you favorable odds on a swing up to $408.79.\n\n**Key risk to monitor:** Volume is the red flag at just 6/20\u2014you've got directional alignment but weak participation, which means this move could lose steam quickly or get shaken out on a minor pullback. Watch for volume confirmation on any dips toward your stop at $371.76; without it, be prepared to exit early rather than ride it down."
     },
     {
       "rank": 16,
-      "symbol": "FTNT",
-      "price": 192.94000244140625,
+      "symbol": "ECPG",
+      "price": 105.5999984741211,
       "score": 82,
       "breakdown": {
         "trend_strength": 25,
@@ -1203,15 +1206,15 @@
         "room": 50,
         "own_trend": 50
       },
-      "entry": 192.94000244140625,
-      "stop_loss": 183.9750517297724,
-      "take_profit": 206.38742850885706,
-      "risk_reward_ratio": 1.5000000000000016,
+      "entry": 105.5999984741211,
+      "stop_loss": 100.69359123345744,
+      "take_profit": 112.95960933511657,
+      "risk_reward_ratio": 1.4999999999999984,
       "setup_type": "EXTENDED",
-      "extension_pct": 7.215395801016454,
+      "extension_pct": 7.390192791314999,
       "blockers": 0,
       "room_clear": true,
-      "own_trend_pct": 9.2,
+      "own_trend_pct": 1.8,
       "own_trend_up": true,
       "dimensions": [
         {
@@ -1257,16 +1260,15 @@
       ],
       "structure": "A",
       "indexes": [
-        "SPX",
-        "QQQ"
+        "IWM"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# FTNT Momentum Setup Analysis\n\n**Why the momentum is here:** FTNT is firing on all cylinders with maxed-out trend strength, RSI, and MACD\u2014this is a textbook strong uptrend with solid overbought conditions that are *sustaining* rather than reversing. The stock is also outperforming its peers, giving you tailwinds from relative strength.\n\n**Best-aligned indicators:** Trend Strength (25/25) and RSI (15/15) are your anchors here\u2014you've got a steep, consistent uptrend with RSI confirming buy pressure without yet rolling over. MACD is locked in bullish alignment, which validates the directional conviction.\n\n**Key risk to watch:** Volume is the weak link at only 6/20\u2014this momentum party is running on lighter participation than you'd ideally want, which means it could fade faster if sentiment shifts. Watch for volume drying up on any pullback toward your stop; that's your early warning signal. The 1.50:1 R/R is reasonable, but if volume evaporates, tighten your mental stops accordingly."
+      "reasoning": "# ECPG Momentum Setup Analysis\n\n**Why the momentum is here:** ECPG is displaying exceptional trend strength with overbought RSI (15/15) and a bullish MACD crossover (15/15), indicating strong upside conviction. The stock is outperforming its peers (15/15 relative performance) with a clean breakout structure, creating a textbook continuation setup.\n\n**Best-aligned indicators:** Your RSI, MACD, and trend strength are firing in perfect alignment\u2014this is the sweet spot for momentum trades. The 1.50:1 risk-reward is attractive, giving you room to work with a tight 4.91-point stop.\n\n**Key risk to monitor:** Volume is your weak link here (6/20)\u2014this breakout is happening on below-average participation, which means the move could lose steam or reverse quickly if sellers step in. Watch for volume confirmation on the next candle; if it doesn't print, consider scaling position size or waiting for a pullback retest at higher volume."
     },
     {
       "rank": 17,
-      "symbol": "MTD",
-      "price": 1563.010009765625,
+      "symbol": "PARR",
+      "price": 89.88999938964844,
       "score": 82,
       "breakdown": {
         "trend_strength": 25,
@@ -1278,15 +1280,15 @@
         "room": 50,
         "own_trend": 50
       },
-      "entry": 1563.010009765625,
-      "stop_loss": 1500.7102571992725,
-      "take_profit": 1656.4596386151538,
-      "risk_reward_ratio": 1.5000000000000018,
+      "entry": 89.88999938964844,
+      "stop_loss": 82.91564041418837,
+      "take_profit": 100.35153785283853,
+      "risk_reward_ratio": 1.5,
       "setup_type": "EXTENDED",
-      "extension_pct": 5.013755204127518,
+      "extension_pct": 8.348198064779135,
       "blockers": 0,
       "room_clear": true,
-      "own_trend_pct": 6.4,
+      "own_trend_pct": 5.4,
       "own_trend_up": true,
       "dimensions": [
         {
@@ -1332,110 +1334,35 @@
       ],
       "structure": "A",
       "indexes": [
-        "SPX"
+        "IWM"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# MTD Momentum Setup Analysis\n\n**Why MTD is showing momentum:** MTD is firing on all cylinders with maxed-out trend strength, RSI, and MACD readings\u2014this is a textbook strong uptrend with solid directional conviction. The stock is outperforming its peers and breaking out cleanly, which signals institutional interest behind the move.\n\n**Key aligned indicators:** Your RSI (15/15) and MACD (15/15) are perfectly aligned with the trend, and the 25/25 trend strength confirms you're riding genuine momentum rather than chasing noise. The 1.50:1 risk/reward gives you a solid edge if this continuation holds.\n\n**Primary risk to monitor:** Volume is your weak link at 6/20\u2014this strong move is happening on relatively light participation, which means there's less conviction backing it and higher vulnerability to sudden reversals. Watch for volume confirmation on the next leg up, or consider this a warning sign if it doesn't show up before your take-profit target."
+      "reasoning": "# PARR Momentum Setup Analysis\n\n**Why the Momentum:** PARR is displaying textbook momentum with perfect trend strength, overbought RSI (15/15), and a bullish MACD crossover\u2014all firing simultaneously. The stock is outperforming its peers significantly, suggesting institutional accumulation in a strong uptrend.\n\n**Best-Aligned Indicators:** RSI and MACD are your confidence builders here, both maxed out at 15/15, while the trend strength confirms this isn't a false signal. Relative performance dominance (15/15) suggests the move has legs beyond just market-wide rallies.\n\n**Key Risk:** Volume is your weak link at only 6/20\u2014this momentum could evaporate quickly on lower conviction. Watch for volume confirmation on any breakout past $100.35; if it arrives on thin volume, exit immediately rather than chase it further. The 1.50:1 risk/reward is solid, but only if volume validates the breakout."
     },
     {
       "rank": 18,
-      "symbol": "LITE",
-      "price": 995.4099731445312,
-      "score": 81,
+      "symbol": "PBF",
+      "price": 91.17500305175781,
+      "score": 82,
       "breakdown": {
         "trend_strength": 25,
-        "volume": 12,
+        "volume": 6,
         "rsi": 15,
-        "macd": 15,
-        "relative": 8,
-        "breakout": 6,
-        "room": 0,
-        "own_trend": 50
-      },
-      "entry": 988.5752502441406,
-      "stop_loss": 882.0328620742513,
-      "take_profit": 1148.3888324989746,
-      "risk_reward_ratio": 1.499999999999999,
-      "setup_type": "PULLBACK",
-      "extension_pct": 0.6913710310573408,
-      "blockers": 7,
-      "room_clear": false,
-      "own_trend_pct": 9.1,
-      "own_trend_up": true,
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        },
-        {
-          "key": "room",
-          "label": "Room to target",
-          "max": 50
-        },
-        {
-          "key": "own_trend",
-          "label": "Own trend",
-          "max": 50
-        }
-      ],
-      "structure": "B",
-      "indexes": [
-        "SPX",
-        "QQQ"
-      ],
-      "market_regime": "UPTREND",
-      "reasoning": "# LITE Momentum Setup Analysis\n\n**Why the momentum is real:** LITE is firing on all cylinders with perfect trend strength and maxed-out RSI/MACD readings\u2014this is a stock in genuine uptrend acceleration, not a false signal. The price is sitting just above your entry at $988.58, giving you a clean setup with defined risk.\n\n**Best-aligned indicators:** Your RSI and MACD are screaming bullish (15/15 each), and the 25/25 trend strength confirms this isn't just overbought noise\u2014it's sustained directional pressure. The 1.50:1 risk/reward is solid for momentum trading.\n\n**Key risk to watch:** Volume is your weak spot at only 12/20. If buyers dry up into any pullback toward $988, you could see a sharper reversal than the setup suggests. Watch for declining volume on any dip\u2014that's your signal the momentum is fading."
-    },
-    {
-      "rank": 19,
-      "symbol": "ABBV",
-      "price": 281.1199951171875,
-      "score": 78,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 12,
-        "rsi": 5,
         "macd": 15,
         "relative": 15,
         "breakout": 6,
         "room": 50,
         "own_trend": 50
       },
-      "entry": 281.1199951171875,
-      "stop_loss": 272.3647297560344,
-      "take_profit": 294.2528931589172,
-      "risk_reward_ratio": 1.5000000000000064,
+      "entry": 91.17500305175781,
+      "stop_loss": 84.101391888246,
+      "take_profit": 101.78541979702553,
+      "risk_reward_ratio": 1.499999999999999,
       "setup_type": "EXTENDED",
-      "extension_pct": 5.575259978965945,
+      "extension_pct": 15.375979621981124,
       "blockers": 0,
       "room_clear": true,
-      "own_trend_pct": 3.4,
+      "own_trend_pct": 11.1,
       "own_trend_up": true,
       "dimensions": [
         {
@@ -1481,90 +1408,15 @@
       ],
       "structure": "A",
       "indexes": [
-        "SPX"
+        "IWM"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# ABBV Momentum Setup Analysis\n\n**Why the momentum is strong:** ABBV is displaying excellent trend strength and perfect MACD alignment, indicating a clean uptrend with confirmed directional conviction. The stock's strong relative performance (15/15) shows it's outpacing the broader market, which is exactly what momentum traders want to see.\n\n**Best-aligned signals:** Your MACD and trend indicators are firing on all cylinders (30/30 combined), giving you high-confidence directional bias. The 1.50:1 risk/reward ratio offers solid profit potential relative to downside risk, making this a favorable risk setup.\n\n**Key risk to monitor:** The RSI at 5/15 is your red flag here\u2014that's extremely low, suggesting the momentum score is being driven by price action rather than overbought extremes, which is good, but the weak volume score (12/20) means you could see liquidity dry up on a reversal. Watch for volume confirmation on any bounce toward your $294.25 target; without it, the move could stall."
+      "reasoning": "# PBF Momentum Setup Analysis\n\n**Why the Momentum?**\nPBF is firing on all cylinders with exceptional trend strength and perfectly aligned technical indicators\u2014RSI and MACD are both in ideal momentum territory, signaling sustained upside without overbought conditions. The stock is also outperforming its peers (Relative Performance at 15/15), which confirms this isn't just market noise.\n\n**Strongest Aligned Signals:**\nYour RSI, MACD, and trend strength form a textbook bullish triad, giving you high-conviction directional bias. The 1.50:1 risk/reward ratio with clean support at $84.10 makes this a mechanically sound setup.\n\n**Key Risk to Monitor:**\nVolume is your Achilles heel at only 6/20\u2014this momentum could evaporate quickly on thin participation. Watch for volume confirmation on any moves toward your profit target; if volume dries up into $101.79, you may need to take profits early rather than hold into resistance."
     },
     {
-      "rank": 20,
-      "symbol": "MRVL",
-      "price": 265.8599853515625,
-      "score": 78,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 0,
-        "relative": 8,
-        "breakout": 10,
-        "room": 0,
-        "own_trend": 50
-      },
-      "entry": 260.82199783325194,
-      "stop_loss": 238.6504652279519,
-      "take_profit": 294.079296741202,
-      "risk_reward_ratio": 1.4999999999999993,
-      "setup_type": "PULLBACK",
-      "extension_pct": 1.9315807562870644,
-      "blockers": 1,
-      "room_clear": false,
-      "own_trend_pct": 10.6,
-      "own_trend_up": true,
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        },
-        {
-          "key": "room",
-          "label": "Room to target",
-          "max": 50
-        },
-        {
-          "key": "own_trend",
-          "label": "Own trend",
-          "max": 50
-        }
-      ],
-      "structure": "B",
-      "indexes": [
-        "SPX",
-        "QQQ"
-      ],
-      "market_regime": "UPTREND",
-      "reasoning": "# MRVL Momentum Setup Analysis\n\n**Why the momentum is real:** MRVL is displaying textbook bullish momentum with perfect trend strength (25/25) and maxed-out volume confirmation (20/20)\u2014this isn't noise, it's institutional buying. The stock is trading above your entry at $260.82 with room to run toward $294, giving you a clean 1.50:1 risk/reward.\n\n**Best-aligned signals:** Your trend and volume are firing on all cylinders, and the RSI at 15/15 shows you're in early enough before overbought territory becomes a concern. The 10/10 breakout quality is the cherry on top\u2014this isn't a false breakout.\n\n**Key risk to monitor:** That 0/15 on MACD is your red flag. While price momentum is strong, MACD divergence can precede pullbacks, so watch for any weakening in the MACD histogram as you approach resistance. Stick to your $238.65 stop loss religiously\u2014the setup is good, but MACD weakness could signal that buying is drying up faster than expected."
-    },
-    {
-      "rank": 21,
+      "rank": 19,
       "symbol": "SHOP",
-      "price": 179.22000122070312,
+      "price": 176.52000427246094,
       "score": 78,
       "breakdown": {
         "trend_strength": 25,
@@ -1576,15 +1428,15 @@
         "room": 0,
         "own_trend": 50
       },
-      "entry": 179.22000122070312,
-      "stop_loss": 169.11855506657665,
-      "take_profit": 194.37217045189283,
-      "risk_reward_ratio": 1.4999999999999987,
+      "entry": 176.52000427246094,
+      "stop_loss": 166.55845651580665,
+      "take_profit": 191.46232590744236,
+      "risk_reward_ratio": 1.5,
       "setup_type": "EXTENDED",
-      "extension_pct": 20.338818382481485,
+      "extension_pct": 16.697795806711785,
       "blockers": 1,
       "room_clear": false,
-      "own_trend_pct": 6.7,
+      "own_trend_pct": 7.8,
       "own_trend_up": true,
       "dimensions": [
         {
@@ -1633,12 +1485,12 @@
         "QQQ"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# SHOP Momentum Setup Analysis\n\n**Why the momentum?** SHOP is displaying textbook momentum with exceptional trend strength (25/25) and perfect MACD alignment (15/15)\u2014the price is moving decisively higher with confirmation from momentum oscillators. The stock's strong relative outperformance (15/15) against its peers signals institutional buying interest.\n\n**Alignment check:** Your strongest signals are trend strength and MACD, which both indicate a sustained directional move, backed by solid breakout quality (6/10). However, note the RSI reading is surprisingly weak at 5/15\u2014this suggests the momentum may not be as overbought as the score implies, potentially keeping room for further upside.\n\n**Key risk:** Volume is only at 12/20, which is your most glaring red flag. Lower participation means this move could reverse sharply on a pullback or negative news. Watch for volume confirmation on any dips toward your $169 stop\u2014without it, consider tightening stops or reducing size.\n\n**Bottom line:** Solid setup with a 1.50:1 R:R, but don't ignore that volume weakness. This works best as a disciplined trade with strict stop adherence."
+      "reasoning": "# SHOP Momentum Trading Setup\n\n**Why the momentum?** SHOP is firing on all cylinders with maxed-out trend strength and pristine MACD alignment, indicating strong directional conviction and bullish crossover confirmation. The stock is also outperforming its peers (15/15 on relative performance), which suggests institutional buying interest beyond just technical bounce.\n\n**Best-aligned signals:** Your trend strength and MACD are perfectly in sync at 25/25 and 15/15\u2014these are your confidence builders. The relative outperformance confirms this isn't a market-wide rally; SHOP is genuinely leading. The 1.50:1 risk/reward gives you solid asymmetry to work with.\n\n**Key risk:** RSI at only 5/15 is your red flag here\u2014the momentum score is masking weak overbought conditions that could trigger a sharp pullback before your profit target. Combined with volume (12/20) not quite confirming the move, you risk a quick stop-out if the breakout loses steam. Tighten entries on any intraday weakness rather than chasing at current levels."
     },
     {
-      "rank": 22,
-      "symbol": "FAST",
-      "price": 51.4900016784668,
+      "rank": 20,
+      "symbol": "CVX",
+      "price": 217.82000732421875,
       "score": 76,
       "breakdown": {
         "trend_strength": 25,
@@ -1647,18 +1499,18 @@
         "macd": 15,
         "relative": 15,
         "breakout": 6,
-        "room": 0,
+        "room": 50,
         "own_trend": 50
       },
-      "entry": 50.17650032043457,
-      "stop_loss": 48.699407186357554,
-      "take_profit": 52.39214002155009,
-      "risk_reward_ratio": 1.4999999999999976,
-      "setup_type": "PULLBACK",
-      "extension_pct": 2.6177619994300363,
-      "blockers": 4,
-      "room_clear": false,
-      "own_trend_pct": 1.5,
+      "entry": 217.82000732421875,
+      "stop_loss": 211.33394751528218,
+      "take_profit": 227.5490970376236,
+      "risk_reward_ratio": 1.4999999999999978,
+      "setup_type": "EXTENDED",
+      "extension_pct": 4.756160011277666,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 2.5,
       "own_trend_up": true,
       "dimensions": [
         {
@@ -1702,18 +1554,166 @@
           "max": 50
         }
       ],
-      "structure": "B",
+      "structure": "A",
+      "indexes": [
+        "SPX"
+      ],
+      "market_regime": "UPTREND",
+      "reasoning": "# CVX Momentum Setup Analysis\n\n**Why the momentum is here:** CVX is firing on all cylinders with maxed-out trend strength and perfect alignment across RSI, MACD, and relative performance\u2014this is textbook upside momentum with strong directional conviction.\n\n**Indicators most aligned:** Your trend is pristine (25/25), and the oscillators (RSI + MACD both 15/15) confirm you're in a sustained move without overextension, which is ideal for momentum trades.\n\n**Key risk to watch:** Volume is completely absent (0/20)\u2014this is your red flag. Without institutional buying to sustain the move, rallies on low volume can reverse quickly, so respect that stop loss at $211.33 tightly and consider position sizing accordingly."
+    },
+    {
+      "rank": 21,
+      "symbol": "NDSN",
+      "price": 330.5799865722656,
+      "score": 73,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 12,
+        "rsi": 15,
+        "macd": 0,
+        "relative": 15,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 325.0230010986328,
+      "stop_loss": 315.82354098854614,
+      "take_profit": 338.8221912637627,
+      "risk_reward_ratio": 1.4999999999999938,
+      "setup_type": "PULLBACK",
+      "extension_pct": 1.7097206827976121,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 3.1,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
+      "indexes": [
+        "SPX"
+      ],
+      "market_regime": "UPTREND",
+      "reasoning": "# NDSN Momentum Analysis\n\n**Why the momentum is there:** NDSN is displaying strong uptrend momentum with maxed-out trend strength (25/25) and overbought RSI conditions (15/15), indicating aggressive buying pressure pushing price higher. The stock is also outperforming its peers (15/15 relative performance), suggesting sector-leading strength.\n\n**Your best aligned signals:** The trend strength and RSI are firing on all cylinders, confirming upside momentum is real. However, notice the MACD is *completely flat* (0/15)\u2014this is your red flag. MACD divergence often precedes momentum reversals, so you're seeing price strength without confirmation from momentum oscillators.\n\n**Key risk to monitor:** That MACD weakness combined with only moderate volume (12/20) suggests conviction may be shallow. If volume dries up further or price stalls near $338, you could see a quick reversal that triggers your stop loss. Watch for volume confirmation on any new highs\u2014this setup works best with fresh buying interest backing it up."
+    },
+    {
+      "rank": 22,
+      "symbol": "CRWD",
+      "price": 261.2099914550781,
+      "score": 64,
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 6,
+        "rsi": 15,
+        "macd": 0,
+        "relative": 12,
+        "breakout": 6,
+        "room": 50,
+        "own_trend": 50
+      },
+      "entry": 260.0260009765625,
+      "stop_loss": 242.64287427360426,
+      "take_profit": 286.1006910309998,
+      "risk_reward_ratio": 1.4999999999999984,
+      "setup_type": "PULLBACK",
+      "extension_pct": 0.4553354180231939,
+      "blockers": 0,
+      "room_clear": true,
+      "own_trend_pct": 16.2,
+      "own_trend_up": true,
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        },
+        {
+          "key": "room",
+          "label": "Room to target",
+          "max": 50
+        },
+        {
+          "key": "own_trend",
+          "label": "Own trend",
+          "max": 50
+        }
+      ],
+      "structure": "A",
       "indexes": [
         "SPX",
         "QQQ"
       ],
       "market_regime": "UPTREND",
-      "reasoning": "# FAST Momentum Setup Analysis\n\n**Why the momentum is real:** FAST is firing on all cylinders with maxed-out trend strength, RSI, and MACD\u2014classic textbook momentum conditions. The stock is outperforming its peers and sitting just above a clean breakout level, creating a high-probability setup.\n\n**Strongest aligned signals:** Your trend and oscillator indicators are perfectly synchronized (25/25 and 15/15), which is exactly what you want to see. The relative outperformance confirms this isn't just market-wide noise.\n\n**Key risk to monitor:** Volume scores a concerning 0/20\u2014this momentum could evaporate quickly if buying pressure dries up on a pullback. Watch for volume confirmation on any moves toward your entry; without it, even strong technical setups can fail. Given the tight stop ($48.70), make sure you're comfortable with the execution risk if liquidity drops."
+      "reasoning": "# CRWD Momentum Setup Analysis\n\n**Why It's Showing Momentum:** CRWD has exceptional trend strength (25/25) with overbought RSI (15/15), signaling strong directional conviction and sustained buying pressure. The stock is trading just above your entry at $261.21, positioned to extend its uptrend with a solid 1.50:1 risk-reward setup.\n\n**Best-Aligned Indicators:** Trend strength and RSI are firing on all cylinders\u2014this is a clean momentum play where price is decisively above moving averages and buyers are in control. Relative outperformance (12/15) confirms CRWD is beating its peers, adding confidence to the setup.\n\n**Key Risk to Monitor:** The MACD score of 0/15 is a red flag\u2014it's showing bearish divergence or a potential momentum fade at exactly the wrong time. Combined with weak volume (6/20), this suggests conviction could dry up quickly. Watch for volume confirmation on any move toward take profit; if volume evaporates into resistance, be ready to trim or exit early rather than chase the full target."
     },
     {
       "rank": 23,
       "symbol": "ROCK",
-      "price": 36.88999938964844,
+      "price": 37.099998474121094,
       "score": 100,
       "strategy": "Breakdown",
       "bias": "bearish",
@@ -1763,15 +1763,15 @@
         "IWM"
       ],
       "sector": "XLI",
-      "entry": 36.88999938964844,
-      "stop_loss": 40.44970122724091,
-      "take_profit": 31.55044663325973,
+      "entry": 37.099998474121094,
+      "stop_loss": 40.13999996185303,
+      "take_profit": 32.53999624252319,
       "risk_reward_ratio": 1.5,
-      "pct_off_low": 7.5,
+      "pct_off_low": 8.0,
       "market_regime": "UPTREND",
       "setup": {
         "title": "Breakdown detail",
-        "label": "Industrials weak: XLI -0.03% vs its 20-day",
+        "label": "Industrials weak: XLI -0.31% vs its 20-day",
         "fields": [
           {
             "label": "Direction",
@@ -1780,27 +1780,27 @@
           },
           {
             "label": "Sector",
-            "value": "XLI -0.03%",
+            "value": "XLI -0.31%",
             "tone": "neg"
           },
           {
             "label": "Off 52w low",
-            "value": "7.5%",
+            "value": "8.0%",
             "tone": "neg"
           },
           {
             "label": "Vol vs avg",
-            "value": "1.73x",
+            "value": "1.70x",
             "tone": "neg"
           }
         ]
       },
-      "reasoning": "# Analysis\n\nThis looks like **genuine distribution, not oversold bounce** \u2014 the combination of sector weakness (XLI below its 20-day) + perfect technical alignment (all six metrics maxed out) suggests institutional selling, not panic capitulation. What would squeeze it higher: a sudden positive earnings surprise, sector rotation back into industrials, or broad market relief rally; the setup breaks if ROCK closes above **$40.45**, which would reclaim the short-term structure and trigger stop-outs. The skeptical note: a 100/100 score this clean is rare and can attract crowded shorts\u2014watch for a violent covering spike if volume dries up near support."
+      "reasoning": "# Analysis: ROCK Breakdown\n\n**Distribution or bounce?** The perfect 100/100 score and fresh 20-day low suggest genuine institutional selling rather than oversold panic\u2014the volume confirmation on the breakdown is the tell. However, skepticism warranted: ROCK is only 8% off its 52-week low, meaning it's already been hammered; late-stage distribution often precedes violent bounces, not orderly declines.\n\n**What would squeeze it?** A sector rotation back into industrials (XLI recovery) or positive earnings surprise could reignite it fast; short-term, a close above the $40.14 stop on volume would signal the breakdown is failing and invalidate the setup entirely."
     },
     {
       "rank": 24,
-      "symbol": "DJT",
-      "price": 7.96999979019165,
+      "symbol": "AMPX",
+      "price": 8.550000190734863,
       "score": 92,
       "strategy": "Breakdown",
       "bias": "bearish",
@@ -1849,16 +1849,16 @@
       "indexes": [
         "IWM"
       ],
-      "sector": "XLC",
-      "entry": 7.96999979019165,
-      "stop_loss": 8.727731040257773,
-      "take_profit": 6.833402915092467,
+      "sector": "XLI",
+      "entry": 8.550000190734863,
+      "stop_loss": 9.474499940872192,
+      "take_profit": 7.16325056552887,
       "risk_reward_ratio": 1.5,
-      "pct_off_low": 9.6,
+      "pct_off_low": 4.8,
       "market_regime": "UPTREND",
       "setup": {
         "title": "Breakdown detail",
-        "label": "Communication Services weak: XLC -0.44% vs its 20-day",
+        "label": "Industrials weak: XLI -0.31% vs its 20-day",
         "fields": [
           {
             "label": "Direction",
@@ -1867,27 +1867,27 @@
           },
           {
             "label": "Sector",
-            "value": "XLC -0.44%",
+            "value": "XLI -0.31%",
             "tone": "neg"
           },
           {
             "label": "Off 52w low",
-            "value": "9.6%",
+            "value": "4.8%",
             "tone": "neg"
           },
           {
             "label": "Vol vs avg",
-            "value": "1.31x",
+            "value": "1.39x",
             "tone": null
           }
         ]
       },
-      "reasoning": "# Skeptical Analysis\n\nThis reads like textbook capitulation rather than genuine distribution\u2014the RSI at extremes and fresh 20-day low suggest panic selling of an already-beaten stock (9.6% off lows) rather than institutional unload. The real tell: XLC itself is barely below its 20-day, meaning sector weakness isn't confirming DJT's breakdown, it's lagging it\u2014watch if XLC rolls over hard or bounces; a bounce in XLC without DJT following would invalidate the bearish case faster than a break above $8.73."
+      "reasoning": "# Analysis\n\nThis *looks* like distribution (high breakdown score, volume confirmation, sector weakness), but a 4.8% gap from the 52-week low and fresh 20-day lows often mark capitulation bounces rather than sustained selling\u2014especially if retail panic has already flushed weak hands. A squeeze higher would come from either short covering on a failed break below the recent low, or positive earnings/sector rotation back into XLI. The setup invalidates cleanly at **$9.47**, but you need to see if volume actually *increases* on further downside (true distribution) or dries up (exhaustion)."
     },
     {
       "rank": 25,
-      "symbol": "HUN",
-      "price": 8.069999694824219,
+      "symbol": "SMR",
+      "price": 6.494999885559082,
       "score": 92,
       "strategy": "Breakdown",
       "bias": "bearish",
@@ -1936,366 +1936,16 @@
       "indexes": [
         "IWM"
       ],
-      "sector": "XLB",
-      "entry": 8.069999694824219,
-      "stop_loss": 8.74206625973123,
-      "take_profit": 7.061899847463702,
-      "risk_reward_ratio": 1.5,
-      "pct_off_low": 7.7,
-      "market_regime": "UPTREND",
-      "setup": {
-        "title": "Breakdown detail",
-        "label": "Materials weak: XLB -0.31% vs its 20-day",
-        "fields": [
-          {
-            "label": "Direction",
-            "value": "Short",
-            "tone": "neg"
-          },
-          {
-            "label": "Sector",
-            "value": "XLB -0.31%",
-            "tone": "neg"
-          },
-          {
-            "label": "Off 52w low",
-            "value": "7.7%",
-            "tone": "neg"
-          },
-          {
-            "label": "Vol vs avg",
-            "value": "1.36x",
-            "tone": null
-          }
-        ]
-      },
-      "reasoning": "# Analysis\n\nThis looks like **genuine distribution**, not a bounce setup\u2014the 92 score is built on trend + RSI + MACD alignment, not a reversal signal, and XLB's weakness suggests sector headwinds, not just HUN fatigue. The invalidation level ($8.74) is tight relative to the move, which is appropriate for a breakdown that's already 7.7% off its 52-week low; what would squeeze it higher is a broad cyclical rally in materials or a surprise earnings beat, but the fresh 20-day low and distribution volume suggest sellers are still in control. Skepticism warranted: at these levels, HUN is already extended downward, so follow-through requires fresh catalyst, not just momentum."
-    },
-    {
-      "rank": 26,
-      "symbol": "ALB",
-      "price": 98.51000213623047,
-      "score": 90,
-      "strategy": "Breakdown",
-      "bias": "bearish",
-      "signal_label": "Bearish",
-      "signal_tone": "neg",
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 5,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 10
-      },
-      "indexes": [
-        "SPX"
-      ],
-      "sector": "XLB",
-      "entry": 98.51000213623047,
-      "stop_loss": 106.61095037767102,
-      "take_profit": 86.35857977406965,
-      "risk_reward_ratio": 1.5,
-      "pct_off_low": 7.9,
-      "market_regime": "UPTREND",
-      "setup": {
-        "title": "Breakdown detail",
-        "label": "Materials weak: XLB -0.31% vs its 20-day",
-        "fields": [
-          {
-            "label": "Direction",
-            "value": "Short",
-            "tone": "neg"
-          },
-          {
-            "label": "Sector",
-            "value": "XLB -0.31%",
-            "tone": "neg"
-          },
-          {
-            "label": "Off 52w low",
-            "value": "7.9%",
-            "tone": "neg"
-          },
-          {
-            "label": "Vol vs avg",
-            "value": "1.56x",
-            "tone": "neg"
-          }
-        ]
-      },
-      "reasoning": "# Analysis\n\nThis reads like **oversold positioning into support rather than true distribution**\u2014ALB is only 7.9% off its 52-week low with a weak RSI (5/15), which typically signals exhaustion rather than institutional selling. The real tell would be volume: if the breakdown occurred on *declining* volume relative to prior rallies, that's suspicious. What would squeeze it higher is a reversal in XLB itself (the sector floor)\u2014if XLB reclaims its 20-day average on volume, ALB follows mechanically. The invalidation level is clear at $106.61; a close above that kills the short thesis entirely."
-    },
-    {
-      "rank": 27,
-      "symbol": "MOS",
-      "price": 18.850000381469727,
-      "score": 90,
-      "strategy": "Breakdown",
-      "bias": "bearish",
-      "signal_label": "Bearish",
-      "signal_tone": "neg",
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 5,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 10
-      },
-      "indexes": [
-        "SPX"
-      ],
-      "sector": "XLB",
-      "entry": 18.850000381469727,
-      "stop_loss": 20.822354115932065,
-      "take_profit": 15.89146977977622,
-      "risk_reward_ratio": 1.5,
-      "pct_off_low": 0.9,
-      "market_regime": "UPTREND",
-      "setup": {
-        "title": "Breakdown detail",
-        "label": "Materials weak: XLB -0.31% vs its 20-day",
-        "fields": [
-          {
-            "label": "Direction",
-            "value": "Short",
-            "tone": "neg"
-          },
-          {
-            "label": "Sector",
-            "value": "XLB -0.31%",
-            "tone": "neg"
-          },
-          {
-            "label": "Off 52w low",
-            "value": "0.9%",
-            "tone": "neg"
-          },
-          {
-            "label": "Vol vs avg",
-            "value": "1.51x",
-            "tone": "neg"
-          }
-        ]
-      },
-      "reasoning": "# MOS Analysis\n\nThis reads like a **genuine distribution wave rather than a mechanical oversold bounce**\u2014the 90/100 breakdown score is heavily weighted toward trend/volume confirmations (65/100), while RSI sits weak at 5/15, suggesting selling conviction rather than capitulation. The invalidation level of $20.82 is tight; a close above it on volume would signal either institutional accumulation or a failed breakdown that typically reverses hard into the $21\u201322 range.\n\nWhat would squeeze it tighter: a broader fertilizer demand shock (crop prices collapsing further, or farm economics deteriorating) or a XLB sector reversal that pulls support away, since MOS is tracking sector weakness, not just stock-specific breakdown."
-    },
-    {
-      "rank": 28,
-      "symbol": "TMUS",
-      "price": 151.8699951171875,
-      "score": 90,
-      "strategy": "Breakdown",
-      "bias": "bearish",
-      "signal_label": "Bearish",
-      "signal_tone": "neg",
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 20,
-        "rsi": 15,
-        "macd": 15,
-        "relative": 15,
-        "breakout": 0
-      },
-      "indexes": [
-        "SPX",
-        "QQQ"
-      ],
-      "sector": "XLC",
-      "entry": 151.8699951171875,
-      "stop_loss": 162.88596419823915,
-      "take_profit": 135.34604149561002,
-      "risk_reward_ratio": 1.5,
-      "pct_off_low": 4.0,
-      "market_regime": "UPTREND",
-      "setup": {
-        "title": "Breakdown detail",
-        "label": "Communication Services weak: XLC -0.44% vs its 20-day",
-        "fields": [
-          {
-            "label": "Direction",
-            "value": "Short",
-            "tone": "neg"
-          },
-          {
-            "label": "Sector",
-            "value": "XLC -0.44%",
-            "tone": "neg"
-          },
-          {
-            "label": "Off 52w low",
-            "value": "4.0%",
-            "tone": "neg"
-          },
-          {
-            "label": "Vol vs avg",
-            "value": "3.04x",
-            "tone": "neg"
-          }
-        ]
-      },
-      "reasoning": "# Analysis\n\nThis reads more like **oversold bounce setup than genuine distribution**\u2014a 90/100 breakdown score with zero points for a fresh 20-day low is a red flag, suggesting TMUS has already sold off sharply and may be priced for bad news rather than accumulating selling pressure. The real tell would be whether volume *increased* on the breakdown or dried up; distribution requires sustained heavy selling, not just a gap down into support. Breaking above $162.89 invalidates the short thesis entirely and would likely trigger a violent short squeeze given the tight stop and already-extended breakdown score."
-    },
-    {
-      "rank": 29,
-      "symbol": "CPRT",
-      "price": 26.479999542236328,
-      "score": 76,
-      "strategy": "Breakdown",
-      "bias": "bearish",
-      "signal_label": "Bearish",
-      "signal_tone": "neg",
-      "dimensions": [
-        {
-          "key": "trend_strength",
-          "label": "Trend",
-          "max": 25
-        },
-        {
-          "key": "volume",
-          "label": "Volume",
-          "max": 20
-        },
-        {
-          "key": "rsi",
-          "label": "RSI",
-          "max": 15
-        },
-        {
-          "key": "macd",
-          "label": "MACD",
-          "max": 15
-        },
-        {
-          "key": "relative",
-          "label": "Relative",
-          "max": 15
-        },
-        {
-          "key": "breakout",
-          "label": "Breakout",
-          "max": 10
-        }
-      ],
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 12,
-        "rsi": 15,
-        "macd": 9,
-        "relative": 15,
-        "breakout": 0
-      },
-      "indexes": [
-        "SPX",
-        "QQQ"
-      ],
       "sector": "XLI",
-      "entry": 26.479999542236328,
-      "stop_loss": 28.076500034332277,
-      "take_profit": 24.085248804092405,
+      "entry": 6.494999885559082,
+      "stop_loss": 7.469249868392944,
+      "take_profit": 5.033624911308289,
       "risk_reward_ratio": 1.5,
       "pct_off_low": 0.0,
       "market_regime": "UPTREND",
       "setup": {
         "title": "Breakdown detail",
-        "label": "Industrials weak: XLI -0.03% vs its 20-day",
+        "label": "Industrials weak: XLI -0.31% vs its 20-day",
         "fields": [
           {
             "label": "Direction",
@@ -2304,7 +1954,7 @@
           },
           {
             "label": "Sector",
-            "value": "XLI -0.03%",
+            "value": "XLI -0.31%",
             "tone": "neg"
           },
           {
@@ -2314,18 +1964,18 @@
           },
           {
             "label": "Vol vs avg",
-            "value": "1.22x",
+            "value": "1.21x",
             "tone": null
           }
         ]
       },
-      "reasoning": "# CPRT Breakdown Analysis\n\nThis reads like **panic capitulation rather than institutional distribution**\u2014the 76 score is inflated by RSI extremes (15/15) and fresh lows, but volume confirmation is weak (12/20), and CPRT hasn't actually made a 20-day low yet (0/10), which is a red flag for a \"breakdown\" setup. The real squeeze would come from either XLI reversing above its 20-day (removing sector headwinds) or CPRT holding $25\u2013$25.50 and building a reversal bar on volume, which would suggest capitulation rather than continued selling.\n\n**Invalidation level: $28.08**\u2014a close above that kills the setup entirely and suggests the move was a bear trap."
+      "reasoning": "# Analysis\n\nThis reads like **panic selling into support, not institutional distribution**\u2014the 92 score is inflated by mechanical oversold readings (RSI 15, MADC cross) rather than heavy volume confirmation (only 12/20). SMR sitting at its 52-week low suggests capitulation by retail; a genuine short setup would show *rising* volume into the breakdown, not the ambiguous \"distribution\" score.\n\nWhat would squeeze it: a broader sector rotation *into* cyclicals or a positive earnings surprise that triggers short covering\u2014XLI's weakness is the real headwind here, not SMR fundamentals.\n\n**Invalidation level: $7.47 (your stated stop)** is actually the key\u2014a close above it closes the bear case and likely triggers a mean-reversion bounce given how stretched the downside is."
     },
     {
-      "rank": 30,
-      "symbol": "APP",
-      "price": 270.8699951171875,
-      "score": 70,
+      "rank": 26,
+      "symbol": "CPRT",
+      "price": 26.3700008392334,
+      "score": 86,
       "strategy": "Breakdown",
       "bias": "bearish",
       "signal_label": "Bearish",
@@ -2364,26 +2014,26 @@
       ],
       "breakdown": {
         "trend_strength": 25,
-        "volume": 6,
+        "volume": 12,
         "rsi": 15,
         "macd": 9,
         "relative": 15,
-        "breakout": 0
+        "breakout": 10
       },
       "indexes": [
         "SPX",
         "QQQ"
       ],
-      "sector": "XLC",
-      "entry": 270.8699951171875,
-      "stop_loss": 299.0617049135957,
-      "take_profit": 228.58243042257521,
+      "sector": "XLI",
+      "entry": 26.3700008392334,
+      "stop_loss": 27.84300003051758,
+      "take_profit": 24.160502052307127,
       "risk_reward_ratio": 1.5,
-      "pct_off_low": 0.6,
+      "pct_off_low": 0.0,
       "market_regime": "UPTREND",
       "setup": {
         "title": "Breakdown detail",
-        "label": "Communication Services weak: XLC -0.44% vs its 20-day",
+        "label": "Industrials weak: XLI -0.31% vs its 20-day",
         "fields": [
           {
             "label": "Direction",
@@ -2392,22 +2042,196 @@
           },
           {
             "label": "Sector",
-            "value": "XLC -0.44%",
+            "value": "XLI -0.31%",
             "tone": "neg"
           },
           {
             "label": "Off 52w low",
-            "value": "0.6%",
+            "value": "0.0%",
             "tone": "neg"
           },
           {
             "label": "Vol vs avg",
-            "value": "1.13x",
+            "value": "1.23x",
             "tone": null
           }
         ]
       },
-      "reasoning": "# Analysis\n\n**Distribution vs. Oversold:** The 70/100 breakdown score leans genuine\u2014trend, RSI, and position metrics are strong\u2014but the weak volume (6/20) is the red flag; true distribution usually shows heavy selling pressure, and APP's lack of conviction here suggests this could be oversold capitulation into support rather than institutional unloading. A bounce would be squeezed by short covering and mean-reversion buying if RSI stays depressed while price stabilizes; invalidation occurs cleanly at **$299.06**, where the stop sits and prior structure likely matters.\n\n**The skepticism:** XLC being weak is corroborating, but a single 20-day low with mediocre volume is not a smoking gun for continuation\u2014watch whether volume *expands* into $228.58 or if price reverses on light volume, which would betray the setup."
+      "reasoning": "# Analysis: CPRT Short Setup\n\n**Distribution vs. Oversold?**\nThe 86/100 breakdown score is genuine\u2014perfect trend and position scores plus fresh 20-day lows indicate real selling, not capitulation. However, the RSI at extremes (15/100) and MACD weakness suggest *momentum exhaustion* rather than institutional unloading; a squeeze would come from short-covering into oversold conditions or positive earnings/guidance that re-rates the sector.\n\n**Invalidation Level:**\nA close above **$27.84** (your stop) with volume would flip the setup\u2014that's where the breakdown loses its structure and reversal momentum takes hold.\n\n**The Skepticism:**\nXLI being below its 20-day is weak confirmation; you're relying heavily on CPRT's own technicals rather than sector rotation. Watch whether XLI bounces first\u2014if it does, CPRT's oversold condition will likely compress before the $24.16 target."
+    },
+    {
+      "rank": 27,
+      "symbol": "UAL",
+      "price": 103.2300033569336,
+      "score": 83,
+      "strategy": "Breakdown",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 12,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 6,
+        "breakout": 10
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "sector": "XLI",
+      "entry": 103.2300033569336,
+      "stop_loss": 110.10800056457519,
+      "take_profit": 92.9130075454712,
+      "risk_reward_ratio": 1.5,
+      "pct_off_low": 35.4,
+      "market_regime": "UPTREND",
+      "setup": {
+        "title": "Breakdown detail",
+        "label": "Industrials weak: XLI -0.31% vs its 20-day",
+        "fields": [
+          {
+            "label": "Direction",
+            "value": "Short",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "XLI -0.31%",
+            "tone": "neg"
+          },
+          {
+            "label": "Off 52w low",
+            "value": "35.4%",
+            "tone": null
+          },
+          {
+            "label": "Vol vs avg",
+            "value": "1.45x",
+            "tone": null
+          }
+        ]
+      },
+      "reasoning": "# Analysis\n\nThis reads like **genuine distribution**, not oversold bounce\u2014the 83/100 score is driven by clean technicals (RSI 15, MACD, fresh 20-day low), and XLI sector weakness adds conviction. However, the 35.4% position off the 52-week low is the red flag: UAL has room to run lower, but industrial cyclicals tend to snap back hard on Fed pivot signals or earnings beats, especially airlines. The setup invalidates decisively above $110.11 (stops would likely cascade), so you'd need to see a hold above that level and a reclaim of the 20-day MA (~$107\u2013$108 range) before considering the reversal on."
+    },
+    {
+      "rank": 28,
+      "symbol": "VRT",
+      "price": 237.1999969482422,
+      "score": 83,
+      "strategy": "Breakdown",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "trend_strength",
+          "label": "Trend",
+          "max": 25
+        },
+        {
+          "key": "volume",
+          "label": "Volume",
+          "max": 20
+        },
+        {
+          "key": "rsi",
+          "label": "RSI",
+          "max": 15
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "max": 15
+        },
+        {
+          "key": "relative",
+          "label": "Relative",
+          "max": 15
+        },
+        {
+          "key": "breakout",
+          "label": "Breakout",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "trend_strength": 25,
+        "volume": 12,
+        "rsi": 15,
+        "macd": 15,
+        "relative": 6,
+        "breakout": 10
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "sector": "XLI",
+      "entry": 237.1999969482422,
+      "stop_loss": 246.51399917602538,
+      "take_profit": 223.2289936065674,
+      "risk_reward_ratio": 1.5,
+      "pct_off_low": 38.6,
+      "market_regime": "UPTREND",
+      "setup": {
+        "title": "Breakdown detail",
+        "label": "Industrials weak: XLI -0.31% vs its 20-day",
+        "fields": [
+          {
+            "label": "Direction",
+            "value": "Short",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "XLI -0.31%",
+            "tone": "neg"
+          },
+          {
+            "label": "Off 52w low",
+            "value": "38.6%",
+            "tone": null
+          },
+          {
+            "label": "Vol vs avg",
+            "value": "1.33x",
+            "tone": null
+          }
+        ]
+      },
+      "reasoning": "# Analysis\n\n**Distribution vs. Oversold?**\nThis looks like genuine distribution\u2014the 83/100 breakdown score is driven by *trend*, RSI, and MACD alignment, not panic selling (volume score is weak at 12/20). However, the stock is only 38.6% off its 52-week low, which historically offers support and bounce risk; the modest volume on the breakdown is a red flag for follow-through.\n\n**What would squeeze it higher?**\nA reversal in XLI (the sector ETF) or a mean-reversion snap back to the 20-day average (~$242\u2013$244 range) would trap shorts, especially if volume doesn't confirm the breakdown further.\n\n**Invalidation level:**\nA close above the $246.51 stop\u2014or better, a sustained close back above the 20-day average\u2014would break the setup's premise."
     }
   ]
 }
