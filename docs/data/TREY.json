@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-10-14T00:16:54.728616",
+  "scan_date": "2026-10-14T23:54:27.238013",
   "context": [
     {
       "label": "State",
@@ -34,11 +34,11 @@
     },
     {
       "label": "Book checklist",
-      "value": "6 / 6 (ref)"
+      "value": "4 / 6 (ref)"
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 57"
+      "value": "quiet \u00b7 45"
     }
   ],
   "groups": {
@@ -52,7 +52,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 79.61,
+      "price": 74.12,
       "score": 100,
       "strategy": "Trend gate \u00b7 FULL",
       "dimensions": [
@@ -75,7 +75,7 @@
         "fast": 40
       },
       "setup": {
-        "label": "FULL since 2026-09-21 \u00b7 QQQ 746.04 \u00b7 book 6/6 (reference, not used for state)",
+        "label": "FULL since 2026-09-21 \u00b7 QQQ 728.95 \u00b7 book 4/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -84,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+11.1%",
+            "value": "+8.4%",
             "tone": "pos"
           },
           {
@@ -94,12 +94,12 @@
           },
           {
             "label": "Book \u00b7 ref",
-            "value": "6 / 6",
+            "value": "4 / 6",
             "tone": "pos"
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +12.2%",
+            "value": "\u2713 +9.5%",
             "tone": "pos"
           },
           {
@@ -114,13 +114,13 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2713 57",
-            "tone": "pos"
+            "value": "\u2717 45",
+            "tone": "neg"
           },
           {
             "label": "MACD",
-            "value": "\u2713 >sig >0",
-            "tone": "pos"
+            "value": "\u2717 <sig",
+            "tone": "neg"
           },
           {
             "label": "Season",
@@ -129,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 57",
+            "value": "quiet \u00b7 45",
             "tone": null
           }
         ]
@@ -138,19 +138,19 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 56.7,
+          "value": 44.8,
           "active": false
         }
       ],
       "book_criteria": {
-        "met": 6,
+        "met": 4,
         "of": 6,
         "items": [
           {
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+12.2%"
+            "detail": "+9.5%"
           },
           {
             "key": "stack",
@@ -167,14 +167,14 @@
           {
             "key": "rsi",
             "label": "RSI > 50",
-            "met": true,
-            "detail": "57"
+            "met": false,
+            "detail": "45"
           },
           {
             "key": "macd",
             "label": "MACD",
-            "met": true,
-            "detail": ">sig >0"
+            "met": false,
+            "detail": "<sig"
           },
           {
             "key": "seasonal",
@@ -184,7 +184,7 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nYour FULL position reflects robust confirmation across momentum, trend structure, and seasonal tailwinds\u2014all six reference criteria are aligned. The state is sustainably anchored above the gate average with fast-trend confirmation intact, meaning the position should weather normal pullbacks without triggering a downgrade to HALF. No criteria are holding it back; the setup remains constructively positioned until either price closes below the gate average or the 10-day MA breaks below the 20-day MA."
+      "reasoning": "The FULL position reflects conviction in QQQ's sustained uptrend, with the fast trend confirming the intermediate strength already evident in price positioning well above the long-term average. However, two technical confirmations remain absent: RSI has not yet reached the 50 threshold needed to signal momentum strength, and MACD has not crossed above its signal line to validate acceleration. A decisive move requiring both momentum and MACD alignment would solidify the conviction embedded in the current allocation."
     }
   ]
 }
