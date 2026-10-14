@@ -6,7 +6,7 @@
     "description": "Finds 20/50 and 50/200 moving-average crosses as they happen. A discovery list, not a ranked forecast - see the README.",
     "accent": "#7fa88a"
   },
-  "scan_date": "2026-10-13T02:42:37.878664",
+  "scan_date": "2026-10-14T00:28:46.057972",
   "dimensions": [
     {
       "key": "freshness",
@@ -45,7 +45,7 @@
     },
     {
       "label": "Scanned",
-      "value": "1489 with history"
+      "value": "1488 with history"
     },
     {
       "label": "Skipped",
@@ -57,7 +57,7 @@
     },
     {
       "label": "Crosses found",
-      "value": "Nearing Death Cross 76, 20/50 Breakdown 210, Nearing 20/50 Cross 82, Nearing Golden Cross 7, Golden Cross 17, 20/50 Cross 79, Death Cross 89, Nearing 20/50 Breakdown 32"
+      "value": "Nearing Death Cross 76, 20/50 Breakdown 209, Nearing 20/50 Cross 82, Nearing Golden Cross 6, Golden Cross 17, 20/50 Cross 79, Death Cross 89, Nearing 20/50 Breakdown 32"
     },
     {
       "label": "Published",
@@ -176,7 +176,7 @@
         ]
       },
       "rank": 1,
-      "reasoning": "# PTC Golden Cross Assessment\n\nThis cross shows modest promise but carries execution risk: the 2.97% MA separation is thin, and only one directional flip in six months suggests the stock has spent considerable time in a choppy range rather than trending decisively. The cross would be invalidated if PTC closes below the slow MA (~$145.63), which at the current 1.8% daily range could happen within 2-3 sessions of normal volatility, making this more of a bounce-off-support signal than a confirmed trend break until it proves otherwise."
+      "reasoning": "# PTC Golden Cross Assessment\n\nThis cross shows moderate conviction but lacks ideal setup conditions: the 2.97% MA separation is modest, and price trading +33.5% above the slow MA suggests PTC rallied *into* the cross rather than the cross initiating the move, which reduces its predictive power. The single directional change in 6 months indicates choppy, mean-reverting behavior rather than sustained trending\u2014a concerning backdrop for relying on a MA cross. **Invalidation is clear and close**: any daily close below $145.63 (the slow MA) would eliminate the bullish structure immediately."
     },
     {
       "symbol": "PLD",
@@ -280,7 +280,7 @@
         ]
       },
       "rank": 2,
-      "reasoning": "# PLD Death Cross Assessment\n\nThis is a **weak, choppy-looking signal** \u2014 the MAs are nearly identical (only 12 bps apart), suggesting the stock has been range-bound rather than in a clean uptrend, and a single directional flip in 6 months indicates whipsaw-prone price action. The cross would be invalidated almost immediately if PLD rallies back above $136.11 (the 50-day MA), a move well within the 1.6% daily range, making this a low-conviction bearish setup. Treat this as a potential continuation of consolidation rather than a reliable trend reversal."
+      "reasoning": "# PLD Death Cross Assessment\n\nThis is a **weak, potentially choppy signal** \u2014 the MAs are nearly flat ($135.95 vs $136.11) with only -0.12% separation, meaning they've barely crossed and could easily re-cross on minor price noise. The 1 directional flip in 6 months combined with a 1.6% daily range suggests PLD is range-bound rather than in a clean downtrend, making this cross vulnerable to whipsaw.\n\n**Invalidation:** A move back above $136.11 (the slow MA) within the next 3-5 sessions would signal the cross failed; conversely, a decisive break below $132.47 with widening MA separation would confirm the bearish tilt has teeth."
     },
     {
       "symbol": "CTRE",
@@ -384,7 +384,7 @@
         ]
       },
       "rank": 3,
-      "reasoning": "# CTRE Death Cross Assessment\n\nThis is a **choppy, weak cross** rather than a clean trend change. The MAs are nearly flat and only 0.17% apart\u2014barely separated\u2014which means the fast MA barely dipped below the slow MA, likely on normal daily volatility (1.8% ADR); given only 1 reversal in 6 months, this suggests a whipsaw-prone setup. \n\n**Invalidation:** A close back above $38.28 (the slow MA) would immediately negate the bearish signal, and given the tightness of the cross and the stock's position already -4.3% below the slow average, this cross needs to prove itself with sustained weakness below $36.64 or a failed bounce attempt."
+      "reasoning": "# CTRE Death Cross Assessment\n\nThis is a **weak, choppy signal** \u2014 the MAs are nearly flat ($38.22 vs $38.28) with only -0.17% separation, meaning the cross just occurred within noise rather than after a sustained trend divergence. The single regime change in 6 months combined with a 1.8% daily range suggests CTRE trades sideways frequently, so this cross is likely just another whipsaw in that pattern. **Invalidation is straightforward**: a move back above $38.28 would immediately negate the bearish setup, and given the tight MA spacing, that could happen within days."
     },
     {
       "symbol": "HAPN",
@@ -488,7 +488,7 @@
         ]
       },
       "rank": 4,
-      "reasoning": "# HAPN Death Cross Assessment\n\nThis is a **weak, choppy signal** rather than a clean trend change: the MAs are nearly identical (only -0.28% separation), suggesting the stock has been grinding sideways, and with two crossovers in six months plus a 3.3% average daily range, you're likely seeing noise rather than conviction. The cross would be invalidated immediately if price rallies back above $17.31 (the slow MA), which given the tight spread and recent choppiness, is well within normal daily volatility\u2014making this tactically unreliable without additional confirmation from volume, support structure, or momentum divergence."
+      "reasoning": "# HAPN Death Cross Assessment\n\nThis is a **weak, unreliable signal** given the razor-thin MA separation (-0.28%) and the stock's 2 reversals in 6 months\u2014classic whipsaw behavior. The cross lacks conviction; with a 3.3% daily range, price could easily re-cross back above the slow MA within days, making this appear as noise rather than a genuine trend change. **Invalidation is immediate:** any close above $17.31 (the slow MA) would suggest this is just another chop in a choppy regime rather than a structural shift lower."
     },
     {
       "symbol": "OPCH",
@@ -597,7 +597,7 @@
         ]
       },
       "rank": 5,
-      "reasoning": "# OPCH 20/50 Cross Assessment\n\nThis cross shows **mixed conviction**: while the 3.72% MA separation and +27.5% premium to the slow MA suggest real upside momentum, the three directional reversals in six months indicate this ticker operates in choppy, mean-reverting territory rather than trending cleanly. The cross would be invalidated by a close below $24.39 (the slow MA), which given the 1.8% daily range represents only ~4-5 trading sessions of typical downside movement\u2014a notably short fuse for a bullish signal."
+      "reasoning": "# OPCH 20/50 Bullish Cross Assessment\n\nThis cross shows **weak conviction**: the MAs have only 3.72% separation after 4 sessions, and with three directional changes in 6 months, this instrument is structurally choppy rather than trending. The cross would be invalidated if price closes below the 50-MA at $24.39, which given the 1.8% daily range is only ~2-3 sessions of downside away\u2014a tight margin for error that suggests this is more likely a false breakout than a clean trend initiation."
     },
     {
       "symbol": "CTSH",
@@ -651,8 +651,8 @@
       "stacked": true,
       "above_slow_ma_pct": 0.1,
       "entry": 59.68000030517578,
-      "stop_loss": 58.4199296749115,
-      "take_profit": 62.20014156570434,
+      "stop_loss": 58.41992963752747,
+      "take_profit": 62.20014164047241,
       "risk_reward_ratio": 2.0,
       "stop_basis": "structure",
       "setup": {
@@ -706,7 +706,7 @@
         ]
       },
       "rank": 6,
-      "reasoning": "This is a **marginal and suspect cross** given the minimal separation (0.10%) between the MAs and the stock's recent choppiness (1 reversal in 6 months suggests whipsaw-prone behavior). The cross would be invalidated immediately by a close below $59.61, and with a 3.5% average daily range, a routine intraday dip could easily trigger a false breakout\u2014this lacks the breathing room that typically characterizes a clean trend shift."
+      "reasoning": "# CTSH Golden Cross Assessment\n\nThis is a **marginal, unreliable signal** \u2014 the MAs are nearly overlapped (only +0.10% separation) and just crossed moments ago, indicating CTSH has been choppy rather than in a strong trend. The one directional flip in six months combined with a 3.5% average daily range suggests price could easily whipsaw back below the slow MA within days, which would immediately invalidate the bullish setup. Watch for a break below $59.61 or a failure to hold above it on a daily close as the primary invalidation point."
     },
     {
       "symbol": "MGM",
@@ -810,7 +810,7 @@
         ]
       },
       "rank": 7,
-      "reasoning": "# MGM Death Cross Assessment\n\nThis is a **weak, choppy signal** \u2014 the MAs are nearly flat ($39.09 vs $39.54) with only 1.13% separation, suggesting MGM has been grinding sideways rather than establishing a clear downtrend, and the single flip in 6 months indicates whipsaw-prone price action. The cross would be invalidated by a close back above $39.54 (the slow MA), which at current price requires only a ~35% move \u2014 well within the 3.4% daily volatility range and easily achievable in one or two sessions."
+      "reasoning": "# MGM Death Cross Assessment\n\nThis is a **weak, choppy signal**: the MAs are barely separated (-1.13%) with MGM already 25.8% below the slow MA, suggesting the stock has been declining well before this crossover rather than the cross triggering a new downtrend. The single flip in 6 months combined with a 3.4% daily range indicates whipsaw risk is high\u2014invalidation would be a daily close above $39.54 (the slow MA) or a quick reversal back above $39.09, either of which would be typical noise in this range-bound action."
     },
     {
       "symbol": "ARLO",
@@ -914,7 +914,7 @@
         ]
       },
       "rank": 8,
-      "reasoning": "# ARLO Death Cross Assessment\n\nThis is a **choppy, low-conviction cross** rather than a clean trend change. The MAs are nearly flat (only -0.12% separation) with ARLO already 10% below the slow MA, suggesting the stock has been weak for a while\u2014the cross itself is more a lagging confirmation than a fresh inflection. Given 2 reversals in 6 months and a 3.9% daily range, invalidation would be straightforward: a move back above $13.46 (the slow MA) would erase the bearish signal immediately, which is a narrow margin in a volatile stock."
+      "reasoning": "# ARLO Death Cross Assessment\n\nThis is a **weak, choppy-sequence cross** rather than a clean trend change: the MAs are nearly identical (0.12% separation), the stock has whipsawed sides twice in six months, and at -10% from the slow MA, ARLO is already testing support\u2014classic conditions for mean reversion rather than sustained downside. The cross invalidates immediately if price closes back above $13.46 (the slow MA), which given the 3.9% daily range and proximity to that level, is entirely plausible within days."
     },
     {
       "symbol": "RXO",
@@ -1023,7 +1023,7 @@
         ]
       },
       "rank": 9,
-      "reasoning": "# RXO 20/50 Cross Assessment\n\nThis cross is **suspect given the frequency of regime changes**\u2014three reversals in six months suggests choppy, mean-reverting price action rather than conviction trend shifts. The +4% MA separation is modest and the +30.8% distance from the slow MA indicates price has already run hard, reducing margin of safety and increasing whipsaw risk. A close below $22.82 (the 20-MA) would invalidate the setup within days, and given the 3.3% average daily range, that's well within one volatile session."
+      "reasoning": "# RXO 20/50 Cross Assessment\n\nThis cross shows **moderate conviction but elevated chop risk**: the +4.07% MA separation is modest for a stock trading 3.3% daily ranges, and three directional reversals in six months suggests structural indecision rather than a regime shift. The cross invalidates immediately on a close below $21.93 (the slow MA), which at current price represents only ~24% downside buffer\u2014thin margin given the stock's volatility profile and recent flip-flopping behavior."
     },
     {
       "symbol": "MOS",
@@ -1127,7 +1127,7 @@
         ]
       },
       "rank": 10,
-      "reasoning": "# MOS Bearish Cross Assessment\n\nThis is a **weak, choppy setup, not a clean trend change**: the -3.07% MA separation is minimal (needs sustained divergence to confirm conviction), and two direction changes in six months suggests MOS oscillates around these averages rather than trending decisively through them. The cross invalidates immediately on a daily close above the slow MA at $23.13, which at current price ($18.85) requires only a 22.8% rally\u2014well within the 5.2% average daily range over a few sessions, making this vulnerable to mean-reversion whipsaws."
+      "reasoning": "# MOS Bearish Cross Assessment\n\nThis cross occurred 2 sessions ago with meaningful separation (-3.07%), but the pattern lacks conviction: two side-changes in 6 months signals a choppy, mean-reverting regime rather than a clean trend setup. The invalidation is straightforward\u2014a close above $22.42 (fast MA) would immediately negate the bearish signal and likely re-expose the chop cycle. At -18.5% from the slow MA with a 5.2% daily range, price has room to move either direction, so this reads as a tactical breakdown within a range rather than structural trend reversal."
     },
     {
       "symbol": "T",
@@ -1231,7 +1231,7 @@
         ]
       },
       "rank": 11,
-      "reasoning": "# T at $22.49 - 20/50 Breakdown Assessment\n\nThis is a **choppy setup masquerading as a trend change**: the MAs are nearly overlapped (0.71% apart) with only a fresh cross, and three direction reversals in six months signals weak directional conviction in this name. The breakdown invalidates immediately if price reclaims $24.68 (slow MA) on a close, which given the 2.4% daily range is plausible within 2-5 sessions\u2014making this a low-confidence structure suitable only for tight-stop traders."
+      "reasoning": "# T Breakdown Assessment\n\nThis is a **choppy, low-conviction signal** masked as a breakdown\u2014the MAs are nearly flat (only 0.71% apart) and just crossed 0 sessions ago, meaning there's been no follow-through yet. The three direction changes in 6 months and 2.4% average daily range suggest T trades in a volatile, mean-reverting band rather than trending; invalidation happens immediately on any close back above $24.68, which is well within a single day's normal move."
     },
     {
       "symbol": "NJR",
@@ -1335,7 +1335,7 @@
         ]
       },
       "rank": 12,
-      "reasoning": "# NJR Death Cross Assessment\n\nThis is a **weak, choppy cross** rather than a clean trend change: the MAs are nearly flat and only 0.35% apart, the stock sits just 2.5% below the slow MA (well within its 1.8% daily range), and a single directional move of ~$0.90-$1.00 would immediately invalidate it. With only one regime change in six months, this cross is more likely noise than meaningful reversal\u2014watch whether NJR can hold below $53.18 on any intraday bounce to confirm the signal has teeth."
+      "reasoning": "# NJR Death Cross Assessment\n\nThis is a **weak, choppy cross** \u2014 the MAs are nearly kissing (only 0.35% apart) just one session after the crossover, suggesting minimal momentum behind the breakdown. With only one directional change in six months and an average daily range of 1.8%, NJR trades choppily enough that this cross could easily reverse within days; invalidation would be a close back above the slow MA ($53.18), which is less than $1.30 away and within a typical two-day move."
     },
     {
       "symbol": "CDNS",
@@ -1445,7 +1445,7 @@
         ]
       },
       "rank": 13,
-      "reasoning": "This cross appears **part of a choppy sequence rather than a clean trend change**: three reversals in six months combined with a tight MA separation (0.96%) suggests weak directional conviction, and the price is only modestly extended above the slow MA given a 2.8% daily range\u2014meaning one or two bad days could quickly retrace this setup. The cross invalidates immediately if price closes below the 50-MA ($320.68), which would represent a failed breakout and likely trigger the fourth reversal in this consolidation zone."
+      "reasoning": "# CDNS 20/50 Cross Assessment\n\nThis cross shows **moderate conviction but questionable durability**: the +0.96% MA separation is thin (barely 1% apart), and three direction changes in six months indicates choppy, mean-reverting behavior rather than a sustained trend. The cross would be invalidated quickly if price closes back below the 50-MA at $320.68, which is only ~2.8% away\u2014well within a single day's average range\u2014making this vulnerable to immediate rejection."
     },
     {
       "symbol": "KLAC",
@@ -1555,7 +1555,7 @@
         ]
       },
       "rank": 14,
-      "reasoning": "# KLAC 20/50 Cross Assessment\n\nThis cross shows **modest quality**: the MAs are only 0.70% apart with price just 1.1% above the slow MA, leaving minimal separation to confirm conviction. The real concern is the **2 side-changes in 6 months combined with a 3.5% daily range**, suggesting this stock oscillates through these levels frequently\u2014this looks like choppy chop, not a clean breakout. **Invalidation is tight**: a close below $188.08 (the 50-MA) would immediately reverse the signal, which at a 3.5% daily range is well within noise tolerance."
+      "reasoning": "# KLAC 20/50 Cross Assessment\n\nThis cross shows **weak conviction**\u2014the 1.1% separation between price and the slow MA is modest, and with two directional flips in six months, the stock demonstrates choppy behavior rather than sustained trend commitment. The +0.70% MA separation is also quite tight, meaning the fast average barely pulled ahead. **Invalidation would be swift**: a close below $188.08 (the slow MA) would immediately break the bullish setup, which is entirely plausible given the 3.5% daily range and recent whipsaw history."
     },
     {
       "symbol": "MAR",
@@ -1665,7 +1665,7 @@
         ]
       },
       "rank": 15,
-      "reasoning": "# MAR 20/50 Cross Assessment\n\nThis cross appears **part of a choppy sequence rather than a clean trend change**: three regime changes in six months indicates the MAs are frequently whipsawing, and the Fast MA's marginal 0.81% separation from the Slow MA means minimal momentum cushion. The cross would be invalidated by a close below $349.70 (the slow MA), which given a 1.8% average daily range, is only ~2.5 points of downside protection\u2014a single unfavorable session could easily erase this signal."
+      "reasoning": "# MAR 20/50 Cross Assessment\n\nThis cross appears **part of a choppy sequence** rather than a clean trend change\u2014three sides changes in 6 months indicates regime uncertainty, and the slow MA separation of only +0.81% is shallow. The cross would be invalidated quickly if price falls below the slow MA at $349.70, which sits just 5.6% below current levels; given the 1.8% average daily range, this level could be tested within 2-3 sessions if momentum stalls."
     },
     {
       "symbol": "META",
@@ -1775,7 +1775,7 @@
         ]
       },
       "rank": 16,
-      "reasoning": "# META Golden Cross Assessment\n\nThis cross appears **moderately clean but not decisive**: the MAs separated only 4 sessions ago with a modest 2.15% gap, and the single flip in 6 months suggests META has been range-bound rather than trending decisively. The invalidation is straightforward\u2014a close below the slow MA (~$630) would erase the signal, and given the 3.2% daily volatility, a brief whipsaw back below that level remains a realistic near-term risk before any sustained uptrend proves itself."
+      "reasoning": "# META Golden Cross Assessment\n\nThis cross shows **moderate conviction but meaningful chop risk**: the MAs separated only 4 sessions ago with a modest 2.15% gap, and a single direction change in 6 months suggests the stock has been range-bound rather than trending decisively. The cross would be invalidated by price closing below the slow MA (~$630), which at the current 3.2% daily range represents roughly 2 days of typical volatility\u2014a low margin of safety that fits a choppy tape better than a clean breakout."
     },
     {
       "symbol": "REGN",
@@ -1880,7 +1880,7 @@
         ]
       },
       "rank": 17,
-      "reasoning": "# REGN 20/50 Breakdown Assessment\n\nThis breakdown appears **part of a choppy sequence rather than a clean trend change**: two crossovers in six months combined with only a -3.11% MA separation suggests weak conviction, and the price sitting just -3.4% from the slow MA leaves minimal margin before invalidation. A decisive invalidation would be a close back above $789.49 (the 50-MA), which given the 2.6% average daily range is a realistic possibility within 1-2 sessions; alternatively, if price stabilizes and the MAs begin converging again, the bearish setup loses structural support."
+      "reasoning": "# REGN 20/50 Breakdown Assessment\n\nThis breakdown carries **moderate credibility but substantial invalidation risk**: the -3.11% MA separation is modest (not deeply bearish), and two side-crosses in six months indicates choppy, mean-reverting behavior rather than conviction trend-switching. The setup gets invalidated cleanly if price reclaims $789.49 (slow MA) or if the fast MA crosses back above $764.91 within the next 5-10 sessions\u2014either would suggest the breakdown was tactical noise rather than a structural shift."
     },
     {
       "symbol": "ODFL",
@@ -1985,7 +1985,7 @@
         ]
       },
       "rank": 18,
-      "reasoning": "# ODFL Death Cross Assessment\n\nThis cross shows **moderate conviction but lacks the setup for a sustained trend**: the -4.33% MA separation is modest (not a wide, confident gap), and with only 1 directional flip in 6 months, the stock exhibits choppy behavior rather than committed trending. The cross would be invalidated by a daily close back above the 200-MA ($200.00), which at -9.0% distance is well within one average daily move (2.4%), making this a fragile bearish signal vulnerable to mean reversion or a quick whipsaw."
+      "reasoning": "# ODFL Death Cross Assessment\n\nThis cross appears **part of a choppy sequence rather than a clean trend change**: only one directional flip in six months suggests the stock oscillates around its moving averages rather than sustaining trending moves, and the current -4.33% separation is modest\u2014not a decisive breakdown. The cross would be invalidated if price rallies back above the 200-day MA ($200.00) with conviction, which at the current 2.4% daily range could occur in roughly 4-5 sessions of directional buying."
     },
     {
       "symbol": "IVT",
@@ -2090,7 +2090,7 @@
         ]
       },
       "rank": 19,
-      "reasoning": "# IVT Moving Average Projection Assessment\n\nThis projection is **fragile and low-reliability** because the MAs are barely separated (0.47%) and a single +1.9% daily move\u2014well within the average range\u2014would reverse the convergence entirely, invalidating the linear forecast. The fact that this pair hasn't changed sides in 6 months suggests the MAs have been relatively stable, so the current tight squeeze may not reliably predict direction; a bounce of just ~50 cents would widen the separation back toward the upside instead of crossing bearish.\n\nThe straight-line extrapolation assumes constant velocity over 1.2 sessions, which rarely holds when MAs are this compressed and price is already 4.8% below the slow average\u2014historically that kind of dislocation often triggers mean reversion rather than continuation."
+      "reasoning": "# IVT MA Convergence Assessment\n\nThis projection is **fragile and low-confidence**\u2014a 1.2-session timeline assumes linear convergence, but with only a 0.15% gap between the MAs and a 1.9% average daily range, price movement of even 0.6\u20131% could easily push the fast MA above the slow MA again, reversing the predicted bearish cross before it forms. The fact that the pair hasn't changed sides in 6 months suggests these MAs are sticky around current levels, making straight-line extrapolation particularly unreliable; for them to separate bullishly instead, price would need to rally sharply enough to pull the fast MA away faster than the slow MA can catch up\u2014difficult when price is already 4.8% *below* the slow average and would be fighting upward momentum just to neutralize the gap."
     },
     {
       "symbol": "CRGY",
@@ -2195,7 +2195,7 @@
         ]
       },
       "rank": 20,
-      "reasoning": "# CRGY Moving Average Projection Assessment\n\nThis projection is **fragile and unreliable**\u2014a 1.7-session linear extrapolation becomes meaningless when the stock swings 3.8% daily and has whipsawed sides twice in six months, either of which could easily derail the timing. For the averages to separate bullishly instead, price would need to rally hard enough to lift the fast MA away from the slow MA, but with only +1.45% separation currently, even a modest 2-3% up move could accomplish this reversal before any crossing occurs. The straight-line assumption breaks down immediately if CRGY experiences typical volatility or mean-reversion within the next two sessions."
+      "reasoning": "# CRGY Moving Average Analysis\n\n**Reliability: Moderate-to-low.** The 1.7-session projection assumes linear convergence, which is fragile given CRGY's 3.8% daily volatility\u2014a single strong move either direction could easily derail the timing. For the averages to separate *bullishly* instead of crossing, price would need to rally roughly 2\u20133% over the next 1\u20132 sessions to accelerate the fast MA upward and away from the slow MA, but the fact that this pair has whipsawed twice in six months suggests these crossovers may be noise rather than reliable regime shifts."
     },
     {
       "symbol": "ICHR",
@@ -2300,7 +2300,7 @@
         ]
       },
       "rank": 21,
-      "reasoning": "The projection is fragile because it assumes linear convergence in a stock with a 5.1% daily range\u2014price could easily whipsaw either direction before the cross materializes in 1.7 sessions. For the averages to separate rather than cross, ICHR would need a sustained rally of roughly 1-2% above the slow MA's current trajectory, but given the stock is already 8.5% below the slow average and hasn't changed sides in six months, reversing momentum would require a meaningful catalyst rather than just normal noise. The straight-line math is mathematically sound but operationally suspect given this stock's volatility and lack of recent trend changes."
+      "reasoning": "# ICHR MA Crossing Analysis\n\nThe projection is quite fragile\u2014straight-line extrapolation of converging MAs often breaks down, especially with a 5.1% daily range that could easily whipsaw either direction before convergence completes. For the averages to separate rather than cross bearishly, ICHR would need a sustained rally over the next 1-2 sessions that outpaces the slow MA's upward drift, which is working against it; given the -8.5% gap to the slow average, this would require genuine bullish momentum, not just mean reversion. The fact that this pair hasn't changed sides in 6 months suggests either a strong trend or that these MAs have been sticky, making a breakout less certain than the linear math implies."
     },
     {
       "symbol": "L",
@@ -2405,7 +2405,7 @@
         ]
       },
       "rank": 22,
-      "reasoning": "# MA Convergence Reliability Assessment\n\nThis projection is **fragile**: a straight-line extrapolation over 2.4 sessions assumes price behavior continues at its recent slope, but with only a 0.48% separation between MAs and an average daily range of 1.4%, even modest intraday volatility could easily disrupt the timing or direction of any cross. For the averages to separate bullishly instead, price would need to rally ~1.5-2% over the next few sessions to rebuild upward momentum faster than the slow MA rises\u2014plausible, but the fact that this pair hasn't changed sides in 6 months suggests a strong directional bias once it does cross, which argues the bearish projection may be more likely if it does trigger, even if the timing is uncertain."
+      "reasoning": "This projection is fragile because a 0.48% separation closing over 2.4 sessions assumes linear convergence, but with a 1.4% average daily range, random price swings could easily stall or reverse the approach. For the averages to separate bullishly instead, price would need to rally roughly 1.5-2% above the slow MA\u2014well within normal daily volatility\u2014which would be just as mechanically probable as the bearish cross given how thin the margin is. The zero crossovers in six months suggests these MAs tend to track together, making this setup less like a reliable signal and more like two averages that happen to be briefly misaligned."
     },
     {
       "symbol": "HWM",
@@ -2510,7 +2510,7 @@
         ]
       },
       "rank": 23,
-      "reasoning": "This projection assumes linear mean reversion, which is fragile given the price is already 11.3% below the slow MA\u2014a substantial deviation that suggests either a sharp reversal or grinding sideways action is more likely than the mechanical convergence continuing. For the MAs to separate bullishly instead of crossing, price would need to rally hard enough to pull the fast MA back above the slow MA before they meet, which at a 2.5% daily range would require sustained directional conviction over multiple days. The zero regime changes in 6 months is the real warning flag: this pair may lack the volatility or mean-reversion behavior the model assumes, making the 1.8-session timeline a guess rather than a reliable signal."
+      "reasoning": "# Assessment\n\nThis projection is **fragile and low-confidence**: a straight-line extrapolation over 1.8 sessions means tiny daily moves (under 1.2%) must hold perfectly, yet the 2.5% average daily range creates substantial noise that could easily derail the timeline. For the averages to separate bullishly instead of crossing, price would need to rally sharply enough to close the current -11.3% gap to the slow MA faster than the slow MA itself rises\u2014essentially, a sustained move decisively above the fast MA, not just a flatline or minor bounce. The zero regime changes in six months suggests these averages move together most of the time, making any near-term divergence prediction inherently uncertain."
     },
     {
       "symbol": "IEX",
@@ -2615,7 +2615,7 @@
         ]
       },
       "rank": 24,
-      "reasoning": "# IEX Moving Average Analysis\n\nThe 2.8-session projection assumes linear convergence in a stock that swings 1.8% daily\u2014a fragile assumption given that kind of volatility could easily reverse the fast MA's direction before they cross. With only a -0.53% separation and two side changes in six months, the averages are in a congestion zone where noise dominates signal; a single down day of 1-2% could push the fast MA back above the slow MA without the stock ever crossing below it.\n\nFor the projection to fail, IEX would need a pullback toward or below the slow MA ($230.01), which at the current 1.8% average daily range is entirely plausible within the next few sessions."
+      "reasoning": "# IEX Moving Average Crossover Assessment\n\nThe 2.8-session projection is fragile because it assumes linear convergence in a stock that moves 1.8% daily\u2014price swings of that magnitude could easily disrupt or reverse the trajectory before completion. For the averages to separate *away* from a bullish cross instead, IEX would need to pull back roughly 1.2% or more (well within its average daily range), which is a modest barrier to overcome. Given 2 direction changes in 6 months, this crossover setup has middling historical reliability, and the tight 0.53% separation leaves little margin for the straight-line math to hold."
     },
     {
       "symbol": "PCAR",
@@ -2721,7 +2721,7 @@
         ]
       },
       "rank": 25,
-      "reasoning": "# PCAR Convergence Assessment\n\nThe 2.8-session projection is fragile\u2014it assumes linear movement in a stock with 2.5% daily swings, making the timeline highly sensitive to normal volatility. For the averages to separate bullishly instead of crossing, PCAR would need a sustained rally of roughly 1-2% over the next few sessions to re-widen the gap, but the fact that the fast MA is already above the slow MA (an unusual setup) and hasn't crossed in 6 months suggests structural weakness that a minor bounce may not overcome."
+      "reasoning": "This projection is fragile because it assumes linear convergence when markets rarely move in straight lines\u2014with a 2.5% daily range, PCAR could easily gap past the crossover point or reverse before it happens. For the averages to separate bullishly instead, price would need to sustain a rally of roughly 3-4% over the next few sessions to create enough distance that the fast MA pulls away from the slow MA rather than crossing below it. The fact that these MAs haven't crossed in 6 months suggests either a strong trend or recent consolidation, but neither guarantees the current directional momentum will persist the next 2.8 sessions."
     },
     {
       "symbol": "WMT",
@@ -2827,7 +2827,7 @@
         ]
       },
       "rank": 26,
-      "reasoning": "# WMT Moving Average Analysis\n\nThe 3.2-session projection is fragile because it assumes linear convergence, but with only a -0.61% separation and an 1.8% average daily range, normal price volatility could easily push WMT back above the slow MA before they cross\u2014especially given the stock is already 4.3% *above* the slow average, suggesting upward momentum that could widen the gap instead. For the averages to separate bullishly without crossing, WMT would need to sustain a move that pulls the fast MA higher relative to the slow MA, which typically requires continued strength, but the \"sides changed 2 times in 6 months\" suggests this setup breaks down frequently."
+      "reasoning": "The 3.2-session projection assumes linear convergence, which is fragile given WMT's 1.8% daily volatility\u2014a single 2% move could easily delay or accelerate the cross by days. For the averages to separate instead of crossing, price would need to drop roughly 1-2% to fall back below the slow MA and arrest the fast MA's upward momentum, a plausible move given the pair has whipsawed twice in six months. The fact that price is already 4.3% above the slow average suggests the cross is more likely than separation, but the tight -0.61% separation between the MAs leaves little margin for the projection to hold as stated."
     },
     {
       "symbol": "LIN",
@@ -2933,7 +2933,7 @@
         ]
       },
       "rank": 27,
-      "reasoning": "# LIN Moving Average Analysis\n\nThis projection is **moderately fragile** because it assumes linear convergence when price volatility (1.6% daily range) could easily disrupt the trajectory\u2014a single 2% down day would reset the timeline significantly. For the averages to separate bearishly instead of crossing, LIN would need to pull back roughly 2-3% over the next few sessions, which is well within normal daily variation and notably close to where price already sits relative to the slow MA. The single directional change in six months suggests these MAs aren't particularly reactive, so once they do cross, mean-reversion noise could easily trigger false signals before any sustained momentum materializes."
+      "reasoning": "# LIN Moving Average Projection Assessment\n\nThis projection assumes linear convergence in a stock with a 1.6% average daily range, which is fragile\u2014price could easily oscillate sideways or reverse before the MAs actually cross, especially given only 1 crossover in 6 months suggests these averages don't intersect frequently. For the MAs to separate again instead of crossing, LIN would need a sharp pullback of roughly 1-2% from current levels to widen the gap, or a sustained sideways drift that lets the slow MA flatten relative to the fast one's trajectory. The straight-line math is mechanical and ignores regime changes; the narrow separation (-1.01%) means small volatility swings could easily derail the crossover timing."
     }
   ]
 }
