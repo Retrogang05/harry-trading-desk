@@ -1,0 +1,2791 @@
+{
+  "scan_date": "2026-10-15T00:02:36.681508",
+  "stats": {
+    "scanned": 1488,
+    "illiquid": 18,
+    "discontinuous": 58,
+    "by_type": {
+      "Nearing Death Cross": 74,
+      "Nearing 20/50 Cross": 86,
+      "20/50 Cross": 89,
+      "Nearing Golden Cross": 10,
+      "20/50 Breakdown": 189,
+      "Golden Cross": 16,
+      "Death Cross": 89,
+      "Nearing 20/50 Breakdown": 31
+    },
+    "published": 26
+  },
+  "opportunities": [
+    {
+      "symbol": "PTC",
+      "price": 193.9600067138672,
+      "score": 81,
+      "strategy": "Golden Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 18,
+        "decisiveness": 18,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": "2026-10-07",
+      "bars_ago": 4,
+      "days_to_cross": null,
+      "flips_6m": 1,
+      "separation_pct": 3.65,
+      "adr_pct": 1.7,
+      "fast_ma": 151.04,
+      "slow_ma": 145.71,
+      "stacked": true,
+      "above_slow_ma_pct": 33.1,
+      "entry": 193.9600067138672,
+      "stop_loss": 187.3580062866211,
+      "take_profit": 207.16400756835935,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "volatility",
+      "setup": {
+        "title": "Cross detail",
+        "label": "Golden Cross \u00b7 1 flips/6m \u00b7 ADR 1.7% \u00b7 2026-10-07, 4d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-07"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "4"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$151.04"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$145.71"
+          },
+          {
+            "label": "Separation",
+            "value": "+3.65%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+33.1%",
+            "tone": "neg"
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "1.7%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "yes",
+            "tone": "pos"
+          }
+        ]
+      },
+      "rank": 1,
+      "reasoning": "# PTC Golden Cross Assessment\n\nThis cross shows **moderate conviction but elevated risk**: the 3.65% MA separation is modest for a stock trading 33% above its slow average, suggesting the fast MA caught up to an already-extended price rather than initiating a clean breakout. The single directional change in 6 months hints at choppiness, and with a 1.7% daily range, a drop back below $145.71 (the slow MA) or a close below $151.04 (the fast MA) within the next 1-2 weeks would quickly invalidate the setup\u2014especially likely if it coincides with the price mean-reverting off its current elevation."
+    },
+    {
+      "symbol": "OPCH",
+      "price": 31.100000381469727,
+      "score": 79,
+      "strategy": "20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 15,
+        "decisiveness": 23,
+        "cleanliness": 21,
+        "confirmation": 20
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": "2026-10-06",
+      "bars_ago": 5,
+      "days_to_cross": null,
+      "flips_6m": 3,
+      "separation_pct": 4.64,
+      "adr_pct": 1.7,
+      "fast_ma": 25.68,
+      "slow_ma": 24.54,
+      "stacked": false,
+      "above_slow_ma_pct": 26.7,
+      "entry": 31.100000381469727,
+      "stop_loss": 30.042000770568848,
+      "take_profit": 33.215999603271484,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "volatility",
+      "setup": {
+        "title": "Cross detail",
+        "label": "20/50 Cross \u00b7 3 flips/6m \u00b7 ADR 1.7% \u00b7 2026-10-06, 5d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-06"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "5"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$25.68"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$24.54"
+          },
+          {
+            "label": "Separation",
+            "value": "+4.64%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+26.7%",
+            "tone": "neg"
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "3",
+            "tone": null
+          },
+          {
+            "label": "ADR",
+            "value": "1.7%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 2,
+      "reasoning": "# OPCH 20/50 Cross Assessment\n\nThis cross shows **moderate conviction but elevated invalidation risk**: the MAs have separated only 4.64% after 5 sessions, and with three direction changes in 6 months, this pair has demonstrated choppy, mean-reverting behavior rather than sustained trends. The cross would be invalidated by a retest and close below the 50-MA ($24.54), and given the 1.7% average daily range, price could reach that level within 2\u20133 sessions of consolidation or pullback."
+    },
+    {
+      "symbol": "NBHC",
+      "price": 37.560001373291016,
+      "score": 76,
+      "strategy": "Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 1,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": "2026-10-13",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 1,
+      "separation_pct": -0.15,
+      "adr_pct": 1.92,
+      "fast_ma": 40.86,
+      "slow_ma": 40.92,
+      "stacked": false,
+      "above_slow_ma_pct": -8.2,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Death Cross \u00b7 1 flips/6m \u00b7 ADR 1.9% \u00b7 2026-10-13, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-13"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$40.86"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$40.92"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.15%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-8.2%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "1.9%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 3,
+      "reasoning": "# NBHC Death Cross Assessment\n\nThis is a **weak, choppy signal** \u2014 the MAs are nearly identical (0.15% separation) and just crossed, making this more of a neutral zone traversal than a decisive trend break. With only one directional change in six months and price already 8.2% below the slow MA, the stock appears range-bound rather than executing a fresh breakdown. The cross invalidates immediately on a close back above $40.92, which represents minimal upside resistance given the tight MA positioning and 1.9% average daily range."
+    },
+    {
+      "symbol": "RSI",
+      "price": 19.06999969482422,
+      "score": 76,
+      "strategy": "Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 1,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": "2026-10-13",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 1,
+      "separation_pct": -0.67,
+      "adr_pct": 5.88,
+      "fast_ma": 23.85,
+      "slow_ma": 24.01,
+      "stacked": false,
+      "above_slow_ma_pct": -20.6,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Death Cross \u00b7 1 flips/6m \u00b7 ADR 5.9% \u00b7 2026-10-13, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-13"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$23.85"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$24.01"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.67%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-20.6%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "5.9%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 4,
+      "reasoning": "# RSI Death Cross Assessment\n\nThis is a **weak, choppy-sequence cross rather than a clean trend change**: the MAs are nearly identical ($23.85 vs $24.01, only 0.67% apart), meaning the fast MA barely dipped below the slow one\u2014textbook noise. With only 1 side-change in 6 months and a 5.9% daily range, RSI is volatile enough to generate false crosses frequently at these tight separations.\n\n**Invalidation would be immediate**: any move back above $24.01 on the slow MA (or ideally a daily close above it) would flip the signal back to bullish within 1-2 sessions, given how compressed these averages are. The -20.6% gap to the slow average is also extreme and suggests RSI is already deeply oversold, which historically makes downside continuation crosses fragile."
+    },
+    {
+      "symbol": "RXO",
+      "price": 28.600000381469727,
+      "score": 76,
+      "strategy": "20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 21,
+        "decisiveness": 14,
+        "cleanliness": 21,
+        "confirmation": 20
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": "2026-10-08",
+      "bars_ago": 3,
+      "days_to_cross": null,
+      "flips_6m": 3,
+      "separation_pct": 5.37,
+      "adr_pct": 3.27,
+      "fast_ma": 23.28,
+      "slow_ma": 22.09,
+      "stacked": false,
+      "above_slow_ma_pct": 29.5,
+      "entry": 28.600000381469727,
+      "stop_loss": 26.728499603271484,
+      "take_profit": 32.34300193786621,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "volatility",
+      "setup": {
+        "title": "Cross detail",
+        "label": "20/50 Cross \u00b7 3 flips/6m \u00b7 ADR 3.3% \u00b7 2026-10-08, 3d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-08"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "3"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$23.28"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$22.09"
+          },
+          {
+            "label": "Separation",
+            "value": "+5.37%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+29.5%",
+            "tone": "neg"
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "3",
+            "tone": null
+          },
+          {
+            "label": "ADR",
+            "value": "3.3%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 5,
+      "reasoning": "# RXO 20/50 Cross Assessment\n\nThis cross shows **moderate conviction but elevated chop risk**: the +5.37% MA separation is meaningful, yet three regime changes in six months signals structural weakness, and the price sitting +29.5% above the slow MA suggests either a strong trend or an extended move vulnerable to mean reversion. The cross would be invalidated by a daily close below $22.09 (the 50-MA), which at the current 3.3% average range is roughly 2-3 sessions of normal volatility away."
+    },
+    {
+      "symbol": "EXR",
+      "price": 133.74000549316406,
+      "score": 75,
+      "strategy": "Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 0,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": "2026-10-13",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 1,
+      "separation_pct": -0.02,
+      "adr_pct": 1.87,
+      "fast_ma": 139.05,
+      "slow_ma": 139.07,
+      "stacked": false,
+      "above_slow_ma_pct": -3.8,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Death Cross \u00b7 1 flips/6m \u00b7 ADR 1.9% \u00b7 2026-10-13, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-13"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$139.05"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$139.07"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.02%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-3.8%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "1.9%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 6,
+      "reasoning": "# EXR Death Cross Assessment\n\nThis is a **choppy, unreliable cross** \u2014 the MAs are separated by only 0.02%, meaning they've been nearly overlapped and vulnerable to whipsaw; one side change in 6 months confirms the stock oscillates rather than trends decisively. The cross would be invalidated immediately if price rallies back above $139.05 (the fast MA), which given the 1.9% daily range could easily occur within 1-2 sessions. Without a widening separation between the MAs or confirmation from volume/support breaks, this death cross appears to be noise rather than a structural trend reversal."
+    },
+    {
+      "symbol": "PTC",
+      "price": 193.9600067138672,
+      "score": 75,
+      "strategy": "20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 21,
+        "decisiveness": 22,
+        "cleanliness": 12,
+        "confirmation": 20
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": "2026-10-08",
+      "bars_ago": 3,
+      "days_to_cross": null,
+      "flips_6m": 5,
+      "separation_pct": 4.48,
+      "adr_pct": 1.7,
+      "fast_ma": 157.81,
+      "slow_ma": 151.04,
+      "stacked": true,
+      "above_slow_ma_pct": 28.4,
+      "entry": 193.9600067138672,
+      "stop_loss": 187.3580062866211,
+      "take_profit": 207.16400756835935,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "volatility",
+      "setup": {
+        "title": "Cross detail",
+        "label": "20/50 Cross \u00b7 5 flips/6m \u00b7 ADR 1.7% \u00b7 2026-10-08, 3d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-08"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "3"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$157.81"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$151.04"
+          },
+          {
+            "label": "Separation",
+            "value": "+4.48%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+28.4%",
+            "tone": "neg"
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "5",
+            "tone": null
+          },
+          {
+            "label": "ADR",
+            "value": "1.7%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "yes",
+            "tone": "pos"
+          }
+        ]
+      },
+      "rank": 7,
+      "reasoning": "# PTC 20/50 Cross Assessment\n\nThis cross shows **moderate conviction but with caution flags**: the +4.48% MA separation is meaningful, yet five directional changes in six months indicates an inherently choppy instrument that frequently whipsaws through moving average systems. The invalidation point is straightforward\u2014a close below the 50-MA at $151.04 would confirm this is another false breakout in the pattern, especially given the stock is already 28% above its slow average, leaving room for mean reversion rather than sustained uptrend."
+    },
+    {
+      "symbol": "IBOC",
+      "price": 67.36000061035156,
+      "score": 75,
+      "strategy": "Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 0,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": "2026-10-13",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 1,
+      "separation_pct": -0.01,
+      "adr_pct": 1.48,
+      "fast_ma": 70.79,
+      "slow_ma": 70.8,
+      "stacked": false,
+      "above_slow_ma_pct": -4.9,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Death Cross \u00b7 1 flips/6m \u00b7 ADR 1.5% \u00b7 2026-10-13, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-13"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$70.79"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$70.80"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.01%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-4.9%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "1.5%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 8,
+      "reasoning": "# IBOC Death Cross Assessment\n\nThis cross is **extremely suspect** \u2014 the MAs are separated by just 0.01%, indicating the fast MA barely dipped below the slow MA rather than decisively crossing, which is typical of choppy consolidation near a moving average rather than a genuine trend reversal. With only 1 directional change in 6 months, the stock appears to have been in a sustained trend, making this razor-thin separation more likely noise than a structural shift; invalidation would be trivial\u2014even a 0.04% bounce back to $70.83 would erase the cross entirely."
+    },
+    {
+      "symbol": "VSEC",
+      "price": 163.3300018310547,
+      "score": 75,
+      "strategy": "Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 0,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": "2026-10-13",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 1,
+      "separation_pct": -0.02,
+      "adr_pct": 5.01,
+      "fast_ma": 198.26,
+      "slow_ma": 198.31,
+      "stacked": false,
+      "above_slow_ma_pct": -17.6,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Death Cross \u00b7 1 flips/6m \u00b7 ADR 5.0% \u00b7 2026-10-13, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-13"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$198.26"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$198.31"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.02%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-17.6%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "5.0%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 9,
+      "reasoning": "# VSEC Death Cross Assessment\n\nThis is a **weak, unconvincing cross** rather than a clean trend change. The MAs are nearly identical ($198.26 vs $198.31, only 0.02% apart), meaning the stock has been range-bound near this level rather than rolling over from clear momentum\u2014this is the opposite of a decisive breakdown. With only 1 directional flip in 6 months and a 5% average daily range, a single 2-3% bounce back above $198.30 would immediately invalidate the signal and suggest the cross was just noise in sideways trading."
+    },
+    {
+      "symbol": "CTSH",
+      "price": 61.33000183105469,
+      "score": 73,
+      "strategy": "Golden Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 27,
+        "decisiveness": 1,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": "2026-10-12",
+      "bars_ago": 1,
+      "days_to_cross": null,
+      "flips_6m": 1,
+      "separation_pct": 0.51,
+      "adr_pct": 3.49,
+      "fast_ma": 59.8,
+      "slow_ma": 59.5,
+      "stacked": true,
+      "above_slow_ma_pct": 3.1,
+      "entry": 61.33000183105469,
+      "stop_loss": 58.3093342464447,
+      "take_profit": 67.37133700027466,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "structure",
+      "setup": {
+        "title": "Cross detail",
+        "label": "Golden Cross \u00b7 1 flips/6m \u00b7 ADR 3.5% \u00b7 2026-10-12, 1d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-12"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "1"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$59.80"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$59.50"
+          },
+          {
+            "label": "Separation",
+            "value": "+0.51%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+3.1%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.5%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "yes",
+            "tone": "pos"
+          }
+        ]
+      },
+      "rank": 10,
+      "reasoning": "# CTSH Golden Cross Assessment\n\nThis is a **weak, choppy signal** given the minimal 0.51% MA separation and only one directional change in six months\u2014suggesting CTSH trades in a tight range rather than establishing strong trending conditions. The cross would be invalidated quickly if price closes below $59.50 (the slow MA), which at a 3.5% daily range is a realistic intraday risk, and the single-flip history indicates the MAs could easily recross within weeks."
+    },
+    {
+      "symbol": "MGM",
+      "price": 29.399999618530273,
+      "score": 73,
+      "strategy": "Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 24,
+        "decisiveness": 4,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": "2026-10-09",
+      "bars_ago": 2,
+      "days_to_cross": null,
+      "flips_6m": 1,
+      "separation_pct": -1.8,
+      "adr_pct": 3.42,
+      "fast_ma": 38.79,
+      "slow_ma": 39.5,
+      "stacked": false,
+      "above_slow_ma_pct": -25.6,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Death Cross \u00b7 1 flips/6m \u00b7 ADR 3.4% \u00b7 2026-10-09, 2d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-09"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "2"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$38.79"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$39.50"
+          },
+          {
+            "label": "Separation",
+            "value": "-1.80%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-25.6%",
+            "tone": "neg"
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.4%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 11,
+      "reasoning": "# MGM Death Cross Assessment\n\nThis is a **weak, choppy-sequence cross** rather than a clean trend change: the MAs are only 1.8% apart (nearly flat), MGM has whipsawed through this threshold once already in 6 months, and the -25.6% gap to the slow MA suggests price is already deeply oversold, which often precedes reversals rather than fresh downtrends. The cross would be invalidated within 1-2 sessions if MGM rallies above $39.50, a move well within its 3.4% daily range\u2014making this tactically unreliable as a bearish signal."
+    },
+    {
+      "symbol": "MOS",
+      "price": 19.18000030517578,
+      "score": 73,
+      "strategy": "20/50 Breakdown",
+      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 21,
+        "decisiveness": 7,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": "2026-10-08",
+      "bars_ago": 3,
+      "days_to_cross": null,
+      "flips_6m": 2,
+      "separation_pct": -4.23,
+      "adr_pct": 4.99,
+      "fast_ma": 22.11,
+      "slow_ma": 23.08,
+      "stacked": false,
+      "above_slow_ma_pct": -16.9,
+      "setup": {
+        "title": "Cross detail",
+        "label": "20/50 Breakdown \u00b7 2 flips/6m \u00b7 ADR 5.0% \u00b7 2026-10-08, 3d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-08"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "3"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$22.11"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$23.08"
+          },
+          {
+            "label": "Separation",
+            "value": "-4.23%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-16.9%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "5.0%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 12,
+      "reasoning": "# MOS 20/50 Breakdown Assessment\n\nThis is a **choppy sequence, not a clean trend change**\u2014the 4.23% MA separation is thin, and two side-crosses in six months indicates a stock oscillating near its moving averages rather than committing to either direction. The breakdown loses credibility immediately if price reclaims $23.08 (the slow MA) on a daily close, which would flip the signal and align with the historical whipsaw pattern."
+    },
+    {
+      "symbol": "CDNS",
+      "price": 334.20001220703125,
+      "score": 70,
+      "strategy": "20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 27,
+        "decisiveness": 5,
+        "cleanliness": 21,
+        "confirmation": 17
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": "2026-10-12",
+      "bars_ago": 1,
+      "days_to_cross": null,
+      "flips_6m": 3,
+      "separation_pct": 1.91,
+      "adr_pct": 3.03,
+      "fast_ma": 326.76,
+      "slow_ma": 320.64,
+      "stacked": false,
+      "above_slow_ma_pct": 4.2,
+      "entry": 334.20001220703125,
+      "stop_loss": 314.2246536987305,
+      "take_profit": 374.15072922363277,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "structure",
+      "setup": {
+        "title": "Cross detail",
+        "label": "20/50 Cross \u00b7 3 flips/6m \u00b7 ADR 3.0% \u00b7 2026-10-12, 1d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-12"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "1"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$326.76"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$320.64"
+          },
+          {
+            "label": "Separation",
+            "value": "+1.91%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+4.2%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "3",
+            "tone": null
+          },
+          {
+            "label": "ADR",
+            "value": "3.0%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 13,
+      "reasoning": "# CDNS 20/50 Cross Assessment\n\nThis cross shows **weak conviction** given the 3 reversals in 6 months and tight MA separation of only 1.91%\u2014classic whipsaw territory rather than a decisive trend shift. The signal invalidates immediately if price closes below the 50-MA at $320.64, which is just 4.2% away and well within the stock's 3% average daily range, making a quick reversal entirely plausible. Without widening separation between the MAs or sustained closes above $326+ over multiple sessions, treat this as choppy noise rather than a reliable trend change."
+    },
+    {
+      "symbol": "MAR",
+      "price": 371.5,
+      "score": 69,
+      "strategy": "Golden Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 0,
+        "cleanliness": 25,
+        "confirmation": 14
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": "2026-10-13",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 2,
+      "separation_pct": 0.01,
+      "adr_pct": 1.79,
+      "fast_ma": 350.21,
+      "slow_ma": 350.16,
+      "stacked": true,
+      "above_slow_ma_pct": 6.1,
+      "entry": 371.5,
+      "stop_loss": 358.19700012207034,
+      "take_profit": 398.10599975585933,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "volatility",
+      "setup": {
+        "title": "Cross detail",
+        "label": "Golden Cross \u00b7 2 flips/6m \u00b7 ADR 1.8% \u00b7 2026-10-13, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-13"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$350.21"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$350.16"
+          },
+          {
+            "label": "Separation",
+            "value": "+0.01%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+6.1%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "1.8%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "yes",
+            "tone": "pos"
+          }
+        ]
+      },
+      "rank": 14,
+      "reasoning": "# MAR Golden Cross Assessment\n\n**Choppy sequence, not a clean trend change.** The 0.01% separation between the 50-day and 200-day MAs indicates they're nearly overlapped\u2014this is a \"kiss\" rather than a decisive crossover\u2014and two reversals in six months signals a range-bound market, not trending conviction. The +6.1% move above the slow MA is notable, but at an average daily range of 1.8%, a pullback of 3-4% would quickly test and potentially invalidate this cross by closing back below $350.16."
+    },
+    {
+      "symbol": "TTWO",
+      "price": 200.32000732421875,
+      "score": 66,
+      "strategy": "Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bearish",
+      "signal_label": "Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 18,
+        "decisiveness": 3,
+        "cleanliness": 25,
+        "confirmation": 20
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": "2026-10-07",
+      "bars_ago": 4,
+      "days_to_cross": null,
+      "flips_6m": 2,
+      "separation_pct": -0.98,
+      "adr_pct": 2.96,
+      "fast_ma": 220.94,
+      "slow_ma": 223.14,
+      "stacked": false,
+      "above_slow_ma_pct": -10.2,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Death Cross \u00b7 2 flips/6m \u00b7 ADR 3.0% \u00b7 2026-10-07, 4d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-07"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "4"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$220.94"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$223.14"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.98%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-10.2%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.0%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 15,
+      "reasoning": "This death cross is **weakly formed and embedded in noise**: the MAs are only 0.98% apart with price already 10.2% below the slow MA, suggesting the cross arrived late rather than signaling a fresh breakdown. With 2 reversals in 6 months and a 3% daily range, the setup would be invalidated by a close back above $223.14 (the slow MA), which is just one average daily move away\u2014making this cross vulnerable to whipsaw rather than a reliable trend anchor."
+    },
+    {
+      "symbol": "MAR",
+      "price": 371.5,
+      "score": 64,
+      "strategy": "20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 24,
+        "decisiveness": 5,
+        "cleanliness": 21,
+        "confirmation": 14
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": "2026-10-09",
+      "bars_ago": 2,
+      "days_to_cross": null,
+      "flips_6m": 3,
+      "separation_pct": 1.15,
+      "adr_pct": 1.79,
+      "fast_ma": 354.24,
+      "slow_ma": 350.21,
+      "stacked": true,
+      "above_slow_ma_pct": 6.1,
+      "entry": 371.5,
+      "stop_loss": 358.19700012207034,
+      "take_profit": 398.10599975585933,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "volatility",
+      "setup": {
+        "title": "Cross detail",
+        "label": "20/50 Cross \u00b7 3 flips/6m \u00b7 ADR 1.8% \u00b7 2026-10-09, 2d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-09"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "2"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$354.24"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$350.21"
+          },
+          {
+            "label": "Separation",
+            "value": "+1.15%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+6.1%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "3",
+            "tone": null
+          },
+          {
+            "label": "ADR",
+            "value": "1.8%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "yes",
+            "tone": "pos"
+          }
+        ]
+      },
+      "rank": 16,
+      "reasoning": "This cross shows mixed conviction: the +1.15% MA separation is modest, and with 3 directional reversals in 6 months, the pair is clearly choppy rather than trending. The cross invalidates immediately on a close below $350.21 (the slow MA), which at the current 1.8% daily range represents less than 2 days of normal volatility\u2014a thin margin of safety for a supposedly fresh trend change."
+    },
+    {
+      "symbol": "META",
+      "price": 762.5,
+      "score": 64,
+      "strategy": "Golden Cross",
+      "cross_type": "50_200",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 15,
+        "decisiveness": 7,
+        "cleanliness": 25,
+        "confirmation": 17
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": "2026-10-06",
+      "bars_ago": 5,
+      "days_to_cross": null,
+      "flips_6m": 1,
+      "separation_pct": 2.62,
+      "adr_pct": 3.2,
+      "fast_ma": 646.59,
+      "slow_ma": 630.06,
+      "stacked": false,
+      "above_slow_ma_pct": 21.0,
+      "entry": 762.5,
+      "stop_loss": 713.7006283793818,
+      "take_profit": 860.0987432412364,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "volatility",
+      "setup": {
+        "title": "Cross detail",
+        "label": "Golden Cross \u00b7 1 flips/6m \u00b7 ADR 3.2% \u00b7 2026-10-06, 5d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-06"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "5"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$646.59"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$630.06"
+          },
+          {
+            "label": "Separation",
+            "value": "+2.62%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+21.0%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.2%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 17,
+      "reasoning": "# META Golden Cross Assessment\n\nThis cross shows **moderate conviction but fragile setup**: the 5-session-old separation (+2.62%) is modest given META's 3.2% daily volatility, and only 1 directional flip in 6 months suggests the moving averages have been stuck in a narrow band rather than cleanly separated. The cross would be invalidated decisively if price falls below the slow MA (~$630), which represents only a 17% drawdown from current levels\u2014well within normal pullback territory for a stock trading 21% above its slow average."
+    },
+    {
+      "symbol": "AMAT",
+      "price": 464.239990234375,
+      "score": 62,
+      "strategy": "20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "crossed",
+      "bias": "bullish",
+      "signal_label": "Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "freshness",
+          "label": "Freshness",
+          "max": 30
+        },
+        {
+          "key": "decisiveness",
+          "label": "Decisiveness",
+          "max": 25
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 25
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 20
+        }
+      ],
+      "breakdown": {
+        "freshness": 30,
+        "decisiveness": 1,
+        "cleanliness": 25,
+        "confirmation": 6
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": "2026-10-13",
+      "bars_ago": 0,
+      "days_to_cross": null,
+      "flips_6m": 2,
+      "separation_pct": 0.29,
+      "adr_pct": 3.49,
+      "fast_ma": 489.94,
+      "slow_ma": 488.53,
+      "stacked": false,
+      "above_slow_ma_pct": -5.0,
+      "entry": 464.239990234375,
+      "stop_loss": 478.75465013427737,
+      "take_profit": 480.4244918823242,
+      "risk_reward_ratio": 2.0,
+      "stop_basis": "structure",
+      "setup": {
+        "title": "Cross detail",
+        "label": "20/50 Cross \u00b7 2 flips/6m \u00b7 ADR 3.5% \u00b7 2026-10-13, 0d ago",
+        "fields": [
+          {
+            "label": "Cross date",
+            "value": "2026-10-13"
+          },
+          {
+            "label": "Sessions ago",
+            "value": "0"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$489.94"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$488.53"
+          },
+          {
+            "label": "Separation",
+            "value": "+0.29%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-5.0%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.5%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 18,
+      "reasoning": "# AMAT 20/50 Cross Assessment\n\nThis cross is **highly suspect** \u2014 the MAs are nearly identical (only 0.29% apart) and the stock is already 5% below the slow MA, suggesting the cross occurred during pullback noise rather than genuine uptrend initiation. With 2 reversals in 6 months and a 3.5% average daily range, this looks like **choppy price action**, not a clean trend shift; invalidation would be immediate if price closes below $488.53, which is easily within one day's typical range."
+    },
+    {
+      "symbol": "HST",
+      "price": 23.219999313354492,
+      "score": 70,
+      "strategy": "Nearing 20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bullish",
+      "signal_label": "Nearing Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 24,
+        "convergence": 18,
+        "cleanliness": 18,
+        "confirmation": 10
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.6,
+      "flips_6m": 2,
+      "separation_pct": -0.59,
+      "adr_pct": 1.87,
+      "fast_ma": 22.29,
+      "slow_ma": 22.42,
+      "stacked": false,
+      "above_slow_ma_pct": 3.6,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing 20/50 Cross \u00b7 2 flips/6m \u00b7 ADR 1.9% \u00b7 ~1.6d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~1.6 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.30 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$22.29"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$22.42"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.59%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+3.6%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "1.9%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 19,
+      "reasoning": "# HST Moving Average Analysis\n\nThis projection is **fragile and low-reliability** because straight-line extrapolation assumes constant velocity in a stock that averages 1.9% daily swings\u2014meaning a single normal-sized move could easily delay or reverse the crossover timeline. For the averages to separate rather than cross, the fast MA would need to drop below the slow MA, which requires price to fall and stay below ~$22.42, but with price already +3.6% above the slow average and the MAs only 0.13 cents apart, the margin for error is razor-thin and vulnerable to whipsaw action. The 2 crossovers in 6 months also signal this pair trades near equilibrium frequently, making any single projection suspect."
+    },
+    {
+      "symbol": "AVAH",
+      "price": 12.180000305175781,
+      "score": 69,
+      "strategy": "Nearing 20/50 Breakdown",
+      "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bearish",
+      "signal_label": "Nearing Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 24,
+        "convergence": 17,
+        "cleanliness": 18,
+        "confirmation": 10
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.3,
+      "flips_6m": 1,
+      "separation_pct": 1.49,
+      "adr_pct": 3.56,
+      "fast_ma": 12.74,
+      "slow_ma": 12.55,
+      "stacked": false,
+      "above_slow_ma_pct": -3.0,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing 20/50 Breakdown \u00b7 1 flips/6m \u00b7 ADR 3.6% \u00b7 ~1.3d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~1.3 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.43 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$12.74"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$12.55"
+          },
+          {
+            "label": "Separation",
+            "value": "+1.49%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-3.0%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.6%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 20,
+      "reasoning": "# AVAH Moving Average Analysis\n\nThis projection is **fragile and low-reliability**: a straight-line extrapolation over 1.3 sessions is easily disrupted by normal daily volatility (3.6% ADR = \u00b144\u00a2), and with only 1 crossover in 6 months, the moving average behavior lacks a clear pattern to justify confidence. For the averages to separate bullishly instead, price would need to rally above ~$12.74 and sustain there, compressing the gap; any mean-reversion bounce toward the slow MA (currently $12.55) would likely stretch the convergence timeline or reverse the projected bearish cross entirely."
+    },
+    {
+      "symbol": "OPLN",
+      "price": 37.459999084472656,
+      "score": 69,
+      "strategy": "Nearing 20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bullish",
+      "signal_label": "Nearing Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 24,
+        "convergence": 19,
+        "cleanliness": 18,
+        "confirmation": 8
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.6,
+      "flips_6m": 1,
+      "separation_pct": -0.62,
+      "adr_pct": 2.25,
+      "fast_ma": 35.08,
+      "slow_ma": 35.3,
+      "stacked": false,
+      "above_slow_ma_pct": 6.1,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing 20/50 Cross \u00b7 1 flips/6m \u00b7 ADR 2.3% \u00b7 ~1.6d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~1.6 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.26 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$35.08"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$35.30"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.62%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+6.1%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "2.3%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 21,
+      "reasoning": "# OPLN MA Convergence Assessment\n\n**Reliability:** This projection is quite fragile\u2014it assumes linear movement in a stock that swings 2.2% daily, meaning random price action alone could easily delay or prevent the crossing by several sessions. With only one crossover in six months, these MAs are relatively sticky, which cuts both ways: the convergence is real, but the timing estimate has low confidence.\n\n**Separation scenario:** For the averages to diverge bullishly without crossing, OPLN would need sustained strength above ~$36.50+ to accelerate the fast MA away from the slow one; conversely, a pullback toward $36-37 or below could stall the fast MA and let the slow MA catch up more gradually, extending the timeline indefinitely."
+    },
+    {
+      "symbol": "HLT",
+      "price": 329.5899963378906,
+      "score": 67,
+      "strategy": "Nearing 20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bullish",
+      "signal_label": "Nearing Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 23,
+        "convergence": 19,
+        "cleanliness": 18,
+        "confirmation": 7
+      },
+      "indexes": [
+        "SPX"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.9,
+      "flips_6m": 2,
+      "separation_pct": -0.47,
+      "adr_pct": 1.75,
+      "fast_ma": 316.28,
+      "slow_ma": 317.76,
+      "stacked": false,
+      "above_slow_ma_pct": 3.7,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing 20/50 Cross \u00b7 2 flips/6m \u00b7 ADR 1.8% \u00b7 ~1.9d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~1.9 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.26 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$316.28"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$317.76"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.47%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+3.7%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "2",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "1.8%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 22,
+      "reasoning": "# HLT Moving Average Analysis\n\nThe 1.9-session crossover projection is fragile\u2014it assumes linear convergence when price momentum often shifts unpredictably, and with only a 0.47% MA separation against a 1.8% daily average range, random intraday volatility could easily disrupt the timeline. For the averages to separate bullishly instead of crossing, HLT would need a sharp intraday rally of roughly 1-2% to accelerate the fast MA away from the slow MA before they touch. The fact this pair has whipsawed sides twice in 6 months suggests these convergences are frequent inflection points rather than high-conviction setups\u2014price could just as easily stall or pullback, causing the \"projected\" cross to simply never materialize."
+    },
+    {
+      "symbol": "PCAR",
+      "price": 107.9800033569336,
+      "score": 67,
+      "strategy": "Nearing Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "approaching",
+      "bias": "bearish",
+      "signal_label": "Nearing Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 23,
+        "convergence": 18,
+        "cleanliness": 18,
+        "confirmation": 8
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 1.9,
+      "flips_6m": 0,
+      "separation_pct": 0.78,
+      "adr_pct": 2.5,
+      "fast_ma": 121.1,
+      "slow_ma": 120.16,
+      "stacked": false,
+      "above_slow_ma_pct": -10.1,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing Death Cross \u00b7 0 flips/6m \u00b7 ADR 2.5% \u00b7 ~1.9d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~1.9 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.35 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$121.10"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$120.16"
+          },
+          {
+            "label": "Separation",
+            "value": "+0.78%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-10.1%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "0",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "2.5%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 23,
+      "reasoning": "# PCAR Crossover Projection Assessment\n\nThis projection is **fragile and low-confidence** \u2014 a 1.9-session linear extrapolation of converging MAs is vulnerable to any meaningful price move, and the 0% crossovers in 6 months suggests these averages rarely interact. For the MAs to separate bullishly instead, PCAR would need sustained upward momentum to close the 10.1% gap to the slow MA; even a 2.5% daily range move (typical volatility) could easily derail the bearish crossing timeline or reverse direction entirely."
+    },
+    {
+      "symbol": "CMPR",
+      "price": 74.70999908447266,
+      "score": 67,
+      "strategy": "Nearing Death Cross",
+      "cross_type": "50_200",
+      "signal_state": "approaching",
+      "bias": "bearish",
+      "signal_label": "Nearing Bearish",
+      "signal_tone": "neg",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 22,
+        "convergence": 17,
+        "cleanliness": 18,
+        "confirmation": 10
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 2.2,
+      "flips_6m": 0,
+      "separation_pct": 1.25,
+      "adr_pct": 3.5,
+      "fast_ma": 85.22,
+      "slow_ma": 84.17,
+      "stacked": false,
+      "above_slow_ma_pct": -11.2,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing Death Cross \u00b7 0 flips/6m \u00b7 ADR 3.5% \u00b7 ~2.2d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~2.2 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.40 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bearish",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$85.22"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$84.17"
+          },
+          {
+            "label": "Separation",
+            "value": "+1.25%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "-11.2%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "0",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "3.5%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 24,
+      "reasoning": "# CMPR Moving Average Analysis\n\nThis projection is **quite fragile** because it relies on linear extrapolation of convergence rates, yet CMPR's 3.5% average daily range means a single volatile session could easily reverse the trajectory\u2014especially with price already 11.2% below the slow MA, suggesting potential mean-reversion bounce rather than continued drift. For the averages to separate bullishly instead of crossing, price would need to rally ~$2.60+ toward the slow MA faster than the fast MA can decay, which is plausible given the oversold positioning but contradicts the bearish setup the convergence currently implies. The zero direction changes in 6 months adds some structural weight to the bearish cross, but doesn't account for the possibility that this wide a price-to-slow-MA gap could snap back violently and invalidate the entire premise."
+    },
+    {
+      "symbol": "LIN",
+      "price": 492.1099853515625,
+      "score": 65,
+      "strategy": "Nearing 20/50 Cross",
+      "cross_type": "20_50",
+      "signal_state": "approaching",
+      "bias": "bullish",
+      "signal_label": "Nearing Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 20,
+        "convergence": 17,
+        "cleanliness": 18,
+        "confirmation": 10
+      },
+      "indexes": [
+        "SPX",
+        "QQQ"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 2.8,
+      "flips_6m": 1,
+      "separation_pct": -0.76,
+      "adr_pct": 1.56,
+      "fast_ma": 474.07,
+      "slow_ma": 477.69,
+      "stacked": false,
+      "above_slow_ma_pct": 3.0,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing 20/50 Cross \u00b7 1 flips/6m \u00b7 ADR 1.6% \u00b7 ~2.8d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~2.8 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.47 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$474.07"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$477.69"
+          },
+          {
+            "label": "Separation",
+            "value": "-0.76%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+3.0%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "1",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "1.6%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 25,
+      "reasoning": "# LIN Moving Average Projection Assessment\n\nThe 2.8-session crossing projection is fragile\u2014it assumes linear convergence when daily swings of 1.6% can easily disrupt the timing or reverse direction entirely. For the averages to separate bullishly instead of crossing, LIN would need sustained upside momentum; conversely, even a modest pullback of 1-2% could stall or invert the convergence trajectory. With only one directional change in six months, this pair shows low regime-switching frequency, which *could* suggest the projected bullish cross has some follow-through potential\u2014but the straight-line math here is particularly vulnerable to the next few sessions' volatility."
+    },
+    {
+      "symbol": "MSTR",
+      "price": 152.17999267578125,
+      "score": 62,
+      "strategy": "Nearing Golden Cross",
+      "cross_type": "50_200",
+      "signal_state": "approaching",
+      "bias": "bullish",
+      "signal_label": "Nearing Bullish",
+      "signal_tone": "pos",
+      "dimensions": [
+        {
+          "key": "imminence",
+          "label": "Imminence",
+          "max": 28
+        },
+        {
+          "key": "convergence",
+          "label": "Convergence",
+          "max": 19
+        },
+        {
+          "key": "cleanliness",
+          "label": "Cleanliness",
+          "max": 18
+        },
+        {
+          "key": "confirmation",
+          "label": "Confirmation",
+          "max": 10
+        }
+      ],
+      "breakdown": {
+        "imminence": 19,
+        "convergence": 17,
+        "cleanliness": 18,
+        "confirmation": 8
+      },
+      "indexes": [
+        "QQQ"
+      ],
+      "cross_date": null,
+      "bars_ago": 0,
+      "days_to_cross": 3.1,
+      "flips_6m": 0,
+      "separation_pct": -2.68,
+      "adr_pct": 5.1,
+      "fast_ma": 132.15,
+      "slow_ma": 135.8,
+      "stacked": false,
+      "above_slow_ma_pct": 12.1,
+      "setup": {
+        "title": "Cross detail",
+        "label": "Nearing Golden Cross \u00b7 0 flips/6m \u00b7 ADR 5.1% \u00b7 ~3.1d out",
+        "fields": [
+          {
+            "label": "Projected",
+            "value": "~3.1 sessions",
+            "tone": "pos"
+          },
+          {
+            "label": "Gap",
+            "value": "0.47 ATR"
+          },
+          {
+            "label": "Direction",
+            "value": "Bullish",
+            "tone": "pos"
+          },
+          {
+            "label": "Fast MA",
+            "value": "$132.15"
+          },
+          {
+            "label": "Slow MA",
+            "value": "$135.80"
+          },
+          {
+            "label": "Separation",
+            "value": "-2.68%"
+          },
+          {
+            "label": "Price vs slow MA",
+            "value": "+12.1%",
+            "tone": null
+          },
+          {
+            "label": "Flips (6m)",
+            "value": "0",
+            "tone": "pos"
+          },
+          {
+            "label": "ADR",
+            "value": "5.1%"
+          },
+          {
+            "label": "Both pairs",
+            "value": "no",
+            "tone": null
+          }
+        ]
+      },
+      "rank": 26,
+      "reasoning": "# MSTR Moving Average Crossover Assessment\n\nThe projection is **fragile**: it assumes linear convergence when a 5.1% daily range stock can easily whipsaw the averages' trajectories in a single session. For the averages to separate *bearishly* instead of crossing up, price would need to drop roughly 4-6% over the next few days to slow or reverse the fast MA's momentum\u2014entirely plausible given the stock's volatility and the fact that price sits +12.1% above the slow MA with no recent crossover history to establish conviction. A straight-line model ignores the lagging nature of moving averages themselves; even modest consolidation or a pullback would materially extend or cancel the projected cross."
+    }
+  ]
+}
