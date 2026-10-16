@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-10-15T23:40:13.871696",
+  "scan_date": "2026-10-16T23:33:24.467826",
   "context": [
     {
       "label": "State",
@@ -34,11 +34,11 @@
     },
     {
       "label": "Book checklist",
-      "value": "4 / 6 (ref)"
+      "value": "3 / 6 (ref)"
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 44"
+      "value": "quiet \u00b7 35"
     }
   ],
   "groups": {
@@ -52,7 +52,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 73.82,
+      "price": 68.21,
       "score": 100,
       "strategy": "Trend gate \u00b7 FULL",
       "dimensions": [
@@ -75,7 +75,7 @@
         "fast": 40
       },
       "setup": {
-        "label": "FULL since 2026-09-21 \u00b7 QQQ 728.00 \u00b7 book 4/6 (reference, not used for state)",
+        "label": "FULL since 2026-09-21 \u00b7 QQQ 709.80 \u00b7 book 3/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -84,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+8.1%",
+            "value": "+5.4%",
             "tone": "pos"
           },
           {
@@ -94,12 +94,12 @@
           },
           {
             "label": "Book \u00b7 ref",
-            "value": "4 / 6",
+            "value": "3 / 6",
             "tone": "pos"
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +9.2%",
+            "value": "\u2713 +6.4%",
             "tone": "pos"
           },
           {
@@ -109,12 +109,12 @@
           },
           {
             "label": "10>20 \u00b7 P>50",
-            "value": "\u2713 yes",
-            "tone": "pos"
+            "value": "\u2717 no",
+            "tone": "neg"
           },
           {
             "label": "RSI > 50",
-            "value": "\u2717 44",
+            "value": "\u2717 35",
             "tone": "neg"
           },
           {
@@ -129,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 44",
+            "value": "quiet \u00b7 35",
             "tone": null
           }
         ]
@@ -138,19 +138,19 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 44.2,
+          "value": 35.1,
           "active": false
         }
       ],
       "book_criteria": {
-        "met": 4,
+        "met": 3,
         "of": 6,
         "items": [
           {
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+9.2%"
+            "detail": "+6.4%"
           },
           {
             "key": "stack",
@@ -161,14 +161,14 @@
           {
             "key": "fast_raw",
             "label": "10>20 \u00b7 P>50",
-            "met": true,
-            "detail": "yes"
+            "met": false,
+            "detail": "no"
           },
           {
             "key": "rsi",
             "label": "RSI > 50",
             "met": false,
-            "detail": "44"
+            "detail": "35"
           },
           {
             "key": "macd",
@@ -184,7 +184,7 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nThe FULL position reflects strong momentum with QQQ trading well above its long-term average and the 10/20-day trend aligned, positioning holders for continued upside exposure. However, two technical headwinds\u2014RSI remaining below the overbought threshold and MACD failing to confirm the price advance\u2014suggest underlying momentum may be fragile; a breakdown below the gate average or reversal in the fast trend would likely trigger a reduction to HALF. For the state to strengthen further or avoid deterioration, RSI would need to break into expansive territory and MACD would need to cross back above its signal line."
+      "reasoning": "# TQQQ Position Analysis\n\nYour FULL position reflects QQQ's strength above its gate average and a supporting fast trend (10d > 20d), though this represents a tactical hold rather than a high-conviction setup. The position remains vulnerable to pullback risk, as three key confirmation criteria are absent: price has not reclaimed its 50-day level (P>50), momentum is weak with RSI deeply in oversold territory, and MACD remains below its signal line\u2014any deterioration in these metrics could quickly flip the signal to HALF or OUT."
     }
   ]
 }
