@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-10-16T23:33:24.467826",
+  "scan_date": "2026-10-20T00:18:20.878448",
   "context": [
     {
       "label": "State",
@@ -184,7 +184,7 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nYour FULL position reflects QQQ's strength above its gate average and a supporting fast trend (10d > 20d), though this represents a tactical hold rather than a high-conviction setup. The position remains vulnerable to pullback risk, as three key confirmation criteria are absent: price has not reclaimed its 50-day level (P>50), momentum is weak with RSI deeply in oversold territory, and MACD remains below its signal line\u2014any deterioration in these metrics could quickly flip the signal to HALF or OUT."
+      "reasoning": "# TQQQ Position Analysis\n\nThe FULL position reflects conviction in QQQ's medium-term uptrend, with price well above its structural average and the 10/20-day cross aligned bullishly. However, three Masonson criteria remain unmet\u2014notably the RSI deeply depressed and MACD below signal\u2014suggesting momentum has stalled despite the price strength, creating a fragility in the setup that could justify a defensive review if near-term reversals accelerate. To sustain conviction at FULL, either RSI needs to recover above 50 or MACD must recross above its signal line to confirm the recent price action isn't a false breakout."
     }
   ]
 }
