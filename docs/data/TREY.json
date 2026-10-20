@@ -6,15 +6,15 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-10-20T00:18:20.878448",
+  "scan_date": "2026-10-20T23:51:06.625251",
   "context": [
     {
       "label": "State",
-      "value": "FULL"
+      "value": "HALF"
     },
     {
       "label": "Since",
-      "value": "2026-09-21"
+      "value": "2026-10-20"
     },
     {
       "label": "Gate changes 12m",
@@ -22,7 +22,7 @@
     },
     {
       "label": "Size changes 12m",
-      "value": "12"
+      "value": "13"
     },
     {
       "label": "Signal on",
@@ -38,7 +38,7 @@
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 35"
+      "value": "quiet \u00b7 41"
     }
   ],
   "groups": {
@@ -52,9 +52,9 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 68.21,
-      "score": 100,
-      "strategy": "Trend gate \u00b7 FULL",
+      "price": 70.41,
+      "score": 60,
+      "strategy": "Trend gate \u00b7 HALF",
       "dimensions": [
         {
           "key": "gate",
@@ -72,25 +72,25 @@
       ],
       "breakdown": {
         "gate": 60,
-        "fast": 40
+        "fast": 0
       },
       "setup": {
-        "label": "FULL since 2026-09-21 \u00b7 QQQ 709.80 \u00b7 book 3/6 (reference, not used for state)",
+        "label": "HALF since 2026-10-20 \u00b7 QQQ 717.63 \u00b7 book 3/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
-            "value": "FULL",
-            "tone": "pos"
+            "value": "HALF",
+            "tone": null
           },
           {
             "label": "Gate 200d",
-            "value": "+5.4%",
+            "value": "+6.4%",
             "tone": "pos"
           },
           {
             "label": "Fast (3d)",
-            "value": "yes",
-            "tone": "pos"
+            "value": "no",
+            "tone": "neg"
           },
           {
             "label": "Book \u00b7 ref",
@@ -99,7 +99,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +6.4%",
+            "value": "\u2713 +7.4%",
             "tone": "pos"
           },
           {
@@ -114,12 +114,12 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2717 35",
+            "value": "\u2717 41",
             "tone": "neg"
           },
           {
             "label": "MACD",
-            "value": "\u2717 <sig",
+            "value": "\u2717 <sig <0",
             "tone": "neg"
           },
           {
@@ -129,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 35",
+            "value": "quiet \u00b7 41",
             "tone": null
           }
         ]
@@ -138,7 +138,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 35.1,
+          "value": 40.9,
           "active": false
         }
       ],
@@ -150,7 +150,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+6.4%"
+            "detail": "+7.4%"
           },
           {
             "key": "stack",
@@ -168,13 +168,13 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": false,
-            "detail": "35"
+            "detail": "41"
           },
           {
             "key": "macd",
             "label": "MACD",
             "met": false,
-            "detail": "<sig"
+            "detail": "<sig <0"
           },
           {
             "key": "seasonal",
@@ -184,7 +184,7 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nThe FULL position reflects conviction in QQQ's medium-term uptrend, with price well above its structural average and the 10/20-day cross aligned bullishly. However, three Masonson criteria remain unmet\u2014notably the RSI deeply depressed and MACD below signal\u2014suggesting momentum has stalled despite the price strength, creating a fragility in the setup that could justify a defensive review if near-term reversals accelerate. To sustain conviction at FULL, either RSI needs to recover above 50 or MACD must recross above its signal line to confirm the recent price action isn't a false breakout."
+      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects a cautious stance: while price remains solidly above the gate average, the fast trend is misaligned with the intermediate structure, preventing a FULL commitment. To upgrade to FULL, the position requires confirmation from either the 10/20-day crossover (10>20) or price stabilization above the 50-day MA, alongside a recovery in momentum indicators (RSI and MACD)\u2014any of which would close the gap between current price strength and trend hesitation."
     }
   ]
 }
