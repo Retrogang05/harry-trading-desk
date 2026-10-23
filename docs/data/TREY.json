@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-10-22T23:58:38.468467",
+  "scan_date": "2026-10-23T23:51:16.765672",
   "context": [
     {
       "label": "State",
@@ -52,7 +52,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 66.42,
+      "price": 66.29,
       "score": 60,
       "strategy": "Trend gate \u00b7 HALF",
       "dimensions": [
@@ -75,7 +75,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "HALF since 2026-10-20 \u00b7 QQQ 704.47 \u00b7 book 3/6 (reference, not used for state)",
+        "label": "HALF since 2026-10-20 \u00b7 QQQ 704.40 \u00b7 book 3/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -84,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+4.3%",
+            "value": "+4.2%",
             "tone": "pos"
           },
           {
@@ -99,7 +99,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +5.3%",
+            "value": "\u2713 +5.2%",
             "tone": "pos"
           },
           {
@@ -150,7 +150,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+5.3%"
+            "detail": "+5.2%"
           },
           {
             "key": "stack",
@@ -184,7 +184,7 @@
           }
         ]
       },
-      "reasoning": "The HALF position reflects a cautious stance: while QQQ trades above its gate average, the fast trend remains unconvincing with the 10-day below the 20-day and price lagging the 50-day, preventing a FULL commitment. To upgrade to FULL, two key confirmations are needed: the short-term momentum (10-day) must cross above the 20-day, and price must reclaim its 50-day average, which would signal renewed intermediate-term strength alongside the already-favorable longer-term positioning."
+      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects a gate-level support hold with structural headwinds preventing a full commitment. Two critical fast-trend criteria are blocking an upgrade to FULL: the 10-day MA remains below its 20-day counterpart, and price has underperformed the 50-day average, both signaling near-term momentum weakness despite the longer-term trend framework being intact. For the gate to reopen to FULL, the 10-day MA would need to cross back above the 20-day, and price recovery toward the 50-day MA would be required to confirm the fast trend alignment."
     }
   ]
 }
