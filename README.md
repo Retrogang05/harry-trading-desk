@@ -17,6 +17,7 @@ shared dashboard. **You execute every trade manually** — nothing here places o
 | **Opy** | `OPY` | Options — iron condors, credit spreads (bear calls floored), LEAPS calls, RSI context | Live |
 | **Trey** | `TREY` | TQQQ trend gate — OUT / HALF / FULL, signalled on QQQ's 200-day SMA | Live |
 | **Goldy** | `GOLD` | MA crosses — 20/50 and 50/200, both directions, plus crosses about to happen | Live |
+| **Pocket** | `PCKT` | Your Finviz relative-volume screen, automated, with major levels and pockets mapped per hit | Live |
 
 The dashboard renders whatever score dimensions an agent declares, so adding an
 agent needs no changes to the page. See **Adding your second and third agents**
@@ -175,6 +176,8 @@ harry-trading-desk/
 │   └── agent.py
 ├── goldy/                   # Goldy — 20/50 and 50/200 MA cross scanner
 │   └── agent.py
+├── pocket/                  # Pocket — volume screen + major-level map
+│   └── agent.py
 ├── universe.py              # universe.txt parser, shared by all three scanners
 ├── sectors.py               # sector-ETF regime, shared by Monu and Opy
 ├── universe.txt             # 1,521 tickers tagged by index and sector
@@ -188,13 +191,14 @@ harry-trading-desk/
 │   ├── momentum-scan.yml    # Monu  — 14:00 UTC weekdays (pre-open)
 │   ├── opy-scan.yml         # Opy   — 21:00 UTC weekdays (post-close)
 │   ├── trey-scan.yml        # Trey  — 21:15 UTC weekdays (post-close)
-│   └── goldy-scan.yml       # Goldy — 21:30 UTC weekdays (post-close)
+│   ├── goldy-scan.yml       # Goldy — 21:30 UTC weekdays (post-close)
+│   └── pocket-scan.yml      # Pocket — 21:45 UTC weekdays (post-close)
 ├── docs/                    # ← the dashboard (GitHub Pages serves this)
 │   ├── index.html
 │   └── data/
 │       ├── agents.json      #   manifest: which agents to render
-│       ├── MNTM.json  OPY.json  TREY.json  GOLD.json
-├── results/  opy/results/  trey/results/  goldy/results/   # dated archives
+│       ├── MNTM.json  OPY.json  TREY.json  GOLD.json  PCKT.json
+├── results/  opy/results/  trey/results/  goldy/results/  pocket/results/   # dated archives
 ```
 
 ---
@@ -384,6 +388,57 @@ So Goldy's score describes the cross — how fresh, how decisive, how clean, how
 confirmed — and is **deliberately not a forecast**. Nothing in it was shown to
 rank forward returns. It's a discovery tool: it tells you what just crossed so
 you can look. Monu is the agent whose filters survived validation.
+
+---
+
+## ◫ Pocket (PCKT) — volume screen + level map
+
+Automates a manual workflow: run a Finviz screen, then scan each chart by eye
+for a **pocket** — a gap between major pivot levels with nothing in between.
+
+**The screen**, on the data the desk already fetches:
+
+| Filter | Setting |
+|---|---|
+| Average volume | > 500K (63-session mean, excluding today, as Finviz does) |
+| Current volume | > 500K |
+| Relative volume | > 1.5 |
+| Market cap | Not applied — not in our data. S&P 500 and Nasdaq-100 names clear Mid+ anyway |
+
+**The map**, for every hit: major pivots (the extreme of ±10 sessions,
+clustered within 0.75 ATR), the nearest **floor** and **ceiling**, pocket
+width in ATR and %, room each way, volume traded inside the zone, and whether
+price **broke up**, **broke down** or is sitting **inside** today. Names
+between two levels closer than 1.2 ATR are dropped — that's congestion, not a
+pocket. Breaks get entry/stop/target straight off the map (stop just past the
+crossed level, target the far side); inside rows get none, since they haven't
+picked a direction.
+
+That 10-session setting reproduced the pockets drawn by hand on AAOI, GOOG,
+CRWV, IREN and SE. It disagreed on DOCU, NOW and IBM, where a minor level
+splits the zone — exactly where "is this pivot major" is a judgement call.
+
+### Read this before trading the list
+
+Tested before building — 2019–2026, up to 400 names, strictly no lookahead:
+
+- **A clear path barely helps.** Across 219,232 targets 1–3 ATR away, one with
+  no pivot in the way was reached only 0–3 points more often than one with a
+  pivot in the way. The small advantage is on the **downside**.
+- **Thin volume made it worse.** Low-volume pockets were crossed *less* often
+  at every distance. Volume-in-zone is shown on each row but not scored.
+- **On the screen's own days** (rel vol > 1.5), a break **up** into a pocket
+  returned +1.12% over 20 sessions against +2.04% for a random high-volume day
+  — the pocket subtracted. A break **down** underperformed a random day by
+  0.68% (p = 0.03): the one supportive result, from one cell of four, and the
+  stock still rose 0.69% on average — relative weakness, not a profitable short.
+- **Relative volume alone carried information:** a random liquid day with rel
+  vol > 1.5 was followed by +2.04% against +1.29% otherwise.
+
+So the score orders the list — fresh break, relative volume, room to the far
+side — and is not a forecast. The value is time: the screen and the chart
+scan, done for you, with floors and ceilings that make natural stops and
+targets for trades found here or elsewhere.
 
 ---
 

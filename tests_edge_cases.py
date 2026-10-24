@@ -175,7 +175,7 @@ check("continuous() rejects a gap", not goldy.continuous(bars([100.0]*150+[40.0]
 # ─────────────────────────────────────────────────────────────────────
 section("Published JSON contracts")
 
-for fn in ("MNTM","OPY","TREY","GOLD"):
+for fn in ("MNTM","OPY","TREY","GOLD","PCKT"):
     p = os.path.join(ROOT, "docs", "data", f"{fn}.json")
     d = json.load(open(p))
     rows = d.get("opportunities", [])
@@ -202,7 +202,7 @@ for fn in ("MNTM","OPY","TREY","GOLD"):
               for v in d.get("groups",{}).get("values",[])) if d.get("groups") else True)
 
 man = json.load(open(os.path.join(ROOT,"docs","data","agents.json")))["agents"]
-check("manifest lists every data file", set(man) == {"MNTM","OPY","TREY","GOLD"}, str(man))
+check("manifest lists every data file", set(man) == {"MNTM","OPY","TREY","GOLD","PCKT"}, str(man))
 
 # ─────────────────────────────────────────────────────────────────────
 section("Every consumer of an opportunity row, in BOTH directions")
@@ -274,6 +274,51 @@ try:
     check("Goldy rows format without KeyError", True)
 except Exception as e:
     check("Goldy rows format without KeyError", False, f"{type(e).__name__}: {e}")
+
+# ─────────────────────────────────────────────────────────────────────
+section("Pocket")
+
+pocket = load_mod("pocketagent", "pocket/agent.py", "pocket")
+
+def vol_bars(n, base_vol, last_vol, price=50.0):
+    df = bars([price + (i % 7) * 0.5 for i in range(n)], vol=base_vol)
+    df.iloc[-1, df.columns.get_loc("Volume")] = last_vol
+    return df
+
+# The screen, exactly as the Finviz settings read.
+check("screen passes 3x volume on a liquid name",
+      pocket.screen(vol_bars(300, 1e6, 3e6)) is not None)
+check("screen rejects rel vol under 1.5",
+      pocket.screen(vol_bars(300, 1e6, 1.4e6)) is None)
+check("screen rejects avg volume under 500K",
+      pocket.screen(vol_bars(300, 4e5, 2e6)) is None)
+check("screen rejects current volume under 500K",
+      pocket.screen(vol_bars(300, 3e5, 4.9e5)) is None)
+# Average excludes today, as Finviz's does - otherwise a spike inflates its
+# own denominator. 1M baseline, 3M today: 3.0x excluding, ~2.97x including.
+s3 = pocket.screen(vol_bars(300, 1e6, 3e6))
+check("relative volume excludes today from the average",
+      s3 is not None and abs(s3["rel_volume"] - 3.0) < 1e-6, str(s3 and s3["rel_volume"]))
+
+# No lookahead: a pivot needs PIVOT_BARS sessions after it, so a spike in the
+# last PIVOT_BARS bars must NOT appear as a level yet.
+spike = bars([100.0 + (i % 5) for i in range(300)])
+spike.iloc[-3, spike.columns.get_loc("High")] = 200.0
+lv = pocket.major_levels(spike, pocket.atr(spike))
+check("a pivot in the last PIVOT_BARS bars is not yet a level",
+      all(x["level"] < 150 for x in lv), str([round(x["level"], 1) for x in lv if x["level"] > 150]))
+
+# Published rows: breaks carry levels on the right side, inside rows carry
+# none and never read as a buy.
+pk = json.load(open(os.path.join(ROOT, "docs", "data", "PCKT.json")))["opportunities"]
+check("every Pocket row has a signal_label (no default 'Buy')",
+      all(o.get("signal_label") for o in pk))
+check("inside rows carry no entry/stop/target",
+      all("entry" not in o for o in pk if o["signal_state"] == "inside"))
+check("breakdowns are labelled bearish",
+      all(o.get("bias") == "bearish" for o in pk if o["signal_state"] == "broke_down"))
+check("no published pocket narrower than MIN_POCKET_ATR",
+      all(o["map"]["width_atr"] is None or o["map"]["width_atr"] >= pocket.MIN_POCKET_ATR for o in pk))
 
 print(f"\n{'='*60}\n{len(PASSES)} passed, {len(FAILS)} failed")
 if FAILS:
