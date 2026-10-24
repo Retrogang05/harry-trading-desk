@@ -320,6 +320,32 @@ check("breakdowns are labelled bearish",
 check("no published pocket narrower than MIN_POCKET_ATR",
       all(o["map"]["width_atr"] is None or o["map"]["width_atr"] >= pocket.MIN_POCKET_ATR for o in pk))
 
+# Stale and pinned symbols - both found on BZH. scan() is run against a
+# stubbed fetch so the guards are tested on the path the agent actually uses.
+def _screen_hit(prices, end="2026-10-23"):
+    idx = pd.date_range(end=end, periods=len(prices), freq="B")
+    df = pd.DataFrame({"Open": prices, "High": [x*1.02 for x in prices],
+                       "Low": [x*0.98 for x in prices], "Close": prices,
+                       "Volume": [1e6]*len(prices)}, index=idx)
+    df.iloc[-1, df.columns.get_loc("Volume")] = 3e6
+    return df
+wave = [100 + 15*np.sin(i/9) for i in range(400)]
+fresh = _screen_hit(wave)
+stale = _screen_hit(wave, end="2026-10-19")
+pinned = _screen_hit([33.45 + 0.01*np.sin(i) for i in range(400)])
+pinned["High"] = pinned["Close"] + 0.02; pinned["Low"] = pinned["Close"] - 0.02
+_real_fetch = pocket.fetch_many
+pocket.fetch_many = lambda syms: {"FRESH": fresh, "STALE": stale, "PIN": pinned}
+_rows, _st = pocket.scan(["FRESH", "STALE", "PIN"], {"FRESH": ["SPX"], "STALE": ["SPX"], "PIN": ["SPX"]})
+pocket.fetch_many = _real_fetch
+_syms = {o["symbol"] for o in _rows}
+check("stale symbol (last bar older than the run) is dropped",
+      "STALE" not in _syms and _st["stale"] == 1, f"stale={_st['stale']} rows={_syms}")
+check("pinned symbol (ATR < 0.5% of price) is dropped",
+      "PIN" not in _syms, f"rows={_syms} pinned={_st['pinned']}")
+check("every Pocket row reports today's move",
+      all("day_move_pct" in o for o in pk + _rows))
+
 print(f"\n{'='*60}\n{len(PASSES)} passed, {len(FAILS)} failed")
 if FAILS:
     print("FAILURES:")

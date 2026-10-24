@@ -408,9 +408,12 @@ for a **pocket** — a gap between major pivot levels with nothing in between.
 **The map**, for every hit: major pivots (the extreme of ±10 sessions,
 clustered within 0.75 ATR), the nearest **floor** and **ceiling**, pocket
 width in ATR and %, room each way, volume traded inside the zone, and whether
-price **broke up**, **broke down** or is sitting **inside** today. Names
-between two levels closer than 1.2 ATR are dropped — that's congestion, not a
-pocket. Breaks get entry/stop/target straight off the map (stop just past the
+price **broke up**, **broke down** or is sitting **inside** today, plus
+today's move — "inside" means no level was crossed, not that nothing happened.
+Names between two levels closer than 1.2 ATR are dropped — that's congestion,
+not a pocket. So are **stale** symbols (last bar older than the session being
+screened) and **pinned** ones (daily range under 0.5% of price, typically a
+takeover target trading at the deal price). Breaks get entry/stop/target straight off the map (stop just past the
 crossed level, target the far side); inside rows get none, since they haven't
 picked a direction.
 

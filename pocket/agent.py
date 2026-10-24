@@ -104,6 +104,14 @@ CLUSTER_ATR = 0.75    # pivots within this many ATR are one level
 MIN_POCKET_ATR = 1.2  # narrower than this, two levels are just a congestion zone
 STOP_BUFFER_ATR = 0.25
 
+# A stock whose average daily range is under this fraction of its price is
+# not trading freely - typically pinned at a takeover price while the deal
+# closes. BZH on the first run: closes of 33.43-33.48 for weeks, ATR 0.07 on
+# a $33 stock, so every ATR-denominated number blew up and its "pocket"
+# scored 43.8 ATR, the widest on the list. The calmest freely-trading large
+# caps sit around 1%, so 0.5% only catches the pinned.
+MIN_ATR_PCT = 0.005
+
 # A single session cannot legitimately move this far; beyond it the series has
 # an unadjusted corporate action and every level across the gap is arithmetic
 # on two different securities. Same guard as Monu and Goldy.
@@ -276,6 +284,11 @@ def map_levels(df: pd.DataFrame) -> Dict:
     width = (ceiling["level"] - floor["level"]) if floor and ceiling else None
     return {
         "atr": a, "price": price,
+        # Today's close-to-close move. "Inside" says no level was crossed; it
+        # says nothing about direction, and DECK was flagged Inside on the
+        # day it gapped down 4.9% on 3x volume - the most important fact on
+        # the row was missing from it.
+        "day_move_pct": (price / prev - 1) * 100,
         "floor": floor, "ceiling": ceiling, "state": state,
         "width_atr": width / a if width else None,
         "width_pct": width / floor["level"] * 100 if width else None,
@@ -356,7 +369,8 @@ class Reasoner:
         fl = f"${m['floor']:.2f}" if m["floor"] is not None else "none in 2 years"
         cl = f"${m['ceiling']:.2f}" if m["ceiling"] is not None else "none in 2 years"
         prompt = (
-            f"{o['symbol']} closed at ${o['price']:.2f} on {o['rel_volume']:.1f}x its normal volume.\n"
+            f"{o['symbol']} closed at ${o['price']:.2f}, {o['day_move_pct']:+.1f}% on the day, "
+            f"on {o['rel_volume']:.1f}x its normal volume.\n"
             f"State: {o['strategy']}.\n"
             f"Nearest major level below: {fl}. Nearest above: {cl}.\n"
             f"Average daily range (ATR) ${m['atr']:.2f}.\n\n"
@@ -402,13 +416,19 @@ def scan(symbols: List[str], membership: Dict[str, List[str]],
     is most useful precisely when the market is weak.
     """
     frames = fetch_many(symbols)
-    stats = {"fetched": len(frames), "discontinuous": 0, "screened": 0,
-             "no_map": 0, "by_state": {}, "as_of": None}
+    # The session being screened is the latest bar anyone has. A symbol whose
+    # own last bar is older stopped trading or stopped updating - BZH came
+    # back ending 2026-10-19 on a 2026-10-23 run and was screened on a bar
+    # four sessions stale. Relative volume on an old bar is not today's.
+    as_of = max((df.index[-1] for df in frames.values()), default=None)
+    stats = {"fetched": len(frames), "discontinuous": 0, "stale": 0, "pinned": 0,
+             "screened": 0, "no_map": 0, "by_state": {}, "as_of": as_of}
     found = []
 
     for sym, df in frames.items():
-        if stats["as_of"] is None or df.index[-1] > stats["as_of"]:
-            stats["as_of"] = df.index[-1]
+        if df.index[-1] < as_of:
+            stats["stale"] += 1
+            continue
         if not continuous(df):
             stats["discontinuous"] += 1
             continue
@@ -419,6 +439,9 @@ def scan(symbols: List[str], membership: Dict[str, List[str]],
         m = map_levels(df)
         if not m or (m["floor"] is None and m["ceiling"] is None):
             stats["no_map"] += 1
+            continue
+        if m["atr"] / m["price"] < MIN_ATR_PCT:
+            stats["pinned"] += 1
             continue
 
         # Only names that are actually in a pocket: two major levels at least
@@ -449,6 +472,7 @@ def scan(symbols: List[str], membership: Dict[str, List[str]],
             "breakdown": {d["key"]: s[d["key"]] for d in DIMENSIONS},
             "indexes": membership.get(sym, [UNTAGGED]),
             "rel_volume": round(vol["rel_volume"], 2),
+            "day_move_pct": round(m["day_move_pct"], 2),
             "volume": int(vol["volume"]),
             "avg_volume": int(vol["avg_volume"]),
             "map": {"floor": fl, "ceiling": cl, "atr": round(m["atr"], 4),
@@ -462,10 +486,13 @@ def scan(symbols: List[str], membership: Dict[str, List[str]],
                 # Named, because a break also renders the standard entry/stop/
                 # target panel, which is already called Setup.
                 "title": "Level map",
-                "label": (f"{strategy} · {vol['rel_volume']:.1f}x volume · "
+                "label": (f"{strategy} · {m['day_move_pct']:+.1f}% today on "
+                          f"{vol['rel_volume']:.1f}x volume · "
                           + (f"pocket {m['width_atr']:.1f} ATR / {m['width_pct']:.1f}%"
                              if m["width_atr"] else "open on one side")),
                 "fields": [
+                    {"label": "Today", "value": f"{m['day_move_pct']:+.1f}%",
+                     "tone": "pos" if m["day_move_pct"] > 0 else "neg" if m["day_move_pct"] < 0 else None},
                     {"label": "Ceiling", "value": _f(cl, none="open air")},
                     {"label": "Floor", "value": _f(fl, none="open air")},
                     {"label": "Room up", "value": _f(m["room_up_pct"], "{:+.1f}%")},
@@ -539,7 +566,8 @@ def publish(opportunities: List[Dict], membership: Dict[str, List[str]], stats: 
             {"label": "Data as of", "value": as_of},
             {"label": "Universe", "value": f"{len(membership)} symbols  ("
                                            + " / ".join(f"{t} {n}" for t, n in counts.items() if n) + ")"},
-            {"label": "Passed screen", "value": f"{stats['screened']} of {stats['fetched']}"},
+            {"label": "Passed screen", "value": f"{stats['screened']} of {stats['fetched']}"
+                                                 f"  ({stats['stale']} stale, {stats['pinned']} pinned dropped)"},
             {"label": "In a pocket", "value": f"{sum(stats['by_state'].values())} "
                                               f"({stats.get('tight', 0)} between close levels dropped)"},
             {"label": "States", "value": states},

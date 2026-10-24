@@ -6,7 +6,7 @@
     "description": "Your Finviz relative-volume screen, run on the whole universe, with the major levels and pockets drawn for every hit. A map, not a forecast.",
     "accent": "#a8857f"
   },
-  "scan_date": "2026-10-25T09:35:48.992991",
+  "scan_date": "2026-10-25T10:11:31.029597",
   "dimensions": [
     {
       "key": "fresh_break",
@@ -48,15 +48,15 @@
     },
     {
       "label": "Passed screen",
-      "value": "85 of 1485"
+      "value": "84 of 1485  (4 stale, 0 pinned dropped)"
     },
     {
       "label": "In a pocket",
-      "value": "65 (20 between close levels dropped)"
+      "value": "64 (20 between close levels dropped)"
     },
     {
       "label": "States",
-      "value": "Broke down into pocket 9, Broke up into pocket 7, Inside pocket 49"
+      "value": "Broke down into pocket 9, Broke up into pocket 7, Inside pocket 48"
     },
     {
       "label": "Published",
@@ -101,6 +101,7 @@
         "IWM"
       ],
       "rel_volume": 3.56,
+      "day_move_pct": -4.24,
       "volume": 5925200,
       "avg_volume": 1666544,
       "map": {
@@ -121,8 +122,13 @@
       "risk_reward_ratio": 8.12,
       "setup": {
         "title": "Level map",
-        "label": "Broke down into pocket \u00b7 3.6x volume \u00b7 pocket 2.6 ATR / 27.9%",
+        "label": "Broke down into pocket \u00b7 -4.2% today on 3.6x volume \u00b7 pocket 2.6 ATR / 27.9%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-4.2%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$18.64"
@@ -200,6 +206,7 @@
         "SPX"
       ],
       "rel_volume": 3.14,
+      "day_move_pct": -4.91,
       "volume": 9298000,
       "avg_volume": 2958947,
       "map": {
@@ -216,8 +223,13 @@
       },
       "setup": {
         "title": "Level map",
-        "label": "Inside pocket \u00b7 3.1x volume \u00b7 pocket 5.6 ATR / 19.0%",
+        "label": "Inside pocket \u00b7 -4.9% today on 3.1x volume \u00b7 pocket 5.6 ATR / 19.0%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-4.9%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$92.60"
@@ -293,28 +305,34 @@
         "IWM"
       ],
       "rel_volume": 4.94,
+      "day_move_pct": -9.27,
       "volume": 24246200,
       "avg_volume": 4905422,
       "map": {
-        "floor": 9.956071030774405,
+        "floor": 9.956070112828465,
         "ceiling": 10.439414370508981,
         "atr": 0.337,
-        "width_atr": 1.4342530793999517,
-        "width_pct": 4.85475985698126,
+        "width_atr": 1.4342558032748507,
+        "width_pct": 4.854769524550891,
         "thinness": 0.49,
-        "next_above": 10.821954938292265,
-        "next_below": 9.705463103438952,
+        "next_above": 10.821955554587872,
+        "next_below": 9.705462145584516,
         "floor_touches": 1,
         "ceiling_touches": 2
       },
       "entry": 10.380000114440918,
       "stop_loss": 10.523664379568887,
-      "take_profit": 9.956071030774405,
+      "take_profit": 9.956070112828465,
       "risk_reward_ratio": 2.95,
       "setup": {
         "title": "Level map",
-        "label": "Broke down into pocket \u00b7 4.9x volume \u00b7 pocket 1.4 ATR / 4.9%",
+        "label": "Broke down into pocket \u00b7 -9.3% today on 4.9x volume \u00b7 pocket 1.4 ATR / 4.9%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-9.3%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$10.44"
@@ -360,99 +378,6 @@
       "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
-      "symbol": "BZH",
-      "price": 33.47999954223633,
-      "score": 72,
-      "strategy": "Inside pocket",
-      "signal_state": "inside",
-      "signal_label": "Inside",
-      "dimensions": [
-        {
-          "key": "fresh_break",
-          "label": "Fresh break",
-          "max": 20
-        },
-        {
-          "key": "rel_volume",
-          "label": "Relative volume",
-          "max": 40
-        },
-        {
-          "key": "room",
-          "label": "Room to far side",
-          "max": 40
-        }
-      ],
-      "breakdown": {
-        "fresh_break": 0,
-        "rel_volume": 32,
-        "room": 40
-      },
-      "indexes": [
-        "IWM"
-      ],
-      "rel_volume": 2.71,
-      "volume": 2514100,
-      "avg_volume": 926344,
-      "map": {
-        "floor": 31.670000076293945,
-        "ceiling": 34.540000915527344,
-        "atr": 0.0655,
-        "width_atr": 43.81701596065311,
-        "width_pct": 9.06220660662925,
-        "thinness": 2.09,
-        "next_above": 38.220001220703125,
-        "next_below": 29.389999389648438,
-        "floor_touches": 1,
-        "ceiling_touches": 1
-      },
-      "setup": {
-        "title": "Level map",
-        "label": "Inside pocket \u00b7 2.7x volume \u00b7 pocket 43.8 ATR / 9.1%",
-        "fields": [
-          {
-            "label": "Ceiling",
-            "value": "$34.54"
-          },
-          {
-            "label": "Floor",
-            "value": "$31.67"
-          },
-          {
-            "label": "Room up",
-            "value": "+3.2%"
-          },
-          {
-            "label": "Room down",
-            "value": "-5.4%"
-          },
-          {
-            "label": "Pocket",
-            "value": "43.8 ATR"
-          },
-          {
-            "label": "Rel volume",
-            "value": "2.7x",
-            "tone": null
-          },
-          {
-            "label": "Volume in zone",
-            "value": "2.09x even"
-          },
-          {
-            "label": "Next above",
-            "value": "$38.22"
-          },
-          {
-            "label": "Next below",
-            "value": "$29.39"
-          }
-        ]
-      },
-      "rank": 4,
-      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
-    },
-    {
       "symbol": "GL",
       "price": 154.7899932861328,
       "score": 69,
@@ -485,6 +410,7 @@
         "SPX"
       ],
       "rel_volume": 3.29,
+      "day_move_pct": -8.09,
       "volume": 1651200,
       "avg_volume": 502228,
       "map": {
@@ -495,7 +421,7 @@
         "width_pct": 3.6552795720638556,
         "thinness": 0.81,
         "next_above": 163.0399932861328,
-        "next_below": 147.0615546569133,
+        "next_below": 147.06154696088203,
         "floor_touches": 1,
         "ceiling_touches": 1
       },
@@ -505,8 +431,13 @@
       "risk_reward_ratio": 0.89,
       "setup": {
         "title": "Level map",
-        "label": "Broke down into pocket \u00b7 3.3x volume \u00b7 pocket 1.6 ATR / 3.7%",
+        "label": "Broke down into pocket \u00b7 -8.1% today on 3.3x volume \u00b7 pocket 1.6 ATR / 3.7%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-8.1%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$157.32"
@@ -548,7 +479,7 @@
       },
       "bias": "bearish",
       "signal_tone": "neg",
-      "rank": 5,
+      "rank": 4,
       "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
@@ -584,6 +515,7 @@
         "IWM"
       ],
       "rel_volume": 2.74,
+      "day_move_pct": 4.19,
       "volume": 5122700,
       "avg_volume": 1868350,
       "map": {
@@ -604,8 +536,13 @@
       "risk_reward_ratio": 1.44,
       "setup": {
         "title": "Level map",
-        "label": "Broke up into pocket \u00b7 2.7x volume \u00b7 pocket 1.4 ATR / 9.6%",
+        "label": "Broke up into pocket \u00b7 +4.2% today on 2.7x volume \u00b7 pocket 1.4 ATR / 9.6%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "+4.2%",
+            "tone": "pos"
+          },
           {
             "label": "Ceiling",
             "value": "$65.47"
@@ -647,7 +584,7 @@
       },
       "bias": "bullish",
       "signal_tone": "pos",
-      "rank": 6,
+      "rank": 5,
       "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
@@ -683,24 +620,30 @@
         "IWM"
       ],
       "rel_volume": 2.24,
+      "day_move_pct": -2.05,
       "volume": 6495700,
       "avg_volume": 2899222,
       "map": {
-        "floor": 21.225505239073435,
+        "floor": 21.225507162129574,
         "ceiling": 25.301900455937954,
         "atr": 0.8845,
-        "width_atr": 4.608698942633598,
-        "width_pct": 19.20517401564792,
+        "width_atr": 4.608696768460996,
+        "width_pct": 19.205163215517683,
         "thinness": 0.29,
         "next_above": 27.530000686645508,
-        "next_below": 19.101472372670642,
+        "next_below": 19.101470382649527,
         "floor_touches": 1,
         "ceiling_touches": 2
       },
       "setup": {
         "title": "Level map",
-        "label": "Inside pocket \u00b7 2.2x volume \u00b7 pocket 4.6 ATR / 19.2%",
+        "label": "Inside pocket \u00b7 -2.0% today on 2.2x volume \u00b7 pocket 4.6 ATR / 19.2%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-2.0%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$25.30"
@@ -740,7 +683,7 @@
           }
         ]
       },
-      "rank": 7,
+      "rank": 6,
       "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
@@ -776,28 +719,34 @@
         "SPX"
       ],
       "rel_volume": 1.9,
+      "day_move_pct": 1.43,
       "volume": 3162500,
       "avg_volume": 1666155,
       "map": {
-        "floor": 120.93493143153157,
+        "floor": 120.93492991624562,
         "ceiling": 131.50745753738153,
         "atr": 3.622,
-        "width_atr": 2.9189748379432143,
-        "width_pct": 8.742326125876785,
+        "width_atr": 2.918975256299386,
+        "width_pct": 8.7423274883923,
         "thinness": 1.67,
-        "next_above": 134.8242867720329,
+        "next_above": 134.82427906475814,
         "next_below": 114.65689943396187,
         "floor_touches": 5,
         "ceiling_touches": 2
       },
       "entry": 121.19000244140625,
-      "stop_loss": 120.02943149638142,
+      "stop_loss": 120.02942998109548,
       "take_profit": 131.50745753738153,
       "risk_reward_ratio": 8.89,
       "setup": {
         "title": "Level map",
-        "label": "Broke up into pocket \u00b7 1.9x volume \u00b7 pocket 2.9 ATR / 8.7%",
+        "label": "Broke up into pocket \u00b7 +1.4% today on 1.9x volume \u00b7 pocket 2.9 ATR / 8.7%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "+1.4%",
+            "tone": "pos"
+          },
           {
             "label": "Ceiling",
             "value": "$131.51"
@@ -839,7 +788,7 @@
       },
       "bias": "bullish",
       "signal_tone": "pos",
-      "rank": 8,
+      "rank": 7,
       "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
@@ -875,6 +824,7 @@
         "IWM"
       ],
       "rel_volume": 3.29,
+      "day_move_pct": -6.98,
       "volume": 4550600,
       "avg_volume": 1381993,
       "map": {
@@ -891,8 +841,13 @@
       },
       "setup": {
         "title": "Level map",
-        "label": "Inside pocket \u00b7 3.3x volume \u00b7 pocket 2.4 ATR / 42.6%",
+        "label": "Inside pocket \u00b7 -7.0% today on 3.3x volume \u00b7 pocket 2.4 ATR / 42.6%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-7.0%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$8.80"
@@ -932,7 +887,7 @@
           }
         ]
       },
-      "rank": 9,
+      "rank": 8,
       "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
@@ -968,6 +923,7 @@
         "SPX"
       ],
       "rel_volume": 1.81,
+      "day_move_pct": -4.59,
       "volume": 5992400,
       "avg_volume": 3303747,
       "map": {
@@ -988,8 +944,13 @@
       "risk_reward_ratio": 6.13,
       "setup": {
         "title": "Level map",
-        "label": "Broke down into pocket \u00b7 1.8x volume \u00b7 pocket 2.9 ATR / 7.0%",
+        "label": "Broke down into pocket \u00b7 -4.6% today on 1.8x volume \u00b7 pocket 2.9 ATR / 7.0%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-4.6%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$99.25"
@@ -1031,7 +992,7 @@
       },
       "bias": "bearish",
       "signal_tone": "neg",
-      "rank": 10,
+      "rank": 9,
       "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
@@ -1067,14 +1028,15 @@
         "IWM"
       ],
       "rel_volume": 2.12,
+      "day_move_pct": 1.67,
       "volume": 1512800,
       "avg_volume": 713580,
       "map": {
-        "floor": 65.94311551667083,
+        "floor": 65.94312317689312,
         "ceiling": 70.041267390554,
         "atr": 1.8255,
-        "width_atr": 2.2449477196859373,
-        "width_pct": 6.214677365140762,
+        "width_atr": 2.244943523453318,
+        "width_pct": 6.21466502681039,
         "thinness": 0.36,
         "next_above": null,
         "next_below": 64.82522217222579,
@@ -1082,13 +1044,18 @@
         "ceiling_touches": 2
       },
       "entry": 66.80000305175781,
-      "stop_loss": 65.48674053765167,
+      "stop_loss": 65.48674819787396,
       "take_profit": 70.041267390554,
       "risk_reward_ratio": 2.47,
       "setup": {
         "title": "Level map",
-        "label": "Broke up into pocket \u00b7 2.1x volume \u00b7 pocket 2.2 ATR / 6.2%",
+        "label": "Broke up into pocket \u00b7 +1.7% today on 2.1x volume \u00b7 pocket 2.2 ATR / 6.2%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "+1.7%",
+            "tone": "pos"
+          },
           {
             "label": "Ceiling",
             "value": "$70.04"
@@ -1130,7 +1097,7 @@
       },
       "bias": "bullish",
       "signal_tone": "pos",
-      "rank": 11,
+      "rank": 10,
       "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
     {
@@ -1166,24 +1133,30 @@
         "IWM"
       ],
       "rel_volume": 2.49,
+      "day_move_pct": 3.96,
       "volume": 2576600,
       "avg_volume": 1036744,
       "map": {
-        "floor": 45.18309197429442,
-        "ceiling": 48.533156355348005,
+        "floor": 45.18309389901571,
+        "ceiling": 48.533157675278325,
         "atr": 0.9768,
-        "width_atr": 3.4297421599655795,
-        "width_pct": 7.41442038309265,
+        "width_atr": 3.4297415407902894,
+        "width_pct": 7.414418728717457,
         "thinness": 2.17,
-        "next_above": 49.16913309431841,
-        "next_below": 44.329839928453055,
+        "next_above": 49.169131123047066,
+        "next_below": 44.329838046695656,
         "floor_touches": 6,
         "ceiling_touches": 3
       },
       "setup": {
         "title": "Level map",
-        "label": "Inside pocket \u00b7 2.5x volume \u00b7 pocket 3.4 ATR / 7.4%",
+        "label": "Inside pocket \u00b7 +4.0% today on 2.5x volume \u00b7 pocket 3.4 ATR / 7.4%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "+4.0%",
+            "tone": "pos"
+          },
           {
             "label": "Ceiling",
             "value": "$48.53"
@@ -1223,6 +1196,111 @@
           }
         ]
       },
+      "rank": 11,
+      "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
+    },
+    {
+      "symbol": "VLY",
+      "price": 14.0600004196167,
+      "score": 53,
+      "strategy": "Broke up into pocket",
+      "signal_state": "broke_up",
+      "signal_label": "Broke up",
+      "dimensions": [
+        {
+          "key": "fresh_break",
+          "label": "Fresh break",
+          "max": 20
+        },
+        {
+          "key": "rel_volume",
+          "label": "Relative volume",
+          "max": 40
+        },
+        {
+          "key": "room",
+          "label": "Room to far side",
+          "max": 40
+        }
+      ],
+      "breakdown": {
+        "fresh_break": 20,
+        "rel_volume": 1,
+        "room": 32
+      },
+      "indexes": [
+        "IWM"
+      ],
+      "rel_volume": 1.52,
+      "day_move_pct": 1.81,
+      "volume": 10223300,
+      "avg_volume": 6727542,
+      "map": {
+        "floor": 13.900551125378158,
+        "ceiling": 15.054389427510873,
+        "atr": 0.312,
+        "width_atr": 3.6981998219719676,
+        "width_pct": 8.300665863716436,
+        "thinness": 0.61,
+        "next_above": null,
+        "next_below": 13.529643829288863,
+        "floor_touches": 2,
+        "ceiling_touches": 2
+      },
+      "entry": 14.0600004196167,
+      "stop_loss": 13.82255112823918,
+      "take_profit": 15.054389427510873,
+      "risk_reward_ratio": 4.19,
+      "setup": {
+        "title": "Level map",
+        "label": "Broke up into pocket \u00b7 +1.8% today on 1.5x volume \u00b7 pocket 3.7 ATR / 8.3%",
+        "fields": [
+          {
+            "label": "Today",
+            "value": "+1.8%",
+            "tone": "pos"
+          },
+          {
+            "label": "Ceiling",
+            "value": "$15.05"
+          },
+          {
+            "label": "Floor",
+            "value": "$13.90"
+          },
+          {
+            "label": "Room up",
+            "value": "+7.1%"
+          },
+          {
+            "label": "Room down",
+            "value": "-1.1%"
+          },
+          {
+            "label": "Pocket",
+            "value": "3.7 ATR"
+          },
+          {
+            "label": "Rel volume",
+            "value": "1.5x",
+            "tone": null
+          },
+          {
+            "label": "Volume in zone",
+            "value": "0.61x even"
+          },
+          {
+            "label": "Next above",
+            "value": "\u2014"
+          },
+          {
+            "label": "Next below",
+            "value": "$13.53"
+          }
+        ]
+      },
+      "bias": "bullish",
+      "signal_tone": "pos",
       "rank": 12,
       "reasoning": "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
     },
@@ -1259,6 +1337,7 @@
         "SPX"
       ],
       "rel_volume": 1.57,
+      "day_move_pct": -4.88,
       "volume": 5706900,
       "avg_volume": 3645307,
       "map": {
@@ -1279,8 +1358,13 @@
       "risk_reward_ratio": 2.02,
       "setup": {
         "title": "Level map",
-        "label": "Broke down into pocket \u00b7 1.6x volume \u00b7 pocket 4.1 ATR / 15.4%",
+        "label": "Broke down into pocket \u00b7 -4.9% today on 1.6x volume \u00b7 pocket 4.1 ATR / 15.4%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-4.9%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$29.19"
@@ -1358,6 +1442,7 @@
         "SPX"
       ],
       "rel_volume": 1.89,
+      "day_move_pct": 3.3,
       "volume": 16536600,
       "avg_volume": 8738525,
       "map": {
@@ -1374,8 +1459,13 @@
       },
       "setup": {
         "title": "Level map",
-        "label": "Inside pocket \u00b7 1.9x volume \u00b7 open on one side",
+        "label": "Inside pocket \u00b7 +3.3% today on 1.9x volume \u00b7 open on one side",
         "fields": [
+          {
+            "label": "Today",
+            "value": "+3.3%",
+            "tone": "pos"
+          },
           {
             "label": "Ceiling",
             "value": "$19.63"
@@ -1451,6 +1541,7 @@
         "SPX"
       ],
       "rel_volume": 2.35,
+      "day_move_pct": -3.77,
       "volume": 26780000,
       "avg_volume": 11417011,
       "map": {
@@ -1460,15 +1551,20 @@
         "width_atr": 3.8213368358113238,
         "width_pct": 14.511874957448095,
         "thinness": 1.38,
-        "next_above": 45.66346423397995,
+        "next_above": 45.66346241032116,
         "next_below": 30.530000686645508,
         "floor_touches": 2,
         "ceiling_touches": 1
       },
       "setup": {
         "title": "Level map",
-        "label": "Inside pocket \u00b7 2.3x volume \u00b7 pocket 3.8 ATR / 14.5%",
+        "label": "Inside pocket \u00b7 -3.8% today on 2.3x volume \u00b7 pocket 3.8 ATR / 14.5%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-3.8%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$36.64"
@@ -1544,28 +1640,34 @@
         "SPX"
       ],
       "rel_volume": 1.97,
+      "day_move_pct": -3.82,
       "volume": 6037900,
       "avg_volume": 3068380,
       "map": {
-        "floor": 174.0373229478505,
-        "ceiling": 186.33082852777366,
+        "floor": 174.03733794933447,
+        "ceiling": 186.33083370182297,
         "atr": 7.2795,
-        "width_atr": 1.6887850872878676,
-        "width_pct": 7.063717926531689,
+        "width_atr": 1.6887837372722025,
+        "width_pct": 7.063711670921652,
         "thinness": 1.72,
         "next_above": 195.39932122922636,
-        "next_below": 167.0774552428378,
+        "next_below": 167.07746263853306,
         "floor_touches": 2,
         "ceiling_touches": 3
       },
       "entry": 185.91000366210938,
-      "stop_loss": 188.15070271905785,
-      "take_profit": 174.0373229478505,
+      "stop_loss": 188.15070789310715,
+      "take_profit": 174.03733794933447,
       "risk_reward_ratio": 5.3,
       "setup": {
         "title": "Level map",
-        "label": "Broke down into pocket \u00b7 2.0x volume \u00b7 pocket 1.7 ATR / 7.1%",
+        "label": "Broke down into pocket \u00b7 -3.8% today on 2.0x volume \u00b7 pocket 1.7 ATR / 7.1%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-3.8%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$186.33"
@@ -1644,6 +1746,7 @@
         "QQQ"
       ],
       "rel_volume": 1.66,
+      "day_move_pct": -7.71,
       "volume": 8560100,
       "avg_volume": 5147552,
       "map": {
@@ -1660,8 +1763,13 @@
       },
       "setup": {
         "title": "Level map",
-        "label": "Inside pocket \u00b7 1.7x volume \u00b7 open on one side",
+        "label": "Inside pocket \u00b7 -7.7% today on 1.7x volume \u00b7 open on one side",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-7.7%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$166.71"
@@ -1738,6 +1846,7 @@
         "QQQ"
       ],
       "rel_volume": 1.72,
+      "day_move_pct": -2.97,
       "volume": 13924000,
       "avg_volume": 8076076,
       "map": {
@@ -1754,8 +1863,13 @@
       },
       "setup": {
         "title": "Level map",
-        "label": "Inside pocket \u00b7 1.7x volume \u00b7 pocket 3.9 ATR / 30.8%",
+        "label": "Inside pocket \u00b7 -3.0% today on 1.7x volume \u00b7 pocket 3.9 ATR / 30.8%",
         "fields": [
+          {
+            "label": "Today",
+            "value": "-3.0%",
+            "tone": "neg"
+          },
           {
             "label": "Ceiling",
             "value": "$411.29"
