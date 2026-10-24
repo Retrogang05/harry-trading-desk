@@ -1,12 +1,26 @@
 name: Opy — options scan
 
 on:
-  # 21:00 UTC = 4pm ET (EST) / 5pm ET (EDT) - after the close in both DST
-  # states. Unlike Monu, Opy's data doesn't need to be fresh at the open:
-  # CBOE quotes are ~15 min delayed and this is an end-of-day shortlist, not
-  # a breakout scan, so there's no reason to race the pre-market. Weekdays only.
+  # 5pm New York, Monday-Friday: an hour after the close, so every agent works
+  # off the completed session.
+  #
+  # GitHub cron is UTC-only with no daylight saving, and 5pm New York is 21:00
+  # UTC under EDT (Mar-Nov) and 22:00 UTC under EST (Nov-Mar). Both crons
+  # fire; the gate job below lets through only the one that is 5pm in New
+  # York that day.
+  #
+  # Minute :17 - the agents are staggered ten minutes apart (Monu :07, Opy
+  # :17, Trey :27, Goldy :37, Pocket :47). They all push to main and the pull
+  # --rebase below is what keeps that safe; the stagger is belt-and-braces,
+  # and keeping off :00 avoids GitHub's busiest minute.
+  #
+  # Monu previously ran at 14:00 UTC, which during US daylight saving is 10:00
+  # New York - half an hour INTO the session. With GitHub's start delays, 86%
+  # of its published prices from 1 Sep to 23 Oct 2026 were live intraday
+  # prices off a half-formed bar, not closes.
   schedule:
-    - cron: '0 21 * * 1-5'
+    - cron: '17 21 * * 1-5'
+    - cron: '17 22 * * 1-5'
   workflow_dispatch:
 
 # NOT triggered on push - same reasoning as Monu's workflow: a scan makes one
@@ -23,14 +37,36 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Lets through only the cron that is 5pm in New York today. Keyed on WHICH
+  # cron fired rather than on the clock: scheduled runs often start an hour
+  # or more late, and a clock check would then skip both. Manual runs always
+  # pass.
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.tz.outputs.go }}
+    steps:
+      - id: tz
+        env:
+          FIRED: ${{ github.event.schedule }}
+        run: |
+          off=$(TZ=America/New_York date +%z)          # -0400 EDT, -0500 EST
+          want=$([ "$off" = "-0400" ] && echo 21 || echo 22)
+          got=$(echo "$FIRED" | awk '{print $2}')
+          if [ -z "$FIRED" ] || [ "$got" = "$want" ]; then go=true; else go=false; fi
+          echo "New York offset $off; fired hour ${got:-manual}; want $want; go=$go"
+          echo "go=$go" >> "$GITHUB_OUTPUT"
+
   scan:
+    needs: gate
+    if: needs.gate.outputs.go == 'true'
     runs-on: ubuntu-latest
     # The options pipeline fetches a CBOE chain plus Yahoo earnings/sector
     # calls for up to ~80 candidates per strategy side across four strategies
     # (deduplicated per-symbol by cboe.py's cache) - a few minutes in
     # practice, but bound it well above that so a stuck run doesn't burn the
     # whole free-minutes budget.
-    timeout-minutes: 15
+    timeout-minutes: 110
     steps:
       # Same pinned SHAs as momentum-scan.yml - see that file's comment.
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262   # v4
@@ -47,19 +83,70 @@ jobs:
       - name: Show resolved versions
         run: pip list
 
+      # Yahoo's daily bar is not always there an hour after the close: 6 of 25
+      # Trey runs from Sep-Oct 2026 used the PREVIOUS day's bar despite running
+      # 3-5 hours after the close. Scanning before it lands publishes
+      # yesterday's data under today's date. So wait for SPY's bar for the
+      # session just closed - every 5 minutes, up to 90 - and skip the scan if
+      # it never comes. That is also what a market holiday looks like, and
+      # publishing nothing beats publishing a stale session as if it were new.
+      - name: Wait for the session's daily bar
+        id: bar
+        run: |
+          python - <<'PY'
+          import datetime as dt, os, time
+          from zoneinfo import ZoneInfo
+          import yfinance as yf
+          now = dt.datetime.now(ZoneInfo("America/New_York"))
+          want = now.date() if now.hour >= 16 else now.date() - dt.timedelta(days=1)
+          while want.isoweekday() > 5:
+              want -= dt.timedelta(days=1)
+          got = None
+          for attempt in range(1, 20):
+              try:
+                  d = yf.download("SPY", period="5d", progress=False,
+                                  threads=False, auto_adjust=True)
+                  got = d.index[-1].date() if len(d) else None
+              except Exception as e:
+                  print(f"attempt {attempt}: fetch failed ({e})")
+              print(f"attempt {attempt}: want {want}, latest SPY bar {got}")
+              if got is not None and got >= want:
+                  break
+              if attempt < 19:
+                  time.sleep(300)
+          fresh = got is not None and got >= want
+          if not fresh:
+              print(f"No daily bar for {want} after 90 minutes - a market holiday "
+                    f"or a Yahoo delay. Nothing will be published.")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"fresh={'true' if fresh else 'false'}\n")
+              f.write(f"session={want:%Y%m%d}\n")
+              f.write(f"session_dash={want:%Y-%m-%d}\n")
+          PY
+
       - name: Run scan
+        if: steps.bar.outputs.fresh == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         working-directory: opy
         run: python agent.py
 
       - name: Commit results
+        if: steps.bar.outputs.fresh == 'true'
+        env:
+          SESSION_ID: ${{ steps.bar.outputs.session }}
+          SESSION_DASH: ${{ steps.bar.outputs.session_dash }}
         run: |
+          # Name the archive by the session the bar-wait step confirmed, not by
+          # the clock: runs that slipped past midnight UTC used to be labelled
+          # a day late (signal_20261013.json held the 12 Oct session).
+          SESSION="$SESSION_ID"; d="$SESSION_DASH"
+
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
           mkdir -p opy/results
-          cp opy/opy_results.json "opy/results/scan_$(date +%Y%m%d).json"
+          cp opy/opy_results.json "opy/results/scan_${SESSION}.json"
 
           # Stage only Opy's own file plus the manifest - Monu's scan can run
           # concurrently on its own schedule without either clobbering the
@@ -69,7 +156,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No change in scan output - nothing to commit."
           else
-            git commit -m "Opy scan $(date +%Y-%m-%d)"
+            git commit -m "Opy scan ${d}"
             # Another agent may have pushed since checkout. Each agent stages
             # only its own files, so a rebase never conflicts - but without it
             # a bare push is rejected and the scan's data is silently dropped.

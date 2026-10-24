@@ -188,11 +188,11 @@ harry-trading-desk/
 ├── scripts/fetch_sp500.py   # downloads a fresh spy.xlsx (QQQ and IWM are manual)
 ├── requirements.txt
 ├── .github/workflows/
-│   ├── momentum-scan.yml    # Monu  — 14:00 UTC weekdays (pre-open)
-│   ├── opy-scan.yml         # Opy   — 21:00 UTC weekdays (post-close)
-│   ├── trey-scan.yml        # Trey  — 21:15 UTC weekdays (post-close)
-│   ├── goldy-scan.yml       # Goldy — 21:30 UTC weekdays (post-close)
-│   └── pocket-scan.yml      # Pocket — 21:45 UTC weekdays (post-close)
+│   ├── momentum-scan.yml    # Monu   — 5:07pm New York, weekdays
+│   ├── opy-scan.yml         # Opy    — 5:17pm New York, weekdays
+│   ├── trey-scan.yml        # Trey   — 5:27pm New York, weekdays
+│   ├── goldy-scan.yml       # Goldy  — 5:37pm New York, weekdays
+│   └── pocket-scan.yml      # Pocket — 5:47pm New York, weekdays
 ├── docs/                    # ← the dashboard (GitHub Pages serves this)
 │   ├── index.html
 │   └── data/
@@ -691,18 +691,26 @@ Edit the `score_momentum_dimensions` method to change weights:
 # Adjust to your preferences
 ```
 
-### Change Scan Schedule
+### Scan Schedule
 
-Edit `.github/workflows/momentum-scan.yml`:
+Every agent runs at **5pm New York, Monday–Friday** — an hour after the close,
+so each one works off the completed session. In Sydney that lands on the
+morning of the next day.
 
-```yaml
-schedule:
-  # Every weekday at 9 AM EST (14:00 UTC)
-  - cron: '0 14 * * 1-5'
+GitHub cron is UTC-only with no daylight saving, so each workflow carries two
+crons (21:xx and 22:xx UTC) and a small `gate` job lets through only the one
+that is 5pm in New York that day. The gate keys on *which* cron fired, not the
+clock, because GitHub often starts scheduled runs an hour or more late.
 
-  # Or every day at 6 PM (post-market)
-  # - cron: '0 23 * * *'
-```
+Before scanning, each run **waits for the session's daily bar** — checking
+SPY every 5 minutes for up to 90. Yahoo's bar isn't always there an hour after
+the close: 6 of 25 Trey runs in Sep–Oct 2026 used the previous day's bar
+despite running 3–5 hours after it. If the bar never comes (a market holiday,
+or a long Yahoo delay) the run publishes nothing rather than a stale session.
+Archive files are named after the session actually scanned, not the run date.
+
+To change the time, edit both crons and the `want` hours in the gate job of
+each workflow under `.github/workflows/`.
 
 ## 💰 Cost Breakdown
 
