@@ -406,9 +406,12 @@ for a **pocket** — a gap between major pivot levels with nothing in between.
 | Market cap | Not applied — not in our data. S&P 500 and Nasdaq-100 names clear Mid+ anyway |
 
 **The map**, for every hit: major pivots (the extreme of ±10 sessions,
+except the most recent swing, which needs only 3 sessions after it — otherwise
+the latest and usually most important level stays invisible for two weeks;
 clustered within 0.75 ATR), the nearest **floor** and **ceiling**, pocket
 width in ATR and %, room each way, volume traded inside the zone, and whether
-price **broke up**, **broke down** or is sitting **inside** today, plus
+price **broke up**, **broke down**, is **testing** a level (closed within
+0.25 ATR of it — levels are zones, not lines) or sits **inside** today, plus
 today's move — "inside" means no level was crossed, not that nothing happened.
 Names between two levels closer than 1.2 ATR are dropped — that's congestion,
 not a pocket. So are **stale** symbols (last bar older than the session being

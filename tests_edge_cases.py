@@ -305,16 +305,25 @@ check("relative volume excludes today from the average",
 spike = bars([100.0 + (i % 5) for i in range(300)])
 spike.iloc[-3, spike.columns.get_loc("High")] = 200.0
 lv = pocket.major_levels(spike, pocket.atr(spike))
-check("a pivot in the last PIVOT_BARS bars is not yet a level",
+check("a swing with fewer than RECENT_RIGHT_BARS sessions after it is not yet a level",
       all(x["level"] < 150 for x in lv), str([round(x["level"], 1) for x in lv if x["level"] > 150]))
+# ...but the most recent swing, once RECENT_RIGHT_BARS sessions have printed
+# after it, IS a level - the DECK 88.40 case the full 10-bar rule missed.
+spike5 = bars([100.0 + (i % 5) for i in range(300)])
+spike5.iloc[-5, spike5.columns.get_loc("High")] = 200.0
+lv5 = pocket.major_levels(spike5, pocket.atr(spike5))
+check("a recent swing with RECENT_RIGHT_BARS sessions after it is a level",
+      any(abs(x["level"] - 200.0) < 1 for x in lv5), str([round(x["level"], 1) for x in lv5]))
 
 # Published rows: breaks carry levels on the right side, inside rows carry
 # none and never read as a buy.
 pk = json.load(open(os.path.join(ROOT, "docs", "data", "PCKT.json")))["opportunities"]
 check("every Pocket row has a signal_label (no default 'Buy')",
       all(o.get("signal_label") for o in pk))
-check("inside rows carry no entry/stop/target",
-      all("entry" not in o for o in pk if o["signal_state"] == "inside"))
+check("inside and testing rows carry no entry/stop/target",
+      all("entry" not in o for o in pk if o["signal_state"] in ("inside", "testing")))
+check("only breaks earn the fresh-break points",
+      all((o["breakdown"]["fresh_break"] > 0) == (o["signal_state"] in ("broke_up", "broke_down")) for o in pk))
 check("breakdowns are labelled bearish",
       all(o.get("bias") == "bearish" for o in pk if o["signal_state"] == "broke_down"))
 check("no published pocket narrower than MIN_POCKET_ATR",

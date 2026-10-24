@@ -100,9 +100,25 @@ CALENDAR_DAYS = 750
 MIN_ROWS = 260
 
 PIVOT_BARS = 10       # a major pivot is the extreme of +/- this many sessions
+# ...except the most recent swing, which needs only this many sessions after
+# it. The full 10-after rule can never confirm anything in the last 10 bars,
+# and the latest swing is usually the level that matters most: DECK's 88.40
+# high on 2026-10-19 - the line drawn by hand as its ceiling - was invisible,
+# so the agent mapped the ceiling at 92.60 instead. Still no lookahead: the
+# bars after the pivot must have printed. Shortening confirmation for ALL
+# history instead found every hand-drawn line but promoted months-old minor
+# swings too, collapsing PHM's map into a 3-point zone.
+RECENT_RIGHT_BARS = 3
 CLUSTER_ATR = 0.75    # pivots within this many ATR are one level
 MIN_POCKET_ATR = 1.2  # narrower than this, two levels are just a congestion zone
 STOP_BUFFER_ATR = 0.25
+
+# A close counts as a BREAK only if it clears the level by this much. Inside
+# that band price is testing the level, not through it: PHM closed 121.19
+# over a level at 120.93 - 0.07 ATR - and was labelled "broke up", while the
+# same zone drawn by hand was resistance overhead. Levels are zones, not
+# lines.
+BREAK_ATR = 0.25
 
 # A stock whose average daily range is under this fraction of its price is
 # not trading freely - typically pinned at a takeover price while the deal
@@ -214,16 +230,24 @@ def atr(df: pd.DataFrame, n: int = 20) -> float:
 def major_levels(df: pd.DataFrame, a: float) -> List[Dict]:
     """Confirmed major pivots clustered into horizontal levels, lowest first.
 
-    Confirmed means PIVOT_BARS sessions have printed on BOTH sides, so the
-    last PIVOT_BARS bars can never produce a pivot yet. That is correct - a
-    pivot only exists in hindsight - and it is also what keeps the backtest
-    free of lookahead.
+    A pivot is the extreme of PIVOT_BARS sessions before it and PIVOT_BARS
+    after - except inside the last PIVOT_BARS sessions, where only
+    RECENT_RIGHT_BARS after are required (see that constant). Either way the
+    sessions after must already have printed, so a pivot only exists in
+    hindsight and the map never looks ahead.
     """
-    h, l = df["High"], df["Low"]
-    w = PIVOT_BARS * 2 + 1
-    ph = h[h == h.rolling(w, center=True).max()].dropna()
-    pl = l[l == l.rolling(w, center=True).min()].dropna()
-    pts = sorted([(float(p), d) for d, p in ph.items()] + [(float(p), d) for d, p in pl.items()])
+    H, L, idx = df["High"].values, df["Low"].values, df.index
+    n = len(H)
+    pts = []
+    for i in range(PIVOT_BARS, n - RECENT_RIGHT_BARS):
+        right = PIVOT_BARS if i < n - PIVOT_BARS else RECENT_RIGHT_BARS
+        if i + right >= n:
+            continue
+        if H[i] == H[i - PIVOT_BARS:i + right + 1].max():
+            pts.append((float(H[i]), idx[i]))
+        if L[i] == L[i - PIVOT_BARS:i + right + 1].min():
+            pts.append((float(L[i]), idx[i]))
+    pts.sort()
     if not pts:
         return []
     groups, cur = [], [pts[0]]
@@ -273,13 +297,18 @@ def map_levels(df: pd.DataFrame) -> Dict:
     ceiling = above[0] if above else None
 
     # Did today's close cross a major level? A break up means yesterday closed
-    # at or below a level that today closed above - that level is now the
-    # floor. A break down is the mirror, and the crossed level is the ceiling.
+    # at or below a level that today closed CLEARLY above - by BREAK_ATR - and
+    # that level is now the floor. A break down is the mirror. A close within
+    # BREAK_ATR of either level is a test of it, not a break.
     state = "inside"
-    if floor and prev <= floor["level"] < price:
+    margin = BREAK_ATR * a
+    if floor and prev <= floor["level"] and price >= floor["level"] + margin:
         state = "broke_up"
-    elif ceiling and prev >= ceiling["level"] > price:
+    elif ceiling and prev >= ceiling["level"] and price <= ceiling["level"] - margin:
         state = "broke_down"
+    elif (floor and price - floor["level"] < margin) or \
+         (ceiling and ceiling["level"] - price < margin):
+        state = "testing"
 
     width = (ceiling["level"] - floor["level"]) if floor and ceiling else None
     return {
@@ -305,7 +334,7 @@ def map_levels(df: pd.DataFrame) -> Dict:
 
 def score(m: Dict, vol: Dict) -> Dict:
     """Descriptive ordering only. See the module docstring."""
-    fresh = 20 if m["state"] != "inside" else 0
+    fresh = 20 if m["state"] in ("broke_up", "broke_down") else 0
     # Rel vol 1.5 scores 0, 3.0 and above scores full. Scaled over the range
     # screen hits actually occupy: a 1.5-4.0 scale gave a 1.9x name 5 of 40
     # points and left most of the published list greyed out on the dashboard.
@@ -400,6 +429,7 @@ STATE_LABEL = {
     "broke_up":   ("Broke up into pocket",   "bullish", "Broke up",   "pos"),
     "broke_down": ("Broke down into pocket", "bearish", "Broke down", "neg"),
     "inside":     ("Inside pocket",          None,      "Inside",     None),
+    "testing":    ("Testing a level",        None,      "Testing",    None),
 }
 
 
