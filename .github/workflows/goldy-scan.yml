@@ -1,13 +1,18 @@
 name: Goldy — MA cross scan
 
 on:
-  # 5pm New York, Monday-Friday: an hour after the close, so every agent works
-  # off the completed session.
+  # 9pm New York, Monday-Friday: five hours after the close, so every agent
+  # works off the completed session. That is the NEXT day in UTC, so the
+  # crons run Tuesday-Saturday UTC for Monday-Friday sessions.
   #
-  # GitHub cron is UTC-only with no daylight saving, and 5pm New York is 21:00
-  # UTC under EDT (Mar-Nov) and 22:00 UTC under EST (Nov-Mar). Both crons
-  # fire; the gate job below lets through only the one that is 5pm in New
+  # GitHub cron is UTC-only with no daylight saving, and 9pm New York is 01:00
+  # UTC under EDT (Mar-Nov) and 02:00 UTC under EST (Nov-Mar). Both crons
+  # fire; the gate job below lets through only the one that is 9pm in New
   # York that day.
+  #
+  # The later hour does not remove the need for the bar-wait step below: all
+  # six of Trey's stale-bar runs in Sep-Oct 2026 landed between 8:27 and
+  # 9:11pm New York, so Yahoo's lag is a bad-day problem, not a fixed delay.
   #
   # Minute :37 - the agents are staggered ten minutes apart (Monu :07, Opy
   # :17, Trey :27, Goldy :37, Pocket :47). They all push to main and the pull
@@ -19,8 +24,8 @@ on:
   # of its published prices from 1 Sep to 23 Oct 2026 were live intraday
   # prices off a half-formed bar, not closes.
   schedule:
-    - cron: '37 21 * * 1-5'
-    - cron: '37 22 * * 1-5'
+    - cron: '37 1 * * 2-6'
+    - cron: '37 2 * * 2-6'
   workflow_dispatch:
 
 # NOT on push - same rule as the other three agents. A scan makes one Claude
@@ -35,7 +40,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Lets through only the cron that is 5pm in New York today. Keyed on WHICH
+  # Lets through only the cron that is 9pm in New York today. Keyed on WHICH
   # cron fired rather than on the clock: scheduled runs often start an hour
   # or more late, and a clock check would then skip both. Manual runs always
   # pass.
@@ -49,7 +54,7 @@ jobs:
           FIRED: ${{ github.event.schedule }}
         run: |
           off=$(TZ=America/New_York date +%z)          # -0400 EDT, -0500 EST
-          want=$([ "$off" = "-0400" ] && echo 21 || echo 22)
+          want=$([ "$off" = "-0400" ] && echo 1 || echo 2)
           got=$(echo "$FIRED" | awk '{print $2}')
           if [ -z "$FIRED" ] || [ "$got" = "$want" ]; then go=true; else go=false; fi
           echo "New York offset $off; fired hour ${got:-manual}; want $want; go=$go"

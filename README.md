@@ -188,11 +188,11 @@ harry-trading-desk/
 ├── scripts/fetch_sp500.py   # downloads a fresh spy.xlsx (QQQ and IWM are manual)
 ├── requirements.txt
 ├── .github/workflows/
-│   ├── momentum-scan.yml    # Monu   — 5:07pm New York, weekdays
-│   ├── opy-scan.yml         # Opy    — 5:17pm New York, weekdays
-│   ├── trey-scan.yml        # Trey   — 5:27pm New York, weekdays
-│   ├── goldy-scan.yml       # Goldy  — 5:37pm New York, weekdays
-│   └── pocket-scan.yml      # Pocket — 5:47pm New York, weekdays
+│   ├── momentum-scan.yml    # Monu   — 9:07pm New York, weekdays
+│   ├── opy-scan.yml         # Opy    — 9:17pm New York, weekdays
+│   ├── trey-scan.yml        # Trey   — 9:27pm New York, weekdays
+│   ├── goldy-scan.yml       # Goldy  — 9:37pm New York, weekdays
+│   └── pocket-scan.yml      # Pocket — 9:47pm New York, weekdays
 ├── docs/                    # ← the dashboard (GitHub Pages serves this)
 │   ├── index.html
 │   └── data/
@@ -693,13 +693,13 @@ Edit the `score_momentum_dimensions` method to change weights:
 
 ### Scan Schedule
 
-Every agent runs at **5pm New York, Monday–Friday** — an hour after the close,
-so each one works off the completed session. In Sydney that lands on the
-morning of the next day.
+Every agent runs at **9pm New York, Monday–Friday** — five hours after the
+close, so each one works off the completed session. In Sydney that lands
+around midday the next day.
 
 GitHub cron is UTC-only with no daylight saving, so each workflow carries two
-crons (21:xx and 22:xx UTC) and a small `gate` job lets through only the one
-that is 5pm in New York that day. The gate keys on *which* cron fired, not the
+crons (01:xx and 02:xx UTC, Tuesday–Saturday) and a small `gate` job lets
+through only the one that is 9pm in New York that day. The gate keys on *which* cron fired, not the
 clock, because GitHub often starts scheduled runs an hour or more late.
 
 Before scanning, each run **waits for the session's daily bar** — checking
