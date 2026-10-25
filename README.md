@@ -615,8 +615,10 @@ and renders them.
 
 
 Clicking a row opens its detail panel, which includes a **3-month price
-chart** — daily closes, the change over the period, and the row's entry, stop
-and target drawn as dashed lines. Hover (or tap) for a session's close. The
+chart** — daily closes, the change over the period, the **200-day SMA** (amber,
+with price's distance from it in the key), and the row's entry, stop and
+target drawn as dashed lines. When the 200-day sits too far from three months
+of price to draw without flattening it, the key names it as off chart. Hover (or tap) for a session's close. The
 closes come from each agent's own fetch via the shared `history.py`, so the
 chart shows the bars the signal was computed on; Opy, whose screener keeps no
 bars, fetches its published symbols in one small extra batch.

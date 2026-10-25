@@ -209,7 +209,7 @@
            font-family: var(--mono); font-size: 11px; color: var(--text);
            background: var(--raised); border: 1px solid var(--bd-hi); border-radius: 4px;
            padding: 2px 6px; transform: translateX(-50%); }
-  .pxkey { display: flex; gap: 12px; margin-top: 6px; font-size: 10.5px; color: var(--faint); }
+  .pxkey { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; font-size: 10.5px; color: var(--faint); }
   .pxkey i { display: inline-block; width: 10px; border-top: 1px dashed; margin-right: 5px;
              vertical-align: middle; }
 
@@ -656,6 +656,20 @@
       return typeof l[1] === "number" && l[1] > lo - (hi - lo) && l[1] < hi + (hi - lo);
     });
     levels.forEach(function (l) { lo = Math.min(lo, l[1]); hi = Math.max(hi, l[1]); });
+
+    // 200-day SMA, under the same rule: drawn when it sits near the price,
+    // otherwise named in the key with its distance. A stock up 500% on the
+    // year has its 200-day far below, and scaling to fit it would flatten
+    // three months of price into a line along the top.
+    var sma = (h.sma200 || []).length === n ? h.sma200 : null;
+    var smaV = sma ? sma.filter(function (v) { return typeof v === "number"; }) : [];
+    var smaLast = typeof (sma && sma[n - 1]) === "number" ? sma[n - 1] : null;
+    var smaOn = false;
+    if (smaV.length) {
+      var sLo = Math.min.apply(null, smaV), sHi = Math.max.apply(null, smaV), span = Math.max(hi - lo, 1e-9);
+      smaOn = sLo > lo - span && sHi < hi + span;
+      if (smaOn) { lo = Math.min(lo, sLo); hi = Math.max(hi, sHi); }
+    }
     var pad = (hi - lo) * 0.06 || hi * 0.01;
     lo -= pad; hi += pad;
 
@@ -698,6 +712,18 @@
                                 fill: "url(#" + gid + ")" }));
     s.appendChild(svg("path", { d: "M" + pts.join(" L"), fill: "none", stroke: line,
                                 "stroke-width": 1.6, "stroke-linejoin": "round" }));
+    if (smaOn) {
+      var sp = [], seg = [];
+      sma.forEach(function (v, i) {
+        if (typeof v === "number") seg.push(x(i).toFixed(1) + "," + y(v).toFixed(1));
+        else if (seg.length) { sp.push(seg); seg = []; }
+      });
+      if (seg.length) sp.push(seg);
+      sp.forEach(function (g) {
+        if (g.length > 1) s.appendChild(svg("path", { d: "M" + g.join(" L"), fill: "none",
+          stroke: "var(--amber)", "stroke-width": 1.2, opacity: 0.9 }));
+      });
+    }
     levels.forEach(function (l) {
       s.appendChild(svg("line", { x1: L, x2: R, y1: y(l[1]), y2: y(l[1]), stroke: l[2],
                                   "stroke-width": 1, "stroke-dasharray": "3 3", opacity: 0.85 }));
@@ -716,7 +742,8 @@
       cross.setAttribute("x1", x(i)); cross.setAttribute("x2", x(i)); cross.setAttribute("visibility", "visible");
       dot.setAttribute("cx", x(i)); dot.setAttribute("cy", y(c[i])); dot.setAttribute("visibility", "visible");
       var dd = d[i].split("-");
-      tip.textContent = +dd[2] + " " + MON[+dd[1] - 1] + "  $" + fmt(c[i]);
+      tip.textContent = +dd[2] + " " + MON[+dd[1] - 1] + "  $" + fmt(c[i]) +
+        (smaOn && typeof sma[i] === "number" ? "  ·  200d " + fmt(sma[i]) : "");
       tip.style.left = Math.max(48, Math.min(box.width - 48, x(i) / W * box.width)) + "px";
       tip.hidden = false;
     }
@@ -726,8 +753,17 @@
     s.addEventListener("pointerleave", hide);
     wrap.appendChild(s); wrap.appendChild(tip); body.appendChild(wrap);
 
-    if (levels.length) {
+    if (levels.length || smaLast !== null) {
       var key = el("div", "pxkey");
+      if (smaLast !== null) {
+        var ks = el("span"), sw0 = el("i");
+        sw0.style.borderTop = "1.5px solid var(--amber)";
+        var dist = (last / smaLast - 1) * 100;
+        ks.appendChild(sw0);
+        ks.appendChild(document.createTextNode("200 SMA " + fmt(smaLast) + " (" +
+          (dist >= 0 ? "+" : "−") + Math.abs(dist).toFixed(1) + "%" + (smaOn ? "" : ", off chart") + ")"));
+        key.appendChild(ks);
+      }
       levels.forEach(function (l) {
         var k = el("span"), sw = el("i"); sw.style.borderColor = l[2];
         k.appendChild(sw); k.appendChild(document.createTextNode(l[0] + " " + fmt(l[1])));

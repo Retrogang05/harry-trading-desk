@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Recent closes for the dashboard's price chart, shared by every agent.
 
-Each published row gets `history`: the last ~3 months of daily closes, so the
-detail panel can draw the chart without the page fetching prices itself (the
-dashboard is static - GitHub Pages - and a browser call to Yahoo is blocked by
-CORS anyway).
+Each published row gets `history`: the last ~3 months of daily closes and
+their 200-day SMA, so the detail panel can draw the chart without the page
+fetching prices itself (the dashboard is static - GitHub Pages - and a
+browser call to Yahoo is blocked by CORS anyway).
 
 Agents pass the frames they already fetched, so the chart is drawn from the
 same bars the signal was computed on. A symbol with no frame in hand - Opy's
@@ -23,7 +23,10 @@ import yfinance as yf
 logger = logging.getLogger(__name__)
 
 SESSIONS = 63          # ~3 months of trading days
-FETCH_DAYS = 120       # calendar days to request when fetching ourselves
+SMA = 200              # the trend line drawn with the closes
+# Calendar days to request when fetching ourselves: the SMA on the chart's
+# first day needs SMA + SESSIONS - 1 = 262 sessions, ~380 calendar days.
+FETCH_DAYS = 400
 
 Frame = Union[pd.DataFrame, pd.Series]
 
@@ -38,17 +41,28 @@ def _closes(x: Optional[Frame]) -> Optional[pd.Series]:
     return c if len(c) >= 2 else None
 
 
-def series(x: Optional[Frame], sessions: int = SESSIONS) -> Optional[Dict]:
-    """{"dates": [...], "closes": [...]} for the last `sessions` closes."""
-    c = _closes(x)
-    if c is None:
-        return None
-    c = c.iloc[-sessions:]
+def _round(v: float) -> float:
     # Prices span $1 to $1,000+; 4 significant figures is finer than a
     # 300-pixel chart can show and keeps each agent's JSON small.
-    return {"dates": [pd.Timestamp(d).strftime("%Y-%m-%d") for d in c.index],
-            "closes": [float(f"{v:.4g}") if abs(v) < 1000 else round(float(v), 1)
-                       for v in c.values]}
+    return float(f"{v:.4g}") if abs(v) < 1000 else round(float(v), 1)
+
+
+def series(x: Optional[Frame], sessions: int = SESSIONS) -> Optional[Dict]:
+    """{"dates", "closes", "sma200"} for the last `sessions` closes.
+
+    The SMA is computed on the full series before trimming, so it is the real
+    200-day average on every charted day. Days without 200 prior closes (a
+    recent IPO) are null, and the key is omitted when no day has one."""
+    full = _closes(x)
+    if full is None:
+        return None
+    sma = full.rolling(SMA).mean().iloc[-sessions:]
+    c = full.iloc[-sessions:]
+    out = {"dates": [pd.Timestamp(d).strftime("%Y-%m-%d") for d in c.index],
+           "closes": [_round(v) for v in c.values]}
+    if sma.notna().any():
+        out[f"sma{SMA}"] = [None if pd.isna(v) else _round(v) for v in sma.values]
+    return out
 
 
 def _fetch(symbols: List[str]) -> Dict[str, pd.Series]:

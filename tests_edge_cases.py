@@ -428,6 +428,16 @@ check("history keeps the last SESSIONS closes, oldest first",
       _h is not None and len(_h["closes"]) == history.SESSIONS and _h["closes"][-1] == 100.0
       and _h["dates"] == sorted(_h["dates"]))
 check("history of a one-bar series is None (nothing to draw)", history.series(bars([5.0])) is None)
+_hs = history.series(bars([float(i) for i in range(1, 301)]))
+# Closes 1..300: the SMA on the last day averages 101..300 = 200.5, computed
+# over the full series, not just the 63 sessions kept.
+check("sma200 is the real 200-day average on each charted day",
+      _hs["sma200"][-1] == 200.5 and len(_hs["sma200"]) == history.SESSIONS, str(_hs["sma200"][-1]))
+_hy = history.series(bars([float(i) for i in range(1, 231)]))
+check("days without 200 prior closes have a null SMA",
+      _hy["sma200"][0] is None and _hy["sma200"][-1] is not None)
+check("no sma200 key when no charted day has 200 closes",
+      "sma200" not in history.series(bars([1.0] * 100)))
 _rows = [{"symbol": "AAA"}, {"symbol": "BBB"}]
 _real = history._fetch
 history._fetch = lambda syms: {}                 # no network: BBB stays chartless
