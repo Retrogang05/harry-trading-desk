@@ -46,6 +46,7 @@ import rsi
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import sectors
 import universe
+import history
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -687,6 +688,9 @@ def main():
 
     logger.info("Breakdown: " + ", ".join(f"{k}={v}" for k, v in by_strategy.items()) if by_strategy else "No candidates this run")
 
+    # Opy's screener keeps metrics, not bars, so history fetches the
+    # published symbols itself - one small batch.
+    history.attach(opportunities)
     publish_to_dashboard(opportunities, context)
 
     # Local artifact for debugging/history, mirroring Monu's monu_results.json.

@@ -23,6 +23,7 @@ import ta  # Technical Analysis library
 
 import sectors   # shared sector-ETF regime, also used by Opy
 import universe  # shared universe.txt parser, also used by Opy and Goldy
+import history   # recent closes for the dashboard's price chart
 
 # Which Claude model writes the reasoning. Haiku is the cheapest tier
 # ($1/$5 per Mtok) and is what the cost estimate in the README assumes.
@@ -1037,6 +1038,7 @@ Format: Professional but conversational, suitable for a trader's quick decision.
                     opp['entry'], opp['stop_loss'], opp['take_profit']
                 )
 
+        history.attach(opportunities, frames)
         return opportunities, market_regime, sector_state
 
     def format_results(self, opportunities: List[Dict], market_regime: str) -> str:

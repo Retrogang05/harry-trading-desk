@@ -199,6 +199,20 @@
   .lv4 .lv { font-size: 14px; font-weight: 600; margin-top: 2px;
              font-family: var(--mono); font-variant-numeric: tabular-nums; }
 
+  /* price chart */
+  .pxchg { font-family: var(--mono); font-size: 12px; font-variant-numeric: tabular-nums;
+           text-transform: none; letter-spacing: 0; margin-left: auto; }
+  .pxwrap { position: relative; }
+  .pxwrap svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .pxwrap text { font-family: var(--mono); font-size: 9.5px; fill: var(--faint); }
+  .pxtip { position: absolute; top: 0; pointer-events: none; white-space: nowrap;
+           font-family: var(--mono); font-size: 11px; color: var(--text);
+           background: var(--raised); border: 1px solid var(--bd-hi); border-radius: 4px;
+           padding: 2px 6px; transform: translateX(-50%); }
+  .pxkey { display: flex; gap: 12px; margin-top: 6px; font-size: 10.5px; color: var(--faint); }
+  .pxkey i { display: inline-block; width: 10px; border-top: 1px dashed; margin-right: 5px;
+             vertical-align: middle; }
+
   .read { color: var(--label); font-size: 12.5px; line-height: 1.65; }
   .read.na { color: var(--faint); font-style: italic; }
 
@@ -618,6 +632,113 @@
     t.appendChild(tb);
   }
 
+  // ~3 months of daily closes the agent attached as o.history (history.py).
+  // Drawn with plain SVG - the page loads no libraries. Rows without history
+  // (an agent run before the field existed, or a failed fetch) get no panel.
+  var MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function svg(t, attrs) {
+    var n = document.createElementNS("http://www.w3.org/2000/svg", t);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  function priceChart(o) {
+    var h = o.history;
+    if (!h || !h.closes || h.closes.length < 2) return null;
+    var c = h.closes, d = h.dates, n = c.length;
+    var first = c[0], last = c[n - 1], chg = last - first, up = chg >= 0;
+    var line = up ? "var(--green-b)" : "var(--red-b)";
+
+    // Trade levels on the chart, when the row has them and they sit near
+    // enough to price to read - a target 3x away would flatten the line.
+    var lo = Math.min.apply(null, c), hi = Math.max.apply(null, c);
+    var levels = [["Entry", o.entry, "var(--label)"], ["Stop", o.stop_loss, "var(--red)"],
+                  ["Target", o.take_profit, "var(--green-b)"]].filter(function (l) {
+      return typeof l[1] === "number" && l[1] > lo - (hi - lo) && l[1] < hi + (hi - lo);
+    });
+    levels.forEach(function (l) { lo = Math.min(lo, l[1]); hi = Math.max(hi, l[1]); });
+    var pad = (hi - lo) * 0.06 || hi * 0.01;
+    lo -= pad; hi += pad;
+
+    var W = 320, H = 150, L = 0, R = 278, T = 6, B = 132;
+    var x = function (i) { return L + (R - L) * i / (n - 1); };
+    var y = function (v) { return B - (B - T) * (v - lo) / (hi - lo); };
+    var fmt = function (v) { return v >= 1000 ? v.toFixed(0) : v.toFixed(2); };
+
+    var p = el("div", "panel");
+    var ph = el("div", "ph", "Price · 3 months");
+    var ch = el("span", "pxchg",
+      (up ? "+" : "−") + "$" + Math.abs(chg).toFixed(2) + " (" + (up ? "+" : "−") +
+      Math.abs(chg / first * 100).toFixed(2) + "%)");
+    ch.style.color = line;
+    ph.appendChild(ch); p.appendChild(ph);
+
+    var body = el("div", "pb"), wrap = el("div", "pxwrap");
+    var s = svg("svg", { viewBox: "0 0 " + W + " " + H, role: "img",
+      "aria-label": o.symbol + " closes " + d[0] + " to " + d[n - 1] + ", " + fmt(first) + " to " + fmt(last) });
+    var defs = svg("defs", {}), gid = "pxg" + (up ? "u" : "d");
+    var gr = svg("linearGradient", { id: gid, x1: 0, y1: 0, x2: 0, y2: 1 });
+    gr.appendChild(svg("stop", { offset: "0%", "stop-color": up ? "#22ab94" : "#f7525f", "stop-opacity": 0.32 }));
+    gr.appendChild(svg("stop", { offset: "100%", "stop-color": up ? "#22ab94" : "#f7525f", "stop-opacity": 0 }));
+    defs.appendChild(gr); s.appendChild(defs);
+
+    // Right-hand price scale: high, middle, low - as in a phone chart.
+    [hi - pad, (hi + lo) / 2, lo + pad].forEach(function (v) {
+      s.appendChild(svg("line", { x1: L, x2: R, y1: y(v), y2: y(v), stroke: "var(--bd)", "stroke-width": 1 }));
+      var t = svg("text", { x: W, y: y(v) + 3, "text-anchor": "end" }); t.textContent = fmt(v); s.appendChild(t);
+    });
+    // Month ticks at the first session of each month.
+    for (var i = 1; i < n; i++) {
+      if (d[i].slice(5, 7) !== d[i - 1].slice(5, 7)) {
+        s.appendChild(svg("line", { x1: x(i), x2: x(i), y1: T, y2: B, stroke: "var(--bd)", "stroke-width": 1 }));
+        var mt = svg("text", { x: x(i) + 3, y: H - 2 }); mt.textContent = MON[+d[i].slice(5, 7) - 1]; s.appendChild(mt);
+      }
+    }
+    var pts = c.map(function (v, i) { return x(i).toFixed(1) + "," + y(v).toFixed(1); });
+    s.appendChild(svg("path", { d: "M" + pts.join(" L") + " L" + R + "," + B + " L" + L + "," + B + " Z",
+                                fill: "url(#" + gid + ")" }));
+    s.appendChild(svg("path", { d: "M" + pts.join(" L"), fill: "none", stroke: line,
+                                "stroke-width": 1.6, "stroke-linejoin": "round" }));
+    levels.forEach(function (l) {
+      s.appendChild(svg("line", { x1: L, x2: R, y1: y(l[1]), y2: y(l[1]), stroke: l[2],
+                                  "stroke-width": 1, "stroke-dasharray": "3 3", opacity: 0.85 }));
+    });
+    s.appendChild(svg("circle", { cx: x(n - 1), cy: y(last), r: 2.6, fill: line }));
+
+    // Hover: crosshair, dot and the session's close.
+    var cross = svg("line", { y1: T, y2: B, stroke: "var(--dim)", "stroke-width": 1, visibility: "hidden" });
+    var dot = svg("circle", { r: 3, fill: line, visibility: "hidden" });
+    s.appendChild(cross); s.appendChild(dot);
+    var tip = el("div", "pxtip"); tip.hidden = true;
+    function show(ev) {
+      var box = s.getBoundingClientRect();
+      var px = (ev.clientX - box.left) / box.width * W;
+      var i = Math.max(0, Math.min(n - 1, Math.round((px - L) / (R - L) * (n - 1))));
+      cross.setAttribute("x1", x(i)); cross.setAttribute("x2", x(i)); cross.setAttribute("visibility", "visible");
+      dot.setAttribute("cx", x(i)); dot.setAttribute("cy", y(c[i])); dot.setAttribute("visibility", "visible");
+      var dd = d[i].split("-");
+      tip.textContent = +dd[2] + " " + MON[+dd[1] - 1] + "  $" + fmt(c[i]);
+      tip.style.left = Math.max(48, Math.min(box.width - 48, x(i) / W * box.width)) + "px";
+      tip.hidden = false;
+    }
+    function hide() { cross.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); tip.hidden = true; }
+    s.addEventListener("pointermove", show);
+    s.addEventListener("pointerdown", show);
+    s.addEventListener("pointerleave", hide);
+    wrap.appendChild(s); wrap.appendChild(tip); body.appendChild(wrap);
+
+    if (levels.length) {
+      var key = el("div", "pxkey");
+      levels.forEach(function (l) {
+        var k = el("span"), sw = el("i"); sw.style.borderColor = l[2];
+        k.appendChild(sw); k.appendChild(document.createTextNode(l[0] + " " + fmt(l[1])));
+        key.appendChild(k);
+      });
+      body.appendChild(key);
+    }
+    p.appendChild(body);
+    return p;
+  }
+
   function renderRight() {
     var col = $("colRight"); col.textContent = "";
     var rows = visibleRows();
@@ -660,6 +781,9 @@
       meta.appendChild(sk);
     }
     p.appendChild(meta); col.appendChild(p);
+
+    var chart = priceChart(o);
+    if (chart) col.appendChild(chart);
 
     // Score breakdown — an opportunity's own dimensions win when present
     // (Opy: each strategy scores on different axes, so a single per-agent

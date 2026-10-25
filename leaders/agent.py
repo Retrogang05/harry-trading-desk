@@ -52,6 +52,7 @@ import yfinance as yf
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import universe
 import sectors
+import history
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -279,6 +280,7 @@ def main():
     C = fetch_closes(symbols)
     etf = fetch_closes(list(INDEX_ETF.values()))
     rows, context = build(C, membership, sector_map, etf)
+    history.attach(rows, {r["symbol"]: C[r["symbol"]] for r in rows})
     publish(rows, context, membership)
     with open("leaders_results.json", "w") as f:
         json.dump({"scan_date": datetime.now().isoformat(), "rows": rows,

@@ -183,6 +183,7 @@ harry-trading-desk/
 │   └── agent.py
 ├── universe.py              # universe.txt parser, shared by all three scanners
 ├── sectors.py               # sector-ETF regime, shared by Monu and Opy
+├── history.py               # 3-month closes for the detail-panel chart, shared by all
 ├── universe.txt             # 1,516 tickers tagged by index and sector
 ├── data/holdings/           # the ETF holdings exports universe.txt is built from
 │   ├── spy.xlsx  qqq.csv  iwm.csv
@@ -611,6 +612,14 @@ and −46% to −56% is still brutal.
 `docs/index.html` is the homepage — a single static file, no build step and no
 dependencies. It reads `docs/data/agents.json`, loads each listed agent's feed,
 and renders them.
+
+
+Clicking a row opens its detail panel, which includes a **3-month price
+chart** — daily closes, the change over the period, and the row's entry, stop
+and target drawn as dashed lines. Hover (or tap) for a session's close. The
+closes come from each agent's own fetch via the shared `history.py`, so the
+chart shows the bars the signal was computed on; Opy, whose screener keeps no
+bars, fetches its published symbols in one small extra batch.
 
 ### Preview locally
 

@@ -60,6 +60,7 @@ from anthropic import Anthropic
 # Repo root, for the universe.txt parser shared with Monu and Opy.
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import universe
+import history
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -789,6 +790,7 @@ def scan(symbols: List[str], membership: Dict[str, List[str]],
     for i, o in enumerate(selected, 1):
         o["rank"] = i
 
+    history.attach(selected, frames)
     stats["published"] = len(selected)
     return selected, stats
 

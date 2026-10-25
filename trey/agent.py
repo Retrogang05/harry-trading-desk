@@ -50,6 +50,9 @@ import yfinance as yf
 import anthropic
 from anthropic import Anthropic
 
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import history
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -533,6 +536,7 @@ def main():
         f"{c['gate_changes_12m']} gate / {c['size_changes_12m']} size changes 12m"
     )
     row = build_row(c, reasoner.explain(c))
+    history.attach([row], {TRADED: px[TRADED]})
     publish(row, c)
     with open("trey_results.json", "w") as f:
         json.dump({"scan_date": datetime.now().isoformat(), "signal": c, "row": row}, f, indent=2)

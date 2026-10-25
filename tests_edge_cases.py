@@ -419,6 +419,28 @@ for g in ("SPX", "QQQ", "IWM"):
 check("Leaders rows carry no trade levels (a watchlist, not a signal)",
       not any(k in o for o in ld for k in ("entry", "stop_loss", "take_profit")))
 
+# ─────────────────────────────────────────────────────────────────────
+section("Price history (detail-panel chart)")
+
+import history
+_h = history.series(bars([float(i) for i in range(1, 101)]))
+check("history keeps the last SESSIONS closes, oldest first",
+      _h is not None and len(_h["closes"]) == history.SESSIONS and _h["closes"][-1] == 100.0
+      and _h["dates"] == sorted(_h["dates"]))
+check("history of a one-bar series is None (nothing to draw)", history.series(bars([5.0])) is None)
+_rows = [{"symbol": "AAA"}, {"symbol": "BBB"}]
+_real = history._fetch
+history._fetch = lambda syms: {}                 # no network: BBB stays chartless
+history.attach(_rows, {"AAA": bars([10.0 + i for i in range(80)])})
+history._fetch = _real
+check("attach uses the agent's own frames and skips what it cannot get",
+      "history" in _rows[0] and "history" not in _rows[1])
+for fn in ("MNTM", "OPY", "TREY", "GOLD", "PCKT", "LDRS"):
+    _rs = json.load(open(os.path.join(ROOT, "docs", "data", f"{fn}.json")))["opportunities"]
+    check(f"{fn}: every history has matching dates/closes",
+          all(len(o["history"]["dates"]) == len(o["history"]["closes"]) >= 2
+              for o in _rs if "history" in o))
+
 print(f"\n{'='*60}\n{len(PASSES)} passed, {len(FAILS)} failed")
 if FAILS:
     print("FAILURES:")
