@@ -6,7 +6,7 @@
     "description": "Your Finviz relative-volume screen, run on the whole universe, with the major levels and pockets drawn for every hit. A map, not a forecast.",
     "accent": "#a8857f"
   },
-  "scan_date": "2026-10-25T10:19:24.106475",
+  "scan_date": "2026-10-25T15:28:19.137747",
   "dimensions": [
     {
       "key": "fresh_break",
@@ -56,7 +56,7 @@
     },
     {
       "label": "States",
-      "value": "Broke down into pocket 4, Broke up into pocket 7, Inside pocket 36, Testing a level 16"
+      "value": "Broke down from strength 2, Broke down into pocket 2, Broke up into pocket 7, Inside pocket 36, Testing a level 16"
     },
     {
       "label": "Published",
@@ -112,18 +112,22 @@
         "width_pct": 3.6552689781252723,
         "thinness": 0.81,
         "next_above": 163.0399932861328,
-        "next_below": 147.06153926485075,
+        "next_below": 147.0615546569133,
         "floor_touches": 1,
         "ceiling_touches": 1
       },
-      "entry": 154.7899932861328,
-      "stop_loss": 158.1914806051885,
-      "take_profit": 151.76969320019398,
-      "risk_reward_ratio": 0.89,
       "setup": {
         "title": "Level map",
         "label": "Broke down into pocket \u00b7 -8.1% today on 3.3x volume \u00b7 pocket 1.6 ATR / 3.7%",
         "fields": [
+          {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-19.0%"
+          },
           {
             "label": "Today",
             "value": "-8.1%",
@@ -226,6 +230,14 @@
         "label": "Inside pocket \u00b7 -4.9% today on 3.1x volume \u00b7 pocket 4.0 ATR / 13.6%",
         "fields": [
           {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-33.7%"
+          },
+          {
             "label": "Today",
             "value": "-4.9%",
             "tone": "neg"
@@ -325,6 +337,14 @@
         "label": "Testing a level \u00b7 -4.2% today on 3.6x volume \u00b7 pocket 2.6 ATR / 27.9%",
         "fields": [
           {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-41.6%"
+          },
+          {
             "label": "Today",
             "value": "-4.2%",
             "tone": "neg"
@@ -420,13 +440,20 @@
         "ceiling_touches": 2
       },
       "entry": 61.470001220703125,
-      "stop_loss": 58.688749599456784,
-      "take_profit": 65.46500015258789,
-      "risk_reward_ratio": 1.44,
+      "stop_loss": 55.56499977111817,
+      "exit_rule": "20 sessions or stop",
       "setup": {
         "title": "Level map",
         "label": "Broke up into pocket \u00b7 +4.2% today on 2.7x volume \u00b7 pocket 1.4 ATR / 9.6%",
         "fields": [
+          {
+            "label": "Exit",
+            "value": "20 sessions or stop"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-33.9%"
+          },
           {
             "label": "Today",
             "value": "+4.2%",
@@ -529,6 +556,14 @@
         "label": "Inside pocket \u00b7 -2.0% today on 2.2x volume \u00b7 pocket 4.6 ATR / 19.2%",
         "fields": [
           {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-40.4%"
+          },
+          {
             "label": "Today",
             "value": "-2.0%",
             "tone": "neg"
@@ -628,6 +663,14 @@
         "label": "Inside pocket \u00b7 -7.0% today on 3.3x volume \u00b7 pocket 2.4 ATR / 42.6%",
         "fields": [
           {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-71.4%"
+          },
+          {
             "label": "Today",
             "value": "-7.0%",
             "tone": "neg"
@@ -722,14 +765,18 @@
         "floor_touches": 2,
         "ceiling_touches": 1
       },
-      "entry": 33.41999816894531,
-      "stop_loss": 34.43375110626221,
-      "take_profit": 31.9939694368545,
-      "risk_reward_ratio": 1.41,
       "setup": {
         "title": "Level map",
         "label": "Broke down into pocket \u00b7 -3.8% today on 2.3x volume \u00b7 pocket 1.8 ATR / 6.7%",
         "fields": [
+          {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-41.2%"
+          },
           {
             "label": "Today",
             "value": "-3.8%",
@@ -816,11 +863,11 @@
       "volume": 1512800,
       "avg_volume": 713580,
       "map": {
-        "floor": 65.94311551667083,
+        "floor": 65.94312317689312,
         "ceiling": 70.041267390554,
         "atr": 1.8255,
-        "width_atr": 2.2449477196859373,
-        "width_pct": 6.214677365140762,
+        "width_atr": 2.244943523453318,
+        "width_pct": 6.21466502681039,
         "thinness": 0.36,
         "next_above": null,
         "next_below": 64.82522346178997,
@@ -828,13 +875,20 @@
         "ceiling_touches": 2
       },
       "entry": 66.80000305175781,
-      "stop_loss": 65.48674053765167,
-      "take_profit": 70.041267390554,
-      "risk_reward_ratio": 2.47,
+      "stop_loss": 64.11762326081646,
+      "exit_rule": "20 sessions or stop",
       "setup": {
         "title": "Level map",
         "label": "Broke up into pocket \u00b7 +1.7% today on 2.1x volume \u00b7 pocket 2.2 ATR / 6.2%",
         "fields": [
+          {
+            "label": "Exit",
+            "value": "20 sessions or stop"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-4.7%"
+          },
           {
             "label": "Today",
             "value": "+1.7%",
@@ -921,14 +975,14 @@
       "volume": 24246200,
       "avg_volume": 4905422,
       "map": {
-        "floor": 9.956071030774405,
-        "ceiling": 10.439414370508981,
+        "floor": 9.956071948720343,
+        "ceiling": 10.439414833518331,
         "atr": 0.337,
-        "width_atr": 1.4342530793999517,
-        "width_pct": 4.85475985698126,
+        "width_atr": 1.4342517294398953,
+        "width_pct": 4.854754839935768,
         "thinness": 0.49,
-        "next_above": 10.84146564569172,
-        "next_below": 9.705462608030247,
+        "next_above": 10.841465645837834,
+        "next_below": 9.705463631810632,
         "floor_touches": 1,
         "ceiling_touches": 2
       },
@@ -936,6 +990,14 @@
         "title": "Level map",
         "label": "Testing a level \u00b7 -9.3% today on 4.9x volume \u00b7 pocket 1.4 ATR / 4.9%",
         "fields": [
+          {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-32.7%"
+          },
           {
             "label": "Today",
             "value": "-9.3%",
@@ -1020,13 +1082,13 @@
       "volume": 2576600,
       "avg_volume": 1036744,
       "map": {
-        "floor": 45.18309200583985,
-        "ceiling": 48.533155078412086,
+        "floor": 45.18309260220176,
+        "ceiling": 48.533156373050645,
         "atr": 0.9768,
-        "width_atr": 3.429740820363367,
-        "width_pct": 7.414417481962593,
+        "width_atr": 3.4297415352477976,
+        "width_pct": 7.414418929539224,
         "thinness": 2.17,
-        "next_above": 49.16913310507458,
+        "next_above": 49.169131123047066,
         "next_below": 44.329839928453055,
         "floor_touches": 6,
         "ceiling_touches": 3
@@ -1035,6 +1097,14 @@
         "title": "Level map",
         "label": "Inside pocket \u00b7 +4.0% today on 2.5x volume \u00b7 pocket 3.4 ATR / 7.4%",
         "fields": [
+          {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-11.7%"
+          },
           {
             "label": "Today",
             "value": "+4.0%",
@@ -1131,13 +1201,20 @@
         "ceiling_touches": 2
       },
       "entry": 14.0600004196167,
-      "stop_loss": 13.82255112823918,
-      "take_profit": 15.054389427510873,
-      "risk_reward_ratio": 4.19,
+      "stop_loss": 13.58855113682225,
+      "exit_rule": "20 sessions or stop",
       "setup": {
         "title": "Level map",
         "label": "Broke up into pocket \u00b7 +1.8% today on 1.5x volume \u00b7 pocket 3.7 ATR / 8.3%",
         "fields": [
+          {
+            "label": "Exit",
+            "value": "20 sessions or stop"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-6.8%"
+          },
           {
             "label": "Today",
             "value": "+1.8%",
@@ -1240,6 +1317,14 @@
         "label": "Inside pocket \u00b7 +3.3% today on 1.9x volume \u00b7 open on one side",
         "fields": [
           {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-43.6%"
+          },
+          {
             "label": "Today",
             "value": "+3.3%",
             "tone": "pos"
@@ -1290,7 +1375,7 @@
       "symbol": "VRSN",
       "price": 300.32000732421875,
       "score": 46,
-      "strategy": "Broke down into pocket",
+      "strategy": "Broke down from strength",
       "signal_state": "broke_down",
       "signal_label": "Broke down",
       "dimensions": [
@@ -1323,25 +1408,34 @@
       "volume": 1482700,
       "avg_volume": 802907,
       "map": {
-        "floor": 287.1822767375784,
-        "ceiling": 304.00400553934384,
+        "floor": 287.1822613850544,
+        "ceiling": 304.0040210285255,
         "atr": 7.915,
-        "width_atr": 2.125297548824275,
-        "width_pct": 5.857509381450036,
+        "width_atr": 2.1253014454393084,
+        "width_pct": 5.857520434006343,
         "thinness": 0.84,
         "next_above": 310.51180158433334,
-        "next_below": 281.2449042133897,
+        "next_below": 281.24489654231445,
         "floor_touches": 2,
         "ceiling_touches": 2
       },
       "entry": 300.32000732421875,
-      "stop_loss": 305.98275538675597,
-      "take_profit": 287.1822767375784,
+      "stop_loss": 305.9827708759376,
+      "take_profit": 287.1822613850544,
       "risk_reward_ratio": 2.32,
+      "exit_rule": "target or stop",
       "setup": {
         "title": "Level map",
-        "label": "Broke down into pocket \u00b7 -1.4% today on 1.8x volume \u00b7 pocket 2.1 ATR / 5.9%",
+        "label": "Broke down from strength \u00b7 -1.4% today on 1.8x volume \u00b7 pocket 2.1 ATR / 5.9%",
         "fields": [
+          {
+            "label": "Exit",
+            "value": "target or stop"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-3.6%"
+          },
           {
             "label": "Today",
             "value": "-1.4%",
@@ -1445,6 +1539,14 @@
         "label": "Inside pocket \u00b7 -7.7% today on 1.7x volume \u00b7 open on one side",
         "fields": [
           {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-33.8%"
+          },
+          {
             "label": "Today",
             "value": "-7.7%",
             "tone": "neg"
@@ -1528,14 +1630,14 @@
       "volume": 3162500,
       "avg_volume": 1666155,
       "map": {
-        "floor": 120.93493147817594,
+        "floor": 120.9349359202427,
         "ceiling": 131.50745753738153,
         "atr": 3.622,
-        "width_atr": 2.9189748250651424,
-        "width_pct": 8.742326083935076,
+        "width_atr": 2.918973598652367,
+        "width_pct": 8.74232208971564,
         "thinness": 1.67,
         "next_above": 134.82427906475814,
-        "next_below": 114.65689466285873,
+        "next_below": 114.65689943396187,
         "floor_touches": 5,
         "ceiling_touches": 2
       },
@@ -1543,6 +1645,14 @@
         "title": "Level map",
         "label": "Testing a level \u00b7 +1.4% today on 1.9x volume \u00b7 pocket 2.9 ATR / 8.7%",
         "fields": [
+          {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-15.6%"
+          },
           {
             "label": "Today",
             "value": "+1.4%",
@@ -1628,13 +1738,13 @@
       "avg_volume": 22914193,
       "map": {
         "floor": 44.35414296766502,
-        "ceiling": 46.959923644671036,
+        "ceiling": 46.959923619451004,
         "atr": 1.1619,
-        "width_atr": 2.2426544605079006,
-        "width_pct": 5.874943134186311,
+        "width_atr": 2.242654438802383,
+        "width_pct": 5.87494307732571,
         "thinness": 1.18,
         "next_above": 48.261365874621895,
-        "next_below": 42.55164946691801,
+        "next_below": 42.55165137999853,
         "floor_touches": 1,
         "ceiling_touches": 4
       },
@@ -1642,6 +1752,14 @@
         "title": "Level map",
         "label": "Inside pocket \u00b7 -1.2% today on 2.2x volume \u00b7 pocket 2.2 ATR / 5.9%",
         "fields": [
+          {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-12.2%"
+          },
           {
             "label": "Today",
             "value": "-1.2%",
@@ -1742,6 +1860,14 @@
         "title": "Level map",
         "label": "Inside pocket \u00b7 -3.0% today on 1.7x volume \u00b7 pocket 3.2 ATR / 24.0%",
         "fields": [
+          {
+            "label": "Exit",
+            "value": "no trade on this state"
+          },
+          {
+            "label": "Off 52w high",
+            "value": "-57.0%"
+          },
           {
             "label": "Today",
             "value": "-3.0%",

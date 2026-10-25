@@ -590,7 +590,13 @@
         if (typeof o.entry === "number") {
           tr.appendChild(el("td", null, usd(o.entry)));
           var st = el("td", null, usd(o.stop_loss)); st.style.color = "var(--red)"; tr.appendChild(st);
-          var tp = el("td", null, usd(o.take_profit)); tp.style.color = "var(--green-b)"; tr.appendChild(tp);
+          // A row can carry a stop but no target - Pocket's breakouts exit on
+          // time, which tested far better than a fixed target. Say so rather
+          // than printing a dash that reads like missing data.
+          var tp = el("td", null, typeof o.take_profit === "number" ? usd(o.take_profit)
+                                  : (o.exit_rule ? "time exit" : "—"));
+          tp.style.color = typeof o.take_profit === "number" ? "var(--green-b)" : "var(--dim)";
+          tr.appendChild(tp);
           tr.appendChild(el("td", null, typeof o.risk_reward_ratio === "number" ? o.risk_reward_ratio.toFixed(2) : "—"));
         } else {
           for (var c = 0; c < 4; c++) tr.appendChild(el("td", "muted", "—"));
@@ -693,7 +699,9 @@
       var lb = el("div", "pb"), g = el("div", "lv4");
       [["Entry", usd(o.entry), "var(--text)"],
        ["Stop", usd(o.stop_loss), "var(--red)"],
-       ["Target", usd(o.take_profit), "var(--green-b)"],
+       (typeof o.take_profit === "number" || !o.exit_rule)
+         ? ["Target", usd(o.take_profit), "var(--green-b)"]
+         : ["Exit", o.exit_rule, "var(--text)"],
        ["R:R", (typeof o.risk_reward_ratio === "number" ? o.risk_reward_ratio.toFixed(2) : "—"), "var(--text)"]
       ].forEach(function (c) {
         var box = el("div");

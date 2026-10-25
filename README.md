@@ -416,9 +416,13 @@ today's move — "inside" means no level was crossed, not that nothing happened.
 Names between two levels closer than 1.2 ATR are dropped — that's congestion,
 not a pocket. So are **stale** symbols (last bar older than the session being
 screened) and **pinned** ones (daily range under 0.5% of price, typically a
-takeover target trading at the deal price). Breaks get entry/stop/target straight off the map (stop just past the
-crossed level, target the far side); inside rows get none, since they haven't
-picked a direction.
+takeover target trading at the deal price).
+
+**Breakouts** carry an entry and a stop 1 ATR under the crossed level, with no
+fixed target — exit after 20 sessions or at the stop. **Breakdowns** carry a
+short only when the stock is within 10% of its 52-week high ("broke down from
+strength"); other breakdowns are shown, labelled bearish, with no trade. Inside
+and testing rows get none, since they haven't picked a direction.
 
 That 10-session setting reproduced the pockets drawn by hand on AAOI, GOOG,
 CRWV, IREN and SE. It disagreed on DOCU, NOW and IBM, where a minor level
@@ -440,6 +444,29 @@ Tested before building — 2019–2026, up to 400 names, strictly no lookahead:
   stock still rose 0.69% on average — relative weakness, not a profitable short.
 - **Relative volume alone carried information:** a random liquid day with rel
   vol > 1.5 was followed by +2.04% against +1.29% otherwise.
+
+### Confluence and exit tests (Oct 2026)
+
+Re-tested on 32,799 point-in-time Pocket rows, simulating the trades it publishes:
+
+| | Trades | E[R] | 20-day |
+|---|---:|---:|---:|
+| Breakouts, as first published (far-side target) | 4,207 | +0.007 | +0.06% |
+| **Breakouts, 1 ATR stop, 20-session exit (now)** | 4,207 | **+0.210** | +1.50% |
+| Breakdowns, as first published | 4,157 | −0.124 | −0.66% |
+| **Breakdowns within 10% of 52w high (now)** | 805 | **+0.031** | +0.03% |
+| *Every name passing the volume screen, held 20 days* | 48,030 | — | *+3.23%* |
+
+- **36 confluence tests**, each required to win in both 2020–22 and 2023–26.
+  Only one survived — breakdowns near the 52-week high. Shorting stocks that
+  were already weak (below averages, weak sector, oversold, SPY downtrend)
+  was where the losses were. Stacking conditions made results worse.
+- **The exit mattered more than any filter.** The far-side target capped the
+  winners; a time exit let them run.
+- **Every layer of pocket logic still returned less than the raw volume
+  screen.** The screen is where the return is; the map is best used for stops
+  and context. Long-side figures are flattered by survivorship (today's
+  universe, delisted names absent); the comparisons between rows are not.
 
 So the score orders the list — fresh break, relative volume, room to the far
 side — and is not a forecast. The value is time: the screen and the chart

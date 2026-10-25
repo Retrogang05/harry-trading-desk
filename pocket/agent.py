@@ -40,6 +40,25 @@ names, strictly no lookahead:
   * Relative volume itself carried information: a random liquid day with rel
     vol > 1.5 was followed by +2.04% against +1.29% otherwise.
 
+Tested again on 32,799 point-in-time rows (2020-26) with this file's own
+map, simulating the trades it publishes:
+
+  * As first published, breakouts averaged +0.007R and breakdowns -0.124R.
+  * 36 confluence tests (18 conditions x both directions), each required to
+    win in 2020-22 AND 2023-26. One survived: a breakdown within 10% of the
+    52-week high (-0.124R -> +0.031R). Shorting already-weak stocks lost
+    -0.161R. Stacking conditions made results worse, not better.
+  * The exit mattered more than any entry filter. The far-side target capped
+    breakout winners; holding 20 sessions with a stop 1 ATR past the level
+    gave +0.210R (+1.50%), positive in both eras. Hence the trade rules in
+    trade_levels().
+  * Even so, every layer of pocket logic returned LESS than simply holding
+    every name that passed the volume screen (+3.23% over 20 sessions vs
+    +1.50% for the breakout trade). The screen is where the return is; the
+    map is best used for stops and context. All long-side figures are
+    flattered by survivorship (today's universe, delisted names absent);
+    the comparisons between them are not.
+
 So the score below orders the list - fresh break, volume, room to the far
 side - and is not a forecast. The agent's value is time: it replaces scanning
 charts one by one, and its floors and ceilings are natural stop and target
@@ -111,7 +130,26 @@ PIVOT_BARS = 10       # a major pivot is the extreme of +/- this many sessions
 RECENT_RIGHT_BARS = 3
 CLUSTER_ATR = 0.75    # pivots within this many ATR are one level
 MIN_POCKET_ATR = 1.2  # narrower than this, two levels are just a congestion zone
-STOP_BUFFER_ATR = 0.25
+STOP_BUFFER_ATR = 0.25      # breakdowns: stop this far past the crossed level
+
+# Breakouts carry NO fixed target - they are held to a stop or a time exit.
+# Tested on 4,207 historical breakouts (2020-26, point-in-time, using this
+# file's own map): the far-side target capped the winners, and the trade as
+# first published averaged +0.007R. Dropping the target and holding 20
+# sessions lifted that to about +0.23R, positive in both 2020-22 and
+# 2023-26; a stop 1 ATR past the level beat 0.25 ATR on % return in both
+# eras. The win rate falls to roughly 40% - fewer, larger winners.
+BREAKOUT_STOP_ATR = 1.0
+BREAKOUT_HOLD_SESSIONS = 20
+
+# Breakdowns carry short levels only from strength. Of 18 confluences tested
+# on 4,157 historical breakdowns, the only one that improved them in BOTH
+# eras (p=0.001, p=0.027) was being within 10% of the 52-week high:
+# -0.124R overall became +0.031R. Shorting stocks already weak - below their
+# averages, weak sector, oversold, SPY in a downtrend - was where the losses
+# were (-0.161R across 81% of breakdowns). The rest still publish as rows,
+# labelled bearish, but with no trade attached.
+SHORT_MAX_OFF_HIGH = 0.10
 
 # A close counts as a BREAK only if it clears the level by this much. Inside
 # that band price is testing the level, not through it: PHM closed 121.19
@@ -327,6 +365,9 @@ def map_levels(df: pd.DataFrame) -> Dict:
         # The next level out on each side, so a trader can see past the pocket.
         "next_above": above[1]["level"] if len(above) > 1 else None,
         "next_below": below[-2]["level"] if len(below) > 1 else None,
+        # Distance below the 52-week high, which decides whether a breakdown
+        # gets a trade (SHORT_MAX_OFF_HIGH).
+        "off_high_pct": (price / float(df["High"].tail(252).max()) - 1) * 100,
     }
 
 
@@ -351,32 +392,41 @@ def score(m: Dict, vol: Dict) -> Dict:
             "total": fresh + rv + room, "room_atr": room_atr}
 
 
+def short_from_strength(m: Dict) -> bool:
+    return m["state"] == "broke_down" and m["off_high_pct"] > -SHORT_MAX_OFF_HIGH * 100
+
+
 def trade_levels(m: Dict) -> Dict:
-    """Entry/stop/target taken straight off the map, for breaks only.
+    """The trade a row carries, in the form that tested best. See the
+    BREAKOUT_* and SHORT_MAX_OFF_HIGH constants for the evidence.
 
-    A break up: stop just under the level it crossed, target the ceiling.
-    A break down: the short-side mirror - stop just over the crossed level,
-    target the floor - published with bias bearish so the dashboard never
-    words or colours it as a buy. With no level on the far side the target is
-    3 ATR, labelled as such, because "open air" has no natural price.
+    Break up: entry at the close, stop 1 ATR under the level it crossed, no
+    target - exit after BREAKOUT_HOLD_SESSIONS sessions or at the stop.
 
-    An inside row gets none: it has not chosen a direction, and a long setup
-    quoted on it would be a guess.
+    Break down from strength (within 10% of the 52-week high): the short-side
+    trade as originally tested - stop 0.25 ATR over the crossed level, target
+    the floor (3 ATR if open air) - published bearish so the dashboard never
+    words or colours it as a buy. Any other breakdown gets no trade.
+
+    Inside and testing rows get none: they have not chosen a direction.
     """
     a, px = m["atr"], m["price"]
     if m["state"] == "broke_up":
-        stop = m["floor"]["level"] - STOP_BUFFER_ATR * a
-        target = m["ceiling"]["level"] if m["ceiling"] else px + 3 * a
-    elif m["state"] == "broke_down":
+        stop = m["floor"]["level"] - BREAKOUT_STOP_ATR * a
+        if px - stop <= 0:
+            return {}
+        return {"entry": px, "stop_loss": stop,
+                "exit_rule": f"{BREAKOUT_HOLD_SESSIONS} sessions or stop"}
+    if short_from_strength(m):
         stop = m["ceiling"]["level"] + STOP_BUFFER_ATR * a
         target = m["floor"]["level"] if m["floor"] else px - 3 * a
-    else:
-        return {}
-    risk = abs(px - stop)
-    if risk <= 0:
-        return {}
-    return {"entry": px, "stop_loss": stop, "take_profit": target,
-            "risk_reward_ratio": round(abs(target - px) / risk, 2)}
+        risk = stop - px
+        if risk <= 0:
+            return {}
+        return {"entry": px, "stop_loss": stop, "take_profit": target,
+                "risk_reward_ratio": round((px - target) / risk, 2),
+                "exit_rule": "target or stop"}
+    return {}
 
 
 # ── Reasoning ────────────────────────────────────────────────────────────
@@ -487,6 +537,8 @@ def scan(symbols: List[str], membership: Dict[str, List[str]],
         s = score(m, vol)
         lv = trade_levels(m)
         strategy, bias, label, tone = STATE_LABEL[m["state"]]
+        if short_from_strength(m):
+            strategy = "Broke down from strength"
         stats["by_state"][strategy] = stats["by_state"].get(strategy, 0) + 1
 
         fl = m["floor"]["level"] if m["floor"] else None
@@ -521,6 +573,8 @@ def scan(symbols: List[str], membership: Dict[str, List[str]],
                           + (f"pocket {m['width_atr']:.1f} ATR / {m['width_pct']:.1f}%"
                              if m["width_atr"] else "open on one side")),
                 "fields": [
+                    {"label": "Exit", "value": lv.get("exit_rule", "no trade on this state")},
+                    {"label": "Off 52w high", "value": f"{m['off_high_pct']:.1f}%"},
                     {"label": "Today", "value": f"{m['day_move_pct']:+.1f}%",
                      "tone": "pos" if m["day_move_pct"] > 0 else "neg" if m["day_move_pct"] < 0 else None},
                     {"label": "Ceiling", "value": _f(cl, none="open air")},

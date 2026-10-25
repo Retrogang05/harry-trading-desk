@@ -324,6 +324,17 @@ check("inside and testing rows carry no entry/stop/target",
       all("entry" not in o for o in pk if o["signal_state"] in ("inside", "testing")))
 check("only breaks earn the fresh-break points",
       all((o["breakdown"]["fresh_break"] > 0) == (o["signal_state"] in ("broke_up", "broke_down")) for o in pk))
+# The exit rules that tested best - see BREAKOUT_* and SHORT_MAX_OFF_HIGH.
+check("breakouts carry a stop and a time exit, no fixed target",
+      all("entry" in o and "take_profit" not in o and "sessions" in o.get("exit_rule", "")
+          for o in pk if o["signal_state"] == "broke_up"))
+check("breakout stop sits BREAKOUT_STOP_ATR under the crossed level",
+      all(abs(o["stop_loss"] - (o["map"]["floor"] - pocket.BREAKOUT_STOP_ATR * o["map"]["atr"])) < 1e-6
+          for o in pk if o["signal_state"] == "broke_up"))
+_off = lambda o: next(float(f["value"].rstrip("%")) for f in o["setup"]["fields"] if f["label"] == "Off 52w high")
+check("only breakdowns within 10% of the 52-week high carry a short",
+      all(("entry" in o) == (_off(o) > -pocket.SHORT_MAX_OFF_HIGH * 100)
+          for o in pk if o["signal_state"] == "broke_down"))
 check("breakdowns are labelled bearish",
       all(o.get("bias") == "bearish" for o in pk if o["signal_state"] == "broke_down"))
 check("no published pocket narrower than MIN_POCKET_ATR",
