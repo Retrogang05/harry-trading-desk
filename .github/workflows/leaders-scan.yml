@@ -1,0 +1,164 @@
+name: Leaders — Top 25 momentum by index
+
+on:
+  # 9pm New York, Monday-Friday: five hours after the close, so every agent
+  # works off the completed session. That is the NEXT day in UTC, so the
+  # crons run Tuesday-Saturday UTC for Monday-Friday sessions.
+  #
+  # GitHub cron is UTC-only with no daylight saving, and 9pm New York is 01:00
+  # UTC under EDT (Mar-Nov) and 02:00 UTC under EST (Nov-Mar). Both crons
+  # fire; the gate job below lets through only the one that is 9pm in New
+  # York that day.
+  #
+  # The later hour does not remove the need for the bar-wait step below: all
+  # six of Trey's stale-bar runs in Sep-Oct 2026 landed between 8:27 and
+  # 9:11pm New York, so Yahoo's lag is a bad-day problem, not a fixed delay.
+  #
+  # Minute :57 - the agents are staggered ten minutes apart (Monu :07, Opy
+  # :17, Trey :27, Goldy :37, Pocket :47, Leaders :57). They all push to main
+  # and the pull --rebase below is what keeps that safe; the stagger is
+  # belt-and-braces, and keeping off :00 avoids GitHub's busiest minute.
+  #
+  # Monu previously ran at 14:00 UTC, which during US daylight saving is 10:00
+  # New York - half an hour INTO the session. With GitHub's start delays, 86%
+  # of its published prices from 1 Sep to 23 Oct 2026 were live intraday
+  # prices off a half-formed bar, not closes.
+  schedule:
+    - cron: '57 1 * * 2-6'
+    - cron: '57 2 * * 2-6'
+  workflow_dispatch:
+
+# NOT on push - same rule as the other agents. Leaders makes no Claude calls
+# (it is a pure ranking), but it still fetches ~1,500 symbols from Yahoo, so it
+# runs on a schedule or by hand, never on every commit.
+
+permissions:
+  contents: write
+
+concurrency:
+  group: leaders-scan     # own group: never blocks or races the other agents
+  cancel-in-progress: false
+
+jobs:
+  # Lets through only the cron that is 9pm in New York today. Keyed on WHICH
+  # cron fired rather than on the clock: scheduled runs often start an hour
+  # or more late, and a clock check would then skip both. Manual runs always
+  # pass.
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.tz.outputs.go }}
+    steps:
+      - id: tz
+        env:
+          FIRED: ${{ github.event.schedule }}
+        run: |
+          off=$(TZ=America/New_York date +%z)          # -0400 EDT, -0500 EST
+          want=$([ "$off" = "-0400" ] && echo 1 || echo 2)
+          got=$(echo "$FIRED" | awk '{print $2}')
+          if [ -z "$FIRED" ] || [ "$got" = "$want" ]; then go=true; else go=false; fi
+          echo "New York offset $off; fired hour ${got:-manual}; want $want; go=$go"
+          echo "go=$go" >> "$GITHUB_OUTPUT"
+
+  scan:
+    needs: gate
+    if: needs.gate.outputs.go == 'true'
+    runs-on: ubuntu-latest
+    # ~65s in practice for ~1,500 symbols; bound a hung fetch well above that.
+    timeout-minutes: 115
+    steps:
+      # Same pinned SHAs as the other three workflows.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262   # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.14'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Show resolved versions
+        run: pip list
+
+      # Yahoo's daily bar is not always there an hour after the close: 6 of 25
+      # Trey runs from Sep-Oct 2026 used the PREVIOUS day's bar despite running
+      # 3-5 hours after the close. Scanning before it lands publishes
+      # yesterday's data under today's date. So wait for SPY's bar for the
+      # session just closed - every 5 minutes, up to 90 - and skip the scan if
+      # it never comes. That is also what a market holiday looks like, and
+      # publishing nothing beats publishing a stale session as if it were new.
+      - name: Wait for the session's daily bar
+        id: bar
+        run: |
+          python - <<'PY'
+          import datetime as dt, os, time
+          from zoneinfo import ZoneInfo
+          import yfinance as yf
+          now = dt.datetime.now(ZoneInfo("America/New_York"))
+          want = now.date() if now.hour >= 16 else now.date() - dt.timedelta(days=1)
+          while want.isoweekday() > 5:
+              want -= dt.timedelta(days=1)
+          got = None
+          for attempt in range(1, 20):
+              try:
+                  d = yf.download("SPY", period="5d", progress=False,
+                                  threads=False, auto_adjust=True)
+                  got = d.index[-1].date() if len(d) else None
+              except Exception as e:
+                  print(f"attempt {attempt}: fetch failed ({e})")
+              print(f"attempt {attempt}: want {want}, latest SPY bar {got}")
+              if got is not None and got >= want:
+                  break
+              if attempt < 19:
+                  time.sleep(300)
+          fresh = got is not None and got >= want
+          if not fresh:
+              print(f"No daily bar for {want} after 90 minutes - a market holiday "
+                    f"or a Yahoo delay. Nothing will be published.")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"fresh={'true' if fresh else 'false'}\n")
+              f.write(f"session={want:%Y%m%d}\n")
+              f.write(f"session_dash={want:%Y-%m-%d}\n")
+          PY
+
+      # No ANTHROPIC_API_KEY: the ranking needs no model call.
+      - name: Run scan
+        if: steps.bar.outputs.fresh == 'true'
+        working-directory: leaders
+        run: python agent.py
+
+      - name: Commit results
+        if: steps.bar.outputs.fresh == 'true'
+        env:
+          SESSION_ID: ${{ steps.bar.outputs.session }}
+          SESSION_DASH: ${{ steps.bar.outputs.session_dash }}
+        run: |
+          # Name the archive by the session the bar-wait step confirmed, not by
+          # the clock: runs that slipped past midnight UTC used to be labelled
+          # a day late (signal_20261013.json held the 12 Oct session).
+          SESSION="$SESSION_ID"; d="$SESSION_DASH"
+
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # Dated archive, same as the other agents: a run of these files is
+          # what scripts/review_signals.py scores the strategy against later.
+          mkdir -p leaders/results
+          cp leaders/leaders_results.json "leaders/results/scan_${SESSION}.json"
+
+          # Only this agent's own files plus the manifest - never another
+          # agent's data.
+          git add leaders/results/ docs/data/LDRS.json docs/data/agents.json
+
+          if git diff --staged --quiet; then
+            echo "No change in scan output - nothing to commit."
+          else
+            git commit -m "Leaders scan ${d}"
+            # Another agent may have pushed since checkout. Each agent stages
+            # only its own files, so a rebase never conflicts - but without it
+            # a bare push is rejected and the scan's data is silently dropped.
+            git pull --rebase origin main
+            git push
+          fi

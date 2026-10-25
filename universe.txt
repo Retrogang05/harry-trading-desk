@@ -7,17 +7,17 @@
 #   XL*  the eleven sector SPDRs, State Street        downloaded at build time
 #        (Russell names take their sector from BlackRock's own column)
 #
-# Built  : 2026-10-05 by scripts/build_universe.py
-# Count  : 1521 tickers  (SPX 503, QQQ 98, IWM 1006; SPX and QQQ overlap heavily)
+# Built  : 2026-10-25 by scripts/build_universe.py
+# Count  : 1516 tickers  (SPX 501, QQQ 100, IWM 1000; SPX and QQQ overlap heavily)
 #
 # Filtered:
 #          cash, money market, futures and unlisted private positions removed
 #          price >= $5 and median 3-month dollar volume >= $10M
-#          963 too thin to trade, 6 did not price
+#          965 too thin to trade, 12 did not price
 #
 # Class shares use Yahoo notation: BRK-B, MOG-A  (funds write BRK.B, "MOG A")
 #
-# Sector : 1509 of 1521 tagged  (XLB 67, XLC 54, XLE 82, XLF 239, XLI 227, XLK 212, XLP 64, XLRE 75, XLU 51, XLV 276, XLY 162)
+# Sector : 1501 of 1516 tagged  (XLB 65, XLC 53, XLE 83, XLF 242, XLI 220, XLK 212, XLP 64, XLRE 77, XLU 51, XLV 270, XLY 164)
 #
 # One ticker per line; the trailing comment is the index membership plus
 # the sector SPDR that holds it. Sector tags are ETF symbols, not sector
@@ -96,6 +96,7 @@ ALKS   # IWM,XLV
 ALKT   # IWM,XLK
 ALL    # SPX,XLF
 ALLE   # SPX,XLI
+ALMR   # IWM,XLV
 ALMS   # IWM,XLV
 ALNT   # IWM,XLI
 ALNY   # QQQ
@@ -117,6 +118,7 @@ AMR    # IWM,XLB
 AMRC   # IWM,XLI
 AMRX   # IWM,XLV
 AMSC   # IWM,XLI
+AMSF   # IWM,XLF
 AMT    # SPX,XLRE
 AMZN   # SPX,QQQ,XLY
 ANAB   # IWM,XLV
@@ -135,7 +137,6 @@ APD    # SPX,XLB
 APEI   # IWM,XLY
 APH    # SPX,XLK
 APLE   # IWM,XLRE
-APMD   # IWM,XLV
 APO    # SPX,XLF
 APP    # SPX,QQQ,XLC
 APPN   # IWM,XLK
@@ -144,14 +145,18 @@ APTV   # SPX,XLY
 ARCB   # IWM,XLI
 ARE    # SPX,XLRE
 ARES   # SPX,XLF
+ARHS   # IWM,XLY
 ARLO   # IWM,XLK
+ARM    # QQQ
 AROC   # IWM,XLE
 ARQT   # IWM,XLV
 ARR    # IWM,XLF
 ARX    # IWM,XLF
 ASAN   # IWM,XLK
 ASB    # IWM,XLF
+ASC    # IWM,XLE
 ASH    # IWM,XLB
+ASML   # QQQ
 ASO    # IWM,XLY
 ASST   # IWM,XLV
 ASTH   # IWM,XLV
@@ -234,7 +239,6 @@ BKU    # IWM,XLF
 BKV    # IWM,XLE
 BL     # IWM,XLK
 BLBD   # IWM,XLI
-BLFS   # IWM,XLV
 BLK    # SPX,XLF
 BLKB   # IWM,XLK
 BLMN   # IWM,XLY
@@ -260,7 +264,6 @@ BTSG   # IWM,XLV
 BTU    # IWM,XLE
 BULL   # IWM,XLF
 BUSE   # IWM,XLF
-BW     # IWM,XLI
 BWIN   # IWM,XLF
 BWMN   # IWM,XLI
 BX     # SPX,XLF
@@ -322,6 +325,7 @@ CHTR   # SPX,XLC
 CI     # SPX,XLV
 CIEN   # SPX,XLK
 CIFR   # IWM,XLK
+CIM    # IWM,XLF
 CINF   # SPX,XLF
 CL     # SPX,XLP
 CLBK   # IWM,XLF
@@ -335,7 +339,6 @@ CMCSA  # SPX,QQQ,XLC
 CME    # SPX,XLF
 CMG    # SPX,XLY
 CMI    # SPX,XLI
-CMP    # IWM,XLB
 CMPR   # IWM,XLI
 CMS    # SPX,XLU
 CNC    # SPX,XLV
@@ -409,7 +412,6 @@ CVNA   # SPX,XLY
 CVS    # SPX,XLV
 CVSA   # IWM,XLY
 CVX    # SPX,XLE
-CWH    # IWM,XLY
 CWK    # IWM,XLRE
 CWST   # IWM,XLI
 CWT    # IWM,XLU
@@ -423,7 +425,6 @@ DAN    # IWM,XLY
 DASH   # SPX,QQQ,XLY
 DAVE   # IWM,XLF
 DBD    # IWM,XLK
-DCH    # IWM,XLY
 DCO    # IWM,XLI
 DCOM   # IWM,XLF
 DD     # SPX,XLI
@@ -433,6 +434,7 @@ DEC    # IWM,XLE
 DECK   # SPX,XLY
 DEI    # IWM,XLRE
 DELL   # SPX,XLK
+DFH    # IWM,XLY
 DFTX   # IWM,XLV
 DG     # SPX,XLP
 DGII   # IWM,XLK
@@ -441,6 +443,7 @@ DHC    # IWM,XLRE
 DHI    # SPX,XLY
 DHR    # SPX,XLV
 DHT    # IWM,XLE
+DIN    # IWM,XLY
 DIOD   # IWM,XLK
 DIS    # SPX,XLC
 DJCO   # IWM,XLK
@@ -450,7 +453,7 @@ DLO    # IWM,XLF
 DLR    # SPX,XLRE
 DLTR   # SPX,XLP
 DMC    # IWM,XLP
-DMRA   # IWM,XLV
+DNA    # IWM,XLV
 DNLI   # IWM,XLV
 DNOW   # IWM,XLI
 DNTH   # IWM,XLV
@@ -510,12 +513,12 @@ ES     # SPX,XLU
 ESE    # IWM,XLI
 ESNT   # IWM,XLF
 ESQ    # IWM,XLF
+ESRT   # IWM,XLRE
 ESS    # SPX,XLRE
 ESTA   # IWM,XLV
 ETN    # SPX,XLI
 ETON   # IWM,XLV
 ETR    # SPX,XLU
-EVC    # IWM,XLC
 EVER   # IWM,XLC
 EVRG   # SPX,XLU
 EVTC   # IWM,XLF
@@ -542,6 +545,7 @@ FCF    # IWM,XLF
 FCFS   # IWM,XLF
 FCPT   # IWM,XLRE
 FCX    # SPX,XLB
+FDMT   # IWM,XLV
 FDS    # SPX,XLF
 FDX    # SPX,XLI
 FDXF   # SPX,XLI
@@ -592,6 +596,7 @@ FUBO   # IWM,XLC
 FUL    # IWM,XLB
 FULT   # IWM,XLF
 FUN    # IWM,XLY
+FWDI   # IWM,XLK
 FWRG   # IWM,XLY
 GATX   # IWM,XLI
 GBCI   # IWM,XLF
@@ -655,6 +660,7 @@ HAS    # SPX,XLY
 HASI   # IWM,XLF
 HAWK   # IWM,XLI
 HBAN   # SPX,XLF
+HBNC   # IWM,XLF
 HCA    # SPX,XLV
 HCC    # IWM,XLB
 HCI    # IWM,XLF
@@ -673,6 +679,7 @@ HIW    # IWM,XLRE
 HLF    # IWM,XLP
 HLIO   # IWM,XLI
 HLIT   # IWM,XLK
+HLMN   # IWM,XLI
 HLT    # SPX,XLY
 HMN    # IWM,XLF
 HNGE   # IWM,XLV
@@ -754,7 +761,6 @@ IPAR   # IWM,XLP
 IQV    # SPX,XLV
 IR     # SPX,XLI
 IRM    # SPX,XLRE
-IRMD   # IWM,XLV
 IRON   # IWM,XLV
 IRT    # IWM,XLRE
 IRTC   # IWM,XLV
@@ -777,7 +783,6 @@ JCI    # SPX,XLI
 JJSF   # IWM,XLP
 JKHY   # SPX,XLF
 JNJ    # SPX,XLV
-JOBY   # IWM,XLI
 JOE    # IWM,XLRE
 JPM    # SPX,XLF
 JXN    # IWM,XLF
@@ -822,7 +827,6 @@ LAUR   # IWM,XLY
 LBRT   # IWM,XLE
 LBRX   # IWM,XLV
 LCII   # IWM,XLY
-LCLN   # IWM,XLF
 LDOS   # SPX,XLI
 LEN    # SPX,XLY
 LEU    # IWM,XLE
@@ -835,6 +839,7 @@ LH     # SPX,XLV
 LHX    # SPX,XLI
 LIF    # IWM,XLK
 LII    # SPX,XLI
+LILAK  # IWM,XLC
 LIME   # IWM,XLI
 LIN    # SPX,QQQ,XLB
 LINC   # IWM,XLY
@@ -842,6 +847,7 @@ LIND   # IWM,XLY
 LION   # IWM,XLC
 LITE   # SPX,QQQ,XLK
 LIVN   # IWM,XLV
+LKFN   # IWM,XLF
 LLY    # SPX,XLV
 LMAT   # IWM,XLV
 LMB    # IWM,XLI
@@ -859,11 +865,9 @@ LRN    # IWM,XLY
 LTC    # IWM,XLRE
 LTH    # IWM,XLY
 LULU   # SPX,XLY
-LUMN   # IWM,XLC
 LUNR   # IWM,XLI
 LUV    # SPX,XLI
 LVS    # SPX,XLY
-LWLG   # IWM,XLK
 LXP    # IWM,XLRE
 LYB    # SPX,XLB
 LYV    # SPX,XLC
@@ -893,7 +897,6 @@ MCY    # IWM,XLF
 MD     # IWM,XLV
 MDLZ   # SPX,QQQ,XLP
 MDT    # SPX,XLV
-MEC    # IWM,XLI
 MELI   # QQQ
 MET    # SPX,XLF
 META   # SPX,QQQ,XLC
@@ -908,7 +911,6 @@ MHO    # IWM,XLY
 MIAX   # IWM,XLF
 MIR    # IWM,XLK
 MIRM   # IWM,XLV
-MITK   # IWM,XLK
 MKC    # SPX,XLP
 MLAB   # IWM,XLV
 MLKN   # IWM,XLI
@@ -951,11 +953,11 @@ MUR    # IWM,XLE
 MUX    # IWM,XLB
 MWA    # IWM,XLI
 MXL    # IWM,XLK
-MYE    # IWM,XLB
 MYRG   # IWM,XLI
 MZTI   # IWM,XLP
 NAT    # IWM,XLE
 NATL   # IWM,XLF
+NAVI   # IWM,XLF
 NAVN   # IWM,XLY
 NBHC   # IWM,XLF
 NBIS   # QQQ
@@ -994,7 +996,6 @@ NOVT   # IWM,XLK
 NOW    # SPX,XLK
 NP     # IWM,XLF
 NPK    # IWM,XLI
-NPKI   # IWM,XLI
 NPO    # IWM,XLI
 NRG    # SPX,XLU
 NRIX   # IWM,XLV
@@ -1007,10 +1008,8 @@ NTCT   # IWM,XLK
 NTLA   # IWM,XLV
 NTRS   # SPX,XLF
 NTST   # IWM,XLRE
-NUAI   # IWM,XLE
 NUE    # SPX,XLB
 NUTX   # IWM,XLV
-NUVB   # IWM,XLV
 NVAX   # IWM,XLV
 NVCR   # IWM,XLV
 NVDA   # SPX,QQQ,XLK
@@ -1036,7 +1035,6 @@ OGS    # IWM,XLU
 OI     # IWM,XLB
 OII    # IWM,XLE
 OKE    # SPX,XLE
-OLMA   # IWM,XLV
 OMC    # SPX,XLC
 OMCL   # IWM,XLV
 OMDA   # IWM,XLV
@@ -1082,7 +1080,9 @@ PCG    # SPX,XLU
 PCRX   # IWM,XLV
 PCVX   # IWM,XLV
 PD     # IWM,XLK
+PDD    # QQQ
 PDFS   # IWM,XLK
+PDM    # IWM,XLRE
 PEB    # IWM,XLRE
 PEBO   # IWM,XLF
 PECO   # IWM,XLRE
@@ -1090,7 +1090,6 @@ PEG    # SPX,XLU
 PENG   # IWM,XLK
 PENN   # IWM,XLY
 PEP    # SPX,QQQ,XLP
-PFBC   # IWM,XLF
 PFE    # SPX,XLV
 PFG    # SPX,XLF
 PFS    # IWM,XLF
@@ -1100,7 +1099,6 @@ PGEN   # IWM,XLV
 PGNY   # IWM,XLV
 PGR    # SPX,XLF
 PH     # SPX,XLI
-PHAT   # IWM,XLV
 PHIN   # IWM,XLY
 PHM    # SPX,XLY
 PI     # IWM,XLK
@@ -1123,7 +1121,6 @@ PMT    # IWM,XLF
 PNC    # SPX,XLF
 PNR    # SPX,XLI
 PNRG   # IWM,XLE
-PNTG   # IWM,XLV
 PNW    # SPX,XLU
 PODD   # SPX,XLV
 POR    # IWM,XLU
@@ -1147,7 +1144,6 @@ PRU    # SPX,XLF
 PRVA   # IWM,XLV
 PSA    # SPX,XLRE
 PSIX   # IWM,XLI
-PSKY   # SPX,XLC
 PSMT   # IWM,XLP
 PSNL   # IWM,XLV
 PSX    # SPX,XLE
@@ -1155,7 +1151,9 @@ PTC    # SPX,XLK
 PTCT   # IWM,XLV
 PTEN   # IWM,XLE
 PTGX   # IWM,XLV
+PTON   # IWM,XLY
 PTRN   # IWM,XLY
+PUBM   # IWM,XLC
 PUMP   # IWM,XLE
 PURR   # IWM,XLV
 PVLA   # IWM,XLV
@@ -1175,7 +1173,6 @@ QUBT   # IWM,XLK
 RAMP   # IWM,XLK
 RAPP   # IWM,XLV
 RARE   # IWM,XLV
-RCAT   # IWM,XLI
 RCL    # SPX,XLY
 RCUS   # IWM,XLV
 RDDT   # SPX,XLC
@@ -1189,15 +1186,14 @@ REG    # SPX,XLRE
 REGN   # SPX,QQQ,XLV
 RELY   # IWM,XLF
 REPL   # IWM,XLV
+RES    # IWM,XLE
 REZI   # IWM,XLI
 RF     # SPX,XLF
-RGNX   # IWM,XLV
 RGTI   # IWM,XLK
 RH     # IWM,XLY
 RHLD   # IWM,XLI
 RHP    # IWM,XLRE
 RIG    # IWM,XLE
-RIGL   # IWM,XLV
 RIOT   # IWM,XLK
 RJF    # SPX,XLF
 RKLB   # QQQ
@@ -1230,7 +1226,6 @@ RYZ    # IWM,XLB
 SAFT   # IWM,XLF
 SAH    # IWM,XLY
 SAM    # IWM,XLP
-SATL   # IWM,XLI
 SBAC   # SPX,XLRE
 SBCF   # IWM,XLF
 SBET   # IWM,XLF
@@ -1261,6 +1256,7 @@ SHOE   # IWM,XLY
 SHOO   # IWM,XLY
 SHOP   # QQQ
 SHW    # SPX,XLB
+SIBN   # IWM,XLV
 SIG    # IWM,XLY
 SIGI   # IWM,XLF
 SJM    # SPX,XLP
@@ -1287,7 +1283,6 @@ SNPS   # SPX,QQQ,XLK
 SO     # SPX,XLU
 SOLV   # SPX,XLV
 SONO   # IWM,XLY
-SOUN   # IWM,XLK
 SPB    # IWM,XLP
 SPCX   # QQQ
 SPG    # SPX,XLRE
@@ -1295,6 +1290,7 @@ SPGI   # SPX,XLF
 SPHR   # IWM,XLC
 SPNT   # IWM,XLF
 SPSC   # IWM,XLK
+SPT    # IWM,XLK
 SR     # IWM,XLU
 SRE    # SPX,XLU
 SRPT   # IWM,XLV
@@ -1305,6 +1301,7 @@ STBA   # IWM,XLF
 STC    # IWM,XLF
 STE    # SPX,XLV
 STEP   # IWM,XLF
+STGW   # IWM,XLC
 STLD   # SPX,XLB
 STNE   # IWM,XLF
 STNG   # IWM,XLE
@@ -1320,7 +1317,6 @@ SVV    # IWM,XLY
 SW     # SPX,XLB
 SWK    # SPX,XLI
 SWKS   # SPX,XLK
-SWMR   # IWM,XLI
 SWX    # IWM,XLU
 SXI    # IWM,XLI
 SXT    # IWM,XLB
@@ -1350,6 +1346,7 @@ TER    # SPX,QQQ,XLK
 TEX    # IWM,XLI
 TFC    # SPX,XLF
 TFIN   # IWM,XLF
+TGLS   # IWM,XLI
 TGT    # SPX,XLP
 TGTX   # IWM,XLV
 TH     # IWM,XLY
@@ -1410,7 +1407,6 @@ UEC    # IWM,XLE
 UFPI   # IWM,XLI
 UFPT   # IWM,XLV
 UHS    # SPX,XLV
-ULCC   # IWM,XLI
 ULTA   # SPX,XLY
 UMAC   # IWM,XLK
 UMBF   # IWM,XLF
@@ -1461,6 +1457,7 @@ VOR    # IWM,XLV
 VOYG   # IWM,XLI
 VPG    # IWM,XLK
 VRDN   # IWM,XLV
+VREX   # IWM,XLV
 VRNS   # IWM,XLK
 VRSK   # SPX,XLI
 VRSN   # SPX,XLK
@@ -1483,11 +1480,11 @@ WAB    # SPX,XLI
 WAFD   # IWM,XLF
 WAT    # SPX,XLV
 WAY    # IWM,XLV
-WBD    # SPX,QQQ,XLC
 WD     # IWM,XLF
 WDAY   # SPX,QQQ,XLK
 WDC    # SPX,QQQ,XLK
 WDFC   # IWM,XLP
+WEAV   # IWM,XLK
 WEC    # SPX,XLU
 WELL   # SPX,XLRE
 WEN    # IWM,XLY
@@ -1507,7 +1504,6 @@ WM     # SPX,XLI
 WMB    # SPX,XLE
 WMK    # IWM,XLP
 WMT    # SPX,QQQ,XLP
-WNC    # IWM,XLI
 WOLF   # IWM,XLK
 WOR    # IWM,XLI
 WRB    # SPX,XLF
@@ -1546,6 +1542,5 @@ ZD     # IWM,XLC
 ZETA   # IWM,XLK
 ZGN    # IWM,XLY
 ZTS    # SPX,XLV
-ZVRA   # IWM,XLV
 ZWS    # IWM,XLI
 ZYME   # IWM,XLV

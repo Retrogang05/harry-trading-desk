@@ -1,0 +1,4017 @@
+{
+  "agent": {
+    "id": "LDRS",
+    "name": "Leaders",
+    "strategy": "Top 25 momentum (YTD)",
+    "description": "Top 25 by year-to-date return in each index, with last week's rank, week-to-date move and who fell off. A watchlist, not a signal.",
+    "accent": "#9a9a7f"
+  },
+  "scan_date": "2026-10-25T17:16:43.169683",
+  "dimensions": [],
+  "groups": {
+    "key": "indexes",
+    "label": "Index",
+    "values": [
+      "SPX",
+      "QQQ",
+      "IWM"
+    ]
+  },
+  "context": [
+    {
+      "label": "Data as of",
+      "value": "2026-10-23"
+    },
+    {
+      "label": "Ranked by",
+      "value": "YTD price return, per index"
+    },
+    {
+      "label": "S&P 500 top 25 WTD",
+      "value": "+1.0% vs SPY -0.4%"
+    },
+    {
+      "label": "Nasdaq-100 top 25 WTD",
+      "value": "-0.8% vs QQQ -0.8%"
+    },
+    {
+      "label": "Russell 2000 top 25 WTD",
+      "value": "+3.5% vs IWM +2.0%"
+    },
+    {
+      "label": "Dropped",
+      "value": "4 stale, 10 split artefacts"
+    }
+  ],
+  "opportunities": [
+    {
+      "symbol": "MRNA",
+      "price": 200.10000610351562,
+      "score": 100,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 1,
+      "prev_rank": 1,
+      "ytd_pct": 578.54,
+      "wtd_pct": -8.22,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #1 (last week #1) \u00b7 YTD +578.5%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#1"
+          },
+          {
+            "label": "Last week",
+            "value": "#1"
+          },
+          {
+            "label": "YTD",
+            "value": "+578.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-8.2%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "price": 1238.030029296875,
+      "score": 98,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 2,
+      "prev_rank": 2,
+      "ytd_pct": 421.54,
+      "wtd_pct": -4.72,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #2 (last week #2) \u00b7 YTD +421.5%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#2"
+          },
+          {
+            "label": "Last week",
+            "value": "#2"
+          },
+          {
+            "label": "YTD",
+            "value": "+421.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-4.7%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "DELL",
+      "price": 456.44000244140625,
+      "score": 96,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 3,
+      "prev_rank": 3,
+      "ytd_pct": 262.6,
+      "wtd_pct": 1.05,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #3 (last week #3) \u00b7 YTD +262.6%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#3"
+          },
+          {
+            "label": "Last week",
+            "value": "#3"
+          },
+          {
+            "label": "YTD",
+            "value": "+262.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+1.0%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "MU",
+      "price": 877.5499877929688,
+      "score": 94,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 4,
+      "prev_rank": 4,
+      "ytd_pct": 207.47,
+      "wtd_pct": -0.15,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #4 (last week #4) \u00b7 YTD +207.5%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#4"
+          },
+          {
+            "label": "Last week",
+            "value": "#4"
+          },
+          {
+            "label": "YTD",
+            "value": "+207.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-0.1%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "MPC",
+      "price": 457.2200012207031,
+      "score": 92,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 5,
+      "prev_rank": 5,
+      "ytd_pct": 181.14,
+      "wtd_pct": -4.36,
+      "sector": "XLE",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #5 (last week #5) \u00b7 YTD +181.1%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#5"
+          },
+          {
+            "label": "Last week",
+            "value": "#5"
+          },
+          {
+            "label": "YTD",
+            "value": "+181.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-4.4%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Energy"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "MRVL",
+      "price": 228.50999450683594,
+      "score": 90,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25b21",
+      "signal_tone": "pos",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 6,
+      "prev_rank": 7,
+      "ytd_pct": 168.9,
+      "wtd_pct": 0.3,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #6 (last week #7) \u00b7 YTD +168.9%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#6"
+          },
+          {
+            "label": "Last week",
+            "value": "#7"
+          },
+          {
+            "label": "YTD",
+            "value": "+168.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+0.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "VLO",
+      "price": 419.2799987792969,
+      "score": 88,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25bc1",
+      "signal_tone": "neg",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 7,
+      "prev_rank": 6,
+      "ytd_pct": 157.56,
+      "wtd_pct": -5.72,
+      "sector": "XLE",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #7 (last week #6) \u00b7 YTD +157.6%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#7"
+          },
+          {
+            "label": "Last week",
+            "value": "#6"
+          },
+          {
+            "label": "YTD",
+            "value": "+157.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-5.7%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Energy"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "AMD",
+      "price": 516.7899780273438,
+      "score": 86,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25b21",
+      "signal_tone": "pos",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 8,
+      "prev_rank": 9,
+      "ytd_pct": 141.31,
+      "wtd_pct": -2.26,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #8 (last week #9) \u00b7 YTD +141.3%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#8"
+          },
+          {
+            "label": "Last week",
+            "value": "#9"
+          },
+          {
+            "label": "YTD",
+            "value": "+141.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-2.3%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "HPE",
+      "price": 56.689998626708984,
+      "score": 84,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25b23",
+      "signal_tone": "pos",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 9,
+      "prev_rank": 12,
+      "ytd_pct": 136.01,
+      "wtd_pct": 2.83,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #9 (last week #12) \u00b7 YTD +136.0%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#9"
+          },
+          {
+            "label": "Last week",
+            "value": "#12"
+          },
+          {
+            "label": "YTD",
+            "value": "+136.0%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+2.8%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "INTC",
+      "price": 86.95999908447266,
+      "score": 82,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 10,
+      "prev_rank": 10,
+      "ytd_pct": 135.66,
+      "wtd_pct": -3.22,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #10 (last week #10) \u00b7 YTD +135.7%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#10"
+          },
+          {
+            "label": "Last week",
+            "value": "#10"
+          },
+          {
+            "label": "YTD",
+            "value": "+135.7%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-3.2%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "STX",
+      "price": 630.489990234375,
+      "score": 80,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 11,
+      "prev_rank": 11,
+      "ytd_pct": 128.94,
+      "wtd_pct": -1.33,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #11 (last week #11) \u00b7 YTD +128.9%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#11"
+          },
+          {
+            "label": "Last week",
+            "value": "#11"
+          },
+          {
+            "label": "YTD",
+            "value": "+128.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-1.3%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "FTNT",
+      "price": 179.99000549316406,
+      "score": 78,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25b23",
+      "signal_tone": "pos",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 12,
+      "prev_rank": 15,
+      "ytd_pct": 126.66,
+      "wtd_pct": 6.42,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #12 (last week #15) \u00b7 YTD +126.7%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#12"
+          },
+          {
+            "label": "Last week",
+            "value": "#15"
+          },
+          {
+            "label": "YTD",
+            "value": "+126.7%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+6.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "BE",
+      "price": 193.3000030517578,
+      "score": 76,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25bc5",
+      "signal_tone": "neg",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 13,
+      "prev_rank": 8,
+      "ytd_pct": 122.47,
+      "wtd_pct": -12.66,
+      "sector": "XLI",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #13 (last week #8) \u00b7 YTD +122.5%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#13"
+          },
+          {
+            "label": "Last week",
+            "value": "#8"
+          },
+          {
+            "label": "YTD",
+            "value": "+122.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-12.7%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Industrials"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "CRWD",
+      "price": 257.57000732421875,
+      "score": 74,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25b24",
+      "signal_tone": "pos",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 14,
+      "prev_rank": 18,
+      "ytd_pct": 119.79,
+      "wtd_pct": 13.27,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #14 (last week #18) \u00b7 YTD +119.8%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#14"
+          },
+          {
+            "label": "Last week",
+            "value": "#18"
+          },
+          {
+            "label": "YTD",
+            "value": "+119.8%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+13.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "PSX",
+      "price": 283.17999267578125,
+      "score": 72,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25bc2",
+      "signal_tone": "neg",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 15,
+      "prev_rank": 13,
+      "ytd_pct": 119.45,
+      "wtd_pct": -3.41,
+      "sector": "XLE",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #15 (last week #13) \u00b7 YTD +119.5%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#15"
+          },
+          {
+            "label": "Last week",
+            "value": "#13"
+          },
+          {
+            "label": "YTD",
+            "value": "+119.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-3.4%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Energy"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "APA",
+      "price": 51.900001525878906,
+      "score": 70,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 16,
+      "prev_rank": 16,
+      "ytd_pct": 112.18,
+      "wtd_pct": 5.6,
+      "sector": "XLE",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #16 (last week #16) \u00b7 YTD +112.2%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#16"
+          },
+          {
+            "label": "Last week",
+            "value": "#16"
+          },
+          {
+            "label": "YTD",
+            "value": "+112.2%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+5.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Energy"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "PANW",
+      "price": 380.54998779296875,
+      "score": 68,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25b24",
+      "signal_tone": "pos",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 17,
+      "prev_rank": 21,
+      "ytd_pct": 106.6,
+      "wtd_pct": 11.27,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #17 (last week #21) \u00b7 YTD +106.6%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#17"
+          },
+          {
+            "label": "Last week",
+            "value": "#21"
+          },
+          {
+            "label": "YTD",
+            "value": "+106.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+11.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "ILMN",
+      "price": 269.4200134277344,
+      "score": 66,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25bc1",
+      "signal_tone": "neg",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 18,
+      "prev_rank": 17,
+      "ytd_pct": 105.41,
+      "wtd_pct": 2.62,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #18 (last week #17) \u00b7 YTD +105.4%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#18"
+          },
+          {
+            "label": "Last week",
+            "value": "#17"
+          },
+          {
+            "label": "YTD",
+            "value": "+105.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+2.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "LITE",
+      "price": 756.1699829101562,
+      "score": 64,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25bc5",
+      "signal_tone": "neg",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 19,
+      "prev_rank": 14,
+      "ytd_pct": 105.15,
+      "wtd_pct": -8.25,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #19 (last week #14) \u00b7 YTD +105.2%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#19"
+          },
+          {
+            "label": "Last week",
+            "value": "#14"
+          },
+          {
+            "label": "YTD",
+            "value": "+105.2%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-8.2%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "NTAP",
+      "price": 215.47999572753906,
+      "score": 62,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 20,
+      "prev_rank": 20,
+      "ytd_pct": 101.21,
+      "wtd_pct": 5.73,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #20 (last week #20) \u00b7 YTD +101.2%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#20"
+          },
+          {
+            "label": "Last week",
+            "value": "#20"
+          },
+          {
+            "label": "YTD",
+            "value": "+101.2%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+5.7%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "WDC",
+      "price": 343.6700134277344,
+      "score": 60,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25bc2",
+      "signal_tone": "neg",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 21,
+      "prev_rank": 19,
+      "ytd_pct": 99.49,
+      "wtd_pct": 3.52,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #21 (last week #19) \u00b7 YTD +99.5%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#21"
+          },
+          {
+            "label": "Last week",
+            "value": "#19"
+          },
+          {
+            "label": "YTD",
+            "value": "+99.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+3.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "DDOG",
+      "price": 269.6499938964844,
+      "score": 58,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25b21",
+      "signal_tone": "pos",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 22,
+      "prev_rank": 23,
+      "ytd_pct": 98.29,
+      "wtd_pct": 9.12,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #22 (last week #23) \u00b7 YTD +98.3%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#22"
+          },
+          {
+            "label": "Last week",
+            "value": "#23"
+          },
+          {
+            "label": "YTD",
+            "value": "+98.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+9.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "P",
+      "price": 123.33000183105469,
+      "score": 56,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u25bc1",
+      "signal_tone": "neg",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 23,
+      "prev_rank": 22,
+      "ytd_pct": 84.05,
+      "wtd_pct": -0.55,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #23 (last week #22) \u00b7 YTD +84.0%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#23"
+          },
+          {
+            "label": "Last week",
+            "value": "#22"
+          },
+          {
+            "label": "YTD",
+            "value": "+84.0%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-0.5%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "FFIV",
+      "price": 455.4200134277344,
+      "score": 54,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 24,
+      "prev_rank": 24,
+      "ytd_pct": 78.41,
+      "wtd_pct": 3.03,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #24 (last week #24) \u00b7 YTD +78.4%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#24"
+          },
+          {
+            "label": "Last week",
+            "value": "#24"
+          },
+          {
+            "label": "YTD",
+            "value": "+78.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+3.0%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "CRL",
+      "price": 345.3699951171875,
+      "score": 52,
+      "strategy": "S&P 500 Top 25",
+      "signal_label": "New",
+      "signal_tone": "pos",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 25,
+      "prev_rank": 44,
+      "ytd_pct": 73.14,
+      "wtd_pct": 15.07,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #25 (last week #44) \u00b7 YTD +73.1%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#25"
+          },
+          {
+            "label": "Last week",
+            "value": "#44"
+          },
+          {
+            "label": "YTD",
+            "value": "+73.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+15.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "CNC",
+      "price": 70.16999816894531,
+      "score": 49,
+      "strategy": "S&P 500 Top 25 \u00b7 fell off",
+      "signal_label": "Fell off",
+      "signal_tone": "neg",
+      "indexes": [
+        "SPX"
+      ],
+      "rank": 26,
+      "prev_rank": 25,
+      "ytd_pct": 70.52,
+      "wtd_pct": 1.46,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "S&P 500 #26 (last week #25) \u00b7 YTD +70.5%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#26"
+          },
+          {
+            "label": "Last week",
+            "value": "#25"
+          },
+          {
+            "label": "YTD",
+            "value": "+70.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+1.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+1.0% vs SPY -0.4%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "SNDK",
+      "price": 1238.030029296875,
+      "score": 100,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 1,
+      "prev_rank": 1,
+      "ytd_pct": 421.54,
+      "wtd_pct": -4.72,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #1 (last week #1) \u00b7 YTD +421.5%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#1"
+          },
+          {
+            "label": "Last week",
+            "value": "#1"
+          },
+          {
+            "label": "YTD",
+            "value": "+421.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-4.7%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "MU",
+      "price": 877.5499877929688,
+      "score": 98,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 2,
+      "prev_rank": 2,
+      "ytd_pct": 207.47,
+      "wtd_pct": -0.15,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #2 (last week #2) \u00b7 YTD +207.5%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#2"
+          },
+          {
+            "label": "Last week",
+            "value": "#2"
+          },
+          {
+            "label": "YTD",
+            "value": "+207.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-0.1%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "MRVL",
+      "price": 228.50999450683594,
+      "score": 96,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 3,
+      "prev_rank": 3,
+      "ytd_pct": 168.9,
+      "wtd_pct": 0.3,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #3 (last week #3) \u00b7 YTD +168.9%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#3"
+          },
+          {
+            "label": "Last week",
+            "value": "#3"
+          },
+          {
+            "label": "YTD",
+            "value": "+168.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+0.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "AMD",
+      "price": 516.7899780273438,
+      "score": 94,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 4,
+      "prev_rank": 4,
+      "ytd_pct": 141.31,
+      "wtd_pct": -2.26,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #4 (last week #4) \u00b7 YTD +141.3%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#4"
+          },
+          {
+            "label": "Last week",
+            "value": "#4"
+          },
+          {
+            "label": "YTD",
+            "value": "+141.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-2.3%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "INTC",
+      "price": 86.95999908447266,
+      "score": 92,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 5,
+      "prev_rank": 5,
+      "ytd_pct": 135.66,
+      "wtd_pct": -3.22,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #5 (last week #5) \u00b7 YTD +135.7%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#5"
+          },
+          {
+            "label": "Last week",
+            "value": "#5"
+          },
+          {
+            "label": "YTD",
+            "value": "+135.7%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-3.2%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "STX",
+      "price": 630.489990234375,
+      "score": 90,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 6,
+      "prev_rank": 6,
+      "ytd_pct": 128.94,
+      "wtd_pct": -1.33,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #6 (last week #6) \u00b7 YTD +128.9%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#6"
+          },
+          {
+            "label": "Last week",
+            "value": "#6"
+          },
+          {
+            "label": "YTD",
+            "value": "+128.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-1.3%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "FTNT",
+      "price": 179.99000549316406,
+      "score": 88,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25b21",
+      "signal_tone": "pos",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 7,
+      "prev_rank": 8,
+      "ytd_pct": 126.66,
+      "wtd_pct": 6.42,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #7 (last week #8) \u00b7 YTD +126.7%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#7"
+          },
+          {
+            "label": "Last week",
+            "value": "#8"
+          },
+          {
+            "label": "YTD",
+            "value": "+126.7%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+6.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "CRWD",
+      "price": 257.57000732421875,
+      "score": 86,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25b23",
+      "signal_tone": "pos",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 8,
+      "prev_rank": 11,
+      "ytd_pct": 119.79,
+      "wtd_pct": 13.27,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #8 (last week #11) \u00b7 YTD +119.8%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#8"
+          },
+          {
+            "label": "Last week",
+            "value": "#11"
+          },
+          {
+            "label": "YTD",
+            "value": "+119.8%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+13.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "PANW",
+      "price": 380.54998779296875,
+      "score": 84,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25b24",
+      "signal_tone": "pos",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 9,
+      "prev_rank": 13,
+      "ytd_pct": 106.6,
+      "wtd_pct": 11.27,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #9 (last week #13) \u00b7 YTD +106.6%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#9"
+          },
+          {
+            "label": "Last week",
+            "value": "#13"
+          },
+          {
+            "label": "YTD",
+            "value": "+106.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+11.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "LITE",
+      "price": 756.1699829101562,
+      "score": 82,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25bc3",
+      "signal_tone": "neg",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 10,
+      "prev_rank": 7,
+      "ytd_pct": 105.15,
+      "wtd_pct": -8.25,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #10 (last week #7) \u00b7 YTD +105.2%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#10"
+          },
+          {
+            "label": "Last week",
+            "value": "#7"
+          },
+          {
+            "label": "YTD",
+            "value": "+105.2%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-8.2%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "WDC",
+      "price": 343.6700134277344,
+      "score": 80,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25b21",
+      "signal_tone": "pos",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 11,
+      "prev_rank": 12,
+      "ytd_pct": 99.49,
+      "wtd_pct": 3.52,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #11 (last week #12) \u00b7 YTD +99.5%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#11"
+          },
+          {
+            "label": "Last week",
+            "value": "#12"
+          },
+          {
+            "label": "YTD",
+            "value": "+99.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+3.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "DDOG",
+      "price": 269.6499938964844,
+      "score": 78,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25b22",
+      "signal_tone": "pos",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 12,
+      "prev_rank": 14,
+      "ytd_pct": 98.29,
+      "wtd_pct": 9.12,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #12 (last week #14) \u00b7 YTD +98.3%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#12"
+          },
+          {
+            "label": "Last week",
+            "value": "#14"
+          },
+          {
+            "label": "YTD",
+            "value": "+98.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+9.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "ARM",
+      "price": 210.3300018310547,
+      "score": 76,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25bc4",
+      "signal_tone": "neg",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 13,
+      "prev_rank": 9,
+      "ytd_pct": 92.42,
+      "wtd_pct": -7.67,
+      "sector": null,
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #13 (last week #9) \u00b7 YTD +92.4%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#13"
+          },
+          {
+            "label": "Last week",
+            "value": "#9"
+          },
+          {
+            "label": "YTD",
+            "value": "+92.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-7.7%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "\u2014"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "NBIS",
+      "price": 158.74000549316406,
+      "score": 74,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25bc4",
+      "signal_tone": "neg",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 14,
+      "prev_rank": 10,
+      "ytd_pct": 89.64,
+      "wtd_pct": -4.07,
+      "sector": null,
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #14 (last week #10) \u00b7 YTD +89.6%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#14"
+          },
+          {
+            "label": "Last week",
+            "value": "#10"
+          },
+          {
+            "label": "YTD",
+            "value": "+89.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-4.1%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "\u2014"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "TXN",
+      "price": 284.69000244140625,
+      "score": 72,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25b22",
+      "signal_tone": "pos",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 15,
+      "prev_rank": 17,
+      "ytd_pct": 64.1,
+      "wtd_pct": 2.97,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #15 (last week #17) \u00b7 YTD +64.1%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#15"
+          },
+          {
+            "label": "Last week",
+            "value": "#17"
+          },
+          {
+            "label": "YTD",
+            "value": "+64.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+3.0%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "TER",
+      "price": 308.8500061035156,
+      "score": 70,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 16,
+      "prev_rank": 16,
+      "ytd_pct": 59.56,
+      "wtd_pct": -4.97,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #16 (last week #16) \u00b7 YTD +59.6%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#16"
+          },
+          {
+            "label": "Last week",
+            "value": "#16"
+          },
+          {
+            "label": "YTD",
+            "value": "+59.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-5.0%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "ALAB",
+      "price": 257.1600036621094,
+      "score": 68,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25bc2",
+      "signal_tone": "neg",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 17,
+      "prev_rank": 15,
+      "ytd_pct": 54.58,
+      "wtd_pct": -10.03,
+      "sector": null,
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #17 (last week #15) \u00b7 YTD +54.6%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#17"
+          },
+          {
+            "label": "Last week",
+            "value": "#15"
+          },
+          {
+            "label": "YTD",
+            "value": "+54.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-10.0%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "\u2014"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "ASML",
+      "price": 1571.800048828125,
+      "score": 66,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25b22",
+      "signal_tone": "pos",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 18,
+      "prev_rank": 20,
+      "ytd_pct": 46.92,
+      "wtd_pct": -4.25,
+      "sector": null,
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #18 (last week #20) \u00b7 YTD +46.9%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#18"
+          },
+          {
+            "label": "Last week",
+            "value": "#20"
+          },
+          {
+            "label": "YTD",
+            "value": "+46.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-4.2%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "\u2014"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "AMAT",
+      "price": 377.239990234375,
+      "score": 64,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25bc1",
+      "signal_tone": "neg",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 19,
+      "prev_rank": 18,
+      "ytd_pct": 46.79,
+      "wtd_pct": -7.83,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #19 (last week #18) \u00b7 YTD +46.8%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#19"
+          },
+          {
+            "label": "Last week",
+            "value": "#18"
+          },
+          {
+            "label": "YTD",
+            "value": "+46.8%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-7.8%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "ADI",
+      "price": 391.07000732421875,
+      "score": 62,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25b21",
+      "signal_tone": "pos",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 20,
+      "prev_rank": 21,
+      "ytd_pct": 44.2,
+      "wtd_pct": -1.11,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #20 (last week #21) \u00b7 YTD +44.2%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#20"
+          },
+          {
+            "label": "Last week",
+            "value": "#21"
+          },
+          {
+            "label": "YTD",
+            "value": "+44.2%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-1.1%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "CSX",
+      "price": 50.790000915527344,
+      "score": 60,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25b24",
+      "signal_tone": "pos",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 21,
+      "prev_rank": 25,
+      "ytd_pct": 40.11,
+      "wtd_pct": 4.33,
+      "sector": "XLI",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #21 (last week #25) \u00b7 YTD +40.1%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#21"
+          },
+          {
+            "label": "Last week",
+            "value": "#25"
+          },
+          {
+            "label": "YTD",
+            "value": "+40.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+4.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Industrials"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "CSCO",
+      "price": 106.5,
+      "score": 58,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 22,
+      "prev_rank": 22,
+      "ytd_pct": 38.26,
+      "wtd_pct": -0.83,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #22 (last week #22) \u00b7 YTD +38.3%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#22"
+          },
+          {
+            "label": "Last week",
+            "value": "#22"
+          },
+          {
+            "label": "YTD",
+            "value": "+38.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-0.8%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "FANG",
+      "price": 205.75,
+      "score": 56,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25b21",
+      "signal_tone": "pos",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 23,
+      "prev_rank": 24,
+      "ytd_pct": 36.87,
+      "wtd_pct": 0.88,
+      "sector": "XLE",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #23 (last week #24) \u00b7 YTD +36.9%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#23"
+          },
+          {
+            "label": "Last week",
+            "value": "#24"
+          },
+          {
+            "label": "YTD",
+            "value": "+36.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+0.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Energy"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "LRCX",
+      "price": 230.10000610351562,
+      "score": 54,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "\u25bc5",
+      "signal_tone": "neg",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 24,
+      "prev_rank": 19,
+      "ytd_pct": 34.42,
+      "wtd_pct": -12.82,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #24 (last week #19) \u00b7 YTD +34.4%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#24"
+          },
+          {
+            "label": "Last week",
+            "value": "#19"
+          },
+          {
+            "label": "YTD",
+            "value": "+34.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-12.8%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "AMGN",
+      "price": 439.260009765625,
+      "score": 52,
+      "strategy": "Nasdaq-100 Top 25",
+      "signal_label": "New",
+      "signal_tone": "pos",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 25,
+      "prev_rank": 27,
+      "ytd_pct": 34.2,
+      "wtd_pct": 1.57,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #25 (last week #27) \u00b7 YTD +34.2%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#25"
+          },
+          {
+            "label": "Last week",
+            "value": "#27"
+          },
+          {
+            "label": "YTD",
+            "value": "+34.2%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+1.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "KLAC",
+      "price": 145.61000061035156,
+      "score": 38,
+      "strategy": "Nasdaq-100 Top 25 \u00b7 fell off",
+      "signal_label": "Fell off",
+      "signal_tone": "neg",
+      "indexes": [
+        "QQQ"
+      ],
+      "rank": 37,
+      "prev_rank": 23,
+      "ytd_pct": 19.84,
+      "wtd_pct": -12.15,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Nasdaq-100 #37 (last week #23) \u00b7 YTD +19.8%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#37"
+          },
+          {
+            "label": "Last week",
+            "value": "#23"
+          },
+          {
+            "label": "YTD",
+            "value": "+19.8%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-12.1%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "-0.8% vs QQQ -0.8%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "AGL",
+      "price": 89.70999908447266,
+      "score": 100,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25b21",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 1,
+      "prev_rank": 2,
+      "ytd_pct": 420.81,
+      "wtd_pct": 5.39,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #1 (last week #2) \u00b7 YTD +420.8%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#1"
+          },
+          {
+            "label": "Last week",
+            "value": "#2"
+          },
+          {
+            "label": "YTD",
+            "value": "+420.8%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+5.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "IOVA",
+      "price": 14.09000015258789,
+      "score": 98,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25bc1",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 2,
+      "prev_rank": 1,
+      "ytd_pct": 416.12,
+      "wtd_pct": 3.45,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #2 (last week #1) \u00b7 YTD +416.1%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#2"
+          },
+          {
+            "label": "Last week",
+            "value": "#1"
+          },
+          {
+            "label": "YTD",
+            "value": "+416.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+3.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "TWST",
+      "price": 139.9199981689453,
+      "score": 96,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25b22",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 3,
+      "prev_rank": 5,
+      "ytd_pct": 341.11,
+      "wtd_pct": 5.4,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #3 (last week #5) \u00b7 YTD +341.1%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#3"
+          },
+          {
+            "label": "Last week",
+            "value": "#5"
+          },
+          {
+            "label": "YTD",
+            "value": "+341.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+5.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "TXG",
+      "price": 71.55000305175781,
+      "score": 94,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 4,
+      "prev_rank": 4,
+      "ytd_pct": 338.69,
+      "wtd_pct": 2.42,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #4 (last week #4) \u00b7 YTD +338.7%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#4"
+          },
+          {
+            "label": "Last week",
+            "value": "#4"
+          },
+          {
+            "label": "YTD",
+            "value": "+338.7%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+2.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "IBRX",
+      "price": 8.220000267028809,
+      "score": 92,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25bc2",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 5,
+      "prev_rank": 3,
+      "ytd_pct": 315.15,
+      "wtd_pct": -10.46,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #5 (last week #3) \u00b7 YTD +315.2%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#5"
+          },
+          {
+            "label": "Last week",
+            "value": "#3"
+          },
+          {
+            "label": "YTD",
+            "value": "+315.2%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-10.5%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "ERAS",
+      "price": 14.390000343322754,
+      "score": 90,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25b22",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 6,
+      "prev_rank": 8,
+      "ytd_pct": 286.83,
+      "wtd_pct": 7.47,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #6 (last week #8) \u00b7 YTD +286.8%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#6"
+          },
+          {
+            "label": "Last week",
+            "value": "#8"
+          },
+          {
+            "label": "YTD",
+            "value": "+286.8%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+7.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "PLSE",
+      "price": 53.02000045776367,
+      "score": 88,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25b23",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 7,
+      "prev_rank": 10,
+      "ytd_pct": 286.16,
+      "wtd_pct": 19.33,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #7 (last week #10) \u00b7 YTD +286.2%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#7"
+          },
+          {
+            "label": "Last week",
+            "value": "#10"
+          },
+          {
+            "label": "YTD",
+            "value": "+286.2%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+19.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "CDNA",
+      "price": 69.20999908447266,
+      "score": 86,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25b21",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 8,
+      "prev_rank": 9,
+      "ytd_pct": 267.36,
+      "wtd_pct": 8.14,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #8 (last week #9) \u00b7 YTD +267.4%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#8"
+          },
+          {
+            "label": "Last week",
+            "value": "#9"
+          },
+          {
+            "label": "YTD",
+            "value": "+267.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+8.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "MXL",
+      "price": 63.459999084472656,
+      "score": 84,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25bc3",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 9,
+      "prev_rank": 6,
+      "ytd_pct": 264.08,
+      "wtd_pct": -11.02,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #9 (last week #6) \u00b7 YTD +264.1%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#9"
+          },
+          {
+            "label": "Last week",
+            "value": "#6"
+          },
+          {
+            "label": "YTD",
+            "value": "+264.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-11.0%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "ATEX",
+      "price": 74.9000015258789,
+      "score": 82,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25bc3",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 10,
+      "prev_rank": 7,
+      "ytd_pct": 243.11,
+      "wtd_pct": -6.93,
+      "sector": "XLC",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #10 (last week #7) \u00b7 YTD +243.1%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#10"
+          },
+          {
+            "label": "Last week",
+            "value": "#7"
+          },
+          {
+            "label": "YTD",
+            "value": "+243.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-6.9%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Communication Services"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "AXTI",
+      "price": 52.08000183105469,
+      "score": 80,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 11,
+      "prev_rank": 11,
+      "ytd_pct": 218.53,
+      "wtd_pct": 1.19,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #11 (last week #11) \u00b7 YTD +218.5%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#11"
+          },
+          {
+            "label": "Last week",
+            "value": "#11"
+          },
+          {
+            "label": "YTD",
+            "value": "+218.5%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+1.2%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "KOD",
+      "price": 87.62999725341797,
+      "score": 78,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25b21",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 12,
+      "prev_rank": 13,
+      "ytd_pct": 213.41,
+      "wtd_pct": 2.19,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #12 (last week #13) \u00b7 YTD +213.4%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#12"
+          },
+          {
+            "label": "Last week",
+            "value": "#13"
+          },
+          {
+            "label": "YTD",
+            "value": "+213.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+2.2%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "SLS",
+      "price": 11.539999961853027,
+      "score": 76,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25b27",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 13,
+      "prev_rank": 20,
+      "ytd_pct": 206.1,
+      "wtd_pct": 15.63,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #13 (last week #20) \u00b7 YTD +206.1%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#13"
+          },
+          {
+            "label": "Last week",
+            "value": "#20"
+          },
+          {
+            "label": "YTD",
+            "value": "+206.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+15.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "AMN",
+      "price": 48.0099983215332,
+      "score": 74,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25b28",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 14,
+      "prev_rank": 22,
+      "ytd_pct": 204.63,
+      "wtd_pct": 18.57,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #14 (last week #22) \u00b7 YTD +204.6%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#14"
+          },
+          {
+            "label": "Last week",
+            "value": "#22"
+          },
+          {
+            "label": "YTD",
+            "value": "+204.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+18.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "ETON",
+      "price": 50.0,
+      "score": 72,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u2014",
+      "signal_tone": null,
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 15,
+      "prev_rank": 15,
+      "ytd_pct": 195.68,
+      "wtd_pct": -0.62,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #15 (last week #15) \u00b7 YTD +195.7%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#15"
+          },
+          {
+            "label": "Last week",
+            "value": "#15"
+          },
+          {
+            "label": "YTD",
+            "value": "+195.7%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-0.6%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "BAND",
+      "price": 44.18000030517578,
+      "score": 70,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25b22",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 16,
+      "prev_rank": 18,
+      "ytd_pct": 185.95,
+      "wtd_pct": 1.94,
+      "sector": "XLC",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #16 (last week #18) \u00b7 YTD +186.0%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#16"
+          },
+          {
+            "label": "Last week",
+            "value": "#18"
+          },
+          {
+            "label": "YTD",
+            "value": "+186.0%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+1.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Communication Services"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "PBF",
+      "price": 76.16999816894531,
+      "score": 68,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25bc5",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 17,
+      "prev_rank": 12,
+      "ytd_pct": 180.86,
+      "wtd_pct": -9.88,
+      "sector": "XLE",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #17 (last week #12) \u00b7 YTD +180.9%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#17"
+          },
+          {
+            "label": "Last week",
+            "value": "#12"
+          },
+          {
+            "label": "YTD",
+            "value": "+180.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-9.9%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Energy"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "SYRE",
+      "price": 90.33000183105469,
+      "score": 66,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "New",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 18,
+      "prev_rank": 26,
+      "ytd_pct": 175.73,
+      "wtd_pct": 13.05,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #18 (last week #26) \u00b7 YTD +175.7%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#18"
+          },
+          {
+            "label": "Last week",
+            "value": "#26"
+          },
+          {
+            "label": "YTD",
+            "value": "+175.7%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+13.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "AEHR",
+      "price": 55.310001373291016,
+      "score": 64,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25bc5",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 19,
+      "prev_rank": 14,
+      "ytd_pct": 173.95,
+      "wtd_pct": -8.73,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #19 (last week #14) \u00b7 YTD +173.9%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#19"
+          },
+          {
+            "label": "Last week",
+            "value": "#14"
+          },
+          {
+            "label": "YTD",
+            "value": "+173.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-8.7%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "PENG",
+      "price": 53.40999984741211,
+      "score": 62,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25bc4",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 20,
+      "prev_rank": 16,
+      "ytd_pct": 173.06,
+      "wtd_pct": -6.46,
+      "sector": "XLK",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #20 (last week #16) \u00b7 YTD +173.1%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#20"
+          },
+          {
+            "label": "Last week",
+            "value": "#16"
+          },
+          {
+            "label": "YTD",
+            "value": "+173.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-6.5%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Technology"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "ELVN",
+      "price": 41.52000045776367,
+      "score": 60,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "New",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 21,
+      "prev_rank": 27,
+      "ytd_pct": 169.61,
+      "wtd_pct": 11.25,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #21 (last week #27) \u00b7 YTD +169.6%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#21"
+          },
+          {
+            "label": "Last week",
+            "value": "#27"
+          },
+          {
+            "label": "YTD",
+            "value": "+169.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+11.3%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "DFTX",
+      "price": 35.66999816894531,
+      "score": 58,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "New",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 22,
+      "prev_rank": 29,
+      "ytd_pct": 166.39,
+      "wtd_pct": 11.12,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #22 (last week #29) \u00b7 YTD +166.4%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#22"
+          },
+          {
+            "label": "Last week",
+            "value": "#29"
+          },
+          {
+            "label": "YTD",
+            "value": "+166.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+11.1%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "CBRL",
+      "price": 67.66000366210938,
+      "score": 56,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25bc4",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 23,
+      "prev_rank": 19,
+      "ytd_pct": 166.38,
+      "wtd_pct": -1.9,
+      "sector": "XLY",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #23 (last week #19) \u00b7 YTD +166.4%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#23"
+          },
+          {
+            "label": "Last week",
+            "value": "#19"
+          },
+          {
+            "label": "YTD",
+            "value": "+166.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-1.9%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Consumer Discretionary"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "ORKA",
+      "price": 80.1500015258789,
+      "score": 54,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "New",
+      "signal_tone": "pos",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 24,
+      "prev_rank": 32,
+      "ytd_pct": 164.43,
+      "wtd_pct": 11.43,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #24 (last week #32) \u00b7 YTD +164.4%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#24"
+          },
+          {
+            "label": "Last week",
+            "value": "#32"
+          },
+          {
+            "label": "YTD",
+            "value": "+164.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+11.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "TNGX",
+      "price": 23.34000015258789,
+      "score": 52,
+      "strategy": "Russell 2000 Top 25",
+      "signal_label": "\u25bc1",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 25,
+      "prev_rank": 24,
+      "ytd_pct": 163.43,
+      "wtd_pct": 5.9,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #25 (last week #24) \u00b7 YTD +163.4%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#25"
+          },
+          {
+            "label": "Last week",
+            "value": "#24"
+          },
+          {
+            "label": "YTD",
+            "value": "+163.4%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+5.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "CLMT",
+      "price": 49.310001373291016,
+      "score": 46,
+      "strategy": "Russell 2000 Top 25 \u00b7 fell off",
+      "signal_label": "Fell off",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 29,
+      "prev_rank": 17,
+      "ytd_pct": 148.16,
+      "wtd_pct": -14.61,
+      "sector": "XLE",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #29 (last week #17) \u00b7 YTD +148.2%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#29"
+          },
+          {
+            "label": "Last week",
+            "value": "#17"
+          },
+          {
+            "label": "YTD",
+            "value": "+148.2%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-14.6%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Energy"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "DK",
+      "price": 74.41000366210938,
+      "score": 47,
+      "strategy": "Russell 2000 Top 25 \u00b7 fell off",
+      "signal_label": "Fell off",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 28,
+      "prev_rank": 21,
+      "ytd_pct": 150.88,
+      "wtd_pct": -2.85,
+      "sector": "XLE",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #28 (last week #21) \u00b7 YTD +150.9%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#28"
+          },
+          {
+            "label": "Last week",
+            "value": "#21"
+          },
+          {
+            "label": "YTD",
+            "value": "+150.9%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-2.8%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Energy"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "PURR",
+      "price": 8.779999732971191,
+      "score": 45,
+      "strategy": "Russell 2000 Top 25 \u00b7 fell off",
+      "signal_label": "Fell off",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 30,
+      "prev_rank": 23,
+      "ytd_pct": 146.63,
+      "wtd_pct": -3.2,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #30 (last week #23) \u00b7 YTD +146.6%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#30"
+          },
+          {
+            "label": "Last week",
+            "value": "#23"
+          },
+          {
+            "label": "YTD",
+            "value": "+146.6%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "-3.2%",
+            "tone": "neg"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    },
+    {
+      "symbol": "CLYM",
+      "price": 10.1899995803833,
+      "score": 48,
+      "strategy": "Russell 2000 Top 25 \u00b7 fell off",
+      "signal_label": "Fell off",
+      "signal_tone": "neg",
+      "indexes": [
+        "IWM"
+      ],
+      "rank": 27,
+      "prev_rank": 25,
+      "ytd_pct": 154.75,
+      "wtd_pct": 3.77,
+      "sector": "XLV",
+      "dimensions": [],
+      "setup": {
+        "title": "Leaderboard",
+        "label": "Russell 2000 #27 (last week #25) \u00b7 YTD +154.7%",
+        "fields": [
+          {
+            "label": "Rank",
+            "value": "#27"
+          },
+          {
+            "label": "Last week",
+            "value": "#25"
+          },
+          {
+            "label": "YTD",
+            "value": "+154.7%",
+            "tone": "pos"
+          },
+          {
+            "label": "Week to date",
+            "value": "+3.8%",
+            "tone": "pos"
+          },
+          {
+            "label": "Sector",
+            "value": "Health Care"
+          },
+          {
+            "label": "List vs index WTD",
+            "value": "+3.5% vs IWM +2.0%"
+          }
+        ]
+      }
+    }
+  ]
+}

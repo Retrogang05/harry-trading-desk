@@ -18,6 +18,7 @@ shared dashboard. **You execute every trade manually** — nothing here places o
 | **Trey** | `TREY` | TQQQ trend gate — OUT / HALF / FULL, signalled on QQQ's 200-day SMA | Live |
 | **Goldy** | `GOLD` | MA crosses — 20/50 and 50/200, both directions, plus crosses about to happen | Live |
 | **Pocket** | `PCKT` | Your Finviz relative-volume screen, automated, with major levels and pockets mapped per hit | Live |
+| **Leaders** | `LDRS` | Top 25 by YTD return in each of the S&P 500, Nasdaq-100 and Russell 2000 — the Stocktwits momentum lists, rebuilt from our data | Live |
 
 The dashboard renders whatever score dimensions an agent declares, so adding an
 agent needs no changes to the page. See **Adding your second and third agents**
@@ -178,9 +179,11 @@ harry-trading-desk/
 │   └── agent.py
 ├── pocket/                  # Pocket — volume screen + major-level map
 │   └── agent.py
+├── leaders/                 # Leaders — Top 25 YTD per index (no Claude calls)
+│   └── agent.py
 ├── universe.py              # universe.txt parser, shared by all three scanners
 ├── sectors.py               # sector-ETF regime, shared by Monu and Opy
-├── universe.txt             # 1,521 tickers tagged by index and sector
+├── universe.txt             # 1,516 tickers tagged by index and sector
 ├── data/holdings/           # the ETF holdings exports universe.txt is built from
 │   ├── spy.xlsx  qqq.csv  iwm.csv
 │   └── sectors/             # the eleven sector SPDRs, downloaded at build time
@@ -192,13 +195,14 @@ harry-trading-desk/
 │   ├── opy-scan.yml         # Opy    — 9:17pm New York, weekdays
 │   ├── trey-scan.yml        # Trey   — 9:27pm New York, weekdays
 │   ├── goldy-scan.yml       # Goldy  — 9:37pm New York, weekdays
-│   └── pocket-scan.yml      # Pocket — 9:47pm New York, weekdays
+│   ├── pocket-scan.yml      # Pocket — 9:47pm New York, weekdays
+│   └── leaders-scan.yml     # Leaders — 9:57pm New York, weekdays
 ├── docs/                    # ← the dashboard (GitHub Pages serves this)
 │   ├── index.html
 │   └── data/
 │       ├── agents.json      #   manifest: which agents to render
-│       ├── MNTM.json  OPY.json  TREY.json  GOLD.json  PCKT.json
-├── results/  opy/results/  trey/results/  goldy/results/  pocket/results/   # dated archives
+│       ├── MNTM.json  OPY.json  TREY.json  GOLD.json  PCKT.json  LDRS.json
+├── results/  opy/results/  trey/results/  goldy/results/  pocket/results/  leaders/results/   # dated archives
 ```
 
 ---
@@ -264,11 +268,11 @@ not a scraped index page:
 
 | Tag | Fund | Source | In universe |
 |-----|------|--------|-------------|
-| `SPX` | SPDR S&P 500 ETF Trust (SPY) | State Street | 503 |
-| `QQQ` | Invesco QQQ Trust, Series 1 | Invesco | 98 |
-| `IWM` | iShares Russell 2000 ETF | BlackRock | 1,006 |
+| `SPX` | SPDR S&P 500 ETF Trust (SPY) | State Street | 501 |
+| `QQQ` | Invesco QQQ Trust, Series 1 | Invesco | 100 |
+| `IWM` | iShares Russell 2000 ETF | BlackRock | 1,000 |
 
-**1,521 unique tickers.** The tags overlap — 86 names are in both the S&P 500
+**1,516 unique tickers.** The tags overlap — 85 names are in both the S&P 500
 and the Nasdaq-100 — so they are membership labels, not a partition.
 
 The file format keeps the tags in a trailing comment, which means anything
@@ -313,6 +317,11 @@ python scripts/fetch_sp500.py      # downloads a fresh spy.xlsx
 # download QQQ and IWM holdings by hand into data/holdings/
 python scripts/build_universe.py   # ~3 min, mostly the pricing pass
 ```
+
+QQQ rows count if their class is common stock **or an American Depositary
+Receipt**. Until October 2026 only common stock was accepted, which silently
+left ASML, ARM and PDD — genuine Nasdaq-100 members, about 1.5% of QQQ — out of
+every agent.
 
 Only SSGA serves a holdings file at a URL that works without a browser session,
 so QQQ and IWM are manual. The index rebalances quarterly plus ad-hoc changes,
@@ -472,6 +481,51 @@ So the score orders the list — fresh break, relative volume, room to the far
 side — and is not a forecast. The value is time: the screen and the chart
 scan, done for you, with floors and ceilings that make natural stops and
 targets for trades found here or elsewhere.
+
+---
+
+## 🏆 Leaders (LDRS) — Top 25 momentum per index
+
+The Stocktwits "Top 25 Momentum" lists, rebuilt from the closes the other
+agents already fetch: every member of the **S&P 500**, **Nasdaq-100** and
+**Russell 2000** ranked by **YTD price return**, top 25 per list. Each row shows
+rank, last week's rank (▲/▼, **New**, or **Fell off**), YTD, week-to-date and
+sector, plus how the list as a whole did this week against its ETF. A name on
+two lists is two rows, one per list, so the index chips show each list exactly.
+
+Closes are **unadjusted**, as Stocktwits' are. Symbols with a split-shaped jump
+(a one-day move close to 2:1, 3:1, 4:1, 5:1, 10:1 or the reverse) are dropped,
+because an unadjusted split would rank as a +100% winner. Against the
+Stocktwits lists for the week of 23 Oct 2026: S&P YTD and WTD figures matched
+exactly with 21 of 25 names in common; Nasdaq-100 23 of 25 once the ADR fix
+above landed; Russell 2000 18 of 25 — ours excludes sub-$5 and thin names,
+delisted symbols and very recent IPOs.
+
+No Claude calls, no entries or stops: it is a **watchlist**, not a signal.
+
+### Does the rank predict anything? (backtest, Oct 2026)
+
+Every Friday 2019–2026, the top 25 by YTD in each list against the equal-weight
+average of **all** that list's members — the honest benchmark, since the
+question is whether the rank adds anything over owning the index's stocks.
+t-stats use non-overlapping windows only.
+
+| List | 20 days | 50 days | 100 days | Verdict |
+|------|--------:|--------:|---------:|---------|
+| S&P 500 | +1.72% (t 3.5) | +4.16% (t 3.0) | +9.62% (t 2.3) | Real but era-dependent: insignificant 2019–22, all of it 2023–26 |
+| Nasdaq-100 | +0.71% | +1.51% | +3.69% | Not significant |
+| Russell 2000 | — | — | — | **Reverses**: top minus bottom 25 was −1.9% / −5.8% / −9.3% |
+
+- **S&P concentration:** about half of the 2023–26 excess came from one stock
+  per window. Remove the single best name and 7.6% falls to 4.0%.
+- **Deciles are U-shaped** — the worst YTD names also beat the middle — so this
+  is not a clean momentum gradient.
+- **Survivorship** flatters the long side (today's members, delisted names
+  absent); the comparisons between lists are less affected.
+
+So: on the S&P list, leaders have kept leading in recent years. On the
+Russell list, chasing the top 25 has historically hurt. Use it to see where
+strength is, and size Russell names accordingly.
 
 ---
 

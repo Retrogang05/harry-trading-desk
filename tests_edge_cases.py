@@ -175,7 +175,7 @@ check("continuous() rejects a gap", not goldy.continuous(bars([100.0]*150+[40.0]
 # ─────────────────────────────────────────────────────────────────────
 section("Published JSON contracts")
 
-for fn in ("MNTM","OPY","TREY","GOLD","PCKT"):
+for fn in ("MNTM","OPY","TREY","GOLD","PCKT","LDRS"):
     p = os.path.join(ROOT, "docs", "data", f"{fn}.json")
     d = json.load(open(p))
     rows = d.get("opportunities", [])
@@ -202,7 +202,7 @@ for fn in ("MNTM","OPY","TREY","GOLD","PCKT"):
               for v in d.get("groups",{}).get("values",[])) if d.get("groups") else True)
 
 man = json.load(open(os.path.join(ROOT,"docs","data","agents.json")))["agents"]
-check("manifest lists every data file", set(man) == {"MNTM","OPY","TREY","GOLD","PCKT"}, str(man))
+check("manifest lists every data file", set(man) == {"MNTM","OPY","TREY","GOLD","PCKT","LDRS"}, str(man))
 
 # ─────────────────────────────────────────────────────────────────────
 section("Every consumer of an opportunity row, in BOTH directions")
@@ -365,6 +365,59 @@ check("pinned symbol (ATR < 0.5% of price) is dropped",
       "PIN" not in _syms, f"rows={_syms} pinned={_st['pinned']}")
 check("every Pocket row reports today's move",
       all("day_move_pct" in o for o in pk + _rows))
+
+# ─────────────────────────────────────────────────────────────────────
+section("Leaders")
+
+leaders = load_mod("leadersagent", "leaders/agent.py", "leaders")
+
+# The universe builder once kept only QQQ rows labelled "Common Stock", which
+# silently dropped the Nasdaq-100's ADRs from every agent.
+_qqq = {s for s in universe.load()[0] if "QQQ" in universe.load()[1].get(s, [])}
+check("Nasdaq-100 ADRs (ASML, ARM, PDD) are in the universe",
+      {"ASML", "ARM", "PDD"} <= _qqq, str({"ASML", "ARM", "PDD"} - _qqq))
+
+# A synthetic panel: 30 SPX names whose YTD return is their number, so the
+# expected ranking is known. Prior year closes at 100; this week ends Fri
+# 2026-10-23, last week Fri 2026-10-16.
+_days = pd.bdate_range("2025-12-01", "2026-10-23")
+_C = pd.DataFrame(100.0, index=_days, columns=[f"S{i:02d}" for i in range(30)])
+for i in range(30):
+    _C.loc[_C.index >= "2026-01-02", f"S{i:02d}"] = 100.0 + i          # YTD = i%
+# Last week S00 led (YTD +80%); this week it falls back to the bottom. 1.8x
+# is deliberately not split-shaped, or the split filter would drop it.
+_C.loc["2026-10-16", "S00"] = 180.0
+_mem = {s: ["SPX"] for s in _C.columns}
+_etf = pd.DataFrame({"SPY": 100.0, "QQQ": 100.0, "IWM": 100.0}, index=_days)
+_rows, _ctx = leaders.build(_C, _mem, {}, _etf)
+_top = [o for o in _rows if o["signal_label"] != "Fell off"]
+check("ytd_at measures from the prior year's last close",
+      abs(leaders.ytd_at(_C, _days[-1])["S29"] - 0.29) < 1e-9)
+check("a list holds at most TOP_N names", len(_top) == leaders.TOP_N, str(len(_top)))
+check("rank 1 is the best YTD", _top[0]["symbol"] == "S29" and _top[0]["rank"] == 1)
+check("each row belongs to exactly one list", all(o["indexes"] == ["SPX"] for o in _rows))
+_s00 = next((o for o in _rows if o["symbol"] == "S00"), None)
+check("last week's #1 that dropped out shows as Fell off",
+      _s00 is not None and _s00["signal_label"] == "Fell off" and _s00["prev_rank"] == 1, str(_s00 and _s00["signal_label"]))
+check("fell-off rows score below every listed row",
+      all(o["score"] < min(t["score"] for t in _top) for o in _rows if o["signal_label"] == "Fell off"))
+check("a name that rose one place reads ▲1",
+      next(o for o in _rows if o["symbol"] == "S29")["signal_label"] == "▲1")
+# Split artefacts and stale symbols never reach a list.
+_C2 = _C.copy(); _C2["SPLIT"] = 100.0; _C2.loc[_C2.index >= "2026-06-01", "SPLIT"] = 1000.0
+_C2["STALE"] = 200.0; _C2.loc[_C2.index[-1], "STALE"] = np.nan
+_r2, _c2 = leaders.build(_C2, {**_mem, "SPLIT": ["SPX"], "STALE": ["SPX"]}, {}, _etf)
+check("split-shaped and stale symbols are dropped",
+      not {"SPLIT", "STALE"} & {o["symbol"] for o in _r2} and _c2["splits"] == 1 and _c2["stale"] == 1,
+      f"splits={_c2['splits']} stale={_c2['stale']}")
+
+ld = json.load(open(os.path.join(ROOT, "docs", "data", "LDRS.json")))["opportunities"]
+for g in ("SPX", "QQQ", "IWM"):
+    on = [o for o in ld if o["indexes"] == [g] and o["signal_label"] != "Fell off"]
+    check(f"published {g} list has {leaders.TOP_N} names ranked 1..{leaders.TOP_N}",
+          sorted(o["rank"] for o in on) == list(range(1, leaders.TOP_N + 1)))
+check("Leaders rows carry no trade levels (a watchlist, not a signal)",
+      not any(k in o for o in ld for k in ("entry", "stop_loss", "take_profit")))
 
 print(f"\n{'='*60}\n{len(PASSES)} passed, {len(FAILS)} failed")
 if FAILS:

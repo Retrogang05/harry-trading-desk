@@ -195,7 +195,12 @@ def parse_qqq(path: str):
             cls = (row.get("Class of shares") or "").strip().lower()
             if not sym or not tradable(sym) or sym in seen:
                 continue
-            if cls and "common stock" not in cls:
+            # Common stock AND ADRs. Accepting common stock alone silently
+            # dropped ASML, ARM and PDD - genuine Nasdaq-100 constituents,
+            # about 1.5% of QQQ - from every agent until 2026-10-25. Cash,
+            # futures, collateral and synthetic-cash rows carry other classes
+            # and stay out.
+            if cls and "common stock" not in cls and "depository receipt" not in cls:
                 continue
             seen.add(sym)
             symbols.append(sym)
