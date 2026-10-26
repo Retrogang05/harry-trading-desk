@@ -1,13 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-glass="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Harry Trading Desk</title>
+<script>
+  // Day / night look, set before first paint so the page never flashes the
+  // wrong one. "auto" (default) follows the device's appearance - on a Mac
+  // or iPhone set to Auto that is Grey by day, Dark at night.
+  (function () {
+    var pref = "auto";
+    try { pref = localStorage.getItem("htd-look") || "auto"; } catch (e) {}
+    var mq = window.matchMedia ? matchMedia("(prefers-color-scheme: light)") : null;
+    function apply() {
+      var p = window.HTD_LOOK || pref;
+      var day = p === "day" || (p === "auto" && mq && mq.matches);
+      document.documentElement.setAttribute("data-glass", day ? "grey" : "dark");
+    }
+    window.HTD_LOOK = pref;
+    window.htdApplyLook = apply;
+    apply();
+    if (mq && mq.addEventListener) mq.addEventListener("change", apply);
+  })();
+</script>
 <style>
-  /* Minimalist dark. The chrome is entirely neutral — the only hues in the
-     interface are semantic (green = strength/target, red = risk/stop) plus a
-     single muted dot per agent. Nothing else competes with the data. */
+  /* The chrome is entirely neutral — the only hues in the interface are
+     semantic (green = strength/target, red = risk/stop) plus a single muted
+     dot per agent. Nothing else competes with the data. These are the base
+     tokens; the glass layer at the end of <head> restyles them for day and
+     night. */
   :root {
     --bg:      #0a0a0b;
     --surface: #101012;
@@ -242,6 +263,177 @@
     table.sig th { position: static; }
   }
 </style>
+<!-- Glass layer: two looks over the base styles above. Dark (night) keeps the
+     base palette on frosted cards over a deep backdrop; Grey (day) is the
+     light version. The base styles alone are what renders if JS is off and
+     the attribute is never set - still a complete, readable page. -->
+<style>
+  /* Shared glass geometry. Each theme sets the tokens and the backdrop. */
+  :root {
+    --r-card: 18px;
+    --r-tile: 12px;
+    --blur: blur(22px) saturate(150%);
+  }
+
+  /* ── Grey (day): light frosted glass over a mid silver-grey. The one
+     light look, so text and signal colours are darkened for contrast ── */
+  html[data-glass="grey"] {
+    --surface: rgba(255,255,255,.35);
+    --raised:  rgba(255,255,255,.65);
+    --sunk:    rgba(255,255,255,.32);
+    --bd:      rgba(20,28,40,.09);
+    --bd-hi:   rgba(20,28,40,.18);
+    --text:    #15181d;
+    --label:   #3d434c;
+    --dim:     #525963;
+    --faint:   #6a717b;
+    --green:   #067a64;  --green-b: #067a64;  --green-t: #067a64;
+    --red:     #cc2433;  --red-b:   #cc2433;
+    --amber:   #a8650f;
+    --slate:   #6a717b;
+    --glass:      rgba(255,255,255,.30);
+    --glass-hi:   rgba(255,255,255,.60);
+    --glass-edge: rgba(255,255,255,.55);
+    --glass-line: rgba(255,255,255,.75);
+    --shadow:  0 10px 36px rgba(20,28,40,.20);
+    --row-line: rgba(20,28,40,.06);
+    --track:   rgba(20,28,40,.08);
+    --pill-on-bg: #15181d; --pill-on-fg: #fff;
+    --backdrop:
+      radial-gradient(50% 45% at 12% 8%,  rgba(235,238,242,.75) 0%, rgba(235,238,242,0) 62%),
+      radial-gradient(45% 45% at 90% 12%, rgba(185,194,208,.8) 0%, rgba(185,194,208,0) 62%),
+      radial-gradient(60% 50% at 70% 100%, rgba(110,120,135,.55) 0%, rgba(110,120,135,0) 65%),
+      radial-gradient(40% 40% at 25% 75%, rgba(150,160,175,.6) 0%, rgba(150,160,175,0) 70%),
+      linear-gradient(165deg, #cdd1d7 0%, #b3b9c1 55%, #959ca6 100%);
+  }
+  html[data-glass="grey"] .foot { color: var(--label); }
+
+  /* ── Dark (night): the base palette on glass over a deep, softly lit
+     backdrop ── */
+  html[data-glass="dark"] {
+    --surface: rgba(255,255,255,.04);
+    --raised:  rgba(255,255,255,.10);
+    --sunk:    rgba(0,0,0,.25);
+    --bd:      rgba(255,255,255,.08);
+    --bd-hi:   rgba(255,255,255,.16);
+    --glass:      rgba(22,24,30,.42);
+    --glass-hi:   rgba(255,255,255,.12);
+    --glass-edge: rgba(255,255,255,.10);
+    --glass-line: rgba(255,255,255,.14);
+    --shadow:  0 10px 40px rgba(0,0,0,.45);
+    --row-line: rgba(255,255,255,.05);
+    --track:   rgba(255,255,255,.08);
+    --pill-on-bg: #e9e9ec; --pill-on-fg: #0a0a0b;
+    --accent-tile: linear-gradient(135deg, rgba(8,153,129,.55) 0%, rgba(34,171,148,.25) 100%);
+    --backdrop:
+      radial-gradient(50% 45% at 15% 10%, rgba(41,98,255,.30) 0%, rgba(41,98,255,0) 60%),
+      radial-gradient(45% 45% at 90% 15%, rgba(8,153,129,.28) 0%, rgba(8,153,129,0) 60%),
+      radial-gradient(60% 50% at 70% 100%, rgba(200,151,74,.22) 0%, rgba(200,151,74,0) 65%),
+      linear-gradient(160deg, #11131a 0%, #0b0c10 60%, #07080a 100%);
+  }
+
+  html[data-glass] body {
+    background: var(--backdrop) fixed;
+    padding: 14px 14px 84px;
+    gap: 12px;
+  }
+
+  /* Glass surface, applied to every floating block. */
+  html[data-glass] .topbar,
+  html[data-glass] .groups,
+  html[data-glass] .tape,
+  html[data-glass] .tabs,
+  html[data-glass] .panel,
+  html[data-glass] .status {
+    background: var(--glass);
+    -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
+    border: 1px solid var(--glass-edge);
+    box-shadow: var(--shadow), inset 0 1px 0 var(--glass-line);
+  }
+
+  /* Top bar: a floating pill. */
+  html[data-glass] .topbar { border-radius: 999px; padding: 9px 12px 9px 20px; }
+  html[data-glass] .cmd { border-radius: 999px; background: var(--sunk); border-color: var(--glass-edge); }
+  html[data-glass] .pill { border-color: var(--glass-edge); }
+
+  /* Agent tabs: a floating pill dock at the bottom, active tab a solid pill. */
+  html[data-glass] .tabs {
+    position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 30;
+    max-width: calc(100% - 28px); border-radius: 999px; padding: 5px; gap: 2px;
+  }
+  html[data-glass] .tab { border: none; border-radius: 999px; padding: 7px 16px; }
+  html[data-glass] .tab[aria-pressed="true"] { background: var(--pill-on-bg); color: var(--pill-on-fg); }
+  html[data-glass] .tab[aria-pressed="true"] .ct { color: var(--pill-on-fg); opacity: .6; }
+
+  html[data-glass] .groups { border-radius: var(--r-card); padding: 8px 14px; }
+  html[data-glass] .chip { border-color: var(--glass-edge); background: var(--sunk); }
+  html[data-glass] .chip[aria-pressed="true"] { background: var(--pill-on-bg); color: var(--pill-on-fg); border-color: transparent; }
+  html[data-glass] .tape { border-radius: 999px; height: 34px; }
+  /* body is a full-height flex column: without this the fixed-height
+     strips shrink to make room for the workspace. */
+  html[data-glass] .topbar, html[data-glass] .groups, html[data-glass] .tape,
+  html[data-glass] .status, html[data-glass] .foot { flex-shrink: 0; }
+
+  /* Workspace: cards with gaps instead of hairline dividers. */
+  html[data-glass] .work { background: transparent; gap: 12px; }
+  html[data-glass] .col { background: transparent; display: flex; flex-direction: column; gap: 12px;
+                          padding: 1px; }
+  html[data-glass] .panel { border-radius: var(--r-card); overflow: hidden; flex: none; }
+  html[data-glass] .col > .panel:last-child { border-bottom: 1px solid var(--glass-edge); }
+  html[data-glass] .ph { padding: 13px 16px 9px; }
+  html[data-glass] .pb { padding: 2px 16px 15px; }
+
+  /* Agent roster: active agent a raised pill. */
+  html[data-glass] .ragent { border-radius: 12px; margin: 0 6px; width: calc(100% - 12px); }
+  html[data-glass] .ragent[aria-pressed="true"] { background: var(--glass-hi); box-shadow: none; }
+
+  /* Grid */
+  html[data-glass] table.sig th { background: transparent;
+    -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur); }
+  html[data-glass] table.sig td { border-bottom-color: var(--row-line); }
+  html[data-glass] table.sig tbody tr:hover,
+  html[data-glass] table.sig tbody tr[aria-selected="true"] { background: var(--glass-hi); }
+  html[data-glass] table.sig tbody tr[aria-selected="true"] td:first-child { box-shadow: none; }
+  html[data-glass] .ix { border-color: var(--glass-edge); background: var(--sunk); }
+
+  /* Detail header as a raised tile; the score keeps its signal colour. */
+  html[data-glass] .dhead { margin: 4px 12px 6px; border-radius: 14px; background: var(--glass-hi);
+                            border: 1px solid var(--glass-edge); padding: 14px; }
+  html[data-glass] .lv4 > div { background: var(--glass-hi); border-color: var(--glass-edge);
+                                border-radius: var(--r-tile); }
+  html[data-glass] .dim .tr { background: var(--track); height: 6px; border-radius: 3px; }
+  html[data-glass] .dim .fl { border-radius: 3px; }
+
+  html[data-glass] .status { border-radius: 999px; padding: 8px 20px; }
+  html[data-glass] .foot { color: var(--faint); padding: 2px 8px; }
+
+  html[data-glass] .boot { background: var(--glass); border-radius: var(--r-card); }
+
+  /* Readability where blur is unsupported: fall back to a near-solid card. */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    html[data-glass="grey"] { --glass: rgba(240,242,245,.94); }
+    html[data-glass="dark"] { --glass: rgba(18,19,24,.94); }
+  }
+
+  /* Auto / Day / Night switch */
+  .glass-switch { display: inline-flex; border: 1px solid var(--glass-edge, var(--bd)); border-radius: 999px;
+                  padding: 2px; background: var(--sunk); }
+  .glass-switch button { font: inherit; font-size: 11.5px; border: none; background: none; cursor: pointer;
+                         color: var(--dim); padding: 3px 11px; border-radius: 999px; }
+  .glass-switch button[aria-pressed="true"] { background: var(--pill-on-bg, var(--text)); color: var(--pill-on-fg, var(--bg)); }
+
+  @media (max-width: 1000px) {
+    /* One column: let the page scroll as a whole instead of squeezing three
+       independently scrolling columns into one screen height. */
+    html, body { height: auto; }
+    html[data-glass] body { min-height: 100%; }
+    html[data-glass] .work { flex: none; }
+    html[data-glass] .col { overflow: visible; }
+    html[data-glass] .status { border-radius: var(--r-card); }
+    html[data-glass] .topbar { border-radius: var(--r-card); }
+    html[data-glass] .tabs { justify-content: flex-start; }
+  }
+</style>
 </head>
 <body>
 
@@ -249,6 +441,11 @@
   <div class="mark">Harry Trading Desk <span>· research</span></div>
   <input class="cmd" id="cmd" placeholder="Filter symbol…" aria-label="Filter signals by symbol" autocomplete="off">
   <div class="tb-r">
+    <span class="glass-switch" role="group" aria-label="Day or night look">
+      <button type="button" data-look="auto">Auto</button>
+      <button type="button" data-look="day">Day</button>
+      <button type="button" data-look="night">Night</button>
+    </span>
     <span class="live"><span class="led"></span>Live</span>
     <span id="clock" class="mono">—</span>
     <span class="pill">Manual execution</span>
@@ -981,6 +1178,22 @@
     })
     .catch(fail);
 })();
+</script>
+<script>
+  (function () {
+    var bs = document.querySelectorAll(".glass-switch button");
+    function mark() {
+      bs.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-look") === window.HTD_LOOK)); });
+    }
+    bs.forEach(function (b) {
+      b.addEventListener("click", function () {
+        window.HTD_LOOK = b.getAttribute("data-look");
+        try { localStorage.setItem("htd-look", window.HTD_LOOK); } catch (e) {}
+        window.htdApplyLook(); mark();
+      });
+    });
+    mark();
+  })();
 </script>
 </body>
 </html>

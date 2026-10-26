@@ -614,6 +614,12 @@ dependencies. It reads `docs/data/agents.json`, loads each listed agent's feed,
 and renders them.
 
 
+The page has two looks, both frosted glass: **Day** (light grey) and **Night**
+(dark). **Auto**, the default, follows the device's appearance — on a Mac or
+iPhone set to Auto that is Day by daylight and Night after sunset. The Auto /
+Day / Night switch in the top bar overrides it and is remembered per browser.
+Agent tabs sit in a floating dock at the bottom of the screen.
+
 Clicking a row opens its detail panel, which includes a **3-month price
 chart** — daily closes, the change over the period, the **200-day SMA** (amber,
 with price's distance from it in the key), and the row's entry, stop and
