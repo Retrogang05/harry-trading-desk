@@ -18,6 +18,7 @@ shared dashboard. **You execute every trade manually** — nothing here places o
 | **Trey** | `TREY` | TQQQ trend gate — OUT / HALF / FULL, signalled on QQQ's 200-day SMA | Live |
 | **Goldy** | `GOLD` | MA crosses — 20/50 and 50/200, both directions, plus crosses about to happen | Live |
 | **Pocket** | `PCKT` | Your Finviz relative-volume screen, automated, with major levels and pockets mapped per hit | Live |
+| **Flag** | `FLAG` | Well-formed bull flags: a pole, a quiet 5–8 session drift on drying volume, then a breakout on volume | Live |
 | **Leaders** | `LDRS` | Top 25 by YTD return in each of the S&P 500, Nasdaq-100 and Russell 2000 — the Stocktwits momentum lists, rebuilt from our data | Live |
 
 The dashboard renders whatever score dimensions an agent declares, so adding an
@@ -181,6 +182,8 @@ harry-trading-desk/
 │   └── agent.py
 ├── leaders/                 # Leaders — Top 25 YTD per index (no Claude calls)
 │   └── agent.py
+├── flag/                    # Flag — bull flag scanner
+│   └── agent.py
 ├── universe.py              # universe.txt parser, shared by all three scanners
 ├── sectors.py               # sector-ETF regime, shared by Monu and Opy
 ├── history.py               # 3-month closes for the detail-panel chart, shared by all
@@ -197,13 +200,14 @@ harry-trading-desk/
 │   ├── trey-scan.yml        # Trey   — 9:27pm New York, weekdays
 │   ├── goldy-scan.yml       # Goldy  — 9:37pm New York, weekdays
 │   ├── pocket-scan.yml      # Pocket — 9:47pm New York, weekdays
-│   └── leaders-scan.yml     # Leaders — 9:57pm New York, weekdays
+│   ├── leaders-scan.yml     # Leaders — 9:57pm New York, weekdays
+│   └── flag-scan.yml        # Flag   — 9:02pm New York, weekdays
 ├── docs/                    # ← the dashboard (GitHub Pages serves this)
 │   ├── index.html
 │   └── data/
 │       ├── agents.json      #   manifest: which agents to render
-│       ├── MNTM.json  OPY.json  TREY.json  GOLD.json  PCKT.json  LDRS.json
-├── results/  opy/results/  trey/results/  goldy/results/  pocket/results/  leaders/results/   # dated archives
+│       ├── MNTM.json  OPY.json  TREY.json  GOLD.json  PCKT.json  LDRS.json  FLAG.json
+├── results/  opy/results/  trey/results/  goldy/results/  pocket/results/  leaders/results/  flag/results/   # dated archives
 ```
 
 ---
@@ -533,6 +537,51 @@ t-stats use non-overlapping windows only.
 So: on the S&P list, leaders have kept leading in recent years. On the
 Russell list, chasing the top 25 has historically hurt. Use it to see where
 strength is, and size Russell names accordingly.
+
+---
+
+## ⚑ Flag (FLAG) — bull flags
+
+The bull-flag setup as explicit rules: an uptrend (close over the 21 EMA, 9 EMA
+over the 21), a **pole** of at least 4 ATR and 10% into a high nothing has
+exceeded since, then a **flag** of 5–20 sessions with falling highs, a pullback
+of at most half the pole, and volume below the pole's and falling. The
+**trigger** is the flag's upper trendline; a **breakout** is a close above it
+on at least 1.5× the 20-day average volume.
+
+Only **well-formed** flags are published: flag volume at most 70% of the
+pole's, pullback at most 40% of the pole, flag 5–8 sessions.
+
+- **Forming** rows are a watchlist: trigger, stop (the flag low) and distance
+  to the trigger, drawn on the chart. No trade.
+- **Breakout** rows carry the trade: entry at the close, stop at the flag low,
+  held 20 sessions or to the stop.
+
+### Read this before trading the list
+
+Point-in-time, 2019–2026. Built on a 385-stock sample, then re-run unchanged on
+the 1,098 other stocks in the universe, none of which had been looked at.
+20-session hold or stop, in R:
+
+| | 2019–22 | 2023–26 |
+|---|---:|---:|
+| Sample, well-formed breakouts | −0.02 | +0.70 |
+| Unseen stocks, well-formed breakouts (n=499) | +0.00 | +0.54 |
+| Unseen stocks, loose flags | −0.00 | +0.21 |
+| Plain 20-day-high breakout on volume | +0.06 | +0.12 |
+
+- **A forming flag is not a signal.** It did no better than any uptrend day
+  over the next 20 sessions, and more flags broke their low within 10 sessions
+  (54%) than broke out (24%).
+- **The volume rule matters.** Without the 1.5× breakout volume, the
+  well-formed filter did not hold up on the unseen stocks.
+- **The edge is recent.** 2019–22 broke even. Treat it as regime-dependent.
+- **Exits:** the 20-session hold beat 2R/3R targets; exiting on a close below
+  the 9 EMA was the weakest exit tested.
+- Survivorship flatters the long side; costs are not included; the average
+  breakout stop was ~8% of price.
+- Breakouts are rare — about two a week across the universe — so most days the
+  tab is a short forming list.
 
 ---
 

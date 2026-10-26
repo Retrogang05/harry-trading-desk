@@ -853,7 +853,17 @@
     // enough to price to read - a target 3x away would flatten the line.
     var lo = Math.min.apply(null, c), hi = Math.max.apply(null, c);
     var levels = [["Entry", o.entry, "var(--label)"], ["Stop", o.stop_loss, "var(--red)"],
-                  ["Target", o.take_profit, "var(--green-b)"]].filter(function (l) {
+                  ["Target", o.take_profit, "var(--green-b)"]];
+    // Extra levels an agent wants drawn without them being a trade - Flag's
+    // trigger and flag low on a forming row. Skipped when a trade level
+    // already sits at the same price.
+    var TONE = { pos: "var(--green-b)", neg: "var(--red)", neutral: "var(--tv-blue)" };
+    (o.chart_levels || []).forEach(function (cl) {
+      if (typeof cl.value !== "number") return;
+      if (levels.some(function (l) { return typeof l[1] === "number" && Math.abs(l[1] - cl.value) < 1e-9; })) return;
+      levels.push([cl.label, cl.value, TONE[cl.tone] || "var(--label)"]);
+    });
+    levels = levels.filter(function (l) {
       return typeof l[1] === "number" && l[1] > lo - (hi - lo) && l[1] < hi + (hi - lo);
     });
     levels.forEach(function (l) { lo = Math.min(lo, l[1]); hi = Math.max(hi, l[1]); });

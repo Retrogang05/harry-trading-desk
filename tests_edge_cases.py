@@ -175,7 +175,7 @@ check("continuous() rejects a gap", not goldy.continuous(bars([100.0]*150+[40.0]
 # ─────────────────────────────────────────────────────────────────────
 section("Published JSON contracts")
 
-for fn in ("MNTM","OPY","TREY","GOLD","PCKT","LDRS"):
+for fn in ("MNTM","OPY","TREY","GOLD","PCKT","LDRS","FLAG"):
     p = os.path.join(ROOT, "docs", "data", f"{fn}.json")
     d = json.load(open(p))
     rows = d.get("opportunities", [])
@@ -202,7 +202,7 @@ for fn in ("MNTM","OPY","TREY","GOLD","PCKT","LDRS"):
               for v in d.get("groups",{}).get("values",[])) if d.get("groups") else True)
 
 man = json.load(open(os.path.join(ROOT,"docs","data","agents.json")))["agents"]
-check("manifest lists every data file", set(man) == {"MNTM","OPY","TREY","GOLD","PCKT","LDRS"}, str(man))
+check("manifest lists every data file", set(man) == {"MNTM","OPY","TREY","GOLD","PCKT","LDRS","FLAG"}, str(man))
 
 # ─────────────────────────────────────────────────────────────────────
 section("Every consumer of an opportunity row, in BOTH directions")
@@ -445,7 +445,7 @@ history.attach(_rows, {"AAA": bars([10.0 + i for i in range(80)])})
 history._fetch = _real
 check("attach uses the agent's own frames and skips what it cannot get",
       "history" in _rows[0] and "history" not in _rows[1])
-for fn in ("MNTM", "OPY", "TREY", "GOLD", "PCKT", "LDRS"):
+for fn in ("MNTM", "OPY", "TREY", "GOLD", "PCKT", "LDRS", "FLAG"):
     _rs = json.load(open(os.path.join(ROOT, "docs", "data", f"{fn}.json")))["opportunities"]
     check(f"{fn}: every history has matching dates/closes",
           all(len(o["history"]["dates"]) == len(o["history"]["closes"]) >= 2
@@ -467,6 +467,51 @@ _pub = {o["symbol"] for fn in ("MNTM", "OPY", "TREY", "GOLD", "PCKT", "LDRS")
 check("every published symbol has a company name", _pub <= set(_names), str(sorted(_pub - set(_names))[:10]))
 check("no fund-file artefacts left in names",
       not [v for v in _names.values() if "+" in v or v.endswith("/The")])
+
+# ─────────────────────────────────────────────────────────────────────
+section("Flag")
+
+flagm = load_mod("flagagent", "flag/agent.py", "flag")
+
+def flag_bars(flag_vol=4e5, flag_drop=0.6, breakout=None, flag_len=6):
+    """60 flat sessions at 100, a 10-session pole to ~130, then a gently
+    falling flag. `breakout` appends a final session closing there."""
+    c = [100.0 + 0.3 * np.sin(k) for k in range(60)]
+    c += [100.0 + 3.0 * (k + 1) for k in range(10)]               # pole to 130
+    c += [130.0 - flag_drop * (k + 1) for k in range(flag_len)]   # the flag
+    vol = [1e6] * 60 + [2e6] * 10 + [flag_vol * (1 - 0.05 * k) for k in range(flag_len)]
+    if breakout is not None:
+        c.append(breakout); vol.append(4e6)
+    idx = pd.date_range("2026-01-01", periods=len(c), freq="B")
+    hi = [x * 1.01 for x in c]; lo = [x * 0.99 for x in c]
+    hi[69] = c[69] * 1.015                                        # the pole top is the high
+    return pd.DataFrame({"Open": c, "High": hi, "Low": lo, "Close": c, "Volume": vol}, index=idx)
+
+_f = flagm.read_flag(flag_bars())
+check("a clean pole + quiet drifting flag reads as forming",
+      _f is not None and _f["state"] == "forming", str(_f and _f["state"]))
+check("forming flag: trigger above price, stop at the flag low",
+      _f is not None and _f["trigger"] > _f["price"] > _f["flag_low"])
+_b = flagm.read_flag(flag_bars(breakout=131.0))
+check("a close above the trigger on volume reads as a breakout",
+      _b is not None and _b["state"] == "breakout", str(_b and _b["state"]))
+_bt = flagm.trade_levels(_b) if _b else {}
+check("breakout trade: entry at close, stop at flag low, time exit, no target",
+      _bt.get("entry") == 131.0 and _bt.get("stop_loss") == _b["flag_low"]
+      and "take_profit" not in _bt and "sessions" in _bt.get("exit_rule", ""))
+check("no flag when volume does not dry up",
+      flagm.read_flag(flag_bars(flag_vol=2.2e6)) is None)
+check("no flag when the pullback is too deep to be well-formed",
+      flagm.read_flag(flag_bars(flag_drop=2.5)) is None)
+check("forming rows carry no trade levels",
+      flagm.trade_levels(_f) == {} if _f else False)
+fg = json.load(open(os.path.join(ROOT, "docs", "data", "FLAG.json")))["opportunities"]
+check("published flags are all well-formed",
+      all(o["flag"]["vol_ratio"] <= flagm.WELL_VOL_RATIO * 100 + 1e-6
+          and o["flag"]["retrace"] <= flagm.WELL_RETRACE * 100 + 1e-6
+          and o["flag"]["length"] <= flagm.WELL_FLAG_MAX for o in fg))
+check("every Flag row carries its trigger and stop for the chart",
+      all({x["label"] for x in o.get("chart_levels", [])} == {"Trigger", "Flag low"} for o in fg))
 
 print(f"\n{'='*60}\n{len(PASSES)} passed, {len(FAILS)} failed")
 if FAILS:
