@@ -319,6 +319,12 @@ python scripts/fetch_sp500.py      # downloads a fresh spy.xlsx
 python scripts/build_universe.py   # ~3 min, mostly the pricing pass
 ```
 
+The same build writes `docs/data/names.json` — each ticker's company name,
+taken from the holdings files (SSGA and BlackRock write names in capitals, so
+they are recased; Invesco's are used as-is). The dashboard shows it under the
+ticker in the detail panel. `python scripts/build_universe.py --names-only`
+refreshes just the names without re-pricing.
+
 QQQ rows count if their class is common stock **or an American Depositary
 Receipt**. Until October 2026 only common stock was accepted, which silently
 left ASML, ARM and PDD — genuine Nasdaq-100 members, about 1.5% of QQQ — out of

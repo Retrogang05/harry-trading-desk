@@ -202,6 +202,9 @@
   .dhead .s { font-size: 22px; font-weight: 600; letter-spacing: -0.02em;
               font-family: var(--mono); }
   .dhead .px { color: var(--dim); font-size: 13px; font-family: var(--mono); }
+  .dhead .idb { min-width: 0; flex: 1 1 auto; }
+  .dhead .idt { display: flex; align-items: baseline; gap: 11px; }
+  .dhead .co { color: var(--label); font-size: 12.5px; margin-top: 3px; line-height: 1.35; }
   .dhead .sc { margin-left: auto; text-align: right; }
   .dhead .sc .num { font-size: 24px; font-weight: 600; font-family: var(--mono);
                     font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
@@ -490,7 +493,7 @@
 
   var DATA = "data/";
   var $ = function (id) { return document.getElementById(id); };
-  var state = { feeds: [], rows: [], active: "all", selected: null, query: "", group: "all" };
+  var state = { feeds: [], rows: [], active: "all", selected: null, query: "", group: "all", names: {} };
 
   function el(t, c, x) { var n = document.createElement(t); if (c) n.className = c; if (x != null) n.textContent = x; return n; }
 
@@ -775,6 +778,7 @@
 
       tr.appendChild(el("td", "l muted", String(i + 1)));
       var tdS = el("td", "l"); tdS.appendChild(el("span", "sym", o.symbol)); tr.appendChild(tdS);
+      if (state.names[o.symbol]) tdS.title = state.names[o.symbol];
 
       if (showIndex) {
         var tdI = el("td", "l"), gs = groupsOf(r);
@@ -989,8 +993,14 @@
     var p = el("div", "panel");
     p.appendChild(el("div", "ph", "Detail"));
     var h = el("div", "dhead");
-    h.appendChild(el("div", "s", o.symbol));
-    h.appendChild(el("div", "px", "$" + usd(o.price)));
+    // Ticker and price, with the company name underneath (names.json, built
+    // from the ETF holdings files by scripts/build_universe.py).
+    var idb = el("div", "idb"), idt = el("div", "idt");
+    idt.appendChild(el("div", "s", o.symbol));
+    idt.appendChild(el("div", "px", "$" + usd(o.price)));
+    idb.appendChild(idt);
+    if (state.names[o.symbol]) idb.appendChild(el("div", "co", state.names[o.symbol]));
+    h.appendChild(idb);
     var sc = el("div", "sc");
     var num = el("div", "num", o.score + " / 100"); num.style.color = b.c;
     sc.appendChild(num);
@@ -1158,6 +1168,12 @@
   }
 
   tick(); setInterval(tick, 1000);
+
+  // Company names: optional. A failed load costs only the name line.
+  getJSON("names.json").then(function (n) {
+    state.names = n || {};
+    if (state.rows.length) renderAll();
+  }).catch(function (e) { console.warn("company names unavailable:", e); });
 
   getJSON("agents.json")
     .then(function (m) {

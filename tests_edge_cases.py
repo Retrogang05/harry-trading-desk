@@ -451,6 +451,23 @@ for fn in ("MNTM", "OPY", "TREY", "GOLD", "PCKT", "LDRS"):
           all(len(o["history"]["dates"]) == len(o["history"]["closes"]) >= 2
               for o in _rs if "history" in o))
 
+# ─────────────────────────────────────────────────────────────────────
+section("Company names")
+
+bu = load_mod("build_universe", "scripts/build_universe.py")
+for raw, want in [("NVIDIA CORP", "NVIDIA Corp"), ("AT+T INC", "AT&T Inc"),
+                  ("MCDONALD S CORP", "McDonald's Corp"), ("COCA COLA CO/THE", "Coca Cola Co"),
+                  ("CBRE GROUP INC   A", "CBRE Group Inc"), ("PPG INDUSTRIES INC", "PPG Industries Inc"),
+                  ("10X GENOMICS CLASS A", "10X Genomics"), ("O REILLY AUTOMOTIVE INC", "O Reilly Automotive Inc"),
+                  ("Micron Technology Inc", "Micron Technology Inc")]:
+    check(f"pretty_name({raw!r})", bu.pretty_name(raw) == want, bu.pretty_name(raw))
+_names = json.load(open(os.path.join(ROOT, "docs", "data", "names.json")))
+_pub = {o["symbol"] for fn in ("MNTM", "OPY", "TREY", "GOLD", "PCKT", "LDRS")
+        for o in json.load(open(os.path.join(ROOT, "docs", "data", f"{fn}.json")))["opportunities"]}
+check("every published symbol has a company name", _pub <= set(_names), str(sorted(_pub - set(_names))[:10]))
+check("no fund-file artefacts left in names",
+      not [v for v in _names.values() if "+" in v or v.endswith("/The")])
+
 print(f"\n{'='*60}\n{len(PASSES)} passed, {len(FAILS)} failed")
 if FAILS:
     print("FAILURES:")

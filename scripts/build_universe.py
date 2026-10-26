@@ -36,7 +36,8 @@ import sys
 import xml.etree.ElementTree as ET
 import zipfile
 from datetime import datetime
-from typing import Dict
+import json
+from typing import Dict, List, Optional
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HOLDINGS = os.path.join(ROOT, "data", "holdings")
@@ -117,7 +118,7 @@ def tradable(sym: str) -> bool:
 XL_NS = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
 
 
-def parse_spy(path: str):
+def parse_spy(path: str, names: Optional[Dict[str, str]] = None):
     """SSGA .xlsx. An xlsx is a zip of XML, so this needs no openpyxl for a
     file we parse a few times a year.
 
@@ -176,11 +177,13 @@ def parse_spy(path: str):
             continue
         seen.add(sym)
         symbols.append(sym)
+        if names is not None:
+            names.setdefault(sym, name)
 
     return symbols, as_of
 
 
-def parse_qqq(path: str):
+def parse_qqq(path: str, names: Optional[Dict[str, str]] = None):
     """Invesco CSV: Ticker,Company,Share/ Par,% TNA,Class of shares,CUSIP,...
 
     The file is UTF-8 with a BOM. Invesco includes non-exchange-traded
@@ -204,6 +207,8 @@ def parse_qqq(path: str):
                 continue
             seen.add(sym)
             symbols.append(sym)
+            if names is not None and (row.get("Company") or "").strip():
+                names.setdefault(sym, row["Company"].strip())
     return symbols, ""
 
 
@@ -254,7 +259,7 @@ def fetch_sectors(refresh: bool = True) -> Dict[str, str]:
     return sector_of
 
 
-def parse_iwm(path: str):
+def parse_iwm(path: str, names: Optional[Dict[str, str]] = None):
     """iShares CSV: ~9 preamble lines, then a header row, then holdings, then
     a trailing disclaimer block. Find the header by its labels rather than by
     line number, and stop at the first row that no longer looks like a holding.
@@ -289,6 +294,8 @@ def parse_iwm(path: str):
             continue
         seen.add(sym)
         symbols.append(sym)
+        if names is not None and (row.get("Name") or "").strip():
+            names.setdefault(sym, row["Name"].strip())
     return symbols, as_of
 
 
@@ -333,6 +340,103 @@ FUNDS = [
 # floor below which the result is treated as a failed read rather than a real
 # change in the index.
 MIN_EXPECTED = {"SPX": 450, "QQQ": 90, "IWM": 1500}
+
+
+# ── Company names ------------------------------------------------------------
+#
+# The dashboard shows each ticker's company name beside it. The holdings files
+# already carry names, so no extra source is needed: Invesco writes them in
+# normal case ("Micron Technology Inc"), SSGA and BlackRock in capitals
+# ("NVIDIA CORP", "TWIST BIOSCIENCE"), which pretty_name() recases.
+
+NAMES_OUT = os.path.join(ROOT, "docs", "data", "names.json")
+NAME_PRIORITY = ["QQQ", "SPX", "IWM"]        # properly cased source first
+
+# Symbols the agents publish that are not index members.
+FUND_NAMES = {
+    "SPY": "SPDR S&P 500 ETF Trust", "QQQ": "Invesco QQQ Trust",
+    "IWM": "iShares Russell 2000 ETF", "TQQQ": "ProShares UltraPro QQQ",
+    "XLB": "Materials Select Sector SPDR", "XLC": "Communication Services Select Sector SPDR",
+    "XLE": "Energy Select Sector SPDR", "XLF": "Financial Select Sector SPDR",
+    "XLI": "Industrial Select Sector SPDR", "XLK": "Technology Select Sector SPDR",
+    "XLP": "Consumer Staples Select Sector SPDR", "XLRE": "Real Estate Select Sector SPDR",
+    "XLU": "Utilities Select Sector SPDR", "XLV": "Health Care Select Sector SPDR",
+    "XLY": "Consumer Discretionary Select Sector SPDR",
+}
+
+# Words that stay in capitals when recasing. Vowel-less short words (PPG,
+# CSX, NRG) are kept automatically; these are the acronyms that have vowels.
+KEEP_UPPER = {"AES", "AG", "AI", "ADR", "AMC", "ASA", "BOK", "CBRE", "EOG", "ETF",
+              "IAC", "ICU", "II", "III", "IV", "LP", "LLC", "NV", "OGE", "ONE",
+              "REIT", "SA", "SE", "UMB", "US", "USA", "WEC", "AXA", "IDEXX", "EPAM",
+              "SEI", "AECOM", "UFP", "ACI", "EQT", "AT&T", "PG&E", "ODP", "TEGNA"}
+LOWER = {"plc"}
+# Share-class tails are noise next to a ticker that already says the class.
+# SSGA also truncates them ("CL A", "CLA", a bare trailing "A"/"C").
+CLASS_TAIL = re.compile(r"\s+(CLASS\s+[A-Z]|CL\s*[A-Z]?|CLA|[A-C]|REIT|ADR)$|\s*/(THE|[A-Z]{2})$", re.I)
+# Casings no rule produces.
+FIXUPS = {"Jpmorgan": "JPMorgan", "Ebay": "eBay", "Paypal": "PayPal",
+          "Iqvia": "IQVIA", "Nvidia": "NVIDIA", "Hubspot": "HubSpot",
+          "Doordash": "DoorDash", "Crowdstrike": "CrowdStrike", "Fedex": "FedEx",
+          "Mckesson": "McKesson", "P G & E": "PG&E"}
+
+
+def pretty_name(raw: str) -> str:
+    """Recase an all-capitals fund name; leave mixed-case names alone."""
+    name = raw.strip()
+    while True:                                   # tails can stack: "REIT CLA"
+        cut = CLASS_TAIL.sub("", name)
+        if cut == name:
+            break
+        name = cut
+    if name != name.upper():
+        return name
+    # SSGA writes "&" as "+" and drops apostrophes: "MCDONALD S CORP".
+    name = re.sub(r"\s*\+\s*", lambda m: " & " if m.group(0).strip() != m.group(0) else "&", name)
+    name = re.sub(r"(\w) S\b", r"\1'S", name)
+    words = []
+    for w in name.split():
+        core = w.strip(",.()")
+        if core in KEEP_UPPER or any(ch.isdigit() for ch in core) or (
+                len(core) <= 4 and core.isalpha() and not re.search(r"[AEIOUY]", core)):
+            words.append(w)
+        elif core.lower() in LOWER:
+            words.append(w.lower())
+        else:
+            # Capitalise each part of hyphenated / ampersand / apostrophe words.
+            words.append(re.sub(r"[A-Z]+", lambda m: m.group(0).capitalize(), w))
+    out = " ".join(words)
+    out = re.sub(r"\bMc([a-z])", lambda m: "Mc" + m.group(1).upper(), out)
+    out = re.sub(r"'S\b", "'s", out)                # McDonald's, not O'Reilly
+    for a, b in FIXUPS.items():
+        out = re.sub(rf"\b{a}\b", b, out)
+    return out
+
+
+def collect_names() -> Dict[str, Dict[str, str]]:
+    """{index tag: {symbol: raw name}} straight from the holdings files."""
+    out = {}
+    for tag, filename, parser in FUNDS:
+        path = os.path.join(HOLDINGS, filename)
+        if os.path.exists(path):
+            out[tag] = {}
+            parser(path, out[tag])
+    return out
+
+
+def write_names(symbols: List[str], by_fund: Dict[str, Dict[str, str]],
+                out: str = NAMES_OUT) -> int:
+    names = dict(FUND_NAMES)
+    for s in symbols:
+        for tag in NAME_PRIORITY:
+            raw = by_fund.get(tag, {}).get(s)
+            if raw:
+                names[s] = pretty_name(raw)
+                break
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    with open(out, "w") as f:
+        json.dump(dict(sorted(names.items())), f, indent=0, separators=(",", ":"))
+    return len(names)
 
 
 # ── Liquidity ----------------------------------------------------------------
@@ -389,7 +493,17 @@ def main():
     ap.add_argument("--cached-sectors", action="store_true",
                     help="use the sector files already in data/holdings/sectors/")
     ap.add_argument("--out", default=UNIVERSE)
+    ap.add_argument("--names-only", action="store_true",
+                    help="only rewrite docs/data/names.json for the current universe.txt")
     args = ap.parse_args()
+
+    if args.names_only:
+        sys.path.insert(0, ROOT)
+        import universe
+        syms, _, _ = universe.load(path=args.out)
+        n = write_names(syms, collect_names())
+        print(f"Wrote {NAMES_OUT} ({n} names)")
+        return
 
     # symbol -> ordered list of index tags it belongs to
     membership, as_ofs = {}, {}
@@ -498,6 +612,10 @@ def main():
 
     with open(args.out, "w") as f:
         f.write(header + "\n".join(lines) + "\n")
+
+    if args.out == UNIVERSE:
+        n = write_names(kept, collect_names())
+        print(f"Wrote {NAMES_OUT} ({n} names)")
 
     print(f"\nWrote {args.out}")
     print(f"  {len(kept)} tickers: SPX {final_counts.get('SPX', 0)}, "
