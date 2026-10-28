@@ -329,7 +329,8 @@ check("breakouts carry a stop and a time exit, no fixed target",
       all("entry" in o and "take_profit" not in o and "sessions" in o.get("exit_rule", "")
           for o in pk if o["signal_state"] == "broke_up"))
 check("breakout stop sits BREAKOUT_STOP_ATR under the crossed level",
-      all(abs(o["stop_loss"] - (o["map"]["floor"] - pocket.BREAKOUT_STOP_ATR * o["map"]["atr"])) < 1e-6
+      # map.atr is published rounded to 4 dp, so allow that much slack.
+      all(abs(o["stop_loss"] - (o["map"]["floor"] - pocket.BREAKOUT_STOP_ATR * o["map"]["atr"])) < 1e-3
           for o in pk if o["signal_state"] == "broke_up"))
 _off = lambda o: next(float(f["value"].rstrip("%")) for f in o["setup"]["fields"] if f["label"] == "Off 52w high")
 check("only breakdowns within 10% of the 52-week high carry a short",
