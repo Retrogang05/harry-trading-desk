@@ -198,14 +198,14 @@
   .muted { color: var(--faint); }
 
   /* ── detail ── */
-  .dhead { display: flex; align-items: baseline; gap: 11px; padding: 14px 14px 12px; flex-wrap: wrap; }
+  .dhead { display: flex; align-items: flex-start; gap: 11px; padding: 14px 14px 12px; }
   .dhead .s { font-size: 22px; font-weight: 600; letter-spacing: -0.02em;
               font-family: var(--mono); }
   .dhead .px { color: var(--dim); font-size: 13px; font-family: var(--mono); }
-  .dhead .idb { min-width: 0; flex: 1 1 auto; }
+  .dhead .idb { min-width: 0; flex: 1 1 0; }
   .dhead .idt { display: flex; align-items: baseline; gap: 11px; }
   .dhead .co { color: var(--label); font-size: 12.5px; margin-top: 3px; line-height: 1.35; }
-  .dhead .sc { margin-left: auto; text-align: right; }
+  .dhead .sc { margin-left: auto; text-align: right; flex: none; }
   .dhead .sc .num { font-size: 24px; font-weight: 600; font-family: var(--mono);
                     font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
   .dhead .sc .band { font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 1px; }
@@ -331,9 +331,9 @@
     --bd-hi:   rgba(155,168,171,.20);
     --text:    #CCD0CF;
     --label:   #9BA8AB;
-    --dim:     #7d8c91;
-    --faint:   #5e6f7b;
-    --slate:   #7d8c91;
+    --dim:     #95a3a7;
+    --faint:   #7f8f98;
+    --slate:   #95a3a7;
     --glass:      rgba(37,55,69,.42);
     --glass-hi:   rgba(74,92,106,.38);
     --glass-edge: rgba(155,168,171,.14);

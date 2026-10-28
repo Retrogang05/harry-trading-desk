@@ -351,6 +351,9 @@ MIN_EXPECTED = {"SPX": 450, "QQQ": 90, "IWM": 1500}
 
 NAMES_OUT = os.path.join(ROOT, "docs", "data", "names.json")
 NAME_PRIORITY = ["QQQ", "SPX", "IWM"]        # properly cased source first
+# SSGA and BlackRock cut names at a fixed width, often mid-word:
+# "KINIKSA PHARMACEUTICALS INTERNATIO", "JOHNSON CONTROLS INTERNATION".
+NAME_WIDTH = {"SPX": 28, "IWM": 34}
 
 # Symbols the agents publish that are not index members.
 FUND_NAMES = {
@@ -424,13 +427,47 @@ def collect_names() -> Dict[str, Dict[str, str]]:
     return out
 
 
+def complete_cut(raw: str, vocab: Dict[str, int]) -> str:
+    """Finish a name the fund file cut at its width limit. The last word is
+    completed with the most common full word it is a prefix of; if none, it
+    is dropped rather than shown half-written."""
+    head, _, last = raw.rstrip().rpartition(" ")
+    if not head:
+        return raw
+    up = last.upper()
+    if up in ("IN", "I"):
+        return f"{head} INC"
+    # A whole word that happens to end at the limit ("INC", "GROUP", "TRUST"),
+    # or too short to complete with any confidence: leave it.
+    if up in vocab or len(up) < 3:
+        return raw
+    hits = [w for w in vocab if w.startswith(up)]
+    return f"{head} {max(hits, key=lambda w: (vocab[w], -len(w)))}" if hits else raw
+
+
 def write_names(symbols: List[str], by_fund: Dict[str, Dict[str, str]],
                 out: str = NAMES_OUT) -> int:
+    # Every word seen in a name that was NOT cut, uppercased, with counts.
+    vocab: Dict[str, int] = {}
+    for tag, d in by_fund.items():
+        cap = NAME_WIDTH.get(tag)
+        for raw in d.values():
+            words = raw.upper().split()
+            if cap and len(raw) >= cap:
+                words = words[:-1]
+            for w in words:
+                vocab[w] = vocab.get(w, 0) + 1
     names = dict(FUND_NAMES)
     for s in symbols:
         for tag in NAME_PRIORITY:
             raw = by_fund.get(tag, {}).get(s)
             if raw:
+                cap = NAME_WIDTH.get(tag)
+                if cap and len(raw) >= cap:
+                    # A cut inside a share-class tail ("CL A", "CLA") needs no
+                    # completing - pretty_name drops the tail anyway.
+                    if CLASS_TAIL.sub("", raw) == raw:
+                        raw = complete_cut(raw, vocab)
                 names[s] = pretty_name(raw)
                 break
     os.makedirs(os.path.dirname(out), exist_ok=True)
