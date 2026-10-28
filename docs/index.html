@@ -271,68 +271,85 @@
      light version. The base styles alone are what renders if JS is off and
      the attribute is never set - still a complete, readable page. -->
 <style>
-  /* Shared glass geometry. Each theme sets the tokens and the backdrop. */
+  /* Shared glass geometry. Each theme sets the tokens and the backdrop.
+     Palette (both looks): #06141B #11212D #253745 #4A5C6A #9BA8AB #CCD0CF -
+     one slate-blue family from near-black to pale grey. Green and red stay
+     reserved for signals. */
   :root {
-    --r-card: 18px;
-    --r-tile: 12px;
-    --blur: blur(22px) saturate(150%);
+    --r-card: 22px;
+    --r-tile: 14px;
+    /* blur softens what is behind; saturate keeps it from going muddy. */
+    --blur: blur(24px) saturate(1.4);
   }
 
-  /* ── Grey (day): light frosted glass over a mid silver-grey. The one
-     light look, so text and signal colours are darkened for contrast ── */
+  /* ── Grey (day): white frost (55%, the classic glass value) over the
+     palette's pale end. Text from its dark end. ── */
   html[data-glass="grey"] {
-    --surface: rgba(255,255,255,.35);
-    --raised:  rgba(255,255,255,.65);
-    --sunk:    rgba(255,255,255,.32);
-    --bd:      rgba(20,28,40,.09);
-    --bd-hi:   rgba(20,28,40,.18);
-    --text:    #15181d;
-    --label:   #3d434c;
-    --dim:     #525963;
-    --faint:   #6a717b;
+    --surface: rgba(255,255,255,.40);
+    --raised:  rgba(255,255,255,.70);
+    --sunk:    rgba(204,208,207,.55);
+    --bd:      rgba(6,20,27,.09);
+    --bd-hi:   rgba(6,20,27,.18);
+    --text:    #06141B;
+    --label:   #253745;
+    --dim:     #4A5C6A;
+    --faint:   #66767f;
     --green:   #067a64;  --green-b: #067a64;  --green-t: #067a64;
-    --red:     #cc2433;  --red-b:   #cc2433;
-    --amber:   #a8650f;
-    --slate:   #6a717b;
-    --glass:      rgba(255,255,255,.30);
-    --glass-hi:   rgba(255,255,255,.60);
-    --glass-edge: rgba(255,255,255,.55);
-    --glass-line: rgba(255,255,255,.75);
-    --shadow:  0 10px 36px rgba(20,28,40,.20);
-    --row-line: rgba(20,28,40,.06);
-    --track:   rgba(20,28,40,.08);
-    --pill-on-bg: #15181d; --pill-on-fg: #fff;
+    --red:     #c42232;  --red-b:   #c42232;
+    --amber:   #9a5f12;
+    --slate:   #4A5C6A;
+    --tv-blue: #2457d6;
+    --glass:      rgba(255,255,255,.55);
+    --glass-hi:   rgba(255,255,255,.80);
+    --glass-edge: rgba(255,255,255,.70);
+    --row-line: rgba(6,20,27,.06);
+    --track:   rgba(6,20,27,.08);
+    --pill-on-bg: #11212D; --pill-on-fg: #CCD0CF;
+    /* Four-layer elevation: a lit top edge, a shaded bottom edge, a tight
+       contact shadow, and a soft ambient one tinted with the palette's
+       darkest colour rather than black. */
+    --elev:    inset 0 1px 0 rgba(255,255,255,.85), inset 0 -1px 0 rgba(6,20,27,.06),
+               0 1px 2px rgba(6,20,27,.10), 0 12px 32px -10px rgba(17,33,45,.35);
+    --elev-sm: inset 0 1px 0 rgba(255,255,255,.80), inset 0 -1px 0 rgba(6,20,27,.08),
+               0 1px 2px rgba(6,20,27,.12), 0 4px 10px -4px rgba(17,33,45,.30);
     --backdrop:
-      radial-gradient(50% 45% at 12% 8%,  rgba(235,238,242,.75) 0%, rgba(235,238,242,0) 62%),
-      radial-gradient(45% 45% at 90% 12%, rgba(185,194,208,.8) 0%, rgba(185,194,208,0) 62%),
-      radial-gradient(60% 50% at 70% 100%, rgba(110,120,135,.55) 0%, rgba(110,120,135,0) 65%),
-      radial-gradient(40% 40% at 25% 75%, rgba(150,160,175,.6) 0%, rgba(150,160,175,0) 70%),
-      linear-gradient(165deg, #cdd1d7 0%, #b3b9c1 55%, #959ca6 100%);
+      radial-gradient(32% 30% at 14% 18%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 70%),
+      radial-gradient(28% 34% at 82% 26%, rgba(74,92,106,.45) 0%, rgba(74,92,106,0) 70%),
+      radial-gradient(36% 30% at 58% 88%, rgba(37,55,69,.35) 0%, rgba(37,55,69,0) 70%),
+      radial-gradient(24% 26% at 30% 70%, rgba(155,168,171,.75) 0%, rgba(155,168,171,0) 70%),
+      linear-gradient(160deg, #CCD0CF 0%, #b7bfc1 50%, #9BA8AB 100%);
   }
   html[data-glass="grey"] .foot { color: var(--label); }
 
-  /* ── Dark (night): the base palette on glass over a deep, softly lit
-     backdrop ── */
+  /* ── Dark (night): slate glass over the palette's near-black end, lit
+     from the top left as in the swatch card. ── */
   html[data-glass="dark"] {
-    --surface: rgba(255,255,255,.04);
-    --raised:  rgba(255,255,255,.10);
-    --sunk:    rgba(0,0,0,.25);
-    --bd:      rgba(255,255,255,.08);
-    --bd-hi:   rgba(255,255,255,.16);
-    --glass:      rgba(22,24,30,.42);
-    --glass-hi:   rgba(255,255,255,.12);
-    --glass-edge: rgba(255,255,255,.10);
-    --glass-line: rgba(255,255,255,.14);
-    --shadow:  0 10px 40px rgba(0,0,0,.45);
-    --row-line: rgba(255,255,255,.05);
-    --track:   rgba(255,255,255,.08);
-    --pill-on-bg: #e9e9ec; --pill-on-fg: #0a0a0b;
-    --accent-tile: linear-gradient(135deg, rgba(8,153,129,.55) 0%, rgba(34,171,148,.25) 100%);
+    --surface: rgba(155,168,171,.05);
+    --raised:  rgba(155,168,171,.12);
+    --sunk:    rgba(6,20,27,.45);
+    --bd:      rgba(155,168,171,.10);
+    --bd-hi:   rgba(155,168,171,.20);
+    --text:    #CCD0CF;
+    --label:   #9BA8AB;
+    --dim:     #7d8c91;
+    --faint:   #5e6f7b;
+    --slate:   #7d8c91;
+    --glass:      rgba(37,55,69,.42);
+    --glass-hi:   rgba(74,92,106,.38);
+    --glass-edge: rgba(155,168,171,.14);
+    --row-line: rgba(155,168,171,.07);
+    --track:   rgba(155,168,171,.10);
+    --pill-on-bg: #CCD0CF; --pill-on-fg: #06141B;
+    --elev:    inset 0 1px 0 rgba(204,208,207,.14), inset 0 -1px 0 rgba(0,0,0,.35),
+               0 1px 2px rgba(0,0,0,.40), 0 14px 36px -10px rgba(0,0,0,.65);
+    --elev-sm: inset 0 1px 0 rgba(204,208,207,.16), inset 0 -1px 0 rgba(0,0,0,.35),
+               0 1px 2px rgba(0,0,0,.45), 0 4px 12px -4px rgba(0,0,0,.55);
     --backdrop:
-      radial-gradient(50% 45% at 15% 10%, rgba(41,98,255,.30) 0%, rgba(41,98,255,0) 60%),
-      radial-gradient(45% 45% at 90% 15%, rgba(8,153,129,.28) 0%, rgba(8,153,129,0) 60%),
-      radial-gradient(60% 50% at 70% 100%, rgba(200,151,74,.22) 0%, rgba(200,151,74,0) 65%),
-      linear-gradient(160deg, #11131a 0%, #0b0c10 60%, #07080a 100%);
+      radial-gradient(38% 34% at 6% 4%,   rgba(155,168,171,.42) 0%, rgba(155,168,171,0) 70%),
+      radial-gradient(30% 34% at 86% 22%, rgba(74,92,106,.45) 0%, rgba(74,92,106,0) 70%),
+      radial-gradient(34% 30% at 40% 78%, rgba(37,55,69,.70) 0%, rgba(37,55,69,0) 70%),
+      radial-gradient(22% 24% at 72% 92%, rgba(74,92,106,.35) 0%, rgba(74,92,106,0) 70%),
+      linear-gradient(160deg, #253745 0%, #11212D 38%, #06141B 100%);
   }
 
   html[data-glass] body {
@@ -351,7 +368,7 @@
     background: var(--glass);
     -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
     border: 1px solid var(--glass-edge);
-    box-shadow: var(--shadow), inset 0 1px 0 var(--glass-line);
+    box-shadow: var(--elev);
   }
 
   /* Top bar: a floating pill. */
@@ -365,12 +382,14 @@
     max-width: calc(100% - 28px); border-radius: 999px; padding: 5px; gap: 2px;
   }
   html[data-glass] .tab { border: none; border-radius: 999px; padding: 7px 16px; }
-  html[data-glass] .tab[aria-pressed="true"] { background: var(--pill-on-bg); color: var(--pill-on-fg); }
+  html[data-glass] .tab[aria-pressed="true"] { background: var(--pill-on-bg); color: var(--pill-on-fg);
+                                                box-shadow: var(--elev-sm); }
   html[data-glass] .tab[aria-pressed="true"] .ct { color: var(--pill-on-fg); opacity: .6; }
 
   html[data-glass] .groups { border-radius: var(--r-card); padding: 8px 14px; }
   html[data-glass] .chip { border-color: var(--glass-edge); background: var(--sunk); }
-  html[data-glass] .chip[aria-pressed="true"] { background: var(--pill-on-bg); color: var(--pill-on-fg); border-color: transparent; }
+  html[data-glass] .chip[aria-pressed="true"] { background: var(--pill-on-bg); color: var(--pill-on-fg); border-color: transparent;
+                                                 box-shadow: var(--elev-sm); }
   html[data-glass] .tape { border-radius: 999px; height: 34px; }
   /* body is a full-height flex column: without this the fixed-height
      strips shrink to make room for the workspace. */
@@ -388,7 +407,7 @@
 
   /* Agent roster: active agent a raised pill. */
   html[data-glass] .ragent { border-radius: 12px; margin: 0 6px; width: calc(100% - 12px); }
-  html[data-glass] .ragent[aria-pressed="true"] { background: var(--glass-hi); box-shadow: none; }
+  html[data-glass] .ragent[aria-pressed="true"] { background: var(--glass-hi); box-shadow: var(--elev-sm); }
 
   /* Grid */
   html[data-glass] table.sig th { background: transparent;
@@ -401,9 +420,9 @@
 
   /* Detail header as a raised tile; the score keeps its signal colour. */
   html[data-glass] .dhead { margin: 4px 12px 6px; border-radius: 14px; background: var(--glass-hi);
-                            border: 1px solid var(--glass-edge); padding: 14px; }
+                            border: 1px solid var(--glass-edge); padding: 14px; box-shadow: var(--elev-sm); }
   html[data-glass] .lv4 > div { background: var(--glass-hi); border-color: var(--glass-edge);
-                                border-radius: var(--r-tile); }
+                                border-radius: var(--r-tile); box-shadow: var(--elev-sm); }
   html[data-glass] .dim .tr { background: var(--track); height: 6px; border-radius: 3px; }
   html[data-glass] .dim .fl { border-radius: 3px; }
 
@@ -414,8 +433,8 @@
 
   /* Readability where blur is unsupported: fall back to a near-solid card. */
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    html[data-glass="grey"] { --glass: rgba(240,242,245,.94); }
-    html[data-glass="dark"] { --glass: rgba(18,19,24,.94); }
+    html[data-glass="grey"] { --glass: rgba(236,239,238,.95); }
+    html[data-glass="dark"] { --glass: rgba(17,33,45,.95); }
   }
 
   /* Auto / Day / Night switch */
@@ -423,7 +442,8 @@
                   padding: 2px; background: var(--sunk); }
   .glass-switch button { font: inherit; font-size: 11.5px; border: none; background: none; cursor: pointer;
                          color: var(--dim); padding: 3px 11px; border-radius: 999px; }
-  .glass-switch button[aria-pressed="true"] { background: var(--pill-on-bg, var(--text)); color: var(--pill-on-fg, var(--bg)); }
+  .glass-switch button[aria-pressed="true"] { background: var(--pill-on-bg, var(--text)); color: var(--pill-on-fg, var(--bg));
+                                              box-shadow: var(--elev-sm, none); }
 
   @media (max-width: 1000px) {
     /* One column: let the page scroll as a whole instead of squeezing three
