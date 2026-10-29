@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-10-28T06:57:41.300919",
+  "scan_date": "2026-10-29T07:18:52.879416",
   "context": [
     {
       "label": "State",
@@ -38,7 +38,7 @@
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 47"
+      "value": "quiet \u00b7 50"
     }
   ],
   "groups": {
@@ -52,7 +52,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 71.04,
+      "price": 72.36,
       "score": 60,
       "strategy": "Trend gate \u00b7 HALF",
       "dimensions": [
@@ -75,7 +75,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "HALF since 2026-10-20 \u00b7 QQQ 721.25 \u00b7 book 3/6 (reference, not used for state)",
+        "label": "HALF since 2026-10-20 \u00b7 QQQ 725.61 \u00b7 book 3/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -84,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+6.5%",
+            "value": "+7.1%",
             "tone": "pos"
           },
           {
@@ -99,7 +99,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +7.6%",
+            "value": "\u2713 +8.2%",
             "tone": "pos"
           },
           {
@@ -114,7 +114,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2717 47",
+            "value": "\u2717 50",
             "tone": "neg"
           },
           {
@@ -129,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 47",
+            "value": "quiet \u00b7 50",
             "tone": null
           }
         ]
@@ -138,7 +138,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 47.2,
+          "value": 49.6,
           "active": false
         }
       ],
@@ -150,7 +150,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+7.6%"
+            "detail": "+8.2%"
           },
           {
             "key": "stack",
@@ -168,7 +168,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": false,
-            "detail": "47"
+            "detail": "50"
           },
           {
             "key": "macd",
@@ -184,10 +184,9 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nYour HALF position reflects a conflicted setup: QQQ is trading well above its structural support level (the gate), confirming the hold, but the fast trend remains inverted with price lagging the 50-day moving average\u2014a near-term headwind. To escalate to FULL, QQQ would need to resolve both the 10/20-day inversion and push price above its intermediate trend (the 50d MA), which would likely trigger confirmation of a genuine momentum shift.",
+      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects QQQ's solid positioning above its gate average with structural support from the longer moving average hierarchy, but the fast trend remains misaligned\u2014the 10-day MA still trades below the 20-day MA\u2014preventing an upgrade to FULL. For a return to FULL exposure, the short-term momentum would need to confirm by having the 10-day cross above the 20-day MA, which would align the fast trend with the already-supportive intermediate structure.",
       "history": {
         "dates": [
-          "2026-07-30",
           "2026-07-31",
           "2026-08-03",
           "2026-08-04",
@@ -249,10 +248,10 @@
           "2026-10-22",
           "2026-10-23",
           "2026-10-26",
-          "2026-10-27"
+          "2026-10-27",
+          "2026-10-28"
         ],
         "closes": [
-          63.18,
           64.5,
           67.83,
           74.68,
@@ -314,10 +313,10 @@
           66.42,
           66.29,
           68.43,
-          71.04
+          71.04,
+          72.36
         ],
         "sma200": [
-          58.93,
           59.0,
           59.09,
           59.21,
@@ -379,7 +378,8 @@
           64.94,
           65.0,
           65.07,
-          65.15
+          65.15,
+          65.23
         ]
       }
     }

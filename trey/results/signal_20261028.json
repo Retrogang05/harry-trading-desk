@@ -1,0 +1,397 @@
+{
+  "scan_date": "2026-10-29T07:18:52.880207",
+  "signal": {
+    "date": "2026-10-28",
+    "state": "HALF",
+    "since": "2026-10-20",
+    "prev_state": "FULL",
+    "gate_changes_12m": 2,
+    "size_changes_12m": 13,
+    "qqq": 725.6099853515625,
+    "tqqq": 72.36000061035156,
+    "gate_sma": 677.5540020751953,
+    "gate_pct": 7.0925687294566275,
+    "fast_sma": 716.6919982910156,
+    "slow_sma": 732.4765014648438,
+    "mid_sma": 725.0977185058593,
+    "mid_pct": 0.07064797373224074,
+    "fast_ok": false,
+    "mid_ok": true,
+    "fast_confirmed": false,
+    "book": [
+      {
+        "key": "sma225",
+        "label": "> 225d",
+        "met": true,
+        "detail": "+8.2%"
+      },
+      {
+        "key": "stack",
+        "label": "20>50>200",
+        "met": true,
+        "detail": "stacked"
+      },
+      {
+        "key": "fast_raw",
+        "label": "10>20 \u00b7 P>50",
+        "met": false,
+        "detail": "no"
+      },
+      {
+        "key": "rsi",
+        "label": "RSI > 50",
+        "met": false,
+        "detail": "50"
+      },
+      {
+        "key": "macd",
+        "label": "MACD",
+        "met": false,
+        "detail": "<sig <0"
+      },
+      {
+        "key": "seasonal",
+        "label": "Season",
+        "met": true,
+        "detail": "Oct \u00b7 fav"
+      }
+    ],
+    "rsi": 49.64824769107279,
+    "rsi_alert": false,
+    "since_truncated": false
+  },
+  "row": {
+    "rank": 1,
+    "symbol": "TQQQ",
+    "price": 72.36,
+    "score": 60,
+    "strategy": "Trend gate \u00b7 HALF",
+    "dimensions": [
+      {
+        "key": "gate",
+        "label": "QQQ > 200d",
+        "max": 60
+      },
+      {
+        "key": "fast",
+        "label": "10>20 & P>50d",
+        "max": 40
+      }
+    ],
+    "indexes": [
+      "QQQ"
+    ],
+    "breakdown": {
+      "gate": 60,
+      "fast": 0
+    },
+    "setup": {
+      "label": "HALF since 2026-10-20 \u00b7 QQQ 725.61 \u00b7 book 3/6 (reference, not used for state)",
+      "fields": [
+        {
+          "label": "State",
+          "value": "HALF",
+          "tone": null
+        },
+        {
+          "label": "Gate 200d",
+          "value": "+7.1%",
+          "tone": "pos"
+        },
+        {
+          "label": "Fast (3d)",
+          "value": "no",
+          "tone": "neg"
+        },
+        {
+          "label": "Book \u00b7 ref",
+          "value": "3 / 6",
+          "tone": "pos"
+        },
+        {
+          "label": "> 225d",
+          "value": "\u2713 +8.2%",
+          "tone": "pos"
+        },
+        {
+          "label": "20>50>200",
+          "value": "\u2713 stacked",
+          "tone": "pos"
+        },
+        {
+          "label": "10>20 \u00b7 P>50",
+          "value": "\u2717 no",
+          "tone": "neg"
+        },
+        {
+          "label": "RSI > 50",
+          "value": "\u2717 50",
+          "tone": "neg"
+        },
+        {
+          "label": "MACD",
+          "value": "\u2717 <sig <0",
+          "tone": "neg"
+        },
+        {
+          "label": "Season",
+          "value": "\u2713 Oct \u00b7 fav",
+          "tone": "pos"
+        },
+        {
+          "label": "RSI > 80 alert",
+          "value": "quiet \u00b7 50",
+          "tone": null
+        }
+      ]
+    },
+    "alerts": [
+      {
+        "key": "rsi_overbought",
+        "label": "RSI > 80",
+        "value": 49.6,
+        "active": false
+      }
+    ],
+    "book_criteria": {
+      "met": 3,
+      "of": 6,
+      "items": [
+        {
+          "key": "sma225",
+          "label": "> 225d",
+          "met": true,
+          "detail": "+8.2%"
+        },
+        {
+          "key": "stack",
+          "label": "20>50>200",
+          "met": true,
+          "detail": "stacked"
+        },
+        {
+          "key": "fast_raw",
+          "label": "10>20 \u00b7 P>50",
+          "met": false,
+          "detail": "no"
+        },
+        {
+          "key": "rsi",
+          "label": "RSI > 50",
+          "met": false,
+          "detail": "50"
+        },
+        {
+          "key": "macd",
+          "label": "MACD",
+          "met": false,
+          "detail": "<sig <0"
+        },
+        {
+          "key": "seasonal",
+          "label": "Season",
+          "met": true,
+          "detail": "Oct \u00b7 fav"
+        }
+      ]
+    },
+    "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects QQQ's solid positioning above its gate average with structural support from the longer moving average hierarchy, but the fast trend remains misaligned\u2014the 10-day MA still trades below the 20-day MA\u2014preventing an upgrade to FULL. For a return to FULL exposure, the short-term momentum would need to confirm by having the 10-day cross above the 20-day MA, which would align the fast trend with the already-supportive intermediate structure.",
+    "history": {
+      "dates": [
+        "2026-07-31",
+        "2026-08-03",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-28",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25",
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28"
+      ],
+      "closes": [
+        64.5,
+        67.83,
+        74.68,
+        72.7,
+        71.89,
+        74.33,
+        73.66,
+        72.92,
+        74.46,
+        77.0,
+        76.64,
+        76.25,
+        72.39,
+        71.92,
+        70.34,
+        71.03,
+        68.88,
+        70.13,
+        70.33,
+        73.16,
+        71.71,
+        71.78,
+        69.02,
+        69.47,
+        71.89,
+        72.23,
+        72.02,
+        71.41,
+        69.08,
+        70.84,
+        69.14,
+        67.77,
+        67.8,
+        71.24,
+        72.5,
+        78.76,
+        80.67,
+        78.66,
+        78.58,
+        79.6,
+        77.04,
+        77.46,
+        78.03,
+        78.73,
+        81.01,
+        83.12,
+        84.25,
+        83.62,
+        80.23,
+        81.28,
+        79.61,
+        78.81,
+        74.12,
+        73.82,
+        68.21,
+        70.64,
+        70.41,
+        72.61,
+        66.42,
+        66.29,
+        68.43,
+        71.04,
+        72.36
+      ],
+      "sma200": [
+        59.0,
+        59.09,
+        59.21,
+        59.32,
+        59.42,
+        59.52,
+        59.62,
+        59.73,
+        59.83,
+        59.94,
+        60.04,
+        60.12,
+        60.19,
+        60.26,
+        60.32,
+        60.38,
+        60.45,
+        60.52,
+        60.61,
+        60.71,
+        60.79,
+        60.87,
+        60.94,
+        61.03,
+        61.13,
+        61.24,
+        61.35,
+        61.46,
+        61.58,
+        61.7,
+        61.79,
+        61.87,
+        61.94,
+        62.03,
+        62.12,
+        62.24,
+        62.37,
+        62.49,
+        62.6,
+        62.72,
+        62.83,
+        62.93,
+        63.05,
+        63.18,
+        63.32,
+        63.48,
+        63.66,
+        63.82,
+        63.95,
+        64.09,
+        64.22,
+        64.34,
+        64.43,
+        64.53,
+        64.6,
+        64.69,
+        64.78,
+        64.88,
+        64.94,
+        65.0,
+        65.07,
+        65.15,
+        65.23
+      ]
+    }
+  }
+}
