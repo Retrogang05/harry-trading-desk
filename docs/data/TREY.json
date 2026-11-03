@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-10-31T07:09:29.669057",
+  "scan_date": "2026-11-03T09:44:47.712074",
   "context": [
     {
       "label": "State",
@@ -38,7 +38,7 @@
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 35"
+      "value": "quiet \u00b7 32"
     }
   ],
   "groups": {
@@ -52,7 +52,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 62.01,
+      "price": 59.46,
       "score": 60,
       "strategy": "Trend gate \u00b7 HALF",
       "dimensions": [
@@ -75,7 +75,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "HALF since 2026-10-20 \u00b7 QQQ 690.49 \u00b7 book 3/6 (reference, not used for state)",
+        "label": "HALF since 2026-10-20 \u00b7 QQQ 681.09 \u00b7 book 3/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -84,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+1.8%",
+            "value": "+0.4%",
             "tone": "pos"
           },
           {
@@ -99,7 +99,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +2.8%",
+            "value": "\u2713 +1.4%",
             "tone": "pos"
           },
           {
@@ -114,7 +114,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2717 35",
+            "value": "\u2717 32",
             "tone": "neg"
           },
           {
@@ -124,12 +124,12 @@
           },
           {
             "label": "Season",
-            "value": "\u2713 Oct \u00b7 fav",
+            "value": "\u2713 Nov \u00b7 fav",
             "tone": "pos"
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 35",
+            "value": "quiet \u00b7 32",
             "tone": null
           }
         ]
@@ -138,7 +138,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 34.9,
+          "value": 32.1,
           "active": false
         }
       ],
@@ -150,7 +150,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+2.8%"
+            "detail": "+1.4%"
           },
           {
             "key": "stack",
@@ -168,7 +168,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": false,
-            "detail": "35"
+            "detail": "32"
           },
           {
             "key": "macd",
@@ -180,14 +180,13 @@
             "key": "seasonal",
             "label": "Season",
             "met": true,
-            "detail": "Oct \u00b7 fav"
+            "detail": "Nov \u00b7 fav"
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects a cautious stance: QQQ is trading above its gate threshold, but the fast trend\u2014with the 10-day below the 20-day and price significantly below the 50-day\u2014is not confirming upside momentum. To upgrade to FULL, the position would need to see the **10>20 criteria** resolve (short-term momentum turn up) and **price close above its 50-day average**, as both the momentum structure and intermediate-term positioning remain challenged despite the seasonal tailwind.",
+      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects a cautious stance: while price remains above the gate average, the fast trend is conflicting\u2014the 10-day moving average is below the 20-day, and price sits significantly below the 50-day level, preventing a FULL commitment. To restore FULL exposure, the short-term trend would need to realign (10>20) and price would need to reclaim its intermediate momentum (P>50), while RSI and MACD confirmation would further support conviction in a sustained recovery.",
       "history": {
         "dates": [
-          "2026-08-04",
           "2026-08-05",
           "2026-08-06",
           "2026-08-07",
@@ -249,10 +248,10 @@
           "2026-10-27",
           "2026-10-28",
           "2026-10-29",
-          "2026-10-30"
+          "2026-10-30",
+          "2026-11-02"
         ],
         "closes": [
-          74.68,
           72.7,
           71.89,
           74.33,
@@ -314,10 +313,10 @@
           71.04,
           72.36,
           69.26,
-          62.01
+          62.01,
+          59.46
         ],
         "sma200": [
-          59.21,
           59.32,
           59.42,
           59.52,
@@ -379,7 +378,8 @@
           65.15,
           65.23,
           65.3,
-          65.34
+          65.34,
+          65.37
         ]
       }
     }
