@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-11-03T09:44:47.712074",
+  "scan_date": "2026-11-04T09:31:54.794307",
   "context": [
     {
       "label": "State",
@@ -34,11 +34,11 @@
     },
     {
       "label": "Book checklist",
-      "value": "3 / 6 (ref)"
+      "value": "2 / 6 (ref)"
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 32"
+      "value": "quiet \u00b7 35"
     }
   ],
   "groups": {
@@ -52,7 +52,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 59.46,
+      "price": 60.55,
       "score": 60,
       "strategy": "Trend gate \u00b7 HALF",
       "dimensions": [
@@ -75,7 +75,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "HALF since 2026-10-20 \u00b7 QQQ 681.09 \u00b7 book 3/6 (reference, not used for state)",
+        "label": "HALF since 2026-10-20 \u00b7 QQQ 685.28 \u00b7 book 2/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -84,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "+0.4%",
+            "value": "+0.9%",
             "tone": "pos"
           },
           {
@@ -94,18 +94,18 @@
           },
           {
             "label": "Book \u00b7 ref",
-            "value": "3 / 6",
-            "tone": "pos"
+            "value": "2 / 6",
+            "tone": "neg"
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +1.4%",
+            "value": "\u2713 +2.0%",
             "tone": "pos"
           },
           {
             "label": "20>50>200",
-            "value": "\u2713 stacked",
-            "tone": "pos"
+            "value": "\u2717 not stacked",
+            "tone": "neg"
           },
           {
             "label": "10>20 \u00b7 P>50",
@@ -114,7 +114,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2717 32",
+            "value": "\u2717 35",
             "tone": "neg"
           },
           {
@@ -129,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 32",
+            "value": "quiet \u00b7 35",
             "tone": null
           }
         ]
@@ -138,25 +138,25 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 32.1,
+          "value": 34.6,
           "active": false
         }
       ],
       "book_criteria": {
-        "met": 3,
+        "met": 2,
         "of": 6,
         "items": [
           {
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+1.4%"
+            "detail": "+2.0%"
           },
           {
             "key": "stack",
             "label": "20>50>200",
-            "met": true,
-            "detail": "stacked"
+            "met": false,
+            "detail": "not stacked"
           },
           {
             "key": "fast_raw",
@@ -168,7 +168,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": false,
-            "detail": "32"
+            "detail": "35"
           },
           {
             "key": "macd",
@@ -184,10 +184,9 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects a cautious stance: while price remains above the gate average, the fast trend is conflicting\u2014the 10-day moving average is below the 20-day, and price sits significantly below the 50-day level, preventing a FULL commitment. To restore FULL exposure, the short-term trend would need to realign (10>20) and price would need to reclaim its intermediate momentum (P>50), while RSI and MACD confirmation would further support conviction in a sustained recovery.",
+      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects a cautious stance: while QQQ trades above its gate average, the fast trend remains unfavorable with the 10-day moving average still below the 20-day, preventing a FULL allocation. To restore FULL status, the short-term trend would need to confirm by having the 10-day cross above the 20-day MA, and ideally price would recover closer to its 50-day average to satisfy the price confirmation criterion.",
       "history": {
         "dates": [
-          "2026-08-05",
           "2026-08-06",
           "2026-08-07",
           "2026-08-10",
@@ -249,10 +248,10 @@
           "2026-10-28",
           "2026-10-29",
           "2026-10-30",
-          "2026-11-02"
+          "2026-11-02",
+          "2026-11-03"
         ],
         "closes": [
-          72.7,
           71.89,
           74.33,
           73.66,
@@ -314,10 +313,10 @@
           72.36,
           69.26,
           62.01,
-          59.46
+          59.46,
+          60.55
         ],
         "sma200": [
-          59.32,
           59.42,
           59.52,
           59.62,
@@ -379,7 +378,8 @@
           65.23,
           65.3,
           65.34,
-          65.37
+          65.37,
+          65.41
         ]
       }
     }
