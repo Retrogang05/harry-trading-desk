@@ -6,19 +6,19 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-11-05T09:40:41.475115",
+  "scan_date": "2026-11-06T09:33:42.870397",
   "context": [
     {
       "label": "State",
-      "value": "HALF"
+      "value": "OUT"
     },
     {
       "label": "Since",
-      "value": "2026-10-20"
+      "value": "2026-11-05"
     },
     {
       "label": "Gate changes 12m",
-      "value": "2"
+      "value": "3"
     },
     {
       "label": "Size changes 12m",
@@ -34,11 +34,11 @@
     },
     {
       "label": "Book checklist",
-      "value": "2 / 6 (ref)"
+      "value": "1 / 6 (ref)"
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 39"
+      "value": "quiet \u00b7 27"
     }
   ],
   "groups": {
@@ -52,9 +52,9 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 62.24,
-      "score": 60,
-      "strategy": "Trend gate \u00b7 HALF",
+      "price": 50.47,
+      "score": 0,
+      "strategy": "Trend gate \u00b7 OUT",
       "dimensions": [
         {
           "key": "gate",
@@ -71,36 +71,36 @@
         "QQQ"
       ],
       "breakdown": {
-        "gate": 60,
+        "gate": 0,
         "fast": 0
       },
       "setup": {
-        "label": "HALF since 2026-10-20 \u00b7 QQQ 691.95 \u00b7 book 2/6 (reference, not used for state)",
+        "label": "OUT since 2026-11-05 \u00b7 QQQ 647.05 \u00b7 book 1/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
-            "value": "HALF",
-            "tone": null
-          },
-          {
-            "label": "Gate 200d",
-            "value": "+1.8%",
-            "tone": "pos"
-          },
-          {
-            "label": "Fast (3d)",
-            "value": "no",
+            "value": "OUT",
             "tone": "neg"
           },
           {
+            "label": "Gate 200d",
+            "value": "-4.8%",
+            "tone": "neg"
+          },
+          {
+            "label": "Fast (3d)",
+            "value": "n/a",
+            "tone": null
+          },
+          {
             "label": "Book \u00b7 ref",
-            "value": "2 / 6",
+            "value": "1 / 6",
             "tone": "neg"
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +2.9%",
-            "tone": "pos"
+            "value": "\u2717 -3.8%",
+            "tone": "neg"
           },
           {
             "label": "20>50>200",
@@ -114,7 +114,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2717 39",
+            "value": "\u2717 27",
             "tone": "neg"
           },
           {
@@ -129,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 39",
+            "value": "quiet \u00b7 27",
             "tone": null
           }
         ]
@@ -138,19 +138,19 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 38.6,
+          "value": 26.9,
           "active": false
         }
       ],
       "book_criteria": {
-        "met": 2,
+        "met": 1,
         "of": 6,
         "items": [
           {
             "key": "sma225",
             "label": "> 225d",
-            "met": true,
-            "detail": "+2.9%"
+            "met": false,
+            "detail": "-3.8%"
           },
           {
             "key": "stack",
@@ -168,7 +168,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": false,
-            "detail": "39"
+            "detail": "27"
           },
           {
             "key": "macd",
@@ -184,10 +184,9 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nYour HALF position reflects a modest long bias on QQQ above its gate average, but the position remains capped at this intermediate level due to two critical unmet confirmations: the fast trend is **inverted (10d below 20d)** and price sits below its 50-day moving average, both signaling near-term weakness that conflicts with a full commitment. For elevation to FULL, you would need to see the 10-day cross above the 20-day *and* price reclaim its 50-day level to align the fast trend with the broader intermediate setup.",
+      "reasoning": "# TQQQ Position Analysis\n\n**Current State Impact:** The OUT position reflects significantly weakened momentum in the Nasdaq, with QQQ trading well below its 200-day average and the 10/20-day crossover signaling deteriorating short-term trend\u2014conditions that typically precede further consolidation or downside. **Gate Reopening Requirements:** For a signal upgrade, QQQ would need to close the valuation gap to its longer-term average and demonstrate a confirmed reversal in the fast trend (10-day above 20-day); additionally, oversold technicals (RSI and MACD) would need to recross into bullish territory to support a HALF or FULL re-entry.",
       "history": {
         "dates": [
-          "2026-08-07",
           "2026-08-10",
           "2026-08-11",
           "2026-08-12",
@@ -249,10 +248,10 @@
           "2026-10-30",
           "2026-11-02",
           "2026-11-03",
-          "2026-11-04"
+          "2026-11-04",
+          "2026-11-05"
         ],
         "closes": [
-          74.33,
           73.66,
           72.92,
           74.46,
@@ -314,10 +313,10 @@
           62.01,
           59.46,
           60.55,
-          62.24
+          62.24,
+          50.47
         ],
         "sma200": [
-          59.52,
           59.62,
           59.73,
           59.83,
@@ -379,7 +378,8 @@
           65.34,
           65.37,
           65.41,
-          65.46
+          65.46,
+          65.45
         ]
       }
     }
