@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-11-06T09:33:42.870397",
+  "scan_date": "2026-11-07T08:58:03.601754",
   "context": [
     {
       "label": "State",
@@ -38,7 +38,7 @@
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 27"
+      "value": "quiet \u00b7 31"
     }
   ],
   "groups": {
@@ -52,7 +52,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 50.47,
+      "price": 52.25,
       "score": 0,
       "strategy": "Trend gate \u00b7 OUT",
       "dimensions": [
@@ -75,7 +75,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "OUT since 2026-11-05 \u00b7 QQQ 647.05 \u00b7 book 1/6 (reference, not used for state)",
+        "label": "OUT since 2026-11-05 \u00b7 QQQ 656.10 \u00b7 book 1/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -84,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "-4.8%",
+            "value": "-3.5%",
             "tone": "neg"
           },
           {
@@ -99,7 +99,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2717 -3.8%",
+            "value": "\u2717 -2.5%",
             "tone": "neg"
           },
           {
@@ -114,7 +114,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2717 27",
+            "value": "\u2717 31",
             "tone": "neg"
           },
           {
@@ -129,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 27",
+            "value": "quiet \u00b7 31",
             "tone": null
           }
         ]
@@ -138,7 +138,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 26.9,
+          "value": 31.4,
           "active": false
         }
       ],
@@ -150,7 +150,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": false,
-            "detail": "-3.8%"
+            "detail": "-2.5%"
           },
           {
             "key": "stack",
@@ -168,7 +168,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": false,
-            "detail": "27"
+            "detail": "31"
           },
           {
             "key": "macd",
@@ -184,10 +184,9 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\n**Current State Impact:** The OUT position reflects significantly weakened momentum in the Nasdaq, with QQQ trading well below its 200-day average and the 10/20-day crossover signaling deteriorating short-term trend\u2014conditions that typically precede further consolidation or downside. **Gate Reopening Requirements:** For a signal upgrade, QQQ would need to close the valuation gap to its longer-term average and demonstrate a confirmed reversal in the fast trend (10-day above 20-day); additionally, oversold technicals (RSI and MACD) would need to recross into bullish territory to support a HALF or FULL re-entry.",
+      "reasoning": "The OUT position reflects weakness across multiple dimensions: QQQ trades below its gate average, momentum indicators are deeply negative (RSI at depressed levels, MACD below signal), and the fast trend shows price lagging its intermediate moving average. To reopen the gate and move toward HALF, QQQ would need to reclaim its 200-day average; progression to FULL would additionally require the 10-day to cross above the 20-day while price recovers toward the 50-day, alongside RSI and MACD reorienting to bullish alignment.",
       "history": {
         "dates": [
-          "2026-08-10",
           "2026-08-11",
           "2026-08-12",
           "2026-08-13",
@@ -249,10 +248,10 @@
           "2026-11-02",
           "2026-11-03",
           "2026-11-04",
-          "2026-11-05"
+          "2026-11-05",
+          "2026-11-06"
         ],
         "closes": [
-          73.66,
           72.92,
           74.46,
           77.0,
@@ -314,10 +313,10 @@
           59.46,
           60.55,
           62.24,
-          50.47
+          50.47,
+          52.25
         ],
         "sma200": [
-          59.62,
           59.73,
           59.83,
           59.94,
@@ -379,6 +378,7 @@
           65.37,
           65.41,
           65.46,
+          65.45,
           65.45
         ]
       }
