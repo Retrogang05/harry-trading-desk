@@ -6,19 +6,19 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-11-11T09:38:00.256263",
+  "scan_date": "2026-11-12T09:58:44.791292",
   "context": [
     {
       "label": "State",
-      "value": "OUT"
+      "value": "HALF"
     },
     {
       "label": "Since",
-      "value": "2026-11-05"
+      "value": "2026-11-11"
     },
     {
       "label": "Gate changes 12m",
-      "value": "3"
+      "value": "4"
     },
     {
       "label": "Size changes 12m",
@@ -38,7 +38,7 @@
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 40"
+      "value": "quiet \u00b7 46"
     }
   ],
   "groups": {
@@ -52,9 +52,9 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 56.56,
-      "score": 0,
-      "strategy": "Trend gate \u00b7 OUT",
+      "price": 60.44,
+      "score": 60,
+      "strategy": "Trend gate \u00b7 HALF",
       "dimensions": [
         {
           "key": "gate",
@@ -71,26 +71,26 @@
         "QQQ"
       ],
       "breakdown": {
-        "gate": 0,
+        "gate": 60,
         "fast": 0
       },
       "setup": {
-        "label": "OUT since 2026-11-05 \u00b7 QQQ 674.76 \u00b7 book 2/6 (reference, not used for state)",
+        "label": "HALF since 2026-11-11 \u00b7 QQQ 690.38 \u00b7 book 2/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
-            "value": "OUT",
-            "tone": "neg"
+            "value": "HALF",
+            "tone": null
           },
           {
             "label": "Gate 200d",
-            "value": "-0.8%",
-            "tone": "neg"
+            "value": "+1.4%",
+            "tone": "pos"
           },
           {
             "label": "Fast (3d)",
-            "value": "n/a",
-            "tone": null
+            "value": "no",
+            "tone": "neg"
           },
           {
             "label": "Book \u00b7 ref",
@@ -99,7 +99,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2713 +0.2%",
+            "value": "\u2713 +2.5%",
             "tone": "pos"
           },
           {
@@ -114,7 +114,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2717 40",
+            "value": "\u2717 46",
             "tone": "neg"
           },
           {
@@ -129,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 40",
+            "value": "quiet \u00b7 46",
             "tone": null
           }
         ]
@@ -138,7 +138,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 40.1,
+          "value": 46.1,
           "active": false
         }
       ],
@@ -150,7 +150,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": true,
-            "detail": "+0.2%"
+            "detail": "+2.5%"
           },
           {
             "key": "stack",
@@ -168,7 +168,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": false,
-            "detail": "40"
+            "detail": "46"
           },
           {
             "key": "macd",
@@ -184,10 +184,9 @@
           }
         ]
       },
-      "reasoning": "# TQQQ Position Analysis\n\nThe OUT state reflects QQQ trading below its gate average, indicating insufficient bullish conviction for leveraged exposure. To transition toward FULL, the position requires both moving average alignment (the 20>50>200 stacking) and price recovery above the 50-day average, alongside a confirming fast trend flip where the 10-day crosses back above the 20-day\u2014essentially a reset of the current downtrend structure.",
+      "reasoning": "# TQQQ Position Analysis\n\nThe HALF position reflects a cautious stance: while QQQ remains above its gate average, the absence of fast-trend confirmation keeps leverage capped. To advance to FULL, three key criteria would need alignment: the 10/20-day structure must flip bullish, price must reclaim its 50-day level, and the RSI should break above 50\u00b0\u2014together signaling genuine momentum rather than the current pullback.",
       "history": {
         "dates": [
-          "2026-08-13",
           "2026-08-14",
           "2026-08-17",
           "2026-08-18",
@@ -249,10 +248,10 @@
           "2026-11-05",
           "2026-11-06",
           "2026-11-09",
-          "2026-11-10"
+          "2026-11-10",
+          "2026-11-11"
         ],
         "closes": [
-          77.0,
           76.64,
           76.25,
           72.39,
@@ -314,10 +313,10 @@
           50.47,
           52.25,
           57.58,
-          56.56
+          56.56,
+          60.44
         ],
         "sma200": [
-          59.94,
           60.04,
           60.12,
           60.19,
@@ -379,7 +378,8 @@
           65.45,
           65.45,
           65.47,
-          65.47
+          65.47,
+          65.5
         ]
       }
     }
