@@ -1,17 +1,14 @@
 """Trey: a TQQQ position-state signal, computed on QQQ.
 
-Not a screener. Monu and Opy rank candidates out of a 500-name universe;
-Trey watches one instrument and publishes one row whose "score" is really a
-state. Three states, all decided on the unlevered index so that TQQQ's 3x
-noise never generates a false crossover:
+Not a screener: one instrument, one row, and the "score" is a state.
+Decided on the unlevered index so TQQQ's 3x noise can't cause false
+crossovers:
 
     OUT   QQQ close below its 200-day SMA            -> hold cash
     HALF  above 200-day, fast trend not confirmed    -> half position
     FULL  above 200-day, 10d > 20d and close > 50d   -> full position
 
-Signals are read at the close and meant to be acted on the next session.
-The scheduled run fires after the US close so the published state is
-"tomorrow's" position.
+Read at the close, acted on the next session.
 
 WHY THESE RULES AND NOT THE BOOK'S
     Derived from Masonson's QQQ/TQQQ system, then backtested on real data
@@ -32,9 +29,7 @@ WHY THESE RULES AND NOT THE BOOK'S
         dot-com-era event), 200 wins on TQQQ's whole life and on the last
         decade. It's a constant below; neither is a robust edge.
 
-Same resilience shape as the other two agents: reasoning is gated on the
-API key up front with a last-resort except, so a narration failure can never
-take down the signal itself.
+As in the other agents, a Claude failure never stops the signal publishing.
 """
 
 import json
@@ -57,6 +52,11 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 logger = logging.getLogger(__name__)
 
 CLAUDE_MODEL = "claude-haiku-4-5"
+# Appended to every Claude prompt so the notes read like a trader's margin
+# note: short, plain, no sales language.
+STYLE = ("Plain English, under 60 words. No preamble or sign-off. No hype words "
+         "(exceptional, robust, compelling, poised). Don't repeat the numbers above. "
+         "Do not recommend a trade.")
 
 AGENT = {
     "id": "TREY",
@@ -396,7 +396,7 @@ class Reasoner:
             "also confirms. Write 2-3 sentences: what the current state means for a TQQQ "
             "holder, and specifically which unmet criteria are holding it below FULL (or, if "
             "OUT, what would need to happen for the gate to reopen). Name the criteria. "
-            "Professional, concise, do not restate the numbers verbatim, do not recommend a trade."
+            + STYLE
         )
         try:
             msg = self.client.messages.create(model=CLAUDE_MODEL, max_tokens=220,

@@ -1,567 +1,304 @@
 # Harry Trading Desk
 
-A terminal-style research desk for AI trading agents. Each agent scans the market
-on its own strategy, scores what it finds, and publishes a ranked shortlist to a
-shared dashboard. **You execute every trade manually** — nothing here places orders.
+Seven scanning agents run on GitHub Actions after each US session and publish
+ranked lists to one dashboard (GitHub Pages). Nothing places orders: every
+trade is entered by hand.
 
-> **Research signals, not investment advice.** Scores measure how well a setup
-> matches a strategy's criteria. They are not forecasts, and past matches do not
-> imply future returns. Nothing in this repository is a recommendation to buy or
-> sell any security.
+> Research signals, not investment advice. A score measures how closely a
+> setup matches an agent's rules. It is not a forecast.
 
 ## Agents
 
-| Agent | Code | Strategy | Status |
-|-------|------|----------|--------|
-| **Monu** | `MNTM` | Momentum — buys strength on volume-confirmed breakouts, plus sector-gated breakdowns | Live |
-| **Opy** | `OPY` | Options — iron condors, credit spreads (bear calls floored), LEAPS calls, RSI context | Live |
-| **Trey** | `TREY` | TQQQ trend gate — OUT / HALF / FULL, signalled on QQQ's 200-day SMA | Live |
-| **Goldy** | `GOLD` | MA crosses — 20/50 and 50/200, both directions, plus crosses about to happen | Live |
-| **Pocket** | `PCKT` | Your Finviz relative-volume screen, automated, with major levels and pockets mapped per hit | Live |
-| **Flag** | `FLAG` | Well-formed bull flags: a pole, a quiet 5–8 session drift on drying volume, then a breakout on volume | Live |
-| **Leaders** | `LDRS` | Top 25 by YTD return in each of the S&P 500, Nasdaq-100 and Russell 2000 — the Stocktwits momentum lists, rebuilt from our data | Live |
+| Agent | Code | What it publishes |
+|-------|------|-------------------|
+| **Monu** | `MNTM` | Momentum breakouts on volume, plus breakdowns in weak sectors |
+| **Opy** | `OPY` | Iron condors, credit spreads (bear calls get a floor), LEAPS calls, RSI context |
+| **Trey** | `TREY` | TQQQ position state (OUT / HALF / FULL) from QQQ's 200-day SMA |
+| **Goldy** | `GOLD` | 20/50 and 50/200 crosses in both directions, and crosses about to happen |
+| **Pocket** | `PCKT` | The Finviz relative-volume screen, with major levels and pockets mapped |
+| **Flag** | `FLAG` | Well-formed bull flags: forming, and breakouts on volume |
+| **Leaders** | `LDRS` | Top 25 YTD in the S&P 500, Nasdaq-100 and Russell 2000 (the Stocktwits lists) |
 
-The dashboard renders whatever score dimensions an agent declares, so adding an
-agent needs no changes to the page. See **Adding your second and third agents**
-below for the contract.
-
----
-
-## 📊 Monu (MNTM) — the momentum agent
-
-**MONU** (Momentum Trader Agent) is a cloud-native momentum stock scanner that:
-
-- ✅ Scans 500+ stocks daily for momentum setups
-- ✅ Scores each stock across 6 momentum dimensions
-- ✅ Gates on market regime: in a downtrend the scan is skipped and nothing is published
-- ✅ Uses Claude AI to explain WHY each stock shows momentum
-- ✅ Provides specific entry/stop/target levels
-- ✅ Runs automatically on GitHub Actions (free tier)
-- ✅ Costs ~$5-10/month to operate
-
-## 🎯 The 6 Momentum Dimensions
-
-Each stock is scored 0-100 across six critical dimensions:
-
-| Dimension | Weight | What It Measures |
-|-----------|--------|------------------|
-| **Trend Strength** | 25% | Price relative to 20/50/200-day moving averages |
-| **Volume** | 20% | Best volume spike over the last 5 days (same window as the breakout check) |
-| **RSI** | 15% | Momentum strength (50-70 = optimal) |
-| **MACD** | 15% | Trend direction + momentum acceleration |
-| **Relative Performance** | 15% | Position relative to 52-week high |
-| **Breakout Quality** | 10% | Recent breakout confirmation |
-
-### Score Interpretation
-
-- **80-100** 🟢 **STRONG BUY** - All signals aligned, high conviction
-- **70-79** 🟡 **BUY** - Most signals aligned, good setup
-- **60-69** 🔵 **WATCH** - Mixed signals, monitor closely
-- **<60** 🔴 **SKIP** - Insufficient momentum
-
-## 🏗️ Architecture
-
-```
-GitHub Actions (Daily 9 AM EST)
-    ↓
-Python Agent (agent.py)
-    ↓
-├─ Fetch market data (yfinance)
-├─ Calculate 6 momentum dimensions
-├─ Market regime gate (SPY 50d vs 200d) — DOWNTREND: stop here, publish empty
-├─ Score & rank top 20 stocks
-    ↓
-Claude API (claude-haiku-4-5)
-    ↓
-Generate natural language reasoning
-    ↓
-Save results to JSON
-    ↓
-Commit to repository / Display on dashboard
-```
-
-## 🚀 Quick Start
-
-### 1. Prerequisites
-
-- Python 3.11+
-- GitHub account
-- Anthropic API key ([get one here](https://console.anthropic.com))
-
-### 2. Setup
-
-```bash
-# Clone this repository
-git clone https://github.com/Retrogang05/harry-trading-desk.git
-cd harry-trading-desk
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Set your API key
-export ANTHROPIC_API_KEY="your-key-here"
-```
-
-### 3. Run Locally
-
-```bash
-python agent.py
-```
-
-You'll see output like:
-
-```
-╔══════════════════════════════════════════════════════════════╗
-║           MONU - MNTM MOMENTUM TRADING SCAN                  ║
-║                  Scan Date: 2026-08-10 09:15                 ║
-╚══════════════════════════════════════════════════════════════╝
-
-Market Regime: UPTREND
-Stocks Scanned: 20
-
-============================================================
-#1 | NVDA | Score: 87/100
-Price: $891.50
-
-Dimensions:
-  Trend:        25/25
-  Volume:       18/20
-  RSI:          14/15
-  MACD:         15/15
-  Relative:     11/15
-  Breakout:      4/10
-
-Setup:
-  Entry:        $890.20
-  Stop Loss:    $868.75
-  Take Profit:  $922.35
-  Risk/Reward:  1.50:1
-
-AI Reasoning:
-NVDA is showing exceptional momentum with volume confirmation on a
-clean breakout above $890 resistance. MACD histogram is expanding
-and RSI remains in the 60-65 range (strong but not overbought).
-Price just broke above all key moving averages after consolidating.
-Key risk: If volume dries up, momentum could reverse quickly.
-```
-
-### 4. Deploy to GitHub Actions
-
-1. **Push to GitHub**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial MONU setup"
-   git remote add origin https://github.com/Retrogang05/harry-trading-desk.git
-   git push -u origin main
-   ```
-
-2. **Add Secrets**
-   - Go to your repo → Settings → Secrets and variables → Actions
-   - Add secret: `ANTHROPIC_API_KEY` = your Anthropic API key
-
-3. **Enable Actions**
-   - Go to Actions tab
-   - Click "I understand my workflows, go ahead and enable them"
-
-4. **Test the workflow**
-   - Actions → MONU - MNTM Momentum Scan → Run workflow
-
-## 📁 Project Structure
-
-```
-harry-trading-desk/
-├── agent.py                 # Monu — momentum screener (SPX + QQQ + IWM)
-├── opy/                     # Opy — options screener (vendored from Options Screener/)
-│   └── agent.py
-├── trey/                    # Trey — TQQQ trend gate (one row, three states)
-│   └── agent.py
-├── goldy/                   # Goldy — 20/50 and 50/200 MA cross scanner
-│   └── agent.py
-├── pocket/                  # Pocket — volume screen + major-level map
-│   └── agent.py
-├── leaders/                 # Leaders — Top 25 YTD per index (no Claude calls)
-│   └── agent.py
-├── flag/                    # Flag — bull flag scanner
-│   └── agent.py
-├── universe.py              # universe.txt parser, shared by all three scanners
-├── sectors.py               # sector-ETF regime, shared by Monu and Opy
-├── history.py               # 3-month closes for the detail-panel chart, shared by all
-├── universe.txt             # 1,516 tickers tagged by index and sector
-├── data/holdings/           # the ETF holdings exports universe.txt is built from
-│   ├── spy.xlsx  qqq.csv  iwm.csv
-│   └── sectors/             # the eleven sector SPDRs, downloaded at build time
-├── scripts/build_universe.py # rebuilds universe.txt from data/holdings/
-├── scripts/fetch_sp500.py   # downloads a fresh spy.xlsx (QQQ and IWM are manual)
-├── requirements.txt
-├── .github/workflows/
-│   ├── momentum-scan.yml    # Monu   — 9:07pm New York, weekdays
-│   ├── opy-scan.yml         # Opy    — 9:17pm New York, weekdays
-│   ├── trey-scan.yml        # Trey   — 9:27pm New York, weekdays
-│   ├── goldy-scan.yml       # Goldy  — 9:37pm New York, weekdays
-│   ├── pocket-scan.yml      # Pocket — 9:47pm New York, weekdays
-│   ├── leaders-scan.yml     # Leaders — 9:57pm New York, weekdays
-│   └── flag-scan.yml        # Flag   — 9:02pm New York, weekdays
-├── docs/                    # ← the dashboard (GitHub Pages serves this)
-│   ├── index.html
-│   └── data/
-│       ├── agents.json      #   manifest: which agents to render
-│       ├── MNTM.json  OPY.json  TREY.json  GOLD.json  PCKT.json  LDRS.json  FLAG.json
-├── results/  opy/results/  trey/results/  goldy/results/  pocket/results/  leaders/results/  flag/results/   # dated archives
-```
+The dashboard draws whatever score dimensions an agent declares, so a new
+agent needs no page changes. See [Adding an agent](#adding-an-agent).
 
 ---
 
-## 📉 Bearish ideas and sector breadth
+## Monu (MNTM): momentum
 
-Both Monu and Opy now publish bearish ideas, gated on **sector breadth** rather
-than the index.
+Scans the full universe, scores each stock on six dimensions, and publishes
+the best 8 per index. The long half runs only when SPY's 50-day is above its
+200-day; otherwise only the bearish half (below) can publish.
 
-The problem it solves: a desk whose only gate is SPY's 50/200 keeps publishing
-long setups through exactly the periods when the index is held up by one or two
-sectors and everything else is rolling over. On **2026-10-05, ten of the eleven
-sector SPDRs were below their 20-day average** — only XLK was above — while
-SPY's 50-day was still over its 200-day and Monu's gate read UPTREND. One
-cap-weighted index trend is not breadth.
+| Dimension | Points | Measures |
+|-----------|-------:|----------|
+| Trend | 25 | Price against the 20/50/200-day averages |
+| Volume | 20 | Largest volume spike in the last 5 days |
+| RSI | 15 | 50–70 scores highest |
+| MACD | 15 | Line over signal, histogram expanding |
+| Relative | 15 | Distance from the 52-week high |
+| Breakout | 10 | A recent breakout |
 
-`sectors.py` reads all eleven sector ETFs and reports which are under their
-20-day SMA. Both agents use it, so "weak" means the same thing on both lists.
+Rows under 60 are dropped. Claude (Haiku) writes a short note on each
+published row.
 
-**Monu** gains a `Breakdown` half. It only scores a name whose *own* sector ETF
-is weak — a breakdown in a sector that is still working is far more likely to be
-noise than one happening alongside its peers. Scored on the mirror of the six
-momentum dimensions, not a sign flip of them: the RSI band of interest is the
-one just under 50, and "distance from the 52-week high" becomes distance from
-the 52-week **low**, a different measurement on a different reference point.
+**Trade levels.** If price is more than 4% above the 20-day average
+(`MAX_EXTENSION`), entry is the current price (`EXTENDED`); otherwise entry is
+the 20-day average (`PULLBACK`). Stop is 1.5 ATR below entry and the target
+2.25 ATR above, a 1.5:1 reward to risk. Without the extension check, a stock
+9% above its average got a target below the current price.
 
-Levels are quoted for a short — **stop above entry**, target below — and the row
-is labelled bearish so the dashboard never colours it as a buy. The two halves
-get separate quotas (8 long + 3 breakdown per index) and separate gates: the
-long half still needs SPY in an uptrend, the bearish half needs only a weak
-sector, so a downtrend publishes breakdowns alone instead of an empty list.
+### Bearish ideas and sector breadth
 
-The bearish floor is **70**, higher than the long side's 60. The long list has
-validated structure filters behind it; this half is new and unmeasured, so it
-publishes only its clearest cases.
+On 2026-10-05, ten of the eleven sector SPDRs were below their 20-day average
+while SPY's 50-day was still over its 200-day, and Monu's gate read UPTREND.
+One cap-weighted index is not breadth, so both Monu and Opy now gate bearish
+ideas on sectors.
 
-**Opy** already screened bear call spreads — it just ranked them against bull
-puts and took the top 8 combined, which on a 10-of-11-weak day still published
-6 bull puts and 2 bear calls. A combined ranking reflects which direction scores
-better on credit and liquidity, not which direction the market is in, so bear
-calls now have a floor of 4 slots, with weak-sector names winning the tiebreak
-inside it.
+`sectors.py` reports which sector ETFs are under their 20-day SMA. Both agents
+use it, so "weak" means the same on both lists.
 
-Sector membership comes from the eleven sector SPDRs' own holdings, downloaded
-at build time (SSGA serves them at a stable URL, unlike Invesco and BlackRock),
-with Russell names taking their sector from BlackRock's own column. The tag in
-`universe.txt` is the **ETF symbol**, not a sector name, because the agents gate
-on whether that ETF is below its average — the tag has to be something they can
-price:
+- **Monu's breakdown half** scores a stock only when its own sector ETF is
+  weak. The dimensions mirror the long side rather than flipping its sign: the
+  RSI band of interest sits just under 50, and distance from the 52-week high
+  becomes distance from the 52-week low. Levels are quoted for a short (stop
+  above entry) and the row is labelled bearish. Quotas are 8 long + 3
+  breakdown per index. The breakdown half needs only a weak sector, so a
+  downtrend publishes breakdowns instead of an empty list. Its floor is 70,
+  not 60, because it hasn't been validated yet.
+- **Opy** used to rank bear calls against bull puts and take the top 8. On a
+  10-of-11-weak day that still gave 6 bull puts and 2 bear calls. Bear calls
+  now get at least 4 slots, with weak-sector names first.
+
+Sector membership comes from the eleven sector SPDRs' holdings (SSGA serves
+them at a stable URL). Russell names use BlackRock's sector column. The tag is
+the ETF symbol, because that is what the agents price:
 
 ```
 AAPL   # SPX,QQQ,XLK
 JPM    # SPX,XLF
-UNH    # SPX,XLV
 ```
 
 ---
 
-## 🌐 The scan universe
+## The scan universe
 
-`universe.txt` is built from three ETF holdings exports — the funds themselves,
-not a scraped index page:
+`universe.txt` is built from three fund holdings exports:
 
-| Tag | Fund | Source | In universe |
-|-----|------|--------|-------------|
-| `SPX` | SPDR S&P 500 ETF Trust (SPY) | State Street | 501 |
-| `QQQ` | Invesco QQQ Trust, Series 1 | Invesco | 100 |
+| Tag | Fund | Source | Names |
+|-----|------|--------|------:|
+| `SPX` | SPDR S&P 500 ETF (SPY) | State Street | 501 |
+| `QQQ` | Invesco QQQ Trust | Invesco | 100 |
 | `IWM` | iShares Russell 2000 ETF | BlackRock | 1,000 |
 
-**1,516 unique tickers.** The tags overlap — 85 names are in both the S&P 500
-and the Nasdaq-100 — so they are membership labels, not a partition.
+That is 1,516 unique tickers. Tags overlap (85 names are in both the S&P 500
+and the Nasdaq-100), so they are labels, not a partition. They live in a
+trailing comment, so anything that wants a plain ticker list can read the file
+as is.
 
-The file format keeps the tags in a trailing comment, which means anything
-that only wants a ticker list reads it unchanged:
-
-```
-AAPL    # SPX,QQQ,XLK
-TWST    # IWM,XLV
-```
-
-`universe.py` is the single parser, shared by all three scanners. It returns
-index membership and sector separately rather than as one mixed list — they
-are different axes, and carrying them together is what let a too-early filter
-silently disable Monu's entire bearish half. Each agent keeps only its own
-fallback for a missing file: Monu's built-in list, Opy's live fetch, Goldy's
-hard exit.
+`universe.py` is the one parser. It returns index membership and sector
+separately: mixing them once let an early filter switch off Monu's whole
+bearish half without any error.
 
 **Who scans what**
 
-- **Monu** scans all 1,521 and publishes the best **8 per index**, deduplicated
-  — around 20 rows, the same as before the universe grew. Quotas rather than
-  one global ranking, because the Russell 2000 supplies two thirds of the
-  universe and would otherwise take most of the list on candidate count alone.
-- **Opy** scans `SPX` + `QQQ` only (515). Most Russell names either have no
-  listed options or quote spreads that eat the entire credit on a four-leg
-  condor.
-- **Trey** scans nothing — it reads QQQ and trades TQQQ.
+- **Monu**: everything, best 8 per index. Quotas stop the Russell 2000, two
+  thirds of the universe, from filling the list on numbers alone.
+- **Opy**: `SPX` + `QQQ` only. Most Russell names have no options, or spreads
+  wide enough to eat a condor's credit.
+- **Pocket, Goldy, Flag, Leaders**: everything.
+- **Trey**: reads QQQ, trades TQQQ.
 
-**Liquidity**
+**Liquidity.** The IWM export has ~1,950 rows, including cash, futures and
+private positions, and ~960 names too thin to trade. The build keeps price
+≥ $5 and median 3-month dollar volume ≥ $10M. Monu re-checks this at scan
+time, since the file goes stale between rebuilds.
 
-The Russell 2000 export runs to ~1,950 rows, of which several hundred are cash
-sweeps, index futures and unlisted private positions, and ~960 more are too
-thin to trade. `build_universe.py` prices every candidate and keeps only
-**price ≥ $5 and median 3-month dollar volume ≥ $10M**. Monu re-checks the same
-floor at scan time, because the file goes stale between rebuilds and a signal
-that cannot be exited on its stop is worse than no signal.
+**ADRs.** QQQ rows count if they are common stock or an American Depositary
+Receipt. Before October 2026 ADRs were excluded, which silently dropped ASML,
+ARM and PDD.
 
-**Rebuilding**
+**Rebuilding** (quarterly is enough):
 
 ```bash
-python scripts/fetch_sp500.py      # downloads a fresh spy.xlsx
-# download QQQ and IWM holdings by hand into data/holdings/
-python scripts/build_universe.py   # ~3 min, mostly the pricing pass
+python scripts/fetch_sp500.py      # fresh spy.xlsx
+# download the QQQ and IWM holdings by hand into data/holdings/
+python scripts/build_universe.py   # ~3 min, mostly pricing
 ```
 
-The same build writes `docs/data/names.json` — each ticker's company name,
-taken from the holdings files (SSGA and BlackRock write names in capitals, so
-they are recased; Invesco's are used as-is). The dashboard shows it under the
-ticker in the detail panel. `python scripts/build_universe.py --names-only`
-refreshes just the names without re-pricing.
-
-QQQ rows count if their class is common stock **or an American Depositary
-Receipt**. Until October 2026 only common stock was accepted, which silently
-left ASML, ARM and PDD — genuine Nasdaq-100 members, about 1.5% of QQQ — out of
-every agent.
-
-Only SSGA serves a holdings file at a URL that works without a browser session,
-so QQQ and IWM are manual. The index rebalances quarterly plus ad-hoc changes,
-so quarterly is a reasonable cadence.
+Only SSGA serves holdings without a browser session, so QQQ and IWM are
+manual. The build also writes `docs/data/names.json`, the company names shown
+in the detail panel. `--names-only` refreshes names without re-pricing.
 
 ---
 
-## ✚ Goldy (GOLD) — the moving-average cross scanner
+## Goldy (GOLD): moving-average crosses
 
-Finds both pairs crossing in **either direction**, inside a **10-session**
-lookback, and also flags crosses that have not happened yet:
+Finds crosses in either direction within the last 10 sessions:
 
 | Pair | Bullish | Bearish |
 |---|---|---|
-| **20/50** | 20/50 Cross | 20/50 Breakdown |
-| **50/200** | Golden Cross | Death Cross |
+| 20/50 | 20/50 Cross | 20/50 Breakdown |
+| 50/200 | Golden Cross | Death Cross |
 
-**Approaching crosses.** The lead time is the point: by the time two averages
-actually touch, the move that dragged them together has largely happened. Goldy
-projects the gap forward — `gap = fast − slow`, its average daily change over 5
-sessions, solved for zero — and publishes anything crossing inside 10 sessions
-as `Nearing …`.
+**Approaching crosses.** By the time two averages touch, most of the move that
+brought them together has happened. Goldy projects the gap forward (its
+average daily change over 5 sessions) and publishes anything due to cross
+within 10 sessions as `Nearing …`. The gap must be 0.25–2.0 ATR. Wider, and the
+projection reaches too far. Narrower, and the averages are tangled together in
+chop: the first run without the floor published 21 such rows, all scoring
+93–100.
 
-Two guards make that useful rather than noisy. The gap must be **between 0.25
-and 2.0 ATR**: wider and the projection is extrapolating across a chasm;
-*narrower and the averages are simply entangled*, running along each other and
-touching repeatedly, which is chop rather than an imminent cross. The first run
-without that floor published 21 rows of exactly that, every one scoring 93–100
-because "crosses in 0.1 days" and "gap of 0.01 ATR" max out both axes together.
+Confirmed and approaching crosses get separate quotas (6 + 3 per index), and
+approach scores top out at 75, so a cross that might happen never outranks
+one that did. Entry levels are published only for confirmed bullish crosses.
 
-**Confirmed and projected get separate quotas** (6 + 3 per index) and separate
-score ceilings — approach axes sum to **75**, not 100. A cross happened; an
-approach might not, so the weaker claim cannot outrank the stronger one on a
-dashboard that sorts everything by score.
+### Before trading the list
 
-**Long levels are published only for confirmed bullish crosses.** A death cross
-with an entry and a target under it reads as a buy, and an approaching cross
-has not happened — any entry quoted for it is a guess at a price that may never
-trade. Both still publish full cross detail, which is the actionable part.
-
-### Read this before trading the list
-
-Goldy was backtested before it was built: **13,173 crosses across 580 names,
-2019–2026**, forward returns measured against SPY over 60 sessions.
-
-**Neither cross beats a random day in the same stocks.**
+Backtest before building: 13,173 crosses across 580 names, 2019–2026, 60-day
+return against SPY.
 
 | | n | 60-day alpha | vs random |
 |---|---|---|---|
-| Random days in this universe | 3,480 | **+1.91%** | — |
+| Random days, same stocks | 3,480 | +1.91% | — |
 | 20/50 cross | 10,276 | +1.62% | t = −0.47 |
 | 50/200 golden cross | 2,897 | +2.28% | t = +0.44 |
 
-Both differences are indistinguishable from zero. The "+1.6% / +2.3% after a
-cross" headline is the universe's own drift, not the signal.
+Neither cross beats a random day in the same stocks.
 
-Three more findings worth knowing:
+- Wide separation between the averages looks great on its own (+7.11% widest
+  quartile vs −0.02% narrowest) but is a volatility proxy. Hold volatility
+  constant and it disappears.
+- Volatility orders outcomes: calmest ADR quartile −1.16%, wildest +9.03%. So
+  ADR is shown on every row, as a risk measure.
+- Requiring price above the 200-day (+1.23% vs +2.23%) or a rising 200-day
+  (+0.88% vs +2.22%) made results worse. Goldy has no regime gate.
 
-- **Wide separation between the averages is a volatility proxy, not quality.**
-  Split on it alone and the golden cross looks superb (+7.11% widest quartile
-  vs −0.02% narrowest). Hold volatility constant and it collapses, with the
-  sign flipping between buckets. Normalising by ATR doesn't rescue it.
-- **Volatility is what actually orders outcomes**, monotonically: calmest ADR
-  quartile −1.16%, wildest +9.03%. That's why **ADR is on every row** rather
-  than buried in the score. It's a risk measure, not a buy signal.
-- **Two obvious filters actively hurt.** Requiring price above the 200-day:
-  +1.23% vs +2.23% below it. Requiring a rising 200-day: +0.88% vs +2.22%
-  flat-or-falling. A cross is worth more marking a turn than confirming a
-  trend already running — so neither filter is applied, and **Goldy has no
-  regime gate** (unlike Monu, which refuses to publish outside an uptrend).
-
-So Goldy's score describes the cross — how fresh, how decisive, how clean, how
-confirmed — and is **deliberately not a forecast**. Nothing in it was shown to
-rank forward returns. It's a discovery tool: it tells you what just crossed so
-you can look. Monu is the agent whose filters survived validation.
+The score describes the cross (fresh, decisive, clean, confirmed) and does not
+predict returns. Use Goldy to find charts worth a look.
 
 ---
 
-## ◫ Pocket (PCKT) — volume screen + level map
+## Pocket (PCKT): volume screen and level map
 
-Automates a manual workflow: run a Finviz screen, then scan each chart by eye
-for a **pocket** — a gap between major pivot levels with nothing in between.
-
-**The screen**, on the data the desk already fetches:
+Automates a manual routine: run a Finviz screen, then look at each chart for a
+**pocket**, a gap between major levels with nothing in it.
 
 | Filter | Setting |
 |---|---|
-| Average volume | > 500K (63-session mean, excluding today, as Finviz does) |
+| Average volume | > 500K (63-session mean, excluding today) |
 | Current volume | > 500K |
 | Relative volume | > 1.5 |
-| Market cap | Not applied — not in our data. S&P 500 and Nasdaq-100 names clear Mid+ anyway |
+| Market cap | Not applied (not in our data) |
 
-**The map**, for every hit: major pivots (the extreme of ±10 sessions,
-except the most recent swing, which needs only 3 sessions after it — otherwise
-the latest and usually most important level stays invisible for two weeks;
-clustered within 0.75 ATR), the nearest **floor** and **ceiling**, pocket
-width in ATR and %, room each way, volume traded inside the zone, and whether
-price **broke up**, **broke down**, is **testing** a level (closed within
-0.25 ATR of it — levels are zones, not lines) or sits **inside** today, plus
-today's move — "inside" means no level was crossed, not that nothing happened.
-Names between two levels closer than 1.2 ATR are dropped — that's congestion,
-not a pocket. So are **stale** symbols (last bar older than the session being
-screened) and **pinned** ones (daily range under 0.5% of price, typically a
-takeover target trading at the deal price).
+**The map.** Major pivots are the extreme of ±10 sessions, except the latest
+swing, which needs only 3 sessions after it (otherwise the most recent level
+stays hidden for two weeks). Pivots within 0.75 ATR are merged. Each row shows
+the nearest floor and ceiling, pocket width, room each way, volume inside the
+zone, and today's state: broke up, broke down, testing (within 0.25 ATR of a
+level) or inside.
 
-**Breakouts** carry an entry and a stop 1 ATR under the crossed level, with no
-fixed target — exit after 20 sessions or at the stop. **Breakdowns** carry a
-short only when the stock is within 10% of its 52-week high ("broke down from
-strength"); other breakdowns are shown, labelled bearish, with no trade. Inside
-and testing rows get none, since they haven't picked a direction.
+Dropped: levels closer than 1.2 ATR (congestion), stale symbols, and pinned
+ones (daily range under 0.5%, usually a takeover target).
 
-That 10-session setting reproduced the pockets drawn by hand on AAOI, GOOG,
-CRWV, IREN and SE. It disagreed on DOCU, NOW and IBM, where a minor level
-splits the zone — exactly where "is this pivot major" is a judgement call.
+**Trades.** Breakouts: entry at the close, stop 1 ATR under the broken level,
+exit after 20 sessions or at the stop. Breakdowns get a short only within 10%
+of the 52-week high. Other breakdowns, and inside or testing rows, have no
+trade.
 
-### Read this before trading the list
+The 10-session pivot setting matched hand-drawn pockets on AAOI, GOOG, CRWV,
+IREN and SE, and disagreed on DOCU, NOW and IBM, where a minor level splits
+the zone.
 
-Tested before building — 2019–2026, up to 400 names, strictly no lookahead:
+### Before trading the list
 
-- **A clear path barely helps.** Across 219,232 targets 1–3 ATR away, one with
-  no pivot in the way was reached only 0–3 points more often than one with a
-  pivot in the way. The small advantage is on the **downside**.
-- **Thin volume made it worse.** Low-volume pockets were crossed *less* often
-  at every distance. Volume-in-zone is shown on each row but not scored.
-- **On the screen's own days** (rel vol > 1.5), a break **up** into a pocket
-  returned +1.12% over 20 sessions against +2.04% for a random high-volume day
-  — the pocket subtracted. A break **down** underperformed a random day by
-  0.68% (p = 0.03): the one supportive result, from one cell of four, and the
-  stock still rose 0.69% on average — relative weakness, not a profitable short.
-- **Relative volume alone carried information:** a random liquid day with rel
-  vol > 1.5 was followed by +2.04% against +1.29% otherwise.
+2019–2026, up to 400 names, no lookahead:
 
-### Confluence and exit tests (Oct 2026)
+- A clear path barely helps. A target 1–3 ATR away with no pivot in the way
+  was reached only 0–3 points more often than one with a pivot in the way.
+- Thin-volume pockets were crossed less often, not more. Zone volume is shown
+  but not scored.
+- On high relative volume days, breaking up into a pocket returned +1.12% over
+  20 sessions vs +2.04% for any high-volume day. The pocket subtracted.
+- Relative volume above 1.5 on its own: +2.04% vs +1.29% otherwise.
 
-Re-tested on 32,799 point-in-time Pocket rows, simulating the trades it publishes:
+**Confluence and exit tests (Oct 2026)**, 32,799 point-in-time rows:
 
 | | Trades | E[R] | 20-day |
 |---|---:|---:|---:|
-| Breakouts, as first published (far-side target) | 4,207 | +0.007 | +0.06% |
-| **Breakouts, 1 ATR stop, 20-session exit (now)** | 4,207 | **+0.210** | +1.50% |
-| Breakdowns, as first published | 4,157 | −0.124 | −0.66% |
-| **Breakdowns within 10% of 52w high (now)** | 805 | **+0.031** | +0.03% |
-| *Every name passing the volume screen, held 20 days* | 48,030 | — | *+3.23%* |
+| Breakouts, original far-side target | 4,207 | +0.007 | +0.06% |
+| **Breakouts, 1 ATR stop, 20-session exit (current)** | 4,207 | **+0.210** | +1.50% |
+| Breakdowns, original | 4,157 | −0.124 | −0.66% |
+| **Breakdowns within 10% of 52w high (current)** | 805 | **+0.031** | +0.03% |
+| *Every stock passing the screen, held 20 days* | 48,030 | — | *+3.23%* |
 
-- **36 confluence tests**, each required to win in both 2020–22 and 2023–26.
-  Only one survived — breakdowns near the 52-week high. Shorting stocks that
-  were already weak (below averages, weak sector, oversold, SPY downtrend)
-  was where the losses were. Stacking conditions made results worse.
-- **The exit mattered more than any filter.** The far-side target capped the
-  winners; a time exit let them run.
-- **Every layer of pocket logic still returned less than the raw volume
-  screen.** The screen is where the return is; the map is best used for stops
-  and context. Long-side figures are flattered by survivorship (today's
-  universe, delisted names absent); the comparisons between rows are not.
-
-So the score orders the list — fresh break, relative volume, room to the far
-side — and is not a forecast. The value is time: the screen and the chart
-scan, done for you, with floors and ceilings that make natural stops and
-targets for trades found here or elsewhere.
+- Of 36 confluence filters, each required to win in both 2020–22 and 2023–26,
+  only one held: breakdowns near the 52-week high. Shorting already-weak
+  stocks lost money, and stacking filters made it worse.
+- The exit mattered more than any filter.
+- Every layer of pocket logic returned less than the raw screen. Use the map
+  for stops and context. Long-side figures are flattered by survivorship.
 
 ---
 
-## 🏆 Leaders (LDRS) — Top 25 momentum per index
+## Leaders (LDRS): top 25 per index
 
-The Stocktwits "Top 25 Momentum" lists, rebuilt from the closes the other
-agents already fetch: every member of the **S&P 500**, **Nasdaq-100** and
-**Russell 2000** ranked by **YTD price return**, top 25 per list. Each row shows
-rank, last week's rank (▲/▼, **New**, or **Fell off**), YTD, week-to-date and
-sector, plus how the list as a whole did this week against its ETF. A name on
-two lists is two rows, one per list, so the index chips show each list exactly.
+The Stocktwits "Top 25 Momentum" lists, rebuilt from closes the other agents
+already fetch: S&P 500, Nasdaq-100 and Russell 2000 members ranked by YTD
+return. Each row shows rank, last week's rank (▲/▼, New, Fell off), YTD,
+week-to-date and sector. A stock on two lists appears twice.
 
-Closes are **unadjusted**, as Stocktwits' are. Symbols with a split-shaped jump
-(a one-day move close to 2:1, 3:1, 4:1, 5:1, 10:1 or the reverse) are dropped,
-because an unadjusted split would rank as a +100% winner. Against the
-Stocktwits lists for the week of 23 Oct 2026: S&P YTD and WTD figures matched
-exactly with 21 of 25 names in common; Nasdaq-100 23 of 25 once the ADR fix
-above landed; Russell 2000 18 of 25 — ours excludes sub-$5 and thin names,
-delisted symbols and very recent IPOs.
+Closes are unadjusted, as Stocktwits' are, so symbols with a split-shaped
+one-day jump are dropped. Against Stocktwits for the week of 23 Oct 2026: S&P
+figures matched exactly with 21 of 25 names in common, Nasdaq-100 23 of 25,
+Russell 2000 18 of 25 (ours excludes sub-$5, thin, delisted and very new
+stocks).
 
-No Claude calls, no entries or stops: it is a **watchlist**, not a signal.
+No Claude calls and no trade levels. It is a watchlist.
 
-### Does the rank predict anything? (backtest, Oct 2026)
+### Does the rank predict anything? (Oct 2026)
 
-Every Friday 2019–2026, the top 25 by YTD in each list against the equal-weight
-average of **all** that list's members — the honest benchmark, since the
-question is whether the rank adds anything over owning the index's stocks.
-t-stats use non-overlapping windows only.
+Every Friday 2019–2026, the top 25 against the equal-weight average of all the
+list's members. t-stats use non-overlapping windows.
 
 | List | 20 days | 50 days | 100 days | Verdict |
 |------|--------:|--------:|---------:|---------|
-| S&P 500 | +1.72% (t 3.5) | +4.16% (t 3.0) | +9.62% (t 2.3) | Real but era-dependent: insignificant 2019–22, all of it 2023–26 |
+| S&P 500 | +1.72% (t 3.5) | +4.16% (t 3.0) | +9.62% (t 2.3) | Real, but all of it from 2023–26 |
 | Nasdaq-100 | +0.71% | +1.51% | +3.69% | Not significant |
-| Russell 2000 | — | — | — | **Reverses**: top minus bottom 25 was −1.9% / −5.8% / −9.3% |
+| Russell 2000 | — | — | — | Reverses: top minus bottom 25 was −1.9% / −5.8% / −9.3% |
 
-- **S&P concentration:** about half of the 2023–26 excess came from one stock
-  per window. Remove the single best name and 7.6% falls to 4.0%.
-- **Deciles are U-shaped** — the worst YTD names also beat the middle — so this
-  is not a clean momentum gradient.
-- **Survivorship** flatters the long side (today's members, delisted names
-  absent); the comparisons between lists are less affected.
+- About half the S&P excess in 2023–26 came from one stock per window.
+- Deciles are U-shaped: the worst YTD names also beat the middle.
+- Survivorship flatters the long side.
 
-So: on the S&P list, leaders have kept leading in recent years. On the
-Russell list, chasing the top 25 has historically hurt. Use it to see where
-strength is, and size Russell names accordingly.
+On the S&P list, leaders have kept leading recently. On the Russell list,
+chasing the top 25 has hurt.
 
 ---
 
-## ⚑ Flag (FLAG) — bull flags
+## Flag (FLAG): bull flags
 
-The bull-flag setup as explicit rules: an uptrend (close over the 21 EMA, 9 EMA
-over the 21), a **pole** of at least 4 ATR and 10% into a high nothing has
-exceeded since, then a **flag** of 5–20 sessions with falling highs, a pullback
-of at most half the pole, and volume below the pole's and falling. The
-**trigger** is the flag's upper trendline; a **breakout** is a close above it
-on at least 1.5× the 20-day average volume.
+The rules:
 
-Only **well-formed** flags are published: flag volume at most 70% of the
-pole's, pullback at most 40% of the pole, flag 5–8 sessions.
+- **Uptrend**: close over the 21 EMA, 9 EMA over the 21.
+- **Pole**: at least 4 ATR and 10%, into a high not exceeded since.
+- **Flag**: 5–20 sessions of falling highs, pulling back at most half the pole,
+  on volume below the pole's and falling.
+- **Trigger**: the flag's upper trendline. A breakout is a close above it on at
+  least 1.5× the 20-day average volume.
 
-- **Forming** rows are a watchlist: trigger, stop (the flag low) and distance
-  to the trigger, drawn on the chart. No trade.
-- **Breakout** rows carry the trade: entry at the close, stop at the flag low,
-  held 20 sessions or to the stop.
+Only well-formed flags are published: flag volume at most 70% of the pole's,
+pullback at most 40%, 5–8 sessions long.
 
-### Read this before trading the list
+- **Forming** rows show the trigger, the stop (flag low) and the distance to
+  the trigger. No trade.
+- **Breakout** rows: entry at the close, stop at the flag low, hold 20
+  sessions or until stopped.
 
-Point-in-time, 2019–2026. Built on a 385-stock sample, then re-run unchanged on
-the 1,098 other stocks in the universe, none of which had been looked at.
-20-session hold or stop, in R:
+### Before trading the list
+
+Point-in-time, 2019–2026. Built on 385 stocks, then re-run unchanged on the
+1,098 others. 20-session hold or stop, in R:
 
 | | 2019–22 | 2023–26 |
 |---|---:|---:|
@@ -570,484 +307,266 @@ the 1,098 other stocks in the universe, none of which had been looked at.
 | Unseen stocks, loose flags | −0.00 | +0.21 |
 | Plain 20-day-high breakout on volume | +0.06 | +0.12 |
 
-- **A forming flag is not a signal.** It did no better than any uptrend day
-  over the next 20 sessions, and more flags broke their low within 10 sessions
-  (54%) than broke out (24%).
-- **The volume rule matters.** Without the 1.5× breakout volume, the
-  well-formed filter did not hold up on the unseen stocks.
-- **The edge is recent.** 2019–22 broke even. Treat it as regime-dependent.
-- **Exits:** the 20-session hold beat 2R/3R targets; exiting on a close below
-  the 9 EMA was the weakest exit tested.
-- Survivorship flatters the long side; costs are not included; the average
-  breakout stop was ~8% of price.
-- Breakouts are rare — about two a week across the universe — so most days the
-  tab is a short forming list.
+- A forming flag is not a signal. It did no better than any uptrend day, and
+  more flags broke their low within 10 sessions (54%) than broke out (24%).
+- Without the 1.5× breakout volume rule, the well-formed filter failed on the
+  unseen stocks.
+- 2019–22 broke even. Treat the edge as regime-dependent.
+- The 20-session hold beat 2R and 3R targets. Exiting below the 9 EMA was the
+  worst exit tested.
+- No costs included. The average breakout stop was ~8% of price.
+- Breakouts are rare, about two a week, so most days the tab is a short
+  forming list.
 
 ---
 
-## 📐 Trey (TREY) — the TQQQ trend gate
+## Trey (TREY): the TQQQ trend gate
 
-Not a screener. Trey watches one instrument and publishes one row whose score
-is really a **state**. Every rule is evaluated on **QQQ** (unlevered) and the
-state applies to **TQQQ** — the 3× leverage would otherwise turn ordinary noise
-into false crossovers.
+One instrument, one row. The rules run on QQQ and the position applies to
+TQQQ, because 3× leverage turns ordinary noise into false crossovers.
 
 | State | Condition on QQQ | Position | Score |
 |-------|------------------|----------|-------|
-| **OUT** | close below 200-day SMA | cash | 0 |
-| **HALF** | above 200-day; fast trend not confirmed | half | 60 |
-| **FULL** | above 200-day; 10d > 20d **and** close > 50d, held 3 days | full | 100 |
+| OUT | close below 200-day SMA | cash | 0 |
+| HALF | above 200-day, fast trend not confirmed | half | 60 |
+| FULL | above 200-day; 10d > 20d and close > 50d, held 3 days | full | 100 |
 
-Read at the close, acted on the next session. The scheduled run fires after
-the US close so the published state is tomorrow's position.
+Read at the close, acted on the next session.
 
-### Where the rules came from — and what was thrown out
+### Where the rules came from
 
-Derived from Masonson's *QQQ and TQQQ Profit Machine*, then **backtested on
-real data before any of it was coded.** The script is in this session's
-history, not the repo; the numbers below are from it.
+From Masonson's *QQQ and TQQQ Profit Machine*, backtested before coding.
 
 **Kept:**
 
-- **The 200-day gate.** On real TQQQ over the last ten years it matched
-  buy-and-hold's return (2,889% vs 2,877%) while cutting max drawdown from
-  −82% to −56%. One 2022 save (−47% vs −79%) paid for every whipsaw around it.
-  Recovering from −79% needs +376%; from −47%, +89%. That asymmetry is the
-  whole strategy.
-- **Fast trend as a *size* modifier, not a gate.** Best Sharpe of every
-  variant tested (0.88 vs 0.61 buy-and-hold). It also caught the COVID crash
-  a 200-day system is too slow for (−42% vs −55%).
-- **3-day confirmation on the fast signal.** The raw 10>20 crossover flipped
-  size ~every two weeks, a quarter of those reversing next day. Three days of
-  confirmation improved *both* Sharpe and return and cut size trades by a
-  third. Five days was already too slow to catch a fast crash.
+- **The 200-day gate.** Over ten years of TQQQ it matched buy-and-hold
+  (2,889% vs 2,877%) and cut the worst drawdown from −82% to −56%. The 2022
+  save alone (−47% vs −79%) paid for every whipsaw.
+- **Fast trend as a size change, not a gate.** Best Sharpe of all variants
+  (0.88 vs 0.61 buy-and-hold), and it caught the COVID crash that the 200-day
+  was too slow for (−42% vs −55%).
+- **3-day confirmation.** The raw 10/20 cross flipped size about every two
+  weeks. Three days improved both Sharpe and return and cut size trades by a
+  third. Five days was too slow for a fast crash.
 
-**Thrown out:**
+**Dropped:**
 
-- **Seasonal "flat Jul–Oct".** Worse in every single variant. Tech summers
-  were often strong in this decade; the 52-year stat behind it is a different
-  index and era.
-- **"All conditions must align"** as the entry rule. Worst configuration in
-  every test — more filters just meant later entries.
-- **225 vs 200 days.** Regime-dependent: 225 wins on 25 years of QQQ (one
-  dot-com-era event), 200 wins on TQQQ's whole life and on the last decade.
-  `GATE_SMA` is one constant in `trey/agent.py`; neither is a robust edge.
+- Seasonal "flat Jul–Oct": worse in every variant.
+- Requiring all conditions to align: worst in every test.
+- 225 vs 200 days: depends on the period. `GATE_SMA` in `trey/agent.py`.
 
-### The one alert: RSI > 80
+### RSI > 80 alert
 
-Not a rule — a flag to go look at the chart. Tested before adding: after
-QQQ's RSI(14) crosses **70**, TQQQ is still higher 65% of the time a month
-later, and 70 fires on 13% of all days — useless as an alert, wrong as a sell
-signal. At **80** the forward return turns negative at every horizon and it
-fires ~1.5×/year. As a hard "step out" rule it added +6 pts CAGR and lifted
-Sharpe 0.88 → 1.05 over the last decade — but on 23 episodes with the edge
-concentrated in ~5 big drops. Too thin to move the position on; it's
-surfaced in red on the row, the header, the setup panel and the rail when it
-fires, and left quiet otherwise. `RSI_ALERT` in `trey/agent.py`.
+A prompt to look at the chart, not a rule. At RSI 70, TQQQ was still higher a
+month later 65% of the time, and 70 fires on 13% of days. At 80, forward
+returns turn negative and it fires about 1.5 times a year. As a hard exit it
+added 6 points of CAGR, but on only 23 episodes, mostly ~5 big drops: too few
+to trade on. It shows in red when it fires. `RSI_ALERT` in `trey/agent.py`.
 
-### What it costs
+### Cost and limits
 
-~2 gate changes a year (full round trips) and ~8 size changes (half-position
-trades) even after confirmation. Both are published separately in the agent's
-context panel — a blended number hid the size churn the first time.
-
-### The honest framing
-
-This is **drawdown insurance, not a return machine.** Over TQQQ's full life
-(2010–2026) every timing rule lost to buy-and-hold on total return; only in the
-last decade did the gate break even. Whether it's worth running comes down to
-one question: could you hold TQQQ through −82%? If yes, buy-and-hold won. If
-not — and almost nobody can — the gate is the price of staying in the game,
-and −46% to −56% is still brutal.
+About 2 gate changes and 8 size changes a year. Over TQQQ's full life
+(2010–2026) every timing rule lost to buy-and-hold on total return. The gate
+is drawdown insurance: worth it only if you couldn't sit through −82%, and
+−46% to −56% is still severe.
 
 ---
 
-## 🖥 The Dashboard
+## Dashboard
 
-`docs/index.html` is the homepage — a single static file, no build step and no
-dependencies. It reads `docs/data/agents.json`, loads each listed agent's feed,
-and renders them.
+`docs/index.html` is one static file with no build step. It reads
+`docs/data/agents.json` and loads each agent's feed.
 
+- **Looks**: Day (light grey glass) and Night (dark glass). Auto, the
+  default, follows the device setting. The switch in the top bar overrides it
+  and is remembered per browser.
+- **Tabs** sit in a dock at the bottom of the screen.
+- **Detail panel**: the company name, score breakdown, trade levels and a
+  3-month chart of daily closes with the 200-day SMA (amber; marked "off
+  chart" when too far away to draw) and entry, stop and target as dashed
+  lines. The chart uses the same bars the agent scanned (`history.py`); Opy
+  keeps no bars, so it fetches its published symbols separately.
+- **Results tab**: what happened to past signals (below).
+- One agent's broken feed is logged and skipped; the rest still render.
 
-The page has two looks, both frosted glass: **Day** (light grey) and **Night**
-(dark). **Auto**, the default, follows the device's appearance — on a Mac or
-iPhone set to Auto that is Day by daylight and Night after sunset. The Auto /
-Day / Night switch in the top bar overrides it and is remembered per browser.
-Agent tabs sit in a floating dock at the bottom of the screen.
+### Results
 
-Clicking a row opens its detail panel, which includes a **3-month price
-chart** — daily closes, the change over the period, the **200-day SMA** (amber,
-with price's distance from it in the key), and the row's entry, stop and
-target drawn as dashed lines. When the 200-day sits too far from three months
-of price to draw without flattening it, the key names it as off chart. Hover (or tap) for a session's close. The
-closes come from each agent's own fetch via the shared `history.py`, so the
-chart shows the bars the signal was computed on; Opy, whose screener keeps no
-bars, fetches its published symbols in one small extra batch.
+`track/agent.py` replays every signal in the dated archives against the
+prices that followed and writes `docs/data/results.json`. The archives were
+written before the outcomes existed, so this is a forward test. It covers
+Monu, Pocket, Flag, Goldy and Opy, and is rebuilt from scratch each night.
 
-### Preview locally
+- **Entry**: the next session's open. A Monu `PULLBACK` is a limit at its
+  entry, working for 5 sessions. A trade that opens through its stop is not
+  taken.
+- **Exit**: the published stop or target (stop wins a same-day tie; a gap
+  through either exits at the open), or the time limit: Pocket and Flag 20
+  sessions, Goldy 63. Monu has no time limit.
+- **R**: the result as a multiple of the risk from fill to stop.
+- **Repeats**: a signal for a stock the agent already holds is ignored.
+- **Opy**: credit spreads are settled on the expiry close, at the published
+  mid credit. Condors publish no strikes, so only whether the stock finished
+  inside its expected move is counted. LEAPS and RSI rows are not tracked.
 
-`fetch()` is blocked on `file://`, so the page must be served over HTTP:
+Each agent's headline figure includes open trades at the last close. Closed
+trades alone lean to losers early on, because stops close in days and targets
+or time exits take weeks.
+
+**Preview locally** (`fetch()` doesn't work on `file://`):
 
 ```bash
-python agent.py            # generate docs/data/
 python -m http.server 8000 --directory docs
-# open http://localhost:8000
 ```
 
-### Deploy free on GitHub Pages
+**Hosting**: Settings → Pages → deploy from branch `main`, folder `/docs`.
+Each scan commit republishes it.
 
-Settings → Pages → Source: **Deploy from a branch** → branch `main`, folder
-`/docs`. Every scan commit republishes it. No build, no Vercel, no cost.
-
-### Adding your second and third agents
-
-The dashboard has no per-agent code — it renders whatever the manifest lists.
-A new agent needs to do exactly two things:
+### Adding an agent
 
 1. Write `docs/data/<ID>.json` in the shape below.
-2. Append its ID to the `agents` array in `docs/data/agents.json`.
+2. Add its ID to `agents` in `docs/data/agents.json`.
 
-`publish_to_dashboard()` in `agent.py` does both and is ~30 lines — copy it
-into the new agent and change the `AGENT` and `DIMENSIONS` constants at the top.
+`publish_to_dashboard()` in `agent.py` does both. Copy it and change the
+`AGENT` and `DIMENSIONS` constants.
 
 ```jsonc
 {
   "agent": {
-    "id": "VALU",                    // short code, must match the filename
+    "id": "VALU",                    // must match the filename
     "name": "Vera",
     "strategy": "Value",
-    "description": "One line on what this agent buys and why.",
-    "accent": "#60a5fa"              // colour used for its rule and chip
+    "description": "One line on what this agent looks for.",
+    "accent": "#60a5fa"
   },
   "scan_date": "2026-08-10T09:00:00",
+  "dimensions": [ { "key": "fcf_yield", "label": "FCF Yield", "max": 30 } ],
+  "context": [ { "label": "Universe", "value": "1516 symbols" } ],
 
-  // The score axes THIS agent uses. The dashboard reads these rather than
-  // assuming Monu's — a value or sentiment agent scoring on entirely
-  // different criteria renders correctly with no changes to index.html.
-  "dimensions": [
-    { "key": "fcf_yield", "label": "FCF Yield", "max": 30 }
-  ],
-
-  // Free-form key/value pairs shown in the agent header.
-  "context": [ { "label": "Universe", "value": "1521 symbols" } ],
-
-  // Optional. Turns a per-opportunity field into filter chips above the grid
-  // and a column in it. `key` names the field, `values` is the display order.
-  // Omit the block and the chips never appear; the field may be a string or
-  // an array, since membership can be many-to-one (a name in both the S&P 500
-  // and the Nasdaq-100 carries both tags and matches either chip).
+  // Optional filter chips and column. The field may be a string or an array
+  // (a stock in both the S&P 500 and Nasdaq-100 matches either chip).
   "groups": { "key": "indexes", "label": "Index", "values": ["SPX", "QQQ", "IWM"] },
 
   "opportunities": [
     {
       "rank": 1, "symbol": "ABC", "price": 88.10, "score": 77,
-      "breakdown": { "fcf_yield": 26 },   // keys match dimensions[].key
-      "indexes": ["SPX", "QQQ"],          // the field groups.key points at
+      "breakdown": { "fcf_yield": 26 },
+      "indexes": ["SPX", "QQQ"],
       "entry": 88.10, "stop_loss": 79.29, "take_profit": 101.32,
       "risk_reward_ratio": 1.5,
-      "setup_type": "PULLBACK", "extension_pct": -1.2,
-      "reasoning": "Claude's read on this setup."
+      "reasoning": "Claude's note on this setup."
     }
   ]
 }
 ```
 
-Only `agent.id`, `agent.name`, `score`, and `symbol` are strictly required —
-omit `dimensions`, `context`, or the trade levels and those blocks are simply
-skipped for that agent.
+Only `agent.id`, `agent.name`, `symbol` and `score` are required. Missing
+blocks are skipped.
 
-**Score bands are shared across all agents** so the numbers stay comparable:
-80+ Strong · 70–79 Buy · 60–69 Watch. If a future agent uses a different
-scale, normalise it to 0–100 before publishing.
+Score bands are shared so numbers compare across agents: 80+ Strong, 70–79
+Buy, 60–69 Watch. Normalise other scales to 0–100.
 
-#### When one agent runs several strategies at once
-
-Monu's contract above assumes every row scores on the same axes and has the
-same entry/stop/target shape. That's true for a single-strategy agent, but
-**Opy** screens four option strategies in one run — an iron condor's IV/HV
-richness has nothing in common with a LEAPS trade's delta and leverage, and a
-credit spread's numbers are credit/max-loss/ROC, not entry/stop/target.
-
-Two fields, both optional and both set **per opportunity** rather than once
-per agent, cover this:
+**Rows with different strategies.** Opy mixes iron condors, spreads and LEAPS
+in one feed, which share neither score axes nor entry/stop/target. Any row can
+override them:
 
 ```jsonc
 {
   "rank": 1, "symbol": "IWM", "price": 301.56, "score": 100,
-
-  // Overrides the agent-level "dimensions" for THIS row only. Omit it and
-  // the row falls back to the agent's declared dimensions (Monu's case).
   "strategy": "Bull Put Spread",
-  "dimensions": [
-    { "key": "credit_width", "label": "Credit / Width", "max": 30 }
-  ],
+  "dimensions": [ { "key": "credit_width", "label": "Credit / Width", "max": 30 } ],
   "breakdown": { "credit_width": 24 },
-
-  // Replaces the fixed Entry/Stop/Target/R:R block with whatever fields
-  // actually describe this trade. Omit it (and "entry") entirely for a row
-  // that isn't a specific structure - Opy's RSI rows have neither, and the
-  // dashboard simply skips the Setup panel for those.
   "setup": {
     "label": "Bull Put 294/292 · 38 DTE",
     "fields": [
       { "label": "Credit", "value": "$0.47", "tone": "pos" },
       { "label": "Max Loss", "value": "$1.53", "tone": "neg" }
     ]
-  },
-  "reasoning": "Claude's read on this setup."
+  }
 }
 ```
 
-`tone` on a setup field is `"pos"` (green), `"neg"` (red), or omitted
-(neutral). The grid also gains a **Strategy** column showing `o.strategy`,
-falling back to the agent's single `agent.strategy` when a row doesn't set
-its own — so Monu's rows need no changes and just show "Momentum" throughout.
-
-One consequence worth knowing if you build a multi-strategy agent: the
-dashboard's row-selection key is `symbol + agent.id + strategy`, not just
-`symbol + agent.id` — without the strategy segment, two rows for the same
-symbol under different strategies (a stock that's both an iron condor
-candidate and a LEAPS candidate) would be indistinguishable and only one
-would ever be selectable.
-
-**Resilience:** one agent's broken or missing file is logged to the console and
-skipped — the rest of the desk still renders. The filter bar only appears once
-there are two or more agents.
-
-## ⚙️ Configuration
-
-### Customize Stocks to Scan
-
-Edit `agent.py`, line ~380:
-
-```python
-test_symbols = [
-    'NVDA', 'AAPL', 'MSFT', 'TSLA', 'AMZN',
-    'META', 'GOOGL', 'NFLX', 'AMD', 'AVGO',
-    # Add your stocks here...
-]
-```
-
-**Or load from a file:**
-
-```python
-with open('stocks.txt', 'r') as f:
-    test_symbols = [line.strip() for line in f]
-```
-
-### Adjust Scoring Weights
-
-Edit the `score_momentum_dimensions` method to change weights:
-
-```python
-# Currently: Trend=25, Volume=20, RSI=15, MACD=15, Relative=15, Breakout=10
-# Adjust to your preferences
-```
-
-### Scan Schedule
-
-Every agent runs at **9pm New York, Monday–Friday** — five hours after the
-close, so each one works off the completed session. In Sydney that lands
-around midday the next day.
-
-GitHub cron is UTC-only with no daylight saving, so each workflow carries two
-crons (01:xx and 02:xx UTC, Tuesday–Saturday) and a small `gate` job lets
-through only the one that is 9pm in New York that day. The gate keys on *which* cron fired, not the
-clock, because GitHub often starts scheduled runs an hour or more late.
-
-Before scanning, each run **waits for the session's daily bar** — checking
-SPY every 5 minutes for up to 90. Yahoo's bar isn't always there an hour after
-the close: 6 of 25 Trey runs in Sep–Oct 2026 used the previous day's bar
-despite running 3–5 hours after it. If the bar never comes (a market holiday,
-or a long Yahoo delay) the run publishes nothing rather than a stale session.
-Archive files are named after the session actually scanned, not the run date.
-
-To change the time, edit both crons and the `want` hours in the gate job of
-each workflow under `.github/workflows/`.
-
-## 💰 Cost Breakdown
-
-| Component | Monthly Cost |
-|-----------|--------------|
-| Claude API (Haiku) | $5-10 |
-| GitHub Actions | $0 (free tier) |
-| yfinance data | $0 (free) |
-| **Total** | **$5-10** |
-
-## 📊 Understanding the Output
-
-### JSON Structure
-
-```json
-{
-  "scan_date": "2026-08-10T09:15:00",
-  "market_regime": "UPTREND",
-  "opportunities": [
-    {
-      "rank": 1,
-      "symbol": "NVDA",
-      "price": 891.50,
-      "score": 87,
-      "breakdown": {
-        "trend_strength": 25,
-        "volume": 18,
-        "rsi": 14,
-        "macd": 15,
-        "relative": 11,
-        "breakout": 4
-      },
-      "entry": 890.20,
-      "stop_loss": 868.75,
-      "take_profit": 922.35,
-      "risk_reward_ratio": 1.50,
-      "reasoning": "NVDA is showing exceptional momentum...",
-      "market_regime": "UPTREND"
-    }
-  ]
-}
-```
-
-## 🔍 How It Works
-
-### Step 1: Market Regime Detection
-
-```python
-if S&P 500 50-day MA > 200-day MA:
-    regime = "UPTREND"      # Momentum works well
-elif S&P 500 50-day MA < 200-day MA:
-    regime = "DOWNTREND"    # Consider short strategies
-else:
-    regime = "CAUTION"      # Skip momentum trades
-```
-
-### Step 2: Score Each Stock
-
-For each stock, calculate:
-- **Trend Strength**: Is price above key MAs?
-- **Volume**: Is volume 1.5-2x average?
-- **RSI**: Is RSI in 50-70 range?
-- **MACD**: Is MACD line above signal? Is histogram expanding?
-- **Relative Performance**: How close to 52-week high?
-- **Breakout Quality**: Recent clean breakout?
-
-### Step 3: Rank & Filter
-
-- Sort by total score (descending)
-- Filter: Only show scores > 60
-- Take top 20 candidates
-
-### Step 4: Generate AI Reasoning
-
-Claude analyzes the score breakdown and generates:
-- Why momentum is present
-- Which indicators are aligned
-- Key risks to watch
-
-### Step 5: Calculate Trade Setup
-
-```python
-extension = (price - MA20) / MA20
-
-if extension > 4%:          # stock has already run - chasing it is a late entry
-    setup_type = EXTENDED
-    entry = current price   # breakout/continuation entry
-else:
-    setup_type = PULLBACK
-    entry = MA20            # wait for the pullback
-
-stop_loss   = entry - (1.5 × ATR)
-take_profit = entry + (1.5 × ATR × 1.5)  # 1.5:1 risk/reward
-```
-
-The extension check matters: without it, a stock trading 9% above its MA20
-gets a take-profit *below the current price* — a setup that says "sell lower
-than it trades right now." `MAX_EXTENSION` in `agent.py` tunes the threshold.
-
-## ⚠️ Important Disclaimers
-
-- **This is a research tool, not financial advice**
-- **You execute all trades manually** (no automated execution)
-- **Backtest before real money** (4-8 weeks paper trading recommended)
-- **Past performance doesn't guarantee future results**
-- **Momentum trading has 45-50% win rate** (position sizing critical)
-- **Always use stop-losses** (1-2% risk per trade maximum)
-
-## 🎯 Next Steps
-
-### Week 1-2: Validate
-- [ ] Run locally, verify data fetching works
-- [ ] Check indicator calculations are correct
-- [ ] Test with 5-10 stocks first
-- [ ] Verify Claude reasoning is helpful
-
-### Week 3-4: Deploy
-- [ ] Push to GitHub
-- [ ] Set up GitHub Actions
-- [ ] Add API key to secrets
-- [ ] Test automated runs
-
-### Week 5-12: Paper Trade
-- [ ] Track every signal (did it move as predicted?)
-- [ ] Record win rate, average return, holding period
-- [ ] Refine scoring weights based on results
-- [ ] Build dashboard to visualize results
-
-### Week 13+: Live Trading
-- [ ] When win rate > 55%: Start with small positions
-- [ ] Maintain detailed trade log
-- [ ] Continue refining based on real results
-
-## 🛠️ Troubleshooting
-
-### "No data found for SYMBOL"
-- Stock might be delisted or ticker changed
-- Check if market is open (data may be delayed)
-- Try a different ticker
-
-### "only N rows, need 200 for MA200 - skipping"
-The agent requests 400 *calendar* days to get ~270 *trading* days, because
-MA200 and the 52-week high need at least 200 bars. Recently-listed stocks
-don't have that history and are skipped rather than scored against a NaN
-moving average. Raise `CALENDAR_DAYS` if you need deeper history.
-
-### Every stock scores 0 on a dimension
-Check whether the indicator is genuinely flat or the data is malformed.
-`yfinance` returns MultiIndex columns (`('Close','AAPL')`); the agent flattens
-them on fetch because the `ta` library needs 1-D Series and otherwise raises
-`ValueError: Data must be 1-dimensional`.
-
-### "Rate limit exceeded"
-- yfinance has rate limits
-- Add delays between requests: `time.sleep(0.5)`
-- Or use a paid data API (Alpha Vantage, Finnhub)
-
-### "API key error"
-- Verify `ANTHROPIC_API_KEY` is set correctly
-- Check key hasn't expired
-- Ensure secret is added to GitHub
-
-## 📚 Learn More
-
-- [Momentum Trading Research](../momentum-trading-deep-research.html)
-- [Strategy Comparison](../strategy-comparison-vs-research.html)
-- [Implementation Plan](../momentum-agent-implementation-plan.md)
-
-## 🤝 Contributing
-
-This is your personal trading research tool. Customize it freely:
-
-- Add more indicators (Bollinger Bands, Stochastic, etc.)
-- Implement multi-timeframe analysis
-- Add sector rotation logic
-- Build a React dashboard
-- Add backtesting capabilities
-
-## 📝 License
-
-MIT License - Use freely for personal or commercial purposes.
+`tone` is `pos` (green), `neg` (red) or omitted. Rows without `strategy` use
+the agent's. The selection key is symbol + agent + strategy, so one stock can
+appear under two strategies. Other optional row fields: `history` (chart
+data, from `history.py`) and `chart_levels` (`[{label, value, tone}]`, extra
+lines on the chart).
 
 ---
 
-**Built with:** Python, yfinance, ta, Claude API, GitHub Actions
+## Running it
 
-**Remember:** Momentum trading works best in trending markets. Always manage your risk. 🚀
+**Requirements**: Python 3.11+, and an Anthropic API key in the
+`ANTHROPIC_API_KEY` GitHub secret. Without a key the agents still run; rows
+just have no Claude note.
+
+```bash
+pip install -r requirements.txt
+python agent.py                    # Monu; the others are <name>/agent.py
+python tests_edge_cases.py
+```
+
+### Schedule
+
+Every agent runs at 9pm New York, Monday–Friday, after the session's bar is
+final. That is around midday in Sydney, but GitHub often starts scheduled runs
+hours late.
+
+| Workflow | Time (New York) |
+|---|---|
+| flag-scan.yml | 9:02pm |
+| momentum-scan.yml | 9:07pm |
+| opy-scan.yml | 9:17pm |
+| trey-scan.yml | 9:27pm |
+| goldy-scan.yml | 9:37pm |
+| pocket-scan.yml | 9:47pm |
+| leaders-scan.yml | 9:57pm |
+| results.yml | 10:12pm (replays signals, no Claude calls) |
+
+GitHub cron is UTC with no daylight saving, so each workflow has two crons
+(01:xx and 02:xx UTC) and a `gate` job that lets through the one matching 9pm
+New York that day. It checks which cron fired rather than the clock, because
+runs start late.
+
+Each run then waits up to 90 minutes for the day's SPY bar. In Sep–Oct 2026,
+6 of 25 Trey runs had used the previous day's bar. If the bar never arrives
+(holiday or Yahoo delay) the run publishes nothing. Archives are named after
+the session scanned.
+
+To change the time, edit both crons and the `want` hours in each workflow's
+gate job.
+
+### Cost
+
+Claude Haiku for the notes, roughly $5–10 a month. GitHub Actions and yfinance
+are free.
+
+### Troubleshooting
+
+- **"only N rows, need 200 for MA200"**: the stock is too new for a 200-day
+  average and is skipped. `CALENDAR_DAYS` sets how much history is fetched.
+- **A dimension scores 0 everywhere**: check for MultiIndex columns from
+  yfinance. The `ta` library needs 1-D series.
+- **"No data found"**: usually a delisted or renamed ticker.
+
+## Project structure
+
+```
+harry-trading-desk/
+├── agent.py            # Monu
+├── opy/ trey/ goldy/ pocket/ leaders/ flag/   # one agent.py each
+├── universe.py         # universe.txt parser
+├── sectors.py          # sector-ETF breadth (Monu, Opy)
+├── history.py          # 3-month closes + 200 SMA for the chart
+├── track/agent.py      # Results: replays archived signals
+├── universe.txt        # 1,516 tickers with index and sector tags
+├── data/holdings/      # fund holdings exports universe.txt is built from
+├── scripts/            # build_universe.py, fetch_sp500.py
+├── tests_edge_cases.py
+├── .github/workflows/  # one <agent>-scan.yml per agent
+├── docs/               # the dashboard (GitHub Pages)
+│   ├── index.html
+│   └── data/           # agents.json, names.json, results.json, one <ID>.json per agent
+└── results/ <agent>/results/   # dated archives
+```
+
+MIT License.

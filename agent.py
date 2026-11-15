@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""
-MONU - MNTM (Momentum Trader Agent)
-An AI-powered momentum trading scanner using Claude for intelligent reasoning.
+"""Monu (MNTM) - momentum scanner.
 
-Author: Your Name
-Date: 2026
+Scores the universe on six momentum dimensions, publishes the best 8 per
+index while SPY is in an uptrend, plus breakdowns in weak sectors. Claude
+writes a short note per published row.
 """
 
 import json
@@ -29,6 +28,11 @@ import history   # recent closes for the dashboard's price chart
 # ($1/$5 per Mtok) and is what the cost estimate in the README assumes.
 # Swap to "claude-opus-4-8" ($5/$25) for stronger analysis at ~5x the cost.
 CLAUDE_MODEL = "claude-haiku-4-5"
+# Appended to every Claude prompt so the notes read like a trader's margin
+# note: short, plain, no sales language.
+STYLE = ("Plain English, under 60 words. No preamble or sign-off. No hype words "
+         "(exceptional, robust, compelling, poised). Don't repeat the numbers above. "
+         "Do not recommend a trade.")
 
 # Identity this agent publishes under on the dashboard. A second strategy
 # gets its own AGENT block and its own file in docs/data/ - the dashboard
@@ -37,7 +41,7 @@ AGENT = {
     "id": "MNTM",
     "name": "Monu",
     "strategy": "Momentum",
-    "description": "Buys strength: breakouts confirmed by volume, riding the trend until momentum fades.",
+    "description": "Momentum breakouts on volume, plus breakdowns in weak sectors.",
     # Muted, low-saturation hue - the dashboard chrome is neutral, so each
     # agent's accent is the only identity colour it gets. Keep new agents in
     # the same register (e.g. #6f8fae blue, #8a7fa8 violet) rather than neon.
@@ -81,12 +85,9 @@ class MomentumAnalyzer:
 
     def __init__(self):
         self.model = CLAUDE_MODEL
-        # Reasoning is optional. Everything else in this agent - the universe
-        # fetch, all six score dimensions, the regime gate, entry/stop/target -
-        # is pure price maths and must still run without a Claude key. The SDK
-        # raises a bare TypeError at request time when no credential resolves,
-        # which is not an anthropic.* exception, so it cannot be caught by the
-        # handlers in generate_reasoning() - gate on the key up front instead.
+        # Reasoning is optional; the scan must run without a key. Check the
+        # key up front: with no credential the SDK raises a bare TypeError,
+        # which the anthropic.* handlers in generate_reasoning() don't catch.
         self.reasoning_enabled = bool(os.environ.get("ANTHROPIC_API_KEY"))
         self.client = Anthropic() if self.reasoning_enabled else None
         if not self.reasoning_enabled:
@@ -116,14 +117,10 @@ class MomentumAnalyzer:
     MIN_DOLLAR_VOLUME = 10_000_000
     LIQUIDITY_WINDOW = 60      # ~3 months, same basis as the build-time screen
 
-    # A single session cannot legitimately move this far. Beyond it the series
-    # has an unadjusted corporate action in it - a split, a spin-off, a reverse
-    # split - and every average spanning the gap is arithmetic on two different
-    # securities. Found via Goldy: CTVA came back with 2026-09-30 at $77.65 and
-    # 2026-10-01 at $14.44, an unadjusted spin-off, which makes its MA50, MA200,
-    # ATR and 52-week high all meaningless - and Monu scores on every one of
-    # them. Real stocks do gap 40% on news, but nothing here can say anything
-    # useful about one that has, so skipping is right either way.
+    # A one-day move this large usually means an unadjusted split or spin-off
+    # (CTVA went $77.65 -> $14.44 on 2026-10-01), which breaks every average
+    # spanning it. A genuine 40% gap is skipped too: none of the indicators
+    # can say anything useful about it.
     MAX_SESSION_MOVE = 0.40
 
     def continuous(self, data: pd.DataFrame) -> bool:
@@ -182,10 +179,7 @@ class MomentumAnalyzer:
     def fetch_many(self, symbols: List[str], days: int = CALENDAR_DAYS) -> Dict[str, pd.DataFrame]:
         """Fetch every symbol in one request.
 
-        One download() call per symbol costs ~0.6s each; batching the whole
-        universe into a single call costs ~0.08s each - about 7x faster, which
-        is the difference between a 20-symbol toy list and scanning the S&P 500
-        inside a GitHub Actions run.
+        About 0.08s per symbol batched vs 0.6s one at a time.
         """
         end_date = datetime.now()
         start_date = end_date - timedelta(days=days)
@@ -636,9 +630,9 @@ Breakdown score: {o['score']}/100
 Short setup: entry ${o['entry']:.2f}, stop ${o['stop_loss']:.2f} (above),
 target ${o['take_profit']:.2f}.
 
-In 2-3 sentences: is this a genuine distribution or an oversold stock about to
+In 2-3 sentences: is this real distribution or an oversold stock about to
 bounce, and what would squeeze it? Be concrete and sceptical. Name the level
-that would invalidate it. Do not recommend a trade."""
+that would invalidate it. {STYLE}"""
         try:
             message = self.client.messages.create(
                 model=self.model, max_tokens=300,
@@ -660,11 +654,8 @@ that would invalidate it. Do not recommend a trade."""
         if not self.reasoning_enabled:
             return "[reasoning unavailable: ANTHROPIC_API_KEY not configured]"
 
-        prompt = f"""You are a momentum trading expert. Given these indicators for {symbol},
-provide a concise (2-3 sentence) explanation of the momentum trading setup.
+        prompt = f"""{symbol} at ${price:.2f} scored as a momentum setup.
 
-Stock: {symbol}
-Current Price: ${price:.2f}
 Momentum Score: {score_breakdown['total']}/100
 
 Score Breakdown:
@@ -681,12 +672,9 @@ Trade Setup:
 - Take Profit: ${take_profit:.2f}
 - Risk/Reward Ratio: {(take_profit - entry) / (entry - stop_loss):.2f}:1
 
-Please explain:
-1. Why this stock shows momentum right now
-2. Which indicators are most aligned
-3. One key risk to watch
-
-Format: Professional but conversational, suitable for a trader's quick decision."""
+In 2-3 sentences: what is driving the score, and what is the main risk to the
+setup? Be concrete and sceptical, and name the price that would show it has
+failed. {STYLE}"""
 
 
         try:

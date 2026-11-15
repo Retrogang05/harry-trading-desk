@@ -73,13 +73,18 @@ logging.basicConfig(level=logging.INFO,
 logger = logging.getLogger(__name__)
 
 CLAUDE_MODEL = "claude-haiku-4-5"
+# Appended to every Claude prompt so the notes read like a trader's margin
+# note: short, plain, no sales language.
+STYLE = ("Plain English, under 60 words. No preamble or sign-off. No hype words "
+         "(exceptional, robust, compelling, poised). Don't repeat the numbers above. "
+         "Do not recommend a trade.")
 
 AGENT = {
     "id": "FLAG",
     "name": "Flag",
     "strategy": "Bull flag: pole, quiet drift, breakout",
-    "description": "Well-formed bull flags across the universe: forming flags with their "
-                   "trigger and stop, and breakouts on volume with the trade attached.",
+    "description": "Well-formed bull flags: forming flags with trigger and stop, "
+                   "and breakouts on volume with a trade.",
     # Same muted register as the other agents' accents.
     "accent": "#a87f9a",
 }
@@ -323,7 +328,7 @@ class Reasoner:
             "In 2-3 sentences: is this a clean flag or a stock losing momentum, and what "
             "would confirm or kill it? Be concrete and sceptical - flags that are still "
             "forming showed no edge in testing, and more broke down than broke out. "
-            "Do not recommend a trade."
+            + STYLE
         )
         try:
             r = self.client.messages.create(model=CLAUDE_MODEL, max_tokens=250,

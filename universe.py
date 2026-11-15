@@ -1,22 +1,15 @@
 #!/usr/bin/env python3
 """The shared scan universe: one parser for universe.txt, used by every agent.
 
-Monu, Opy and Goldy each had their own hand-copied copy of this, and they had
-already drifted - Monu kept sector tags inside `membership` and narrowed them
-again at publish time, Opy kept them in a separate map, Goldy dropped them
-entirely. That divergence is not cosmetic: filtering tags too early in Monu's
-copy silently disabled its entire bearish half on the first run, because the
-sector lookup read a list the loader had already stripped.
-
-So this module settles the shape once:
+Replaces three hand-copied parsers that had drifted apart (one of them
+silently switched off Monu's bearish half). Returns:
 
     symbols      the tickers to scan, file order
     membership   symbol -> INDEX tags only (SPX / QQQ / IWM, or OTHER)
     sector_map   symbol -> its sector SPDR tag (XLV, XLF, ...), where known
 
-Index and sector are separate returns rather than one mixed list, because they
-are different axes: the dashboard groups by index, the bearish gating keys off
-sector, and the bug above came from carrying them in the same list.
+Index and sector are kept separate: the dashboard groups by index, the
+bearish gate keys off sector.
 
 File format - one ticker per line, tags in a trailing comment:
 

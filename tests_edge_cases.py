@@ -514,6 +514,78 @@ check("published flags are all well-formed",
 check("every Flag row carries its trigger and stop for the chart",
       all({x["label"] for x in o.get("chart_levels", [])} == {"Trigger", "Flag low"} for o in fg))
 
+# ─────────────────────────────────────────────────────────────────────
+section("Results (signal replay)")
+
+track = load_mod("trackagent", "track/agent.py")
+
+def ohlc(rows, start="2026-10-01"):
+    """rows: (open, high, low, close) per session."""
+    idx = pd.date_range(start, periods=len(rows), freq="B")
+    return pd.DataFrame(rows, columns=["Open", "High", "Low", "Close"], index=idx)
+
+def sig(agent="PCKT", entry=100.0, stop=95.0, target=None, side=1, limit=False, price=100.0,
+        day="2026-10-01"):
+    return {"agent": agent, "symbol": "T", "file_date": pd.Timestamp(day), "price": price,
+            "entry": entry, "stop": stop, "target": target, "side": side, "limit": limit,
+            "strategy": "", "group": "g", "score": 70}
+
+flat = [(100, 101, 99, 100)]
+t = track.replay(sig(), ohlc(flat + [(101, 102, 94, 96)] + flat * 3))
+check("stop hit: exits at the stop, -1R from the next-open fill",
+      t["status"] == "closed" and t["reason"] == "Stop" and abs(t["r"] - (95 - 101) / 6) < 1e-9, str(t))
+t = track.replay(sig(), ohlc(flat + [(100, 101, 99, 100), (90, 91, 89, 90)]))
+check("gap through the stop exits at the open, worse than -1R",
+      t["reason"] == "Stop" and t["exit"] == 90 and t["r"] < -1, str(t))
+t = track.replay(sig(), ohlc(flat + [(94, 95, 93, 94)] + flat))
+check("opening through the stop is not taken", t["status"] == "skipped", str(t))
+t = track.replay(sig(target=110), ohlc(flat + [(100, 112, 94, 100)] + flat))
+check("stop and target on the same day counts as the stop", t["reason"] == "Stop", str(t))
+t = track.replay(sig(), ohlc(flat * 25))
+check("Pocket closes after 20 sessions", t["status"] == "closed" and t["sessions"] == 20, str(t))
+t = track.replay(sig(agent="MNTM", target=110), ohlc(flat * 25))
+check("Monu has no time exit", t["status"] == "open", str(t))
+t = track.replay(sig(agent="MNTM", side=-1, entry=100, stop=105, target=90),
+                 ohlc(flat + [(99, 100, 89, 90)] + flat))
+check("short target: +R when price falls", t["reason"] == "Target" and t["r"] > 0, str(t))
+t = track.replay(sig(agent="MNTM", entry=97, stop=93, limit=True), ohlc(flat * 10))
+check("pullback limit never reached is not filled",
+      t["status"] == "skipped" and t["reason"] == "Limit not filled", str(t))
+t = track.replay(sig(agent="MNTM", entry=97, stop=93, target=103, limit=True),
+                 ohlc(flat + [(99, 99, 96, 98), (98, 104, 97, 103)]))
+check("pullback limit fills at the limit, then runs to target",
+      t["entry"] == 97 and t["reason"] == "Target" and abs(t["r"] - 1.5) < 1e-9, str(t))
+t = track.replay(sig(price=50.0, entry=50, stop=47.5), ohlc(flat + [(101, 102, 99, 100)] * 3))
+check("a 2:1 split since the signal rescales the levels",
+      t["status"] != "skipped" and abs(t["stop"] - 95) < 1e-6, str(t))
+
+sp = {"symbol": "T", "file_date": pd.Timestamp("2026-10-01"), "price": 100, "kind": "Bull Put",
+      "short": 95.0, "long": 90.0, "credit": 1.0, "width": 5.0, "expiry": pd.Timestamp("2026-10-09")}
+check("bull put expiring above the short strike keeps the credit",
+      track.settle_spread(sp, ohlc(flat * 10))["r"] == 0.25)
+check("bull put expiring below the long strike loses the max",
+      track.settle_spread(sp, ohlc([(85, 86, 84, 85)] * 10))["r"] == -1.0)
+check("bear call is settled on the upside",
+      track.settle_spread({**sp, "kind": "Bear Call", "short": 105.0, "long": 110.0},
+                          ohlc([(107, 108, 106, 107)] * 10))["r"] == -0.25)
+check("expiry snaps to the nearest Friday",
+      track._friday(pd.Timestamp("2026-12-16").date()).isoformat() == "2026-12-18"
+      and track._friday(pd.Timestamp("2026-12-20").date()).isoformat() == "2026-12-18")
+
+two = [sig(day="2026-10-01"), sig(day="2026-10-02")]
+px = {"T": ohlc(flat * 10)}
+check("a repeat signal while the trade is open is ignored",
+      len(track.replay_stocks(two, px)) == 1)
+
+res_path = os.path.join(ROOT, "docs", "data", "results.json")
+if os.path.exists(res_path):
+    R = json.load(open(res_path))
+    check("results.json closed trades all carry an exit and R",
+          all(t.get("exit") is not None and t.get("r") is not None
+              for t in R["trades"] if t["status"] == "closed"))
+    check("results.json covers Monu, Pocket, Flag, Goldy and Opy",
+          [a["id"] for a in R["agents"]] == ["MNTM", "PCKT", "FLAG", "GOLD", "OPY"])
+
 print(f"\n{'='*60}\n{len(PASSES)} passed, {len(FAILS)} failed")
 if FAILS:
     print("FAILURES:")

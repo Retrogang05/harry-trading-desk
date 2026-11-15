@@ -2,24 +2,11 @@
 momentum) and publishes a combined shortlist to the Harry Trading Desk
 dashboard as its own tab.
 
-Mirrors ../agent.py (Monu)'s structure and the two bugs that were fixed there
-the hard way:
-  - reasoning is gated on ANTHROPIC_API_KEY up front, with a last-resort
-    except so a narration failure can never take down a scan that otherwise
-    succeeded (the Anthropic SDK raises a bare TypeError, not an anthropic.*
-    exception, when no credential resolves - that killed Monu's first run)
-  - Claude is called only on the published shortlist, never on every
-    candidate that merely passed stage 2 (that was a 90-calls-to-publish-20
-    bug on Monu; here it would be worse, since four pipelines each produce
-    their own candidate pool before any of them get capped)
+As in Monu: reasoning is gated on ANTHROPIC_API_KEY up front, and Claude is
+called only for the published shortlist, not every candidate.
 
-Unlike Monu, Opy's four strategies score on entirely different axes (an iron
-condor's IV/HV richness has nothing in common with a LEAPS trade's delta and
-leverage), so this publishes per-OPPORTUNITY `dimensions` and a declarative
-`setup` block rather than the single per-agent `dimensions` + fixed
-entry/stop/target shape Monu uses. The dashboard was extended to prefer a
-per-opportunity override when present and fall back to Monu's original
-per-agent contract otherwise - see docs/index.html for the reader side.
+The four strategies score on different axes, so each row carries its own
+`dimensions` and a `setup` block instead of Monu's fixed entry/stop/target.
 """
 
 import json
@@ -52,6 +39,11 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 logger = logging.getLogger(__name__)
 
 CLAUDE_MODEL = "claude-haiku-4-5"
+# Appended to every Claude prompt so the notes read like a trader's margin
+# note: short, plain, no sales language.
+STYLE = ("Plain English, under 60 words. No preamble or sign-off. No hype words "
+         "(exceptional, robust, compelling, poised). Don't repeat the numbers above. "
+         "Do not recommend a trade.")
 
 AGENT = {
     "id": "OPY",
@@ -231,7 +223,7 @@ class Reasoner:
                 f"avg bid/ask spread {r['avg_spread_pct']:.1f}%.\n\n"
                 "Write 2-3 sentences: why this name fits a range-bound, premium-rich iron "
                 "condor thesis, and what would invalidate it (a breakout, an earnings surprise, "
-                "IV compressing). Professional, concise, no repeating the numbers verbatim."
+                "IV compressing). " + STYLE
             )
         if kind == "spread":
             return (
@@ -242,7 +234,7 @@ class Reasoner:
                 f"{r['approx_pop']:.0f}%, ROC {r['roc_pct'] or 0:.1f}%. IV/HV {r['iv_hv_ratio']:.2f}x.\n\n"
                 "Write 2-3 sentences: why the trend and premium support this spread, and the "
                 "main risk (a reversal through the short strike, an IV crush after earnings). "
-                "Professional, concise, no repeating the numbers verbatim."
+                + STYLE
             )
         if kind == "leaps":
             return (
@@ -251,10 +243,9 @@ class Reasoner:
                 f"{r['expiry']}. Premium ${r['premium']:.2f} ({r['premium_pct_of_stock']:.1f}% of "
                 f"stock price), breakeven ${r['breakeven']:.2f}, leverage {r['leverage'] or 0:.1f}x. "
                 f"IV/HV {r['iv_hv_ratio']:.2f}x (buying cheap vol).\n\n"
-                "Write 2-3 sentences: why this is attractively priced as a leveraged stock "
-                "substitute right now, and the main risk (paying too much time value, a trend "
-                "reversal before the thesis plays out). Professional, concise, no repeating "
-                "the numbers verbatim."
+                "Write 2-3 sentences: is this fairly priced as a leveraged stock substitute "
+                "right now, and what is the main risk (paying too much time value, a trend "
+                "reversal before the thesis plays out)? " + STYLE
             )
         # rsi
         return (
@@ -263,7 +254,7 @@ class Reasoner:
             f"{r.get('sma50') or 0:.2f} / {r.get('sma200') or 0:.2f}.\n\n"
             "Write 1-2 sentences: what this RSI reading suggests about the stock's current "
             "momentum state. This is a signal for the trader's own judgment, not a specific "
-            "options structure - do not suggest a trade. Professional, concise."
+            "options structure. " + STYLE
         )
 
 

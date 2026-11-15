@@ -1,14 +1,9 @@
 #!/usr/bin/env python3
 """Goldy (GOLD) - moving-average cross scanner.
 
-Finds two upward crosses across the shared universe:
-
-    20/50    the 20-day SMA crossing above the 50-day
-    50/200   the 50-day crossing above the 200-day - the classic golden cross
-
-Both are reported as events with a date, not as states: a cross that happened
-three weeks ago is not news, so only crosses inside LOOKBACK sessions are
-published, and how fresh one is scores into its rank.
+Finds 20/50 and 50/200 SMA crosses in both directions within the last
+LOOKBACK sessions, plus crosses projected to happen soon ("Nearing ...").
+Crosses are events with a date; freshness counts toward the score.
 
 WHAT THE BACKTEST SAYS, because it should be read before the list is traded.
 13,173 crosses across 580 names, 2019-2026, forward returns measured against
@@ -67,13 +62,18 @@ logging.basicConfig(level=logging.INFO,
 logger = logging.getLogger(__name__)
 
 CLAUDE_MODEL = "claude-haiku-4-5"
+# Appended to every Claude prompt so the notes read like a trader's margin
+# note: short, plain, no sales language.
+STYLE = ("Plain English, under 60 words. No preamble or sign-off. No hype words "
+         "(exceptional, robust, compelling, poised). Don't repeat the numbers above. "
+         "Do not recommend a trade.")
 
 AGENT = {
     "id": "GOLD",
     "name": "Goldy",
     "strategy": "MA crosses",
-    "description": "Finds 20/50 and 50/200 moving-average crosses as they happen. "
-                   "A discovery list, not a ranked forecast - see the README.",
+    "description": "20/50 and 50/200 moving-average crosses, recent and approaching. "
+                   "A list of charts to check, not a forecast.",
     # Same muted register as the others (Monu #c8974a, Opy #8a7fa8, Trey #6f8fae).
     "accent": "#7fa88a",
 }
@@ -618,7 +618,7 @@ class Reasoner:
                 "have to happen in price for the averages to separate again instead "
                 "of crossing? Be concrete and sceptical. The projection is a straight-"
                 "line extrapolation, so say if that looks fragile here. Do not give a "
-                "price target and do not recommend a trade."
+                "price target. " + STYLE
             )
         else:
             prompt = (
@@ -627,8 +627,7 @@ class Reasoner:
                 f"Cross date: {o['cross_date']} ({o['bars_ago']} sessions ago)\n{common}\n\n"
                 "In 2-3 sentences, assess this specific cross: is it a clean trend "
                 "change or part of a choppy sequence, and what would invalidate it? "
-                "Be concrete and sceptical. Do not give a price target and do not "
-                "recommend a trade."
+                "Be concrete and sceptical. Do not give a price target. " + STYLE
             )
         try:
             r = self.client.messages.create(

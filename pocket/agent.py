@@ -88,13 +88,18 @@ logging.basicConfig(level=logging.INFO,
 logger = logging.getLogger(__name__)
 
 CLAUDE_MODEL = "claude-haiku-4-5"
+# Appended to every Claude prompt so the notes read like a trader's margin
+# note: short, plain, no sales language.
+STYLE = ("Plain English, under 60 words. No preamble or sign-off. No hype words "
+         "(exceptional, robust, compelling, poised). Don't repeat the numbers above. "
+         "Do not recommend a trade.")
 
 AGENT = {
     "id": "PCKT",
     "name": "Pocket",
     "strategy": "Volume screen + level map",
-    "description": "Your Finviz relative-volume screen, run on the whole universe, with the "
-                   "major levels and pockets drawn for every hit. A map, not a forecast.",
+    "description": "Your Finviz relative-volume screen, with major levels and pockets "
+                   "mapped for each hit. A map, not a forecast.",
     # Same muted register as Monu #c8974a, Opy #8a7fa8, Trey #6f8fae, Goldy #7fa88a.
     "accent": "#a8857f",
 }
@@ -457,7 +462,7 @@ class Reasoner:
             "In 2-3 sentences: what is the volume telling you here, and which of the "
             "two levels is more likely to matter next? Name the price that would show "
             "the move has failed. Be concrete and sceptical - the backtest behind this "
-            "screen found little edge in the levels themselves. Do not recommend a trade."
+            "screen found little edge in the levels themselves. " + STYLE
         )
         try:
             r = self.client.messages.create(
