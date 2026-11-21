@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-11-20T10:12:36.762039",
+  "scan_date": "2026-11-21T09:59:07.732879",
   "context": [
     {
       "label": "State",
@@ -38,7 +38,7 @@
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 34"
+      "value": "quiet \u00b7 27"
     }
   ],
   "groups": {
@@ -52,7 +52,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 49.01,
+      "price": 41.2,
       "score": 0,
       "strategy": "Trend gate \u00b7 OUT",
       "dimensions": [
@@ -75,7 +75,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "OUT since 2026-11-13 \u00b7 QQQ 645.04 \u00b7 book 1/6 (reference, not used for state)",
+        "label": "OUT since 2026-11-13 \u00b7 QQQ 608.45 \u00b7 book 1/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -84,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "-5.4%",
+            "value": "-10.8%",
             "tone": "neg"
           },
           {
@@ -99,7 +99,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2717 -4.4%",
+            "value": "\u2717 -9.9%",
             "tone": "neg"
           },
           {
@@ -114,7 +114,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2717 34",
+            "value": "\u2717 27",
             "tone": "neg"
           },
           {
@@ -129,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 34",
+            "value": "quiet \u00b7 27",
             "tone": null
           }
         ]
@@ -138,7 +138,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 33.9,
+          "value": 26.6,
           "active": false
         }
       ],
@@ -150,7 +150,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": false,
-            "detail": "-4.4%"
+            "detail": "-9.9%"
           },
           {
             "key": "stack",
@@ -168,7 +168,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": false,
-            "detail": "34"
+            "detail": "27"
           },
           {
             "key": "macd",
@@ -184,10 +184,9 @@
           }
         ]
       },
-      "reasoning": "TQQQ remains OUT because QQQ trades below its gate average. To restart the position, QQQ needs to clear its gate threshold. Full entry requires the fast trend to confirm\u2014specifically, the 10-day moving average must rise above the 20-day, and price must recover above the 50-day average.",
+      "reasoning": "The position remains OUT as QQQ trades below its gate average. To reopen the gate to HALF, QQQ needs to climb above its 200-day moving average. For progression to FULL, the fast trend must also align\u2014requiring the 10-day to cross back above the 20-day while price recovers toward its 50-day. RSI and MACD confirmation would further support upside.",
       "history": {
         "dates": [
-          "2026-08-24",
           "2026-08-25",
           "2026-08-26",
           "2026-08-27",
@@ -249,10 +248,10 @@
           "2026-11-16",
           "2026-11-17",
           "2026-11-18",
-          "2026-11-19"
+          "2026-11-19",
+          "2026-11-20"
         ],
         "closes": [
-          68.88,
           70.13,
           70.33,
           73.16,
@@ -314,10 +313,10 @@
           53.03,
           51.81,
           52.44,
-          49.01
+          49.01,
+          41.2
         ],
         "sma200": [
-          60.45,
           60.52,
           60.61,
           60.71,
@@ -379,7 +378,8 @@
           65.52,
           65.5,
           65.5,
-          65.5
+          65.5,
+          65.47
         ]
       }
     }
