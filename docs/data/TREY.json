@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-11-25T11:29:31.166607",
+  "scan_date": "2026-11-26T11:09:42.281069",
   "context": [
     {
       "label": "State",
@@ -52,7 +52,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 46.19,
+      "price": 45.28,
       "score": 0,
       "strategy": "Trend gate \u00b7 OUT",
       "dimensions": [
@@ -75,7 +75,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "OUT since 2026-11-13 \u00b7 QQQ 638.10 \u00b7 book 1/6 (reference, not used for state)",
+        "label": "OUT since 2026-11-13 \u00b7 QQQ 633.93 \u00b7 book 1/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -84,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "-6.5%",
+            "value": "-7.1%",
             "tone": "neg"
           },
           {
@@ -99,7 +99,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2717 -5.5%",
+            "value": "\u2717 -6.1%",
             "tone": "neg"
           },
           {
@@ -138,7 +138,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 39.5,
+          "value": 38.6,
           "active": false
         }
       ],
@@ -150,7 +150,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": false,
-            "detail": "-5.5%"
+            "detail": "-6.1%"
           },
           {
             "key": "stack",
@@ -184,10 +184,9 @@
           }
         ]
       },
-      "reasoning": "The position remains OUT, meaning no TQQQ exposure. To reopen the gate and move to HALF, QQQ needs to climb back above its 200-day average. For a FULL signal, you'd also need the fast trend to confirm\u2014specifically the 10-day moving average crossing back above the 20-day, plus price recovering toward the 50-day.",
+      "reasoning": "[reasoning unavailable: API error 400]",
       "history": {
         "dates": [
-          "2026-08-27",
           "2026-08-28",
           "2026-08-31",
           "2026-09-01",
@@ -249,10 +248,10 @@
           "2026-11-19",
           "2026-11-20",
           "2026-11-23",
-          "2026-11-24"
+          "2026-11-24",
+          "2026-11-25"
         ],
         "closes": [
-          73.16,
           71.71,
           71.78,
           69.02,
@@ -314,10 +313,10 @@
           49.01,
           41.2,
           49.1,
-          46.19
+          46.19,
+          45.28
         ],
         "sma200": [
-          60.71,
           60.79,
           60.87,
           60.94,
@@ -379,7 +378,8 @@
           65.5,
           65.47,
           65.47,
-          65.44
+          65.44,
+          65.41
         ]
       }
     }
