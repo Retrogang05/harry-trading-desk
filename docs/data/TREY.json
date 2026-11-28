@@ -6,7 +6,7 @@
     "description": "Holds TQQQ only while QQQ is above its 200-day average; sizes up when the short-term trend confirms. Signals on QQQ, execution on TQQQ.",
     "accent": "#6f8fae"
   },
-  "scan_date": "2026-11-26T11:09:42.281069",
+  "scan_date": "2026-11-28T10:39:41.554253",
   "context": [
     {
       "label": "State",
@@ -38,7 +38,7 @@
     },
     {
       "label": "RSI alert (>80)",
-      "value": "quiet \u00b7 39"
+      "value": "quiet \u00b7 44"
     }
   ],
   "groups": {
@@ -52,7 +52,7 @@
     {
       "rank": 1,
       "symbol": "TQQQ",
-      "price": 45.28,
+      "price": 48.85,
       "score": 0,
       "strategy": "Trend gate \u00b7 OUT",
       "dimensions": [
@@ -75,7 +75,7 @@
         "fast": 0
       },
       "setup": {
-        "label": "OUT since 2026-11-13 \u00b7 QQQ 633.93 \u00b7 book 1/6 (reference, not used for state)",
+        "label": "OUT since 2026-11-13 \u00b7 QQQ 650.99 \u00b7 book 1/6 (reference, not used for state)",
         "fields": [
           {
             "label": "State",
@@ -84,7 +84,7 @@
           },
           {
             "label": "Gate 200d",
-            "value": "-7.1%",
+            "value": "-4.7%",
             "tone": "neg"
           },
           {
@@ -99,7 +99,7 @@
           },
           {
             "label": "> 225d",
-            "value": "\u2717 -6.1%",
+            "value": "\u2717 -3.6%",
             "tone": "neg"
           },
           {
@@ -114,7 +114,7 @@
           },
           {
             "label": "RSI > 50",
-            "value": "\u2717 39",
+            "value": "\u2717 44",
             "tone": "neg"
           },
           {
@@ -129,7 +129,7 @@
           },
           {
             "label": "RSI > 80 alert",
-            "value": "quiet \u00b7 39",
+            "value": "quiet \u00b7 44",
             "tone": null
           }
         ]
@@ -138,7 +138,7 @@
         {
           "key": "rsi_overbought",
           "label": "RSI > 80",
-          "value": 38.6,
+          "value": 44.0,
           "active": false
         }
       ],
@@ -150,7 +150,7 @@
             "key": "sma225",
             "label": "> 225d",
             "met": false,
-            "detail": "-6.1%"
+            "detail": "-3.6%"
           },
           {
             "key": "stack",
@@ -168,7 +168,7 @@
             "key": "rsi",
             "label": "RSI > 50",
             "met": false,
-            "detail": "39"
+            "detail": "44"
           },
           {
             "key": "macd",
@@ -187,7 +187,6 @@
       "reasoning": "[reasoning unavailable: API error 400]",
       "history": {
         "dates": [
-          "2026-08-28",
           "2026-08-31",
           "2026-09-01",
           "2026-09-02",
@@ -249,10 +248,10 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-27"
         ],
         "closes": [
-          71.71,
           71.78,
           69.02,
           69.47,
@@ -314,10 +313,10 @@
           41.2,
           49.1,
           46.19,
-          45.28
+          45.28,
+          48.85
         ],
         "sma200": [
-          60.79,
           60.87,
           60.94,
           61.03,
@@ -379,7 +378,8 @@
           65.47,
           65.47,
           65.44,
-          65.41
+          65.41,
+          65.4
         ]
       }
     }
