@@ -6,7 +6,7 @@
     "description": "Well-formed bull flags: forming flags with trigger and stop, and breakouts on volume with a trade.",
     "accent": "#a87f9a"
   },
-  "scan_date": "2026-11-26T10:35:33.306571",
+  "scan_date": "2026-11-28T09:56:39.446633",
   "dimensions": [
     {
       "key": "breakout",
@@ -40,7 +40,7 @@
   "context": [
     {
       "label": "Data as of",
-      "value": "2026-11-25"
+      "value": "2026-11-27"
     },
     {
       "label": "Universe",
@@ -48,7 +48,7 @@
     },
     {
       "label": "Found",
-      "value": "0 breakouts, 18 forming"
+      "value": "0 breakouts, 17 forming"
     },
     {
       "label": "Well-formed",
@@ -60,7 +60,7 @@
     },
     {
       "label": "Dropped",
-      "value": "3 stale, 0 pinned, 86 discontinuous"
+      "value": "3 stale, 0 pinned, 85 discontinuous"
     },
     {
       "label": "Published",
@@ -74,7 +74,7 @@
   "opportunities": [
     {
       "symbol": "AON",
-      "price": 347.489990234375,
+      "price": 348.42999267578125,
       "score": 50,
       "strategy": "Flag forming",
       "signal_state": "forming",
@@ -110,7 +110,7 @@
       "indexes": [
         "SPX"
       ],
-      "day_move_pct": 1.35,
+      "day_move_pct": 0.27,
       "flag": {
         "pole_top": 350.4700012207031,
         "pole_low": 279.1366133556521,
@@ -119,14 +119,14 @@
         "flag_low": 330.8399963378906,
         "retrace": 27.5,
         "vol_ratio": 44.2,
-        "trigger": 337.27602233886694,
+        "trigger": 337.27602233886716,
         "started": "2026-11-12",
         "top_date": "2026-11-05"
       },
       "chart_levels": [
         {
           "label": "Trigger",
-          "value": 337.27602233886694,
+          "value": 337.27602233886716,
           "tone": "neutral"
         },
         {
@@ -149,7 +149,7 @@
           },
           {
             "label": "To trigger",
-            "value": "-2.9%",
+            "value": "-3.2%",
             "tone": null
           },
           {
@@ -179,16 +179,16 @@
           },
           {
             "label": "Today volume",
-            "value": "1.0x avg",
+            "value": "0.6x avg",
             "tone": null
           },
           {
             "label": "Risk",
-            "value": "4.8% to stop"
+            "value": "5.0% to stop"
           },
           {
             "label": "Today",
-            "value": "+1.4%",
+            "value": "+0.3%",
             "tone": "pos"
           }
         ]
@@ -196,7 +196,6 @@
       "rank": 1,
       "history": {
         "dates": [
-          "2026-08-28",
           "2026-08-31",
           "2026-09-01",
           "2026-09-02",
@@ -258,10 +257,10 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-27"
         ],
         "closes": [
-          354.5,
           320.7,
           325.5,
           330.0,
@@ -323,10 +322,10 @@
           333.1,
           331.9,
           342.9,
-          347.5
+          347.5,
+          348.4
         ],
         "sma200": [
-          335.8,
           335.6,
           335.5,
           335.4,
@@ -388,14 +387,15 @@
           323.9,
           323.9,
           324.0,
-          324.2
+          324.2,
+          324.4
         ]
       },
-      "reasoning": "The flag structure looks acceptable\u2014pullback is shallow and volume contracted appropriately. However, flags during formation have poor odds historically. Confirmation requires a clean break above trigger on volume expansion; breakdown below the flag's low would invalidate the setup entirely."
+      "reasoning": "[reasoning unavailable: API error 400]"
     },
     {
       "symbol": "PRG",
-      "price": 41.619998931884766,
+      "price": 43.09000015258789,
       "score": 47,
       "strategy": "Flag forming",
       "signal_state": "forming",
@@ -431,7 +431,7 @@
       "indexes": [
         "IWM"
       ],
-      "day_move_pct": 1.88,
+      "day_move_pct": 3.53,
       "flag": {
         "pole_top": 40.8750179020538,
         "pole_low": 25.091002528740205,
@@ -440,14 +440,14 @@
         "flag_low": 36.56031869587767,
         "retrace": 27.3,
         "vol_ratio": 45.7,
-        "trigger": 38.81802594286373,
+        "trigger": 38.81802594286372,
         "started": "2026-11-16",
         "top_date": "2026-11-05"
       },
       "chart_levels": [
         {
           "label": "Trigger",
-          "value": 38.81802594286373,
+          "value": 38.81802594286372,
           "tone": "neutral"
         },
         {
@@ -470,7 +470,7 @@
           },
           {
             "label": "To trigger",
-            "value": "-6.7%",
+            "value": "-9.9%",
             "tone": null
           },
           {
@@ -500,16 +500,16 @@
           },
           {
             "label": "Today volume",
-            "value": "0.5x avg",
+            "value": "0.3x avg",
             "tone": null
           },
           {
             "label": "Risk",
-            "value": "12.2% to stop"
+            "value": "15.2% to stop"
           },
           {
             "label": "Today",
-            "value": "+1.9%",
+            "value": "+3.5%",
             "tone": "pos"
           }
         ]
@@ -517,7 +517,6 @@
       "rank": 2,
       "history": {
         "dates": [
-          "2026-08-28",
           "2026-08-31",
           "2026-09-01",
           "2026-09-02",
@@ -579,10 +578,10 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-27"
         ],
         "closes": [
-          38.96,
           38.0,
           37.47,
           38.61,
@@ -644,10 +643,10 @@
           39.35,
           40.42,
           40.85,
-          41.62
+          41.62,
+          43.09
         ],
         "sma200": [
-          34.47,
           34.52,
           34.57,
           34.62,
@@ -709,14 +708,15 @@
           35.84,
           35.87,
           35.9,
-          35.94
+          35.94,
+          35.99
         ]
       },
-      "reasoning": "The flag structure is reasonably clean\u2014proper pole, shallow consolidation, reduced volume. However, the trigger sits only 6.4% above today's close in a stock that just rallied hard; breakout attempts after strong single-day moves frequently fail. A break above the trigger with volume expansion would confirm conviction, while closing back into the flag range would suggest the rally is exhausted."
+      "reasoning": "[reasoning unavailable: API error 400]"
     },
     {
       "symbol": "KNSA",
-      "price": 100.98500061035156,
+      "price": 103.2249984741211,
       "score": 45,
       "strategy": "Flag forming",
       "signal_state": "forming",
@@ -752,7 +752,7 @@
       "indexes": [
         "IWM"
       ],
-      "day_move_pct": -1.69,
+      "day_move_pct": 2.22,
       "flag": {
         "pole_top": 99.30999755859375,
         "pole_low": 70.66999816894531,
@@ -761,14 +761,14 @@
         "flag_low": 93.48500061035156,
         "retrace": 20.3,
         "vol_ratio": 41.9,
-        "trigger": 96.63479766845705,
+        "trigger": 96.63479766845703,
         "started": "2026-11-16",
         "top_date": "2026-11-09"
       },
       "chart_levels": [
         {
           "label": "Trigger",
-          "value": 96.63479766845705,
+          "value": 96.63479766845703,
           "tone": "neutral"
         },
         {
@@ -791,7 +791,7 @@
           },
           {
             "label": "To trigger",
-            "value": "-4.3%",
+            "value": "-6.4%",
             "tone": null
           },
           {
@@ -821,24 +821,23 @@
           },
           {
             "label": "Today volume",
-            "value": "0.6x avg",
+            "value": "0.4x avg",
             "tone": null
           },
           {
             "label": "Risk",
-            "value": "7.4% to stop"
+            "value": "9.4% to stop"
           },
           {
             "label": "Today",
-            "value": "-1.7%",
-            "tone": "neg"
+            "value": "+2.2%",
+            "tone": "pos"
           }
         ]
       },
       "rank": 3,
       "history": {
         "dates": [
-          "2026-08-28",
           "2026-08-31",
           "2026-09-01",
           "2026-09-02",
@@ -900,10 +899,10 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-27"
         ],
         "closes": [
-          78.08,
           78.63,
           79.28,
           79.89,
@@ -965,10 +964,10 @@
           93.89,
           98.69,
           102.7,
-          101.0
+          101.0,
+          103.2
         ],
         "sma200": [
-          51.92,
           52.11,
           52.3,
           52.5,
@@ -1030,14 +1029,15 @@
           64.09,
           64.37,
           64.66,
-          64.94
+          64.94,
+          65.23
         ]
       },
-      "reasoning": "This flag lacks conviction\u2014the pullback consumed over half the pole's gain, suggesting weak buying pressure. Confirmation requires a clean break above trigger on volume; breakdown below support would indicate the rally has stalled. The formation is too early to trust; most incomplete flags fail."
+      "reasoning": "[reasoning unavailable: API error 400]"
     },
     {
       "symbol": "VCEL",
-      "price": 61.0099983215332,
+      "price": 61.369998931884766,
       "score": 45,
       "strategy": "Flag forming",
       "signal_state": "forming",
@@ -1073,7 +1073,7 @@
       "indexes": [
         "IWM"
       ],
-      "day_move_pct": -0.28,
+      "day_move_pct": 0.59,
       "flag": {
         "pole_top": 59.75,
         "pole_low": 39.439998626708984,
@@ -1082,14 +1082,14 @@
         "flag_low": 56.709999084472656,
         "retrace": 15.0,
         "vol_ratio": 54.0,
-        "trigger": 58.604000854492185,
+        "trigger": 58.60400085449218,
         "started": "2026-11-18",
         "top_date": "2026-11-11"
       },
       "chart_levels": [
         {
           "label": "Trigger",
-          "value": 58.604000854492185,
+          "value": 58.60400085449218,
           "tone": "neutral"
         },
         {
@@ -1112,7 +1112,7 @@
           },
           {
             "label": "To trigger",
-            "value": "-3.9%",
+            "value": "-4.5%",
             "tone": null
           },
           {
@@ -1142,24 +1142,23 @@
           },
           {
             "label": "Today volume",
-            "value": "0.5x avg",
+            "value": "0.3x avg",
             "tone": null
           },
           {
             "label": "Risk",
-            "value": "7.0% to stop"
+            "value": "7.6% to stop"
           },
           {
             "label": "Today",
-            "value": "-0.3%",
-            "tone": "neg"
+            "value": "+0.6%",
+            "tone": "pos"
           }
         ]
       },
       "rank": 4,
       "history": {
         "dates": [
-          "2026-08-28",
           "2026-08-31",
           "2026-09-01",
           "2026-09-02",
@@ -1221,10 +1220,10 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-27"
         ],
         "closes": [
-          40.95,
           39.9,
           40.5,
           40.89,
@@ -1286,10 +1285,10 @@
           57.52,
           59.0,
           61.18,
-          61.01
+          61.01,
+          61.37
         ],
         "sma200": [
-          38.15,
           38.14,
           38.14,
           38.15,
@@ -1351,14 +1350,15 @@
           39.94,
           40.06,
           40.18,
-          40.31
+          40.31,
+          40.44
         ]
       },
-      "reasoning": "This flag lacks conviction\u2014the pullback consumed over half the pole's gains, suggesting weak buying interest rather than consolidation. A break above the trigger would need to hold with volume to prove strength; a close below the flag's low likely completes a failed setup more than a launching pad."
+      "reasoning": "[reasoning unavailable: API error 400]"
     },
     {
       "symbol": "WGO",
-      "price": 32.279998779296875,
+      "price": 32.86000061035156,
       "score": 39,
       "strategy": "Flag forming",
       "signal_state": "forming",
@@ -1394,7 +1394,7 @@
       "indexes": [
         "IWM"
       ],
-      "day_move_pct": 1.54,
+      "day_move_pct": 1.8,
       "flag": {
         "pole_top": 35.119998931884766,
         "pole_low": 21.950000762939453,
@@ -1403,14 +1403,14 @@
         "flag_low": 30.25,
         "retrace": 37.0,
         "vol_ratio": 46.8,
-        "trigger": 31.80299987792968,
+        "trigger": 31.802999877929693,
         "started": "2026-11-12",
         "top_date": "2026-11-05"
       },
       "chart_levels": [
         {
           "label": "Trigger",
-          "value": 31.80299987792968,
+          "value": 31.802999877929693,
           "tone": "neutral"
         },
         {
@@ -1433,7 +1433,7 @@
           },
           {
             "label": "To trigger",
-            "value": "-1.5%",
+            "value": "-3.2%",
             "tone": null
           },
           {
@@ -1463,16 +1463,16 @@
           },
           {
             "label": "Today volume",
-            "value": "0.5x avg",
+            "value": "0.3x avg",
             "tone": null
           },
           {
             "label": "Risk",
-            "value": "6.3% to stop"
+            "value": "7.9% to stop"
           },
           {
             "label": "Today",
-            "value": "+1.5%",
+            "value": "+1.8%",
             "tone": "pos"
           }
         ]
@@ -1480,7 +1480,6 @@
       "rank": 5,
       "history": {
         "dates": [
-          "2026-08-28",
           "2026-08-31",
           "2026-09-01",
           "2026-09-02",
@@ -1542,10 +1541,10 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-27"
         ],
         "closes": [
-          30.23,
           29.73,
           28.97,
           29.96,
@@ -1607,10 +1606,10 @@
           30.36,
           31.79,
           31.79,
-          32.28
+          32.28,
+          32.86
         ],
         "sma200": [
-          34.3,
           34.28,
           34.26,
           34.25,
@@ -1672,14 +1671,15 @@
           30.93,
           30.85,
           30.78,
-          30.72
+          30.72,
+          30.65
         ]
       },
-      "reasoning": "The flag structure looks textbook, but it's forming\u2014a vulnerable state where most fail to breakout. Confirmation requires a close above trigger with volume exceeding the pole's average; a close below $30.25 kills it. Watch whether volume actually expands on any breakout attempt; weak volume breakouts rarely sustain."
+      "reasoning": "[reasoning unavailable: API error 400]"
     },
     {
       "symbol": "VRDN",
-      "price": 37.90999984741211,
+      "price": 38.81999969482422,
       "score": 38,
       "strategy": "Flag forming",
       "signal_state": "forming",
@@ -1715,7 +1715,7 @@
       "indexes": [
         "IWM"
       ],
-      "day_move_pct": 6.19,
+      "day_move_pct": 2.4,
       "flag": {
         "pole_top": 31.6299991607666,
         "pole_low": 21.920000076293945,
@@ -1724,14 +1724,14 @@
         "flag_low": 29.25,
         "retrace": 24.5,
         "vol_ratio": 51.5,
-        "trigger": 30.684501457214353,
+        "trigger": 30.68450145721438,
         "started": "2026-11-19",
         "top_date": "2026-11-11"
       },
       "chart_levels": [
         {
           "label": "Trigger",
-          "value": 30.684501457214353,
+          "value": 30.68450145721438,
           "tone": "neutral"
         },
         {
@@ -1754,7 +1754,7 @@
           },
           {
             "label": "To trigger",
-            "value": "-19.1%",
+            "value": "-21.0%",
             "tone": null
           },
           {
@@ -1784,16 +1784,16 @@
           },
           {
             "label": "Today volume",
-            "value": "1.2x avg",
+            "value": "0.5x avg",
             "tone": null
           },
           {
             "label": "Risk",
-            "value": "22.8% to stop"
+            "value": "24.7% to stop"
           },
           {
             "label": "Today",
-            "value": "+6.2%",
+            "value": "+2.4%",
             "tone": "pos"
           }
         ]
@@ -1801,7 +1801,6 @@
       "rank": 6,
       "history": {
         "dates": [
-          "2026-08-28",
           "2026-08-31",
           "2026-09-01",
           "2026-09-02",
@@ -1863,10 +1862,10 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-27"
         ],
         "closes": [
-          23.08,
           23.16,
           23.03,
           22.78,
@@ -1928,10 +1927,10 @@
           29.96,
           31.89,
           35.7,
-          37.91
+          37.91,
+          38.82
         ],
         "sma200": [
-          23.93,
           23.9,
           23.87,
           23.84,
@@ -1993,14 +1992,15 @@
           21.52,
           21.54,
           21.57,
-          21.61
+          21.61,
+          21.65
         ]
       },
-      "reasoning": "This is a mediocre setup. The flag's volume contraction is light for a bull flag, and the pole itself started from a low base, limiting conviction. Confirmation requires a clean break above the trigger on volume expansion; breakdown below the stop would signal the flag failed and momentum likely exhausted."
+      "reasoning": "[reasoning unavailable: API error 400]"
     },
     {
       "symbol": "EPRT",
-      "price": 29.670000076293945,
+      "price": 29.770000457763672,
       "score": 34,
       "strategy": "Flag forming",
       "signal_state": "forming",
@@ -2036,7 +2036,7 @@
       "indexes": [
         "IWM"
       ],
-      "day_move_pct": 2.45,
+      "day_move_pct": 0.34,
       "flag": {
         "pole_top": 28.454999923706055,
         "pole_low": 24.709999084472656,
@@ -2045,14 +2045,14 @@
         "flag_low": 27.520000457763672,
         "retrace": 25.0,
         "vol_ratio": 51.2,
-        "trigger": 28.20800094604491,
+        "trigger": 28.20800094604493,
         "started": "2026-11-12",
         "top_date": "2026-11-05"
       },
       "chart_levels": [
         {
           "label": "Trigger",
-          "value": 28.20800094604491,
+          "value": 28.20800094604493,
           "tone": "neutral"
         },
         {
@@ -2075,7 +2075,7 @@
           },
           {
             "label": "To trigger",
-            "value": "-4.9%",
+            "value": "-5.2%",
             "tone": null
           },
           {
@@ -2105,16 +2105,16 @@
           },
           {
             "label": "Today volume",
-            "value": "1.1x avg",
+            "value": "0.3x avg",
             "tone": null
           },
           {
             "label": "Risk",
-            "value": "7.2% to stop"
+            "value": "7.6% to stop"
           },
           {
             "label": "Today",
-            "value": "+2.5%",
+            "value": "+0.3%",
             "tone": "pos"
           }
         ]
@@ -2122,7 +2122,6 @@
       "rank": 7,
       "history": {
         "dates": [
-          "2026-08-28",
           "2026-08-31",
           "2026-09-01",
           "2026-09-02",
@@ -2184,10 +2183,10 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-27"
         ],
         "closes": [
-          30.0,
           29.63,
           29.75,
           29.6,
@@ -2249,10 +2248,10 @@
           28.0,
           28.43,
           28.96,
-          29.67
+          29.67,
+          29.77
         ],
         "sma200": [
-          30.41,
           30.41,
           30.41,
           30.41,
@@ -2314,14 +2313,15 @@
           29.73,
           29.72,
           29.71,
+          29.7,
           29.7
         ]
       },
-      "reasoning": "The flag structure looks textbook but is still forming with low conviction\u2014the volume compression is light and the pole itself is modest. A close above the trigger would need to hold with expanding volume to suggest real breakout intent; a retest of the flag low or failure to clear $28.21 would confirm deteriorating momentum."
+      "reasoning": "[reasoning unavailable: API error 400]"
     },
     {
       "symbol": "FUN",
-      "price": 11.109999656677246,
+      "price": 11.279999732971191,
       "score": 33,
       "strategy": "Flag forming",
       "signal_state": "forming",
@@ -2357,7 +2357,7 @@
       "indexes": [
         "IWM"
       ],
-      "day_move_pct": -2.46,
+      "day_move_pct": 1.53,
       "flag": {
         "pole_top": 12.3100004196167,
         "pole_low": 6.599999904632568,
@@ -2366,14 +2366,14 @@
         "flag_low": 10.680000305175781,
         "retrace": 28.5,
         "vol_ratio": 56.4,
-        "trigger": 12.052999973297128,
+        "trigger": 12.052999973297117,
         "started": "2026-11-24",
         "top_date": "2026-11-16"
       },
       "chart_levels": [
         {
           "label": "Trigger",
-          "value": 12.052999973297128,
+          "value": 12.052999973297117,
           "tone": "neutral"
         },
         {
@@ -2396,7 +2396,7 @@
           },
           {
             "label": "To trigger",
-            "value": "+8.5%",
+            "value": "+6.9%",
             "tone": null
           },
           {
@@ -2426,24 +2426,23 @@
           },
           {
             "label": "Today volume",
-            "value": "0.3x avg",
+            "value": "0.2x avg",
             "tone": null
           },
           {
             "label": "Risk",
-            "value": "3.9% to stop"
+            "value": "5.3% to stop"
           },
           {
             "label": "Today",
-            "value": "-2.5%",
-            "tone": "neg"
+            "value": "+1.5%",
+            "tone": "pos"
           }
         ]
       },
       "rank": 8,
       "history": {
         "dates": [
-          "2026-08-28",
           "2026-08-31",
           "2026-09-01",
           "2026-09-02",
@@ -2505,10 +2504,10 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-27"
         ],
         "closes": [
-          16.22,
           15.05,
           14.24,
           15.47,
@@ -2570,10 +2569,10 @@
           11.06,
           11.2,
           11.39,
-          11.11
+          11.11,
+          11.28
         ],
         "sma200": [
-          17.74,
           17.74,
           17.73,
           17.73,
@@ -2635,14 +2634,15 @@
           16.4,
           16.36,
           16.32,
-          16.29
+          16.29,
+          16.25
         ]
       },
-      "reasoning": "This is a marginal setup with warning signs. The flag's volume contraction is decent, but the pole itself needs scrutiny\u2014an 86% move often exhausts momentum rather than setting up continuation. Confirmation requires a clean break above the trigger on volume; breakdown below support would be the more likely outcome given flags-in-formation have poor historical edges."
+      "reasoning": "[reasoning unavailable: API error 400]"
     },
     {
       "symbol": "PATK",
-      "price": 85.48999786376953,
+      "price": 86.7699966430664,
       "score": 33,
       "strategy": "Flag forming",
       "signal_state": "forming",
@@ -2678,7 +2678,7 @@
       "indexes": [
         "IWM"
       ],
-      "day_move_pct": 1.75,
+      "day_move_pct": 1.5,
       "flag": {
         "pole_top": 85.92186113642705,
         "pole_low": 63.487589488395706,
@@ -2687,14 +2687,14 @@
         "flag_low": 77.24819962324405,
         "retrace": 38.7,
         "vol_ratio": 48.8,
-        "trigger": 80.12749721166647,
+        "trigger": 80.12749721166642,
         "started": "2026-11-13",
         "top_date": "2026-11-05"
       },
       "chart_levels": [
         {
           "label": "Trigger",
-          "value": 80.12749721166647,
+          "value": 80.12749721166642,
           "tone": "neutral"
         },
         {
@@ -2717,7 +2717,7 @@
           },
           {
             "label": "To trigger",
-            "value": "-6.3%",
+            "value": "-7.7%",
             "tone": null
           },
           {
@@ -2747,16 +2747,16 @@
           },
           {
             "label": "Today volume",
-            "value": "0.6x avg",
+            "value": "0.4x avg",
             "tone": null
           },
           {
             "label": "Risk",
-            "value": "9.6% to stop"
+            "value": "11.0% to stop"
           },
           {
             "label": "Today",
-            "value": "+1.7%",
+            "value": "+1.5%",
             "tone": "pos"
           }
         ]
@@ -2764,7 +2764,6 @@
       "rank": 9,
       "history": {
         "dates": [
-          "2026-08-28",
           "2026-08-31",
           "2026-09-01",
           "2026-09-02",
@@ -2826,10 +2825,10 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-27"
         ],
         "closes": [
-          82.93,
           81.19,
           80.78,
           82.22,
@@ -2891,10 +2890,10 @@
           80.05,
           83.41,
           84.02,
-          85.49
+          85.49,
+          86.77
         ],
         "sma200": [
-          102.3,
           102.2,
           102.1,
           102.0,
@@ -2956,14 +2955,15 @@
           90.72,
           90.45,
           90.18,
-          89.91
+          89.91,
+          89.63
         ]
       },
-      "reasoning": "The flag is messily formed\u2014the pullback consumed 61% of the pole, well above the typical 33%, suggesting weak conviction. A breakout above $85.92 would validate it, but historically flags still consolidating have poor odds; a close below the low would confirm the bounce failed."
+      "reasoning": "[reasoning unavailable: API error 400]"
     },
     {
       "symbol": "EW",
-      "price": 106.36000061035156,
+      "price": 106.0,
       "score": 21,
       "strategy": "Flag forming",
       "signal_state": "forming",
@@ -2999,7 +2999,7 @@
       "indexes": [
         "SPX"
       ],
-      "day_move_pct": 0.23,
+      "day_move_pct": -0.34,
       "flag": {
         "pole_top": 108.0,
         "pole_low": 87.9000015258789,
@@ -3008,14 +3008,14 @@
         "flag_low": 101.6500015258789,
         "retrace": 31.6,
         "vol_ratio": 62.5,
-        "trigger": 103.97099914550779,
+        "trigger": 103.97099914550785,
         "started": "2026-11-23",
         "top_date": "2026-11-16"
       },
       "chart_levels": [
         {
           "label": "Trigger",
-          "value": 103.97099914550779,
+          "value": 103.97099914550785,
           "tone": "neutral"
         },
         {
@@ -3038,7 +3038,7 @@
           },
           {
             "label": "To trigger",
-            "value": "-2.2%",
+            "value": "-1.9%",
             "tone": null
           },
           {
@@ -3068,24 +3068,23 @@
           },
           {
             "label": "Today volume",
-            "value": "0.6x avg",
+            "value": "0.3x avg",
             "tone": null
           },
           {
             "label": "Risk",
-            "value": "4.4% to stop"
+            "value": "4.1% to stop"
           },
           {
             "label": "Today",
-            "value": "+0.2%",
-            "tone": "pos"
+            "value": "-0.3%",
+            "tone": "neg"
           }
         ]
       },
       "rank": 10,
       "history": {
         "dates": [
-          "2026-08-28",
           "2026-08-31",
           "2026-09-01",
           "2026-09-02",
@@ -3147,10 +3146,10 @@
           "2026-11-20",
           "2026-11-23",
           "2026-11-24",
-          "2026-11-25"
+          "2026-11-25",
+          "2026-11-27"
         ],
         "closes": [
-          90.21,
           90.75,
           90.74,
           90.82,
@@ -3212,10 +3211,10 @@
           101.8,
           105.1,
           106.1,
-          106.4
+          106.4,
+          106.0
         ],
         "sma200": [
-          84.83,
           84.86,
           84.88,
           84.9,
@@ -3277,10 +3276,11 @@
           86.93,
           87.06,
           87.21,
-          87.36
+          87.36,
+          87.49
         ]
       },
-      "reasoning": "This flag lacks conviction\u2014the pullback ate a third of the pole on lighter volume, suggesting weak buying interest. A breakout above trigger with volume expansion would confirm strength; a close below the flag's lower bound kills it. The setup needs decisive action to prove it's not just a failed rally."
+      "reasoning": "[reasoning unavailable: API error 400]"
     }
   ]
 }
